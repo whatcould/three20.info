@@ -10,7 +10,7 @@
 
 <div id="widgets">
   <div class="widget" id="github">
-    <div class="header">Latest Commits</div>
+    <div class="header">Latest Three20 Commits</div>
     <div class="content">
       <div class="loading">Loading github status...</div>
       <div class="commits"></div>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="widget" id="newsgroup">
-    <div class="header">Newsgroup</div>
+    <div class="header">Newsgroup Activity</div>
     <div class="content">
       <div class="loading">Loading newsgroup...</div>
       <div class="posts"></div>

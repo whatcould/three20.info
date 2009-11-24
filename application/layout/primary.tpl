@@ -25,6 +25,7 @@
   <div class="header">Setup</div>
   <ul>
     <li><a href="/setup/existing">Add three20 to your project</a></li>
+    <li><a href="/setup/templates">Three20 project templates</a></li>
   </ul>
 </div>
 
