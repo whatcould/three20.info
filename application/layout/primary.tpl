@@ -37,10 +37,14 @@
 <div id="content">
 <?= $this->content() ?>
 
-<? if( !isset($this->hideModificationDate)  && isset($this->templateModifiedTime) ) { ?>
+<? if( !isset($this->hideModificationDate) && isset($this->templateModifiedTime) ) { ?>
 <div class="lastmodified">Last modified: <?= date('l \t\h\e jS \of F Y h:i:s A', $this->templateModifiedTime); ?></div>
 <? } ?>
 
+<? if( !isset($this->hideDisqusThread) ) { ?>
+<div id="disqus_thread"></div>
+<noscript><a href="http://disqus.com/forums/three20/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<? } ?>
 </div>
 
 <div class="clearfix"></div>
@@ -64,6 +68,11 @@
 </div>
 
 <?
+if( APPLICATION_ENV == 'development' ) {
+  $this->addJsFootScript('var disqus_developer = 1;');
+}
+
+$this->addJsFootFile('http://disqus.com/forums/three20/embed.js');
 $this->addJsFootScript('
   var is_ssl = ("https:" == document.location.protocol);
   var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
