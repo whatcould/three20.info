@@ -1,7 +1,7 @@
 <h1><?= $this->pageTitle() ?></h1>
 
-<p>If you're planning to make a new project using three20 then you can save some time using custom
-  three20 project templates. They're easy to install.</p>
+<p>If you're planning to make a new project using three20 then you can save some time by using
+  custom three20 project templates. They're easy to install.</p>
 
 <p>First, you'll want to
   <a href="http://cloud.github.com/downloads/jverkoey/three20.info/three20Projects.zip">download
