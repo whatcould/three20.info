@@ -3,6 +3,11 @@
 <p>The three20 library is a foreign beast to many. With its largely undocumented code set and
   sparse examples, it can really seem like taming the wild Kraken at times.</p>
 
+<p>That's why three20.info was created. You'll find tutorials, documentation, and the latest
+  updates related to three20 and iPhone development in general. Whether you've recently stumbled
+  across three20 or you're a seasoned TT* vet, here's to you learning a thing or two while you're
+  here.</p>
+
 <div id="widgets">
   <div class="widget" id="github">
     <div class="header">Latest Commits</div>
