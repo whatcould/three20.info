@@ -131,6 +131,11 @@ a:hover {
   color: #999;
 }
 
+#content h3 {
+  font-size: 1.5em;
+  color: #999;
+}
+
 #content .source {
   margin-top: 5px;
   text-align: right;
@@ -144,12 +149,20 @@ a:hover {
   line-height: 1.5em;
 }
 
-#content ol li {
+#content ol li,
+#content ul li {
   font-size: 1.3em;
   margin-left: 25px;
   margin-bottom: 20px;
-  list-style-type: decimal;
   line-height: 1.5em;
+}
+
+#content ol li {
+  list-style-type: decimal;
+}
+
+#content ul li {
+  list-style-type: square;
 }
 
 #content .image {
