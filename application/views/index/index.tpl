@@ -1,7 +1,7 @@
 <h1>Here, there be dragons</h1>
 
-<p>The three20 library is a foreign beast to many. With its largely undocumented code base and
-  bare minimum of examples, it can really seem like taming the wild Kraken at times.</p>
+<p>The three20 library is a beast to tackle for many. While there are examples and documentation
+  does somewhat exist, there are a number of powerful features of the library that go unnoticed.</p>
 
 <p>That's why three20.info was created. You'll find tutorials, documentation, and the latest
   updates related to three20 and iPhone development in general. Whether you've recently stumbled
