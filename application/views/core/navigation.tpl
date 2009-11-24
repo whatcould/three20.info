@@ -38,8 +38,8 @@ TTURLMap* map = navigator.URLMap;
   ...
 }</pre></div>
 
-<p>This establishes a simple map which recognizes one url. Imagine that one wanted to open the
-  restaurant controller for a given restaurant, for instance, Chotchkie's.</p>
+<p>This establishes a simple map which recognizes one url. Imagine that you wanted to open the
+  restaurant controller for a given restaurant. For instance, Chotchkie's.</p>
 
 <p>Typically you'd do it this way, if you were embedded in a UINavigationController:</p>
 
