@@ -30,13 +30,14 @@
   <div class="header">Core Reference</div>
   <ul>
     <li><a href="/core/debugging">Debugging with three20</a></li>
+    <li><a href="/core/navigation">URL-based navigation</a></li>
   </ul>
 </div>
 
 <div id="content">
 <?= $this->content() ?>
 
-<?php if( !isset($this->hideModificationDate) ) { ?>
+<?php if( !isset($this->hideModificationDate)  && isset($this->templateModifiedTime) ) { ?>
 <div class="lastmodified">Last modified: <?= date('l \t\h\e jS \of F Y h:i:s A', $this->templateModifiedTime); ?></div>
 <?php } ?>
 
@@ -55,7 +56,7 @@
 </div> <!-- pagewrapper -->
 
 <div id="footer">
-  <div class="copyright">Copyright 2009 Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</div>
+  <div class="copyright">Copyright 2009 All content licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a> unless otherwise noted.</div>
   <div class="attribution">
     <a href="http://github.com/jverkoey/three20.info">Source hosted on github</a> -
     Made with the <a href="http://github.com/jverkoey/Keystone">Keystone</a> framework.

@@ -6,4 +6,8 @@ class CoreController extends Three20Controller {
     $this->view->prependTitle('Debugging with three20');
   }
 
+  public function navigation() {
+    $this->view->prependTitle('Debugging with three20');
+  }
+
 }
