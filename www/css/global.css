@@ -70,14 +70,16 @@
   clear: both;
 }
 
-#page-wrapper a {
+#page-wrapper a,
+#footer a {
   text-decoration: none;
   color: #333;
   padding: 3px;
   background-color: #FED;
 }
 
-#page-wrapper a:hover {
+#page-wrapper a:hover,
+#footer a {
   background-color: #FC9;
 }
 
