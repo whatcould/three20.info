@@ -37,9 +37,9 @@
 <div id="content">
 <?= $this->content() ?>
 
-<?php if( !isset($this->hideModificationDate)  && isset($this->templateModifiedTime) ) { ?>
+<? if( !isset($this->hideModificationDate)  && isset($this->templateModifiedTime) ) { ?>
 <div class="lastmodified">Last modified: <?= date('l \t\h\e jS \of F Y h:i:s A', $this->templateModifiedTime); ?></div>
-<?php } ?>
+<? } ?>
 
 </div>
 
@@ -62,6 +62,20 @@
     Made with the <a href="http://github.com/jverkoey/Keystone">Keystone</a> framework.
     </div>
 </div>
+
+<? if( APPLICATION_ENV == 'development' ) {
+$this->addJsFootScript('
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+');
+
+$this->addJsFootScript('
+try {
+var pageTracker = _gat._getTracker("'.ANALYTICS_KEY.'");
+pageTracker._trackPageview();
+} catch(err) {}');
+ }
+?>
 
 <?= $this->jsFoot() ?>
 </body>
