@@ -15,6 +15,10 @@
 </div>
 <div id="pageheadershadow"></div>
 
+<? if( APPLICATION_ENV != 'development' ) { ?>
+<div class="fixedwidth">
+  <div style="text-align:center;font-size:5em;color:#999">Coming soon...</div></div>
+<? } else { ?>
 <div class="fixedwidth">
 <div id="toc">
   <div class="header">Core Reference</div>
@@ -34,6 +38,8 @@
 </div>
 
 <div class="clearfix"></div>
+
+<? } ?>
 
 </div> <!-- fixedwidth -->
 
