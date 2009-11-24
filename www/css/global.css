@@ -70,14 +70,14 @@
   clear: both;
 }
 
-a {
+#page-wrapper a {
   text-decoration: none;
   color: #333;
   padding: 3px;
   background-color: #FED;
 }
 
-a:hover {
+#page-wrapper a:hover {
   background-color: #FC9;
 }
 
