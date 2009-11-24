@@ -1,0 +1,91 @@
+
+#pageheader {
+  height:100px;
+
+  background-image: url('/gfx/headergradient.png');
+/*  background: -webkit-gradient(linear, 0% 0%, 0% 100%,
+    from(#FF6600),
+    color-stop(0.3, #FF9933),
+    color-stop(0.3, #FF9933),
+    to(#FFCC99)) content-box padding-box;*/
+}
+
+#pageheader .title {
+  padding-top: 20px;
+  font-size: 4em;
+  color: #FFF;
+  text-shadow: 1px 1px 3px #993300;
+}
+
+#pageheader .title .subtitle {
+  font-size: 0.5em;
+}
+
+#pageheadershadow {
+  background-image: url(/gfx/shadow.png);
+  height: 10px;
+}
+
+.fixedwidth {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+#toc {
+  margin-top: 23px;
+  width: 170px;
+  float: left;
+}
+
+#toc .header {
+  font-size: 0.9em;
+}
+
+#toc ul {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+#toc li {
+  background-color: #FED;
+  border-bottom: 1px solid #FFF;
+  padding: 5px;
+}
+
+#toc li:hover {
+  background-color: #fc9;
+  cursor: pointer;
+}
+
+#toc a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+#content {
+  float: right;
+  width: 600px;
+  padding: 10px;
+}
+
+#content h1 {
+  font-size: 2em;
+  border-bottom: 5px solid #FFEEDD;
+  color: #999;
+}
+
+#content p {
+  margin-top: 10px;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
