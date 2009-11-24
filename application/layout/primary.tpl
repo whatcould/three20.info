@@ -7,6 +7,7 @@
   <?= $this->jsHead() ?>
 </head>
 <body>
+<div id="page-wrapper">
 <div id="page">
 <div id="pageheader">
   <div class="fixedwidth">
@@ -43,7 +44,17 @@
 
 </div> <!-- fixedwidth -->
 
+<div class="clearfix"></div>
+<div id="page-footer"></div>
 </div> <!-- page -->
+
+</div> <!-- pagewrapper -->
+
+<div id="footer">
+  <div class="copyright">Copyright 2009 Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</div>
+  <div class="attribution"><a href="http://github.com/jverkoey/three20.info">Source hosted on github</a></div>
+</div>
+
 <?= $this->jsFoot() ?>
 </body>
 </html>

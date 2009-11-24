@@ -1,4 +1,38 @@
 
+#page-wrapper {
+  height: auto !important;
+  min-height: 100%;
+  margin: 0 0 -75px;
+
+  overflow: hidden;
+}
+
+#page-footer {
+  height: 75px;
+}
+
+#footer {
+  clear: both;
+  height: 49px;
+  position: relative;
+  border-top: 1px dotted #FF9933;
+  margin-top: 25px;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+}
+
+#footer .copyright {
+  margin-top: 5px;
+  text-align: center;
+  color: #FF8533;
+}
+
+#footer .attribution {
+  text-align: center;
+}
+
 #pageheader {
   height:100px;
 
