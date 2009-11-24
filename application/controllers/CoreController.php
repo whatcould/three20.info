@@ -7,7 +7,7 @@ class CoreController extends Three20Controller {
   }
 
   public function navigation() {
-    $this->view->prependTitle('Debugging with three20');
+    $this->view->prependTitle('URL-Based Navigation');
   }
 
 }
