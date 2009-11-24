@@ -19,20 +19,13 @@
   margin-top: 25px;
 }
 
-#footer a {
-  background-color: #FED;
-}
-
-#footer a:hover {
-  text-decoration: underline;
-}
-
 #footer .copyright {
   margin-top: 5px;
   text-align: center;
 }
 
 #footer .attribution {
+  margin-top: 6px;
   text-align: center;
 }
 
@@ -50,8 +43,13 @@
 #pageheader .title {
   padding-top: 20px;
   font-size: 4em;
-  color: #FFF;
   text-shadow: 1px 1px 3px #993300;
+}
+
+#pageheader .title a,
+#pageheader .title a:hover {
+  color: #FFF;
+  background-color: transparent;
 }
 
 #pageheader .title .subtitle {
@@ -75,6 +73,12 @@
 a {
   text-decoration: none;
   color: #333;
+  padding: 3px;
+  background-color: #FED;
+}
+
+a:hover {
+  background-color: #FC9;
 }
 
 #toc {
@@ -95,7 +99,6 @@ a {
 #toc li {
   background-color: #FED;
   border-bottom: 1px solid #FFF;
-  padding: 5px;
 }
 
 #toc li:hover {
@@ -107,6 +110,7 @@ a {
   display: block;
   text-decoration: none;
   color: #333;
+  padding: 5px;
 }
 
 #content {
@@ -121,8 +125,46 @@ a {
   color: #999;
 }
 
+#content .source {
+  margin-top: 5px;
+  text-align: right;
+  color: #999;
+}
+
 #content p {
   margin-top: 10px;
   font-size: 1.3em;
   margin-bottom: 20px;
+  line-height: 1.5em;
+}
+
+#content ol li {
+  font-size: 1.3em;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-type: decimal;
+  line-height: 1.5em;
+}
+
+#content li .image {
+  text-align: center;
+}
+
+#content li .image img {
+  padding: 5px;
+  -webkit-box-shadow: #999 0px 5px 5px;
+}
+
+.inline {
+  /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+  padding: 3px;
+  background-color: #333;
+  color: #fff;
+}
+
+.lastmodified {
+  text-align: right;
+  font-size: 0.8em;
+  padding: 10px;
 }

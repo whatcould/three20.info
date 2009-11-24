@@ -27,13 +27,7 @@
 #github .content .commit {
   position: relative;
   display: block;
-  background-color: #FED;
-  padding: 5px;
   border-bottom: 1px solid #FFF;
-}
-
-#github .content .commit:hover {
-  background-color: #fc9;
 }
 
 #github .author {
@@ -66,6 +60,7 @@
 }
 
 #github .content .commit .infobox .message {
+  /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 
   font-size: 0.9em;
@@ -80,13 +75,7 @@
 #newsgroup .content .post {
   position: relative;
   display: block;
-  background-color: #FED;
-  padding: 5px;
   border-bottom: 1px solid #FFF;
-}
-
-#newsgroup .content .post:hover {
-  background-color: #fc9;
 }
 
 #newsgroup .title {
