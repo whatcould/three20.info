@@ -43,7 +43,7 @@
 
 <? if( !isset($this->hideDisqusThread) ) { ?>
 <div id="disqus_thread"></div>
-<noscript><a href="http://disqus.com/forums/three20/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript><a href="http://disqus.com/forums/three20/?url=ref">View the discussion thread.</a></noscript>
 <? } ?>
 </div>
 
