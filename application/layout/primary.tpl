@@ -27,6 +27,10 @@
     <li><a href="/setup/existing">Add three20 to your project</a></li>
     <li><a href="/setup/templates">Three20 project templates</a></li>
   </ul>
+  <div class="header">Core Reference</div>
+  <ul>
+    <li><a href="/core/debugging">Debugging with three20</a></li>
+  </ul>
 </div>
 
 <div id="content">

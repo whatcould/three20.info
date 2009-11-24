@@ -125,6 +125,12 @@ a:hover {
   color: #999;
 }
 
+#content h2 {
+  font-size: 1.7em;
+  border-bottom: 3px solid #FED;
+  color: #999;
+}
+
 #content .source {
   margin-top: 5px;
   text-align: right;
@@ -146,11 +152,11 @@ a:hover {
   line-height: 1.5em;
 }
 
-#content li .image {
+#content .image {
   text-align: center;
 }
 
-#content li .image img {
+#content .image img {
   padding: 5px;
   -webkit-box-shadow: #999 0px 5px 5px;
   -moz-box-shadow: #999 0px 5px 5px;
@@ -162,6 +168,19 @@ a:hover {
   padding: 3px;
   background-color: #333;
   color: #fff;
+}
+
+.code {
+  margin-bottom: 20px;
+}
+
+.code pre {
+  /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+  background-color: #333;
+  padding: 5px;
+  color: #fff;
+  line-height: 1.5em;
 }
 
 .lastmodified {
