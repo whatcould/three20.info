@@ -52,7 +52,10 @@
 
 <div id="footer">
   <div class="copyright">Copyright 2009 Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</div>
-  <div class="attribution"><a href="http://github.com/jverkoey/three20.info">Source hosted on github</a></div>
+  <div class="attribution">
+    <a href="http://github.com/jverkoey/three20.info">Source hosted on github</a> -
+    Made with the <a href="http://github.com/jverkoey/Keystone">Keystone</a> framework.
+    </div>
 </div>
 
 <?= $this->jsFoot() ?>

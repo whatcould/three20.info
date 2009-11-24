@@ -19,6 +19,10 @@
   margin-top: 25px;
 }
 
+#footer a {
+  background-color: #FED;
+}
+
 #footer a:hover {
   text-decoration: underline;
 }
@@ -26,7 +30,6 @@
 #footer .copyright {
   margin-top: 5px;
   text-align: center;
-  color: #FF8533;
 }
 
 #footer .attribution {
