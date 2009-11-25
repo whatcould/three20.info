@@ -32,6 +32,10 @@
     <li><a href="/setup/existing">Add three20 to your Project</a></li>
     <li><a href="/setup/templates">Three20 Project Templates</a></li>
   </ul>
+  <div class="header">API</div>
+  <ul>
+    <li><a href="/api/TTNavigator">TTNavigator</a></li>
+  </ul>
   <div class="header">Articles</div>
   <ul>
     <li><a href="/core/debugging">Debugging with three20</a></li>
@@ -76,7 +80,7 @@
 if( APPLICATION_ENV == 'development' ) {
   $this->addJsFootScript('var disqus_developer = 1;');
 }
-
+/*
 $this->addJsFootFile('http://disqus.com/forums/three20/embed.js');
 $this->addJsFootScript('
   var is_ssl = ("https:" == document.location.protocol);
@@ -95,7 +99,7 @@ $this->addJsFootScript('
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 ');
-
+*/
 if( APPLICATION_ENV != 'development' ) {
 $this->addJsFootScript('
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -26,7 +26,7 @@ SyntaxHighlighter.brushes.ObjC = function()
 	var datatypes =	'char bool BOOL double float int long short id void';
 	
 	var keywords = 'IBAction IBOutlet SEL YES NO readwrite readonly nonatomic nil NULL ';
-	keywords += 'retain super self copy ';
+	keywords += 'retain assign super self copy ';
 	keywords += 'break case catch class const copy __finally __exception __try ';
 	keywords += 'const_cast continue private public protected __declspec ';
 	keywords += 'default delete deprecated dllexport dllimport do dynamic_cast ';
@@ -47,8 +47,7 @@ SyntaxHighlighter.brushes.ObjC = function()
 		{ regex: new RegExp('^ *#.*', 'gm'),						css: 'preprocessor' },		// preprocessor
 		{ regex: new RegExp(this.getKeywords(datatypes), 'gm'),		css: 'datatypes' },		// datatypes
 		{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// keyword
-		{ regex: new RegExp('\\bNS\\w+\\b', 'g'),					css: 'keyword' },			// keyword
-		{ regex: new RegExp('\\bTT\\w+\\b', 'g'),					css: 'keyword' },			// keyword
+		{ regex: new RegExp('\\b(NS|TT|UI)\\w+\\b', 'g'),					css: 'keyword' },			// keyword
 		{ regex: new RegExp('@\\w+\\b', 'g'),						css: 'keyword' },			// keyword
 		];
 	

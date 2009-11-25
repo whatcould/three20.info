@@ -147,37 +147,44 @@
   font-size: 2em;
   border-bottom: 5px solid #FFEEDD;
   color: #666;
+  margin-bottom: 10px;
 }
 
 #content h2 {
   font-size: 1.7em;
   border-bottom: 3px solid #FED;
   color: #666;
+  margin-bottom: 10px;
 }
 
 #content h3 {
   font-size: 1.5em;
   color: #666;
+  margin-bottom: 10px;
 }
 
 #content .source {
   margin-top: 5px;
   text-align: right;
   color: #999;
+  margin-bottom: 10px;
 }
 
 #content p {
-  margin-top: 10px;
   font-size: 1.3em;
   margin-bottom: 20px;
   line-height: 1.5em;
+}
+
+#content ul {
+  margin-bottom: 20px;
 }
 
 #content ol li,
 #content ul li {
   font-size: 1.3em;
   margin-left: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 1.5em;
 }
 
@@ -233,6 +240,27 @@ code {
   color: #fff;
   line-height: 1.5em;
   margin-bottom: 20px;
+}
+
+#content blockquote {
+  margin-left: 10px;
+}
+
+#content blockquote p {
+  font-style: italic;
+}
+
+#content .sectiontags li {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #666;
+  list-style-type: none;
+  float: left;
+  padding: 5px;
+  margin-left: 0;
+  margin-right: 5px;
+  margin-bottom: 0;
+  background-color: #eee;
 }
 
 .lastmodified {
