@@ -1,28 +1,67 @@
-Here, there be dragons
-======================
+What's in Three20?
+==================
 
-The three20 library is a beast to tackle for many. While there are examples and documentation
-does somewhat exist, there are a number of powerful features of the library that go unnoticed.
+Three20 contains a wide variety of useful UI elements. Here are just a few.
 
-That's why three20.info was created. You'll find tutorials, documentation, and the latest
-updates related to three20 and iPhone development in general. Whether you've recently stumbled
-across three20 or you're a seasoned TT* vet, here's to you learning a thing or two while you're
-here.
+Photo Viewer
+------------
 
-<div id="widgets">
-  <div class="widget" id="github">
-    <div class="header">Latest Three20 Commits</div>
-    <div class="content">
-      <div class="loading">Loading github status...</div>
-      <div class="commits"></div>
-    </div>
-  </div>
+TTPhotoViewController emulates Apple's Photos app with all of its flick n' pinch delight.
+You can supply your own "photo sources", which works similiarly to the data sources used by
+UITableView.  Unlike Apple's Photos app, it isn't limited to photos stored locally.  Your photos
+can be loaded from the network, and long lists of photos can be loaded incrementally.
 
-  <div class="widget" id="newsgroup">
-    <div class="header">Newsgroup Activity</div>
-    <div class="content">
-      <div class="loading">Loading newsgroup...</div>
-      <div class="posts"></div>
-    </div>
-  </div>
-</div>
+Message composer
+----------------
+
+TTMessageController emulates the message composer in Apple's Mail app.  You can customize it to
+send any kind of message you want. Include your own set of message fields, or use the standard
+"To:" and "Subject:".  Recipient names can be autocompleted from a data source that you provide.
+
+Web image views
+-----------------------
+
+TTImageView makes it as easy to display an image as it is in HTML.  Just supply the URL of the
+image, and TTImageView loads it and displays it efficiently.  TTImageView also works with the HTTP
+cache described below to avoid hitting the network when possible.
+
+Internet-aware table view controllers
+---------------------------------------
+
+TTTableViewController and TTTableViewDataSource help you to build tables which load their content
+from the Internet.  Rather than just assuming you have all the data ready to go, like UITableView
+does by default, TTTableViewController lets you communicate when your data is loading, and when
+there is an error or nothing to display.  It also helps you to add a "More" button to load the
+next page of data, and optionally supports reloading the data by shaking the device.
+
+Better text fields
+------------------
+
+TTTextEditor is a UITextView which can grow in height automatically as you type.  I use this for
+entering messages in Facebook Chat, and it behaves similarly to the editor in Apple's SMS app.
+
+TTPickerTextField is a type-ahead UITextField.  As you type it searches a data source, and it adds
+bubbles into the flow of text when you choose a type-ahead option.  I use this in
+TTMessageController for selecting the names of message recipients.
+
+HTTP disk cache
+--------------
+
+TTURLRequest is a replacement for NSURLRequest which supports a disk cache (NSURLRequest can only
+cache in RAM).  It has some other nice features too.  HTTP posts are as easy as supplying a
+dictionary of parameters.  The TTURL loading system can also be suspended and resumed at any time,
+which is a great performance helper.  Network threads often fight with the UI thread, so you can
+suspend the network any time your app is momentarily graphically intensive.
+
+URL-based Navigation
+--------------------
+
+TTNavigationCenter is for those grizzled old web developers who want to organize their
+app by "pages" which can be displayed by visiting a URL.
+
+Your view controllers can simply register URL patterns that they handle, and when those URLs are
+visited the controllers will be created and displayed.  You can also register generic actions that
+are called when a URL is visited.
+
+TTNavigationCenter also persists and restores the full path of navigation controllers and modal
+view controllers, so your users can quite the app and come back exactly where they left off.

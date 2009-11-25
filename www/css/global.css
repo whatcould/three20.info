@@ -41,6 +41,7 @@
 }
 
 #pageheader .title {
+  float: left;
   padding-top: 20px;
   font-size: 4em;
   text-shadow: 1px 1px 3px #993300;
@@ -54,6 +55,23 @@
 
 #pageheader .title .subtitle {
   font-size: 0.5em;
+}
+
+#pageheader ul {
+  margin-top: 30px;
+  float: right;
+}
+
+#pageheader li {
+  float: left;
+  padding: 20px 10px;
+  font-size: 1.5em;
+}
+
+#pageheader li a {
+  color: #FFF;
+  background-color: transparent;
+  text-shadow: 1px 1px 1px #993300;
 }
 
 #pageheadershadow {
@@ -83,7 +101,7 @@
 }
 
 #page-wrapper a:hover,
-#footer a {
+#footer a:hover {
   background-color: #FC9;
 }
 

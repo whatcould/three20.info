@@ -12,6 +12,11 @@
 <div id="pageheader">
   <div class="fixedwidth">
     <div class="title"><a href="/">three20<span class="subtitle">.info</span></a></div>
+    <ul>
+      <li><a href="/tutorials">Tutorials</a></li>
+      <li><a href="http://github.com/facebook/three20/issues">Issues</a></li>
+      <li><a href="/contribute">Contribute</a></li>
+    </ul>
   </div>
 </div>
 <div id="pageheadershadow"></div>
@@ -22,7 +27,7 @@
 <? } else { ?>
 <div class="fixedwidth">
 <div id="toc">
-  <div class="header">Setup</div>
+  <div class="header">Getting Started</div>
   <ul>
     <li><a href="/setup/existing">Add three20 to your Project</a></li>
     <li><a href="/setup/templates">Three20 Project Templates</a></li>

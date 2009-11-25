@@ -1,10 +1,9 @@
 
 
 #widgets .widget {
-  width: 200px;
-  float: left;
+  width: 580px;
   border: 1px solid #FED;
-  margin: 0 10px;
+  margin: 10px 10px;
   padding: 10px;
 }
 
