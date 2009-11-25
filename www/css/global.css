@@ -189,13 +189,14 @@
   margin-bottom: 20px;
 }
 
-.code pre {
+#content pre {
   /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
   background-color: #333;
   padding: 5px;
   color: #fff;
   line-height: 1.5em;
+  margin-bottom: 20px;
 }
 
 .lastmodified {

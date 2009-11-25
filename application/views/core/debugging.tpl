@@ -22,11 +22,11 @@
 
 <p>The logging system introduces a new set of macros.</p>
 
-<div class="code"><pre>TTDERROR(text, ...)    // Priority level 1
+<pre class="brush: obj-c;">TTDERROR(text, ...)    // Priority level 1
 TTDWARNING(text, ...)  // Priority level 3
 TTDINFO(text, ...)     // Priority level 5
 TTDPRINT(text, ...)
-</pre></div>
+</pre>
 
 <p>Each of the above logging macros eventually routes the logs through
   <span class="inline">TTDPRINT</span>, but the messages will only be displayed if the message's
@@ -37,8 +37,8 @@ TTDPRINT(text, ...)
 
 <p>The standard output of <span class="inline">TTDPRINT</span> looks something like this:</p>
 
-<div class="code"><pre>TTDPRINT(@"Is this thing on?");
-2009-11-20 13:46:49.613 AppName /path/to/file/Filename.m(86): Is this thing on?</pre></div>
+<pre class="brush: obj-c;">TTDPRINT(@"Is this thing on?");
+2009-11-20 13:46:49.613 AppName /path/to/file/Filename.m(86): Is this thing on?</pre>
 
 <h1>Debug-only assertions</h1>
 
@@ -56,19 +56,19 @@ TTDPRINT(text, ...)
 
 <p>Consider this example:</p>
 
-<div class="code"><pre>-(void)safeAddSubview:(UIView*)view {
+<pre class="brush: obj-c;">-(void)safeAddSubview:(UIView*)view {
   TTDASSERT(nil != view);
   if (nil == view) {
     return;
   }
   [self addSubview:view];
-}</pre></div>
+}</pre>
 
 <p>Let's say we then call <span class="inline">[myView safeAddSubview:nil]</span>. In debug builds
   of the app, calling this will now toss us into the debugger at the culprit line and output a
   quick log explaining the problem.</p>
 
-<div class="code"><pre>2009-11-20 14:10:53.096 AppName /path/to/file/Filename.m(86): TTDASSERT failed: nil != view</pre></div>
+<pre class="brush: obj-c;">2009-11-20 14:10:53.096 AppName /path/to/file/Filename.m(86): TTDASSERT failed: nil != view</pre>
 
 <h2>Some things to note about debug assertions.</h2>
 

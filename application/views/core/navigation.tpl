@@ -23,30 +23,30 @@
 <p>Here's an example to get started. Typically this appears in your Application Delegate's
   <span class="inline">applicationDidFinishLaunching:</span> selector.</p>
 
-<div class="code"><pre>TTNavigator* navigator = [TTNavigator navigator];
+<pre class="brush: obj-c;">TTNavigator* navigator = [TTNavigator navigator];
 navigator.window = window;
 
 TTURLMap* map = navigator.URLMap;
 [map from:@"tt://restaurant/(initWithName:)"
   toViewController:[RestaurantController class]];
-</pre></div>
+</pre>
 
 <p>The above refers to a class, <span class="inline">RestaurantController</span>, with a selector,
   <span class="inline">initWithName:</span></p>
 
-<div class="code"><pre>-(void) initWithName: (NSString*)name {
+<pre class="brush: obj-c;">-(void) initWithName: (NSString*)name {
   ...
-}</pre></div>
+}</pre>
 
 <p>This establishes a simple map which recognizes one url. Imagine that you wanted to open the
   restaurant controller for a given restaurant. For instance, Chotchkie's.</p>
 
 <p>Typically you'd do it this way, if you were embedded in a UINavigationController:</p>
 
-<div class="code"><pre>RestaurantController* controller = [[RestaurantController alloc]
+<pre class="brush: obj-c;">RestaurantController* controller = [[RestaurantController alloc]
   initWithName:@"Chotchkie's"];
 [navigationController pushViewController:controller animated:YES];
-[controller release];</pre></div>
+[controller release];</pre>
 
 <p>This is a lot of boilerplate. The only reason to keep <span class="inline">controller</span>
   around is to add it to the UINavigationController, and release it. Really, you just want to
@@ -54,7 +54,7 @@ TTURLMap* map = navigator.URLMap;
 
 <p>With TTNavigator, just open this url with:</p>
 
-<div class="code"><pre>[[TTNavigator navigator] openURL:@"tt://restaurant/Chotchkie's" animated:YES]</pre></div>
+<pre class="brush: obj-c;">[[TTNavigator navigator] openURL:@"tt://restaurant/Chotchkie's" animated:YES]</pre>
 
 <p>When <span class="inline">openURL:animated:</span> is called, an instance of
   <span class="inline">RestaurantController</span> will be allocated, and then the
@@ -99,8 +99,8 @@ TTURLMap* map = navigator.URLMap;
 <p>To set the persistence mode, set the <span class="inline">persistenceMode</span> property of
   <span class="inline">TTNavigator</span>.</p>
 
-<div class="code"><pre>TTNavigator* navigator = [TTNavigator navigator];
-navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre></div>
+<pre class="brush: obj-c;">TTNavigator* navigator = [TTNavigator navigator];
+navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre>
 
 <h1>URL mapping methods</h1>
 
@@ -113,44 +113,44 @@ navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre></div>
 <p>The first form is when you have a url, say "tt://menu/order", and this is being mapped to a
   Controller. Let's say we have the following map (from TTNavigatorDemo):</p>
 
-<div class="code"><pre>[map from:@"tt://menu/(initWithMenu:)"
-  toSharedViewController:[MenuController class]];</pre></div>
+<pre class="brush: obj-c;">[map from:@"tt://menu/(initWithMenu:)"
+  toSharedViewController:[MenuController class]];</pre>
 
 <p>Opening "tt://menu/1" will call</p>
 
-<div class="code"><pre>[[MenuController alloc] initWithMenu:1]</pre></div>
+<pre class="brush: obj-c;">[[MenuController alloc] initWithMenu:1]</pre>
 
 <p>This extends for multiple parameters, also. Let's say we want to display a specific page in
   MenuController.</p>
 
-<div class="code"><pre>[map from:@"tt://menu/(initWithMenu:)/(page:)"
-  toSharedViewController:[MenuController class]];</pre></div>
+<pre class="brush: obj-c;">[map from:@"tt://menu/(initWithMenu:)/(page:)"
+  toSharedViewController:[MenuController class]];</pre>
 
 <p>Opening "tt://menu/1/5" will call</p>
 
-<div class="code"><pre>[[MenuController alloc] initWithMenu:1 page:5]</pre></div>
+<pre class="brush: obj-c;">[[MenuController alloc] initWithMenu:1 page:5]</pre>
 
 <h3>Other data types</h3>
 
 <p>Parameters will automatically map to the method's data types. In the above examples we've
   assumed that <span class="inline">initWithMenu</span> has this signature</p>
 
-<div class="code"><pre>- (id)initWithMenu:(MenuPage)page</pre></div>
+<pre class="brush: obj-c;">- (id)initWithMenu:(MenuPage)page</pre>
 
 <p>Where <span class="inline">MenuPage</span> is an enum (effectively an int).</p>
 
 <p>We could also map parameters to strings if we wanted.</p>
 
-<div class="code"><pre>- (id)initWithMenuName:(NSString*)name</pre></div>
+<pre class="brush: obj-c;">- (id)initWithMenuName:(NSString*)name</pre>
 
 <p>The map:</p>
 
-<div class="code"><pre>[map from:@"tt://menu/(initWithMenuName:)"
-  toSharedViewController:[MenuController class]];</pre></div>
+<pre class="brush: obj-c;">[map from:@"tt://menu/(initWithMenuName:)"
+  toSharedViewController:[MenuController class]];</pre>
 
 <p>Opening "tt://menu/lunch" will call</p>
 
-<div class="code"><pre>[[MenuController alloc] initWithMenuName:@"lunch"]</pre></div>
+<pre class="brush: obj-c;">[[MenuController alloc] initWithMenuName:@"lunch"]</pre>
 
 <h2>NSObjects to URLs</h2>
 
@@ -161,7 +161,7 @@ navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre></div>
 
 <p>First off, let's consider a basic NSObject:</p>
 
-<div class="code"><pre>@interface Contact : NSObject {
+<pre class="brush: obj-c;">@interface Contact : NSObject {
 
 }
 
@@ -169,7 +169,7 @@ navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre></div>
 @property (nonatomic, retain) NSString* firstName;
 @property (nonatomic, retain) NSString* lastName;
 
-@end</pre></div>
+@end</pre>
 
 <p>We want to populate a table controller with a list of Contacts. Upon tapping any contact in
   the list, you should be taken to a view that shows the Contact details. Using TTTableItems we
@@ -177,15 +177,15 @@ navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre></div>
 
 <p>Introducing the NSObject TTURL map:</p>
 
-<div class="code"><pre>[map from:[Contact class] name:@"view" toURL:@"tt://contact/view/(uid)"];</pre></div>
+<pre class="brush: obj-c;">[map from:[Contact class] name:@"view" toURL:@"tt://contact/view/(uid)"];</pre>
 
 <p>Calling <span class="inline">[aContact URLValueWithName:@"view"]</span> will generate a URL
   specifically for aContact.</p>
 
-<div class="code"><pre>Contact* aContact = [[Contact alloc]
+<pre class="brush: obj-c;">Contact* aContact = [[Contact alloc]
   initWithFirstName:@"Johnny" lastName:@"Appleseed" uid:1];
 NSString* url = [aContact URLValueWithName:@"view"];
-// url = @"tt://contact/view/1"</pre></div>
+// url = @"tt://contact/view/1"</pre>
 
 <p>This can then be mapped through a URL to Controller map as discussed above.</p>
 
@@ -205,21 +205,21 @@ NSString* url = [aContact URLValueWithName:@"view"];
   selector, <span class="inline">openURL:query:animated:query:</span>. For example, imagine you
   wanted to pass along an <span class="inline">NSArray</span> of items to show in the new view:</p>
 
-<div class="code"><pre>NSArray *arr = [...load up with data...];
+<pre class="brush: obj-c;">NSArray *arr = [...load up with data...];
 [[TTNavigator navigator] openURL:@"tt://restaurant/Chotchkie's" 
   query:[NSDictionary dictionaryWithObject:arr forKey:@"arraydata"],
-  animated:YES]</pre></div>
+  animated:YES]</pre>
 
 <p>In this example, the array is passed directly to the initWithName: but only if there is a
   matching selector that accepts the query:</p>
 
-<div class="code"><pre>-(id) initWithName: (NSString*)name query:(NSDictionary*)query {
+<pre class="brush: obj-c;">-(id) initWithName: (NSString*)name query:(NSDictionary*)query {
   for (MyObject* item in [query objectForKey:@"arrayData"])
     ... do something with item ...
   }
 
   ...
-}</pre></div>
+}</pre>
 
 <p>There is a catch to using this related to persistence. If the user quits the application
   after this instance of the MenuController's view shows up on screen, then the next launch
