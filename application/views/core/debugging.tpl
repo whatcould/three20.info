@@ -7,7 +7,15 @@
   macros that were difficult to disable (and tended to cause an unending stream of log messages).
   The goal of the new logging framework is to make it easy to see the logs you care about.</p>
 
-<h1>How to turn on logging</h1>
+<h3>Table of Contents</h3>
+<ul class="toc">
+  <li><a href="#turnonlogging">How to turn on logging</a></li>
+  <li><a href="#logging">Logging</a></li>
+  <li><a href="#debugassertions">Debug-only assertions</a></li>
+</ul>
+<div class="clearfix"></div>
+
+<h1><a class="anchor" name="turnonlogging"></a>How to turn on logging</h1>
 
 <p>All you need to do is define a <span class="inline">DEBUG</span> preprocessor definition in the
   <span class="inline">GCC_PREPROCESSOR_DEFINITIONS</span> option in your debug target settings.
@@ -18,7 +26,7 @@
 <p>If you want to enable logging for three20, you will need to add a preprocessor definition to the
   three20 lib like so: <span class="inline">TTMAXLOGLEVEL=TTLOGLEVEL_INFO</span></p>
 
-<h1>Logging</h1>
+<h1><a class="anchor" name="logging"></a>Logging</h1>
 
 <p>The logging system introduces a new set of macros.</p>
 
@@ -40,7 +48,7 @@ TTDPRINT(text, ...)
 <pre class="brush: obj-c;">TTDPRINT(@"Is this thing on?");
 2009-11-20 13:46:49.613 AppName /path/to/file/Filename.m(86): Is this thing on?</pre>
 
-<h1>Debug-only assertions</h1>
+<h1><a class="anchor" name="debugassertions"></a>Debug-only assertions</h1>
 
 <p>It can often be useful to validate the parameters passed into a method.  Generally the method
   may return preemptively if the parameters are invalid or missing and this allows a way to fail

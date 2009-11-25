@@ -78,6 +78,10 @@
   background-color: #FED;
 }
 
+#page-wrapper a.anchor {
+  padding: 0;
+}
+
 #page-wrapper a:hover,
 #footer a {
   background-color: #FC9;
@@ -124,18 +128,18 @@
 #content h1 {
   font-size: 2em;
   border-bottom: 5px solid #FFEEDD;
-  color: #999;
+  color: #666;
 }
 
 #content h2 {
   font-size: 1.7em;
   border-bottom: 3px solid #FED;
-  color: #999;
+  color: #666;
 }
 
 #content h3 {
   font-size: 1.5em;
-  color: #999;
+  color: #666;
 }
 
 #content .source {
@@ -167,6 +171,17 @@
   list-style-type: square;
 }
 
+#content .toc {
+  margin-top: 10px;
+}
+
+#content .toc li {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  float: left;
+  list-style-type: none;
+}
+
 #content .image {
   text-align: center;
 }
@@ -181,8 +196,8 @@
   /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
   padding: 3px;
-  background-color: #333;
-  color: #fff;
+  background-color: #EEE;
+  color: #333;
 }
 
 .code {

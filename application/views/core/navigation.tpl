@@ -10,7 +10,17 @@
   navigate the user from one view to another, with built-in understanding of some of the standard
   iPhone interfaces like UINavigationController, UITabBarController, and more.</p>
 
-<h1>Introduction</h1>
+<h3>Table of Contents</h3>
+<ul class="toc">
+  <li><a href="#intro">Introduction</a></li>
+  <li><a href="#persistence">Persistence</a></li>
+  <li><a href="#urlmapping">URL mapping methods</a></li>
+  <li><a href="#nativeparams">Native parameters</a></li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+<div class="clearfix"></div>
+
+<h1><a class="anchor" name="intro"></a>Introduction</h1>
 
 <p>The concept behind <span class="inline">TTNavigator</span> is similar to
   <a href="http://api.rubyonrails.org/classes/ActionController/Routing.html">Ruby on Rails' routing</a>
@@ -61,7 +71,7 @@ TTURLMap* map = navigator.URLMap;
   <span class="inline">initWithName:</span> selector will be invoked with
   <span class="inline">@"Chotchkie's"</span> as the value of the first parameter.</p>
 
-<h1>Persistence</h1>
+<h1><a class="anchor" name="persistence"></a>Persistence</h1>
 
 <p>One huge advantage of using <span class="inline">TTNavigator</span> is the fact that the user's
   entire navigation state can be persisted automatically based on these URLs. This means that if
@@ -102,7 +112,7 @@ TTURLMap* map = navigator.URLMap;
 <pre class="brush: obj-c;">TTNavigator* navigator = [TTNavigator navigator];
 navigator.persistenceMode = TTNavigatorPersistenceModeAll;</pre>
 
-<h1>URL mapping methods</h1>
+<h1><a class="anchor" name="urlmapping"></a>URL mapping methods</h1>
 
 <p>There are two methods of mapping that you should be aware of.  Mapping from URLs to Controllers,
   and mapping from NSObjects to URLs (which are generally then mapped to controllers). We'll start
@@ -197,7 +207,7 @@ NSString* url = [aContact URLValueWithName:@"view"];
   it. Any property of the NSObject can be used to generate the URL, allowing you to break the
   object down into a unique URL representation.</p>
 
-<h1>Native parameters</h1>
+<h1><a class="anchor" name="nativeparams"></a>Native parameters</h1>
 
 <p>One of the first questions people ask about TTNavigator is how to pass native objects around,
   rather than encoding them somehow in a URL. There is a simple pattern for this, using the
@@ -231,7 +241,7 @@ NSString* url = [aContact URLValueWithName:@"view"];
   This unique id can then be used to load the data in question whenever the controller loads and
   with zero dependency upon previous controllers.</p>
 
-<h1>Troubleshooting</h1>
+<h1><a class="anchor" name="troubleshooting"></a>Troubleshooting</h1>
 
 <p>URL-based navigation leads to some powerful functionality, but there are aspects of three20's
   url routing system that don't always work as expected.</p>
