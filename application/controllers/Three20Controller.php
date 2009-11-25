@@ -9,6 +9,7 @@ class Three20Controller extends Keystone_Controller {
     $this->view->addCssFile('/css/shTheme.css');
     $this->view->addJsHeadFile('/js/shCore.js');
     $this->view->addJsHeadFile('/js/shBrushObjC.js');
+    $this->view->addJsHeadFile('/js/shBrushBash.js');
     $this->view->addJsHeadScript('
       SyntaxHighlighter.config.clipboardSwf = \'/swf/clipboard.swf\';
       SyntaxHighlighter.defaults.light = true;

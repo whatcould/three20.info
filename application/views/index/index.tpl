@@ -1,12 +1,13 @@
-<h1>Here, there be dragons</h1>
+Here, there be dragons
+======================
 
-<p>The three20 library is a beast to tackle for many. While there are examples and documentation
-  does somewhat exist, there are a number of powerful features of the library that go unnoticed.</p>
+The three20 library is a beast to tackle for many. While there are examples and documentation
+does somewhat exist, there are a number of powerful features of the library that go unnoticed.
 
-<p>That's why three20.info was created. You'll find tutorials, documentation, and the latest
-  updates related to three20 and iPhone development in general. Whether you've recently stumbled
-  across three20 or you're a seasoned TT* vet, here's to you learning a thing or two while you're
-  here.</p>
+That's why three20.info was created. You'll find tutorials, documentation, and the latest
+updates related to three20 and iPhone development in general. Whether you've recently stumbled
+across three20 or you're a seasoned TT* vet, here's to you learning a thing or two while you're
+here.
 
 <div id="widgets">
   <div class="widget" id="github">
@@ -25,15 +26,3 @@
     </div>
   </div>
 </div>
-
-<div class="clearfix"></div>
-
-<?php
-
-$this->addCssFile('/css/main.css');
-
-$this->addJsHeadFile('http://www.google.com/jsapi?key='.GFEEDS_API);
-$this->addJsFootFile('/js/jquery.js');
-$this->addJsFootFile('/js/date.format.js');
-$this->addJsFootFile('/js/github.js');
-$this->addJsFootFile('/js/main.js');

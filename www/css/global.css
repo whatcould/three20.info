@@ -192,12 +192,15 @@
   -moz-box-shadow: #999 0px 5px 5px;
 }
 
-.inline {
+.inline,
+code {
   /* Font-family set borrowed from StackOverflow; their font selection is delicious! */
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
   padding: 3px;
   background-color: #EEE;
   color: #333;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 
 .code {

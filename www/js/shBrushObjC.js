@@ -26,7 +26,7 @@ SyntaxHighlighter.brushes.ObjC = function()
 	var datatypes =	'char bool BOOL double float int long short id void';
 	
 	var keywords = 'IBAction IBOutlet SEL YES NO readwrite readonly nonatomic nil NULL ';
-	keywords += 'super self copy ';
+	keywords += 'retain super self copy ';
 	keywords += 'break case catch class const copy __finally __exception __try ';
 	keywords += 'const_cast continue private public protected __declspec ';
 	keywords += 'default delete deprecated dllexport dllimport do dynamic_cast ';

@@ -1,3 +1,4 @@
+application/data/cache
 application/config/config.php
 library/
 www/js/date.format.js
