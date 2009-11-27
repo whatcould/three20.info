@@ -9,6 +9,15 @@ header or jump to any class on the left. If you'd like to contribute to three20 
 check out the [contribute](/contribute) page. The github wiki articles have also been ported to
 three20.info, you can [check them out](/articles).
 
+There is also [three20 style documentation](/api/TTStyle). The following styles are just a few that
+are covered:
+
+<div style="text-align: center;margin-bottom:20px">
+<span style="margin-right: 10px" class="image darker"><img height="48" width="144" title="" alt="Toolbar Button" src="/gfx/api/style/toolbarbutton.png"/></span>
+<span style="margin-right: 10px" class="image darker"><img height="48" width="144" title="" alt="Speech Bubble" src="/gfx/api/style/speechbubble.png"/></span>
+<span class="image darker"><img height="48" width="144" title="" alt="Delete Button" src="/gfx/api/style/deletebutton.png"/></span>
+</div>
+
 What's in Three20?
 ==================
 
