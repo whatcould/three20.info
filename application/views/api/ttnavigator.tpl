@@ -4,6 +4,8 @@
 TTNavigator is a global object that provides an alternative method of navigation to traditional
 UIViewController navigation.
 
+Know what you're looking for? <input type="text" id="lookup" />
+
 How to use it
 =============
 
@@ -149,7 +151,7 @@ Indicates that we asking controllers to delay heavy operations until a later tim
 TTNavigatorDelegate {#TTNavigatorDelegate}
 ===================
 
-### shouldOpenURL:
+### shouldOpenURL: {#shouldOpenURL:}
 
 <div class="sectiontags" markdown="1">
 * Optional
@@ -161,7 +163,7 @@ TTNavigatorDelegate {#TTNavigatorDelegate}
 
 Asks if the URL should be opened and allows the delegate to prevent it.
 
-### willOpenURL:inViewController:
+### willOpenURL:inViewController: {#willOpenURL:inViewController:}
 
 <div class="sectiontags" markdown="1">
 * Optional
