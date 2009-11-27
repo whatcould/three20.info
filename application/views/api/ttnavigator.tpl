@@ -17,6 +17,15 @@ Table of Contents
 </div>
 <div class="clearfix"></div>
 
+Related Articles
+----------------
+
+<div class="toc" markdown="1">
+* [URL-Based Navigation](/core/navigation)
+</div>
+<div class="clearfix"></div>
+
+
 How to use it {#howto}
 =============
 
