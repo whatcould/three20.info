@@ -7,11 +7,13 @@ $(document).ready(function() {
       name_to_id[$(this).text()] = $(this).attr('id');
     }
   });
-  $("#lookup")
+  $("#apilookup")
+    .placeholder()
     .autocomplete(names, {
       autoFill: false,
       mustMatch: false,
-      matchContains: true
+      matchContains: true,
+      width: '300px'
     })
     .result(function(event, data, formatted) {
       window.location.hash = name_to_id[formatted];

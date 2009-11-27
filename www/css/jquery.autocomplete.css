@@ -1,6 +1,7 @@
 .ac_results {
 	padding: 0px;
-	border: 1px solid #FC9;
+	border: 1px solid #CCC;
+	border-top: 0;
 	background-color: white;
 	overflow: hidden;
 	z-index: 99999;
@@ -19,13 +20,13 @@
 	padding: 2px 5px;
 	cursor: default;
 	display: block;
+	font-family: Consolas,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New";
 	/* 
 	if width will be 100% horizontal scrollbar will apear 
 	when scroll mode will be used
 	*/
 	/*width: 100%;*/
-	font: menu;
-	font-size: 12px;
+	font-size: 1.2em;
 	/* 
 	it is very important, if line-height not setted or setted 
 	in relative units scroll will be broken in firefox

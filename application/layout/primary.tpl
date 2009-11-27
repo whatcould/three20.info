@@ -16,6 +16,7 @@
       <li><a href="/tutorials">Tutorials</a></li>
       <li><a href="http://github.com/facebook/three20/issues">Issues</a></li>
       <li><a href="/contribute">Contribute</a></li>
+      <li><input type="text" id="globallookup" placeholder="Instant API Lookup" /></li>
     </ul>
   </div>
 </div>

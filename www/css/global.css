@@ -74,6 +74,23 @@
   text-shadow: 1px 1px 1px #993300;
 }
 
+#globallookup {
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+  border: 1px solid #999;
+  background-color: #FED;
+  padding: 3px;
+  font-size: 0.8em;
+  width: 180px;
+}
+
+#globallookup:focus {
+  border: 1px solid #333;
+}
+
+.placeholder {
+  color: #AAA;
+}
+
 #pageheadershadow {
   background-image: url(/gfx/shadow.png);
   height: 10px;
@@ -113,6 +130,9 @@
 
 #toc .header {
   font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
 }
 
 #toc ul {
@@ -261,6 +281,11 @@ code {
   margin-right: 5px;
   margin-bottom: 0;
   background-color: #eee;
+}
+
+#apilookup {
+  border: 1px solid #999;
+  padding: 3px;
 }
 
 .lastmodified {

@@ -7,6 +7,12 @@ class Three20Controller extends Keystone_Controller {
     $this->view->addCssFile('/css/global.css');
     $this->view->addCssFile('/css/shCore.css');
     $this->view->addCssFile('/css/shTheme.css');
+    $this->view->addCssFile('/css/jquery.autocomplete.css');
+
+    $this->view->addJsFootFile('/js/jquery.js');
+    $this->view->addJsFootFile('/js/jquery.placeholder.js');
+    $this->view->addJsFootFile('/js/jquery.autocomplete.js');
+    $this->view->addJsFootFile('/js/globallookup.js');
     $this->view->addJsHeadFile('/js/shCore.js');
     $this->view->addJsHeadFile('/js/shBrushObjC.js');
     $this->view->addJsHeadFile('/js/shBrushBash.js');

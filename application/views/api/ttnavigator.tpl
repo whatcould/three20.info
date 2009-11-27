@@ -4,14 +4,12 @@
 TTNavigator is a global object that provides an alternative method of navigation to traditional
 UIViewController navigation.
 
-Know what you're looking for? <input type="text" id="lookup" />
+Know what you're looking for? <input type="text" id="apilookup" placeholder="Instant API Lookup" />
 
 How to use it
 =============
 
 `[TTNavigator navigator]` to access the global navigator instance.
-
-
 
 Example
 -------
@@ -146,7 +144,26 @@ Allows URLs to be opened externally if they don't match any patterns.
 ."brush: obj-c"
     @property (nonatomic, readonly) BOOL isDelayed
 
-Indicates that we asking controllers to delay heavy operations until a later time.
+Indicates that controllers delay heavy operations until a later time.
+
+Methods
+=======
+
+### navigator {#navigator}
+
+."brush: obj-c"
+    + (TTNavigator*)navigator
+
+The global navigator instance. [TTOpenURL](#TTOpenURL) uses this to navigate to a URL. Most of
+the three20 code makes the assumption that you are using the global navigator accessed from
+`[TTNavigator navigator]`.
+
+### TTOpenURL {#TTOpenURL}
+
+."brush: obj-c"
+    UIViewController* TTOpenURL(NSString* URL)
+
+Shortcut for calling `[[TTNavigator navigator] openURL:]`.
 
 TTNavigatorDelegate {#TTNavigatorDelegate}
 ===================
