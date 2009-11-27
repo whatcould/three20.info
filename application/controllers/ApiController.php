@@ -12,6 +12,10 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('Additions');
   }
 
+  public function globalmethods() {
+    $this->view->prependTitle('Global Methods');
+  }
+
   public function ttimageview() {
     $this->view->prependTitle('TTImageView');
   }

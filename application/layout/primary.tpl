@@ -36,6 +36,7 @@
   </ul>
   <div class="header">API</div>
   <ul>
+    <li><a href="/api/globalmethods">Global Methods</a></li>
     <li><a href="/api/TTModel">TTModel</a></li>
     <li><a href="/api/TTNavigator">TTNavigator</a></li>
     <li><a href="/api/TTURLMap">TTURLMap</a></li>
