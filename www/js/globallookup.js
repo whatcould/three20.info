@@ -1,17 +1,18 @@
 $(document).ready(function() {
   var class_to_url = {
-    'TTNavigator'             : '/api/TTNavigator',
-    'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
-    'TTURLMap'                : '/api/TTURLMap',
     'TTLauncherView'          : '/api/TTLauncherView',
     'TTLauncherViewDelegate'  : '/api/TTLauncherView#TTLauncherViewDelegate',
-    'TTViewController'        : '/api/TTViewController',
-    'TTWebController'         : '/api/TTWebController',
     'TTMessageController'     : '/api/TTMessageController',
     'TTModel'                 : '/api/TTModel',
-    'TTURLRequestModel'       : '/api/TTURLRequestModel',
     'TTModelViewController'   : '/api/TTModelViewController',
+    'TTNavigator'             : '/api/TTNavigator',
+    'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
+    'TTStyle'                 : '/api/TTStyle',
     'TTStyleSheet'            : '/api/TTStyleSheet',
+    'TTURLMap'                : '/api/TTURLMap',
+    'TTURLRequestModel'       : '/api/TTURLRequestModel',
+    'TTViewController'        : '/api/TTViewController',
+    'TTWebController'         : '/api/TTWebController'
   };
   var class_names = [];
   for( var key in class_to_url ) {
