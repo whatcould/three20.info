@@ -6,6 +6,7 @@ $(document).ready(function() {
     'TTLauncherView'          : '/api/TTLauncherView',
     'TTLauncherViewDelegate'  : '/api/TTLauncherView#TTLauncherViewDelegate',
     'TTViewController'        : '/api/TTViewController',
+    'TTWebController'         : '/api/TTWebController',
   };
   var class_names = [];
   for( var key in class_to_url ) {

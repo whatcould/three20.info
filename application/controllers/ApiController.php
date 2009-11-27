@@ -24,4 +24,8 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('TTViewController');
   }
 
+  public function ttwebcontroller() {
+    $this->view->prependTitle('TTWebController');
+  }
+
 }
