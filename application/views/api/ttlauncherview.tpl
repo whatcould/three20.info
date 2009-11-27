@@ -19,49 +19,49 @@ Properties {#properties}
 ### delegate {#delegate}
 
 ."brush: obj-c"
-    @property(nonatomic,assign) id<TTLauncherViewDelegate> delegate;
+    @property (nonatomic, assign) id<TTLauncherViewDelegate> delegate;
     
 Undocumented.
 
 ### pages {#pages}
 
 ."brush: obj-c"
-    @property(nonatomic,copy) NSArray* pages;
+    @property (nonatomic, copy) NSArray* pages;
     
 Undocumented.
 
 ### columnCount {#columnCount}
 
 ."brush: obj-c"
-    @property(nonatomic) NSInteger columnCount;
+    @property (nonatomic) NSInteger columnCount;
     
 Undocumented.
 
 ### rowCount {#rowCount}
 
 ."brush: obj-c"
-    @property(nonatomic,readonly) NSInteger rowCount;
+    @property (nonatomic, readonly) NSInteger rowCount;
     
 Undocumented.
 
 ### currentPageIndex {#currentPageIndex}
 
 ."brush: obj-c"
-    @property(nonatomic) NSInteger currentPageIndex;
+    @property (nonatomic) NSInteger currentPageIndex;
     
 Undocumented.
 
 ### prompt {#prompt}
 
 ."brush: obj-c"
-    @property(nonatomic,copy) NSString* prompt;
+    @property (nonatomic, copy) NSString* prompt;
     
 Undocumented.
 
 ### editing {#editing}
 
 ."brush: obj-c"
-    @property(nonatomic,readonly) BOOL editing;
+    @property (nonatomic, readonly) BOOL editing;
     
 Undocumented.
 

@@ -47,7 +47,7 @@ SyntaxHighlighter.brushes.ObjC = function()
 		{ regex: new RegExp('^ *#.*', 'gm'),						css: 'preprocessor' },		// preprocessor
 		{ regex: new RegExp(this.getKeywords(datatypes), 'gm'),		css: 'datatypes' },		// datatypes
 		{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// keyword
-		{ regex: new RegExp('\\b(NS|TT|UI)\\w+\\b', 'g'),					css: 'keyword' },			// keyword
+		{ regex: new RegExp('\\b(NS|TT|UI|CG)\\w+\\b', 'g'),					css: 'keyword' },			// keyword
 		{ regex: new RegExp('@\\w+\\b', 'g'),						css: 'keyword' },			// keyword
 		];
 	
