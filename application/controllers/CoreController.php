@@ -2,6 +2,12 @@
 
 class CoreController extends Three20Controller {
 
+  public function setup() {
+    parent::setup();
+
+    $this->view->meta .= '<meta name="description" content="Articles about three20, an open source library for the iPhone" />';
+  }
+
   public function debugging() {
     $this->view->prependTitle('Debugging with three20');
   }
