@@ -12,11 +12,13 @@
 <div id="pageheader">
   <div class="fixedwidth">
     <div class="title"><a href="/">three20<span class="subtitle">.info</span></a></div>
+<? if( APPLICATION_ENV == 'development' ) { ?>
     <ul>
       <li><a href="/issues">Issues</a></li>
       <li><a href="/contribute">Contribute</a></li>
       <li><input type="text" id="globallookup" placeholder="Instant Class Lookup" /></li>
     </ul>
+<? } ?>
   </div>
 </div>
 <div id="pageheadershadow"></div>
