@@ -8,6 +8,10 @@ class ApiController extends Three20Controller {
     $this->view->addJsFootFile('/js/apilookup.js');
   }
 
+  public function additions() {
+    $this->view->prependTitle('Additions');
+  }
+
   public function ttimageview() {
     $this->view->prependTitle('TTImageView');
   }
