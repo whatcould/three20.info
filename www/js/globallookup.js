@@ -10,6 +10,7 @@ $(document).ready(function() {
     'TTMessageController'     : '/api/TTMessageController',
     'TTModel'                 : '/api/TTModel',
     'TTURLRequestModel'       : '/api/TTURLRequestModel',
+    'TTModelViewController'   : '/api/TTModelViewController',
   };
   var class_names = [];
   for( var key in class_to_url ) {
