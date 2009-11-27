@@ -11,6 +11,7 @@ $(document).ready(function() {
     'TTModel'                 : '/api/TTModel',
     'TTURLRequestModel'       : '/api/TTURLRequestModel',
     'TTModelViewController'   : '/api/TTModelViewController',
+    'TTStyleSheet'            : '/api/TTStyleSheet',
   };
   var class_names = [];
   for( var key in class_to_url ) {
