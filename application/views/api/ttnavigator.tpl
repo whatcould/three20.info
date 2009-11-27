@@ -11,8 +11,8 @@ How to use it
 
 `[TTNavigator navigator]` to access the global navigator instance.
 
-Example
--------
+Examples
+--------
 
 ."brush: obj-c"
     - (void)applicationDidFinishLaunching: (UIApplication*)application {
@@ -24,6 +24,15 @@ Example
 
 > Note: If you do not set the [window](#window) property, TTNavigator will automatically create the
 > window for you.
+
+."brush: obj-c"
+    NSDictionary* query = [NSDictionary dictionaryWithObjectsAndKeys:
+      page, @"page",
+      nil];
+    [[TTNavigator navigator] openURL:@"tt://info" query:query animated:YES];
+
+Opens a URL with a query. This will call whatever method `tt://info` maps to with an extra
+`query:(NSDictionary*)query` parameter.
 
 Properties
 ==========
