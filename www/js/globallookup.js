@@ -2,6 +2,7 @@ $(document).ready(function() {
   var class_to_url = {
     'TTNavigator'         : '/api/TTNavigator',
     'TTNavigatorDelegate' : '/api/TTNavigator#TTNavigatorDelegate',
+    'TTURLMap'            : '/api/TTURLMap',
   };
   var class_names = [];
   for( var key in class_to_url ) {
