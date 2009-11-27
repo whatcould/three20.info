@@ -93,6 +93,8 @@
     </div>
 </div>
 
+<noscript><p><img alt="Clicky" width="1" height="1" src="http://static.getclicky.com/155532ns.gif" /></p></noscript>
+
 <?
 if( APPLICATION_ENV == 'development' ) {
   $this->addJsFootScript('var disqus_developer = 1;');
@@ -124,6 +126,9 @@ $this->addJsFootScript('
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
 ');
+
+$this->addJsFootFile('http://static.getclicky.com/js');
+$this->addJsFootScript('clicky.init(155532);');
 
 $this->addJsFootScript('
 try {
