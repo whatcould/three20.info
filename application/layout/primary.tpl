@@ -12,21 +12,15 @@
 <div id="pageheader">
   <div class="fixedwidth">
     <div class="title"><a href="/">three20<span class="subtitle">.info</span></a></div>
-<? if( APPLICATION_ENV == 'development' ) { ?>
     <ul>
       <li><a href="/issues">Issues</a></li>
       <li><a href="/contribute">Contribute</a></li>
       <li><input type="text" id="globallookup" placeholder="Instant class lookup" /></li>
     </ul>
-<? } ?>
   </div>
 </div>
 <div id="pageheadershadow"></div>
 
-<? if( APPLICATION_ENV != 'development' ) { ?>
-<div class="fixedwidth">
-  <div style="text-align:center;font-size:5em;color:#999">Coming soon...</div></div>
-<? } else { ?>
 <div class="fixedwidth">
 <div id="toc">
   <div class="header">Getting Started</div>
@@ -48,9 +42,10 @@
   </ul>
   <div class="header">View Controller</div>
   <ul>
+    <li><a href="/api/TTMessageController">TTMessageController</a></li>
+    <li><a href="/api/TTModelViewController">TTModelViewController</a></li>
     <li><a href="/api/TTViewController">TTViewController</a></li>
     <li><a href="/api/TTWebController">TTWebController</a></li>
-    <li><a href="/api/TTMessageController">TTMessageController</a></li>
   </ul>
   <div class="header">View</div>
   <ul>
@@ -81,8 +76,6 @@
 </div>
 
 <div class="clearfix"></div>
-
-<? } ?>
 
 </div> <!-- fixedwidth -->
 
