@@ -7,6 +7,7 @@ $(document).ready(function() {
     'TTLauncherViewDelegate'  : '/api/TTLauncherView#TTLauncherViewDelegate',
     'TTViewController'        : '/api/TTViewController',
     'TTWebController'         : '/api/TTWebController',
+    'TTMessageController'     : '/api/TTMessageController',
   };
   var class_names = [];
   for( var key in class_to_url ) {
