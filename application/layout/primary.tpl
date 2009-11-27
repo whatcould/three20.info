@@ -37,6 +37,7 @@
   <div class="header">API</div>
   <ul>
     <li><a href="/api/TTNavigator">TTNavigator</a></li>
+    <li><a href="/api/TTURLMap">TTURLMap</a></li>
   </ul>
   <div class="header">Articles</div>
   <ul>

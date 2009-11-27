@@ -13,7 +13,7 @@ $(document).ready(function() {
       autoFill: false,
       mustMatch: false,
       matchContains: true,
-      width: '300px'
+      width: '400px'
     })
     .result(function(event, data, formatted) {
       window.location.hash = name_to_id[formatted];

@@ -12,4 +12,8 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('TTNavigator');
   }
 
+  public function tturlmap() {
+    $this->view->prependTitle('TTURLMap');
+  }
+
 }
