@@ -81,7 +81,8 @@
 if( APPLICATION_ENV == 'development' ) {
   $this->addJsFootScript('var disqus_developer = 1;');
 }
-/*
+
+if( APPLICATION_ENV != 'development' ) {
 $this->addJsFootFile('http://disqus.com/forums/three20/embed.js');
 $this->addJsFootScript('
   var is_ssl = ("https:" == document.location.protocol);
@@ -100,7 +101,8 @@ $this->addJsFootScript('
 
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 ');
-*/
+}
+
 if( APPLICATION_ENV != 'development' ) {
 $this->addJsFootScript('
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
