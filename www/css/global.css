@@ -142,7 +142,7 @@
 
 #toc li {
   background-color: #FED;
-  border-bottom: 1px solid #FFF;
+  margin-bottom: 5px;
 }
 
 #toc li:hover {

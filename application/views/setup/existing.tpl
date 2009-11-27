@@ -2,10 +2,13 @@
 =========================
 <div class="source">Source: <a href="http://github.com/facebook/three20">github</a></div>
 
+Starting a new project with three20?  
+Skip these steps with the [three20 project templates](/setup/templates).
+
 Three20 is compiled as a static library and the easiest way to add it to your project is to use
 Xcode's "dependent project" facilities. Here's how:
 
-* Clone the three20 git repository:
+* Clone the three20 git repository:  
   `git clone git://github.com/facebook/three20.git`
 * Locate the "Three20.xcodeproj" file under "three20/src".  Drag Three20.xcodeproj and drop it onto
   the root of your Xcode project's "Groups and Files"  sidebar.  A dialog will appear -- make sure 

@@ -16,7 +16,7 @@
     <ul>
       <li><a href="/issues">Issues</a></li>
       <li><a href="/contribute">Contribute</a></li>
-      <li><input type="text" id="globallookup" placeholder="Instant Class Lookup" /></li>
+      <li><input type="text" id="globallookup" placeholder="Instant class lookup" /></li>
     </ul>
 <? } ?>
   </div>
