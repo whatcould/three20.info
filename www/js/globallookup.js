@@ -8,6 +8,8 @@ $(document).ready(function() {
     'TTViewController'        : '/api/TTViewController',
     'TTWebController'         : '/api/TTWebController',
     'TTMessageController'     : '/api/TTMessageController',
+    'TTModel'                 : '/api/TTModel',
+    'TTURLRequestModel'       : '/api/TTURLRequestModel',
   };
   var class_names = [];
   for( var key in class_to_url ) {
