@@ -28,6 +28,11 @@
     <li><a href="/setup/existing">Add three20 to your Project</a></li>
     <li><a href="/setup/templates">Three20 Project Templates</a></li>
   </ul>
+  <div class="header">Articles</div>
+  <ul>
+    <li><a href="/core/debugging">Debugging with three20</a></li>
+    <li><a href="/core/navigation">URL-Based Navigation</a></li>
+  </ul>
   <div class="header">API</div>
   <ul>
     <li><a href="/api/globalmethods">Global Methods</a></li>
@@ -54,11 +59,6 @@
     <li><a href="/api/TTLauncherView">TTLauncherView</a></li>
     <li><a href="/api/TTScrollView">TTScrollView</a></li>
     <li><a href="/api/TTYouTubeView">TTYouTubeView</a></li>
-  </ul>
-  <div class="header">Articles</div>
-  <ul>
-    <li><a href="/core/debugging">Debugging with three20</a></li>
-    <li><a href="/core/navigation">URL-Based Navigation</a></li>
   </ul>
 </div>
 
