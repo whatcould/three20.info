@@ -48,6 +48,10 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('TTURLRequestModel');
   }
 
+  public function ttview() {
+    $this->view->prependTitle('TTView');
+  }
+
   public function ttviewcontroller() {
     $this->view->prependTitle('TTViewController');
   }

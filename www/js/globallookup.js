@@ -33,6 +33,7 @@ $(document).ready(function() {
     'TTStyleSheet'            : '/api/TTStyleSheet',
     'TTURLMap'                : '/api/TTURLMap',
     'TTURLRequestModel'       : '/api/TTURLRequestModel',
+    'TTView'                  : '/api/TTView',
     'TTViewController'        : '/api/TTViewController',
     'TTWebController'         : '/api/TTWebController'
   };
