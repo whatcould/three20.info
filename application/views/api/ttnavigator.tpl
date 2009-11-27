@@ -6,7 +6,18 @@ UIViewController navigation.
 
 Know what you're looking for? <input type="text" id="apilookup" placeholder="Instant API Lookup" />
 
-How to use it
+Table of Contents
+-----------------
+
+<div class="toc" markdown="1">
+* [How to use it](#howto)
+* [Properties](#properties)
+* [Methods](#methods)
+* [TTNavigatorDelegate](#TTNavigatorDelegate)
+</div>
+<div class="clearfix"></div>
+
+How to use it {#howto}
 =============
 
 `[TTNavigator navigator]` to access the global navigator instance.
@@ -34,7 +45,7 @@ Examples
 Opens a URL with a query. This will call whatever method `tt://info` maps to with an extra
 `query:(NSDictionary*)query` parameter.
 
-Properties
+Properties {#properties}
 ==========
 
 ### delegate {#delegate}
@@ -126,6 +137,11 @@ Set this to 0 to restore from any age.
 
 ### supportsShakeToReload {#supportsShakeToReload}
 
+<div class="sectiontags" markdown="1">
+* Default: NO
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     @property (nonatomic) BOOL supportsShakeToReload
 
@@ -155,7 +171,7 @@ Allows URLs to be opened externally if they don't match any patterns.
 
 Indicates that controllers delay heavy operations until a later time.
 
-Methods
+Methods {#methods}
 =======
 
 ### navigator {#navigator}
