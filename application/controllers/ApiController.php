@@ -8,6 +8,10 @@ class ApiController extends Three20Controller {
     $this->view->addJsFootFile('/js/apilookup.js');
   }
 
+  public function ttlauncherview() {
+    $this->view->prependTitle('TTLauncherView');
+  }
+
   public function ttnavigator() {
     $this->view->prependTitle('TTNavigator');
   }

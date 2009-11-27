@@ -1,8 +1,10 @@
 $(document).ready(function() {
   var class_to_url = {
-    'TTNavigator'         : '/api/TTNavigator',
-    'TTNavigatorDelegate' : '/api/TTNavigator#TTNavigatorDelegate',
-    'TTURLMap'            : '/api/TTURLMap',
+    'TTNavigator'             : '/api/TTNavigator',
+    'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
+    'TTURLMap'                : '/api/TTURLMap',
+    'TTLauncherView'          : '/api/TTLauncherView',
+    'TTLauncherViewDelegate'  : '/api/TTLauncherView#TTLauncherViewDelegate',
   };
   var class_names = [];
   for( var key in class_to_url ) {
