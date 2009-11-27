@@ -1,3 +1,14 @@
+Welcome to three20.info
+=======================
+
+This site serves to document the popular iPhone development library known as three20 and written by
+Joe Hewitt.
+
+Let's get to business. If you're looking for API documentation, use the lookup tool in the site
+header or jump to any class on the left. If you'd like to contribute to three20 or three20.info,
+check out the [contribute](/contribute) page. The github wiki articles have also been ported to
+three20.info, you can [check them out](/articles).
+
 What's in Three20?
 ==================
 
