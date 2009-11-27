@@ -178,6 +178,11 @@ TTMessageControllerDelegate {#TTMessageControllerDelegate}
 
 ### composeController:didSendFields: {#composeController:didSendFields:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (void)composeController:(TTMessageController*)controller didSendFields:(NSArray*)fields;
     
@@ -185,12 +190,22 @@ Determines if the message should cancel without confirming with the user.
 
 ### composeControllerWillCancel: {#composeControllerWillCancel:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (void)composeControllerWillCancel:(TTMessageController*)controller;
     
 Determines if the message should cancel without confirming with the user.
 
 ### composeControllerShowRecipientPicker: {#composeControllerShowRecipientPicker:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     - (void)composeControllerShowRecipientPicker:(TTMessageController*)controller;

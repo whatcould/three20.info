@@ -8,6 +8,10 @@ class ApiController extends Three20Controller {
     $this->view->addJsFootFile('/js/apilookup.js');
   }
 
+  public function ttimageview() {
+    $this->view->prependTitle('TTImageView');
+  }
+
   public function ttlauncherview() {
     $this->view->prependTitle('TTLauncherView');
   }
@@ -26,6 +30,10 @@ class ApiController extends Three20Controller {
 
   public function ttnavigator() {
     $this->view->prependTitle('TTNavigator');
+  }
+
+  public function ttscrollview() {
+    $this->view->prependTitle('TTScrollView');
   }
 
   public function ttshape() {
@@ -54,6 +62,10 @@ class ApiController extends Three20Controller {
 
   public function ttviewcontroller() {
     $this->view->prependTitle('TTViewController');
+  }
+
+  public function ttyoutubeview() {
+    $this->view->prependTitle('TTYouTubeView');
   }
 
   public function ttwebcontroller() {

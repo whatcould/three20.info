@@ -122,12 +122,22 @@ TTLauncherViewDelegate {#TTLauncherViewDelegate}
 
 ### launcherView:didAddItem: {#launcherView:didAddItem:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (void)launcherView:(TTLauncherView*)launcher didAddItem:(TTLauncherItem*)item;
     
 Undocumented.
 
 ### launcherView:didRemoveItem: {#launcherView:didRemoveItem:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     - (void)launcherView:(TTLauncherView*)launcher didRemoveItem:(TTLauncherItem*)item;
@@ -136,12 +146,22 @@ Undocumented.
 
 ### launcherView:didMoveItem: {#launcherView:didMoveItem:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (void)launcherView:(TTLauncherView*)launcher didMoveItem:(TTLauncherItem*)item;
     
 Undocumented.
 
 ### launcherView:didSelectItem: {#launcherView:didSelectItem:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     - (void)launcherView:(TTLauncherView*)launcher didSelectItem:(TTLauncherItem*)item;
@@ -150,12 +170,22 @@ Undocumented.
 
 ### launcherViewDidBeginEditing: {#launcherViewDidBeginEditing:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (void)launcherViewDidBeginEditing:(TTLauncherView*)launcher;
     
 Undocumented.
 
 ### launcherViewDidEndEditing: {#launcherViewDidEndEditing:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     - (void)launcherViewDidEndEditing:(TTLauncherView*)launcher;

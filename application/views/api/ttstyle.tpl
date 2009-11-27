@@ -1019,6 +1019,11 @@ TTStyleDelegate {#TTStyleDelegate}
 
 ### textForLayerWithStyle: {#textForLayerWithStyle:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (NSString*)textForLayerWithStyle:(TTStyle*)style;
     
@@ -1026,12 +1031,22 @@ Undocumented.
 
 ### imageForLayerWithStyle: {#imageForLayerWithStyle:}
 
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (UIImage*)imageForLayerWithStyle:(TTStyle*)style;
     
 Undocumented.
 
 ### drawLayer:withStyle: {#drawLayer:withStyle:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     - (void)drawLayer:(TTStyleContext*)context withStyle:(TTStyle*)style;

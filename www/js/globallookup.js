@@ -1,13 +1,17 @@
 $(document).ready(function() {
   var class_to_url = {
+    'TTImageView'             : '/api/TTImageView',
+    'TTImageViewDelegate'     : '/api/TTImageView#TTImageViewDelegate',
     'TTLauncherView'          : '/api/TTLauncherView',
     'TTLauncherViewDelegate'  : '/api/TTLauncherView#TTLauncherViewDelegate',
     'TTMessageController'     : '/api/TTMessageController',
+    'TTMessageControllerDelegate' : '/api/TTMessageController#TTMessageControllerDelegate',
     'TTModel'                 : '/api/TTModel',
     'TTModelViewController'   : '/api/TTModelViewController',
     'TTNavigator'             : '/api/TTNavigator',
     'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
     'TTShape'                 : '/api/TTShape',
+
     'TTStyle'                 : '/api/TTStyle',
     'TTStyleContext'          : '/api/TTStyle#TTStyleContext',
     'TTContentStyle'          : '/api/TTStyle#TTContentStyle',
@@ -30,11 +34,16 @@ $(document).ready(function() {
     'TTBevelBorderStyle'      : '/api/TTStyle#TTBevelBorderStyle',
     'TTLinearGradientBorderStyle' : '/api/TTStyle#TTLinearGradientBorderStyle',
     'TTStyleDelegate'         : '/api/TTStyle#TTStyleDelegate',
+
     'TTStyleSheet'            : '/api/TTStyleSheet',
     'TTURLMap'                : '/api/TTURLMap',
     'TTURLRequestModel'       : '/api/TTURLRequestModel',
     'TTView'                  : '/api/TTView',
     'TTViewController'        : '/api/TTViewController',
+    'TTScrollView'            : '/api/TTScrollView',
+    'TTScrollViewDelegate'    : '/api/TTScrollView#TTScrollViewDelegate',
+    'TTScrollViewDataSource'  : '/api/TTScrollView#TTScrollViewDataSource',
+    'TTYouTubeView'           : '/api/TTYouTubeView',
     'TTWebController'         : '/api/TTWebController'
   };
   var class_names = [];

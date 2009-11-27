@@ -40,19 +40,23 @@
     <li><a href="/api/TTNavigator">TTNavigator</a></li>
     <li><a href="/api/TTURLMap">TTURLMap</a></li>
   </ul>
-  <div class="header">Styles</div>
+  <div class="header">Style</div>
   <ul>
     <li><a href="/api/TTStyle">TTStyle</a></li>
   </ul>
-  <div class="header">View Controllers</div>
+  <div class="header">View Controller</div>
   <ul>
     <li><a href="/api/TTViewController">TTViewController</a></li>
     <li><a href="/api/TTWebController">TTWebController</a></li>
     <li><a href="/api/TTMessageController">TTMessageController</a></li>
   </ul>
-  <div class="header">Views</div>
+  <div class="header">View</div>
   <ul>
+    <li><a href="/api/TTView">TTView</a></li>
+    <li><a href="/api/TTImageView">TTImageView</a></li>
     <li><a href="/api/TTLauncherView">TTLauncherView</a></li>
+    <li><a href="/api/TTScrollView">TTScrollView</a></li>
+    <li><a href="/api/TTYouTubeView">TTYouTubeView</a></li>
   </ul>
   <div class="header">Articles</div>
   <ul>
