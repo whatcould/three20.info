@@ -7,6 +7,7 @@ Table of Contents
 -----------------
 
 <div class="toc" markdown="1">
+* [Examples](#examples)
 * [Properties](#properties)
 * [Methods](#methods)
 * [TTStyleContext](#TTStyleContext)
@@ -32,6 +33,51 @@ Table of Contents
 * [TTStyleDelegate](#TTStyleDelegate)
 </div>
 <div class="clearfix"></div>
+
+
+Examples {#examples}
+========
+
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:4.5] next:
+    [TTShadowStyle styleWithColor:RGBCOLOR(255,255,255)
+                   blur:1
+                   offset:CGSizeMake(0, 1) next:
+    [TTReflectiveFillStyle styleWithColor:darkBlue next:
+    [TTBevelBorderStyle styleWithHighlight:[darkBlue shadow]
+                        shadow:[darkBlue multiplyHue:1 saturation:0.5 value:0.5]
+                        width:1
+                        lightSource:270 next:
+    [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0, -1, 0, -1) next:
+    [TTBevelBorderStyle styleWithHighlight:nil shadow:RGBACOLOR(0,0,0,0.15)
+                        width:1
+                        lightSource:270 next:nil]]]]]]
+
+<div class="image darker" markdown=1>![Toolbar Button](/gfx/api/style/toolbarbutton.png 144x48)</div>
+
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTSpeechBubbleShape shapeWithRadius:5
+                                                      pointLocation:60
+                                                      pointAngle:90
+                                                      pointSize:CGSizeMake(20,10)] next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+    [TTSolidBorderStyle styleWithColor:black width:1 next:nil]]]
+
+<div class="image darker" markdown=1>![Speech Bubble](/gfx/api/style/speechbubble.png 144x48)</div>
+
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:6] next:
+    [TTInsetStyle styleWithInset:UIEdgeInsetsMake(1, 1, 2, 1) next:
+    [TTReflectiveFillStyle styleWithColor:RGBCOLOR(170, 1, 2)
+                           withBottomHighlight:YES next:
+    [TTInsetStyle styleWithInset:UIEdgeInsetsMake(-1, -1, -2, -1) next:
+    [TTHighlightBorderStyle styleWithColor:RGBCOLOR(113, 115, 117)
+                            highlightColor:RGBACOLOR(255, 255, 255, 0.4)
+                            width:1 next:
+    [TTPartStyle styleWithName:@"image" style:TTSTYLE(buttonImage:) next:nil]]]]]]
+
+<div class="image darker" markdown=1>![Delete Button](/gfx/api/style/deletebutton.png 144x48)</div>
+
 
 Properties {#properties}
 ==========
@@ -191,6 +237,20 @@ Undocumented.
 TTShapeStyle {#TTShapeStyle}
 ============
 
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:10] next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+    [TTSolidBorderStyle styleWithColor:black width:1 next:nil]]]
+
+<div class="image darker" markdown=1>![TTRoundedRectangleShape](/gfx/api/style/TTRoundedRectangleShape.png 144x48)</div>
+
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRoundedRightArrowShape shapeWithRadius:10] next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+    [TTSolidBorderStyle styleWithColor:black width:1 next:nil]]]
+
+<div class="image darker" markdown=1>![TTRoundedRightArrowShape](/gfx/api/style/TTRoundedRightArrowShape.png 144x48)</div>
+
 ### shape {#shape}
 
 ."brush: obj-c"
@@ -209,6 +269,15 @@ Causes all layers going forward to use a particular shape.
 
 TTInsetStyle {#TTInsetStyle}
 ============
+
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:10] next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+    [TTSolidBorderStyle styleWithColor:black width:1 next:
+    [TTInsetStyle styleWithInset:UIEdgeInsetsMake(5, 5, 5, 5) next:
+    [TTSolidBorderStyle styleWithColor:blue width:1 next:nil]]]]]
+
+<div class="image darker" markdown=1>![TTInsetStyle](/gfx/api/style/TTInsetStyle.png 144x48)</div>
 
 ### inset {#inset}
 
@@ -542,6 +611,11 @@ Undocumented.
 TTSolidFillStyle {#TTSolidFillStyle}
 ================
 
+."brush: obj-c"
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:nil]
+
+<div class="image darker" markdown=1>![TTSolidFillStyle](/gfx/api/style/TTSolidFillStyle.png 144x48)</div>
+
 ### color {#color}
 
 ."brush: obj-c"
@@ -558,6 +632,13 @@ Undocumented.
 
 TTLinearGradientFillStyle {#TTLinearGradientFillStyle}
 =========================
+
+."brush: obj-c"
+    UIColor* blue = RGBCOLOR(191, 197, 208);
+    UIColor* darkBlue = RGBCOLOR(109, 132, 162);
+    [TTLinearGradientFillStyle styleWithColor1:blue color2:darkBlue next:nil]
+
+<div class="image darker" markdown=1>![TTLinearGradientFillStyle](/gfx/api/style/TTLinearGradientFillStyle.png 144x48)</div>
 
 ### color1 {#color1}
 
@@ -583,6 +664,12 @@ Undocumented.
 
 TTReflectiveFillStyle {#TTReflectiveFillStyle}
 =====================
+
+."brush: obj-c"
+    UIColor* darkBlue = RGBCOLOR(109, 132, 162);
+    [TTReflectiveFillStyle styleWithColor:darkBlue next:nil]
+
+<div class="image darker" markdown=1>![TTReflectiveFillStyle](/gfx/api/style/TTReflectiveFillStyle.png 144x48)</div>
 
 ### color {#color}
 
@@ -616,6 +703,14 @@ Undocumented.
 TTShadowStyle {#TTShadowStyle}
 =============
 
+."brush: obj-c"
+    [TTShapeStyle styleWithShape:[TTRectangleShape shape] next:
+    [TTShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:5 offset:CGSizeMake(2, 2) next:
+    [TTInsetStyle styleWithInset:UIEdgeInsetsMake(0.25, 0.25, 0.25, 0.25) next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:nil]]]]
+
+<div class="image darker" markdown=1>![TTShadowStyle](/gfx/api/style/TTShadowStyle.png 144x48)</div>
+
 ### color {#color}
 
 ."brush: obj-c"
@@ -648,8 +743,22 @@ Undocumented.
 TTInnerShadowStyle {#TTInnerShadowStyle}
 ==================
 
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    [TTShapeStyle styleWithShape:[TTRectangleShape shape] next:
+    [TTSolidFillStyle styleWithColor:[UIColor whiteColor] next:
+    [TTInnerShadowStyle styleWithColor:RGBACOLOR(0,0,0,0.5) blur:6 offset:CGSizeMake(1, 1) next:nil]]]
+
+<div class="image darker" markdown=1>![TTInnerShadowStyle](/gfx/api/style/TTInnerShadowStyle.png 144x48)</div>
+
 TTSolidBorderStyle {#TTSolidBorderStyle}
 ==================
+
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    [TTSolidBorderStyle styleWithColor:black width:1 next:nil]
+
+<div class="image darker" markdown=1>![TTSolidBorderStyle](/gfx/api/style/TTSolidBorderStyle.png 144x48)</div>
 
 ### color {#color}
 
@@ -674,6 +783,12 @@ Undocumented.
 
 TTHighlightBorderStyle {#TTHighlightBorderStyle}
 ======================
+
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    [TTHighlightBorderStyle styleWithColor:black highlightColor:[UIColor whiteColor] width:1 next:nil]
+
+<div class="image darker" markdown=1>![TTHighlightBorderStyle](/gfx/api/style/TTHighlightBorderStyle.png 144x48)</div>
 
 ### color {#color}
 
@@ -706,6 +821,13 @@ Undocumented.
 
 TTFourBorderStyle {#TTFourBorderStyle}
 =================
+
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    UIColor* blue = RGBCOLOR(191, 197, 208);
+    [TTFourBorderStyle styleWithTop:black right:blue bottom:black left:blue width:1 next:nil]
+
+<div class="image darker" markdown=1>![TTFourBorderStyle](/gfx/api/style/TTFourBorderStyle.png 144x48)</div>
 
 ### top {#top}
 
@@ -781,6 +903,12 @@ Undocumented.
 TTBevelBorderStyle {#TTBevelBorderStyle}
 ==================
 
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    [TTBevelBorderStyle styleWithHighlight:[UIColor whiteColor] shadow:black width:1 lightSource:270 next:nil]
+
+<div class="image darker" markdown=1>![TTBevelBorderStyle](/gfx/api/style/TTBevelBorderStyle.png 144x48)</div>
+
 ### highlight {#highlight}
 
 ."brush: obj-c"
@@ -826,6 +954,13 @@ Undocumented.
 
 TTLinearGradientBorderStyle {#TTLinearGradientBorderStyle}
 ===========================
+
+."brush: obj-c"
+    UIColor* black = RGBCOLOR(158, 163, 172);
+    UIColor* blue = RGBCOLOR(191, 197, 208);
+    [TTLinearGradientBorderStyle styleWithColor1:black location1:0 color2:blue location2:1 width:1 next:nil]
+
+<div class="image darker" markdown=1>![TTLinearGradientBorderStyle](/gfx/api/style/TTLinearGradientBorderStyle.png 144x48)</div>
 
 ### color1 {#color1}
 

@@ -235,6 +235,11 @@
   padding: 5px;
   -webkit-box-shadow: #999 0px 5px 5px;
   -moz-box-shadow: #999 0px 5px 5px;
+  background-color: #FED;
+}
+
+#content .darker img {
+  background-color: #D8DDE7;
 }
 
 .inline,
