@@ -7,6 +7,7 @@ $(document).ready(function() {
     'TTModelViewController'   : '/api/TTModelViewController',
     'TTNavigator'             : '/api/TTNavigator',
     'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
+    'TTShape'                 : '/api/TTShape',
     'TTStyle'                 : '/api/TTStyle',
     'TTStyleSheet'            : '/api/TTStyleSheet',
     'TTURLMap'                : '/api/TTURLMap',

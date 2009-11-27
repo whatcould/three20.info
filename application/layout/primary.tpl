@@ -40,6 +40,10 @@
     <li><a href="/api/TTNavigator">TTNavigator</a></li>
     <li><a href="/api/TTURLMap">TTURLMap</a></li>
   </ul>
+  <div class="header">Styles</div>
+  <ul>
+    <li><a href="/api/TTStyle">TTStyle</a></li>
+  </ul>
   <div class="header">View Controllers</div>
   <ul>
     <li><a href="/api/TTViewController">TTViewController</a></li>
