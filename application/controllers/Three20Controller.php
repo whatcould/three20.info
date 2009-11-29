@@ -11,6 +11,10 @@ class Three20Controller extends Keystone_Controller {
       'name'        => 'keywords',
       'content'     => 'three20 iPhone api open source library uikit tt'
     ));
+    $this->view->addMeta(array(
+      'name'        => 'google-site-verification',
+      'content'     => 'vNpWOvQq7ObafMghPL3ml-KHvV7eSJeUPkRWiMcTxLw'
+    ));
 
     $this->view->appendTitle('three20.info');
     $this->view->addCssFile('/css/global.css');
