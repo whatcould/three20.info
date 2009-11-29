@@ -35,6 +35,10 @@
 	overflow: hidden;
 }
 
+.ac_results li strong {
+  color: #33C;
+}
+
 .ac_loading {
 	background: white url('indicator.gif') right center no-repeat;
 }

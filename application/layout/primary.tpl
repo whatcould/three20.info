@@ -47,6 +47,7 @@
   </ul>
   <div class="header">View Controller</div>
   <ul>
+    <li><a href="/api/TTAlertViewController">TTAlertViewController</a></li>
     <li><a href="/api/TTMessageController">TTMessageController</a></li>
     <li><a href="/api/TTModelViewController">TTModelViewController</a></li>
     <li><a href="/api/TTPopupViewController">TTPopupViewController</a></li>
