@@ -76,6 +76,10 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('TTStyleSheet');
   }
 
+  public function tttextbarcontroller() {
+    $this->view->prependTitle('TTTextBarController');
+  }
+
   public function tturlmap() {
     $this->view->prependTitle('TTURLMap');
   }

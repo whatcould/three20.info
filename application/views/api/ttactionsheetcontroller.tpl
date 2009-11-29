@@ -92,6 +92,11 @@ TTActionSheetControllerDelegate {#TTActionSheetControllerDelegate}
 
 ### actionSheetController:didDismissWithButtonIndex:URL: {#actionSheetController:didDismissWithButtonIndex:URL:}
 
+<div class="sectiontags" markdown="1">
+* required
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (BOOL)actionSheetController:(TTActionSheetController*)controller
             didDismissWithButtonIndex:(NSInteger)buttonIndex URL:(NSString*)URL;

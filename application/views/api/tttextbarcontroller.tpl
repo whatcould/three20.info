@@ -9,7 +9,7 @@ Table of Contents
 <div class="toc" markdown="1">
 * [Properties](#properties)
 * [Methods](#methods)
-* [TTPostControllerDelegate](#TTPostControllerDelegate)
+* [TTTextBarDelegate](#TTTextBarDelegate)
 </div>
 <div class="clearfix"></div>
 
@@ -19,35 +19,28 @@ Properties {#properties}
 ### delegate {#delegate}
 
 ."brush: obj-c"
-    @property (nonatomic, assign) id<TTPostControllerDelegate> delegate;
+    @property (nonatomic, assign) id <TTTextBarDelegate> delegate;
     
 Undocumented.
 
-### result {#result}
+### textEditor {#textEditor}
 
 ."brush: obj-c"
-    @property (nonatomic, retain) id result;
+    @property (nonatomic, readonly) TTTextEditor* textEditor;
     
 Undocumented.
 
-### textView {#textView}
+### postButton {#postButton}
 
 ."brush: obj-c"
-    @property (nonatomic, readonly) UITextView* textView;
+    @property (nonatomic, readonly) TTButton* postButton;
     
 Undocumented.
 
-### navigatorBar {#navigatorBar}
+### footerBar {#footerBar}
 
 ."brush: obj-c"
-    @property (nonatomic, readonly) UINavigationBar* navigatorBar;
-    
-Undocumented.
-
-### originView {#originView}
-
-."brush: obj-c"
-    @property (nonatomic, retain) UIView* originView;
+    @property (nonatomic, retain) UIView* footerBar;
     
 Undocumented.
 
@@ -106,10 +99,10 @@ Undocumented.
     
 Undocumented.
 
-TTPostControllerDelegate {#TTPostControllerDelegate}
-========================
+TTTextBarDelegate {#TTTextBarDelegate}
+=================
 
-### postController:willPostText: {#postController:willPostText:}
+### textBarDidBeginEditing: {#textBarDidBeginEditing:}
 
 <div class="sectiontags" markdown="1">
 * optional
@@ -117,13 +110,36 @@ TTPostControllerDelegate {#TTPostControllerDelegate}
 <div class="clearfix"></div>
 
 ."brush: obj-c"
-    - (BOOL)postController:(TTPostController*)postController
-            willPostText:(NSString*)text;
+    - (void)textBarDidBeginEditing:(TTTextBarController*)textBar;
+    
+Undocumented.
+
+### textBarDidEndEditing: {#textBarDidEndEditing:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    - (void)textBarDidEndEditing:(TTTextBarController*)textBar;
+    
+Undocumented.
+
+### textBar:willPostText: {#textBar:willPostText:}
+
+<div class="sectiontags" markdown="1">
+* optional
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    - (BOOL)textBar:(TTTextBarController*)textBar willPostText:(NSString*)text;
     
 The user has posted text and an animation is about to show the text return to its origin.
 @return whether to dismiss the controller or wait for the user to call dismiss.
 
-### postController:willAnimateTowards: {#postController:willAnimateTowards:}
+### textBar:didPostText:withResult: {#textBar:didPostText:withResult:}
 
 <div class="sectiontags" markdown="1">
 * optional
@@ -131,27 +147,12 @@ The user has posted text and an animation is about to show the text return to it
 <div class="clearfix"></div>
 
 ."brush: obj-c"
-    - (CGRect)postController:(TTPostController*)postController
-              willAnimateTowards:(CGRect)rect;
-    
-The text will animate towards a rectangle.
-@return the rect in screen coordinates where the text should animate towards.
-
-### postController:didPostText:withResult: {#postController:didPostText:withResult:}
-
-<div class="sectiontags" markdown="1">
-* optional
-</div>
-<div class="clearfix"></div>
-
-."brush: obj-c"
-    - (void)postController:(TTPostController*)postController
-            didPostText:(NSString*)text
+    - (void)textBar:(TTTextBarController*)textBar didPostText:(NSString*)text
             withResult:(id)result;
     
 The text has been posted.
 
-### postControllerDidCancel: {#postControllerDidCancel:}
+### textBarDidCancel: {#textBarDidCancel:}
 
 <div class="sectiontags" markdown="1">
 * optional
@@ -159,7 +160,7 @@ The text has been posted.
 <div class="clearfix"></div>
 
 ."brush: obj-c"
-    - (void)postControllerDidCancel:(TTPostController*)postController;
+    - (void)textBarDidCancel:(TTTextBarController*)textBar;
     
 The controller was cancelled before posting.
 

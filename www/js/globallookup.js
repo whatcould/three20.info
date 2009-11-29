@@ -63,6 +63,8 @@ $(document).ready(function() {
     'TTStyleDelegate'         : '/api/TTStyle#TTStyleDelegate',
 
     'TTStyleSheet'            : '/api/TTStyleSheet',
+    'TTTextBarController'     : '/api/TTTextBarController',
+    'TTTextBarDelegate'       : '/api/TTTextBarController#TTTextBarDelegate',
     'TTURLMap'                : '/api/TTURLMap',
     'TTURLRequestModel'       : '/api/TTURLRequestModel',
     'TTView'                  : '/api/TTView',

@@ -85,6 +85,11 @@ TTAlertViewControllerDelegate {#TTAlertViewControllerDelegate}
 
 ### alertViewController:didDismissWithButtonIndex:URL: {#alertViewController:didDismissWithButtonIndex:URL:}
 
+<div class="sectiontags" markdown="1">
+* required
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     - (BOOL)alertViewController:(TTAlertViewController*)controller
             didDismissWithButtonIndex:(NSInteger)buttonIndex URL:(NSString*)URL;
