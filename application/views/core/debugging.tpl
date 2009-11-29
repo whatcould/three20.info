@@ -3,7 +3,7 @@
 
 <div class="source">Source: <a href="http://wiki.github.com/facebook/three20/debugging-with-three20">github</a></div>
 
-[TTDebug.h](http://github.com/facebook/three20/blob/master/src/Three20/TTDebug.h")
+[TTDebug.h](http://github.com/facebook/three20/blob/master/src/Three20/TTDebug.h)
 contains a set of useful debug tools including priority-based logging and
 debug-only assertions. These macros deprecate the old-style `TTLOG`
 macros that were difficult to disable (and tended to cause an unending stream of log messages).
