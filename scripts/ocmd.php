@@ -76,11 +76,18 @@ foreach( $lines as $line ) {
   if( $in_method && strpos($line, ';') !== false ) {
     $in_method = false;
     $method_name = str_replace("\n", '', $method_buffer);
-    $method_name = preg_replace('/^[\w*]+ /i', '', $method_name);
-    $method_name = preg_replace('/\([a-z* ,]*\)/i', '', $method_name);
+
+    // Remove "- (return_type)"
     $method_name = preg_replace('/[-+] \([a-z_*<>]+\)/i', '', $method_name);
+
+    // Remove "return_type "
+    $method_name = preg_replace('/^[\w*]+ /i', '', $method_name);
+    
     $method_name = preg_replace('/:\([a-z_*<>]+\)\w+ /i', ':', $method_name);
     $method_name = preg_replace('/:\([a-z_*<>]+\)\w+;/i', ':', $method_name);
+    // Remove "(void*)"
+    $method_name = preg_replace('/\([a-z* ,]*\)/i', '', $method_name);
+    $method_name = preg_replace('/^[-+]/i', '', $method_name);
     $method_name = preg_replace('/;/i', '', $method_name);
     $method_name = preg_replace('/\s/', '', $method_name);
     echo '### '.$method_name.' {#'.$method_name.'}'."\n\n";

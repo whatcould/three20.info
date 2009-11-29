@@ -30,6 +30,7 @@ $(document).ready(function() {
     'TTModelViewController'   : '/api/TTModelViewController',
     'TTNavigator'             : '/api/TTNavigator',
     'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
+    'TTPopupViewController'   : '/api/TTPopupViewController',
     'TTShape'                 : '/api/TTShape',
 
     'TTStyle'                 : '/api/TTStyle',
