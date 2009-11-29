@@ -1,7 +1,11 @@
 How to build a GitHub iPhone app with three20
 =============================================
 
-<div class="source">Intro - <a href="/tutorials/githubpage2">The Model</a></a></div>
+<div class="source">
+  Intro -
+  <a href="/tutorials/githubpage2">User Model</a> -
+  <a href="/tutorials/githubpage3">User View</a>
+</div>
 
 We're going to build a GitHub iPhone app using the public [GitHub api](http://develop.github.com/).
 The goal throughout these tutorials is to introduce you to the various aspects of three20 while
@@ -137,6 +141,7 @@ Then, in the .m file, we'll add the following initializers.
     - (id)init {
       if (self = [super init]) {
         self.tableViewStyle = UITableViewStyleGrouped;
+        self.variableHeightRows = YES;
       }
 
       return self;
