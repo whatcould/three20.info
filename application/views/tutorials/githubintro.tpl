@@ -1,7 +1,7 @@
-<?= $this->pageTitle() ?>
-=========================
+How to build a GitHub iPhone app with three20
+=============================================
 
-<div class="source">Intro - <a href="/tutorials/githubpage2">Page 2</a></a></div>
+<div class="source">Intro - <a href="/tutorials/githubpage2">The Model</a></a></div>
 
 We're going to build a GitHub iPhone app using the public [GitHub api](http://develop.github.com/).
 The goal throughout these tutorials is to introduce you to the various aspects of three20 while
@@ -28,6 +28,11 @@ Three20 and URL-Based Navigation
 
 Open AppDelegate.m and check out the following code in `applicationDidFinishLaunching`.
 
+<div class="sectiontags" markdown="1">
+* AppDelegate.m
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
@@ -37,6 +42,7 @@ history (unless we're testing persistence), so for the time being let's change t
 to none.
 
 <div class="sectiontags" markdown="1">
+* AppDelegate.m
 * modifications
 </div>
 <div class="clearfix"></div>
@@ -46,6 +52,11 @@ to none.
 
 Now let's look at the URL mappings.
 
+<div class="sectiontags" markdown="1">
+* AppDelegate.m
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     TTURLMap* map = navigator.URLMap;
     [map from:@"*" toViewController:[TTWebController class]];
@@ -53,6 +64,11 @@ Now let's look at the URL mappings.
 This is where we start adding the basic navigation mappings. This mapping will catch any url and
 open it with the standard three20 web controller, which displays a web view with standard toolbar
 buttons.
+
+<div class="sectiontags" markdown="1">
+* AppDelegate.m
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     if (![navigator restoreViewControllers]) {
@@ -82,6 +98,7 @@ TTTableViewController. We're going to create our user view controller using a gi
 we'll also add a username property.
 
 <div class="sectiontags" markdown="1">
+* UserViewController.h
 * new code
 </div>
 <div class="clearfix"></div>
@@ -93,9 +110,12 @@ we'll also add a username property.
 
     @property (nonatomic, copy) NSString* username;
 
+    @end
+
 Then, in the .m file, we'll add the following initializers.
 
 <div class="sectiontags" markdown="1">
+* UserViewController.m
 * new code
 </div>
 <div class="clearfix"></div>
@@ -122,6 +142,11 @@ Then, in the .m file, we'll add the following initializers.
       return self;
     }
 
+    - (void)dealloc {
+      TT_RELEASE_SAFELY(_username);
+      [super dealloc];
+    }
+
     @end
 
 Now let's start actually seeing some progress.
@@ -130,6 +155,7 @@ Start by heading back to AppDelegate.m and adding `UserViewController.h` to the 
 Then add the following mapping to `applicationDidFinishLaunching`.
 
 <div class="sectiontags" markdown="1">
+* AppDelegate.m
 * new code and modifications
 </div>
 <div class="clearfix"></div>
@@ -153,6 +179,7 @@ we open any url with this format, a new UserViewController object will be create
 So let's see it in action. We'll modify the default URL we open the app with:
 
 <div class="sectiontags" markdown="1">
+* AppDelegate.m
 * modification
 </div>
 <div class="clearfix"></div>
