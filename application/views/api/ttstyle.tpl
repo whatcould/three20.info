@@ -694,11 +694,18 @@ Undocumented.
 
 ### styleWithColor:withBottomHighlight:next: {#styleWithColor:withBottomHighlight:next:}
 
+<div class="sectiontags" markdown="1">
+* Added November 27th, 2009
+</div>
+<div class="clearfix"></div>
+
 ."brush: obj-c"
     + (TTReflectiveFillStyle*)styleWithColor:(UIColor*)color
-                              withBottomHighlight:(BOOL)withBottomHighlight next:(TTStyle*)next;
-    
-Undocumented.
+                              withBottomHighlight:(BOOL)withBottomHighlight
+                              next:(TTStyle*)next;
+
+Allows the addition of a bottom highlight as seen in the "Delete Contacts" button in the Contacts
+app. It's subtle, but it completes the illusion of the bubble effect.
 
 TTShadowStyle {#TTShadowStyle}
 =============
