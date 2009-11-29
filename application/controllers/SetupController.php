@@ -5,7 +5,10 @@ class SetupController extends Three20Controller {
   public function setup() {
     parent::setup();
 
-    $this->view->meta .= '<meta name="description" content="Articles about three20, an open source library for the iPhone" />';
+    $this->view->addMeta(array(
+      'name'    => 'description',
+      'content' => 'Articles about three20, an open source library for the iPhone'
+    ));
   }
 
   public function existing() {

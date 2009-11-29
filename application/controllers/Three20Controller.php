@@ -3,8 +3,15 @@
 class Three20Controller extends Keystone_Controller {
 
   public function setup() {
-    $this->view->meta = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'."\n".
-      '  <meta name="keywords" content="three20 iPhone api open source library uikit tt" />'."\n  ";
+    $this->view->addMeta(array(
+      'http-equiv'  => 'Content-Type',
+      'content'     => 'text/html; charset=utf-8'
+    ));
+    $this->view->addMeta(array(
+      'name'        => 'keywords',
+      'content'     => 'three20 iPhone api open source library uikit tt'
+    ));
+
     $this->view->appendTitle('three20.info');
     $this->view->addCssFile('/css/global.css');
     $this->view->addCssFile('/css/shCore.css');

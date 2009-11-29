@@ -6,7 +6,10 @@ class ApiController extends Three20Controller {
     parent::setup();
 
     $this->view->addJsFootFile('/js/apilookup.js');
-    $this->view->meta .= '<meta name="description" content="The Three20 library API documents" />';
+    $this->view->addMeta(array(
+      'name'    => 'description',
+      'content' => 'The Three20 library API documents'
+    ));
   }
 
   public function additions() {
