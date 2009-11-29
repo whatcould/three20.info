@@ -35,6 +35,8 @@ $(document).ready(function() {
     'TTNavigator'             : '/api/TTNavigator',
     'TTNavigatorDelegate'     : '/api/TTNavigator#TTNavigatorDelegate',
     'TTPopupViewController'   : '/api/TTPopupViewController',
+    'TTPostController'        : '/api/TTPostController',
+    'TTPostControllerDelegate': '/api/TTPostController#TTPostControllerDelegate',
     'TTShape'                 : '/api/TTShape',
 
     'TTStyle'                 : '/api/TTStyle',

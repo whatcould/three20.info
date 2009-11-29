@@ -51,6 +51,7 @@
     <li><a href="/api/TTAlertViewController">TTAlertViewController</a></li>
     <li><a href="/api/TTMessageController">TTMessageController</a></li>
     <li><a href="/api/TTModelViewController">TTModelViewController</a></li>
+    <li><a href="/api/TTPostController">TTPostController</a></li>
     <li><a href="/api/TTPopupViewController">TTPopupViewController</a></li>
     <li><a href="/api/TTViewController">TTViewController</a></li>
     <li><a href="/api/TTWebController">TTWebController</a></li>

@@ -52,6 +52,10 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('TTNavigator');
   }
 
+  public function ttpostcontroller() {
+    $this->view->prependTitle('TTPostController');
+  }
+
   public function ttpopupviewcontroller() {
     $this->view->prependTitle('TTPopupViewController');
   }
