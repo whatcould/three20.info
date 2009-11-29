@@ -1,6 +1,8 @@
 <?= $this->pageTitle() ?>
 =========================
 
+<div class="source">Intro - <a href="/tutorials/githubpage2">Page 2</a></a></div>
+
 We're going to build a GitHub iPhone app using the public [GitHub api](http://develop.github.com/).
 The goal throughout these tutorials is to introduce you to the various aspects of three20 while
 building something with a clear final result and purpose.
@@ -29,7 +31,22 @@ Open AppDelegate.m and check out the following code in `applicationDidFinishLaun
 ."brush: obj-c"
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
-    
+
+While we're developing we don't want the navigator to persist the navigation
+history (unless we're testing persistence), so for the time being let's change the persistence mode
+to none.
+
+<div class="sectiontags" markdown="1">
+* modifications
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+
+Now let's look at the URL mappings.
+
+."brush: obj-c"
     TTURLMap* map = navigator.URLMap;
     [map from:@"*" toViewController:[TTWebController class]];
 
@@ -45,7 +62,7 @@ buttons.
 Now that we've set up some basic mappings, we launch the app with the default URL, in this case
 three20.info.
 
-<div class="image" markdown=1>![github.com](/gfx/tutorial/github/three20info.png 320x480)</div>
+<div class="image" markdown=1>![three20.info](/gfx/tutorial/github/three20info.png 320x480)</div>
 
 Adding Our First Three20 Controller
 ===================================
@@ -61,12 +78,104 @@ Objective-C class template to avoid having to remove the stock code placed in th
 subclass template, so bear that in mind as we plow through the code.
 
 Once you've created your controller, open the .h file and replace UIViewController with
-TTTableViewController.
+TTTableViewController. We're going to create our user view controller using a github username, so
+we'll also add a username property.
+
+<div class="sectiontags" markdown="1">
+* new code
+</div>
+<div class="clearfix"></div>
 
 ."brush: obj-c"
     @interface UserViewController : TTTableViewController {
-
+      NSString* _username;
     }
 
+    @property (nonatomic, copy) NSString* username;
 
+Then, in the .m file, we'll add the following initializers.
 
+<div class="sectiontags" markdown="1">
+* new code
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    @implementation UserViewController
+
+    @synthesize username = _username;
+
+    - (id)initWithUsername:(NSString*)username {
+      // Note the [self init] here instead of [super init].
+      if (self = [self init]) {
+        self.username = username;
+      }
+
+      return self;
+    }
+
+    - (id)init {
+      if (self = [super init]) {
+        self.tableViewStyle = UITableViewStyleGrouped;
+      }
+
+      return self;
+    }
+
+    @end
+
+Now let's start actually seeing some progress.
+
+Start by heading back to AppDelegate.m and adding `UserViewController.h` to the list of includes.
+Then add the following mapping to `applicationDidFinishLaunching`.
+
+<div class="sectiontags" markdown="1">
+* new code and modifications
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    #import "UserViewController.h"
+
+    - (void)applicationDidFinishLaunching:(UIApplication *)application {
+
+      ...
+    
+      [map from:@"*" toViewController:[TTWebController class]];
+
+      [map from:@"http://github.com/(initWithUsername:)"
+           toViewController:[UserViewController class]];
+
+Our goal here is to map URLs like `http://github.com/jverkoey` to our UserViewController object. When
+we open any url with this format, a new UserViewController object will be created and
+`initWithUsername:` will be called.
+
+So let's see it in action. We'll modify the default URL we open the app with:
+
+<div class="sectiontags" markdown="1">
+* modification
+</div>
+<div class="clearfix"></div>
+
+."brush: obj-c"
+    if (![navigator restoreViewControllers]) {
+      [navigator openURL:@"http://github.com/your_username" animated:NO];
+    }
+
+Try running the app now and this is what you should see.
+
+<div class="image" markdown=1>![Loading...](/gfx/tutorial/github/userloadingview.png 320x480)</div>
+
+### Troubleshooting
+
+**After changing the URL in `navigator openURL` and running the app, it still loads the web view.
+What gives?**
+
+> This is a result of `[navigator restoreViewControllers]`. The app stores its navigation history
+> when the app closes, so if you closed the app with the web view open and the persistence
+> mode was still set to "All", your navigation history currently contains the URL
+> `http://three20.info`
+>
+> To fix this, simply delete the app and rebuild. This will clear the navigation history.
+
+[Continue this tutorial on page 2...](/tutorials/githubpage2)

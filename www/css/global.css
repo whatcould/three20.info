@@ -253,6 +253,10 @@ code {
   line-height: 1.5em;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .code {
   margin-bottom: 20px;
 }
