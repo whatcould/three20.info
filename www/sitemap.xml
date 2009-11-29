@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://three20.info/</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/issues</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/contribute</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/setup/existing</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/setup/templates</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/core/debugging</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/core/navigation</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/globalmethods</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTModel</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTNavigator</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTURLMap</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/additions</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTStyle</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTMessageController</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTModelViewController</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTViewController</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTWebController</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTView</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTImageView</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTLauncherView</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTScrollView</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTYouTubeView</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/articles</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>http://three20.info/api/TTShape</loc>
+  <changefreq>weekly</changefreq>
+</url>
+</urlset>
