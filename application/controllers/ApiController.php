@@ -20,6 +20,10 @@ class ApiController extends Three20Controller {
     $this->view->prependTitle('Global Methods');
   }
 
+  public function ttactionsheetcontroller() {
+    $this->view->prependTitle('TTActionSheetController');
+  }
+
   public function ttalertviewcontroller() {
     $this->view->prependTitle('TTAlertViewController');
   }

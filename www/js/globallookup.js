@@ -20,6 +20,8 @@ $(document).ready(function() {
     'UIToolbar Additions'     : '/api/additions#UIToolbar',
     'UIWindow Additions'      : '/api/additions#UIWindow',
 
+    'TTActionSheetController' : '/api/TTActionSheetController',
+    'TTActionSheetControllerDelegate' : '/api/TTActionSheetController#TTActionSheetControllerDelegate',
     'TTAlertViewController'   : '/api/TTAlertViewController',
     'TTAlertViewControllerDelegate' : '/api/TTAlertViewController#TTAlertViewControllerDelegate',
     'TTImageView'             : '/api/TTImageView',
