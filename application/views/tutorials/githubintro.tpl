@@ -39,11 +39,34 @@ buttons.
 
 ."brush: obj-c"
     if (![navigator restoreViewControllers]) {
-      [navigator openURL:@"http://github.com" animated:NO];
+      [navigator openURL:@"http://three20.info" animated:NO];
     }
 
-Now that we've set up some basic mappings, we launch the app with the opening URL. In this case
-let's show github.com.
+Now that we've set up some basic mappings, we launch the app with the default URL, in this case
+three20.info.
 
-<div class="image" markdown=1>![github.com](/gfx/tutorial/github/github.png 320x480)</div>
+<div class="image" markdown=1>![github.com](/gfx/tutorial/github/three20info.png 320x480)</div>
+
+Adding Our First Three20 Controller
+===================================
+
+Let's start off with something personable; a user view.
+
+This part of the tutorial is going to cover creating a three20 table view controller, building a
+url request-based model, and populating the table with content retrieved from the web.
+
+Let's start by creating a new view controller. You can name it whatever you like, but I'll refer
+to it as `UserViewController` from here on out. I create my view controllers from the
+Objective-C class template to avoid having to remove the stock code placed in the UIViewController
+subclass template, so bear that in mind as we plow through the code.
+
+Once you've created your controller, open the .h file and replace UIViewController with
+TTTableViewController.
+
+."brush: obj-c"
+    @interface UserViewController : TTTableViewController {
+
+    }
+
+
 
