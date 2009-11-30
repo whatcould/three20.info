@@ -1,6 +1,8 @@
 Welcome to three20.info
 =======================
 
+<div class="source">IRC: <a href="irc://irc.freenode.net#three20">#three20 on freenode</a></div>
+
 This site serves to document the popular iPhone development library known as three20 and written by
 Joe Hewitt.
 
