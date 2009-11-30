@@ -133,6 +133,7 @@ Then, in the .m file, we'll add the following initializers.
       // Note the [self init] here instead of [super init].
       if (self = [self init]) {
         self.username = username;
+        self.title = username;
       }
 
       return self;
@@ -142,6 +143,7 @@ Then, in the .m file, we'll add the following initializers.
       if (self = [super init]) {
         self.tableViewStyle = UITableViewStyleGrouped;
         self.variableHeightRows = YES;
+        self.title = @"User Info";
       }
 
       return self;
