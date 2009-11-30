@@ -4,7 +4,8 @@ How to build a GitHub iPhone app with three20
 <div class="source">
   Intro -
   <a href="/tutorials/githubpage2">User Model</a> -
-  <a href="/tutorials/githubpage3">User View</a>
+  <a href="/tutorials/githubpage3">User View</a> -
+  <a href="/tutorials/githubpage4">User Search</a>
 </div>
 
 We're going to build a GitHub iPhone app using the public [GitHub api](http://develop.github.com/).
@@ -103,7 +104,7 @@ we'll also add a username property.
 
 <div class="sectiontags" markdown="1">
 * UserViewController.h
-* new code
+* New File
 </div>
 <div class="clearfix"></div>
 
@@ -120,7 +121,7 @@ Then, in the .m file, we'll add the following initializers.
 
 <div class="sectiontags" markdown="1">
 * UserViewController.m
-* new code
+* New File
 </div>
 <div class="clearfix"></div>
 

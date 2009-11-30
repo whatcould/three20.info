@@ -32,4 +32,13 @@ class TutorialsController extends Three20Controller {
     ));
   }
 
+  public function githubpage4() {
+    $this->view->prependTitle(self::GITHUB_TITLE);
+    $this->view->prependTitle('User Search');
+    $this->view->addMeta(array(
+      'name'    => 'description',
+      'content' => self::GITHUB_TITLE.': searching users'
+    ));
+  }
+
 }

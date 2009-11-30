@@ -5,6 +5,7 @@ How to build a GitHub iPhone app with three20
   <a href="/tutorials/githubintro">Intro</a> -
   <a href="/tutorials/githubpage2">User Model</a> -
   User View
+  <a href="/tutorials/githubpage4">User Search</a>
 </div>
 
 By now your app should be making a request to the github api server, receiving the data, and parsing
@@ -193,3 +194,16 @@ The last step is to add another section for the user statistics.
     }
 
 <div class="image" markdown=1>![The Third Iteration of the User Info UI](/gfx/tutorial/github/userui3.png 320x480)</div>
+
+Cool! We've now built our first controller that touches all of the basic elements of the three20
+library.
+
+Let's recap what we went over.
+
+* TTTableViewController
+* TTSectionedDataSource
+* TTURLRequestModel
+* TTStyle
+* TTTableCaptionItem
+* TTTableImageItem
+* TTTableTextItem

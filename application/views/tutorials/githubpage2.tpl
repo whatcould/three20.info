@@ -4,7 +4,8 @@ How to build a GitHub iPhone app with three20
 <div class="source">
   <a href="/tutorials/githubintro">Intro</a> -
   User Model -
-  <a href="/tutorials/githubpage3">User View</a>
+  <a href="/tutorials/githubpage3">User View</a> -
+  <a href="/tutorials/githubpage4">User Search</a>
 </div>
 
 At this point you should have a User view controller that simply sits there with a spinner,
