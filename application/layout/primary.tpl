@@ -13,7 +13,7 @@
   <div class="fixedwidth">
     <div class="title"><a href="/">three20<span class="subtitle">.info</span></a></div>
     <ul>
-      <li><a href="/news">News</a></li>
+      <li><a href="/blog">News</a></li>
       <li><a href="/issues">Issues</a></li>
       <li><a href="/contribute">Contribute</a></li>
       <li><input type="text" id="globallookup" placeholder="Instant Class Lookup" /></li>
