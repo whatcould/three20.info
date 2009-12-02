@@ -1,7 +1,7 @@
 application/data/cache
 application/config/config.php
 library/
-www/blog/
+www/blog
 www/js/date.format.js
 www/js/github.js
 www/js/jquery.js
