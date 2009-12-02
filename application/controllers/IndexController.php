@@ -13,6 +13,8 @@ class IndexController extends Three20Controller {
     ));
 
     $this->view->addCssFile('/css/main.css');
+    $this->view->addJsFootFile('http://www.google.com/jsapi?key='.GFEEDS_API);
+    $this->view->addJsFootFile('/js/blogfeed.js');
   }
 
 }

@@ -20,6 +20,18 @@ are covered:
 <span class="image darker"><img height="48" width="144" title="" alt="Delete Button" src="/gfx/api/style/deletebutton.png"/></span>
 </div>
 
+News {#newsheader}
+====
+
+<div id="loading" style="display: none" markdown="1">![Loading...](/gfx/ajax-loader.gif 43x11)</div>
+
+<div id="news"></div>
+
+<noscript markdown="1">
+No javascript? That's cool; but you'll have to <a href="/blog/">head to the blog</a> to see the
+latest updates.  
+</noscript>
+
 What's in Three20?
 ==================
 
