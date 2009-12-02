@@ -106,7 +106,9 @@ if( APPLICATION_ENV == 'development' ) {
 }
 
 if( APPLICATION_ENV != 'development' ) {
-$this->addJsFootFile('http://disqus.com/forums/three20/embed.js');
+if( !isset($this->hideDisqusThread) ) {
+  $this->addJsFootFile('http://disqus.com/forums/three20/embed.js');
+}
 $this->addJsFootScript('
   var is_ssl = ("https:" == document.location.protocol);
   var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
