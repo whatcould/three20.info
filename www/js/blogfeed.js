@@ -2,7 +2,7 @@
 google.load("feeds", "1");
 
 function initialize() {
-  var feed = new google.feeds.Feed("/blog/?feed=rss2");
+  var feed = new google.feeds.Feed("http://three20.info/blog/?feed=rss2");
   $('#loading').css('display', 'block');
   feed.load(function(result) {
     $('#loading').css('display', 'none');
