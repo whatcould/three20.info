@@ -37,10 +37,10 @@
   <div class="header">API</div>
   <ul>
     <li><a href="/api/globalmethods">Global Methods</a></li>
+    <li><a href="/api/additions">Additions</a></li>
     <li><a href="/api/TTModel">TTModel</a></li>
     <li><a href="/api/TTNavigator">TTNavigator</a></li>
     <li><a href="/api/TTURLMap">TTURLMap</a></li>
-    <li><a href="/api/additions">Additions</a></li>
   </ul>
   <div class="header">Style</div>
   <ul>

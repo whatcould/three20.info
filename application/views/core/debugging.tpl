@@ -14,6 +14,7 @@ The goal of the new logging framework is to make it easy to see the logs you car
 <div class="toc" markdown="1">
 * [How to turn on logging](#turnonlogging)
 * [Logging](#logging)
+* [Conditional Logging](#conditionlogging)
 * [Debug-only assertions](#debugassertions)
 </div>
 <div class="clearfix"></div>
@@ -49,6 +50,21 @@ The standard output of `TTDPRINT` looks something like this:
 ."brush: obj-c;"
     TTDPRINT(@"Is this thing on?");
     2009-11-20 13:46:49.613 AppName /path/to/file/Filename.m(86): Is this thing on?
+
+Conditional Logging {#conditionlogging}
+===================
+
+<div class="source">New since Dec 5, 2009</div>
+
+Conditional logging allows you to define a "set" of logging methods that only produce output when
+a certain condition is met. A quick example:
+
+."brush: obj-c;"
+    TTDCONDITIONLOG(TTDFLAG_URLREQUEST, @"Request parameters: %@", request.parameters)
+
+This will only produce the log if the TTDFLAG is set to a non-zero value. You can see a set of
+basic Three20 conditional log flags in
+[TTDebugFlags.h](http://github.com/facebook/three20/blob/master/src/Three20/TTDebugFlags.h).
 
 Debug-only assertions {#debugassertions}
 =====================

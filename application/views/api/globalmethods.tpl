@@ -27,10 +27,10 @@ Creates a mutable dictionary which does not retain references to the values it c
     
 Tests if an object is an array which is empty.
 
-### TTIsEmptyArray {#TTIsEmptyArray}
+### TTIsEmptySet {#TTIsEmptySet}
 
 ."brush: obj-c"
-    BOOL TTIsEmptyArray(id object);
+    BOOL TTIsEmptySet(id object);
     
 Tests if an object is a set which is empty.
 
