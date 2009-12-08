@@ -34,6 +34,10 @@
     <li><a href="/core/debugging">Debugging with three20</a></li>
     <li><a href="/core/navigation">URL-Based Navigation</a></li>
   </ul>
+  <div class="header">Tutorials</div>
+  <ul>
+    <li><a href="/tutorials/githubintro">Build a GitHub App</a></li>
+  </ul>
   <div class="header">API</div>
   <ul>
     <li><a href="/api/globalmethods">Global Methods</a></li>
