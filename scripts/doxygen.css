@@ -662,6 +662,12 @@ address {
   line-height: 1.5em;
 }
 
+
+#content .tabs ol li,
+#content .tabs ul li {
+  margin-left: 0px;
+}
+
 #content ol li {
   list-style-type: decimal;
 }
