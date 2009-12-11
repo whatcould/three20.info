@@ -493,8 +493,6 @@ address {
   height: auto !important;
   min-height: 100%;
   margin: 0 0 -75px;
-
-  overflow: hidden;
 }
 
 #page-footer {
@@ -588,6 +586,11 @@ address {
 
 .fixedwidth {
   width: 800px;
+  margin: 0 auto;
+}
+
+.largefixedwidth {
+  width: 1000px;
   margin: 0 auto;
 }
 
