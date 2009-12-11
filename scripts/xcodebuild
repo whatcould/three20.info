@@ -1,0 +1,12 @@
+cp doxygen.config doxygen.xconfig
+
+echo "OUTPUT_DIRECTORY = Three20Docs.docset" >> doxygen.xconfig
+echo "GENERATE_DOCSET  = YES" >> doxygen.xconfig
+echo "DOCSET_BUNDLE_ID = com.facebook.Three20" >> doxygen.xconfig
+
+/Applications/Doxygen.app/Contents/Resources/doxygen doxygen.xconfig
+
+make -C Three20Docs.docset install
+
+rm -f doxygen.xconfig
+
