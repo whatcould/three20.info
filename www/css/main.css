@@ -1,4 +1,19 @@
 
+.appstore_safe,
+.appstore_notsafe {
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em;
+  margin-bottom: 20px;
+}
+
+.appstore_safe {
+  background-color: #CCFFCC;
+}
+
+.appstore_notsafe {
+  background-color: #FFCCCC;
+}
 
 #widgets .widget {
   width: 580px;

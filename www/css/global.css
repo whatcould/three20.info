@@ -298,3 +298,7 @@ code {
   font-size: 0.8em;
   padding: 10px;
 }
+
+strong {
+  font-weight: bold;
+}

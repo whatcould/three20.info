@@ -3,6 +3,13 @@ Welcome to three20.info
 
 <div class="source">IRC: <a href="irc://irc.freenode.net#three20">#three20 on freenode</a></div>
 
+<div class="sectiontags" markdown="1">
+* As of Dec 11, 2009
+</div>
+<div class="clearfix"></div>
+
+<div class="appstore_safe">Three20 App Store status: <strong>safe</strong></div>
+
 This site serves to document the popular iPhone development library known as three20 and written by
 Joe Hewitt.
 
@@ -23,7 +30,7 @@ are covered:
 News {#newsheader}
 ====
 
-<div id="loading" style="display: none" markdown="1">![Loading...](/gfx/ajax-loader.gif 43x11)</div>
+<div id="loading" markdown="1">![Loading...](/gfx/ajax-loader.gif 43x11)</div>
 
 <div id="news"></div>
 
