@@ -80,52 +80,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 
 <a name="l00024"></a><a class="code" href="protocol_t_t_table_view_data_source-p.html#aeb1d63fdb51ebb1608817e3d43a64ab6">00024</a> @property(nonatomic,retain) id&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt; <a class="code" href="protocol_t_t_table_view_data_source-p.html#aeb1d63fdb51ebb1608817e3d43a64ab6" title="Optional method to return a model object to delegate the TTModel protocol to.">model</a>;
 <a name="l00025"></a>00025 
-<a name="l00029"></a>00029 + (<a class="code" href="class_n_s_array.html">NSArray</a>*)lettersForSectionsWithSearch:(BOOL)search summary:(BOOL)summary;
+<a name="l00029"></a>00029 + (<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)lettersForSectionsWithSearch:(BOOL)search summary:(BOOL)summary;
 <a name="l00030"></a>00030 
-<a name="l00034"></a>00034 - (<span class="keywordtype">id</span>)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath;
+<a name="l00034"></a>00034 - (<span class="keywordtype">id</span>)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView objectForRowAtIndexPath:(NSIndexPath*)indexPath;
 <a name="l00035"></a>00035 
-<a name="l00039"></a>00039 - (Class)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView cellClassForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
+<a name="l00039"></a>00039 - (Class)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView cellClassForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
 <a name="l00040"></a>00040 
-<a name="l00044"></a>00044 - (<a class="code" href="class_n_s_string.html">NSString</a>*)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView labelForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
+<a name="l00044"></a>00044 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView labelForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
 <a name="l00045"></a>00045 
-<a name="l00049"></a>00049 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView indexPathForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
+<a name="l00049"></a>00049 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView indexPathForObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
 <a name="l00050"></a>00050 
-<a name="l00054"></a>00054 - (<span class="keywordtype">void</span>)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView cell:(UITableViewCell*)cell
+<a name="l00054"></a>00054 - (<span class="keywordtype">void</span>)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView cell:(UITableViewCell*)cell
 <a name="l00055"></a>00055         willAppearAtIndexPath:(NSIndexPath*)indexPath;
 <a name="l00056"></a>00056 
-<a name="l00062"></a>00062 - (<span class="keywordtype">void</span>)tableViewDidLoadModel:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView;
+<a name="l00062"></a>00062 - (<span class="keywordtype">void</span>)tableViewDidLoadModel:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView;
 <a name="l00063"></a>00063 
-<a name="l00067"></a>00067 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForLoading:(BOOL)reloading;
+<a name="l00067"></a>00067 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForLoading:(BOOL)reloading;
 <a name="l00068"></a>00068 
-<a name="l00072"></a>00072 - (<a class="code" href="class_u_i_image.html">UIImage</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a8d0d695ba46be9c20f58eb4fc3424fb9">imageForEmpty</a>;
+<a name="l00072"></a>00072 - (<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a8d0d695ba46be9c20f58eb4fc3424fb9">imageForEmpty</a>;
 <a name="l00073"></a>00073 
-<a name="l00077"></a>00077 - (<a class="code" href="class_n_s_string.html">NSString</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a5f54b11f92cd485ac5dc4c81c26c978a">titleForEmpty</a>;
+<a name="l00077"></a>00077 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a5f54b11f92cd485ac5dc4c81c26c978a">titleForEmpty</a>;
 <a name="l00078"></a>00078 
-<a name="l00082"></a>00082 - (<a class="code" href="class_n_s_string.html">NSString</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a712c72db930b723c5bad64cc87b38644">subtitleForEmpty</a>;
+<a name="l00082"></a>00082 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="protocol_t_t_table_view_data_source-p.html#a712c72db930b723c5bad64cc87b38644">subtitleForEmpty</a>;
 <a name="l00083"></a>00083 
-<a name="l00087"></a>00087 - (<a class="code" href="class_u_i_image.html">UIImage</a>*)imageForError:(NSError*)error;
+<a name="l00087"></a>00087 - (<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)imageForError:(NSError*)error;
 <a name="l00088"></a>00088 
-<a name="l00092"></a>00092 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForError:(NSError*)error;
+<a name="l00092"></a>00092 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForError:(NSError*)error;
 <a name="l00093"></a>00093 
-<a name="l00097"></a>00097 - (<a class="code" href="class_n_s_string.html">NSString</a>*)subtitleForError:(NSError*)error;
+<a name="l00097"></a>00097 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)subtitleForError:(NSError*)error;
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099 @optional
 <a name="l00100"></a>00100 
-<a name="l00104"></a>00104 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView willUpdateObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
+<a name="l00104"></a>00104 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView willUpdateObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
 <a name="l00105"></a>00105                 atIndexPath:(NSIndexPath*)indexPath;
 <a name="l00106"></a>00106 
-<a name="l00110"></a>00110 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView willInsertObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
+<a name="l00110"></a>00110 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView willInsertObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
 <a name="l00111"></a>00111                 atIndexPath:(NSIndexPath*)indexPath;
 <a name="l00112"></a>00112 
-<a name="l00116"></a>00116 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView willRemoveObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
+<a name="l00116"></a>00116 - (NSIndexPath*)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView willRemoveObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>
 <a name="l00117"></a>00117                 atIndexPath:(NSIndexPath*)indexPath;
 <a name="l00118"></a>00118 
-<a name="l00122"></a>00122 - (<span class="keywordtype">void</span>)search:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
+<a name="l00122"></a>00122 - (<span class="keywordtype">void</span>)search:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
 <a name="l00123"></a>00123 
 <a name="l00124"></a>00124 @end
 <a name="l00125"></a>00125 
 <a name="l00127"></a>00127 
-<a name="l00128"></a><a class="code" href="interface_t_t_table_view_data_source.html">00128</a> @interface <a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a> : <a class="code" href="class_n_s_object.html">NSObject</a> &lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt; {
+<a name="l00128"></a><a class="code" href="interface_t_t_table_view_data_source.html">00128</a> @interface <a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> &lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt; {
 <a name="l00129"></a><a class="code" href="interface_t_t_table_view_data_source.html#a3a1846e4913a3193578eed27b0818d9b">00129</a>   id&lt;TTModel&gt; <a class="code" href="interface_t_t_table_view_data_source.html#a3a1846e4913a3193578eed27b0818d9b">_model</a>;
 <a name="l00130"></a>00130 }
 <a name="l00131"></a>00131 

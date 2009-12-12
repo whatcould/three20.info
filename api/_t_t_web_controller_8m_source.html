@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,286 +76,292 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_web_controller_8h.html">Three20/TTWebController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
-<a name="l00022"></a>00022 
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_web_controller.html">TTWebController</a>
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_web_controller.html#ab9a2dd7b03546df421e5dcae2e094799">delegate</a> = <a class="code" href="interface_t_t_web_controller.html#aa43364bb00cab333fb3913c058a35f9e">_delegate</a>, <a class="code" href="interface_t_t_web_controller.html#a7da4748d4f6ac4591ac171b77954f3a6">headerView</a> = <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>;
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_locale_8h.html">Three20/TTGlobalCoreLocale.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_navigator_8h.html">Three20/TTGlobalUINavigator.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_style_8h.html">Three20/TTGlobalStyle.h</a>&quot;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
 <a name="l00028"></a>00028 
-<a name="l00030"></a>00030 <span class="comment">// private</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 - (void)backAction {
-<a name="l00033"></a>00033   [_webView goBack];
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 - (void)forwardAction {
-<a name="l00037"></a>00037   [_webView goForward];
-<a name="l00038"></a>00038 }
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 - (void)refreshAction {
-<a name="l00041"></a>00041   [_webView reload];
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 - (void)stopAction {
-<a name="l00045"></a>00045   [_webView stopLoading];
-<a name="l00046"></a>00046 }
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 - (void)shareAction {
-<a name="l00049"></a>00049   UIActionSheet* sheet = [[[UIActionSheet alloc] initWithTitle:@&quot;&quot; delegate:self
-<a name="l00050"></a>00050     cancelButtonTitle:TTLocalizedString(@&quot;Cancel&quot;, @&quot;&quot;) destructiveButtonTitle:nil
-<a name="l00051"></a>00051     otherButtonTitles:TTLocalizedString(@&quot;Open in Safari&quot;, @&quot;&quot;), nil] autorelease];
-<a name="l00052"></a>00052   [sheet showInView:self.view];
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
-<a name="l00056"></a>00056   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height = <a class="code" href="_t_t_global_8h.html#ab5cd970997978bc1a4632f22fcb86ad6" title="The height of a toolbar.">TTToolbarHeight</a>();
-<a name="l00057"></a>00057   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.height = <span class="keyword">self</span>.view.height - <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height;
-<a name="l00058"></a>00058   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.top = <span class="keyword">self</span>.view.height - <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height;
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_web_controller.html">TTWebController</a>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_web_controller.html#ab9a2dd7b03546df421e5dcae2e094799">delegate</a> = <a class="code" href="interface_t_t_web_controller.html#aa43364bb00cab333fb3913c058a35f9e">_delegate</a>, <a class="code" href="interface_t_t_web_controller.html#a7da4748d4f6ac4591ac171b77954f3a6">headerView</a> = <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>;
+<a name="l00034"></a>00034 
+<a name="l00036"></a>00036 <span class="comment">// private</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="interface_t_t_web_controller.html#a4f88c83395b08511749a865d2403c186">00038</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a4f88c83395b08511749a865d2403c186">backAction</a> {
+<a name="l00039"></a>00039   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> goBack];
+<a name="l00040"></a>00040 }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="interface_t_t_web_controller.html#a253056295e2f1c63bed4dec32ea10bcc">00042</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a253056295e2f1c63bed4dec32ea10bcc">forwardAction</a> {
+<a name="l00043"></a>00043   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> goForward];
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="interface_t_t_web_controller.html#afbd4d2b1cd62cd27e66e9849ec5284a8">00046</a> - (void)<a class="code" href="interface_t_t_web_controller.html#afbd4d2b1cd62cd27e66e9849ec5284a8">refreshAction</a> {
+<a name="l00047"></a>00047   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> reload];
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="interface_t_t_web_controller.html#ae6dcba3c7496f8b51e9584efd2a569f9">00050</a> - (void)<a class="code" href="interface_t_t_web_controller.html#ae6dcba3c7496f8b51e9584efd2a569f9">stopAction</a> {
+<a name="l00051"></a>00051   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> stopLoading];
+<a name="l00052"></a>00052 }
+<a name="l00053"></a>00053 
+<a name="l00054"></a><a class="code" href="interface_t_t_web_controller.html#a287e1924b171fc19566b57cc7d340cdb">00054</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a287e1924b171fc19566b57cc7d340cdb">shareAction</a> {
+<a name="l00055"></a>00055   UIActionSheet* sheet = [[[UIActionSheet alloc] initWithTitle:@&quot;&quot; delegate:self
+<a name="l00056"></a>00056     cancelButtonTitle:TTLocalizedString(@&quot;Cancel&quot;, @&quot;&quot;) destructiveButtonTitle:nil
+<a name="l00057"></a>00057     otherButtonTitles:TTLocalizedString(@&quot;Open in Safari&quot;, @&quot;&quot;), nil] autorelease];
+<a name="l00058"></a>00058   [sheet showInView:self.view];
 <a name="l00059"></a>00059 }
 <a name="l00060"></a>00060 
-<a name="l00062"></a>00062 <span class="comment">// NSObject</span>
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
-<a name="l00065"></a>00065   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00066"></a>00066     NSURLRequest* request = [query objectForKey:@&quot;request&quot;];
-<a name="l00067"></a>00067     <span class="keywordflow">if</span> (request) {
-<a name="l00068"></a>00068       [<span class="keyword">self</span> openRequest:request];
-<a name="l00069"></a>00069     } <span class="keywordflow">else</span> {
-<a name="l00070"></a>00070       [<span class="keyword">self</span> openURL:URL];
-<a name="l00071"></a>00071     }
-<a name="l00072"></a>00072   }
-<a name="l00073"></a>00073   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00074"></a>00074 }
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 - (id)init {
-<a name="l00077"></a>00077   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00078"></a>00078     <a class="code" href="interface_t_t_web_controller.html#aa43364bb00cab333fb3913c058a35f9e">_delegate</a> = nil;
-<a name="l00079"></a>00079     <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = nil;
-<a name="l00080"></a>00080     <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> = nil;
-<a name="l00081"></a>00081     <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> = nil;
-<a name="l00082"></a>00082     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> = nil;
-<a name="l00083"></a>00083     <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a> = nil;
-<a name="l00084"></a>00084     <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a> = nil;
-<a name="l00085"></a>00085     <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a> = nil;
-<a name="l00086"></a>00086     <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a> = nil;
-<a name="l00087"></a>00087     
-<a name="l00088"></a>00088     <span class="keyword">self</span>.hidesBottomBarWhenPushed = YES;
-<a name="l00089"></a>00089   }
-<a name="l00090"></a>00090   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00091"></a>00091 }
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 - (void)dealloc {
-<a name="l00094"></a>00094   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
-<a name="l00095"></a>00095   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>);
-<a name="l00096"></a>00096   [<span class="keyword">super</span> dealloc];
+<a name="l00061"></a><a class="code" href="interface_t_t_web_controller.html#aac6c0f8f1f054d18a35c1c53788f24b4">00061</a> - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
+<a name="l00062"></a>00062   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height = <a class="code" href="_t_t_global_u_i_navigator_8h.html#ab5cd970997978bc1a4632f22fcb86ad6" title="Returns the height of a toolbar.">TTToolbarHeight</a>();
+<a name="l00063"></a>00063   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.height = <span class="keyword">self</span>.view.height - <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height;
+<a name="l00064"></a>00064   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.top = <span class="keyword">self</span>.view.height - <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.height;
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00068"></a>00068 <span class="comment">// NSObject</span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="interface_t_t_web_controller.html#a91b7628d618e27a8ca9010cafda0aaad">00070</a> - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
+<a name="l00071"></a>00071   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#a8e4d6aad92ae4a28e1ccdfd8887fcea7">init</a>]) {
+<a name="l00072"></a>00072     NSURLRequest* request = [query objectForKey:@&quot;request&quot;];
+<a name="l00073"></a>00073     <span class="keywordflow">if</span> (request) {
+<a name="l00074"></a>00074       [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#a073bb22ae4eae4ca6b68e895c0a16518">openRequest</a>:request];
+<a name="l00075"></a>00075     } <span class="keywordflow">else</span> {
+<a name="l00076"></a>00076       [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#ae2e3c09cf79447ee0acccb403796f603">openURL</a>:URL];
+<a name="l00077"></a>00077     }
+<a name="l00078"></a>00078   }
+<a name="l00079"></a>00079   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00080"></a>00080 }
+<a name="l00081"></a>00081 
+<a name="l00082"></a><a class="code" href="interface_t_t_web_controller.html#a8e4d6aad92ae4a28e1ccdfd8887fcea7">00082</a> - (id)<a class="code" href="interface_t_t_web_controller.html#a8e4d6aad92ae4a28e1ccdfd8887fcea7">init</a> {
+<a name="l00083"></a>00083   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_web_controller.html#a8e4d6aad92ae4a28e1ccdfd8887fcea7">init</a>]) {
+<a name="l00084"></a>00084     <a class="code" href="interface_t_t_web_controller.html#aa43364bb00cab333fb3913c058a35f9e">_delegate</a> = nil;
+<a name="l00085"></a>00085     <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = nil;
+<a name="l00086"></a>00086     <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> = nil;
+<a name="l00087"></a>00087     <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> = nil;
+<a name="l00088"></a>00088     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> = nil;
+<a name="l00089"></a>00089     <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a> = nil;
+<a name="l00090"></a>00090     <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a> = nil;
+<a name="l00091"></a>00091     <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a> = nil;
+<a name="l00092"></a>00092     <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a> = nil;
+<a name="l00093"></a>00093     
+<a name="l00094"></a>00094     <span class="keyword">self</span>.hidesBottomBarWhenPushed = YES;
+<a name="l00095"></a>00095   }
+<a name="l00096"></a>00096   <span class="keywordflow">return</span> <span class="keyword">self</span>;
 <a name="l00097"></a>00097 }
 <a name="l00098"></a>00098 
-<a name="l00100"></a>00100 <span class="comment">// UIViewController</span>
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 - (void)loadView {  
-<a name="l00103"></a>00103   [<span class="keyword">super</span> loadView];
-<a name="l00104"></a>00104   
-<a name="l00105"></a>00105   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> = [[<a class="code" href="class_u_i_web_view.html">UIWebView</a> alloc] initWithFrame:TTToolbarNavigationFrame()];
-<a name="l00106"></a>00106   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.delegate = <span class="keyword">self</span>;
-<a name="l00107"></a>00107   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.autoresizingMask = UIViewAutoresizingFlexibleWidth
-<a name="l00108"></a>00108                               | UIViewAutoresizingFlexibleHeight;
-<a name="l00109"></a>00109   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.scalesPageToFit = YES;
-<a name="l00110"></a>00110   [<span class="keyword">self</span>.view addSubview:_webView];
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112   UIActivityIndicatorView* spinner = [[[UIActivityIndicatorView alloc]
-<a name="l00113"></a>00113   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
-<a name="l00114"></a>00114   [spinner startAnimating];
-<a name="l00115"></a>00115   <a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a> = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-<a name="l00116"></a>00116 
-<a name="l00117"></a>00117   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a> = [[UIBarButtonItem alloc] initWithImage:
-<a name="l00118"></a>00118     TTIMAGE(@&quot;bundle://Three20.bundle/images/backIcon.png&quot;)
-<a name="l00119"></a>00119      style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-<a name="l00120"></a>00120   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.tag = 2;
-<a name="l00121"></a>00121   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = NO;
-<a name="l00122"></a>00122   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a> = [[UIBarButtonItem alloc] initWithImage:
-<a name="l00123"></a>00123     TTIMAGE(@&quot;bundle://Three20.bundle/images/forwardIcon.png&quot;)
-<a name="l00124"></a>00124      style:UIBarButtonItemStylePlain target:self action:@selector(forwardAction)];
-<a name="l00125"></a>00125   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.tag = 1;
-<a name="l00126"></a>00126   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = NO;
-<a name="l00127"></a>00127   <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a> = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00128"></a>00128     UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
-<a name="l00129"></a>00129   <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a>.tag = 3;
-<a name="l00130"></a>00130   <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a> = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00131"></a>00131     UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
-<a name="l00132"></a>00132   <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a>.tag = 3;
-<a name="l00133"></a>00133   UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00134"></a>00134     UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136   UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00137"></a>00137    UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> = [[<a class="code" href="class_u_i_toolbar.html">UIToolbar</a> alloc] initWithFrame:
-<a name="l00140"></a>00140     CGRectMake(0, self.view.height - TTToolbarHeight(), self.view.width, TTToolbarHeight())];
-<a name="l00141"></a>00141   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-<a name="l00142"></a>00142   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.tintColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(<a class="code" href="interface_t_t_view_controller.html#a1d428a6ac87f278548145a0d92342487" title="The color of the navigation bar when this view controller is pushed onto a navigation...">navigationBarTintColor</a>);
-<a name="l00143"></a>00143   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.items = [<a class="code" href="class_n_s_array.html">NSArray</a> arrayWithObjects:
-<a name="l00144"></a>00144     _backButton, space, _forwardButton, space, _refreshButton, space, actionButton, nil];
-<a name="l00145"></a>00145   [<span class="keyword">self</span>.view addSubview:_toolbar];
-<a name="l00146"></a>00146 }
-<a name="l00147"></a>00147 
-<a name="l00148"></a>00148 - (void)viewDidUnload {
-<a name="l00149"></a>00149   [<span class="keyword">super</span> viewDidUnload];
-<a name="l00150"></a>00150   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.delegate = nil;
-<a name="l00151"></a>00151   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>);
-<a name="l00152"></a>00152   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>);
-<a name="l00153"></a>00153   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>);
-<a name="l00154"></a>00154   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>);
-<a name="l00155"></a>00155   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a>);
-<a name="l00156"></a>00156   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a>);
-<a name="l00157"></a>00157   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a>);
-<a name="l00158"></a>00158 }
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160 - (void)viewWillAppear:(BOOL)animated {
-<a name="l00161"></a>00161   [<span class="keyword">super</span> viewWillAppear:animated];
-<a name="l00162"></a>00162   [<span class="keyword">self</span> updateToolbarWithOrientation:self.interfaceOrientation];
-<a name="l00163"></a>00163 }
-<a name="l00164"></a>00164 
-<a name="l00165"></a>00165 - (void)viewWillDisappear:(BOOL)animated {
-<a name="l00166"></a>00166   <span class="comment">// If the browser launched the media player, it steals the key window and never gives it</span>
-<a name="l00167"></a>00167   <span class="comment">// back, so this is a way to try and fix that</span>
-<a name="l00168"></a>00168   [<span class="keyword">self</span>.view.window makeKeyWindow];
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170   [<span class="keyword">super</span> viewWillDisappear:animated];
-<a name="l00171"></a>00171 }
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-<a name="l00174"></a>00174   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_8h.html#ae63595c9089d8e2c8b3fdc4f764056bc" title="Checks if the orientation is portrait, landscape left, or landscape right.">TTIsSupportedOrientation</a>(interfaceOrientation);
-<a name="l00175"></a>00175 }
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-<a name="l00178"></a>00178         duration:(NSTimeInterval)duration {
-<a name="l00179"></a>00179   [<span class="keyword">super</span> willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-<a name="l00180"></a>00180   [<span class="keyword">self</span> updateToolbarWithOrientation:toInterfaceOrientation];
+<a name="l00099"></a><a class="code" href="interface_t_t_web_controller.html#a95efaba24215935b72a2cbcafbc96372">00099</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a95efaba24215935b72a2cbcafbc96372">dealloc</a> {
+<a name="l00100"></a>00100   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
+<a name="l00101"></a>00101   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>);
+<a name="l00102"></a>00102   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a3ba6d4d519268a67e268cdd309f4aa97">dealloc</a>];
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00106"></a>00106 <span class="comment">// UIViewController</span>
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="interface_t_t_web_controller.html#a99ab1c6f26ceb2de2c7434e590d65317">00108</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a99ab1c6f26ceb2de2c7434e590d65317">loadView</a> {  
+<a name="l00109"></a>00109   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#aabc5a73897b1d007f6969991a8d7f497">loadView</a>];
+<a name="l00110"></a>00110   
+<a name="l00111"></a>00111   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> = [[<a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a> alloc] initWithFrame:TTToolbarNavigationFrame()];
+<a name="l00112"></a>00112   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.delegate = <span class="keyword">self</span>;
+<a name="l00113"></a>00113   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.autoresizingMask = UIViewAutoresizingFlexibleWidth
+<a name="l00114"></a>00114                               | UIViewAutoresizingFlexibleHeight;
+<a name="l00115"></a>00115   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.scalesPageToFit = YES;
+<a name="l00116"></a>00116   [<span class="keyword">self</span>.view addSubview:_webView];
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118   UIActivityIndicatorView* spinner = [[[UIActivityIndicatorView alloc]
+<a name="l00119"></a>00119   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] autorelease];
+<a name="l00120"></a>00120   [spinner startAnimating];
+<a name="l00121"></a>00121   <a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a> = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a> = [[UIBarButtonItem alloc] initWithImage:
+<a name="l00124"></a>00124     TTIMAGE(@&quot;bundle://Three20.bundle/images/backIcon.png&quot;)
+<a name="l00125"></a>00125      style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+<a name="l00126"></a>00126   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.tag = 2;
+<a name="l00127"></a>00127   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = NO;
+<a name="l00128"></a>00128   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a> = [[UIBarButtonItem alloc] initWithImage:
+<a name="l00129"></a>00129     TTIMAGE(@&quot;bundle://Three20.bundle/images/forwardIcon.png&quot;)
+<a name="l00130"></a>00130      style:UIBarButtonItemStylePlain target:self action:@selector(forwardAction)];
+<a name="l00131"></a>00131   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.tag = 1;
+<a name="l00132"></a>00132   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = NO;
+<a name="l00133"></a>00133   <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a> = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00134"></a>00134     UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
+<a name="l00135"></a>00135   <a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a>.tag = 3;
+<a name="l00136"></a>00136   <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a> = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00137"></a>00137     UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
+<a name="l00138"></a>00138   <a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a>.tag = 3;
+<a name="l00139"></a>00139   UIBarButtonItem* actionButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00140"></a>00140     UIBarButtonSystemItemAction target:self action:@selector(shareAction)] autorelease];
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142   UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00143"></a>00143    UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> = [[<a class="code" href="class_u_i_toolbar.html" title="Additions.">UIToolbar</a> alloc] initWithFrame:
+<a name="l00146"></a>00146     CGRectMake(0, self.view.height - TTToolbarHeight(), self.view.width, TTToolbarHeight())];
+<a name="l00147"></a>00147   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+<a name="l00148"></a>00148   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.tintColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(<a class="code" href="interface_t_t_view_controller.html#a1d428a6ac87f278548145a0d92342487" title="The color of the navigation bar when this view controller is pushed onto a navigation...">navigationBarTintColor</a>);
+<a name="l00149"></a>00149   <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>.items = [<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> arrayWithObjects:
+<a name="l00150"></a>00150     _backButton, space, _forwardButton, space, _refreshButton, space, actionButton, nil];
+<a name="l00151"></a>00151   [<span class="keyword">self</span>.view addSubview:_toolbar];
+<a name="l00152"></a>00152 }
+<a name="l00153"></a>00153 
+<a name="l00154"></a><a class="code" href="interface_t_t_web_controller.html#a366304b97fe590c1ed709f31ebd58fd2">00154</a> - (void)<a class="code" href="interface_t_t_web_controller.html#a366304b97fe590c1ed709f31ebd58fd2">viewDidUnload</a> {
+<a name="l00155"></a>00155   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a185449df8bb1c225b48a60498157b837">viewDidUnload</a>];
+<a name="l00156"></a>00156   <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.delegate = nil;
+<a name="l00157"></a>00157   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>);
+<a name="l00158"></a>00158   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>);
+<a name="l00159"></a>00159   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>);
+<a name="l00160"></a>00160   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>);
+<a name="l00161"></a>00161   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a207235a519a83ce451983f028aedda26">_refreshButton</a>);
+<a name="l00162"></a>00162   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#ad6fd98522e7781422dd7106483f1d80c">_stopButton</a>);
+<a name="l00163"></a>00163   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a>);
+<a name="l00164"></a>00164 }
+<a name="l00165"></a>00165 
+<a name="l00166"></a><a class="code" href="interface_t_t_web_controller.html#a4c29f77131416940ec0b9062fae4e7fa">00166</a> - (void)viewWillAppear:(BOOL)animated {
+<a name="l00167"></a>00167   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#af835ed51c64e202d531e78f6e632e365">viewWillAppear</a>:animated];
+<a name="l00168"></a>00168   [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#aac6c0f8f1f054d18a35c1c53788f24b4">updateToolbarWithOrientation</a>:self.interfaceOrientation];
+<a name="l00169"></a>00169 }
+<a name="l00170"></a>00170 
+<a name="l00171"></a><a class="code" href="interface_t_t_web_controller.html#a292fcb4b433af4a93896ab5757b1419b">00171</a> - (void)viewWillDisappear:(BOOL)animated {
+<a name="l00172"></a>00172   <span class="comment">// If the browser launched the media player, it steals the key window and never gives it</span>
+<a name="l00173"></a>00173   <span class="comment">// back, so this is a way to try and fix that</span>
+<a name="l00174"></a>00174   [<span class="keyword">self</span>.view.window makeKeyWindow];
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a96a47ea7934a9afff9d9a4175689ab9c">viewWillDisappear</a>:animated];
+<a name="l00177"></a>00177 }
+<a name="l00178"></a>00178 
+<a name="l00179"></a><a class="code" href="interface_t_t_web_controller.html#af4d1eeddae5c341a334283d685d09422">00179</a> - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+<a name="l00180"></a>00180   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_u_i_8h.html#ae63595c9089d8e2c8b3fdc4f764056bc" title="Checks if the orientation is portrait, landscape left, or landscape right.">TTIsSupportedOrientation</a>(interfaceOrientation);
 <a name="l00181"></a>00181 }
 <a name="l00182"></a>00182 
-<a name="l00183"></a>00183 - (<a class="code" href="class_u_i_view.html">UIView</a> *)rotatingFooterView {
-<a name="l00184"></a>00184   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>;
-<a name="l00185"></a>00185 }
-<a name="l00186"></a>00186 
-<a name="l00188"></a>00188 <span class="comment">// UTViewController (TTCategory)</span>
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190 - (BOOL)persistView:(<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>*)state {
-<a name="l00191"></a>00191   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_web_controller.html#a30b8fa744369bcd1066fb6a386e775ef">URL</a> = <span class="keyword">self</span>.URL.absoluteString;
-<a name="l00192"></a>00192   <span class="keywordflow">if</span> (URL.length) {
-<a name="l00193"></a>00193     [state setObject:URL forKey:@&quot;URL&quot;];
-<a name="l00194"></a>00194     <span class="keywordflow">return</span> YES;
-<a name="l00195"></a>00195   } <span class="keywordflow">else</span> {
-<a name="l00196"></a>00196     <span class="keywordflow">return</span> NO;
-<a name="l00197"></a>00197   }
-<a name="l00198"></a>00198 }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200 - (void)restoreView:(NSDictionary*)state {
-<a name="l00201"></a>00201   <a class="code" href="class_n_s_string.html">NSString</a>* URL = [state objectForKey:@&quot;URL&quot;];
-<a name="l00202"></a>00202   <span class="keywordflow">if</span> (URL.length &amp;&amp; ![URL isEqualToString:<span class="stringliteral">@&quot;about:blank&quot;</span>]) {
-<a name="l00203"></a>00203     [<span class="keyword">self</span> openURL:[NSURL URLWithString:URL]];
-<a name="l00204"></a>00204   }
-<a name="l00205"></a>00205 }
-<a name="l00206"></a>00206 
-<a name="l00208"></a>00208 <span class="comment">// UIWebViewDelegate</span>
-<a name="l00209"></a>00209 
-<a name="l00210"></a>00210 - (BOOL)webView:(<a class="code" href="class_u_i_web_view.html">UIWebView</a>*)webView shouldStartLoadWithRequest:(NSURLRequest*)request
-<a name="l00211"></a>00211         navigationType:(UIWebViewNavigationType)navigationType {
-<a name="l00212"></a>00212   <span class="keywordflow">if</span> ([[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> navigator].URLMap isAppURL:request.URL]) {
-<a name="l00213"></a>00213     [_loadingURL release];
-<a name="l00214"></a>00214     <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = [[NSURL URLWithString:@&quot;about:blank&quot;] retain];
-<a name="l00215"></a>00215     [[UIApplication sharedApplication] openURL:request.URL];
-<a name="l00216"></a>00216     <span class="keywordflow">return</span> NO;
-<a name="l00217"></a>00217   }
-<a name="l00218"></a>00218   
-<a name="l00219"></a>00219   [_loadingURL release];
-<a name="l00220"></a>00220   <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = [request.URL retain];
-<a name="l00221"></a>00221   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [_webView canGoBack];
-<a name="l00222"></a>00222   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [_webView canGoForward];
-<a name="l00223"></a>00223   <span class="keywordflow">return</span> YES;
-<a name="l00224"></a>00224 }
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 - (void)webViewDidStartLoad:(<a class="code" href="class_u_i_web_view.html">UIWebView</a>*)webView {
-<a name="l00227"></a>00227   <span class="keyword">self</span>.title = <a class="code" href="_t_t_global_8h.html#a3a3c40fe1b0f0e9aa6c4faa1c01069c6" title="Returns a localized string from the Three20 bundle.">TTLocalizedString</a>(<span class="stringliteral">@&quot;Loading...&quot;</span>, <span class="stringliteral">@&quot;&quot;</span>);
-<a name="l00228"></a>00228   <span class="keywordflow">if</span> (!<span class="keyword">self</span>.navigationItem.rightBarButtonItem) {
-<a name="l00229"></a>00229     [<span class="keyword">self</span>.navigationItem setRightBarButtonItem:_activityItem animated:YES];
-<a name="l00230"></a>00230   }
-<a name="l00231"></a>00231   [_toolbar replaceItemWithTag:3 withItem:_stopButton];
-<a name="l00232"></a>00232   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [_webView canGoBack];
-<a name="l00233"></a>00233   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [_webView canGoForward];
-<a name="l00234"></a>00234 }
-<a name="l00235"></a>00235 
-<a name="l00236"></a>00236 
-<a name="l00237"></a>00237 - (void)webViewDidFinishLoad:(<a class="code" href="class_u_i_web_view.html">UIWebView</a>*)webView {
-<a name="l00238"></a>00238   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
-<a name="l00239"></a>00239   
-<a name="l00240"></a>00240   <span class="keyword">self</span>.title = [_webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];
-<a name="l00241"></a>00241   <span class="keywordflow">if</span> (<span class="keyword">self</span>.navigationItem.rightBarButtonItem == <a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a>) {
-<a name="l00242"></a>00242     [<span class="keyword">self</span>.navigationItem setRightBarButtonItem:nil animated:YES];
-<a name="l00243"></a>00243   }
-<a name="l00244"></a>00244   [_toolbar replaceItemWithTag:3 withItem:_refreshButton];
-<a name="l00245"></a>00245 
-<a name="l00246"></a>00246   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [_webView canGoBack];
-<a name="l00247"></a>00247   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [_webView canGoForward];    
-<a name="l00248"></a>00248 }
-<a name="l00249"></a>00249 
-<a name="l00250"></a>00250 - (void)webView:(<a class="code" href="class_u_i_web_view.html">UIWebView</a>*)webView didFailLoadWithError:(NSError*)error {
-<a name="l00251"></a>00251   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
-<a name="l00252"></a>00252   [<span class="keyword">self</span> webViewDidFinishLoad:webView];
-<a name="l00253"></a>00253 }
-<a name="l00254"></a>00254 
-<a name="l00256"></a>00256 <span class="comment">// UIActionSheetDelegate</span>
-<a name="l00257"></a>00257 
-<a name="l00258"></a>00258 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-<a name="l00259"></a>00259   <span class="keywordflow">if</span> (buttonIndex == 0) {
-<a name="l00260"></a>00260     [[UIApplication sharedApplication] openURL:self.URL];
-<a name="l00261"></a>00261   }
-<a name="l00262"></a>00262 }
-<a name="l00263"></a>00263  
-<a name="l00265"></a>00265 
-<a name="l00266"></a>00266 - (NSURL*)URL {
-<a name="l00267"></a>00267   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> ? <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> : <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.request.URL;
+<a name="l00183"></a><a class="code" href="interface_t_t_web_controller.html#a0d9a6c22cffc95c01c6633c2a562e547">00183</a> - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+<a name="l00184"></a>00184         duration:(NSTimeInterval)duration {
+<a name="l00185"></a>00185   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a58d16ea917fd188cbb8413fc14f562ae">willAnimateRotationToInterfaceOrientation</a>:toInterfaceOrientation <a class="code" href="interface_t_t_view_controller.html#a58d16ea917fd188cbb8413fc14f562ae">duration</a>:duration];
+<a name="l00186"></a>00186   [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#aac6c0f8f1f054d18a35c1c53788f24b4">updateToolbarWithOrientation</a>:toInterfaceOrientation];
+<a name="l00187"></a>00187 }
+<a name="l00188"></a>00188 
+<a name="l00189"></a><a class="code" href="interface_t_t_web_controller.html#ac1aa1ff70a7c06eedb95c886b9cad6cd">00189</a> - (<a class="code" href="class_u_i_view.html">UIView</a> *)<a class="code" href="interface_t_t_web_controller.html#ac1aa1ff70a7c06eedb95c886b9cad6cd">rotatingFooterView</a> {
+<a name="l00190"></a>00190   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a>;
+<a name="l00191"></a>00191 }
+<a name="l00192"></a>00192 
+<a name="l00194"></a>00194 <span class="comment">// UTViewController (TTCategory)</span>
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="interface_t_t_web_controller.html#a6b0061b232999c0fef4c93215cff7a39">00196</a> - (BOOL)persistView:(<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>*)state {
+<a name="l00197"></a>00197   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_web_controller.html#a30b8fa744369bcd1066fb6a386e775ef">URL</a> = <span class="keyword">self</span>.URL.absoluteString;
+<a name="l00198"></a>00198   <span class="keywordflow">if</span> (URL.length) {
+<a name="l00199"></a>00199     [state setObject:URL forKey:@&quot;URL&quot;];
+<a name="l00200"></a>00200     <span class="keywordflow">return</span> YES;
+<a name="l00201"></a>00201   } <span class="keywordflow">else</span> {
+<a name="l00202"></a>00202     <span class="keywordflow">return</span> NO;
+<a name="l00203"></a>00203   }
+<a name="l00204"></a>00204 }
+<a name="l00205"></a>00205 
+<a name="l00206"></a><a class="code" href="interface_t_t_web_controller.html#ad97e568e779198a12215fffc823f263c">00206</a> - (void)restoreView:(NSDictionary*)state {
+<a name="l00207"></a>00207   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL = [state objectForKey:@&quot;URL&quot;];
+<a name="l00208"></a>00208   <span class="keywordflow">if</span> (URL.length &amp;&amp; ![URL isEqualToString:<span class="stringliteral">@&quot;about:blank&quot;</span>]) {
+<a name="l00209"></a>00209     [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#ae2e3c09cf79447ee0acccb403796f603">openURL</a>:[NSURL URLWithString:URL]];
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211 }
+<a name="l00212"></a>00212 
+<a name="l00214"></a>00214 <span class="comment">// UIWebViewDelegate</span>
+<a name="l00215"></a>00215 
+<a name="l00216"></a><a class="code" href="interface_t_t_web_controller.html#aae61b2cf979712a5ac8b93376477205a">00216</a> - (BOOL)webView:(<a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a>*)webView shouldStartLoadWithRequest:(NSURLRequest*)request
+<a name="l00217"></a>00217         navigationType:(UIWebViewNavigationType)navigationType {
+<a name="l00218"></a>00218   <span class="keywordflow">if</span> ([[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> navigator].URLMap isAppURL:request.URL]) {
+<a name="l00219"></a>00219     [<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> release];
+<a name="l00220"></a>00220     <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = [[NSURL URLWithString:@&quot;about:blank&quot;] retain];
+<a name="l00221"></a>00221     [[UIApplication sharedApplication] openURL:request.URL];
+<a name="l00222"></a>00222     <span class="keywordflow">return</span> NO;
+<a name="l00223"></a>00223   }
+<a name="l00224"></a>00224   
+<a name="l00225"></a>00225   [<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> release];
+<a name="l00226"></a>00226   <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> = [request.URL retain];
+<a name="l00227"></a>00227   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoBack];
+<a name="l00228"></a>00228   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoForward];
+<a name="l00229"></a>00229   <span class="keywordflow">return</span> YES;
+<a name="l00230"></a>00230 }
+<a name="l00231"></a>00231 
+<a name="l00232"></a><a class="code" href="interface_t_t_web_controller.html#a225641cfaa8bb1a22862e901caad9869">00232</a> - (void)webViewDidStartLoad:(<a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a>*)webView {
+<a name="l00233"></a>00233   <span class="keyword">self</span>.title = <a class="code" href="_t_t_global_core_locale_8h.html#a3a3c40fe1b0f0e9aa6c4faa1c01069c6" title="Returns a localized string from the Three20 bundle.">TTLocalizedString</a>(<span class="stringliteral">@&quot;Loading...&quot;</span>, <span class="stringliteral">@&quot;&quot;</span>);
+<a name="l00234"></a>00234   <span class="keywordflow">if</span> (!<span class="keyword">self</span>.navigationItem.rightBarButtonItem) {
+<a name="l00235"></a>00235     [<span class="keyword">self</span>.navigationItem setRightBarButtonItem:_activityItem animated:YES];
+<a name="l00236"></a>00236   }
+<a name="l00237"></a>00237   [<a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> <a class="code" href="class_u_i_toolbar.html#ae7f4db7b7f321bdb6d14f9fb7f5c3a4c">replaceItemWithTag</a>:3 <a class="code" href="class_u_i_toolbar.html#ae7f4db7b7f321bdb6d14f9fb7f5c3a4c">withItem</a>:_stopButton];
+<a name="l00238"></a>00238   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoBack];
+<a name="l00239"></a>00239   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoForward];
+<a name="l00240"></a>00240 }
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242 
+<a name="l00243"></a><a class="code" href="interface_t_t_web_controller.html#a5ab0def7ae6fe02f7b66e30eb85cdde0">00243</a> - (void)webViewDidFinishLoad:(<a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a>*)webView {
+<a name="l00244"></a>00244   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
+<a name="l00245"></a>00245   
+<a name="l00246"></a>00246   <span class="keyword">self</span>.title = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;];
+<a name="l00247"></a>00247   <span class="keywordflow">if</span> (<span class="keyword">self</span>.navigationItem.rightBarButtonItem == <a class="code" href="interface_t_t_web_controller.html#a66170174e8180621d4be7fe0958fad8b">_activityItem</a>) {
+<a name="l00248"></a>00248     [<span class="keyword">self</span>.navigationItem setRightBarButtonItem:nil animated:YES];
+<a name="l00249"></a>00249   }
+<a name="l00250"></a>00250   [<a class="code" href="interface_t_t_web_controller.html#ac8265d2481b73da259cc8480516eb955">_toolbar</a> <a class="code" href="class_u_i_toolbar.html#ae7f4db7b7f321bdb6d14f9fb7f5c3a4c">replaceItemWithTag</a>:3 <a class="code" href="class_u_i_toolbar.html#ae7f4db7b7f321bdb6d14f9fb7f5c3a4c">withItem</a>:_refreshButton];
+<a name="l00251"></a>00251 
+<a name="l00252"></a>00252   <a class="code" href="interface_t_t_web_controller.html#aa0e326409462ca344dadfdb75c304fb2">_backButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoBack];
+<a name="l00253"></a>00253   <a class="code" href="interface_t_t_web_controller.html#a1c712da222aa88f25f22c131f94fcf00">_forwardButton</a>.enabled = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> canGoForward];    
+<a name="l00254"></a>00254 }
+<a name="l00255"></a>00255 
+<a name="l00256"></a><a class="code" href="interface_t_t_web_controller.html#ab3a45199811c5be692e17b82da92f28b">00256</a> - (void)webView:(<a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a>*)webView didFailLoadWithError:(NSError*)error {
+<a name="l00257"></a>00257   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a>);
+<a name="l00258"></a>00258   [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#a5ab0def7ae6fe02f7b66e30eb85cdde0">webViewDidFinishLoad</a>:webView];
+<a name="l00259"></a>00259 }
+<a name="l00260"></a>00260 
+<a name="l00262"></a>00262 <span class="comment">// UIActionSheetDelegate</span>
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="interface_t_t_web_controller.html#aa1dd04a7dd12e84276e88861ad89e7dc">00264</a> - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+<a name="l00265"></a>00265   <span class="keywordflow">if</span> (buttonIndex == 0) {
+<a name="l00266"></a>00266     [[UIApplication sharedApplication] openURL:self.URL];
+<a name="l00267"></a>00267   }
 <a name="l00268"></a>00268 }
-<a name="l00269"></a>00269 
-<a name="l00270"></a><a class="code" href="interface_t_t_web_controller.html#a073bb22ae4eae4ca6b68e895c0a16518">00270</a> - (void)openRequest:(NSURLRequest*)request {
-<a name="l00271"></a>00271   <span class="keyword">self</span>.view;
-<a name="l00272"></a>00272   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> loadRequest:request];
-<a name="l00273"></a>00273 }
-<a name="l00274"></a>00274 
-<a name="l00275"></a>00275 - (void)setHeaderView:(<a class="code" href="class_u_i_view.html">UIView</a>*)headerView {
-<a name="l00276"></a>00276   <span class="keywordflow">if</span> (headerView != <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>) {
-<a name="l00277"></a>00277     BOOL addingHeader = !<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> &amp;&amp; headerView;
-<a name="l00278"></a>00278     BOOL removingHeader = <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> &amp;&amp; !headerView;
-<a name="l00279"></a>00279 
-<a name="l00280"></a>00280     [_headerView removeFromSuperview];
-<a name="l00281"></a>00281     [_headerView release];
-<a name="l00282"></a>00282     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> = [headerView retain];
-<a name="l00283"></a>00283     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>.frame = CGRectMake(0, 0, <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.width, <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>.height);
-<a name="l00284"></a>00284 
-<a name="l00285"></a>00285     <span class="keyword">self</span>.view;
-<a name="l00286"></a>00286     <a class="code" href="class_u_i_view.html">UIView</a>* scroller = [_webView descendantOrSelfWithClass:NSClassFromString(@&quot;UIScroller&quot;)];
-<a name="l00287"></a>00287     <a class="code" href="class_u_i_view.html">UIView</a>* docView = [scroller descendantOrSelfWithClass:NSClassFromString(@&quot;UIWebDocumentView&quot;)];
-<a name="l00288"></a>00288     [scroller addSubview:_headerView];
-<a name="l00289"></a>00289 
-<a name="l00290"></a>00290     <span class="keywordflow">if</span> (addingHeader) {
-<a name="l00291"></a>00291       docView.top += headerView.height;
-<a name="l00292"></a>00292       docView.height -= headerView.height; 
-<a name="l00293"></a>00293     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (removingHeader) {
-<a name="l00294"></a>00294       docView.top -= headerView.height;
-<a name="l00295"></a>00295       docView.height += headerView.height; 
-<a name="l00296"></a>00296     }
-<a name="l00297"></a>00297   }
-<a name="l00298"></a>00298 }
-<a name="l00299"></a>00299 
-<a name="l00300"></a><a class="code" href="interface_t_t_web_controller.html#ae2e3c09cf79447ee0acccb403796f603">00300</a> - (void)openURL:(NSURL*)URL {
-<a name="l00301"></a>00301   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
-<a name="l00302"></a>00302   [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#a073bb22ae4eae4ca6b68e895c0a16518">openRequest</a>:request];
-<a name="l00303"></a>00303 }
-<a name="l00304"></a>00304 
-<a name="l00305"></a>00305 <span class="keyword">@end</span>
+<a name="l00269"></a>00269  
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272 - (NSURL*)URL {
+<a name="l00273"></a>00273   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> ? <a class="code" href="interface_t_t_web_controller.html#a2e9ce7dcedd6974e7c0c86ae6ebf8fe1">_loadingURL</a> : <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.request.URL;
+<a name="l00274"></a>00274 }
+<a name="l00275"></a>00275 
+<a name="l00276"></a><a class="code" href="interface_t_t_web_controller.html#a073bb22ae4eae4ca6b68e895c0a16518">00276</a> - (void)openRequest:(NSURLRequest*)request {
+<a name="l00277"></a>00277   <span class="keyword">self</span>.view;
+<a name="l00278"></a>00278   [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> loadRequest:request];
+<a name="l00279"></a>00279 }
+<a name="l00280"></a>00280 
+<a name="l00281"></a><a class="code" href="interface_t_t_web_controller.html#a3f380bc7463718d33e9bc827b32b9b3a">00281</a> - (void)setHeaderView:(<a class="code" href="class_u_i_view.html">UIView</a>*)headerView {
+<a name="l00282"></a>00282   <span class="keywordflow">if</span> (headerView != <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>) {
+<a name="l00283"></a>00283     BOOL addingHeader = !<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> &amp;&amp; headerView;
+<a name="l00284"></a>00284     BOOL removingHeader = <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> &amp;&amp; !headerView;
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286     [<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> removeFromSuperview];
+<a name="l00287"></a>00287     [<a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> release];
+<a name="l00288"></a>00288     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a> = [headerView retain];
+<a name="l00289"></a>00289     <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>.frame = CGRectMake(0, 0, <a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a>.width, <a class="code" href="interface_t_t_web_controller.html#a919979c9abf8245b3584b34ea24ac4f8">_headerView</a>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>);
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291     <span class="keyword">self</span>.view;
+<a name="l00292"></a>00292     <a class="code" href="class_u_i_view.html">UIView</a>* scroller = [<a class="code" href="interface_t_t_web_controller.html#a8991c689f9a9faadd9714c6ae36a5af2">_webView</a> descendantOrSelfWithClass:NSClassFromString(@&quot;UIScroller&quot;)];
+<a name="l00293"></a>00293     <a class="code" href="class_u_i_view.html">UIView</a>* docView = [scroller <a class="code" href="class_u_i_view.html#a45a5d3d1460abca32d535fb1d41b670a">descendantOrSelfWithClass</a>:NSClassFromString(@&quot;UIWebDocumentView&quot;)];
+<a name="l00294"></a>00294     [scroller addSubview:_headerView];
+<a name="l00295"></a>00295 
+<a name="l00296"></a>00296     <span class="keywordflow">if</span> (addingHeader) {
+<a name="l00297"></a>00297       docView.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> += headerView.height;
+<a name="l00298"></a>00298       docView.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a> -= headerView.height; 
+<a name="l00299"></a>00299     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (removingHeader) {
+<a name="l00300"></a>00300       docView.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> -= headerView.height;
+<a name="l00301"></a>00301       docView.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a> += headerView.height; 
+<a name="l00302"></a>00302     }
+<a name="l00303"></a>00303   }
+<a name="l00304"></a>00304 }
+<a name="l00305"></a>00305 
+<a name="l00306"></a><a class="code" href="interface_t_t_web_controller.html#ae2e3c09cf79447ee0acccb403796f603">00306</a> - (void)openURL:(NSURL*)URL {
+<a name="l00307"></a>00307   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+<a name="l00308"></a>00308   [<span class="keyword">self</span> <a class="code" href="interface_t_t_web_controller.html#a073bb22ae4eae4ca6b68e895c0a16518">openRequest</a>:request];
+<a name="l00309"></a>00309 }
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -77,11 +77,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
 <a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
 <a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="keyword">@interface </span><a class="code" href="class_u_i_font.html">UIFont</a> (TTCategory)
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
 <a name="l00021"></a>00021 
-<a name="l00028"></a>00028 - (CGFloat)lineHeight;
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">@end</span>
+<a name="l00022"></a>00022 <span class="keyword">@interface </span><a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a> (TTCategory)
+<a name="l00023"></a>00023 
+<a name="l00033"></a>00033 - (CGFloat)ttLineHeight;
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span>
+<a name="l00050"></a>00050 - (CGFloat)lineHeight <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a414bbd7ed86a5b60af86f9f2d8b94e9d" title="Borrowed from Apple&amp;#39;s AvailabiltyInternal.h header.">__TTDEPRECATED_METHOD</a>;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="preprocessor">#endif</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>
+<a name="l00054"></a>00054 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -83,37 +83,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00023"></a><a class="code" href="interface_t_t_message_controller.html">00023</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_message_controller.html">TTMessageController</a> : <a class="code" href="interface_t_t_view_controller.html" title="A view controller with some useful additions.">TTViewController</a> &lt;UITextFieldDelegate, <a class="code" href="protocol_t_t_text_editor_delegate-p.html">TTTextEditorDelegate</a>&gt; {
 <a name="l00024"></a><a class="code" href="interface_t_t_message_controller.html#a47fca5147d52366682fdff075fefd5c8">00024</a>   id&lt;TTMessageControllerDelegate&gt; <a class="code" href="interface_t_t_message_controller.html#a47fca5147d52366682fdff075fefd5c8">_delegate</a>;
 <a name="l00025"></a><a class="code" href="interface_t_t_message_controller.html#a38dde907590f2a443743fd1d91011eb2">00025</a>   id&lt;TTTableViewDataSource&gt; <a class="code" href="interface_t_t_message_controller.html#a38dde907590f2a443743fd1d91011eb2">_dataSource</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_message_controller.html#a65c84e8022e3fa76b01cb6dac5b5d4fc">00026</a>   <a class="code" href="class_n_s_array.html">NSArray</a>* <a class="code" href="interface_t_t_message_controller.html#a65c84e8022e3fa76b01cb6dac5b5d4fc">_fields</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_message_controller.html#a320f12bc5246a907ca3f1300266b0063">00027</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_message_controller.html#a320f12bc5246a907ca3f1300266b0063">_fieldViews</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_message_controller.html#a65c84e8022e3fa76b01cb6dac5b5d4fc">00026</a>   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* <a class="code" href="interface_t_t_message_controller.html#a65c84e8022e3fa76b01cb6dac5b5d4fc">_fields</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_message_controller.html#a320f12bc5246a907ca3f1300266b0063">00027</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_message_controller.html#a320f12bc5246a907ca3f1300266b0063">_fieldViews</a>;
 <a name="l00028"></a><a class="code" href="interface_t_t_message_controller.html#a163f017de11f96d7590f5f45efca822f">00028</a>   UIScrollView* <a class="code" href="interface_t_t_message_controller.html#a163f017de11f96d7590f5f45efca822f">_scrollView</a>;
 <a name="l00029"></a><a class="code" href="interface_t_t_message_controller.html#a71aa42e4a30e618416c06ff784ef4a52">00029</a>   <a class="code" href="interface_t_t_text_editor.html">TTTextEditor</a>* <a class="code" href="interface_t_t_message_controller.html#a71aa42e4a30e618416c06ff784ef4a52">_textEditor</a>;
 <a name="l00030"></a><a class="code" href="interface_t_t_message_controller.html#a0902fec8a5668a1a81e82e1e28bf4a5c">00030</a>   <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>* <a class="code" href="interface_t_t_message_controller.html#a0902fec8a5668a1a81e82e1e28bf4a5c">_activityView</a>;
-<a name="l00031"></a><a class="code" href="interface_t_t_message_controller.html#acda99d59fd8834730842c25c5624ddfb">00031</a>   <a class="code" href="class_n_s_array.html">NSArray</a>* <a class="code" href="interface_t_t_message_controller.html#acda99d59fd8834730842c25c5624ddfb">_initialRecipients</a>;
+<a name="l00031"></a><a class="code" href="interface_t_t_message_controller.html#acda99d59fd8834730842c25c5624ddfb">00031</a>   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* <a class="code" href="interface_t_t_message_controller.html#acda99d59fd8834730842c25c5624ddfb">_initialRecipients</a>;
 <a name="l00032"></a><a class="code" href="interface_t_t_message_controller.html#a64b60a2095071b5b013478965b81f64e">00032</a>   BOOL <a class="code" href="interface_t_t_message_controller.html#a64b60a2095071b5b013478965b81f64e">_showsRecipientPicker</a>;
 <a name="l00033"></a><a class="code" href="interface_t_t_message_controller.html#a4b9736bf30efb27fbfe74187bfde9e42">00033</a>   BOOL <a class="code" href="interface_t_t_message_controller.html#a4b9736bf30efb27fbfe74187bfde9e42">_isModified</a>;
 <a name="l00034"></a>00034 }
 <a name="l00035"></a>00035 
 <a name="l00036"></a><a class="code" href="interface_t_t_message_controller.html#a8cf1658e4a2cdbe7dc72f1c0e9e6b2ed">00036</a> @property(nonatomic,assign) id&lt;TTMessageControllerDelegate&gt; delegate;
 <a name="l00037"></a><a class="code" href="interface_t_t_message_controller.html#a577f1d8cad6e8591a4759f11d36aad2d">00037</a> @property(nonatomic,retain) <span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt; dataSource;
-<a name="l00038"></a><a class="code" href="interface_t_t_message_controller.html#a81c2daf27f3f8f21cecf0a92fa45b1d3">00038</a> @property(nonatomic,retain) <a class="code" href="class_n_s_array.html">NSArray</a>* fields;
-<a name="l00039"></a><a class="code" href="interface_t_t_message_controller.html#a8414169377f297b9fcb41bbc9c0a058d">00039</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a>* subject;
-<a name="l00040"></a><a class="code" href="interface_t_t_message_controller.html#a179539948de0b4377b0559e9ef2c57e6">00040</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a>* body;
+<a name="l00038"></a><a class="code" href="interface_t_t_message_controller.html#a81c2daf27f3f8f21cecf0a92fa45b1d3">00038</a> @property(nonatomic,retain) <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* fields;
+<a name="l00039"></a><a class="code" href="interface_t_t_message_controller.html#a8414169377f297b9fcb41bbc9c0a058d">00039</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* subject;
+<a name="l00040"></a><a class="code" href="interface_t_t_message_controller.html#a179539948de0b4377b0559e9ef2c57e6">00040</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* body;
 <a name="l00041"></a><a class="code" href="interface_t_t_message_controller.html#a81e95b4725b4c6ad3bb9a534fa045660">00041</a> @property(nonatomic) BOOL showsRecipientPicker;
 <a name="l00042"></a><a class="code" href="interface_t_t_message_controller.html#aa41f369642a1ce1afcfc381972d79d68">00042</a> @property(nonatomic,readonly) BOOL isModified;
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 - (<span class="keywordtype">id</span>)initWithRecipients:(<a class="code" href="class_n_s_array.html">NSArray</a>*)recipients;
+<a name="l00044"></a>00044 - (<span class="keywordtype">id</span>)initWithRecipients:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)recipients;
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 - (<span class="keywordtype">void</span>)addRecipient:(<span class="keywordtype">id</span>)recipient forFieldAtIndex:(NSUInteger)fieldIndex;
 <a name="l00047"></a>00047 
-<a name="l00048"></a>00048 - (<a class="code" href="class_n_s_string.html">NSString</a>*)textForFieldAtIndex:(NSUInteger)fieldIndex;
-<a name="l00049"></a>00049 - (<span class="keywordtype">void</span>)setText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text forFieldAtIndex:(NSUInteger)fieldIndex;
+<a name="l00048"></a>00048 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)textForFieldAtIndex:(NSUInteger)fieldIndex;
+<a name="l00049"></a>00049 - (<span class="keywordtype">void</span>)setText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text forFieldAtIndex:(NSUInteger)fieldIndex;
 <a name="l00050"></a>00050 
 <a name="l00051"></a>00051 - (BOOL)fieldHasValueAtIndex:(NSUInteger)fieldIndex;
 <a name="l00052"></a>00052 - (<a class="code" href="class_u_i_view.html">UIView</a>*)viewForFieldAtIndex:(NSUInteger)fieldIndex;
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 - (<span class="keywordtype">void</span>)showActivityView:(BOOL)show;
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForSending;
+<a name="l00056"></a>00056 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForSending;
 <a name="l00057"></a>00057 
 <a name="l00061"></a>00061 - (<span class="keywordtype">void</span>)send;
 <a name="l00062"></a>00062 
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00067"></a>00067 
 <a name="l00071"></a>00071 - (<span class="keywordtype">void</span>)confirmCancellation;
 <a name="l00072"></a>00072 
-<a name="l00076"></a>00076 - (<span class="keywordtype">void</span>)messageWillSend:(<a class="code" href="class_n_s_array.html">NSArray</a>*)fields;
+<a name="l00076"></a>00076 - (<span class="keywordtype">void</span>)messageWillSend:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)fields;
 <a name="l00077"></a>00077 
 <a name="l00081"></a>00081 - (<span class="keywordtype">void</span>)messageWillShowRecipientPicker;
 <a name="l00082"></a>00082 
@@ -132,11 +132,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00093"></a>00093 @end
 <a name="l00094"></a>00094 
 <a name="l00096"></a>00096 
-<a name="l00097"></a><a class="code" href="protocol_t_t_message_controller_delegate-p.html">00097</a> @protocol TTMessageControllerDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
+<a name="l00097"></a><a class="code" href="protocol_t_t_message_controller_delegate-p.html">00097</a> @protocol TTMessageControllerDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099 @optional
 <a name="l00100"></a>00100 
-<a name="l00101"></a>00101 - (<span class="keywordtype">void</span>)composeController:(<a class="code" href="interface_t_t_message_controller.html">TTMessageController</a>*)controller didSendFields:(<a class="code" href="class_n_s_array.html">NSArray</a>*)fields;
+<a name="l00101"></a>00101 - (<span class="keywordtype">void</span>)composeController:(<a class="code" href="interface_t_t_message_controller.html">TTMessageController</a>*)controller didSendFields:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)fields;
 <a name="l00102"></a>00102 
 <a name="l00103"></a>00103 - (<span class="keywordtype">void</span>)composeControllerWillCancel:(<a class="code" href="interface_t_t_message_controller.html">TTMessageController</a>*)controller;
 <a name="l00104"></a>00104 
@@ -145,31 +145,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00107"></a>00107 @end
 <a name="l00108"></a>00108 
 <a name="l00110"></a>00110 
-<a name="l00111"></a><a class="code" href="interface_t_t_message_field.html">00111</a> @interface <a class="code" href="interface_t_t_message_field.html">TTMessageField</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00112"></a><a class="code" href="interface_t_t_message_field.html#a90316ca630ea8feb63c5da644a830592">00112</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _title;
+<a name="l00111"></a><a class="code" href="interface_t_t_message_field.html">00111</a> @interface <a class="code" href="interface_t_t_message_field.html">TTMessageField</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00112"></a><a class="code" href="interface_t_t_message_field.html#a90316ca630ea8feb63c5da644a830592">00112</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _title;
 <a name="l00113"></a><a class="code" href="interface_t_t_message_field.html#aa3d3af7631a19c2664ac90231794c839">00113</a>   BOOL _required;
 <a name="l00114"></a>00114 } 
 <a name="l00115"></a>00115 
-<a name="l00116"></a><a class="code" href="interface_t_t_message_field.html#a494006ed1c012efd8082287c38212f4b">00116</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* title;
+<a name="l00116"></a><a class="code" href="interface_t_t_message_field.html#a494006ed1c012efd8082287c38212f4b">00116</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* title;
 <a name="l00117"></a><a class="code" href="interface_t_t_message_field.html#aa0f70cbfe47c719bb44790c8e138d254">00117</a> @property(nonatomic) BOOL required;
 <a name="l00118"></a>00118 
-<a name="l00119"></a>00119 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title required:(BOOL)required;
+<a name="l00119"></a>00119 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title required:(BOOL)required;
 <a name="l00120"></a>00120 
 <a name="l00121"></a>00121 @end
 <a name="l00122"></a>00122 
 <a name="l00123"></a><a class="code" href="interface_t_t_message_recipient_field.html">00123</a> @interface <a class="code" href="interface_t_t_message_recipient_field.html">TTMessageRecipientField</a> : <a class="code" href="interface_t_t_message_field.html">TTMessageField</a> {
-<a name="l00124"></a><a class="code" href="interface_t_t_message_recipient_field.html#aede50faac4e60aa9f2cbdba8631b0f2d">00124</a>   <a class="code" href="class_n_s_array.html">NSArray</a>* _recipients;
+<a name="l00124"></a><a class="code" href="interface_t_t_message_recipient_field.html#aede50faac4e60aa9f2cbdba8631b0f2d">00124</a>   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* _recipients;
 <a name="l00125"></a>00125 } 
 <a name="l00126"></a>00126 
-<a name="l00127"></a><a class="code" href="interface_t_t_message_recipient_field.html#aef8683ec4f19915a4bb76b68e10d8944">00127</a> @property(nonatomic,retain) <a class="code" href="class_n_s_array.html">NSArray</a>* recipients;
+<a name="l00127"></a><a class="code" href="interface_t_t_message_recipient_field.html#aef8683ec4f19915a4bb76b68e10d8944">00127</a> @property(nonatomic,retain) <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* recipients;
 <a name="l00128"></a>00128 
 <a name="l00129"></a>00129 @end
 <a name="l00130"></a>00130 
 <a name="l00131"></a><a class="code" href="interface_t_t_message_text_field.html">00131</a> @interface <a class="code" href="interface_t_t_message_text_field.html">TTMessageTextField</a> : <a class="code" href="interface_t_t_message_field.html">TTMessageField</a> {
-<a name="l00132"></a><a class="code" href="interface_t_t_message_text_field.html#afae9b3f2ec12c2dd01d325e00d1ca36d">00132</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _text;
+<a name="l00132"></a><a class="code" href="interface_t_t_message_text_field.html#afae9b3f2ec12c2dd01d325e00d1ca36d">00132</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _text;
 <a name="l00133"></a>00133 } 
 <a name="l00134"></a>00134 
-<a name="l00135"></a><a class="code" href="interface_t_t_message_text_field.html#a8953e9683e97eec0b390a257eb263c2f">00135</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* text;
+<a name="l00135"></a><a class="code" href="interface_t_t_message_text_field.html#a8953e9683e97eec0b390a257eb263c2f">00135</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
 <a name="l00136"></a>00136 
 <a name="l00137"></a>00137 @end
 <a name="l00138"></a>00138 

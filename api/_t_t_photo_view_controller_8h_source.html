@@ -75,54 +75,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_model_view_controller_8h.html">Three20/TTModelViewController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_photo_source_8h.html">Three20/TTPhotoSource.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_scroll_view_8h.html">Three20/TTScrollView.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_thumbs_view_controller_8h.html">Three20/TTThumbsViewController.h</a>&quot;</span>
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">@class</span> <a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>, <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>, <a class="code" href="interface_t_t_style.html">TTStyle</a>;
-<a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="interface_t_t_photo_view_controller.html">00024</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_photo_view_controller.html">TTPhotoViewController</a> : <a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a>
-<a name="l00025"></a>00025           &lt;<a class="code" href="protocol_t_t_scroll_view_delegate-p.html">TTScrollViewDelegate</a>, <a class="code" href="protocol_t_t_scroll_view_data_source-p.html">TTScrollViewDataSource</a>, <a class="code" href="protocol_t_t_thumbs_view_controller_delegate-p.html">TTThumbsViewControllerDelegate</a>&gt; {
-<a name="l00026"></a>00026   id&lt;TTPhotoSource&gt; _photoSource;
-<a name="l00027"></a>00027   id&lt;TTPhoto&gt; _centerPhoto;
-<a name="l00028"></a>00028   NSInteger _centerPhotoIndex;
-<a name="l00029"></a>00029   <a class="code" href="class_u_i_view.html">UIView</a>* _innerView;
-<a name="l00030"></a>00030   <a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>* _scrollView;
-<a name="l00031"></a>00031   TTPhotoView* _photoStatusView;
-<a name="l00032"></a>00032   <a class="code" href="class_u_i_toolbar.html">UIToolbar</a>* _toolbar;
-<a name="l00033"></a>00033   UIBarButtonItem* _nextButton;
-<a name="l00034"></a>00034   UIBarButtonItem* _previousButton;
-<a name="l00035"></a>00035   TTStyle* _captionStyle;
-<a name="l00036"></a>00036   <a class="code" href="class_u_i_image.html">UIImage</a>* _defaultImage;
-<a name="l00037"></a>00037   <a class="code" href="class_n_s_string.html">NSString</a>* _statusText;
-<a name="l00038"></a>00038   <a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>* _thumbsController;
-<a name="l00039"></a>00039   NSTimer* _slideshowTimer;
-<a name="l00040"></a>00040   NSTimer* _loadTimer;
-<a name="l00041"></a>00041   BOOL _delayLoad;
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00047"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449">00047</a> @property(nonatomic,retain) id&lt;TTPhotoSource&gt; photoSource;
-<a name="l00048"></a>00048 
-<a name="l00054"></a>00054 @property(nonatomic,retain) <span class="keywordtype">id</span>&lt;TTPhoto&gt; centerPhoto;
-<a name="l00055"></a>00055 
-<a name="l00062"></a><a class="code" href="interface_t_t_photo_view_controller.html#a8a4e41837254638e66304de521e7de5a">00062</a> @property(nonatomic,readonly) NSInteger centerPhotoIndex;
-<a name="l00063"></a>00063 
-<a name="l00067"></a><a class="code" href="interface_t_t_photo_view_controller.html#a982625320715d2e51c0f75bae607aeff">00067</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* defaultImage;
-<a name="l00068"></a>00068 
-<a name="l00072"></a><a class="code" href="interface_t_t_photo_view_controller.html#a2e04d249898456d712dd25ac1a2b42a1">00072</a> @property(nonatomic,retain) TTStyle* captionStyle;
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 - (<span class="keywordtype">id</span>)initWithPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo;
-<a name="l00075"></a>00075 - (<span class="keywordtype">id</span>)initWithPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource;
-<a name="l00076"></a>00076 
-<a name="l00082"></a>00082 - (TTPhotoView*)createPhotoView;
-<a name="l00083"></a>00083 
-<a name="l00089"></a>00089 - (<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)createThumbsViewController;
-<a name="l00090"></a>00090 
-<a name="l00094"></a>00094 - (<span class="keywordtype">void</span>)didMoveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo fromPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)fromPhoto;
-<a name="l00095"></a>00095 
-<a name="l00099"></a>00099 - (<span class="keywordtype">void</span>)showActivity:(<a class="code" href="class_n_s_string.html">NSString</a>*)title;
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101 @end
+<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_scroll_view_8h.html">Three20/TTScrollView.h</a>&quot;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_thumbs_view_controller_8h.html">Three20/TTThumbsViewController.h</a>&quot;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">@class</span> <a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>, <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>, <a class="code" href="interface_t_t_style.html">TTStyle</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="interface_t_t_photo_view_controller.html">00023</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_photo_view_controller.html">TTPhotoViewController</a> : <a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a>
+<a name="l00024"></a>00024           &lt;<a class="code" href="protocol_t_t_scroll_view_delegate-p.html">TTScrollViewDelegate</a>, <a class="code" href="protocol_t_t_scroll_view_data_source-p.html">TTScrollViewDataSource</a>, <a class="code" href="protocol_t_t_thumbs_view_controller_delegate-p.html">TTThumbsViewControllerDelegate</a>&gt; {
+<a name="l00025"></a>00025   id&lt;TTPhotoSource&gt; _photoSource;
+<a name="l00026"></a>00026   id&lt;TTPhoto&gt; _centerPhoto;
+<a name="l00027"></a>00027   NSInteger _centerPhotoIndex;
+<a name="l00028"></a>00028   <a class="code" href="class_u_i_view.html">UIView</a>* _innerView;
+<a name="l00029"></a>00029   <a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>* _scrollView;
+<a name="l00030"></a>00030   TTPhotoView* _photoStatusView;
+<a name="l00031"></a>00031   <a class="code" href="class_u_i_toolbar.html" title="Additions.">UIToolbar</a>* _toolbar;
+<a name="l00032"></a>00032   UIBarButtonItem* _nextButton;
+<a name="l00033"></a>00033   UIBarButtonItem* _previousButton;
+<a name="l00034"></a>00034   TTStyle* _captionStyle;
+<a name="l00035"></a>00035   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _defaultImage;
+<a name="l00036"></a>00036   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _statusText;
+<a name="l00037"></a>00037   <a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>* _thumbsController;
+<a name="l00038"></a>00038   NSTimer* _slideshowTimer;
+<a name="l00039"></a>00039   NSTimer* _loadTimer;
+<a name="l00040"></a>00040   BOOL _delayLoad;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00046"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449">00046</a> @property(nonatomic,retain) id&lt;TTPhotoSource&gt; photoSource;
+<a name="l00047"></a>00047 
+<a name="l00053"></a>00053 @property(nonatomic,retain) <span class="keywordtype">id</span>&lt;TTPhoto&gt; centerPhoto;
+<a name="l00054"></a>00054 
+<a name="l00061"></a><a class="code" href="interface_t_t_photo_view_controller.html#a8a4e41837254638e66304de521e7de5a">00061</a> @property(nonatomic,readonly) NSInteger centerPhotoIndex;
+<a name="l00062"></a>00062 
+<a name="l00066"></a><a class="code" href="interface_t_t_photo_view_controller.html#a982625320715d2e51c0f75bae607aeff">00066</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* defaultImage;
+<a name="l00067"></a>00067 
+<a name="l00071"></a><a class="code" href="interface_t_t_photo_view_controller.html#a2e04d249898456d712dd25ac1a2b42a1">00071</a> @property(nonatomic,retain) TTStyle* captionStyle;
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 - (<span class="keywordtype">id</span>)initWithPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo;
+<a name="l00074"></a>00074 - (<span class="keywordtype">id</span>)initWithPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource;
+<a name="l00075"></a>00075 
+<a name="l00081"></a>00081 - (TTPhotoView*)createPhotoView;
+<a name="l00082"></a>00082 
+<a name="l00088"></a>00088 - (<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)createThumbsViewController;
+<a name="l00089"></a>00089 
+<a name="l00093"></a>00093 - (<span class="keywordtype">void</span>)didMoveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo fromPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)fromPhoto;
+<a name="l00094"></a>00094 
+<a name="l00098"></a>00098 - (<span class="keywordtype">void</span>)showActivity:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

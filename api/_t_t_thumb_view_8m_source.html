@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,34 +76,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_thumb_view_8h.html">Three20/TTThumbView.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_thumb_view.html">TTThumbView</a>
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 - (id)initWithFrame:(CGRect)frame {
-<a name="l00023"></a>00023   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00024"></a>00024     <span class="keyword">self</span>.backgroundColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(thumbnailBackgroundColor);
-<a name="l00025"></a>00025     <span class="keyword">self</span>.clipsToBounds = YES;
-<a name="l00026"></a>00026     
-<a name="l00027"></a>00027     [<span class="keyword">self</span> setStylesWithSelector:@&quot;thumbView:&quot;];
-<a name="l00028"></a>00028   }
-<a name="l00029"></a>00029   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00030"></a>00030 }
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 - (void)dealloc {
-<a name="l00033"></a>00033   [<span class="keyword">super</span> dealloc];
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 - (<a class="code" href="class_n_s_string.html">NSString</a>*)<a class="code" href="interface_t_t_thumb_view.html#a041f0524fbe4d1207e67b03ffa4d16e6">thumbURL</a> {
-<a name="l00039"></a>00039   <span class="keywordflow">return</span> [<span class="keyword">self</span> imageForState:UIControlStateNormal];
-<a name="l00040"></a>00040 }
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 - (void)setThumbURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00043"></a>00043   [<span class="keyword">self</span> setImage:URL forState:UIControlStateNormal];
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="keyword">@end</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_thumb_view.html">TTThumbView</a>
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="interface_t_t_thumb_view.html#adce20d0ff22c99318a7b792651bd33c9">00023</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00024"></a>00024   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00025"></a>00025     <span class="keyword">self</span>.backgroundColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(thumbnailBackgroundColor);
+<a name="l00026"></a>00026     <span class="keyword">self</span>.clipsToBounds = YES;
+<a name="l00027"></a>00027     
+<a name="l00028"></a>00028     [<span class="keyword">self</span> <a class="code" href="interface_t_t_button.html#ad60dcde51645f676d1052c67ce9b1fe9" title="Sets the styles for all control states using a single style selector.">setStylesWithSelector</a>:@&quot;thumbView:&quot;];
+<a name="l00029"></a>00029   }
+<a name="l00030"></a>00030   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="interface_t_t_thumb_view.html#afbde3624c9e2878930097b8abf7ff0b7">00033</a> - (void)<a class="code" href="interface_t_t_thumb_view.html#afbde3624c9e2878930097b8abf7ff0b7">dealloc</a> {
+<a name="l00034"></a>00034   [<span class="keyword">super</span> <a class="code" href="interface_t_t_button.html#ab92472f9c1418b63d58dc0aa7b2aa64b">dealloc</a>];
+<a name="l00035"></a>00035 }
+<a name="l00036"></a>00036 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="interface_t_t_thumb_view.html#a041f0524fbe4d1207e67b03ffa4d16e6">thumbURL</a> {
+<a name="l00040"></a>00040   <span class="keywordflow">return</span> [<span class="keyword">self</span> imageForState:UIControlStateNormal];
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_thumb_view.html#a9088defa94559fbafcc541305ee87050">00043</a> - (void)setThumbURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00044"></a>00044   [<span class="keyword">self</span> <a class="code" href="interface_t_t_button.html#aa5a04a59e482f1215eacfc38def99257">setImage</a>:URL <a class="code" href="interface_t_t_button.html#aa5a04a59e482f1215eacfc38def99257">forState</a>:UIControlStateNormal];
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

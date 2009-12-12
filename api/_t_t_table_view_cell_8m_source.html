@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -76,29 +77,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_cell_8h.html">Three20/TTTableViewCell.h</a>&quot;</span>
 <a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_view_cell.html" title="The base class for table cells which are single-object based.">TTTableViewCell</a>
 <a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="interface_t_t_table_view_cell.html#a50a7006ec9fb5bb4533b6100f4f56dbb">00023</a> + (CGFloat)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView rowHeightForObject:(<span class="keywordtype">id</span>)object {
-<a name="l00024"></a>00024   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_8h.html#a89eaba81eee3c71acfde85a0d2748313">TT_ROW_HEIGHT</a>;
-<a name="l00025"></a>00025 }
-<a name="l00026"></a>00026 
-<a name="l00028"></a>00028 <span class="comment">// UITableViewCell</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 - (void)prepareForReuse {
-<a name="l00031"></a>00031   <span class="keyword">self</span>.object = nil;
-<a name="l00032"></a>00032   [<span class="keyword">super</span> prepareForReuse];
-<a name="l00033"></a>00033 }
-<a name="l00034"></a>00034 
+<a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_view_cell.html" title="The base class for table cells which are single-object based.">TTTableViewCell</a>
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="interface_t_t_table_view_cell.html#a50a7006ec9fb5bb4533b6100f4f56dbb">00025</a> + (CGFloat)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView rowHeightForObject:(<span class="keywordtype">id</span>)object {
+<a name="l00026"></a>00026   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_u_i_8h.html#a89eaba81eee3c71acfde85a0d2748313">TT_ROW_HEIGHT</a>;
+<a name="l00027"></a>00027 }
+<a name="l00028"></a>00028 
+<a name="l00030"></a>00030 <span class="comment">// UITableViewCell</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="interface_t_t_table_view_cell.html#a3a75eb56fd69b5867f8bf6407a4049b6">00032</a> - (void)<a class="code" href="interface_t_t_table_view_cell.html#a3a75eb56fd69b5867f8bf6407a4049b6">prepareForReuse</a> {
+<a name="l00033"></a>00033   <span class="keyword">self</span>.object = nil;
+<a name="l00034"></a>00034   [<span class="keyword">super</span> prepareForReuse];
+<a name="l00035"></a>00035 }
 <a name="l00036"></a>00036 
-<a name="l00037"></a>00037 - (id)<span class="keywordtype">object</span> {
-<a name="l00038"></a>00038   <span class="keywordflow">return</span> nil;
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 - (void)setObject:(<span class="keywordtype">id</span>)object {
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="keyword">@end</span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 - (id)<span class="keywordtype">object</span> {
+<a name="l00040"></a>00040   <span class="keywordflow">return</span> nil;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_table_view_cell.html#a7486fe326b4d0af0fc3c7cc807a37fde">00043</a> - (void)setObject:(<span class="keywordtype">id</span>)object {
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -93,10 +93,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033 }
 <a name="l00034"></a>00034 
 <a name="l00035"></a><a class="code" href="interface_t_t_text_editor.html#afba9ea1c397a0c5eaaad9b1894276d52">00035</a> @property(nonatomic,assign) id&lt;TTTextEditorDelegate&gt; delegate;
-<a name="l00036"></a><a class="code" href="interface_t_t_text_editor.html#a35f34d4054d7d68f6de5d54d8eeb3641">00036</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* text;
-<a name="l00037"></a><a class="code" href="interface_t_t_text_editor.html#a3f1c019fede13c50432a6415b1df34f4">00037</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* placeholder;
-<a name="l00038"></a><a class="code" href="interface_t_t_text_editor.html#a15f442a8d6cb704c3bf57486eb2b0b83">00038</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
-<a name="l00039"></a><a class="code" href="interface_t_t_text_editor.html#ac04fa9eb95bdb47f362d8b0b37543ee1">00039</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* textColor;
+<a name="l00036"></a><a class="code" href="interface_t_t_text_editor.html#a35f34d4054d7d68f6de5d54d8eeb3641">00036</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
+<a name="l00037"></a><a class="code" href="interface_t_t_text_editor.html#a3f1c019fede13c50432a6415b1df34f4">00037</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* placeholder;
+<a name="l00038"></a><a class="code" href="interface_t_t_text_editor.html#a15f442a8d6cb704c3bf57486eb2b0b83">00038</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
+<a name="l00039"></a><a class="code" href="interface_t_t_text_editor.html#ac04fa9eb95bdb47f362d8b0b37543ee1">00039</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* textColor;
 <a name="l00040"></a><a class="code" href="interface_t_t_text_editor.html#a23b92f296dc4d8a51dd487207eb64ffe">00040</a> @property(nonatomic) NSInteger minNumberOfLines;
 <a name="l00041"></a><a class="code" href="interface_t_t_text_editor.html#af1d557553914cffc2f70cfae0e226034">00041</a> @property(nonatomic) NSInteger maxNumberOfLines;
 <a name="l00042"></a><a class="code" href="interface_t_t_text_editor.html#a9a7e338eeba6495aac0bfe7be88e2529">00042</a> @property(nonatomic,readonly) BOOL editing;
@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a>00048 @end
 <a name="l00049"></a>00049 
 <a name="l00051"></a>00051 
-<a name="l00052"></a><a class="code" href="protocol_t_t_text_editor_delegate-p.html">00052</a> @protocol TTTextEditorDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
+<a name="l00052"></a><a class="code" href="protocol_t_t_text_editor_delegate-p.html">00052</a> @protocol TTTextEditorDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 @optional
 <a name="l00055"></a>00055 
@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060 - (<span class="keywordtype">void</span>)textEditorDidEndEditing:(<a class="code" href="interface_t_t_text_editor.html">TTTextEditor</a>*)textEditor;
 <a name="l00061"></a>00061 
 <a name="l00062"></a>00062 - (BOOL)textEditor:(<a class="code" href="interface_t_t_text_editor.html">TTTextEditor</a>*)textEditor shouldChangeTextInRange:(NSRange)range
-<a name="l00063"></a>00063         replacementText:(<a class="code" href="class_n_s_string.html">NSString</a>*)replacementText;
+<a name="l00063"></a>00063         replacementText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)replacementText;
 <a name="l00064"></a>00064 - (<span class="keywordtype">void</span>)textEditorDidChange:(<a class="code" href="interface_t_t_text_editor.html">TTTextEditor</a>*)textEditor;
 <a name="l00065"></a>00065 
 <a name="l00066"></a>00066 - (BOOL)textEditor:(<a class="code" href="interface_t_t_text_editor.html">TTTextEditor</a>*)textEditor shouldResizeBy:(CGFloat)height;

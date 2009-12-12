@@ -74,385 +74,388 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@protocol </span>TTStyleDelegate;
-<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_shape.html">TTShape</a>, <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>;
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_style_8h.html">Three20/TTGlobalStyle.h</a>&quot;</span>
 <a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="interface_t_t_style_context.html">00022</a> <span class="keyword">@interface </span>TTStyleContext : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00023"></a><a class="code" href="interface_t_t_style_context.html#a153e6d5aa6cc6942d526f1490bed6b58">00023</a>   id&lt;TTStyleDelegate&gt; <a class="code" href="interface_t_t_style_context.html#a153e6d5aa6cc6942d526f1490bed6b58">_delegate</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_style_context.html#a4eb45e26957282ec3374886ad85b9710">00024</a>   CGRect <a class="code" href="interface_t_t_style_context.html#a4eb45e26957282ec3374886ad85b9710">_frame</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_style_context.html#ab4b8ad58e823f6711e3e2ca87cd65f5c">00025</a>   CGRect <a class="code" href="interface_t_t_style_context.html#ab4b8ad58e823f6711e3e2ca87cd65f5c">_contentFrame</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_style_context.html#a4209d229f83c614ed81e01cbc584ac01">00026</a>   <a class="code" href="interface_t_t_shape.html">TTShape</a>* <a class="code" href="interface_t_t_style_context.html#a4209d229f83c614ed81e01cbc584ac01">_shape</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_style_context.html#a6812b98d65d8ac260dcf536f9abd7df0">00027</a>   <a class="code" href="class_u_i_font.html">UIFont</a>* <a class="code" href="interface_t_t_style_context.html#a6812b98d65d8ac260dcf536f9abd7df0">_font</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_style_context.html#ae37946eec5f13a17f4f9f901cbe54463">00028</a>   BOOL <a class="code" href="interface_t_t_style_context.html#ae37946eec5f13a17f4f9f901cbe54463">_didDrawContent</a>;
-<a name="l00029"></a>00029 }
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">00031</a> @property(nonatomic,assign) id&lt;TTStyleDelegate&gt; delegate;
-<a name="l00032"></a><a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">00032</a> @property(nonatomic) CGRect frame;
-<a name="l00033"></a><a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">00033</a> @property(nonatomic) CGRect contentFrame;
-<a name="l00034"></a><a class="code" href="interface_t_t_style_context.html#a83eb5bfe571f39eaa0db81a89038dd35">00034</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_shape.html">TTShape</a>* shape;
-<a name="l00035"></a><a class="code" href="interface_t_t_style_context.html#a3d99ea4e476661883a932275b9d02701">00035</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
-<a name="l00036"></a><a class="code" href="interface_t_t_style_context.html#a42d37995106c6217b8fc1b0c8431b134">00036</a> @property(nonatomic) BOOL didDrawContent;
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 @end
-<a name="l00039"></a>00039 
-<a name="l00041"></a>00041 
-<a name="l00042"></a><a class="code" href="interface_t_t_style.html">00042</a> @interface <a class="code" href="interface_t_t_style.html">TTStyle</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00043"></a><a class="code" href="interface_t_t_style.html#aa313c161147cde23524a441149e41290">00043</a>   <a class="code" href="interface_t_t_style.html">TTStyle</a>* _next;
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="interface_t_t_style.html#a3e704cddfe9525e9184a7aec04f9a68c">00046</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_style.html">TTStyle</a>* next;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 - (<span class="keywordtype">id</span>)initWithNext:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 - (<span class="keywordtype">void</span>)draw:(TTStyleContext*)context;
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 - (UIEdgeInsets)addToInsets:(UIEdgeInsets)insets forSize:(CGSize)size;
-<a name="l00055"></a>00055 - (CGSize)addToSize:(CGSize)size context:(TTStyleContext*)context;
+<a name="l00022"></a>00022 <span class="keyword">@protocol </span>TTStyleDelegate;
+<a name="l00023"></a>00023 <span class="keyword">@class</span> <a class="code" href="interface_t_t_shape.html">TTShape</a>, <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>;
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="interface_t_t_style_context.html">00025</a> <span class="keyword">@interface </span>TTStyleContext : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00026"></a><a class="code" href="interface_t_t_style_context.html#a153e6d5aa6cc6942d526f1490bed6b58">00026</a>   id&lt;TTStyleDelegate&gt; <a class="code" href="interface_t_t_style_context.html#a153e6d5aa6cc6942d526f1490bed6b58">_delegate</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_style_context.html#a4eb45e26957282ec3374886ad85b9710">00027</a>   CGRect <a class="code" href="interface_t_t_style_context.html#a4eb45e26957282ec3374886ad85b9710">_frame</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_style_context.html#ab4b8ad58e823f6711e3e2ca87cd65f5c">00028</a>   CGRect <a class="code" href="interface_t_t_style_context.html#ab4b8ad58e823f6711e3e2ca87cd65f5c">_contentFrame</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_style_context.html#a4209d229f83c614ed81e01cbc584ac01">00029</a>   <a class="code" href="interface_t_t_shape.html">TTShape</a>* <a class="code" href="interface_t_t_style_context.html#a4209d229f83c614ed81e01cbc584ac01">_shape</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_style_context.html#a6812b98d65d8ac260dcf536f9abd7df0">00030</a>   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* <a class="code" href="interface_t_t_style_context.html#a6812b98d65d8ac260dcf536f9abd7df0">_font</a>;
+<a name="l00031"></a><a class="code" href="interface_t_t_style_context.html#ae37946eec5f13a17f4f9f901cbe54463">00031</a>   BOOL <a class="code" href="interface_t_t_style_context.html#ae37946eec5f13a17f4f9f901cbe54463">_didDrawContent</a>;
+<a name="l00032"></a>00032 }
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">00034</a> @property(nonatomic,assign) id&lt;TTStyleDelegate&gt; delegate;
+<a name="l00035"></a><a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">00035</a> @property(nonatomic) CGRect frame;
+<a name="l00036"></a><a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">00036</a> @property(nonatomic) CGRect contentFrame;
+<a name="l00037"></a><a class="code" href="interface_t_t_style_context.html#a83eb5bfe571f39eaa0db81a89038dd35">00037</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_shape.html">TTShape</a>* shape;
+<a name="l00038"></a><a class="code" href="interface_t_t_style_context.html#a3d99ea4e476661883a932275b9d02701">00038</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
+<a name="l00039"></a><a class="code" href="interface_t_t_style_context.html#a42d37995106c6217b8fc1b0c8431b134">00039</a> @property(nonatomic) BOOL didDrawContent;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 @end
+<a name="l00042"></a>00042 
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="interface_t_t_style.html">00045</a> @interface <a class="code" href="interface_t_t_style.html">TTStyle</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00046"></a><a class="code" href="interface_t_t_style.html#aa313c161147cde23524a441149e41290">00046</a>   <a class="code" href="interface_t_t_style.html">TTStyle</a>* _next;
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="interface_t_t_style.html#a3e704cddfe9525e9184a7aec04f9a68c">00049</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_style.html">TTStyle</a>* next;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 - (<span class="keywordtype">id</span>)initWithNext:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 - (<span class="keywordtype">void</span>)draw:(TTStyleContext*)context;
 <a name="l00056"></a>00056 
-<a name="l00057"></a>00057 - (<span class="keywordtype">void</span>)addStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 - (<span class="keywordtype">id</span>)firstStyleOfClass:(Class)cls;
-<a name="l00060"></a>00060 - (<span class="keywordtype">id</span>)styleForPart:(<a class="code" href="class_n_s_string.html">NSString</a>*)name;
+<a name="l00057"></a>00057 - (UIEdgeInsets)addToInsets:(UIEdgeInsets)insets forSize:(CGSize)size;
+<a name="l00058"></a>00058 - (CGSize)addToSize:(CGSize)size context:(TTStyleContext*)context;
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 - (<span class="keywordtype">void</span>)addStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062 @end
-<a name="l00063"></a>00063 
-<a name="l00065"></a>00065 
-<a name="l00066"></a><a class="code" href="interface_t_t_content_style.html">00066</a> @interface <a class="code" href="interface_t_t_content_style.html">TTContentStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a>
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 + (<a class="code" href="interface_t_t_content_style.html">TTContentStyle</a>*)styleWithNext:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 @end
-<a name="l00071"></a>00071 
-<a name="l00073"></a>00073 
-<a name="l00074"></a><a class="code" href="interface_t_t_part_style.html">00074</a> @interface <a class="code" href="interface_t_t_part_style.html">TTPartStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00075"></a><a class="code" href="interface_t_t_part_style.html#abe4be032a40a8111e81e7126758fafe7">00075</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _name;
-<a name="l00076"></a><a class="code" href="interface_t_t_part_style.html#aacc496f8d81b1ff77a484afbbcfbd11a">00076</a>   TTStyle* _style;
-<a name="l00077"></a>00077 }
-<a name="l00078"></a>00078 
-<a name="l00079"></a><a class="code" href="interface_t_t_part_style.html#a82e3662ef759483f9771570e9b95dde9">00079</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* name;
-<a name="l00080"></a><a class="code" href="interface_t_t_part_style.html#abd3f1e0fa9db375771e7c5e0d98cbb4b">00080</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_style.html">TTStyle</a>* style;
+<a name="l00062"></a>00062 - (<span class="keywordtype">id</span>)firstStyleOfClass:(Class)cls;
+<a name="l00063"></a>00063 - (<span class="keywordtype">id</span>)styleForPart:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 @end
+<a name="l00066"></a>00066 
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="interface_t_t_content_style.html">00069</a> @interface <a class="code" href="interface_t_t_content_style.html">TTContentStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a>
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 + (<a class="code" href="interface_t_t_content_style.html">TTContentStyle</a>*)styleWithNext:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 @end
+<a name="l00074"></a>00074 
+<a name="l00076"></a>00076 
+<a name="l00077"></a><a class="code" href="interface_t_t_part_style.html">00077</a> @interface <a class="code" href="interface_t_t_part_style.html">TTPartStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00078"></a><a class="code" href="interface_t_t_part_style.html#abe4be032a40a8111e81e7126758fafe7">00078</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _name;
+<a name="l00079"></a><a class="code" href="interface_t_t_part_style.html#aacc496f8d81b1ff77a484afbbcfbd11a">00079</a>   TTStyle* _style;
+<a name="l00080"></a>00080 }
 <a name="l00081"></a>00081 
-<a name="l00082"></a>00082 + (<a class="code" href="interface_t_t_part_style.html">TTPartStyle</a>*)styleWithName:(<a class="code" href="class_n_s_string.html">NSString</a>*)name style:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084 - (<span class="keywordtype">void</span>)drawPart:(TTStyleContext*)context;
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 @end
-<a name="l00087"></a>00087 
-<a name="l00089"></a>00089 
-<a name="l00093"></a><a class="code" href="interface_t_t_shape_style.html">00093</a> @interface <a class="code" href="interface_t_t_shape_style.html" title="Causes all layers going forward to use a particular shape.">TTShapeStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00094"></a><a class="code" href="interface_t_t_shape_style.html#a4bb2336b560b475a4450a411c2525b57">00094</a>   <a class="code" href="interface_t_t_shape.html">TTShape</a>* _shape;
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a><a class="code" href="interface_t_t_shape_style.html#a7148dc344d9e3641264dbca7826a0db4">00097</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_shape.html">TTShape</a>* shape;
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 + (<a class="code" href="interface_t_t_shape_style.html" title="Causes all layers going forward to use a particular shape.">TTShapeStyle</a>*)styleWithShape:(<a class="code" href="interface_t_t_shape.html">TTShape</a>*)shape next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101 @end
-<a name="l00102"></a>00102 
-<a name="l00104"></a>00104 
-<a name="l00105"></a><a class="code" href="interface_t_t_inset_style.html">00105</a> @interface <a class="code" href="interface_t_t_inset_style.html">TTInsetStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00106"></a><a class="code" href="interface_t_t_inset_style.html#ac8540d1e634b2cb8f83b722cd1edd974">00106</a>   UIEdgeInsets _inset;
-<a name="l00107"></a>00107 }
-<a name="l00108"></a>00108 
-<a name="l00109"></a><a class="code" href="interface_t_t_inset_style.html#a3e446e57f15edc221fdbd68f76c6d250">00109</a> @property(nonatomic) UIEdgeInsets inset;
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 + (<a class="code" href="interface_t_t_inset_style.html">TTInsetStyle</a>*)styleWithInset:(UIEdgeInsets)inset next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 @end
-<a name="l00114"></a>00114 
-<a name="l00116"></a>00116 
-<a name="l00117"></a><a class="code" href="interface_t_t_box_style.html">00117</a> @interface <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00118"></a><a class="code" href="interface_t_t_box_style.html#a39d736eb3cb3374a7aaa89e8bca51fa2">00118</a>   UIEdgeInsets _margin;
-<a name="l00119"></a><a class="code" href="interface_t_t_box_style.html#add82e52e1866b32c7c5a275d3b14326c">00119</a>   UIEdgeInsets _padding;
-<a name="l00120"></a><a class="code" href="interface_t_t_box_style.html#a7f7ed23db2971caaf1af2e0acefaaabd">00120</a>   CGSize _minSize;
-<a name="l00121"></a><a class="code" href="interface_t_t_box_style.html#a35dbf5c695e330a0b7a57f443ab9635d">00121</a>   <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a> _position;
-<a name="l00122"></a>00122 }
-<a name="l00123"></a>00123 
-<a name="l00124"></a><a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">00124</a> @property(nonatomic) UIEdgeInsets margin;
-<a name="l00125"></a><a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">00125</a> @property(nonatomic) UIEdgeInsets padding;
-<a name="l00126"></a><a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">00126</a> @property(nonatomic) CGSize minSize;
-<a name="l00127"></a><a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">00127</a> @property(nonatomic) <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a> position;
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00130"></a>00130 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithPadding:(UIEdgeInsets)padding next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00131"></a>00131 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithFloats:(<a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a>)position next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00132"></a>00132 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
-<a name="l00133"></a>00133                next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00134"></a>00134 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
-<a name="l00135"></a>00135                minSize:(CGSize)minSize position:(<a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a>)position next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 @end
-<a name="l00138"></a>00138 
-<a name="l00140"></a>00140 
-<a name="l00141"></a><a class="code" href="interface_t_t_text_style.html">00141</a> @interface <a class="code" href="interface_t_t_text_style.html">TTTextStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00142"></a><a class="code" href="interface_t_t_text_style.html#a3e290ca605843b43036fc1fa2761d041">00142</a>   <a class="code" href="class_u_i_font.html">UIFont</a>* _font;
-<a name="l00143"></a><a class="code" href="interface_t_t_text_style.html#a08c7cbd61deb916ab60701ce165ec244">00143</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color;
-<a name="l00144"></a><a class="code" href="interface_t_t_text_style.html#a5b5bf9bf4448c767bf0fac102f98781d">00144</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _shadowColor;
-<a name="l00145"></a><a class="code" href="interface_t_t_text_style.html#a3f57c23cf6ba2f137916fc6464558375">00145</a>   CGSize _shadowOffset;
-<a name="l00146"></a><a class="code" href="interface_t_t_text_style.html#a934d0530d6e9393e2b6959f3b9ef2e71">00146</a>   CGFloat _minimumFontSize;
-<a name="l00147"></a><a class="code" href="interface_t_t_text_style.html#a5462e7f0c446d8b8635e1539caebe410">00147</a>   NSInteger _numberOfLines;
-<a name="l00148"></a><a class="code" href="interface_t_t_text_style.html#a2218b51e2f0ace43e589d72ce00be82d">00148</a>   UITextAlignment _textAlignment;
-<a name="l00149"></a><a class="code" href="interface_t_t_text_style.html#a92fbe6fbd3c7b857a6b03c99f2d613e3">00149</a>   UIControlContentVerticalAlignment _verticalAlignment;
-<a name="l00150"></a><a class="code" href="interface_t_t_text_style.html#a74a05793ed3a3ee704c86a7073251f49">00150</a>   UILineBreakMode _lineBreakMode;
-<a name="l00151"></a>00151 }
-<a name="l00152"></a>00152 
-<a name="l00153"></a><a class="code" href="interface_t_t_text_style.html#a3c2eb90a657d43764a0dee94c44e96f2">00153</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
-<a name="l00154"></a><a class="code" href="interface_t_t_text_style.html#a0b99965d87e4638269eb3f34bd783860">00154</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00155"></a><a class="code" href="interface_t_t_text_style.html#a269a9987f96823449aac4e2946a39a4d">00155</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* shadowColor;
-<a name="l00156"></a><a class="code" href="interface_t_t_text_style.html#a8e1de7bff5302565be141d1a2fd42923">00156</a> @property(nonatomic) CGFloat minimumFontSize;
-<a name="l00157"></a><a class="code" href="interface_t_t_text_style.html#a61ebc15dfcc0cf1275b60378d1b69d24">00157</a> @property(nonatomic) CGSize shadowOffset;
-<a name="l00158"></a><a class="code" href="interface_t_t_text_style.html#a0b56a98fbc5a598fcf4b8b36a23bba0e">00158</a> @property(nonatomic) NSInteger numberOfLines;
-<a name="l00159"></a><a class="code" href="interface_t_t_text_style.html#a70bc99a628fb99d01006a505f7478845">00159</a> @property(nonatomic) UITextAlignment textAlignment;
-<a name="l00160"></a><a class="code" href="interface_t_t_text_style.html#a93b35e59709ba8f41e8090daf0aba956">00160</a> @property(nonatomic) UIControlContentVerticalAlignment verticalAlignment;
-<a name="l00161"></a><a class="code" href="interface_t_t_text_style.html#a015e2e03624cbe987089719dabd5c3b9">00161</a> @property(nonatomic) UILineBreakMode lineBreakMode;
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00164"></a>00164 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00165"></a>00165 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00166"></a>00166 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color
-<a name="l00167"></a>00167                 textAlignment:(UITextAlignment)textAlignment next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00168"></a>00168 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color
-<a name="l00169"></a>00169                 shadowColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
-<a name="l00170"></a>00170                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00171"></a>00171 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color
-<a name="l00172"></a>00172                 minimumFontSize:(CGFloat)minimumFontSize
-<a name="l00173"></a>00173                 shadowColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
-<a name="l00174"></a>00174                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00175"></a>00175 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color
-<a name="l00176"></a>00176                 minimumFontSize:(CGFloat)minimumFontSize
-<a name="l00177"></a>00177                 shadowColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
-<a name="l00178"></a>00178                 textAlignment:(UITextAlignment)textAlignment
-<a name="l00179"></a>00179                 verticalAlignment:(UIControlContentVerticalAlignment)verticalAlignment
-<a name="l00180"></a>00180                 lineBreakMode:(UILineBreakMode)lineBreakMode numberOfLines:(NSInteger)numberOfLines
-<a name="l00181"></a>00181                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183 @end
-<a name="l00184"></a>00184 
-<a name="l00186"></a>00186 
-<a name="l00187"></a><a class="code" href="interface_t_t_image_style.html">00187</a> @interface <a class="code" href="interface_t_t_image_style.html">TTImageStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00188"></a><a class="code" href="interface_t_t_image_style.html#a3d475e0e16de1e96a3e5cd13a573065c">00188</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _imageURL;
-<a name="l00189"></a><a class="code" href="interface_t_t_image_style.html#a0c65a3c44cc836f65e64fb7f60fefd99">00189</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* _image;
-<a name="l00190"></a><a class="code" href="interface_t_t_image_style.html#a37f5adcb5d7047525a9ea02c6672e155">00190</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* _defaultImage;
-<a name="l00191"></a><a class="code" href="interface_t_t_image_style.html#ab4ef993daadb9a4a2cf28526b7dedecc">00191</a>   UIViewContentMode _contentMode;
-<a name="l00192"></a><a class="code" href="interface_t_t_image_style.html#a8ff3823f5c85729803db36b5c683f2e5">00192</a>   CGSize _size;
-<a name="l00193"></a>00193 }
-<a name="l00194"></a>00194 
-<a name="l00195"></a><a class="code" href="interface_t_t_image_style.html#aa7fd6ed038831c80c120f3d932931e3f">00195</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* imageURL;
-<a name="l00196"></a><a class="code" href="interface_t_t_image_style.html#a47150dd1b0f91cb59b9f80cc6a2de27d">00196</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* image;
-<a name="l00197"></a><a class="code" href="interface_t_t_image_style.html#ab7c4e1cf976c3f2733296ed09d7914bb">00197</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* defaultImage;
-<a name="l00198"></a><a class="code" href="interface_t_t_image_style.html#ac6cd4dfaf32610d22b1fa067ea322c28">00198</a> @property(nonatomic) CGSize size;
-<a name="l00199"></a><a class="code" href="interface_t_t_image_style.html#aea812b9d15e829db754f33dc83b8de13">00199</a> @property(nonatomic) UIViewContentMode contentMode;
-<a name="l00200"></a>00200 
-<a name="l00201"></a>00201 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)imageURL next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00202"></a>00202 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)imageURL defaultImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)defaultImage
-<a name="l00203"></a>00203                  next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00204"></a>00204 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)imageURL defaultImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)defaultImage
-<a name="l00205"></a>00205                  contentMode:(UIViewContentMode)contentMode
-<a name="l00206"></a>00206                  size:(CGSize)size next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00207"></a>00207 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00208"></a>00208 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image defaultImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)defaultImage
-<a name="l00209"></a>00209                  next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00210"></a>00210 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image defaultImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)defaultImage
-<a name="l00211"></a>00211                  contentMode:(UIViewContentMode)contentMode
-<a name="l00212"></a>00212                  size:(CGSize)size next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00213"></a>00213 
-<a name="l00214"></a>00214 @end
-<a name="l00215"></a>00215 
-<a name="l00217"></a>00217 
-<a name="l00218"></a><a class="code" href="interface_t_t_mask_style.html">00218</a> @interface <a class="code" href="interface_t_t_mask_style.html">TTMaskStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00219"></a><a class="code" href="interface_t_t_mask_style.html#a349a6b5191426038e94e57180100b580">00219</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* _mask;
-<a name="l00220"></a>00220 }
-<a name="l00221"></a>00221 
-<a name="l00222"></a><a class="code" href="interface_t_t_mask_style.html#ab39ba7bc86601dd5830e7ffe7a7d5679">00222</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* mask;
-<a name="l00223"></a>00223 
-<a name="l00224"></a>00224 + (<a class="code" href="interface_t_t_mask_style.html">TTMaskStyle</a>*)styleWithMask:(<a class="code" href="class_u_i_image.html">UIImage</a>*)mask next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 @end
-<a name="l00227"></a>00227 
-<a name="l00229"></a>00229 
-<a name="l00230"></a><a class="code" href="interface_t_t_blend_style.html">00230</a> @interface <a class="code" href="interface_t_t_blend_style.html">TTBlendStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00231"></a><a class="code" href="interface_t_t_blend_style.html#aacaec6d81bbe536ce162c9274d1eee2d">00231</a>   CGBlendMode _blendMode;
-<a name="l00232"></a>00232 }
-<a name="l00233"></a>00233 
-<a name="l00234"></a><a class="code" href="interface_t_t_blend_style.html#a502bd74e4a04feadb35f67713d1b7d95">00234</a> @property(nonatomic) CGBlendMode blendMode;
-<a name="l00235"></a>00235 
-<a name="l00236"></a>00236 + (<a class="code" href="interface_t_t_blend_style.html">TTBlendStyle</a>*)styleWithBlend:(CGBlendMode)blendMode next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00237"></a>00237 
-<a name="l00238"></a>00238 @end
-<a name="l00239"></a>00239 
-<a name="l00241"></a>00241 
-<a name="l00242"></a><a class="code" href="interface_t_t_solid_fill_style.html">00242</a> @interface <a class="code" href="interface_t_t_solid_fill_style.html">TTSolidFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00243"></a><a class="code" href="interface_t_t_solid_fill_style.html#a68992d9f6366f85604516a4a69807433">00243</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color;
-<a name="l00244"></a>00244 }
-<a name="l00245"></a>00245 
-<a name="l00246"></a><a class="code" href="interface_t_t_solid_fill_style.html#a3eb36bfd286e7c969c2a5d1255e97a8c">00246</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00247"></a>00247 
-<a name="l00248"></a>00248 + (<a class="code" href="interface_t_t_solid_fill_style.html">TTSolidFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00249"></a>00249 
-<a name="l00250"></a>00250 @end
-<a name="l00251"></a>00251 
-<a name="l00253"></a>00253 
-<a name="l00254"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html">00254</a> @interface <a class="code" href="interface_t_t_linear_gradient_fill_style.html">TTLinearGradientFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00255"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#a1a1ed2e2dc4a12629d20c59111fe05f1">00255</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color1;
-<a name="l00256"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#aff01962c327f406b4718cde9d15f7e0f">00256</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color2;
-<a name="l00257"></a>00257 }
-<a name="l00258"></a>00258 
-<a name="l00259"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#aec3c11b9f6b952b20ef69980ab815626">00259</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color1;
-<a name="l00260"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#a2a3aab799a9c61c4f1e42ebcd6f0add7">00260</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color2;
+<a name="l00082"></a><a class="code" href="interface_t_t_part_style.html#a82e3662ef759483f9771570e9b95dde9">00082</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name;
+<a name="l00083"></a><a class="code" href="interface_t_t_part_style.html#abd3f1e0fa9db375771e7c5e0d98cbb4b">00083</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_style.html">TTStyle</a>* style;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 + (<a class="code" href="interface_t_t_part_style.html">TTPartStyle</a>*)styleWithName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name style:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 - (<span class="keywordtype">void</span>)drawPart:(TTStyleContext*)context;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 @end
+<a name="l00090"></a>00090 
+<a name="l00092"></a>00092 
+<a name="l00096"></a><a class="code" href="interface_t_t_shape_style.html">00096</a> @interface <a class="code" href="interface_t_t_shape_style.html" title="Causes all layers going forward to use a particular shape.">TTShapeStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00097"></a><a class="code" href="interface_t_t_shape_style.html#a4bb2336b560b475a4450a411c2525b57">00097</a>   <a class="code" href="interface_t_t_shape.html">TTShape</a>* _shape;
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="interface_t_t_shape_style.html#a7148dc344d9e3641264dbca7826a0db4">00100</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_shape.html">TTShape</a>* shape;
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 + (<a class="code" href="interface_t_t_shape_style.html" title="Causes all layers going forward to use a particular shape.">TTShapeStyle</a>*)styleWithShape:(<a class="code" href="interface_t_t_shape.html">TTShape</a>*)shape next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 @end
+<a name="l00105"></a>00105 
+<a name="l00107"></a>00107 
+<a name="l00108"></a><a class="code" href="interface_t_t_inset_style.html">00108</a> @interface <a class="code" href="interface_t_t_inset_style.html">TTInsetStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00109"></a><a class="code" href="interface_t_t_inset_style.html#ac8540d1e634b2cb8f83b722cd1edd974">00109</a>   UIEdgeInsets _inset;
+<a name="l00110"></a>00110 }
+<a name="l00111"></a>00111 
+<a name="l00112"></a><a class="code" href="interface_t_t_inset_style.html#a3e446e57f15edc221fdbd68f76c6d250">00112</a> @property(nonatomic) UIEdgeInsets inset;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 + (<a class="code" href="interface_t_t_inset_style.html">TTInsetStyle</a>*)styleWithInset:(UIEdgeInsets)inset next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 @end
+<a name="l00117"></a>00117 
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="interface_t_t_box_style.html">00120</a> @interface <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00121"></a><a class="code" href="interface_t_t_box_style.html#a39d736eb3cb3374a7aaa89e8bca51fa2">00121</a>   UIEdgeInsets _margin;
+<a name="l00122"></a><a class="code" href="interface_t_t_box_style.html#add82e52e1866b32c7c5a275d3b14326c">00122</a>   UIEdgeInsets _padding;
+<a name="l00123"></a><a class="code" href="interface_t_t_box_style.html#a7f7ed23db2971caaf1af2e0acefaaabd">00123</a>   CGSize _minSize;
+<a name="l00124"></a><a class="code" href="interface_t_t_box_style.html#a35dbf5c695e330a0b7a57f443ab9635d">00124</a>   <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a> _position;
+<a name="l00125"></a>00125 }
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">00127</a> @property(nonatomic) UIEdgeInsets margin;
+<a name="l00128"></a><a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">00128</a> @property(nonatomic) UIEdgeInsets padding;
+<a name="l00129"></a><a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">00129</a> @property(nonatomic) CGSize minSize;
+<a name="l00130"></a><a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">00130</a> @property(nonatomic) <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a> position;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00133"></a>00133 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithPadding:(UIEdgeInsets)padding next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00134"></a>00134 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithFloats:(<a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a>)position next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00135"></a>00135 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
+<a name="l00136"></a>00136                next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00137"></a>00137 + (<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>*)styleWithMargin:(UIEdgeInsets)margin padding:(UIEdgeInsets)padding
+<a name="l00138"></a>00138                minSize:(CGSize)minSize position:(<a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710">TTPosition</a>)position next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 @end
+<a name="l00141"></a>00141 
+<a name="l00143"></a>00143 
+<a name="l00144"></a><a class="code" href="interface_t_t_text_style.html">00144</a> @interface <a class="code" href="interface_t_t_text_style.html">TTTextStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00145"></a><a class="code" href="interface_t_t_text_style.html#a3e290ca605843b43036fc1fa2761d041">00145</a>   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* _font;
+<a name="l00146"></a><a class="code" href="interface_t_t_text_style.html#a08c7cbd61deb916ab60701ce165ec244">00146</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color;
+<a name="l00147"></a><a class="code" href="interface_t_t_text_style.html#a5b5bf9bf4448c767bf0fac102f98781d">00147</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _shadowColor;
+<a name="l00148"></a><a class="code" href="interface_t_t_text_style.html#a3f57c23cf6ba2f137916fc6464558375">00148</a>   CGSize _shadowOffset;
+<a name="l00149"></a><a class="code" href="interface_t_t_text_style.html#a934d0530d6e9393e2b6959f3b9ef2e71">00149</a>   CGFloat _minimumFontSize;
+<a name="l00150"></a><a class="code" href="interface_t_t_text_style.html#a5462e7f0c446d8b8635e1539caebe410">00150</a>   NSInteger _numberOfLines;
+<a name="l00151"></a><a class="code" href="interface_t_t_text_style.html#a2218b51e2f0ace43e589d72ce00be82d">00151</a>   UITextAlignment _textAlignment;
+<a name="l00152"></a><a class="code" href="interface_t_t_text_style.html#a92fbe6fbd3c7b857a6b03c99f2d613e3">00152</a>   UIControlContentVerticalAlignment _verticalAlignment;
+<a name="l00153"></a><a class="code" href="interface_t_t_text_style.html#a74a05793ed3a3ee704c86a7073251f49">00153</a>   UILineBreakMode _lineBreakMode;
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a><a class="code" href="interface_t_t_text_style.html#a3c2eb90a657d43764a0dee94c44e96f2">00156</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
+<a name="l00157"></a><a class="code" href="interface_t_t_text_style.html#a0b99965d87e4638269eb3f34bd783860">00157</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00158"></a><a class="code" href="interface_t_t_text_style.html#a269a9987f96823449aac4e2946a39a4d">00158</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* shadowColor;
+<a name="l00159"></a><a class="code" href="interface_t_t_text_style.html#a8e1de7bff5302565be141d1a2fd42923">00159</a> @property(nonatomic) CGFloat minimumFontSize;
+<a name="l00160"></a><a class="code" href="interface_t_t_text_style.html#a61ebc15dfcc0cf1275b60378d1b69d24">00160</a> @property(nonatomic) CGSize shadowOffset;
+<a name="l00161"></a><a class="code" href="interface_t_t_text_style.html#a0b56a98fbc5a598fcf4b8b36a23bba0e">00161</a> @property(nonatomic) NSInteger numberOfLines;
+<a name="l00162"></a><a class="code" href="interface_t_t_text_style.html#a70bc99a628fb99d01006a505f7478845">00162</a> @property(nonatomic) UITextAlignment textAlignment;
+<a name="l00163"></a><a class="code" href="interface_t_t_text_style.html#a93b35e59709ba8f41e8090daf0aba956">00163</a> @property(nonatomic) UIControlContentVerticalAlignment verticalAlignment;
+<a name="l00164"></a><a class="code" href="interface_t_t_text_style.html#a015e2e03624cbe987089719dabd5c3b9">00164</a> @property(nonatomic) UILineBreakMode lineBreakMode;
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00167"></a>00167 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00168"></a>00168 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00169"></a>00169 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color
+<a name="l00170"></a>00170                 textAlignment:(UITextAlignment)textAlignment next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00171"></a>00171 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color
+<a name="l00172"></a>00172                 shadowColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
+<a name="l00173"></a>00173                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00174"></a>00174 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color
+<a name="l00175"></a>00175                 minimumFontSize:(CGFloat)minimumFontSize
+<a name="l00176"></a>00176                 shadowColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
+<a name="l00177"></a>00177                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00178"></a>00178 + (<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>*)styleWithFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font color:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color
+<a name="l00179"></a>00179                 minimumFontSize:(CGFloat)minimumFontSize
+<a name="l00180"></a>00180                 shadowColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)shadowColor shadowOffset:(CGSize)shadowOffset
+<a name="l00181"></a>00181                 textAlignment:(UITextAlignment)textAlignment
+<a name="l00182"></a>00182                 verticalAlignment:(UIControlContentVerticalAlignment)verticalAlignment
+<a name="l00183"></a>00183                 lineBreakMode:(UILineBreakMode)lineBreakMode numberOfLines:(NSInteger)numberOfLines
+<a name="l00184"></a>00184                 next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 @end
+<a name="l00187"></a>00187 
+<a name="l00189"></a>00189 
+<a name="l00190"></a><a class="code" href="interface_t_t_image_style.html">00190</a> @interface <a class="code" href="interface_t_t_image_style.html">TTImageStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00191"></a><a class="code" href="interface_t_t_image_style.html#a3d475e0e16de1e96a3e5cd13a573065c">00191</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _imageURL;
+<a name="l00192"></a><a class="code" href="interface_t_t_image_style.html#a0c65a3c44cc836f65e64fb7f60fefd99">00192</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _image;
+<a name="l00193"></a><a class="code" href="interface_t_t_image_style.html#a37f5adcb5d7047525a9ea02c6672e155">00193</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _defaultImage;
+<a name="l00194"></a><a class="code" href="interface_t_t_image_style.html#ab4ef993daadb9a4a2cf28526b7dedecc">00194</a>   UIViewContentMode _contentMode;
+<a name="l00195"></a><a class="code" href="interface_t_t_image_style.html#a8ff3823f5c85729803db36b5c683f2e5">00195</a>   CGSize _size;
+<a name="l00196"></a>00196 }
+<a name="l00197"></a>00197 
+<a name="l00198"></a><a class="code" href="interface_t_t_image_style.html#aa7fd6ed038831c80c120f3d932931e3f">00198</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* imageURL;
+<a name="l00199"></a><a class="code" href="interface_t_t_image_style.html#a47150dd1b0f91cb59b9f80cc6a2de27d">00199</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image;
+<a name="l00200"></a><a class="code" href="interface_t_t_image_style.html#ab7c4e1cf976c3f2733296ed09d7914bb">00200</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* defaultImage;
+<a name="l00201"></a><a class="code" href="interface_t_t_image_style.html#ac6cd4dfaf32610d22b1fa067ea322c28">00201</a> @property(nonatomic) CGSize size;
+<a name="l00202"></a><a class="code" href="interface_t_t_image_style.html#aea812b9d15e829db754f33dc83b8de13">00202</a> @property(nonatomic) UIViewContentMode contentMode;
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)imageURL next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00205"></a>00205 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)imageURL defaultImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)defaultImage
+<a name="l00206"></a>00206                  next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00207"></a>00207 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImageURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)imageURL defaultImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)defaultImage
+<a name="l00208"></a>00208                  contentMode:(UIViewContentMode)contentMode
+<a name="l00209"></a>00209                  size:(CGSize)size next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00210"></a>00210 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00211"></a>00211 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image defaultImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)defaultImage
+<a name="l00212"></a>00212                  next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00213"></a>00213 + (<a class="code" href="interface_t_t_image_style.html">TTImageStyle</a>*)styleWithImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image defaultImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)defaultImage
+<a name="l00214"></a>00214                  contentMode:(UIViewContentMode)contentMode
+<a name="l00215"></a>00215                  size:(CGSize)size next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217 @end
+<a name="l00218"></a>00218 
+<a name="l00220"></a>00220 
+<a name="l00221"></a><a class="code" href="interface_t_t_mask_style.html">00221</a> @interface <a class="code" href="interface_t_t_mask_style.html">TTMaskStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00222"></a><a class="code" href="interface_t_t_mask_style.html#a349a6b5191426038e94e57180100b580">00222</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _mask;
+<a name="l00223"></a>00223 }
+<a name="l00224"></a>00224 
+<a name="l00225"></a><a class="code" href="interface_t_t_mask_style.html#ab39ba7bc86601dd5830e7ffe7a7d5679">00225</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* mask;
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 + (<a class="code" href="interface_t_t_mask_style.html">TTMaskStyle</a>*)styleWithMask:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)mask next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 @end
+<a name="l00230"></a>00230 
+<a name="l00232"></a>00232 
+<a name="l00233"></a><a class="code" href="interface_t_t_blend_style.html">00233</a> @interface <a class="code" href="interface_t_t_blend_style.html">TTBlendStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00234"></a><a class="code" href="interface_t_t_blend_style.html#aacaec6d81bbe536ce162c9274d1eee2d">00234</a>   CGBlendMode _blendMode;
+<a name="l00235"></a>00235 }
+<a name="l00236"></a>00236 
+<a name="l00237"></a><a class="code" href="interface_t_t_blend_style.html#a502bd74e4a04feadb35f67713d1b7d95">00237</a> @property(nonatomic) CGBlendMode blendMode;
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 + (<a class="code" href="interface_t_t_blend_style.html">TTBlendStyle</a>*)styleWithBlend:(CGBlendMode)blendMode next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 @end
+<a name="l00242"></a>00242 
+<a name="l00244"></a>00244 
+<a name="l00245"></a><a class="code" href="interface_t_t_solid_fill_style.html">00245</a> @interface <a class="code" href="interface_t_t_solid_fill_style.html">TTSolidFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00246"></a><a class="code" href="interface_t_t_solid_fill_style.html#a68992d9f6366f85604516a4a69807433">00246</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color;
+<a name="l00247"></a>00247 }
+<a name="l00248"></a>00248 
+<a name="l00249"></a><a class="code" href="interface_t_t_solid_fill_style.html#a3eb36bfd286e7c969c2a5d1255e97a8c">00249</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251 + (<a class="code" href="interface_t_t_solid_fill_style.html">TTSolidFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253 @end
+<a name="l00254"></a>00254 
+<a name="l00256"></a>00256 
+<a name="l00257"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html">00257</a> @interface <a class="code" href="interface_t_t_linear_gradient_fill_style.html">TTLinearGradientFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00258"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#a1a1ed2e2dc4a12629d20c59111fe05f1">00258</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color1;
+<a name="l00259"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#aff01962c327f406b4718cde9d15f7e0f">00259</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color2;
+<a name="l00260"></a>00260 }
 <a name="l00261"></a>00261 
-<a name="l00262"></a>00262 + (<a class="code" href="interface_t_t_linear_gradient_fill_style.html">TTLinearGradientFillStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color1 color2:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color2
-<a name="l00263"></a>00263                               next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00262"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#aec3c11b9f6b952b20ef69980ab815626">00262</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color1;
+<a name="l00263"></a><a class="code" href="interface_t_t_linear_gradient_fill_style.html#a2a3aab799a9c61c4f1e42ebcd6f0add7">00263</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color2;
 <a name="l00264"></a>00264 
-<a name="l00265"></a>00265 @end
-<a name="l00266"></a>00266 
-<a name="l00268"></a>00268 
-<a name="l00269"></a><a class="code" href="interface_t_t_reflective_fill_style.html">00269</a> @interface <a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00270"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a12d6c5acf8c6a73419bfa541a0b05ca8">00270</a>   <a class="code" href="class_u_i_color.html">UIColor</a>*  _color;
-<a name="l00271"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a888d597dfe61041bda050b0b65dc62a5">00271</a>   BOOL      _withBottomHighlight;
-<a name="l00272"></a>00272 }
-<a name="l00273"></a>00273 
-<a name="l00274"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a071e4d8e9cbd3683de9938c0d2a88951">00274</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00275"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a9e983fcb42b34a5312e414effeaaed8d">00275</a> @property(nonatomic,assign) BOOL     withBottomHighlight;
+<a name="l00265"></a>00265 + (<a class="code" href="interface_t_t_linear_gradient_fill_style.html">TTLinearGradientFillStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color1 color2:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color2
+<a name="l00266"></a>00266                               next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268 @end
+<a name="l00269"></a>00269 
+<a name="l00271"></a>00271 
+<a name="l00272"></a><a class="code" href="interface_t_t_reflective_fill_style.html">00272</a> @interface <a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00273"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a12d6c5acf8c6a73419bfa541a0b05ca8">00273</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*  _color;
+<a name="l00274"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a888d597dfe61041bda050b0b65dc62a5">00274</a>   BOOL      _withBottomHighlight;
+<a name="l00275"></a>00275 }
 <a name="l00276"></a>00276 
-<a name="l00277"></a>00277 + (<a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00278"></a>00278 + (<a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color
-<a name="l00279"></a>00279                           withBottomHighlight:(BOOL)withBottomHighlight next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00280"></a>00280 
-<a name="l00281"></a>00281 @end
-<a name="l00282"></a>00282 
-<a name="l00284"></a>00284 
-<a name="l00285"></a><a class="code" href="interface_t_t_shadow_style.html">00285</a> @interface <a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00286"></a><a class="code" href="interface_t_t_shadow_style.html#abd1ee6f961300607523c546a3179da71">00286</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color;
-<a name="l00287"></a><a class="code" href="interface_t_t_shadow_style.html#a1ef9bbd207b7741d6f01a9b22a854f79">00287</a>   CGFloat _blur;
-<a name="l00288"></a><a class="code" href="interface_t_t_shadow_style.html#a8b0b19841575fe906f5ac4da4d14b657">00288</a>   CGSize _offset;
-<a name="l00289"></a>00289 }
-<a name="l00290"></a>00290 
-<a name="l00291"></a><a class="code" href="interface_t_t_shadow_style.html#abaacbca885c384ae3314d51e737f7e47">00291</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00292"></a><a class="code" href="interface_t_t_shadow_style.html#a8458289217409e1a04d4a02dc5a4ced9">00292</a> @property(nonatomic) CGFloat blur;
-<a name="l00293"></a><a class="code" href="interface_t_t_shadow_style.html#a2b64f5f0202543b3034a2c5f1f2caeb9">00293</a> @property(nonatomic) CGSize offset;
-<a name="l00294"></a>00294 
-<a name="l00295"></a>00295 + (<a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color blur:(CGFloat)blur offset:(CGSize)offset
-<a name="l00296"></a>00296                   next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00277"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a071e4d8e9cbd3683de9938c0d2a88951">00277</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00278"></a><a class="code" href="interface_t_t_reflective_fill_style.html#a9e983fcb42b34a5312e414effeaaed8d">00278</a> @property(nonatomic,assign) BOOL     withBottomHighlight;
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280 + (<a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00281"></a>00281 + (<a class="code" href="interface_t_t_reflective_fill_style.html">TTReflectiveFillStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color
+<a name="l00282"></a>00282                           withBottomHighlight:(BOOL)withBottomHighlight next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284 @end
+<a name="l00285"></a>00285 
+<a name="l00287"></a>00287 
+<a name="l00288"></a><a class="code" href="interface_t_t_shadow_style.html">00288</a> @interface <a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00289"></a><a class="code" href="interface_t_t_shadow_style.html#abd1ee6f961300607523c546a3179da71">00289</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color;
+<a name="l00290"></a><a class="code" href="interface_t_t_shadow_style.html#a1ef9bbd207b7741d6f01a9b22a854f79">00290</a>   CGFloat _blur;
+<a name="l00291"></a><a class="code" href="interface_t_t_shadow_style.html#a8b0b19841575fe906f5ac4da4d14b657">00291</a>   CGSize _offset;
+<a name="l00292"></a>00292 }
+<a name="l00293"></a>00293 
+<a name="l00294"></a><a class="code" href="interface_t_t_shadow_style.html#abaacbca885c384ae3314d51e737f7e47">00294</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00295"></a><a class="code" href="interface_t_t_shadow_style.html#a8458289217409e1a04d4a02dc5a4ced9">00295</a> @property(nonatomic) CGFloat blur;
+<a name="l00296"></a><a class="code" href="interface_t_t_shadow_style.html#a2b64f5f0202543b3034a2c5f1f2caeb9">00296</a> @property(nonatomic) CGSize offset;
 <a name="l00297"></a>00297 
-<a name="l00298"></a>00298 @end
-<a name="l00299"></a>00299 
-<a name="l00301"></a>00301 
-<a name="l00302"></a><a class="code" href="interface_t_t_inner_shadow_style.html">00302</a> @interface <a class="code" href="interface_t_t_inner_shadow_style.html">TTInnerShadowStyle</a> : <a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a>
-<a name="l00303"></a>00303 @end
+<a name="l00298"></a>00298 + (<a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color blur:(CGFloat)blur offset:(CGSize)offset
+<a name="l00299"></a>00299                   next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 @end
+<a name="l00302"></a>00302 
 <a name="l00304"></a>00304 
-<a name="l00306"></a>00306 
-<a name="l00307"></a><a class="code" href="interface_t_t_solid_border_style.html">00307</a> @interface <a class="code" href="interface_t_t_solid_border_style.html">TTSolidBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00308"></a><a class="code" href="interface_t_t_solid_border_style.html#a9dd677020207c04b96040657b980953c">00308</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color;
-<a name="l00309"></a><a class="code" href="interface_t_t_solid_border_style.html#a6929a04b884a1edc634cf297bc3a7250">00309</a>   CGFloat _width;
-<a name="l00310"></a>00310 }
-<a name="l00311"></a>00311 
-<a name="l00312"></a><a class="code" href="interface_t_t_solid_border_style.html#a0d7e57cf2a1e0e8a31c5997ca64b3ba0">00312</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00313"></a><a class="code" href="interface_t_t_solid_border_style.html#ae631d8fc9bbb2b9f88fd241fc5161931">00313</a> @property(nonatomic) CGFloat width;
+<a name="l00305"></a><a class="code" href="interface_t_t_inner_shadow_style.html">00305</a> @interface <a class="code" href="interface_t_t_inner_shadow_style.html">TTInnerShadowStyle</a> : <a class="code" href="interface_t_t_shadow_style.html">TTShadowStyle</a>
+<a name="l00306"></a>00306 @end
+<a name="l00307"></a>00307 
+<a name="l00309"></a>00309 
+<a name="l00310"></a><a class="code" href="interface_t_t_solid_border_style.html">00310</a> @interface <a class="code" href="interface_t_t_solid_border_style.html">TTSolidBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00311"></a><a class="code" href="interface_t_t_solid_border_style.html#a9dd677020207c04b96040657b980953c">00311</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color;
+<a name="l00312"></a><a class="code" href="interface_t_t_solid_border_style.html#a6929a04b884a1edc634cf297bc3a7250">00312</a>   CGFloat _width;
+<a name="l00313"></a>00313 }
 <a name="l00314"></a>00314 
-<a name="l00315"></a>00315 + (<a class="code" href="interface_t_t_solid_border_style.html">TTSolidBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00316"></a>00316 
-<a name="l00317"></a>00317 @end
-<a name="l00318"></a>00318 
-<a name="l00320"></a>00320 
-<a name="l00321"></a><a class="code" href="interface_t_t_highlight_border_style.html">00321</a> @interface <a class="code" href="interface_t_t_highlight_border_style.html">TTHighlightBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00322"></a><a class="code" href="interface_t_t_highlight_border_style.html#aafdef3bf4f9d380f815518a171151a9b">00322</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color;
-<a name="l00323"></a><a class="code" href="interface_t_t_highlight_border_style.html#a00300ca974a71b03d70b37a5d14cd3dd">00323</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _highlightColor;
-<a name="l00324"></a><a class="code" href="interface_t_t_highlight_border_style.html#a2f1003bccde3534ed1c79fde0f637409">00324</a>   CGFloat _width;
-<a name="l00325"></a>00325 }
-<a name="l00326"></a>00326 
-<a name="l00327"></a><a class="code" href="interface_t_t_highlight_border_style.html#a2ddce1e7357cb4c596efa28dc9953757">00327</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color;
-<a name="l00328"></a><a class="code" href="interface_t_t_highlight_border_style.html#a009fb333272d833cfe62457b148db69c">00328</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* highlightColor;
-<a name="l00329"></a><a class="code" href="interface_t_t_highlight_border_style.html#a7717eca3b27959a630a084931e986f2d">00329</a> @property(nonatomic) CGFloat width;
-<a name="l00330"></a>00330 
-<a name="l00331"></a>00331 + (<a class="code" href="interface_t_t_highlight_border_style.html">TTHighlightBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color highlightColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)highlightColor
-<a name="l00332"></a>00332                            width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00315"></a><a class="code" href="interface_t_t_solid_border_style.html#a0d7e57cf2a1e0e8a31c5997ca64b3ba0">00315</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00316"></a><a class="code" href="interface_t_t_solid_border_style.html#ae631d8fc9bbb2b9f88fd241fc5161931">00316</a> @property(nonatomic) CGFloat width;
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 + (<a class="code" href="interface_t_t_solid_border_style.html">TTSolidBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00319"></a>00319 
+<a name="l00320"></a>00320 @end
+<a name="l00321"></a>00321 
+<a name="l00323"></a>00323 
+<a name="l00324"></a><a class="code" href="interface_t_t_highlight_border_style.html">00324</a> @interface <a class="code" href="interface_t_t_highlight_border_style.html">TTHighlightBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00325"></a><a class="code" href="interface_t_t_highlight_border_style.html#aafdef3bf4f9d380f815518a171151a9b">00325</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color;
+<a name="l00326"></a><a class="code" href="interface_t_t_highlight_border_style.html#a00300ca974a71b03d70b37a5d14cd3dd">00326</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _highlightColor;
+<a name="l00327"></a><a class="code" href="interface_t_t_highlight_border_style.html#a2f1003bccde3534ed1c79fde0f637409">00327</a>   CGFloat _width;
+<a name="l00328"></a>00328 }
+<a name="l00329"></a>00329 
+<a name="l00330"></a><a class="code" href="interface_t_t_highlight_border_style.html#a2ddce1e7357cb4c596efa28dc9953757">00330</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color;
+<a name="l00331"></a><a class="code" href="interface_t_t_highlight_border_style.html#a009fb333272d833cfe62457b148db69c">00331</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* highlightColor;
+<a name="l00332"></a><a class="code" href="interface_t_t_highlight_border_style.html#a7717eca3b27959a630a084931e986f2d">00332</a> @property(nonatomic) CGFloat width;
 <a name="l00333"></a>00333 
-<a name="l00334"></a>00334 @end
-<a name="l00335"></a>00335 
-<a name="l00337"></a>00337 
-<a name="l00338"></a><a class="code" href="interface_t_t_four_border_style.html">00338</a> @interface <a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00339"></a><a class="code" href="interface_t_t_four_border_style.html#ae9808ece45a8a2420c2a0e50b2047b66">00339</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _top;
-<a name="l00340"></a><a class="code" href="interface_t_t_four_border_style.html#ad2f1bb9133a8db614e52589ba7de30ec">00340</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _right;
-<a name="l00341"></a><a class="code" href="interface_t_t_four_border_style.html#aa53aed63269402bd77ca123de3fbb7d9">00341</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _bottom;
-<a name="l00342"></a><a class="code" href="interface_t_t_four_border_style.html#afaf056b6fbf312898b3426e2354b8879">00342</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _left;
-<a name="l00343"></a><a class="code" href="interface_t_t_four_border_style.html#a85c036e8e4ad095c1744ad141dc84493">00343</a>   CGFloat _width;
-<a name="l00344"></a>00344 }
-<a name="l00345"></a>00345 
-<a name="l00346"></a><a class="code" href="interface_t_t_four_border_style.html#a268f49706dc491da36ebb6500928bebb">00346</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* top;
-<a name="l00347"></a><a class="code" href="interface_t_t_four_border_style.html#a772410f56236e25bebe3aa500a9ab6ce">00347</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* right;
-<a name="l00348"></a><a class="code" href="interface_t_t_four_border_style.html#ac5e9a33e114a6c2f63f65421edbefabd">00348</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* bottom;
-<a name="l00349"></a><a class="code" href="interface_t_t_four_border_style.html#a52eaac9046687218b42f40b40c985680">00349</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* left;
-<a name="l00350"></a><a class="code" href="interface_t_t_four_border_style.html#a916b8f24e33b2efd8dbfe545fdc19379">00350</a> @property(nonatomic) CGFloat width;
-<a name="l00351"></a>00351 
-<a name="l00352"></a>00352 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithTop:(<a class="code" href="class_u_i_color.html">UIColor</a>*)top right:(<a class="code" href="class_u_i_color.html">UIColor</a>*)right bottom:(<a class="code" href="class_u_i_color.html">UIColor</a>*)bottom
-<a name="l00353"></a>00353                       left:(<a class="code" href="class_u_i_color.html">UIColor</a>*)left width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00354"></a>00354 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithTop:(<a class="code" href="class_u_i_color.html">UIColor</a>*)top width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00355"></a>00355 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithRight:(<a class="code" href="class_u_i_color.html">UIColor</a>*)right width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00356"></a>00356 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithBottom:(<a class="code" href="class_u_i_color.html">UIColor</a>*)bottom width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00357"></a>00357 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithLeft:(<a class="code" href="class_u_i_color.html">UIColor</a>*)left width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00358"></a>00358 
-<a name="l00359"></a>00359 @end
-<a name="l00360"></a>00360 
-<a name="l00362"></a>00362 
-<a name="l00363"></a><a class="code" href="interface_t_t_bevel_border_style.html">00363</a> @interface <a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00364"></a><a class="code" href="interface_t_t_bevel_border_style.html#abef511c27170ec9375b90883acd58112">00364</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _highlight;
-<a name="l00365"></a><a class="code" href="interface_t_t_bevel_border_style.html#a05bb9fa6d0b52862a3199a0a12e6423a">00365</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _shadow;
-<a name="l00366"></a><a class="code" href="interface_t_t_bevel_border_style.html#ab6d4019f296458d691b66a0b01d7e080">00366</a>   CGFloat _width;
-<a name="l00367"></a><a class="code" href="interface_t_t_bevel_border_style.html#ada0dd90e0f9d37f4c31db49d6919423a">00367</a>   NSInteger _lightSource;
-<a name="l00368"></a>00368 }
-<a name="l00369"></a>00369 
-<a name="l00370"></a><a class="code" href="interface_t_t_bevel_border_style.html#a1e0abeb97dd1439add4d3167734c6c57">00370</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* highlight;
-<a name="l00371"></a><a class="code" href="interface_t_t_bevel_border_style.html#ad45d779c3f91a206ff267a90e64491f5">00371</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* shadow;
-<a name="l00372"></a><a class="code" href="interface_t_t_bevel_border_style.html#a903ea6add768f34c16587f773f181cbf">00372</a> @property(nonatomic) CGFloat width;
-<a name="l00373"></a><a class="code" href="interface_t_t_bevel_border_style.html#a0e3bfa818db5c3a4455ad933e1ac0f73">00373</a> @property(nonatomic) NSInteger lightSource;
-<a name="l00374"></a>00374 
-<a name="l00375"></a>00375 + (<a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00376"></a>00376 
-<a name="l00377"></a>00377 + (<a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a>*)styleWithHighlight:(<a class="code" href="class_u_i_color.html">UIColor</a>*)highlight shadow:(<a class="code" href="class_u_i_color.html">UIColor</a>*)shadow
-<a name="l00378"></a>00378                        width:(CGFloat)width lightSource:(NSInteger)lightSource next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00334"></a>00334 + (<a class="code" href="interface_t_t_highlight_border_style.html">TTHighlightBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color highlightColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)highlightColor
+<a name="l00335"></a>00335                            width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337 @end
+<a name="l00338"></a>00338 
+<a name="l00340"></a>00340 
+<a name="l00341"></a><a class="code" href="interface_t_t_four_border_style.html">00341</a> @interface <a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00342"></a><a class="code" href="interface_t_t_four_border_style.html#ae9808ece45a8a2420c2a0e50b2047b66">00342</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _top;
+<a name="l00343"></a><a class="code" href="interface_t_t_four_border_style.html#ad2f1bb9133a8db614e52589ba7de30ec">00343</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _right;
+<a name="l00344"></a><a class="code" href="interface_t_t_four_border_style.html#aa53aed63269402bd77ca123de3fbb7d9">00344</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _bottom;
+<a name="l00345"></a><a class="code" href="interface_t_t_four_border_style.html#afaf056b6fbf312898b3426e2354b8879">00345</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _left;
+<a name="l00346"></a><a class="code" href="interface_t_t_four_border_style.html#a85c036e8e4ad095c1744ad141dc84493">00346</a>   CGFloat _width;
+<a name="l00347"></a>00347 }
+<a name="l00348"></a>00348 
+<a name="l00349"></a><a class="code" href="interface_t_t_four_border_style.html#a268f49706dc491da36ebb6500928bebb">00349</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* top;
+<a name="l00350"></a><a class="code" href="interface_t_t_four_border_style.html#a772410f56236e25bebe3aa500a9ab6ce">00350</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* right;
+<a name="l00351"></a><a class="code" href="interface_t_t_four_border_style.html#ac5e9a33e114a6c2f63f65421edbefabd">00351</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* bottom;
+<a name="l00352"></a><a class="code" href="interface_t_t_four_border_style.html#a52eaac9046687218b42f40b40c985680">00352</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* left;
+<a name="l00353"></a><a class="code" href="interface_t_t_four_border_style.html#a916b8f24e33b2efd8dbfe545fdc19379">00353</a> @property(nonatomic) CGFloat width;
+<a name="l00354"></a>00354 
+<a name="l00355"></a>00355 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithTop:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)top right:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)right bottom:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)bottom
+<a name="l00356"></a>00356                       left:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)left width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00357"></a>00357 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithTop:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)top width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00358"></a>00358 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithRight:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)right width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00359"></a>00359 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithBottom:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)bottom width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00360"></a>00360 + (<a class="code" href="interface_t_t_four_border_style.html">TTFourBorderStyle</a>*)styleWithLeft:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)left width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362 @end
+<a name="l00363"></a>00363 
+<a name="l00365"></a>00365 
+<a name="l00366"></a><a class="code" href="interface_t_t_bevel_border_style.html">00366</a> @interface <a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00367"></a><a class="code" href="interface_t_t_bevel_border_style.html#abef511c27170ec9375b90883acd58112">00367</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _highlight;
+<a name="l00368"></a><a class="code" href="interface_t_t_bevel_border_style.html#a05bb9fa6d0b52862a3199a0a12e6423a">00368</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _shadow;
+<a name="l00369"></a><a class="code" href="interface_t_t_bevel_border_style.html#ab6d4019f296458d691b66a0b01d7e080">00369</a>   CGFloat _width;
+<a name="l00370"></a><a class="code" href="interface_t_t_bevel_border_style.html#ada0dd90e0f9d37f4c31db49d6919423a">00370</a>   NSInteger _lightSource;
+<a name="l00371"></a>00371 }
+<a name="l00372"></a>00372 
+<a name="l00373"></a><a class="code" href="interface_t_t_bevel_border_style.html#a1e0abeb97dd1439add4d3167734c6c57">00373</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* highlight;
+<a name="l00374"></a><a class="code" href="interface_t_t_bevel_border_style.html#ad45d779c3f91a206ff267a90e64491f5">00374</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* shadow;
+<a name="l00375"></a><a class="code" href="interface_t_t_bevel_border_style.html#a903ea6add768f34c16587f773f181cbf">00375</a> @property(nonatomic) CGFloat width;
+<a name="l00376"></a><a class="code" href="interface_t_t_bevel_border_style.html#a0e3bfa818db5c3a4455ad933e1ac0f73">00376</a> @property(nonatomic) NSInteger lightSource;
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378 + (<a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a>*)styleWithColor:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
 <a name="l00379"></a>00379 
-<a name="l00380"></a>00380 @end
-<a name="l00381"></a>00381 
-<a name="l00383"></a>00383 
-<a name="l00384"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html">00384</a> @interface <a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
-<a name="l00385"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a4a52988334db36da76b16b344b2b9a79">00385</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color1;
-<a name="l00386"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a031e0509ece8814cae63ea5fa1adde72">00386</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* _color2;
-<a name="l00387"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a53d6b9e88822018ecb9bf8afbafd6a14">00387</a>   CGFloat _location1;
-<a name="l00388"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#aca4786c6bc5adccae911f551811bd39a">00388</a>   CGFloat _location2;
-<a name="l00389"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a829d8c2d8b423a417ae07c83e995622a">00389</a>   CGFloat _width;
-<a name="l00390"></a>00390 }
-<a name="l00391"></a>00391 
-<a name="l00392"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a6a8523ff622d29870c02bd8c002ba077">00392</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color1;
-<a name="l00393"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a75b1bc1ae8db3d7629078fe4f140c511">00393</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* color2;
-<a name="l00394"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#abf1c33a6c9254127738632b371d3dcaa">00394</a> @property(nonatomic) CGFloat location1;
-<a name="l00395"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a5d79dcdaee4e8dcc2175840ee36f9740">00395</a> @property(nonatomic) CGFloat location2;
-<a name="l00396"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#ac5ed9ace4bd0c8b70934a85e089f069c">00396</a> @property(nonatomic) CGFloat width;
-<a name="l00397"></a>00397 
-<a name="l00398"></a>00398 + (<a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color1 color2:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color2
-<a name="l00399"></a>00399                                 width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00400"></a>00400 + (<a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color1 location1:(CGFloat)location1
-<a name="l00401"></a>00401                                 color2:(<a class="code" href="class_u_i_color.html">UIColor</a>*)color2 location2:(CGFloat)location2
+<a name="l00380"></a>00380 + (<a class="code" href="interface_t_t_bevel_border_style.html">TTBevelBorderStyle</a>*)styleWithHighlight:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)highlight shadow:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)shadow
+<a name="l00381"></a>00381                        width:(CGFloat)width lightSource:(NSInteger)lightSource next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
+<a name="l00382"></a>00382 
+<a name="l00383"></a>00383 @end
+<a name="l00384"></a>00384 
+<a name="l00386"></a>00386 
+<a name="l00387"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html">00387</a> @interface <a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a> : <a class="code" href="interface_t_t_style.html">TTStyle</a> {
+<a name="l00388"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a4a52988334db36da76b16b344b2b9a79">00388</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color1;
+<a name="l00389"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a031e0509ece8814cae63ea5fa1adde72">00389</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* _color2;
+<a name="l00390"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a53d6b9e88822018ecb9bf8afbafd6a14">00390</a>   CGFloat _location1;
+<a name="l00391"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#aca4786c6bc5adccae911f551811bd39a">00391</a>   CGFloat _location2;
+<a name="l00392"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a829d8c2d8b423a417ae07c83e995622a">00392</a>   CGFloat _width;
+<a name="l00393"></a>00393 }
+<a name="l00394"></a>00394 
+<a name="l00395"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a6a8523ff622d29870c02bd8c002ba077">00395</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color1;
+<a name="l00396"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a75b1bc1ae8db3d7629078fe4f140c511">00396</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* color2;
+<a name="l00397"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#abf1c33a6c9254127738632b371d3dcaa">00397</a> @property(nonatomic) CGFloat location1;
+<a name="l00398"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#a5d79dcdaee4e8dcc2175840ee36f9740">00398</a> @property(nonatomic) CGFloat location2;
+<a name="l00399"></a><a class="code" href="interface_t_t_linear_gradient_border_style.html#ac5ed9ace4bd0c8b70934a85e089f069c">00399</a> @property(nonatomic) CGFloat width;
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401 + (<a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color1 color2:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color2
 <a name="l00402"></a>00402                                 width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
-<a name="l00403"></a>00403 
-<a name="l00404"></a>00404 @end
-<a name="l00405"></a>00405 
+<a name="l00403"></a>00403 + (<a class="code" href="interface_t_t_linear_gradient_border_style.html">TTLinearGradientBorderStyle</a>*)styleWithColor1:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color1 location1:(CGFloat)location1
+<a name="l00404"></a>00404                                 color2:(<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)color2 location2:(CGFloat)location2
+<a name="l00405"></a>00405                                 width:(CGFloat)width next:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)next;
 <a name="l00406"></a>00406 
+<a name="l00407"></a>00407 @end
 <a name="l00408"></a>00408 
-<a name="l00409"></a><a class="code" href="protocol_t_t_style_delegate-p.html">00409</a> @protocol TTStyleDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
-<a name="l00410"></a>00410 
-<a name="l00411"></a>00411 @optional
-<a name="l00412"></a>00412 
-<a name="l00413"></a>00413 - (<a class="code" href="class_n_s_string.html">NSString</a>*)textForLayerWithStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
-<a name="l00414"></a>00414 
-<a name="l00415"></a>00415 - (<a class="code" href="class_u_i_image.html">UIImage</a>*)imageForLayerWithStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
-<a name="l00416"></a>00416 
-<a name="l00417"></a>00417 - (<span class="keywordtype">void</span>)drawLayer:(TTStyleContext*)context withStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
-<a name="l00418"></a>00418 
-<a name="l00419"></a>00419 @end
+<a name="l00409"></a>00409 
+<a name="l00411"></a>00411 
+<a name="l00412"></a><a class="code" href="protocol_t_t_style_delegate-p.html">00412</a> @protocol TTStyleDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414 @optional
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)textForLayerWithStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418 - (<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)imageForLayerWithStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
+<a name="l00419"></a>00419 
+<a name="l00420"></a>00420 - (<span class="keywordtype">void</span>)drawLayer:(TTStyleContext*)context withStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style;
+<a name="l00421"></a>00421 
+<a name="l00422"></a>00422 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

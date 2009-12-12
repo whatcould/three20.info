@@ -74,46 +74,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>;
-<a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html">00021</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00022"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ad91e5e3b2bcf872feae4288ca7313de0">00022</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#ad91e5e3b2bcf872feae4288ca7313de0">_loaders</a>;
-<a name="l00023"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#acdc9ccddd17d80fc8b877b756542ba22">00023</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#acdc9ccddd17d80fc8b877b756542ba22">_loaderQueue</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a75c408cdcce9da6163c432e89da32a14">00024</a>   NSTimer* <a class="code" href="interface_t_t_u_r_l_request_queue.html#a75c408cdcce9da6163c432e89da32a14">_loaderQueueTimer</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ae269d597ee56506e2e9b9627bbc2de8a">00025</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_request_queue.html#ae269d597ee56506e2e9b9627bbc2de8a">_totalLoading</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a865457dc1a713db91a7c5e4c005fbcee">00026</a>   NSUInteger <a class="code" href="interface_t_t_u_r_l_request_queue.html#a865457dc1a713db91a7c5e4c005fbcee">_maxContentLength</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a9af3e54a3b617838ff3034ff2963d6fd">00027</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#a9af3e54a3b617838ff3034ff2963d6fd">_userAgent</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#aec6d45fdf0a908da5d19a7fbf33240c1">00028</a>   CGFloat <a class="code" href="interface_t_t_u_r_l_request_queue.html#aec6d45fdf0a908da5d19a7fbf33240c1">_imageCompressionQuality</a>;
-<a name="l00029"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a8bb0463a6e6d0a44e1a3140fb08ac0ef">00029</a>   BOOL <a class="code" href="interface_t_t_u_r_l_request_queue.html#a8bb0463a6e6d0a44e1a3140fb08ac0ef">_suspended</a>;
-<a name="l00030"></a>00030 }
-<a name="l00031"></a>00031 
-<a name="l00039"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a8addd08d2cef4fa320cf0930b4c8c591">00039</a> @property(nonatomic) BOOL suspended;
-<a name="l00040"></a>00040 
-<a name="l00048"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ac12fd4da800c6c86a1c9c8cf22a5906f">00048</a> @property(nonatomic) NSUInteger maxContentLength;
-<a name="l00049"></a>00049 
-<a name="l00053"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#af57cab87b15e0b1c7fa7b6b90e6aa3aa">00053</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* userAgent;
-<a name="l00054"></a>00054 
-<a name="l00058"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#aa6818e451230a069a53bcb2026d14fa0">00058</a> @property(nonatomic) CGFloat imageCompressionQuality;
-<a name="l00059"></a>00059 
-<a name="l00063"></a>00063 + (<a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a>*)mainQueue;
-<a name="l00064"></a>00064 
-<a name="l00068"></a>00068 + (<span class="keywordtype">void</span>)setMainQueue:(<a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a>*)queue;
-<a name="l00069"></a>00069 
-<a name="l00075"></a>00075 - (BOOL)sendRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
-<a name="l00076"></a>00076 
-<a name="l00082"></a>00082 - (BOOL)sendSynchronousRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
-<a name="l00083"></a>00083 
-<a name="l00087"></a>00087 - (<span class="keywordtype">void</span>)cancelRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
-<a name="l00088"></a>00088 
-<a name="l00095"></a>00095 - (<span class="keywordtype">void</span>)cancelRequestsWithDelegate:(<span class="keywordtype">id</span>)delegate;
-<a name="l00096"></a>00096 
-<a name="l00100"></a>00100 - (<span class="keywordtype">void</span>)cancelAllRequests;
-<a name="l00101"></a>00101 
-<a name="l00105"></a>00105 - (NSURLRequest*)createNSURLRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request URL:(NSURL*)URL;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00023"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ad91e5e3b2bcf872feae4288ca7313de0">00023</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#ad91e5e3b2bcf872feae4288ca7313de0">_loaders</a>;
+<a name="l00024"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#acdc9ccddd17d80fc8b877b756542ba22">00024</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#acdc9ccddd17d80fc8b877b756542ba22">_loaderQueue</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a75c408cdcce9da6163c432e89da32a14">00025</a>   NSTimer* <a class="code" href="interface_t_t_u_r_l_request_queue.html#a75c408cdcce9da6163c432e89da32a14">_loaderQueueTimer</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ae269d597ee56506e2e9b9627bbc2de8a">00026</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_request_queue.html#ae269d597ee56506e2e9b9627bbc2de8a">_totalLoading</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a865457dc1a713db91a7c5e4c005fbcee">00027</a>   NSUInteger <a class="code" href="interface_t_t_u_r_l_request_queue.html#a865457dc1a713db91a7c5e4c005fbcee">_maxContentLength</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a9af3e54a3b617838ff3034ff2963d6fd">00028</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_request_queue.html#a9af3e54a3b617838ff3034ff2963d6fd">_userAgent</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#aec6d45fdf0a908da5d19a7fbf33240c1">00029</a>   CGFloat <a class="code" href="interface_t_t_u_r_l_request_queue.html#aec6d45fdf0a908da5d19a7fbf33240c1">_imageCompressionQuality</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a8bb0463a6e6d0a44e1a3140fb08ac0ef">00030</a>   BOOL <a class="code" href="interface_t_t_u_r_l_request_queue.html#a8bb0463a6e6d0a44e1a3140fb08ac0ef">_suspended</a>;
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00040"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#a8addd08d2cef4fa320cf0930b4c8c591">00040</a> @property(nonatomic) BOOL suspended;
+<a name="l00041"></a>00041 
+<a name="l00049"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#ac12fd4da800c6c86a1c9c8cf22a5906f">00049</a> @property(nonatomic) NSUInteger maxContentLength;
+<a name="l00050"></a>00050 
+<a name="l00054"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#af57cab87b15e0b1c7fa7b6b90e6aa3aa">00054</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* userAgent;
+<a name="l00055"></a>00055 
+<a name="l00059"></a><a class="code" href="interface_t_t_u_r_l_request_queue.html#aa6818e451230a069a53bcb2026d14fa0">00059</a> @property(nonatomic) CGFloat imageCompressionQuality;
+<a name="l00060"></a>00060 
+<a name="l00064"></a>00064 + (<a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a>*)mainQueue;
+<a name="l00065"></a>00065 
+<a name="l00069"></a>00069 + (<span class="keywordtype">void</span>)setMainQueue:(<a class="code" href="interface_t_t_u_r_l_request_queue.html">TTURLRequestQueue</a>*)queue;
+<a name="l00070"></a>00070 
+<a name="l00076"></a>00076 - (BOOL)sendRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
+<a name="l00077"></a>00077 
+<a name="l00083"></a>00083 - (BOOL)sendSynchronousRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
+<a name="l00084"></a>00084 
+<a name="l00088"></a>00088 - (<span class="keywordtype">void</span>)cancelRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request;
+<a name="l00089"></a>00089 
+<a name="l00096"></a>00096 - (<span class="keywordtype">void</span>)cancelRequestsWithDelegate:(<span class="keywordtype">id</span>)delegate;
+<a name="l00097"></a>00097 
+<a name="l00101"></a>00101 - (<span class="keywordtype">void</span>)cancelAllRequests;
+<a name="l00102"></a>00102 
+<a name="l00106"></a>00106 - (NSURLRequest*)createNSURLRequest:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request URL:(NSURL*)URL;
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

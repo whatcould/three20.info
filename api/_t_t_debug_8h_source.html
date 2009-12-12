@@ -145,89 +145,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00085"></a>00085 <span class="comment">// TTDASSERT(statement) - Jumps into the debugger if statement evaluates to false</span>
 <a name="l00086"></a>00086 <span class="comment">//                        Use Cmd-Y in Xcode to ensure gdb is attached.</span>
 <a name="l00087"></a>00087 <span class="comment">//</span>
-<a name="l00088"></a>00088 <span class="comment">// And the logging functions:</span>
-<a name="l00089"></a>00089 <span class="comment">// TTDERROR(text, ...)</span>
-<a name="l00090"></a>00090 <span class="comment">// TTDWARNING(text, ...)</span>
-<a name="l00091"></a>00091 <span class="comment">// TTDINFO(text, ...)</span>
-<a name="l00092"></a>00092 <span class="comment">// TTDCONDITIONLOG(condition, text, ...)</span>
-<a name="l00093"></a>00093 <span class="comment">// TTDPRINT(text, ...) - Generic logging function, similar to deprecated TTLOG</span>
-<a name="l00094"></a>00094 <span class="comment">//</span>
-<a name="l00095"></a>00095 <span class="comment">// Output format example:</span>
-<a name="l00096"></a>00096 <span class="comment">// &quot;/path/to/file(line_number): &lt;message&gt;&quot;</span>
-<a name="l00097"></a>00097 <span class="comment">//</span>
-<a name="l00098"></a>00098 <span class="comment">// ^               ^</span>
-<a name="l00099"></a>00099 <span class="comment">// | Informational |</span>
-<a name="l00100"></a>00100 <span class="comment">// |               |</span>
-<a name="l00101"></a>00101 <span class="comment">// |- - Warning - -| &lt;- The default max log level. Only logs with a level</span>
-<a name="l00102"></a>00102 <span class="comment">// |               |    below this line will be displayed.</span>
-<a name="l00103"></a>00103 <span class="comment">// |     Error     |</span>
-<a name="l00104"></a>00104 <span class="comment">// |               |</span>
-<a name="l00105"></a>00105 <span class="comment">// -----------------</span>
-<a name="l00106"></a>00106 
-<a name="l00107"></a><a class="code" href="_t_t_debug_8h.html#a1d7681ae7b0f65bdaff7cdfea4846441">00107</a> <span class="preprocessor">#define TTLOGLEVEL_INFO     5</span>
-<a name="l00108"></a><a class="code" href="_t_t_debug_8h.html#a88a581f033f1c8b08060e2fe16722305">00108</a> <span class="preprocessor"></span><span class="preprocessor">#define TTLOGLEVEL_WARNING  3</span>
-<a name="l00109"></a><a class="code" href="_t_t_debug_8h.html#a7b7d91e1a17f3a828264d920092e4cb8">00109</a> <span class="preprocessor"></span><span class="preprocessor">#define TTLOGLEVEL_ERROR    1</span>
-<a name="l00110"></a>00110 <span class="preprocessor"></span>
-<a name="l00111"></a>00111 <span class="preprocessor">#ifndef TTMAXLOGLEVEL</span>
-<a name="l00112"></a><a class="code" href="_t_t_debug_8h.html#a9cd535cd3913b918fa74b35312dd2551">00112</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTMAXLOGLEVEL TTLOGLEVEL_WARNING</span>
-<a name="l00113"></a>00113 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00114"></a>00114 <span class="preprocessor"></span>
-<a name="l00115"></a>00115 <span class="comment">// The general purpose logger. This ignores logging levels.</span>
-<a name="l00116"></a>00116 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00117"></a><a class="code" href="_t_t_debug_8h.html#aa21e0a4c7ddde431e5611cd901dfb1e6">00117</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDPRINT(xx, ...)  NSLog(</span><span class="stringliteral">@&quot;%s(%d): &quot;</span> xx, __FILE__, __LINE__, ##__VA_ARGS__)
-<a name="l00118"></a>00118 <span class="preprocessor">#else</span>
-<a name="l00119"></a>00119 <span class="preprocessor"></span><span class="preprocessor">  #define TTDPRINT(xx, ...)  ((void)0)</span>
-<a name="l00120"></a>00120 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00121"></a>00121 <span class="preprocessor"></span>
-<a name="l00122"></a>00122 <span class="comment">// Prints the current method&apos;s name.</span>
-<a name="l00123"></a><a class="code" href="_t_t_debug_8h.html#a81627cbea8a0b885db183539d5c8802f">00123</a> <span class="preprocessor">#define TTDPRINTMETHODNAME() TTDPRINT(</span><span class="stringliteral">@&quot;%@&quot;</span>, NSStringFromSelector(_cmd))
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125 <span class="comment">// Debug-only assertions.</span>
-<a name="l00126"></a>00126 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00127"></a>00127 <span class="preprocessor"></span>
-<a name="l00128"></a>00128 <span class="preprocessor">#include &quot;TargetConditionals.h&quot;</span>
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130 <span class="preprocessor">#if TARGET_IPHONE_SIMULATOR</span>
-<a name="l00131"></a>00131 <span class="preprocessor"></span>
-<a name="l00132"></a>00132   <span class="keywordtype">int</span> TTIsInDebugger();
-<a name="l00133"></a>00133   <span class="comment">// We leave the __asm__ in this macro so that when a break occurs, we don&apos;t have to step out of</span>
-<a name="l00134"></a>00134   <span class="comment">// a &quot;breakInDebugger&quot; function.</span>
-<a name="l00135"></a>00135 <span class="preprocessor">  #define TTDASSERT(xx) { if(!(xx)) { TTDPRINT(</span><span class="stringliteral">@&quot;TTDASSERT failed: %s&quot;</span>, #xx); \
-<a name="l00136"></a>00136                                       if(TTIsInDebugger()) { __asm__(&quot;int $3\n&quot; : : ); }; } }
-<a name="l00137"></a>00137 <span class="preprocessor">#else</span>
-<a name="l00138"></a><a class="code" href="_t_t_debug_8h.html#a3d245aeb7a513462a0eea20eea4223c8">00138</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDASSERT(xx) { if(!(xx)) { TTDPRINT(</span><span class="stringliteral">@&quot;TTDASSERT failed: %s&quot;</span>, #xx); } }
-<a name="l00139"></a>00139 <span class="preprocessor">#endif</span>
-<a name="l00140"></a>00140 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00141"></a>00141 <span class="preprocessor"></span><span class="preprocessor">  #define TTDASSERT(xx) ((void)0)</span>
-<a name="l00142"></a>00142 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00143"></a>00143 <span class="preprocessor"></span>
-<a name="l00144"></a>00144 <span class="comment">// Log-level based logging macros.</span>
-<a name="l00145"></a>00145 <span class="preprocessor">#if TTLOGLEVEL_ERROR &lt;= TTMAXLOGLEVEL</span>
-<a name="l00146"></a><a class="code" href="_t_t_debug_8h.html#ac8f2b7f6e4844e4aefe5e022a2249831">00146</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDERROR(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
-<a name="l00147"></a>00147 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00148"></a>00148 <span class="preprocessor"></span><span class="preprocessor">  #define TTDERROR(xx, ...)  ((void)0)</span>
-<a name="l00149"></a>00149 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00150"></a>00150 <span class="preprocessor"></span>
-<a name="l00151"></a>00151 <span class="preprocessor">#if TTLOGLEVEL_WARNING &lt;= TTMAXLOGLEVEL</span>
-<a name="l00152"></a><a class="code" href="_t_t_debug_8h.html#a1b72e621a362396a0f7c3e15ff2c101d">00152</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDWARNING(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
-<a name="l00153"></a>00153 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00154"></a>00154 <span class="preprocessor"></span><span class="preprocessor">  #define TTDWARNING(xx, ...)  ((void)0)</span>
-<a name="l00155"></a>00155 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00156"></a>00156 <span class="preprocessor"></span>
-<a name="l00157"></a>00157 <span class="preprocessor">#if TTLOGLEVEL_INFO &lt;= TTMAXLOGLEVEL</span>
-<a name="l00158"></a>00158 <span class="preprocessor"></span><span class="preprocessor">  #define TTDINFO(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
-<a name="l00159"></a>00159 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00160"></a><a class="code" href="_t_t_debug_8h.html#a96a090844c7e8b6ce6f1611c3ff2d133">00160</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDINFO(xx, ...)  ((void)0)</span>
-<a name="l00161"></a>00161 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00162"></a>00162 <span class="preprocessor"></span>
-<a name="l00163"></a>00163 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00164"></a><a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">00164</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDCONDITIONLOG(condition, xx, ...) { if ((condition)) { \</span>
-<a name="l00165"></a>00165 <span class="preprocessor">                                                  TTDPRINT(xx, ##__VA_ARGS__); \</span>
-<a name="l00166"></a>00166 <span class="preprocessor">                                                } \</span>
-<a name="l00167"></a>00167 <span class="preprocessor">                                              } ((void)0)</span>
-<a name="l00168"></a>00168 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-<a name="l00169"></a>00169 <span class="preprocessor"></span><span class="preprocessor">  #define TTDCONDITIONLOG(condition, xx, ...) ((void)0)</span>
-<a name="l00170"></a>00170 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00088"></a>00088 <span class="comment">// TTDPRINTMETHODNAME() - Logs the current method name.</span>
+<a name="l00089"></a>00089 <span class="comment">//</span>
+<a name="l00090"></a>00090 <span class="comment">// And the logging macros:</span>
+<a name="l00091"></a>00091 <span class="comment">// TTDERROR(text, ...)</span>
+<a name="l00092"></a>00092 <span class="comment">// TTDWARNING(text, ...)</span>
+<a name="l00093"></a>00093 <span class="comment">// TTDINFO(text, ...)</span>
+<a name="l00094"></a>00094 <span class="comment">// TTDCONDITIONLOG(condition, text, ...)</span>
+<a name="l00095"></a>00095 <span class="comment">// TTDPRINT(text, ...) - Generic logging function, similar to deprecated TTLOG</span>
+<a name="l00096"></a>00096 <span class="comment">//</span>
+<a name="l00097"></a>00097 <span class="comment">// Output format example:</span>
+<a name="l00098"></a>00098 <span class="comment">// &quot;/path/to/file(line_number): &lt;message&gt;&quot;</span>
+<a name="l00099"></a>00099 <span class="comment">//</span>
+<a name="l00100"></a>00100 <span class="comment">// ^               ^</span>
+<a name="l00101"></a>00101 <span class="comment">// | Informational |</span>
+<a name="l00102"></a>00102 <span class="comment">// |               |</span>
+<a name="l00103"></a>00103 <span class="comment">// |- - Warning - -| &lt;- The default max log level. Only logs with a level</span>
+<a name="l00104"></a>00104 <span class="comment">// |               |    below this line will be displayed.</span>
+<a name="l00105"></a>00105 <span class="comment">// |     Error     |</span>
+<a name="l00106"></a>00106 <span class="comment">// |               |</span>
+<a name="l00107"></a>00107 <span class="comment">// -----------------</span>
+<a name="l00108"></a>00108 
+<a name="l00109"></a><a class="code" href="_t_t_debug_8h.html#a1d7681ae7b0f65bdaff7cdfea4846441">00109</a> <span class="preprocessor">#define TTLOGLEVEL_INFO     5</span>
+<a name="l00110"></a><a class="code" href="_t_t_debug_8h.html#a88a581f033f1c8b08060e2fe16722305">00110</a> <span class="preprocessor"></span><span class="preprocessor">#define TTLOGLEVEL_WARNING  3</span>
+<a name="l00111"></a><a class="code" href="_t_t_debug_8h.html#a7b7d91e1a17f3a828264d920092e4cb8">00111</a> <span class="preprocessor"></span><span class="preprocessor">#define TTLOGLEVEL_ERROR    1</span>
+<a name="l00112"></a>00112 <span class="preprocessor"></span>
+<a name="l00113"></a>00113 <span class="preprocessor">#ifndef TTMAXLOGLEVEL</span>
+<a name="l00114"></a><a class="code" href="_t_t_debug_8h.html#a9cd535cd3913b918fa74b35312dd2551">00114</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTMAXLOGLEVEL TTLOGLEVEL_WARNING</span>
+<a name="l00115"></a>00115 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00116"></a>00116 <span class="preprocessor"></span>
+<a name="l00117"></a>00117 <span class="comment">// The general purpose logger. This ignores logging levels.</span>
+<a name="l00118"></a>00118 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00119"></a><a class="code" href="_t_t_debug_8h.html#aa21e0a4c7ddde431e5611cd901dfb1e6">00119</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDPRINT(xx, ...)  NSLog(</span><span class="stringliteral">@&quot;%s(%d): &quot;</span> xx, __FILE__, __LINE__, ##__VA_ARGS__)
+<a name="l00120"></a>00120 <span class="preprocessor">#else</span>
+<a name="l00121"></a>00121 <span class="preprocessor"></span><span class="preprocessor">  #define TTDPRINT(xx, ...)  ((void)0)</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00123"></a>00123 <span class="preprocessor"></span>
+<a name="l00124"></a>00124 <span class="comment">// Prints the current method&apos;s name.</span>
+<a name="l00125"></a><a class="code" href="_t_t_debug_8h.html#a81627cbea8a0b885db183539d5c8802f">00125</a> <span class="preprocessor">#define TTDPRINTMETHODNAME() TTDPRINT(</span><span class="stringliteral">@&quot;%@&quot;</span>, NSStringFromSelector(_cmd))
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="comment">// Debug-only assertions.</span>
+<a name="l00128"></a>00128 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00129"></a>00129 <span class="preprocessor"></span>
+<a name="l00130"></a>00130 <span class="preprocessor">#import &quot;TargetConditionals.h&quot;</span>
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="preprocessor">#if TARGET_IPHONE_SIMULATOR</span>
+<a name="l00133"></a>00133 <span class="preprocessor"></span>
+<a name="l00134"></a>00134   <span class="keywordtype">int</span> TTIsInDebugger();
+<a name="l00135"></a>00135   <span class="comment">// We leave the __asm__ in this macro so that when a break occurs, we don&apos;t have to step out of</span>
+<a name="l00136"></a>00136   <span class="comment">// a &quot;breakInDebugger&quot; function.</span>
+<a name="l00137"></a>00137 <span class="preprocessor">  #define TTDASSERT(xx) { if(!(xx)) { TTDPRINT(</span><span class="stringliteral">@&quot;TTDASSERT failed: %s&quot;</span>, #xx); \
+<a name="l00138"></a>00138                                       if(TTIsInDebugger()) { __asm__(&quot;int $3\n&quot; : : ); }; } }
+<a name="l00139"></a>00139 <span class="preprocessor">#else</span>
+<a name="l00140"></a><a class="code" href="_t_t_debug_8h.html#a3d245aeb7a513462a0eea20eea4223c8">00140</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDASSERT(xx) { if(!(xx)) { TTDPRINT(</span><span class="stringliteral">@&quot;TTDASSERT failed: %s&quot;</span>, #xx); } }
+<a name="l00141"></a>00141 <span class="preprocessor">#endif</span>
+<a name="l00142"></a>00142 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00143"></a>00143 <span class="preprocessor"></span><span class="preprocessor">  #define TTDASSERT(xx) ((void)0)</span>
+<a name="l00144"></a>00144 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00145"></a>00145 <span class="preprocessor"></span>
+<a name="l00146"></a>00146 <span class="comment">// Log-level based logging macros.</span>
+<a name="l00147"></a>00147 <span class="preprocessor">#if TTLOGLEVEL_ERROR &lt;= TTMAXLOGLEVEL</span>
+<a name="l00148"></a><a class="code" href="_t_t_debug_8h.html#ac8f2b7f6e4844e4aefe5e022a2249831">00148</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDERROR(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
+<a name="l00149"></a>00149 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00150"></a>00150 <span class="preprocessor"></span><span class="preprocessor">  #define TTDERROR(xx, ...)  ((void)0)</span>
+<a name="l00151"></a>00151 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00152"></a>00152 <span class="preprocessor"></span>
+<a name="l00153"></a>00153 <span class="preprocessor">#if TTLOGLEVEL_WARNING &lt;= TTMAXLOGLEVEL</span>
+<a name="l00154"></a><a class="code" href="_t_t_debug_8h.html#a1b72e621a362396a0f7c3e15ff2c101d">00154</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDWARNING(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
+<a name="l00155"></a>00155 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00156"></a>00156 <span class="preprocessor"></span><span class="preprocessor">  #define TTDWARNING(xx, ...)  ((void)0)</span>
+<a name="l00157"></a>00157 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00158"></a>00158 <span class="preprocessor"></span>
+<a name="l00159"></a>00159 <span class="preprocessor">#if TTLOGLEVEL_INFO &lt;= TTMAXLOGLEVEL</span>
+<a name="l00160"></a>00160 <span class="preprocessor"></span><span class="preprocessor">  #define TTDINFO(xx, ...)  TTDPRINT(xx, ##__VA_ARGS__)</span>
+<a name="l00161"></a>00161 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00162"></a><a class="code" href="_t_t_debug_8h.html#a96a090844c7e8b6ce6f1611c3ff2d133">00162</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDINFO(xx, ...)  ((void)0)</span>
+<a name="l00163"></a>00163 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00164"></a>00164 <span class="preprocessor"></span>
+<a name="l00165"></a>00165 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00166"></a><a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">00166</a> <span class="preprocessor"></span><span class="preprocessor">  #define TTDCONDITIONLOG(condition, xx, ...) { if ((condition)) { \</span>
+<a name="l00167"></a>00167 <span class="preprocessor">                                                  TTDPRINT(xx, ##__VA_ARGS__); \</span>
+<a name="l00168"></a>00168 <span class="preprocessor">                                                } \</span>
+<a name="l00169"></a>00169 <span class="preprocessor">                                              } ((void)0)</span>
+<a name="l00170"></a>00170 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00171"></a>00171 <span class="preprocessor"></span><span class="preprocessor">  #define TTDCONDITIONLOG(condition, xx, ...) ((void)0)</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -85,27 +85,32 @@ Inheritance diagram for TTActionSheetController:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(id)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#a57a02f9f813b40b6764753b90b1a40b5">initWithTitle:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create an action sheet controller without a delegate.  <a href="#a57a02f9f813b40b6764753b90b1a40b5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(id)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#a814432f4f61eb9e263a5e2e52a766746">initWithTitle:delegate:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The designated initializer.  <a href="#a814432f4f61eb9e263a5e2e52a766746"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSInteger)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#af88338f3dc908316077e041284844106">addButtonWithTitle:URL:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append a button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL.  <a href="#af88338f3dc908316077e041284844106"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSInteger)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#a65ecf81666d00a22a83623ccd220eac1">addCancelButtonWithTitle:URL:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a cancel button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL.  <a href="#a65ecf81666d00a22a83623ccd220eac1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(NSInteger)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#ab2fd635d3bca0cbaebc8f33f7bdcd35b">addDestructiveButtonWithTitle:URL:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a destructive button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL.  <a href="#ab2fd635d3bca0cbaebc8f33f7bdcd35b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_n_s_string.html">NSString</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_action_sheet_controller.html#a939d96815750720d26afe825bf2e8b52">buttonURLAtIndex:</a></td></tr>
-<tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">id<br class="typebreak"/>
-&lt; <a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html">TTActionSheetControllerDelegate</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#aa8457d02f1ff7e18ed62a0380ede69b2">_delegate</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">id&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#ac69b5b543773bd9aeab3e8ee7f20c594">_userInfo</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_s_mutable_array.html">NSMutableArray</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#a615179d71f1aedd61875996c8042a8ee">_URLs</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieve the button URL at the given index.  <a href="#a939d96815750720d26afe825bf2e8b52"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Properties</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">id<br class="typebreak"/>
 &lt; <a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html">TTActionSheetControllerDelegate</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#ae67a7944cc3916ff956766d0ee166fd5">delegate</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">UIActionSheet *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#ab999e95e273f9318914a5455ff2ecf8e">actionSheet</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">id&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#adfef083842698af7c6fde00b9c17eb62">userInfo</a></td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">id<br class="typebreak"/>
+&lt; <a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html">TTActionSheetControllerDelegate</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#aa8457d02f1ff7e18ed62a0380ede69b2">_delegate</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">id&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#ac69b5b543773bd9aeab3e8ee7f20c594">_userInfo</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_s_mutable_array.html">NSMutableArray</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_action_sheet_controller.html#a615179d71f1aedd61875996c8042a8ee">_URLs</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A view controller that displays an action sheet. </p>
-<p>This class exists in order to allow action sheets to be displayed by <a class="el" href="interface_t_t_navigator.html">TTNavigator</a>, and gain all the benefits of persistence and URL dispatch. </p>
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00027">27</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
+<p>This class exists in order to allow action sheets to be displayed by <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a>, and gain all the benefits of persistence and URL dispatch.</p>
+<p>By default this controller is not persisted in the navigation history. </p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="af88338f3dc908316077e041284844106"></a><!-- doxytag: member="TTActionSheetController::addButtonWithTitle:URL:" ref="af88338f3dc908316077e041284844106" args="(NSString *title,[URL] NSString *URL)" -->
 <div class="memitem">
@@ -132,7 +137,15 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00181">181</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>Append a button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>The title of the new button. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> url. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The index of the new button. Button indices start at 0 and increase in the order they are added. </dd></dl>
 
 </div>
 </div>
@@ -161,7 +174,16 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00190">190</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>Create a cancel button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL. </p>
+<p>There can be only one cancel button.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>The title of the cancel button. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> url. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The index of the cancel button. Button indices start at 0 and increase in the order they are added. </dd></dl>
 
 </div>
 </div>
@@ -190,7 +212,16 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00195">195</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>Create a destructive button with the given title and <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> URL. </p>
+<p>There can be only one destructive button.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>The title of the cancel button. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> url. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The index of the destructive button. Button indices start at 0 and increase in the order they are added. </dd></dl>
 
 </div>
 </div>
@@ -210,7 +241,14 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00200">200</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>Retrieve the button URL at the given index. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>index</em>&nbsp;</td><td>The index of the button in question </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>nil if index is out of range. Otherwise returns the button's URL at index. </dd></dl>
 
 </div>
 </div>
@@ -230,7 +268,13 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00077">77</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>Create an action sheet controller without a delegate. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>The title of the action sheet. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -259,7 +303,14 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8m_source.html#l00064">64</a> of file <a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a>.</p>
+<p>The designated initializer. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>The title of the action sheet. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>delegate</em>&nbsp;</td><td>A delegate that implements the <a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html" title="Inherits the UIActionSheetDelegate protocol and adds TTNavigator support.">TTActionSheetControllerDelegate</a> protocol. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -269,13 +320,11 @@ Inheritance diagram for TTActionSheetController:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id&lt;<a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html">TTActionSheetControllerDelegate</a>&gt;) <a class="el" href="interface_t_t_action_sheet_controller.html#aa8457d02f1ff7e18ed62a0380ede69b2">_delegate</a><code> [protected]</code></td>
+          <td class="memname">- (id&lt;<a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html">TTActionSheetControllerDelegate</a>&gt;) <a class="el" href="interface_t_t_action_sheet_controller.html#aa8457d02f1ff7e18ed62a0380ede69b2">_delegate</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00028">28</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
 
 </div>
 </div>
@@ -284,13 +333,11 @@ Inheritance diagram for TTActionSheetController:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (<a class="el" href="class_n_s_mutable_array.html">NSMutableArray</a>*) <a class="el" href="interface_t_t_action_sheet_controller.html#a615179d71f1aedd61875996c8042a8ee">_URLs</a><code> [protected]</code></td>
+          <td class="memname">- (<a class="el" href="class_n_s_mutable_array.html">NSMutableArray</a>*) <a class="el" href="interface_t_t_action_sheet_controller.html#a615179d71f1aedd61875996c8042a8ee">_URLs</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00030">30</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
 
 </div>
 </div>
@@ -299,13 +346,11 @@ Inheritance diagram for TTActionSheetController:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (id) <a class="el" href="interface_t_t_action_sheet_controller.html#ac69b5b543773bd9aeab3e8ee7f20c594">_userInfo</a><code> [protected]</code></td>
+          <td class="memname">- (id) <a class="el" href="interface_t_t_action_sheet_controller.html#ac69b5b543773bd9aeab3e8ee7f20c594">_userInfo</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00029">29</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
 
 </div>
 </div>
@@ -321,8 +366,6 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00034">34</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae67a7944cc3916ff956766d0ee166fd5"></a><!-- doxytag: member="TTActionSheetController::delegate" ref="ae67a7944cc3916ff956766d0ee166fd5" args="" -->
@@ -335,8 +378,6 @@ Inheritance diagram for TTActionSheetController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00033">33</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
 
 </div>
 </div>
@@ -351,13 +392,11 @@ Inheritance diagram for TTActionSheetController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00035">35</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Three20/<a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a></li>
-<li><a class="el" href="_t_t_action_sheet_controller_8m_source.html">TTActionSheetController.m</a></li>
+<li><a class="el" href="_t_t_action_sheet_controller_8m.html">TTActionSheetController.m</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->

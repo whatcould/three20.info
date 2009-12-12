@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,155 +76,159 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_search_display_controller_8h.html">Three20/TTSearchDisplayController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_controller_8h.html">Three20/TTTableViewController.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_data_source_8h.html">Three20/TTTableViewDataSource.h</a>&quot;</span>
-<a name="l00020"></a>00020 
-<a name="l00022"></a>00022 <span class="comment">// global</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="_t_t_search_display_controller_8m.html#a01238bca09099b33c17e6ff2802b24de">00024</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_search_display_controller_8m.html#a01238bca09099b33c17e6ff2802b24de">kPauseInterval</a> = 0.4;
-<a name="l00025"></a>00025 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_controller_8h.html">Three20/TTTableViewController.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_data_source_8h.html">Three20/TTTableViewDataSource.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00026"></a>00026 <span class="comment">// global</span>
 <a name="l00027"></a>00027 
-<a name="l00028"></a>00028 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a>
+<a name="l00028"></a><a class="code" href="_t_t_search_display_controller_8m.html#a01238bca09099b33c17e6ff2802b24de">00028</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_search_display_controller_8m.html#a01238bca09099b33c17e6ff2802b24de">kPauseInterval</a> = 0.4;
 <a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">searchResultsViewController</a> = <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>,
-<a name="l00031"></a>00031             <a class="code" href="interface_t_t_search_display_controller.html#a722b3575b9b7685076b7f5829a0fc256">pausesBeforeSearching</a> = <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>;
-<a name="l00032"></a>00032 
-<a name="l00034"></a>00034 <span class="comment">// private</span>
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 - (void)resetResults {
-<a name="l00037"></a>00037   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoading) {
-<a name="l00038"></a>00038     [_searchResultsViewController.model cancel];
-<a name="l00039"></a>00039   }
-<a name="l00040"></a>00040   [_searchResultsViewController.dataSource search:nil];
-<a name="l00041"></a>00041   [_searchResultsViewController viewWillDisappear:NO];
-<a name="l00042"></a>00042   [_searchResultsViewController viewDidDisappear:NO];
-<a name="l00043"></a>00043   <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = nil;
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 - (void)restartPauseTimer {
-<a name="l00047"></a>00047   <a class="code" href="_t_t_global_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>);
-<a name="l00048"></a>00048   <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = [NSTimer scheduledTimerWithTimeInterval:kPauseInterval target:self
-<a name="l00049"></a>00049                          selector:@selector(searchAfterPause) userInfo:nil repeats:NO];
-<a name="l00050"></a>00050 }
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 - (void)searchAfterPause {
-<a name="l00053"></a>00053   <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = nil;
-<a name="l00054"></a>00054   [_searchResultsViewController.dataSource search:self.searchBar.text];
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058 <span class="comment">// NSObject</span>
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (id)initWithSearchBar:(UISearchBar*)searchBar contentsController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
-<a name="l00061"></a>00061   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithSearchBar:searchBar contentsController:controller]) {
-<a name="l00062"></a>00062     <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> = nil;
-<a name="l00063"></a>00063     <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> = nil;
-<a name="l00064"></a>00064     <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = nil;
-<a name="l00065"></a>00065     <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a> = NO;
-<a name="l00066"></a>00066     
-<a name="l00067"></a>00067     <span class="keyword">self</span>.delegate = <span class="keyword">self</span>;
-<a name="l00068"></a>00068   }
-<a name="l00069"></a>00069   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 - (void)dealloc {
-<a name="l00073"></a>00073   <a class="code" href="_t_t_global_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>);
-<a name="l00074"></a>00074   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a>);
-<a name="l00075"></a>00075   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>);
-<a name="l00076"></a>00076   [<span class="keyword">super</span> dealloc];
-<a name="l00077"></a>00077 }
-<a name="l00078"></a>00078 
-<a name="l00080"></a>00080 <span class="comment">// UISearchDisplayDelegate</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController*)controller {
-<a name="l00083"></a>00083   <span class="keyword">self</span>.searchContentsController.navigationItem.rightBarButtonItem.enabled = NO;
-<a name="l00084"></a>00084   <a class="code" href="class_u_i_view.html">UIView</a>* backgroundView = [<span class="keyword">self</span>.searchBar viewWithTag:TT_SEARCH_BAR_BACKGROUND_TAG];
-<a name="l00085"></a>00085   <span class="keywordflow">if</span> (backgroundView) {
-<a name="l00086"></a>00086     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00087"></a>00087     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
-<a name="l00088"></a>00088     backgroundView.alpha = 0;
-<a name="l00089"></a>00089     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00090"></a>00090   }
-<a name="l00091"></a>00091 <span class="comment">//  if (!self.searchContentsController.navigationController) {</span>
-<a name="l00092"></a>00092 <span class="comment">//    [UIView beginAnimations:nil context:nil];</span>
-<a name="l00093"></a>00093 <span class="comment">//    self.searchBar.superview.top -= self.searchBar.screenY - TTStatusHeight();</span>
-<a name="l00094"></a>00094 <span class="comment">//    [UIView commitAnimations];</span>
-<a name="l00095"></a>00095 <span class="comment">//  }</span>
-<a name="l00096"></a>00096 }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController*)controller {
-<a name="l00099"></a>00099   [_searchResultsViewController updateView];
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">searchResultsViewController</a> = <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>,
+<a name="l00035"></a>00035             <a class="code" href="interface_t_t_search_display_controller.html#a722b3575b9b7685076b7f5829a0fc256">pausesBeforeSearching</a> = <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>;
+<a name="l00036"></a>00036 
+<a name="l00038"></a>00038 <span class="comment">// private</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="interface_t_t_search_display_controller.html#a7ff7583d6cac1d57e778e95f97832eeb">00040</a> - (void)<a class="code" href="interface_t_t_search_display_controller.html#a7ff7583d6cac1d57e778e95f97832eeb">resetResults</a> {
+<a name="l00041"></a>00041   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoading) {
+<a name="l00042"></a>00042     [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.model cancel];
+<a name="l00043"></a>00043   }
+<a name="l00044"></a>00044   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.dataSource search:nil];
+<a name="l00045"></a>00045   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> <a class="code" href="interface_t_t_table_view_controller.html#a3df7f769aabaa83c9865809419790544">viewWillDisappear</a>:NO];
+<a name="l00046"></a>00046   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> viewDidDisappear:NO];
+<a name="l00047"></a>00047   <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = nil;
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="interface_t_t_search_display_controller.html#a1ab60dbd2f502ce8fefccb15388bb985">00050</a> - (void)<a class="code" href="interface_t_t_search_display_controller.html#a1ab60dbd2f502ce8fefccb15388bb985">restartPauseTimer</a> {
+<a name="l00051"></a>00051   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>);
+<a name="l00052"></a>00052   <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = [NSTimer scheduledTimerWithTimeInterval:kPauseInterval target:self
+<a name="l00053"></a>00053                          selector:@selector(searchAfterPause) userInfo:nil repeats:NO];
+<a name="l00054"></a>00054 }
+<a name="l00055"></a>00055 
+<a name="l00056"></a><a class="code" href="interface_t_t_search_display_controller.html#a104908ea17885993df7f62b340264250">00056</a> - (void)<a class="code" href="interface_t_t_search_display_controller.html#a104908ea17885993df7f62b340264250">searchAfterPause</a> {
+<a name="l00057"></a>00057   <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = nil;
+<a name="l00058"></a>00058   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.dataSource search:self.searchBar.text];
+<a name="l00059"></a>00059 }
+<a name="l00060"></a>00060 
+<a name="l00062"></a>00062 <span class="comment">// NSObject</span>
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="interface_t_t_search_display_controller.html#a4995053866a43d12d87a20090189bf24">00064</a> - (id)initWithSearchBar:(UISearchBar*)searchBar contentsController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
+<a name="l00065"></a>00065   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithSearchBar:searchBar contentsController:controller]) {
+<a name="l00066"></a>00066     <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> = nil;
+<a name="l00067"></a>00067     <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> = nil;
+<a name="l00068"></a>00068     <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a> = nil;
+<a name="l00069"></a>00069     <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a> = NO;
+<a name="l00070"></a>00070     
+<a name="l00071"></a>00071     <span class="keyword">self</span>.delegate = <span class="keyword">self</span>;
+<a name="l00072"></a>00072   }
+<a name="l00073"></a>00073   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="interface_t_t_search_display_controller.html#aa5db050853bea9777efd6d4e5d6d8d1d">00076</a> - (void)<a class="code" href="interface_t_t_search_display_controller.html#aa5db050853bea9777efd6d4e5d6d8d1d">dealloc</a> {
+<a name="l00077"></a>00077   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>);
+<a name="l00078"></a>00078   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a>);
+<a name="l00079"></a>00079   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>);
+<a name="l00080"></a>00080   [<span class="keyword">super</span> dealloc];
+<a name="l00081"></a>00081 }
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084 <span class="comment">// UISearchDisplayDelegate</span>
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="interface_t_t_search_display_controller.html#ac5d3eb2ea43604c753d986aa28d75135">00086</a> - (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController*)controller {
+<a name="l00087"></a>00087   <span class="keyword">self</span>.searchContentsController.navigationItem.rightBarButtonItem.enabled = NO;
+<a name="l00088"></a>00088   <a class="code" href="class_u_i_view.html">UIView</a>* backgroundView = [<span class="keyword">self</span>.searchBar viewWithTag:TT_SEARCH_BAR_BACKGROUND_TAG];
+<a name="l00089"></a>00089   <span class="keywordflow">if</span> (backgroundView) {
+<a name="l00090"></a>00090     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00091"></a>00091     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
+<a name="l00092"></a>00092     backgroundView.alpha = 0;
+<a name="l00093"></a>00093     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00094"></a>00094   }
+<a name="l00095"></a>00095 <span class="comment">//  if (!self.searchContentsController.navigationController) {</span>
+<a name="l00096"></a>00096 <span class="comment">//    [UIView beginAnimations:nil context:nil];</span>
+<a name="l00097"></a>00097 <span class="comment">//    self.searchBar.superview.top -= self.searchBar.screenY - TTStatusHeight();</span>
+<a name="l00098"></a>00098 <span class="comment">//    [UIView commitAnimations];</span>
+<a name="l00099"></a>00099 <span class="comment">//  }</span>
 <a name="l00100"></a>00100 }
 <a name="l00101"></a>00101 
-<a name="l00102"></a>00102 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller {
-<a name="l00103"></a>00103   <span class="keyword">self</span>.searchContentsController.navigationItem.rightBarButtonItem.enabled = YES;
-<a name="l00104"></a>00104   
-<a name="l00105"></a>00105   <a class="code" href="class_u_i_view.html">UIView</a>* backgroundView = [<span class="keyword">self</span>.searchBar viewWithTag:TT_SEARCH_BAR_BACKGROUND_TAG];
-<a name="l00106"></a>00106   <span class="keywordflow">if</span> (backgroundView) {
-<a name="l00107"></a>00107     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00108"></a>00108     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
-<a name="l00109"></a>00109     backgroundView.alpha = 1;
-<a name="l00110"></a>00110     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00111"></a>00111   }
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 <span class="comment">//  if (!self.searchContentsController.navigationController) {</span>
-<a name="l00114"></a>00114 <span class="comment">//    [UIView beginAnimations:nil context:nil];</span>
-<a name="l00115"></a>00115 <span class="comment">//    self.searchBar.superview.top += self.searchBar.top - TTStatusHeight();</span>
-<a name="l00116"></a>00116 <span class="comment">//    [UIView commitAnimations];</span>
-<a name="l00117"></a>00117 <span class="comment">//  }</span>
-<a name="l00118"></a>00118 }
-<a name="l00119"></a>00119  
-<a name="l00120"></a>00120 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController*)controller {
-<a name="l00121"></a>00121   [<span class="keyword">self</span> resetResults];
+<a name="l00102"></a><a class="code" href="interface_t_t_search_display_controller.html#a2e9747a223ea11bbb94cd17645bcc286">00102</a> - (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController*)controller {
+<a name="l00103"></a>00103   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> <a class="code" href="interface_t_t_model_view_controller.html#a81ef717e98e2876ff9cab2969dcf28f1" title="Immediately creates, loads, and displays the model (if it was not already).">updateView</a>];
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a><a class="code" href="interface_t_t_search_display_controller.html#a01f2066de47dfefbbcee10339fef0157">00106</a> - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController*)controller {
+<a name="l00107"></a>00107   <span class="keyword">self</span>.searchContentsController.navigationItem.rightBarButtonItem.enabled = YES;
+<a name="l00108"></a>00108   
+<a name="l00109"></a>00109   <a class="code" href="class_u_i_view.html">UIView</a>* backgroundView = [<span class="keyword">self</span>.searchBar viewWithTag:TT_SEARCH_BAR_BACKGROUND_TAG];
+<a name="l00110"></a>00110   <span class="keywordflow">if</span> (backgroundView) {
+<a name="l00111"></a>00111     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00112"></a>00112     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
+<a name="l00113"></a>00113     backgroundView.alpha = 1;
+<a name="l00114"></a>00114     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00115"></a>00115   }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 <span class="comment">//  if (!self.searchContentsController.navigationController) {</span>
+<a name="l00118"></a>00118 <span class="comment">//    [UIView beginAnimations:nil context:nil];</span>
+<a name="l00119"></a>00119 <span class="comment">//    self.searchBar.superview.top += self.searchBar.top - TTStatusHeight();</span>
+<a name="l00120"></a>00120 <span class="comment">//    [UIView commitAnimations];</span>
+<a name="l00121"></a>00121 <span class="comment">//  }</span>
 <a name="l00122"></a>00122 }
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124 - (void)searchDisplayController:(UISearchDisplayController *)controller
-<a name="l00125"></a>00125         didLoadSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a> *)tableView {
+<a name="l00123"></a>00123  
+<a name="l00124"></a><a class="code" href="interface_t_t_search_display_controller.html#aee45bc197751950cae7b7d667ec37ac7">00124</a> - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController*)controller {
+<a name="l00125"></a>00125   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_display_controller.html#a7ff7583d6cac1d57e778e95f97832eeb">resetResults</a>];
 <a name="l00126"></a>00126 }
-<a name="l00127"></a>00127  
-<a name="l00128"></a>00128 - (void)searchDisplayController:(UISearchDisplayController *)controller
-<a name="l00129"></a>00129         willUnloadSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a> *)tableView {
+<a name="l00127"></a>00127 
+<a name="l00128"></a><a class="code" href="interface_t_t_search_display_controller.html#a24f610bacc22bff3aa143e719fbc6689">00128</a> - (void)searchDisplayController:(UISearchDisplayController *)controller
+<a name="l00129"></a>00129         didLoadSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a> *)tableView {
 <a name="l00130"></a>00130 }
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 - (void)searchDisplayController:(UISearchDisplayController *)controller
-<a name="l00133"></a>00133         didShowSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a> *)tableView {
-<a name="l00134"></a>00134   <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = tableView;
-<a name="l00135"></a>00135   [_searchResultsViewController viewWillAppear:NO];
-<a name="l00136"></a>00136   [_searchResultsViewController viewDidAppear:NO];
-<a name="l00137"></a>00137 }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139 - (void)searchDisplayController:(UISearchDisplayController*)controller
-<a name="l00140"></a>00140         willHideSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView {
-<a name="l00141"></a>00141   [<span class="keyword">self</span> resetResults];
-<a name="l00142"></a>00142 }
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 - (BOOL)searchDisplayController:(UISearchDisplayController*)controller
-<a name="l00145"></a>00145         shouldReloadTableForSearchString:(<a class="code" href="class_n_s_string.html">NSString</a>*)searchString {
-<a name="l00146"></a>00146   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>) {
-<a name="l00147"></a>00147     [<span class="keyword">self</span> restartPauseTimer];
-<a name="l00148"></a>00148   } <span class="keywordflow">else</span> {
-<a name="l00149"></a>00149     [_searchResultsViewController.dataSource search:searchString];
-<a name="l00150"></a>00150   }
-<a name="l00151"></a>00151   <span class="keywordflow">return</span> NO;
-<a name="l00152"></a>00152 }
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154 - (BOOL)searchDisplayController:(UISearchDisplayController*)controller
-<a name="l00155"></a>00155         shouldReloadTableForSearchScope:(NSInteger)searchOption {
-<a name="l00156"></a>00156   [_searchResultsViewController invalidateModel];
-<a name="l00157"></a>00157   [_searchResultsViewController.dataSource search:self.searchBar.text];
-<a name="l00158"></a>00158   <span class="keywordflow">return</span> NO;
-<a name="l00159"></a>00159 }
-<a name="l00160"></a>00160 
-<a name="l00162"></a>00162 <span class="comment">// public</span>
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164 - (void)setSearchResultsDelegate:(<span class="keywordtype">id</span>&lt;UITableViewDelegate&gt;)searchResultsDelegate {
-<a name="l00165"></a>00165   [<span class="keyword">super</span> setSearchResultsDelegate:searchResultsDelegate];
-<a name="l00166"></a>00166   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> != searchResultsDelegate) {
-<a name="l00167"></a>00167     [_searchResultsDelegate2 release];
-<a name="l00168"></a>00168     <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> = [searchResultsDelegate retain];
-<a name="l00169"></a>00169   }
-<a name="l00170"></a>00170 }
-<a name="l00171"></a>00171 
-<a name="l00172"></a>00172 <span class="keyword">@end</span>
+<a name="l00131"></a>00131  
+<a name="l00132"></a><a class="code" href="interface_t_t_search_display_controller.html#a2550bfb11dbc1c6fa3ae9a0b0b1c6452">00132</a> - (void)searchDisplayController:(UISearchDisplayController *)controller
+<a name="l00133"></a>00133         willUnloadSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a> *)tableView {
+<a name="l00134"></a>00134 }
+<a name="l00135"></a>00135 
+<a name="l00136"></a><a class="code" href="interface_t_t_search_display_controller.html#ad5f773422f4b037e060767bd8b8dc63a">00136</a> - (void)searchDisplayController:(UISearchDisplayController *)controller
+<a name="l00137"></a>00137         didShowSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a> *)tableView {
+<a name="l00138"></a>00138   <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = tableView;
+<a name="l00139"></a>00139   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> <a class="code" href="interface_t_t_table_view_controller.html#a41602d4daca5353c3bc594ab9aab408a">viewWillAppear</a>:NO];
+<a name="l00140"></a>00140   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> <a class="code" href="interface_t_t_view_controller.html#af022b2819d71470e52ae008d66c006ae">viewDidAppear</a>:NO];
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="interface_t_t_search_display_controller.html#a1886465b90f130d31c6447086b8b8906">00143</a> - (void)searchDisplayController:(UISearchDisplayController*)controller
+<a name="l00144"></a>00144         willHideSearchResultsTableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView {
+<a name="l00145"></a>00145   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_display_controller.html#a7ff7583d6cac1d57e778e95f97832eeb">resetResults</a>];
+<a name="l00146"></a>00146 }
+<a name="l00147"></a>00147 
+<a name="l00148"></a><a class="code" href="interface_t_t_search_display_controller.html#a1cd5549e8033fbe774993ef0c50a1948">00148</a> - (BOOL)searchDisplayController:(UISearchDisplayController*)controller
+<a name="l00149"></a>00149         shouldReloadTableForSearchString:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)searchString {
+<a name="l00150"></a>00150   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>) {
+<a name="l00151"></a>00151     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_display_controller.html#a1ab60dbd2f502ce8fefccb15388bb985">restartPauseTimer</a>];
+<a name="l00152"></a>00152   } <span class="keywordflow">else</span> {
+<a name="l00153"></a>00153     [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.dataSource search:searchString];
+<a name="l00154"></a>00154   }
+<a name="l00155"></a>00155   <span class="keywordflow">return</span> NO;
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a><a class="code" href="interface_t_t_search_display_controller.html#af397479c3cf56ca9b4570e7bf0f8b321">00158</a> - (BOOL)searchDisplayController:(UISearchDisplayController*)controller
+<a name="l00159"></a>00159         shouldReloadTableForSearchScope:(NSInteger)searchOption {
+<a name="l00160"></a>00160   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a> <a class="code" href="interface_t_t_model_view_controller.html#afe989215479fe730579aa2836f477850" title="Releases the current model and forces the creation of a new model.">invalidateModel</a>];
+<a name="l00161"></a>00161   [<a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>.dataSource search:self.searchBar.text];
+<a name="l00162"></a>00162   <span class="keywordflow">return</span> NO;
+<a name="l00163"></a>00163 }
+<a name="l00164"></a>00164 
+<a name="l00166"></a>00166 <span class="comment">// public</span>
+<a name="l00167"></a>00167 
+<a name="l00168"></a><a class="code" href="interface_t_t_search_display_controller.html#a8efdd1dcb18bed562d69b22c967418ed">00168</a> - (void)setSearchResultsDelegate:(<span class="keywordtype">id</span>&lt;UITableViewDelegate&gt;)searchResultsDelegate {
+<a name="l00169"></a>00169   [<span class="keyword">super</span> setSearchResultsDelegate:searchResultsDelegate];
+<a name="l00170"></a>00170   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> != searchResultsDelegate) {
+<a name="l00171"></a>00171     [<a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> release];
+<a name="l00172"></a>00172     <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a> = [searchResultsDelegate retain];
+<a name="l00173"></a>00173   }
+<a name="l00174"></a>00174 }
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -74,53 +74,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_data_source_8h.html">Three20/TTTableViewDataSource.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@protocol </span><a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>;
-<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>, <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>;
-<a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="interface_t_t_search_text_field.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a> : UITextField &lt;UITableViewDelegate&gt; {
-<a name="l00023"></a><a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">00023</a>   id&lt;TTTableViewDataSource&gt; <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">00024</a>   <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>* <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">00025</a>   <a class="code" href="class_u_i_table_view.html">UITableView</a>* <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">00026</a>   TTView* <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">00027</a>   UIButton* <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">00028</a>   UINavigationItem* <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>;
-<a name="l00029"></a><a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">00029</a>   UIBarButtonItem* <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>;
-<a name="l00030"></a><a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">00030</a>   NSTimer* <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a>;
-<a name="l00031"></a><a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">00031</a>   CGFloat <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
-<a name="l00032"></a><a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">00032</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>;
-<a name="l00033"></a><a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">00033</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>;
-<a name="l00034"></a><a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">00034</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>;
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a><a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">00037</a> @property(nonatomic,retain) id&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt; dataSource;
-<a name="l00038"></a><a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">00038</a> @property(nonatomic,readonly) <a class="code" href="class_u_i_table_view.html">UITableView</a>* tableView;
-<a name="l00039"></a><a class="code" href="interface_t_t_search_text_field.html#a13e277fa11fb5a5cd8479afa342ad023">00039</a> @property(nonatomic) CGFloat rowHeight;
-<a name="l00040"></a><a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">00040</a> @property(nonatomic,readonly) BOOL hasText;
-<a name="l00041"></a><a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">00041</a> @property(nonatomic) BOOL searchesAutomatically;
-<a name="l00042"></a><a class="code" href="interface_t_t_search_text_field.html#a48e966bc731278fb5bbd7421b6e6af7b">00042</a> @property(nonatomic) BOOL showsDoneButton;
-<a name="l00043"></a><a class="code" href="interface_t_t_search_text_field.html#a5c4170956b6e2c4eda5e4f136c48e383">00043</a> @property(nonatomic) BOOL showsDarkScreen;
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 - (<span class="keywordtype">void</span>)search;
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 - (<span class="keywordtype">void</span>)showSearchResults:(BOOL)show;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 - (<a class="code" href="class_u_i_view.html">UIView</a>*)superviewForSearchResults;
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 - (CGRect)rectForSearchResults:(BOOL)withKeyboard;
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 - (BOOL)shouldUpdate:(BOOL)emptyText;
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 @end
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058 
-<a name="l00059"></a><a class="code" href="protocol_t_t_search_text_field_delegate-p.html">00059</a> @protocol TTSearchTextFieldDelegate &lt;UITextFieldDelegate&gt;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 - (<span class="keywordtype">void</span>)textField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField didSelectObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 @end
-<a name="l00064"></a>00064 
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@protocol </span><a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>;
+<a name="l00021"></a>00021 <span class="keyword">@class</span> <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>, <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="interface_t_t_search_text_field.html">00023</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a> : UITextField &lt;UITableViewDelegate&gt; {
+<a name="l00024"></a><a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">00024</a>   id&lt;TTTableViewDataSource&gt; <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">00025</a>   <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>* <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">00026</a>   <a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>* <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">00027</a>   TTView* <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">00028</a>   UIButton* <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">00029</a>   UINavigationItem* <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">00030</a>   UIBarButtonItem* <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>;
+<a name="l00031"></a><a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">00031</a>   NSTimer* <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a>;
+<a name="l00032"></a><a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">00032</a>   CGFloat <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
+<a name="l00033"></a><a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">00033</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>;
+<a name="l00034"></a><a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">00034</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>;
+<a name="l00035"></a><a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">00035</a>   BOOL <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>;
+<a name="l00036"></a>00036 }
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">00038</a> @property(nonatomic,retain) id&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt; dataSource;
+<a name="l00039"></a><a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">00039</a> @property(nonatomic,readonly) <a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>* tableView;
+<a name="l00040"></a><a class="code" href="interface_t_t_search_text_field.html#a13e277fa11fb5a5cd8479afa342ad023">00040</a> @property(nonatomic) CGFloat rowHeight;
+<a name="l00041"></a><a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">00041</a> @property(nonatomic,readonly) BOOL hasText;
+<a name="l00042"></a><a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">00042</a> @property(nonatomic) BOOL searchesAutomatically;
+<a name="l00043"></a><a class="code" href="interface_t_t_search_text_field.html#a48e966bc731278fb5bbd7421b6e6af7b">00043</a> @property(nonatomic) BOOL showsDoneButton;
+<a name="l00044"></a><a class="code" href="interface_t_t_search_text_field.html#a5c4170956b6e2c4eda5e4f136c48e383">00044</a> @property(nonatomic) BOOL showsDarkScreen;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 - (<span class="keywordtype">void</span>)search;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 - (<span class="keywordtype">void</span>)showSearchResults:(BOOL)show;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 - (<a class="code" href="class_u_i_view.html">UIView</a>*)superviewForSearchResults;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 - (CGRect)rectForSearchResults:(BOOL)withKeyboard;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 - (BOOL)shouldUpdate:(BOOL)emptyText;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 @end
+<a name="l00057"></a>00057 
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="protocol_t_t_search_text_field_delegate-p.html">00060</a> @protocol TTSearchTextFieldDelegate &lt;UITextFieldDelegate&gt;
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 - (<span class="keywordtype">void</span>)textField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField didSelectObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 @end
+<a name="l00065"></a>00065 
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

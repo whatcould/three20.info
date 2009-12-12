@@ -74,132 +74,133 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="interface_t_t_styled_node.html">00019</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00020"></a><a class="code" href="interface_t_t_styled_node.html#a95c7cec520b0051e81dbce41df616c43">00020</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_node.html#a95c7cec520b0051e81dbce41df616c43">_nextSibling</a>;
-<a name="l00021"></a><a class="code" href="interface_t_t_styled_node.html#a1860f1867bbb63227bf18a39bc0fcd8e">00021</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_node.html#a1860f1867bbb63227bf18a39bc0fcd8e">_parentNode</a>;
-<a name="l00022"></a>00022 }
-<a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">00024</a> @property(nonatomic, retain) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* nextSibling;
-<a name="l00025"></a><a class="code" href="interface_t_t_styled_node.html#a6a880851326a4579f38311c99c3f3f0a">00025</a> @property(nonatomic, assign) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* parentNode;
-<a name="l00026"></a><a class="code" href="interface_t_t_styled_node.html#af7777700f339138c866175a1eb42a9f7">00026</a> @property(nonatomic, readonly) <a class="code" href="class_n_s_string.html">NSString</a>* outerText;
-<a name="l00027"></a><a class="code" href="interface_t_t_styled_node.html#a3040f85cfa00ef660106d344c9fc3803">00027</a> @property(nonatomic, readonly) <a class="code" href="class_n_s_string.html">NSString</a>* outerHTML;
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 - (<span class="keywordtype">id</span>)initWithNextSibling:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 - (<span class="keywordtype">id</span>)ancestorOrSelfWithClass:(Class)cls;
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033 - (<span class="keywordtype">void</span>) performDefaultAction;
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 @end
-<a name="l00036"></a>00036 
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_t_t_styled_text_node.html">00039</a> @interface <a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a> : <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> {
-<a name="l00040"></a><a class="code" href="interface_t_t_styled_text_node.html#a1ebfd8d5ed2028f402129262f7333e70">00040</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _text;
-<a name="l00041"></a>00041 }
-<a name="l00042"></a>00042 
-<a name="l00043"></a><a class="code" href="interface_t_t_styled_text_node.html#acbfb38d71857974d20b15b64d8aeba6a">00043</a> @property(nonatomic, retain) <a class="code" href="class_n_s_string.html">NSString</a>* text;
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
-<a name="l00046"></a>00046 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 @end
-<a name="l00049"></a>00049 
-<a name="l00051"></a>00051 
-<a name="l00052"></a><a class="code" href="interface_t_t_styled_element.html">00052</a> @interface <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> : <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> {
-<a name="l00053"></a><a class="code" href="interface_t_t_styled_element.html#a2715ccbd19bc5e2d0d0e4a8e7f71cb6f">00053</a>   TTStyledNode* _firstChild;
-<a name="l00054"></a><a class="code" href="interface_t_t_styled_element.html#a80f8a177fb7199cc5841a4171d92aaed">00054</a>   TTStyledNode* _lastChild;
-<a name="l00055"></a><a class="code" href="interface_t_t_styled_element.html#a5347eed41119e7b48673db994d8d7451">00055</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _className;
-<a name="l00056"></a>00056 }
-<a name="l00057"></a>00057 
-<a name="l00058"></a><a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">00058</a> @property(nonatomic, readonly) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* firstChild;
-<a name="l00059"></a><a class="code" href="interface_t_t_styled_element.html#ac5a4b5cf697ad28677d535e0acc028f1">00059</a> @property(nonatomic, readonly) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* lastChild;
-<a name="l00060"></a><a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">00060</a> @property(nonatomic, retain) <a class="code" href="class_n_s_string.html">NSString</a>* className;
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
-<a name="l00063"></a>00063 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 - (<span class="keywordtype">void</span>)addChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)child;
-<a name="l00066"></a>00066 - (<span class="keywordtype">void</span>)addText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
-<a name="l00067"></a>00067 - (<span class="keywordtype">void</span>)replaceChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)oldChild withChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)newChild;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)getElementByClassName:(<a class="code" href="class_n_s_string.html">NSString</a>*)className;
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071 @end
-<a name="l00072"></a>00072 
-<a name="l00074"></a>00074 
-<a name="l00075"></a><a class="code" href="interface_t_t_styled_block.html">00075</a> @interface <a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
-<a name="l00076"></a>00076 @end
-<a name="l00077"></a>00077 
-<a name="l00079"></a>00079 
-<a name="l00080"></a><a class="code" href="interface_t_t_styled_inline.html">00080</a> @interface <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
-<a name="l00081"></a>00081 @end
-<a name="l00082"></a>00082 
-<a name="l00084"></a>00084 
-<a name="l00085"></a><a class="code" href="interface_t_t_styled_inline_block.html">00085</a> @interface <a class="code" href="interface_t_t_styled_inline_block.html">TTStyledInlineBlock</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
-<a name="l00086"></a>00086 @end
-<a name="l00087"></a>00087 
-<a name="l00089"></a>00089 
-<a name="l00090"></a><a class="code" href="interface_t_t_styled_bold_node.html">00090</a> @interface <a class="code" href="interface_t_t_styled_bold_node.html">TTStyledBoldNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a>
-<a name="l00091"></a>00091 @end
-<a name="l00092"></a>00092 
-<a name="l00094"></a>00094 
-<a name="l00095"></a><a class="code" href="interface_t_t_styled_italic_node.html">00095</a> @interface <a class="code" href="interface_t_t_styled_italic_node.html">TTStyledItalicNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a>
-<a name="l00096"></a>00096 @end
-<a name="l00097"></a>00097 
-<a name="l00099"></a>00099 
-<a name="l00100"></a><a class="code" href="interface_t_t_styled_link_node.html">00100</a> @interface <a class="code" href="interface_t_t_styled_link_node.html">TTStyledLinkNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a> {
-<a name="l00101"></a><a class="code" href="interface_t_t_styled_link_node.html#a7b5754c8a54dc7af2951074595c52eb9">00101</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _URL;
-<a name="l00102"></a><a class="code" href="interface_t_t_styled_link_node.html#a41d73cccf5159013185b2c4c20b19159">00102</a>   BOOL _highlighted;
-<a name="l00103"></a>00103 }
-<a name="l00104"></a>00104 
-<a name="l00105"></a><a class="code" href="interface_t_t_styled_link_node.html#a44ee22de5ac53ebadc611121efeda311">00105</a> @property(nonatomic) BOOL highlighted;
-<a name="l00106"></a><a class="code" href="interface_t_t_styled_link_node.html#a7373fe25c4b4c13e7706e02850a4b9c6">00106</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a>* URL;
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00109"></a>00109 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00110"></a>00110 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 @end
-<a name="l00113"></a>00113 
-<a name="l00115"></a>00115 
-<a name="l00116"></a><a class="code" href="interface_t_t_styled_button_node.html">00116</a> @interface <a class="code" href="interface_t_t_styled_button_node.html">TTStyledButtonNode</a> : <a class="code" href="interface_t_t_styled_inline_block.html">TTStyledInlineBlock</a> {
-<a name="l00117"></a><a class="code" href="interface_t_t_styled_button_node.html#abfa0f689daddadd77dab74035ce2d29e">00117</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _URL;
-<a name="l00118"></a><a class="code" href="interface_t_t_styled_button_node.html#ac3e65a824e5d0798b8dc4a25ca0254e4">00118</a>   BOOL _highlighted;
-<a name="l00119"></a>00119 }
-<a name="l00120"></a>00120 
-<a name="l00121"></a><a class="code" href="interface_t_t_styled_button_node.html#a5ce1dd7bb4863346aac9b30d6a16c621">00121</a> @property(nonatomic) BOOL highlighted;
-<a name="l00122"></a><a class="code" href="interface_t_t_styled_button_node.html#af8ab592664cf539cd0c870453a1e27c8">00122</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a>* URL;
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00125"></a>00125 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00126"></a>00126 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128 @end
-<a name="l00129"></a>00129 
-<a name="l00131"></a>00131 
-<a name="l00132"></a><a class="code" href="interface_t_t_styled_image_node.html">00132</a> @interface <a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> {
-<a name="l00133"></a><a class="code" href="interface_t_t_styled_image_node.html#a8db1159b2366eb71133501a3291c8c4e">00133</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _URL;
-<a name="l00134"></a><a class="code" href="interface_t_t_styled_image_node.html#a2cb37d7c6167224da31ecb419f18ac3c">00134</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* _image;
-<a name="l00135"></a><a class="code" href="interface_t_t_styled_image_node.html#a77cc0f0f44b415afca25d3c592083b2a">00135</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* _defaultImage;
-<a name="l00136"></a><a class="code" href="interface_t_t_styled_image_node.html#a0ac12468d1464cefb498c742e9ec3d60">00136</a>   CGFloat _width;
-<a name="l00137"></a><a class="code" href="interface_t_t_styled_image_node.html#a472b4d54ece42cfed3d0680a523b70bc">00137</a>   CGFloat _height;
-<a name="l00138"></a>00138 }
-<a name="l00139"></a>00139 
-<a name="l00140"></a><a class="code" href="interface_t_t_styled_image_node.html#a187e1e04c4cb7352def1475dc45512f5">00140</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html">NSString</a>* URL;
-<a name="l00141"></a><a class="code" href="interface_t_t_styled_image_node.html#ad2894c06e5dc82f2c09d380b1ae0b03e">00141</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* image;
-<a name="l00142"></a><a class="code" href="interface_t_t_styled_image_node.html#a647752aceb205551bb23b5a41ddcd26a">00142</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* defaultImage;
-<a name="l00143"></a><a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">00143</a> @property(nonatomic) CGFloat width;
-<a name="l00144"></a><a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">00144</a> @property(nonatomic) CGFloat height;
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00147"></a>00147 
-<a name="l00148"></a>00148 @end
-<a name="l00149"></a>00149 
-<a name="l00151"></a>00151 
-<a name="l00152"></a><a class="code" href="interface_t_t_styled_line_break_node.html">00152</a> @interface <a class="code" href="interface_t_t_styled_line_break_node.html">TTStyledLineBreakNode</a> : <a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a>
-<a name="l00153"></a>00153 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="interface_t_t_styled_node.html">00020</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00021"></a><a class="code" href="interface_t_t_styled_node.html#a95c7cec520b0051e81dbce41df616c43">00021</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_node.html#a95c7cec520b0051e81dbce41df616c43">_nextSibling</a>;
+<a name="l00022"></a><a class="code" href="interface_t_t_styled_node.html#a1860f1867bbb63227bf18a39bc0fcd8e">00022</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_node.html#a1860f1867bbb63227bf18a39bc0fcd8e">_parentNode</a>;
+<a name="l00023"></a>00023 }
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">00025</a> @property(nonatomic, retain) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* nextSibling;
+<a name="l00026"></a><a class="code" href="interface_t_t_styled_node.html#a6a880851326a4579f38311c99c3f3f0a">00026</a> @property(nonatomic, assign) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* parentNode;
+<a name="l00027"></a><a class="code" href="interface_t_t_styled_node.html#af7777700f339138c866175a1eb42a9f7">00027</a> @property(nonatomic, readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* outerText;
+<a name="l00028"></a><a class="code" href="interface_t_t_styled_node.html#a3040f85cfa00ef660106d344c9fc3803">00028</a> @property(nonatomic, readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* outerHTML;
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 - (<span class="keywordtype">id</span>)initWithNextSibling:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 - (<span class="keywordtype">id</span>)ancestorOrSelfWithClass:(Class)cls;
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 - (<span class="keywordtype">void</span>) performDefaultAction;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 @end
+<a name="l00037"></a>00037 
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="interface_t_t_styled_text_node.html">00040</a> @interface <a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a> : <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> {
+<a name="l00041"></a><a class="code" href="interface_t_t_styled_text_node.html#a1ebfd8d5ed2028f402129262f7333e70">00041</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _text;
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00044"></a><a class="code" href="interface_t_t_styled_text_node.html#acbfb38d71857974d20b15b64d8aeba6a">00044</a> @property(nonatomic, retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
+<a name="l00047"></a>00047 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 @end
+<a name="l00050"></a>00050 
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="interface_t_t_styled_element.html">00053</a> @interface <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> : <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a> {
+<a name="l00054"></a><a class="code" href="interface_t_t_styled_element.html#a2715ccbd19bc5e2d0d0e4a8e7f71cb6f">00054</a>   TTStyledNode* _firstChild;
+<a name="l00055"></a><a class="code" href="interface_t_t_styled_element.html#a80f8a177fb7199cc5841a4171d92aaed">00055</a>   TTStyledNode* _lastChild;
+<a name="l00056"></a><a class="code" href="interface_t_t_styled_element.html#a5347eed41119e7b48673db994d8d7451">00056</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _className;
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">00059</a> @property(nonatomic, readonly) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* firstChild;
+<a name="l00060"></a><a class="code" href="interface_t_t_styled_element.html#ac5a4b5cf697ad28677d535e0acc028f1">00060</a> @property(nonatomic, readonly) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* lastChild;
+<a name="l00061"></a><a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">00061</a> @property(nonatomic, retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* className;
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
+<a name="l00064"></a>00064 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 - (<span class="keywordtype">void</span>)addChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)child;
+<a name="l00067"></a>00067 - (<span class="keywordtype">void</span>)addText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
+<a name="l00068"></a>00068 - (<span class="keywordtype">void</span>)replaceChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)oldChild withChild:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)newChild;
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)getElementByClassName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)className;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 @end
+<a name="l00073"></a>00073 
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="interface_t_t_styled_block.html">00076</a> @interface <a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
+<a name="l00077"></a>00077 @end
+<a name="l00078"></a>00078 
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="interface_t_t_styled_inline.html">00081</a> @interface <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
+<a name="l00082"></a>00082 @end
+<a name="l00083"></a>00083 
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="interface_t_t_styled_inline_block.html">00086</a> @interface <a class="code" href="interface_t_t_styled_inline_block.html">TTStyledInlineBlock</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>
+<a name="l00087"></a>00087 @end
+<a name="l00088"></a>00088 
+<a name="l00090"></a>00090 
+<a name="l00091"></a><a class="code" href="interface_t_t_styled_bold_node.html">00091</a> @interface <a class="code" href="interface_t_t_styled_bold_node.html">TTStyledBoldNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a>
+<a name="l00092"></a>00092 @end
+<a name="l00093"></a>00093 
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="interface_t_t_styled_italic_node.html">00096</a> @interface <a class="code" href="interface_t_t_styled_italic_node.html">TTStyledItalicNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a>
+<a name="l00097"></a>00097 @end
+<a name="l00098"></a>00098 
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="interface_t_t_styled_link_node.html">00101</a> @interface <a class="code" href="interface_t_t_styled_link_node.html">TTStyledLinkNode</a> : <a class="code" href="interface_t_t_styled_inline.html">TTStyledInline</a> {
+<a name="l00102"></a><a class="code" href="interface_t_t_styled_link_node.html#a7b5754c8a54dc7af2951074595c52eb9">00102</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _URL;
+<a name="l00103"></a><a class="code" href="interface_t_t_styled_link_node.html#a41d73cccf5159013185b2c4c20b19159">00103</a>   BOOL _highlighted;
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a><a class="code" href="interface_t_t_styled_link_node.html#a44ee22de5ac53ebadc611121efeda311">00106</a> @property(nonatomic) BOOL highlighted;
+<a name="l00107"></a><a class="code" href="interface_t_t_styled_link_node.html#a7373fe25c4b4c13e7706e02850a4b9c6">00107</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00110"></a>00110 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00111"></a>00111 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 @end
+<a name="l00114"></a>00114 
+<a name="l00116"></a>00116 
+<a name="l00117"></a><a class="code" href="interface_t_t_styled_button_node.html">00117</a> @interface <a class="code" href="interface_t_t_styled_button_node.html">TTStyledButtonNode</a> : <a class="code" href="interface_t_t_styled_inline_block.html">TTStyledInlineBlock</a> {
+<a name="l00118"></a><a class="code" href="interface_t_t_styled_button_node.html#abfa0f689daddadd77dab74035ce2d29e">00118</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _URL;
+<a name="l00119"></a><a class="code" href="interface_t_t_styled_button_node.html#ac3e65a824e5d0798b8dc4a25ca0254e4">00119</a>   BOOL _highlighted;
+<a name="l00120"></a>00120 }
+<a name="l00121"></a>00121 
+<a name="l00122"></a><a class="code" href="interface_t_t_styled_button_node.html#a5ce1dd7bb4863346aac9b30d6a16c621">00122</a> @property(nonatomic) BOOL highlighted;
+<a name="l00123"></a><a class="code" href="interface_t_t_styled_button_node.html#af8ab592664cf539cd0c870453a1e27c8">00123</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL;
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00126"></a>00126 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00127"></a>00127 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL next:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)nextSibling;
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 @end
+<a name="l00130"></a>00130 
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="interface_t_t_styled_image_node.html">00133</a> @interface <a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a> : <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> {
+<a name="l00134"></a><a class="code" href="interface_t_t_styled_image_node.html#a8db1159b2366eb71133501a3291c8c4e">00134</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _URL;
+<a name="l00135"></a><a class="code" href="interface_t_t_styled_image_node.html#a2cb37d7c6167224da31ecb419f18ac3c">00135</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _image;
+<a name="l00136"></a><a class="code" href="interface_t_t_styled_image_node.html#a77cc0f0f44b415afca25d3c592083b2a">00136</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* _defaultImage;
+<a name="l00137"></a><a class="code" href="interface_t_t_styled_image_node.html#a0ac12468d1464cefb498c742e9ec3d60">00137</a>   CGFloat _width;
+<a name="l00138"></a><a class="code" href="interface_t_t_styled_image_node.html#a472b4d54ece42cfed3d0680a523b70bc">00138</a>   CGFloat _height;
+<a name="l00139"></a>00139 }
+<a name="l00140"></a>00140 
+<a name="l00141"></a><a class="code" href="interface_t_t_styled_image_node.html#a187e1e04c4cb7352def1475dc45512f5">00141</a> @property(nonatomic,retain) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL;
+<a name="l00142"></a><a class="code" href="interface_t_t_styled_image_node.html#ad2894c06e5dc82f2c09d380b1ae0b03e">00142</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image;
+<a name="l00143"></a><a class="code" href="interface_t_t_styled_image_node.html#a647752aceb205551bb23b5a41ddcd26a">00143</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* defaultImage;
+<a name="l00144"></a><a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">00144</a> @property(nonatomic) CGFloat width;
+<a name="l00145"></a><a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">00145</a> @property(nonatomic) CGFloat height;
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 - (<span class="keywordtype">id</span>)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 @end
+<a name="l00150"></a>00150 
+<a name="l00152"></a>00152 
+<a name="l00153"></a><a class="code" href="interface_t_t_styled_line_break_node.html">00153</a> @interface <a class="code" href="interface_t_t_styled_line_break_node.html">TTStyledLineBreakNode</a> : <a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a>
+<a name="l00154"></a>00154 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

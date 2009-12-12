@@ -159,8 +159,6 @@ Inheritance diagram for TTModelViewController:</div>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A view controller that manages a model in addition to a view. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00023">23</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a96f3ef31d4df7409e44a740ced1d91f4"></a><!-- doxytag: member="TTModelViewController::beginUpdates" ref="a96f3ef31d4df7409e44a740ced1d91f4" args="()" -->
 <div class="memitem">
@@ -179,8 +177,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Begins a multi-stage update. </p>
 <p>You can call this method to make complicated updates more efficient, and to condense multiple changes to your model into a single visual change. Call endUpdate when you are done to update the view with all of your changes. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00356">356</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -202,8 +198,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Tests if it is possible to show the model. </p>
 <p>After a model has loaded, this method is called to test whether or not to set the model has content that can be shown. If you return NO, showEmpty: will be called, and if you return YES, showModel: will be called. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00321">321</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a277731e4a0b2afacef0f50d052f5a6ee"></a><!-- doxytag: member="TTModelViewController::createModel" ref="a277731e4a0b2afacef0f50d052f5a6ee" args="()" -->
@@ -222,8 +216,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Creates the model that the controller manages. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00292">292</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -248,8 +240,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>If you refresh a model which is already loaded, this will be called, but the firstTime argument will be false.</p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00401">401</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="adc98dbd9f50022bef4c3b27a05744fc7"></a><!-- doxytag: member="TTModelViewController::didRefreshModel" ref="adc98dbd9f50022bef4c3b27a05744fc7" args="()" -->
@@ -269,8 +259,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Called when the model is refreshed. </p>
 <p>Subclasses should override this function update parts of the view that may need to changed when there is a new model, or something about the existing model changes. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00395">395</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -293,8 +281,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Called just after a model has been loaded and displayed. </p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00404">404</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a54488637f89a309a5de88123257b73bc"></a><!-- doxytag: member="TTModelViewController::endUpdates" ref="a54488637f89a309a5de88123257b73bc" args="()" -->
@@ -315,8 +301,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Ends a multi-stage model update and updates the view to reflect the model. </p>
 <p>You can call this method to make complicated updates more efficient, and to condense multiple changes to your model into a single visual change. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00360">360</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="afe989215479fe730579aa2836f477850"></a><!-- doxytag: member="TTModelViewController::invalidateModel" ref="afe989215479fe730579aa2836f477850" args="()" -->
@@ -335,8 +319,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Releases the current model and forces the creation of a new model. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00295">295</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -357,8 +339,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Indicates that the model has changed and schedules the view to be updated to reflect it. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00365">365</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aefb8faff3f2ee24d25868d538603bef0"></a><!-- doxytag: member="TTModelViewController::isModelCreated" ref="aefb8faff3f2ee24d25868d538603bef0" args="()" -->
@@ -377,8 +357,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Indicates whether the model has been created. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00305">305</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -399,8 +377,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Refreshes the model state and loads new data if necessary. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00336">336</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a24f2409dfa7b20b8f76c9730db192f29"></a><!-- doxytag: member="TTModelViewController::reload" ref="a24f2409dfa7b20b8f76c9730db192f29" args="()" -->
@@ -420,8 +396,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Reloads data from the model. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00325">325</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ab0fc1f3aeb889a326a6c11e100074023"></a><!-- doxytag: member="TTModelViewController::reloadIfNeeded" ref="ab0fc1f3aeb889a326a6c11e100074023" args="()" -->
@@ -440,8 +414,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Reloads data from the model if it has become out of date. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00330">330</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -463,8 +435,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Indicates that data should be loaded from the model. </p>
 <p>Do not call this directly. Subclasses should implement this method. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00309">309</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a991de3bff712c0261cb54ec6a2056e63"></a><!-- doxytag: member="TTModelViewController::shouldLoadMore" ref="a991de3bff712c0261cb54ec6a2056e63" args="()" -->
@@ -485,8 +455,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Indicates that more data should be loaded from the model. </p>
 <p>Do not call this directly. Subclasses should implement this method. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00317">317</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ac04eb12ba87d7abd890f7276fda9f223"></a><!-- doxytag: member="TTModelViewController::shouldReload" ref="ac04eb12ba87d7abd890f7276fda9f223" args="()" -->
@@ -506,8 +474,6 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>Indicates that data should be reloaded from the model. </p>
 <p>Do not call this directly. Subclasses should implement this method. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00313">313</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -530,8 +496,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Shows views to represent an empty model. </p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00413">413</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a36b36cb89ffe7f5c2ff0611980af3e32"></a><!-- doxytag: member="TTModelViewController::showError:" ref="a36b36cb89ffe7f5c2ff0611980af3e32" args="(BOOL show)" -->
@@ -551,8 +515,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Shows views to represent an error that occurred while loading the model. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00416">416</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -575,8 +537,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Shows views to represent the model loading. </p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00407">407</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="adb70f1b36491c7320769b40e9ffbdff9"></a><!-- doxytag: member="TTModelViewController::showModel:" ref="adb70f1b36491c7320769b40e9ffbdff9" args="(BOOL show)" -->
@@ -598,8 +558,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Shows views to represent the loaded model's content. </p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00410">410</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a81ef717e98e2876ff9cab2969dcf28f1"></a><!-- doxytag: member="TTModelViewController::updateView" ref="a81ef717e98e2876ff9cab2969dcf28f1" args="()" -->
@@ -618,8 +576,6 @@ Inheritance diagram for TTModelViewController:</div>
 <div class="memdoc">
 
 <p>Immediately creates, loads, and displays the model (if it was not already). </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00372">372</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -641,8 +597,6 @@ Inheritance diagram for TTModelViewController:</div>
 <p>Called before the model is asked to load itself. </p>
 <p>This is not called until after the view has loaded. If your model starts loading before the view is loaded, this will still be called, but not until after the view is loaded.</p>
 <p>The default implementation of this method does nothing. Subclasses may override this method to take an appropriate action. </p>
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8m_source.html#l00398">398</a> of file <a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a>.</p>
 
 </div>
 </div>
@@ -671,8 +625,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00024">24</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ab9291afe449c5fe8ebe3325e13a86fef"></a><!-- doxytag: member="TTModelViewController::_modelError" ref="ab9291afe449c5fe8ebe3325e13a86fef" args="" -->
@@ -685,8 +637,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00025">25</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -701,8 +651,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00031">31</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a1a37f79f043b5a6d80c48b194fbe50ef"></a><!-- doxytag: member="TTModelViewController::isModelDidLoadInvalid" ref="a1a37f79f043b5a6d80c48b194fbe50ef" args="" -->
@@ -715,8 +663,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00030">30</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -731,8 +677,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00028">28</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a03f6fb29cd2c8cc634942b048f83f6c7"></a><!-- doxytag: member="TTModelViewController::isModelDidShowFirstTimeInvalid" ref="a03f6fb29cd2c8cc634942b048f83f6c7" args="" -->
@@ -745,8 +689,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00032">32</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -761,8 +703,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00029">29</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a3b4e740b50e27f27429a2f4cd9c7ccb1"></a><!-- doxytag: member="TTModelViewController::isShowingEmpty" ref="a3b4e740b50e27f27429a2f4cd9c7ccb1" args="" -->
@@ -775,8 +715,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00036">36</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -791,8 +729,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00039">39</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="adf2fd741e95416f01a25edb5d31107a1"></a><!-- doxytag: member="TTModelViewController::isShowingLoading" ref="adf2fd741e95416f01a25edb5d31107a1" args="" -->
@@ -805,8 +741,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00037">37</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -821,8 +755,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00038">38</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="acfd266b4cb8fee0115e7c2edda8c8a8b"></a><!-- doxytag: member="TTModelViewController::isUpdatingView" ref="acfd266b4cb8fee0115e7c2edda8c8a8b" args="" -->
@@ -835,8 +767,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00035">35</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -851,8 +781,6 @@ Inheritance diagram for TTModelViewController:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00033">33</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af6798595152d4fae21b5cf59066f5bc0"></a><!-- doxytag: member="TTModelViewController::isViewSuspended" ref="af6798595152d4fae21b5cf59066f5bc0" args="" -->
@@ -865,8 +793,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00034">34</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -881,8 +807,6 @@ Inheritance diagram for TTModelViewController:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00046">46</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
 
 </div>
 </div>
@@ -899,13 +823,11 @@ Inheritance diagram for TTModelViewController:</div>
 
 <p>An error that occurred while trying to load content. </p>
 
-<p>Definition at line <a class="el" href="_t_t_model_view_controller_8h_source.html#l00051">51</a> of file <a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Three20/<a class="el" href="_t_t_model_view_controller_8h_source.html">TTModelViewController.h</a></li>
-<li><a class="el" href="_t_t_model_view_controller_8m_source.html">TTModelViewController.m</a></li>
+<li><a class="el" href="_t_t_model_view_controller_8m.html">TTModelViewController.m</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->

@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -76,65 +77,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_you_tube_view_8h.html">Three20/TTYouTubeView.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">00021</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">kDefaultWidth</a> = 140;
-<a name="l00022"></a><a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">00022</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">kDefaultHeight</a> = 105;
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 
 <a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="_t_t_you_tube_view_8m.html#ac744565d5c6cb90530b5885a16794033">00024</a> <span class="keyword">static</span> <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="_t_t_you_tube_view_8m.html#ac744565d5c6cb90530b5885a16794033">kEmbedHTML</a> = <span class="stringliteral">@&quot;\</span>
-<a name="l00025"></a>00025 <span class="stringliteral">&lt;html&gt;\</span>
-<a name="l00026"></a>00026 <span class="stringliteral">&lt;head&gt;\</span>
-<a name="l00027"></a>00027 <span class="stringliteral">&lt;meta name=\&quot;</span>viewport\<span class="stringliteral">&quot; content=\&quot;initial-scale=1.0, user-scalable=no, width=%0.0f\&quot;/&gt;\</span>
-<a name="l00028"></a>00028 <span class="stringliteral">&lt;/head&gt;\</span>
-<a name="l00029"></a>00029 <span class="stringliteral">&lt;body style=\&quot;background:#fff;margin-top:0px;margin-left:0px\&quot;&gt;\</span>
-<a name="l00030"></a>00030 <span class="stringliteral">&lt;div&gt;&lt;object width=\&quot;%0.0f\&quot; height=\&quot;%0.0f\&quot;&gt;\</span>
-<a name="l00031"></a>00031 <span class="stringliteral">&lt;param name=\&quot;movie\&quot; value=\&quot;%@\&quot;&gt;&lt;/param&gt;&lt;param name=\&quot;wmode\&quot;\</span>
-<a name="l00032"></a>00032 <span class="stringliteral">value=\&quot;transparent\&quot;&gt;&lt;/param&gt;\</span>
-<a name="l00033"></a>00033 <span class="stringliteral">&lt;embed id=\&quot;yt\&quot; src=\&quot;%@\&quot; type=\&quot;application/x-shockwave-flash\&quot;\</span>
-<a name="l00034"></a>00034 <span class="stringliteral">wmode=\&quot;transparent\&quot; width=\&quot;%0.0f\&quot; height=\&quot;%0.0f\&quot;&gt;&lt;/embed&gt;\</span>
-<a name="l00035"></a>00035 <span class="stringliteral">&lt;/object&gt;&lt;/div&gt;\</span>
-<a name="l00036"></a>00036 <span class="stringliteral">&lt;/body&gt;\</span>
-<a name="l00037"></a>00037 <span class="stringliteral">&lt;/html&gt;&quot;</span>;
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_you_tube_view.html">TTYouTubeView</a>
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_you_tube_view.html#a701633bc8800d0f0cb226c6f609b7806">URL</a> = <a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>;
-<a name="l00044"></a>00044 
-<a name="l00045"></a><a class="code" href="interface_t_t_you_tube_view.html#a5ba3b62578b84947219450fbce7a733f">00045</a> - (id)initWithURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00046"></a>00046   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> initWithFrame:CGRectMake(0, 0, <a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">kDefaultWidth</a>, <a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">kDefaultHeight</a>)]) {
-<a name="l00047"></a>00047     <span class="keyword">self</span>.URL = URL;
-<a name="l00048"></a>00048   }
-<a name="l00049"></a>00049   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00050"></a>00050 }
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 - (void)dealloc {
-<a name="l00053"></a>00053   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>);
-<a name="l00054"></a>00054   [<span class="keyword">super</span> dealloc];
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058 <span class="comment">// UIView</span>
+<a name="l00024"></a><a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">00024</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">kDefaultWidth</a> = 140;
+<a name="l00025"></a><a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">00025</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">kDefaultHeight</a> = 105;
+<a name="l00026"></a>00026 
+<a name="l00027"></a><a class="code" href="_t_t_you_tube_view_8m.html#ac744565d5c6cb90530b5885a16794033">00027</a> <span class="keyword">static</span> <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="_t_t_you_tube_view_8m.html#ac744565d5c6cb90530b5885a16794033">kEmbedHTML</a> = <span class="stringliteral">@&quot;\</span>
+<a name="l00028"></a>00028 <span class="stringliteral">&lt;html&gt;\</span>
+<a name="l00029"></a>00029 <span class="stringliteral">&lt;head&gt;\</span>
+<a name="l00030"></a>00030 <span class="stringliteral">&lt;meta name=\&quot;</span>viewport\<span class="stringliteral">&quot; content=\&quot;initial-scale=1.0, user-scalable=no, width=%0.0f\&quot;/&gt;\</span>
+<a name="l00031"></a>00031 <span class="stringliteral">&lt;/head&gt;\</span>
+<a name="l00032"></a>00032 <span class="stringliteral">&lt;body style=\&quot;background:#fff;margin-top:0px;margin-left:0px\&quot;&gt;\</span>
+<a name="l00033"></a>00033 <span class="stringliteral">&lt;div&gt;&lt;object width=\&quot;%0.0f\&quot; height=\&quot;%0.0f\&quot;&gt;\</span>
+<a name="l00034"></a>00034 <span class="stringliteral">&lt;param name=\&quot;movie\&quot; value=\&quot;%@\&quot;&gt;&lt;/param&gt;&lt;param name=\&quot;wmode\&quot;\</span>
+<a name="l00035"></a>00035 <span class="stringliteral">value=\&quot;transparent\&quot;&gt;&lt;/param&gt;\</span>
+<a name="l00036"></a>00036 <span class="stringliteral">&lt;embed id=\&quot;yt\&quot; src=\&quot;%@\&quot; type=\&quot;application/x-shockwave-flash\&quot;\</span>
+<a name="l00037"></a>00037 <span class="stringliteral">wmode=\&quot;transparent\&quot; width=\&quot;%0.0f\&quot; height=\&quot;%0.0f\&quot;&gt;&lt;/embed&gt;\</span>
+<a name="l00038"></a>00038 <span class="stringliteral">&lt;/object&gt;&lt;/div&gt;\</span>
+<a name="l00039"></a>00039 <span class="stringliteral">&lt;/body&gt;\</span>
+<a name="l00040"></a>00040 <span class="stringliteral">&lt;/html&gt;&quot;</span>;
+<a name="l00041"></a>00041 
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_you_tube_view.html">TTYouTubeView</a>
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_you_tube_view.html#a701633bc8800d0f0cb226c6f609b7806">URL</a> = <a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="interface_t_t_you_tube_view.html#a5ba3b62578b84947219450fbce7a733f">00048</a> - (id)initWithURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00049"></a>00049   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> initWithFrame:CGRectMake(0, 0, <a class="code" href="_t_t_you_tube_view_8m.html#a952dc610058e2ef1cb07ba93f4ac4d16">kDefaultWidth</a>, <a class="code" href="_t_t_you_tube_view_8m.html#a88238e1820079ad71ffd92046276bf7a">kDefaultHeight</a>)]) {
+<a name="l00050"></a>00050     <span class="keyword">self</span>.URL = URL;
+<a name="l00051"></a>00051   }
+<a name="l00052"></a>00052   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="interface_t_t_you_tube_view.html#a09b5030f2df178152ffdb88f7aace0a6">00055</a> - (void)<a class="code" href="interface_t_t_you_tube_view.html#a09b5030f2df178152ffdb88f7aace0a6">dealloc</a> {
+<a name="l00056"></a>00056   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>);
+<a name="l00057"></a>00057   [<span class="keyword">super</span> dealloc];
+<a name="l00058"></a>00058 }
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (void)layoutSubviews {
-<a name="l00061"></a>00061   [<span class="keyword">self</span> stringByEvaluatingJavaScriptFromString:
-<a name="l00062"></a>00062     [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;yt.width = %0.0f; yt.height = %0.0f&quot;, self.width, self.height]];
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 - (void)setURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00068"></a>00068   [_URL release];
-<a name="l00069"></a>00069   <a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a> = [URL copy];
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>) {
-<a name="l00072"></a>00072     <a class="code" href="class_n_s_string.html">NSString</a>* html = [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:kEmbedHTML, self.width, self.width,
-<a name="l00073"></a>00073                                self.height, _URL, _URL, self.width, self.height];
-<a name="l00074"></a>00074     [<span class="keyword">self</span> loadHTMLString:html baseURL:nil];
-<a name="l00075"></a>00075   } <span class="keywordflow">else</span> {
-<a name="l00076"></a>00076     [<span class="keyword">self</span> loadHTMLString:@&quot;&amp;nbsp;&quot; baseURL:nil];
-<a name="l00077"></a>00077   }
-<a name="l00078"></a>00078 }
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="keyword">@end</span>
+<a name="l00061"></a>00061 <span class="comment">// UIView</span>
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="interface_t_t_you_tube_view.html#ab08f428dada0bfa24b6c62d6a87271d6">00063</a> - (void)<a class="code" href="interface_t_t_you_tube_view.html#ab08f428dada0bfa24b6c62d6a87271d6">layoutSubviews</a> {
+<a name="l00064"></a>00064   [<span class="keyword">self</span> stringByEvaluatingJavaScriptFromString:
+<a name="l00065"></a>00065     [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;yt.width = %0.0f; yt.height = %0.0f&quot;, self.width, self.height]];
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="interface_t_t_you_tube_view.html#a85f026bee715aac08f18a3884d0c69c2">00070</a> - (void)setURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00071"></a>00071   [<a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a> release];
+<a name="l00072"></a>00072   <a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a> = [URL copy];
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_you_tube_view.html#abf41d4d38550839b5cf9e114317f1c41">_URL</a>) {
+<a name="l00075"></a>00075     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* html = [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:kEmbedHTML, self.width, self.width,
+<a name="l00076"></a>00076                                self.height, _URL, _URL, self.width, self.height];
+<a name="l00077"></a>00077     [<span class="keyword">self</span> loadHTMLString:html baseURL:nil];
+<a name="l00078"></a>00078   } <span class="keywordflow">else</span> {
+<a name="l00079"></a>00079     [<span class="keyword">self</span> loadHTMLString:@&quot;&amp;nbsp;&quot; baseURL:nil];
+<a name="l00080"></a>00080   }
+<a name="l00081"></a>00081 }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -76,15 +76,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_8h.html">Three20/TTStyle.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_style.html">TTStyle</a>, <a class="code" href="interface_t_t_layout.html">TTLayout</a>;
+<a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_layout.html">TTLayout</a>;
 <a name="l00020"></a>00020 
 <a name="l00024"></a><a class="code" href="interface_t_t_view.html">00024</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> : <a class="code" href="class_u_i_view.html">UIView</a> &lt;<a class="code" href="protocol_t_t_style_delegate-p.html">TTStyleDelegate</a>&gt; {
 <a name="l00025"></a><a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">00025</a>   <a class="code" href="interface_t_t_style.html">TTStyle</a>* <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">00026</a>   TTLayout* <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">00026</a>   <a class="code" href="interface_t_t_layout.html">TTLayout</a>* <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>;
 <a name="l00027"></a>00027 }
 <a name="l00028"></a>00028 
 <a name="l00029"></a><a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">00029</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_style.html">TTStyle</a>* style;
-<a name="l00030"></a><a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">00030</a> @property(nonatomic,retain) TTLayout* layout;
+<a name="l00030"></a><a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">00030</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_layout.html">TTLayout</a>* layout;
 <a name="l00031"></a>00031 
 <a name="l00032"></a>00032 - (<span class="keywordtype">void</span>)drawContent:(CGRect)rect;
 <a name="l00033"></a>00033 

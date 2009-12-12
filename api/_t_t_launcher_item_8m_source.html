@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,9 +75,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="comment">// Copyright 2004-2009 Facebook. All Rights Reserved.</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_launcher_item_8h.html">Three20/TTLauncherItem.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_launcher_item_8h.html">Three20/TTLauncherItem.h</a>&quot;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
 <a name="l00020"></a>00020 
 <a name="l00022"></a>00022 
 <a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_launcher_item.html">TTLauncherItem</a>
@@ -86,11 +87,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027 
 <a name="l00029"></a>00029 <span class="comment">// NSObject</span>
 <a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_launcher_item.html#a48741401f6b5bdce89251fe80375791b">00031</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title image:(<a class="code" href="class_n_s_string.html">NSString</a>*)image URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
+<a name="l00031"></a><a class="code" href="interface_t_t_launcher_item.html#a48741401f6b5bdce89251fe80375791b">00031</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title image:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)image URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
 <a name="l00032"></a>00032   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">initWithTitle</a>:title <a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">image</a>:image <a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">URL</a>:URL <a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">canDelete</a>:NO];
 <a name="l00033"></a>00033 }
 <a name="l00034"></a>00034 
-<a name="l00035"></a><a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">00035</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title image:(<a class="code" href="class_n_s_string.html">NSString</a>*)image URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL
+<a name="l00035"></a><a class="code" href="interface_t_t_launcher_item.html#a3cd9002f3fd0b66a831d4195806ccbff">00035</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title image:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)image URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL
 <a name="l00036"></a>00036       canDelete:(BOOL)canDelete {
 <a name="l00037"></a>00037   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
 <a name="l00038"></a>00038     <a class="code" href="interface_t_t_launcher_item.html#aca88d19e763f965d7fd33a0e7da35e47">_launcher</a> = nil;
@@ -108,17 +109,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00050"></a>00050   <span class="keywordflow">return</span> <span class="keyword">self</span>;
 <a name="l00051"></a>00051 }
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053 - (void)dealloc {
-<a name="l00054"></a>00054   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#afd54414e82d6243ce1f2790858cbfe99">_title</a>);
-<a name="l00055"></a>00055   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#a2b03dce6b69eceb50af7d8b190ed3a55">_image</a>);
-<a name="l00056"></a>00056   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#ae3a21c6462e4b5ad5bce59c86a50308b">_URL</a>);
-<a name="l00057"></a>00057   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#a836bd78bb88c5c4b67500bfdb09a99cb">_style</a>);
+<a name="l00053"></a><a class="code" href="interface_t_t_launcher_item.html#af8157c568185b502fa4e00de64573bfd">00053</a> - (void)<a class="code" href="interface_t_t_launcher_item.html#af8157c568185b502fa4e00de64573bfd">dealloc</a> {
+<a name="l00054"></a>00054   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#afd54414e82d6243ce1f2790858cbfe99">_title</a>);
+<a name="l00055"></a>00055   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#a2b03dce6b69eceb50af7d8b190ed3a55">_image</a>);
+<a name="l00056"></a>00056   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#ae3a21c6462e4b5ad5bce59c86a50308b">_URL</a>);
+<a name="l00057"></a>00057   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_launcher_item.html#a836bd78bb88c5c4b67500bfdb09a99cb">_style</a>);
 <a name="l00058"></a>00058   [<span class="keyword">super</span> dealloc];
 <a name="l00059"></a>00059 }
 <a name="l00060"></a>00060 
 <a name="l00062"></a>00062 <span class="comment">// NSCoding</span>
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064 - (id)initWithCoder:(NSCoder*)decoder {
+<a name="l00064"></a><a class="code" href="interface_t_t_launcher_item.html#a75bc327e705d1efce4aa9ff9ef623f8c">00064</a> - (id)initWithCoder:(NSCoder*)decoder {
 <a name="l00065"></a>00065   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
 <a name="l00066"></a>00066     <span class="keyword">self</span>.title = [decoder decodeObjectForKey:@&quot;title&quot;];
 <a name="l00067"></a>00067     <span class="keyword">self</span>.image = [decoder decodeObjectForKey:@&quot;image&quot;];
@@ -129,7 +130,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00072"></a>00072   <span class="keywordflow">return</span> <span class="keyword">self</span>;
 <a name="l00073"></a>00073 }
 <a name="l00074"></a>00074 
-<a name="l00075"></a>00075 - (void)encodeWithCoder:(NSCoder*)encoder {
+<a name="l00075"></a><a class="code" href="interface_t_t_launcher_item.html#acedc4c190a003c7c1fad5adc139d7cce">00075</a> - (void)encodeWithCoder:(NSCoder*)encoder {
 <a name="l00076"></a>00076   [encoder encodeObject:_title forKey:@&quot;title&quot;];
 <a name="l00077"></a>00077   [encoder encodeObject:_image forKey:@&quot;image&quot;];
 <a name="l00078"></a>00078   [encoder encodeObject:_URL forKey:@&quot;URL&quot;];
@@ -139,10 +140,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00082"></a>00082 
 <a name="l00084"></a>00084 <span class="comment">// public</span>
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086 - (void)setBadgeNumber:(NSInteger)badgeNumber {
+<a name="l00086"></a><a class="code" href="interface_t_t_launcher_item.html#af5e3dd42ef1f445c0602c88887640fa9">00086</a> - (void)setBadgeNumber:(NSInteger)badgeNumber {
 <a name="l00087"></a>00087   <a class="code" href="interface_t_t_launcher_item.html#a5123f6119bd98ff58e60e8d1f039f3a9">_badgeNumber</a> = <a class="code" href="interface_t_t_launcher_item.html#a33cc517318625c7b06a326ababf78453">badgeNumber</a>;
 <a name="l00088"></a>00088   
-<a name="l00089"></a>00089   [_launcher performSelector:@selector(updateItemBadge:) withObject:self];
+<a name="l00089"></a>00089   [<a class="code" href="interface_t_t_launcher_item.html#aca88d19e763f965d7fd33a0e7da35e47">_launcher</a> performSelector:@selector(updateItemBadge:) withObject:self];
 <a name="l00090"></a>00090 }
 <a name="l00091"></a>00091 
 <a name="l00092"></a>00092 <span class="keyword">@end</span>

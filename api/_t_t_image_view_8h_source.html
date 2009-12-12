@@ -82,16 +82,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a><a class="code" href="interface_t_t_image_view.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_image_view.html">TTImageView</a> : <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> &lt;<a class="code" href="protocol_t_t_u_r_l_request_delegate-p.html">TTURLRequestDelegate</a>&gt; {
 <a name="l00023"></a><a class="code" href="interface_t_t_image_view.html#adeafb6b49768ffc616e511e2eecd1509">00023</a>   id&lt;TTImageViewDelegate&gt; <a class="code" href="interface_t_t_image_view.html#adeafb6b49768ffc616e511e2eecd1509">_delegate</a>;
 <a name="l00024"></a><a class="code" href="interface_t_t_image_view.html#ac744ef7f1c0bf049a4618b90aaf7e13d">00024</a>   <a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>* <a class="code" href="interface_t_t_image_view.html#ac744ef7f1c0bf049a4618b90aaf7e13d">_request</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_image_view.html#a7ce20981fce01c739bb6adcd04134c52">00025</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_image_view.html#a7ce20981fce01c739bb6adcd04134c52">_URL</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_image_view.html#aafadb349734c3755fced0347c71894d7">00026</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* <a class="code" href="interface_t_t_image_view.html#aafadb349734c3755fced0347c71894d7">_image</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_image_view.html#a53f9cef668fe33fcd16be0e242423042">00027</a>   <a class="code" href="class_u_i_image.html">UIImage</a>* <a class="code" href="interface_t_t_image_view.html#a53f9cef668fe33fcd16be0e242423042">_defaultImage</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_image_view.html#a7ce20981fce01c739bb6adcd04134c52">00025</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_image_view.html#a7ce20981fce01c739bb6adcd04134c52">_URL</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_image_view.html#aafadb349734c3755fced0347c71894d7">00026</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* <a class="code" href="interface_t_t_image_view.html#aafadb349734c3755fced0347c71894d7">_image</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_image_view.html#a53f9cef668fe33fcd16be0e242423042">00027</a>   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* <a class="code" href="interface_t_t_image_view.html#a53f9cef668fe33fcd16be0e242423042">_defaultImage</a>;
 <a name="l00028"></a><a class="code" href="interface_t_t_image_view.html#a80c2ae080235ba57364ab0359f9fdf6f">00028</a>   BOOL <a class="code" href="interface_t_t_image_view.html#a80c2ae080235ba57364ab0359f9fdf6f">_autoresizesToImage</a>;
 <a name="l00029"></a>00029 }
 <a name="l00030"></a>00030 
 <a name="l00031"></a><a class="code" href="interface_t_t_image_view.html#a28a5a7c4401e82b11b9266ae4fb4c414">00031</a> @property(nonatomic,assign) id&lt;TTImageViewDelegate&gt; delegate;
-<a name="l00032"></a><a class="code" href="interface_t_t_image_view.html#a0f3bb998bf939b853f64f17f2985edc8">00032</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* URL;
-<a name="l00033"></a><a class="code" href="interface_t_t_image_view.html#a5a282b09c9dc2ae0fc3bb2d0dcbe165c">00033</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* image;
-<a name="l00034"></a><a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">00034</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html">UIImage</a>* defaultImage;
+<a name="l00032"></a><a class="code" href="interface_t_t_image_view.html#a0f3bb998bf939b853f64f17f2985edc8">00032</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL;
+<a name="l00033"></a><a class="code" href="interface_t_t_image_view.html#a5a282b09c9dc2ae0fc3bb2d0dcbe165c">00033</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image;
+<a name="l00034"></a><a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">00034</a> @property(nonatomic,retain) <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* defaultImage;
 <a name="l00035"></a><a class="code" href="interface_t_t_image_view.html#a550deee45ef3cf4f72eba737f38d0924">00035</a> @property(nonatomic) BOOL autoresizesToImage;
 <a name="l00036"></a><a class="code" href="interface_t_t_image_view.html#a665f800cac80e9b94521e68adf7f06e8">00036</a> @property(nonatomic,readonly) BOOL isLoading;
 <a name="l00037"></a><a class="code" href="interface_t_t_image_view.html#a771abb9049776ede10ec6db7a667e9fc">00037</a> @property(nonatomic,readonly) BOOL isLoaded;
@@ -100,17 +100,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 - (<span class="keywordtype">void</span>)stopLoading;
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 - (<span class="keywordtype">void</span>)imageViewDidStartLoad;
-<a name="l00043"></a>00043 - (<span class="keywordtype">void</span>)imageViewDidLoadImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image;
+<a name="l00043"></a>00043 - (<span class="keywordtype">void</span>)imageViewDidLoadImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image;
 <a name="l00044"></a>00044 - (<span class="keywordtype">void</span>)imageViewDidFailLoadWithError:(NSError*)error;
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 @end
 <a name="l00047"></a>00047 
 <a name="l00049"></a>00049 
-<a name="l00050"></a><a class="code" href="protocol_t_t_image_view_delegate-p.html">00050</a> @protocol TTImageViewDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
+<a name="l00050"></a><a class="code" href="protocol_t_t_image_view_delegate-p.html">00050</a> @protocol TTImageViewDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 @optional
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054 - (<span class="keywordtype">void</span>)imageView:(<a class="code" href="interface_t_t_image_view.html">TTImageView</a>*)imageView didLoadImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image;
+<a name="l00054"></a>00054 - (<span class="keywordtype">void</span>)imageView:(<a class="code" href="interface_t_t_image_view.html">TTImageView</a>*)imageView didLoadImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image;
 <a name="l00055"></a>00055 - (<span class="keywordtype">void</span>)imageViewDidStartLoad:(<a class="code" href="interface_t_t_image_view.html">TTImageView</a>*)imageView;
 <a name="l00056"></a>00056 - (<span class="keywordtype">void</span>)imageView:(<a class="code" href="interface_t_t_image_view.html">TTImageView</a>*)imageView didFailLoadWithError:(NSError*)error;
 <a name="l00057"></a>00057 

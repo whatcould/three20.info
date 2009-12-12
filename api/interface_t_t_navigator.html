@@ -62,6 +62,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>TTNavigator Class Reference</h1><!-- doxytag: class="TTNavigator" --><!-- doxytag: inherits="NSObject" -->
+<p>A URL-based navigation system with built-in persistence.  
+<a href="#_details">More...</a></p>
+
 <p><code>#import &lt;<a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TTNavigator:</div>
@@ -78,27 +81,33 @@ Inheritance diagram for TTNavigator:</div>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7">openURL:animated:</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays a view controller with a pattern than matches the URL.  <a href="#a3b279b0fbcf5dd9919c3f1f78b356ce7"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL.  <a href="#a3b279b0fbcf5dd9919c3f1f78b356ce7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a9d1302d25d444b44100d48844a2e851c">openURL:animated:transition:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL using a specific transition.  <a href="#a9d1302d25d444b44100d48844a2e851c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">openURL:parent:animated:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL and simultaneously sets the parent URL (useful for tab bar controllers).  <a href="#a99519ffc7effab80d46d81bd79c28775"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#ad9a8a683fa4a133876626bbe32030c9c">openURL:query:animated:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL and passes the given query.  <a href="#ad9a8a683fa4a133876626bbe32030c9c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a57c6849fe3b8d344fe1dc90ab5589715">openURL:parent:query:animated:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL.  <a href="#a57c6849fe3b8d344fe1dc90ab5589715"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#ab9aa6bac71d9e9b2cd17507c1d3a41c6">openURL:parent:query:animated:transition:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL.  <a href="#ab9aa6bac71d9e9b2cd17507c1d3a41c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#aa79c48184e2ddf0edba064868aee1a86">openURL:parent:query:animated:transition:withDelay:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads and displays the view controller with a pattern that matches the URL.  <a href="#aa79c48184e2ddf0edba064868aee1a86"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#ad0f9f715e40f04a770a90600ee38b123">openURLs:</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Opens a sequence of URLs, with only the last one being animated.  <a href="#ad0f9f715e40f04a770a90600ee38b123"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Opens a sequence of URLs.  <a href="#ad0f9f715e40f04a770a90600ee38b123"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a2323b46d1546b5fb6b6456a23c95ce15">viewControllerForURL:</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets a view controller for the URL without opening it.  <a href="#a2323b46d1546b5fb6b6456a23c95ce15"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">viewControllerForURL:query:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets a view controller for the URL without opening it.  <a href="#adc100dec6e5f238fde778114d699fff5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL:query:pattern:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets a view controller for the URL without opening it.  <a href="#a832315b4139712e822ed680eda6afa58"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4">beginDelay</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tells the navigator to delay heavy operations.  <a href="#ac3a1d49d84b8e29ce41657d54bb1e6a4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a0eeca9f557184728d033db82fe11d543">endDelay</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tells controllers that were created during the delay to finish what they were planning to do.  <a href="#a0eeca9f557184728d033db82fe11d543"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b">cancelDelay</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cancels the delay without notifying delayed controllers.  <a href="#a786ae9442cb8a69d489948bd474ac29b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">(void)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a">persistViewControllers</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Persists all view controllers to user defaults.  <a href="#a35406cf4642294e15252fdc905bad55a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(void)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a">persistViewControllers</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Persists all view controllers to user defaults.  <a href="#a35406cf4642294e15252fdc905bad55a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(<a class="el" href="class_u_i_view_controller.html">UIViewController</a> *)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_t_t_navigator.html#af31a34b7a0296bdbeb7d4f85f16dc14f">restoreViewControllers</a></td></tr>
@@ -151,11 +160,10 @@ Inheritance diagram for TTNavigator:</div>
 <tr><td class="memItemLeft" align="right" valign="top">BOOL&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_navigator.html#af4e60a1043b819a7cfaa329e2b25db0e">opensExternalURLs</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Allows URLs to be opened externally if they don't match any patterns.  <a href="#af4e60a1043b819a7cfaa329e2b25db0e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">BOOL&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_t_t_navigator.html#ae80108abf4a917eebaf2164748b1e9eb">isDelayed</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates that we asking controllers to delay heavy operations until a later time.  <a href="#ae80108abf4a917eebaf2164748b1e9eb"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates that we are asking controllers to delay heavy operations until a later time.  <a href="#ae80108abf4a917eebaf2164748b1e9eb"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00029">29</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
+<p>A URL-based navigation system with built-in persistence. </p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ac3a1d49d84b8e29ce41657d54bb1e6a4"></a><!-- doxytag: member="TTNavigator::beginDelay" ref="ac3a1d49d84b8e29ce41657d54bb1e6a4" args="()" -->
 <div class="memitem">
@@ -174,8 +182,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Tells the navigator to delay heavy operations. </p>
 <p>Initializing controllers can be very expensive, so if you are going to do some animation while this might be happening, this will tell controllers created through the navigator that they should hold off so as not to slow down the operations. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00507">507</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -196,8 +202,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Cancels the delay without notifying delayed controllers. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00521">521</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a0eeca9f557184728d033db82fe11d543"></a><!-- doxytag: member="TTNavigator::endDelay" ref="a0eeca9f557184728d033db82fe11d543" args="()" -->
@@ -217,8 +221,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Tells controllers that were created during the delay to finish what they were planning to do. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00511">511</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a4574658b6b7d34dd5561baaea610ef11"></a><!-- doxytag: member="TTNavigator::navigator" ref="a4574658b6b7d34dd5561baaea610ef11" args="()" -->
@@ -235,8 +237,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00052">52</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -257,8 +257,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Finds an object using its navigation path. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00642">642</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -287,10 +285,16 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Loads and displays a view controller with a pattern than matches the URL. </p>
-<p>If there is not yet a rootViewController, the view controller loaded with this URL will be assigned as the rootViewController and inserted into the keyWinodw. If there is not a keyWindow, a <a class="el" href="class_u_i_window.html">UIWindow</a> will be created and displayed. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00395">395</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL. </p>
+<p>If there is not yet a rootViewController, the view controller loaded with this URL will be assigned as the rootViewController and inserted into the keyWindow. If there is not a keyWindow, a <a class="el" href="class_u_i_window.html" title="Additions.">UIWindow</a> will be created and displayed.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -325,7 +329,17 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00400">400</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL using a specific transition. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a> </dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transition</em>&nbsp;</td><td>The view animation transition to use. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -360,7 +374,17 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00406">406</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL and simultaneously sets the parent URL (useful for tab bar controllers). </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a></dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentURL</em>&nbsp;</td><td>The parent URL (generally a tab bar controller page). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -401,7 +425,18 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00416">416</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a></dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentURL</em>&nbsp;</td><td>The parent URL (generally a tab bar controller page). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>query</em>&nbsp;</td><td>A dictionary of query parameters. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -448,7 +483,19 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00422">422</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a></dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentURL</em>&nbsp;</td><td>The parent URL (generally a tab bar controller page). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>query</em>&nbsp;</td><td>A dictionary of query parameters. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transition</em>&nbsp;</td><td>The view animation transition to use. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -501,7 +548,20 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00428">428</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a></dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>parentURL</em>&nbsp;</td><td>The parent URL (generally a tab bar controller page). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>query</em>&nbsp;</td><td>A dictionary of query parameters. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transition</em>&nbsp;</td><td>The view animation transition to use. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>withDelay</em>&nbsp;</td><td>Whether or not to delay adding this controller. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -536,7 +596,17 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00411">411</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Loads and displays the view controller with a pattern that matches the URL and passes the given query. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays the view controller with a pattern that matches the URL.">- openURL:animated:</a></dd></dl>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL to open. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>query</em>&nbsp;</td><td>A dictionary of query parameters. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animated</em>&nbsp;</td><td>Whether or not to animate the transition. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to this URL. </dd></dl>
 
 </div>
 </div>
@@ -565,9 +635,8 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Opens a sequence of URLs, with only the last one being animated. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00435">435</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Opens a sequence of URLs. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller of the last opened URL. </dd></dl>
 
 </div>
 </div>
@@ -588,8 +657,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Gets a navigation path which can be used to locate an object. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00624">624</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -621,8 +688,6 @@ Inheritance diagram for TTNavigator:</div>
 <p>Persists a view controller's state and recursively persists the next view controller after it. </p>
 <p>Do not call this directly except from within a view controller that is being directed by the app map to persist itself. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00597">597</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a35406cf4642294e15252fdc905bad55a"></a><!-- doxytag: member="TTNavigator::persistViewControllers" ref="a35406cf4642294e15252fdc905bad55a" args="()" -->
@@ -641,27 +706,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Persists all view controllers to user defaults. </p>
-
-</div>
-</div>
-<a class="anchor" id="a35406cf4642294e15252fdc905bad55a"></a><!-- doxytag: member="TTNavigator::persistViewControllers" ref="a35406cf4642294e15252fdc905bad55a" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) persistViewControllers </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td>&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Persists all view controllers to user defaults. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00527">527</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -682,8 +726,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Reloads the content in the visible view controller. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00659">659</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aea43bb8b7436f244098abb50780bf495"></a><!-- doxytag: member="TTNavigator::removeAllViewControllers" ref="aea43bb8b7436f244098abb50780bf495" args="()" -->
@@ -702,8 +744,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Removes all view controllers from the window and releases them. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00618">618</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -724,8 +764,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Erases all data stored in user defaults. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00651">651</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af31a34b7a0296bdbeb7d4f85f16dc14f"></a><!-- doxytag: member="TTNavigator::restoreViewControllers" ref="af31a34b7a0296bdbeb7d4f85f16dc14f" args="()" -->
@@ -744,8 +782,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Restores all view controllers from user defaults and returns the last one. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00554">554</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
 
 </div>
 </div>
@@ -766,8 +802,7 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Gets a view controller for the URL without opening it. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00448">448</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to URL. </dd></dl>
 
 </div>
 </div>
@@ -796,7 +831,8 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8m_source.html#l00452">452</a> of file <a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a>.</p>
+<p>Gets a view controller for the URL without opening it. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to URL. </dd></dl>
 
 </div>
 </div>
@@ -831,6 +867,9 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
+<p>Gets a view controller for the URL without opening it. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The view controller mapped to URL. </dd></dl>
+
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
@@ -845,8 +884,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00037">37</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a36514d538cdfb8f7a77b9f8da70ead1e"></a><!-- doxytag: member="TTNavigator::_delayedControllers" ref="a36514d538cdfb8f7a77b9f8da70ead1e" args="" -->
@@ -859,8 +896,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00034">34</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -875,8 +910,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00030">30</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a3e2939533a9a3b9a29129b6c2b0825a5"></a><!-- doxytag: member="TTNavigator::_opensExternalURLs" ref="a3e2939533a9a3b9a29129b6c2b0825a5" args="" -->
@@ -889,8 +922,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00039">39</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -905,8 +936,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00036">36</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a6ff2b05b832da845f5d113e4afa5c47a"></a><!-- doxytag: member="TTNavigator::_persistenceMode" ref="a6ff2b05b832da845f5d113e4afa5c47a" args="" -->
@@ -919,8 +948,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00035">35</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -935,8 +962,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00033">33</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aefe4a5369fed8b6a288c7f251b29f8f6"></a><!-- doxytag: member="TTNavigator::_supportsShakeToReload" ref="aefe4a5369fed8b6a288c7f251b29f8f6" args="" -->
@@ -949,8 +974,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00038">38</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -965,8 +988,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00031">31</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a8462364bae7cf1275b29edcb25e58aeb"></a><!-- doxytag: member="TTNavigator::_window" ref="a8462364bae7cf1275b29edcb25e58aeb" args="" -->
@@ -979,8 +1000,6 @@ Inheritance diagram for TTNavigator:</div>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00032">32</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -996,8 +1015,6 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00042">42</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae80108abf4a917eebaf2164748b1e9eb"></a><!-- doxytag: member="TTNavigator::isDelayed" ref="ae80108abf4a917eebaf2164748b1e9eb" args="" -->
@@ -1011,10 +1028,8 @@ Inheritance diagram for TTNavigator:</div>
 </div>
 <div class="memdoc">
 
-<p>Indicates that we asking controllers to delay heavy operations until a later time. </p>
+<p>Indicates that we are asking controllers to delay heavy operations until a later time. </p>
 <p>The default value is NO. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00112">112</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -1031,8 +1046,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>Allows URLs to be opened externally if they don't match any patterns. </p>
 <p>The default value is NO. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00105">105</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -1051,8 +1064,6 @@ Inheritance diagram for TTNavigator:</div>
 <p>In some cases, it is a good practice not to restore really old navigation paths, because the user probably won't remember how they got there, and would prefer to start from the beginning.</p>
 <p>Set this to 0 to restore from any age. The default value is 0. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00093">93</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="aab763aee46b00979ffd6a72f345f56c9"></a><!-- doxytag: member="TTNavigator::persistenceMode" ref="aab763aee46b00979ffd6a72f345f56c9" args="" -->
@@ -1067,8 +1078,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>How view controllers are automatically persisted on termination and restored on launch. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00082">82</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -1085,8 +1094,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>The controller that is at the root of the view controller hierarchy. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00057">57</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a4f5765e37905f3717d8ef447003eafd0"></a><!-- doxytag: member="TTNavigator::supportsShakeToReload" ref="a4f5765e37905f3717d8ef447003eafd0" args="" -->
@@ -1101,8 +1108,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>Causes the current view controller to be reloaded when shaking the phone. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00098">98</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -1120,8 +1125,6 @@ Inheritance diagram for TTNavigator:</div>
 <p>The view controller that is currently on top of the navigation stack. </p>
 <p>This differs from visibleViewController in that it ignores things like search display controllers which are visible, but not part of navigation. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00070">70</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a9599b731bf76d670281fc17d73f4ea0b"></a><!-- doxytag: member="TTNavigator::URL" ref="a9599b731bf76d670281fc17d73f4ea0b" args="" -->
@@ -1138,8 +1141,6 @@ Inheritance diagram for TTNavigator:</div>
 <p>The URL of the currently visible view controller;. </p>
 <p>Setting this property will open a new URL. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00077">77</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="a506d27c735336b1ffe3da5e2b405fc03"></a><!-- doxytag: member="TTNavigator::URLMap" ref="a506d27c735336b1ffe3da5e2b405fc03" args="" -->
@@ -1154,8 +1155,6 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>The URL map used to translate between URLs and view controllers. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00047">47</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
 
 </div>
 </div>
@@ -1172,8 +1171,6 @@ Inheritance diagram for TTNavigator:</div>
 
 <p>The currently visible view controller. </p>
 
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00062">62</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="af0833fba02eab7bf4c34551e9cb845f1"></a><!-- doxytag: member="TTNavigator::window" ref="af0833fba02eab7bf4c34551e9cb845f1" args="" -->
@@ -1188,14 +1185,13 @@ Inheritance diagram for TTNavigator:</div>
 <div class="memdoc">
 
 <p>The window that contains the views view controller hierarchy. </p>
-
-<p>Definition at line <a class="el" href="_t_t_navigator_8h_source.html#l00052">52</a> of file <a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a>.</p>
+<p>By default retrieves the keyWindow. If there is no keyWindow, creates a new <a class="el" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a>. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Three20/<a class="el" href="_t_t_navigator_8h_source.html">TTNavigator.h</a></li>
-<li><a class="el" href="_t_t_navigator_8m_source.html">TTNavigator.m</a></li>
+<li><a class="el" href="_t_t_navigator_8m.html">TTNavigator.m</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->

@@ -74,76 +74,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@protocol </span>TTURLPatternText;
-<a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="interface_t_t_u_r_l_pattern.html">00021</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00022"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">00022</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>;
-<a name="l00023"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">00023</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">00024</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">00025</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">00026</a>   id&lt;TTURLPatternText&gt; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">00027</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">00028</a>   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>;
-<a name="l00029"></a>00029 }
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">00031</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* URL;
-<a name="l00032"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a3b4347f0497c00ec39e07d21ef3c2075">00032</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html">NSString</a>* scheme;
-<a name="l00033"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">00033</a> @property(nonatomic,readonly) NSInteger specificity;
-<a name="l00034"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">00034</a> @property(nonatomic,readonly) Class classForInvocation;
-<a name="l00035"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">00035</a> @property(nonatomic) <span class="keywordtype">SEL</span> selector;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 - (<span class="keywordtype">void</span>)setSelectorIfPossible:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 - (<span class="keywordtype">void</span>)compileURL;
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">@protocol </span>TTURLPatternText;
+<a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="interface_t_t_u_r_l_pattern.html">00025</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00026"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">00026</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">00027</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">00028</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">00029</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">00030</a>   id&lt;TTURLPatternText&gt; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>;
+<a name="l00031"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">00031</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>;
+<a name="l00032"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">00032</a>   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>;
+<a name="l00033"></a>00033 }
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">00035</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL;
+<a name="l00036"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a3b4347f0497c00ec39e07d21ef3c2075">00036</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* scheme;
+<a name="l00037"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">00037</a> @property(nonatomic,readonly) NSInteger specificity;
+<a name="l00038"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">00038</a> @property(nonatomic,readonly) Class classForInvocation;
+<a name="l00039"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">00039</a> @property(nonatomic) <span class="keywordtype">SEL</span> selector;
 <a name="l00040"></a>00040 
-<a name="l00041"></a>00041 @end
+<a name="l00041"></a>00041 - (<span class="keywordtype">void</span>)setSelectorIfPossible:(<span class="keywordtype">SEL</span>)selector;
 <a name="l00042"></a>00042 
+<a name="l00043"></a>00043 - (<span class="keywordtype">void</span>)compileURL;
 <a name="l00044"></a>00044 
-<a name="l00045"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">00045</a> @interface <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a> : <a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> {
-<a name="l00046"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">00046</a>   Class _targetClass;
-<a name="l00047"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">00047</a>   <span class="keywordtype">id</span> _targetObject;
-<a name="l00048"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">00048</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a> _navigationMode;
-<a name="l00049"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">00049</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _parentURL;
-<a name="l00050"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">00050</a>   NSInteger _transition;
-<a name="l00051"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">00051</a>   NSInteger _argumentCount;
-<a name="l00052"></a>00052 }
-<a name="l00053"></a>00053 
-<a name="l00054"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aada428f0bb6085f91d4a665010f3dfaf">00054</a> @property(nonatomic) Class targetClass;
-<a name="l00055"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9139d66398032de018d9c0558bd106c3">00055</a> @property(nonatomic,assign) <span class="keywordtype">id</span> targetObject;
-<a name="l00056"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">00056</a> @property(nonatomic,readonly) <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a> navigationMode;
-<a name="l00057"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a20b40919725627afffa0dc6c12f0e3c3">00057</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* parentURL;
-<a name="l00058"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac4eecf14fe2bb1df6e288a1cf52c774c">00058</a> @property(nonatomic) NSInteger transition;
-<a name="l00059"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#adb25c3ea3a3b081da573d45d25aba463">00059</a> @property(nonatomic) NSInteger argumentCount;
-<a name="l00060"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">00060</a> @property(nonatomic,readonly) BOOL isUniversal;
-<a name="l00061"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4871005c57fb08b85a15f4ff1547247d">00061</a> @property(nonatomic,readonly) BOOL isFragment;
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 - (<span class="keywordtype">id</span>)initWithTarget:(<span class="keywordtype">id</span>)target;
-<a name="l00064"></a>00064 - (<span class="keywordtype">id</span>)initWithTarget:(<span class="keywordtype">id</span>)target mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationMode;
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 - (<span class="keywordtype">void</span>)compile;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 - (BOOL)matchURL:(NSURL*)URL;
+<a name="l00045"></a>00045 @end
+<a name="l00046"></a>00046 
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">00049</a> @interface <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a> : <a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> {
+<a name="l00050"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">00050</a>   Class _targetClass;
+<a name="l00051"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">00051</a>   <span class="keywordtype">id</span> _targetObject;
+<a name="l00052"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">00052</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a> _navigationMode;
+<a name="l00053"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">00053</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _parentURL;
+<a name="l00054"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">00054</a>   NSInteger _transition;
+<a name="l00055"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">00055</a>   NSInteger _argumentCount;
+<a name="l00056"></a>00056 }
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aada428f0bb6085f91d4a665010f3dfaf">00058</a> @property(nonatomic) Class targetClass;
+<a name="l00059"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9139d66398032de018d9c0558bd106c3">00059</a> @property(nonatomic,assign) <span class="keywordtype">id</span> targetObject;
+<a name="l00060"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">00060</a> @property(nonatomic,readonly) <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a> navigationMode;
+<a name="l00061"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a20b40919725627afffa0dc6c12f0e3c3">00061</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* parentURL;
+<a name="l00062"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac4eecf14fe2bb1df6e288a1cf52c774c">00062</a> @property(nonatomic) NSInteger transition;
+<a name="l00063"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#adb25c3ea3a3b081da573d45d25aba463">00063</a> @property(nonatomic) NSInteger argumentCount;
+<a name="l00064"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">00064</a> @property(nonatomic,readonly) BOOL isUniversal;
+<a name="l00065"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4871005c57fb08b85a15f4ff1547247d">00065</a> @property(nonatomic,readonly) BOOL isFragment;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 - (<span class="keywordtype">id</span>)initWithTarget:(<span class="keywordtype">id</span>)target;
+<a name="l00068"></a>00068 - (<span class="keywordtype">id</span>)initWithTarget:(<span class="keywordtype">id</span>)target mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationMode;
 <a name="l00069"></a>00069 
-<a name="l00070"></a>00070 - (<span class="keywordtype">id</span>)invoke:(<span class="keywordtype">id</span>)target withURL:(NSURL*)URL query:(NSDictionary*)query;
-<a name="l00071"></a>00071 - (<span class="keywordtype">id</span>)createObjectFromURL:(NSURL*)URL query:(NSDictionary*)query;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 @end
-<a name="l00074"></a>00074 
+<a name="l00070"></a>00070 - (<span class="keywordtype">void</span>)compile;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 - (BOOL)matchURL:(NSURL*)URL;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 - (<span class="keywordtype">id</span>)invoke:(<span class="keywordtype">id</span>)target withURL:(NSURL*)URL query:(NSDictionary*)query;
+<a name="l00075"></a>00075 - (<span class="keywordtype">id</span>)createObjectFromURL:(NSURL*)URL query:(NSDictionary*)query;
 <a name="l00076"></a>00076 
-<a name="l00077"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html">00077</a> @interface <a class="code" href="interface_t_t_u_r_l_generator_pattern.html">TTURLGeneratorPattern</a> : <a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> {
-<a name="l00078"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">00078</a>   Class _targetClass;
-<a name="l00079"></a>00079 }
+<a name="l00077"></a>00077 @end
+<a name="l00078"></a>00078 
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a415653be50fc943c2d901bed4c598aeb">00081</a> @property(nonatomic) Class targetClass;
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 - (<span class="keywordtype">id</span>)initWithTargetClass:(Class)targetClass;
+<a name="l00081"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html">00081</a> @interface <a class="code" href="interface_t_t_u_r_l_generator_pattern.html">TTURLGeneratorPattern</a> : <a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a> {
+<a name="l00082"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">00082</a>   Class _targetClass;
+<a name="l00083"></a>00083 }
 <a name="l00084"></a>00084 
-<a name="l00085"></a>00085 - (<span class="keywordtype">void</span>)compile;
-<a name="l00086"></a>00086 - (<a class="code" href="class_n_s_string.html">NSString</a>*)generateURLFromObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 @end
+<a name="l00085"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a415653be50fc943c2d901bed4c598aeb">00085</a> @property(nonatomic) Class targetClass;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 - (<span class="keywordtype">id</span>)initWithTargetClass:(Class)targetClass;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 - (<span class="keywordtype">void</span>)compile;
+<a name="l00090"></a>00090 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)generateURLFromObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span>;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

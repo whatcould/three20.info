@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,46 +75,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_table_header_view_8h.html">Three20/TTTableHeaderView.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_header_view_8h.html">Three20/TTTableHeaderView.h</a>&quot;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_header_view.html">TTTableHeaderView</a>
 <a name="l00023"></a>00023 
-<a name="l00024"></a><a class="code" href="interface_t_t_table_header_view.html#aa578095a38adbdeb3a78e9b08c0e9837">00024</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title {
-<a name="l00025"></a>00025   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00026"></a>00026     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00027"></a>00027     <span class="keyword">self</span>.style = <a class="code" href="_t_t_global_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(tableHeader);
-<a name="l00028"></a>00028     
-<a name="l00029"></a>00029     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a> = [[UILabel alloc] init];
-<a name="l00030"></a>00030     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.text = title;
-<a name="l00031"></a>00031     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00032"></a>00032     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.textColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderTextColor)
-<a name="l00033"></a>00033                        ? <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderTextColor)
-<a name="l00034"></a>00034                        : <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(linkTextColor);
-<a name="l00035"></a>00035     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.shadowColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderShadowColor)
-<a name="l00036"></a>00036                          ? <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderShadowColor)
-<a name="l00037"></a>00037                          : [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00038"></a>00038     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.shadowOffset = CGSizeMake(0, 1);
-<a name="l00039"></a>00039     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.font = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderPlainFont);
-<a name="l00040"></a>00040     [<span class="keyword">self</span> addSubview:_label];
-<a name="l00041"></a>00041   }
-<a name="l00042"></a>00042   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00043"></a>00043 }
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 - (void)dealloc {
-<a name="l00046"></a>00046   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>);
-<a name="l00047"></a>00047   [<span class="keyword">super</span> dealloc];
-<a name="l00048"></a>00048 }
-<a name="l00049"></a>00049 
-<a name="l00051"></a>00051 <span class="comment">// UIView</span>
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 - (void)layoutSubviews {
-<a name="l00054"></a>00054   <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.frame = CGRectMake(12, 0, <span class="keyword">self</span>.width, <span class="keyword">self</span>.height);
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 <span class="keyword">@end</span>
+<a name="l00024"></a>00024 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_header_view.html">TTTableHeaderView</a>
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="interface_t_t_table_header_view.html#aa578095a38adbdeb3a78e9b08c0e9837">00026</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title {
+<a name="l00027"></a>00027   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00028"></a>00028     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00029"></a>00029     <span class="keyword">self</span>.style = <a class="code" href="_t_t_global_style_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(tableHeader);
+<a name="l00030"></a>00030     
+<a name="l00031"></a>00031     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a> = [[UILabel alloc] init];
+<a name="l00032"></a>00032     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.text = title;
+<a name="l00033"></a>00033     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00034"></a>00034     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.textColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderTextColor)
+<a name="l00035"></a>00035                        ? <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderTextColor)
+<a name="l00036"></a>00036                        : <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(linkTextColor);
+<a name="l00037"></a>00037     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.shadowColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderShadowColor)
+<a name="l00038"></a>00038                          ? <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderShadowColor)
+<a name="l00039"></a>00039                          : [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00040"></a>00040     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.shadowOffset = CGSizeMake(0, 1);
+<a name="l00041"></a>00041     <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.font = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableHeaderPlainFont);
+<a name="l00042"></a>00042     [<span class="keyword">self</span> addSubview:_label];
+<a name="l00043"></a>00043   }
+<a name="l00044"></a>00044   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="interface_t_t_table_header_view.html#ad0ff5da7b78c9e77fe79b27d9369a264">00047</a> - (void)<a class="code" href="interface_t_t_table_header_view.html#ad0ff5da7b78c9e77fe79b27d9369a264">dealloc</a> {
+<a name="l00048"></a>00048   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>);
+<a name="l00049"></a>00049   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view.html#a73c9ae17cae20fa5da6fa5fc7f6085f9">dealloc</a>];
+<a name="l00050"></a>00050 }
+<a name="l00051"></a>00051 
+<a name="l00053"></a>00053 <span class="comment">// UIView</span>
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="interface_t_t_table_header_view.html#a09433688364026300955e84e5d16a688">00055</a> - (void)<a class="code" href="interface_t_t_table_header_view.html#a09433688364026300955e84e5d16a688">layoutSubviews</a> {
+<a name="l00056"></a>00056   <a class="code" href="interface_t_t_table_header_view.html#aeab385c288c15234013432c1cb23b2e8">_label</a>.frame = CGRectMake(12, 0, <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>, <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>);
+<a name="l00057"></a>00057 }
 <a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="keyword">@end</span>
+<a name="l00060"></a>00060 
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

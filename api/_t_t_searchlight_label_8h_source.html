@@ -74,30 +74,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="interface_t_t_searchlight_label.html">00019</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_searchlight_label.html">TTSearchlightLabel</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
-<a name="l00020"></a><a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">00020</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>;
-<a name="l00021"></a><a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">00021</a>   <a class="code" href="class_u_i_font.html">UIFont</a>* <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>;
-<a name="l00022"></a><a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">00022</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>;
-<a name="l00023"></a><a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">00023</a>   <a class="code" href="class_u_i_color.html">UIColor</a>* <a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">00024</a>   UITextAlignment <a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">00025</a>   NSTimer* <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">00026</a>   CGFloat <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">00027</a>   CGContextRef <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">00028</a>   <span class="keywordtype">void</span>* <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>;
-<a name="l00029"></a>00029 }
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">00031</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* text;
-<a name="l00032"></a><a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">00032</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
-<a name="l00033"></a>00033 @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* textColor;
-<a name="l00034"></a><a class="code" href="interface_t_t_searchlight_label.html#a0dac183dff87f7855471d162f1dd2759">00034</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html">UIColor</a>* spotlightColor;
-<a name="l00035"></a><a class="code" href="interface_t_t_searchlight_label.html#a5cc4e1cc6d90d40d37e4024da434bc8d">00035</a> @property(nonatomic) UITextAlignment textAlignment;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 - (<span class="keywordtype">void</span>)startAnimating;
-<a name="l00038"></a>00038 - (<span class="keywordtype">void</span>)stopAnimating;
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="interface_t_t_searchlight_label.html">00020</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_searchlight_label.html">TTSearchlightLabel</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
+<a name="l00021"></a><a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">00021</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>;
+<a name="l00022"></a><a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">00022</a>   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>;
+<a name="l00023"></a><a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">00023</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>;
+<a name="l00024"></a><a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">00024</a>   <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* <a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">00025</a>   UITextAlignment <a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">00026</a>   NSTimer* <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">00027</a>   CGFloat <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">00028</a>   CGContextRef <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">00029</a>   <span class="keywordtype">void</span>* <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>;
+<a name="l00030"></a>00030 }
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">00032</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
+<a name="l00033"></a><a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">00033</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
+<a name="l00034"></a>00034 @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* textColor;
+<a name="l00035"></a><a class="code" href="interface_t_t_searchlight_label.html#a0dac183dff87f7855471d162f1dd2759">00035</a> @property(nonatomic,retain) <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* spotlightColor;
+<a name="l00036"></a><a class="code" href="interface_t_t_searchlight_label.html#a5cc4e1cc6d90d40d37e4024da434bc8d">00036</a> @property(nonatomic) UITextAlignment textAlignment;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 - (<span class="keywordtype">void</span>)startAnimating;
+<a name="l00039"></a>00039 - (<span class="keywordtype">void</span>)stopAnimating;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

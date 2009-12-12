@@ -78,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>, <a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a>, <a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a>, <a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a>;
 <a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="interface_t_t_styled_frame.html">00021</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
+<a name="l00021"></a><a class="code" href="interface_t_t_styled_frame.html">00021</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
 <a name="l00022"></a><a class="code" href="interface_t_t_styled_frame.html#ad03f8db51cb723fc5e39421e6bb57aa5">00022</a>   <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>* <a class="code" href="interface_t_t_styled_frame.html#ad03f8db51cb723fc5e39421e6bb57aa5">_element</a>;
 <a name="l00023"></a><a class="code" href="interface_t_t_styled_frame.html#a5ae54400ddeca3d416f1fd3b9e3ddfb1">00023</a>   <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* <a class="code" href="interface_t_t_styled_frame.html#a5ae54400ddeca3d416f1fd3b9e3ddfb1">_nextFrame</a>;
 <a name="l00024"></a><a class="code" href="interface_t_t_styled_frame.html#a24cf68c1443114c196c041743b8ee39e">00024</a>   CGRect <a class="code" href="interface_t_t_styled_frame.html#a24cf68c1443114c196c041743b8ee39e">_bounds</a>;
@@ -95,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00044"></a><a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">00044</a> @property(nonatomic) CGFloat width;
 <a name="l00045"></a><a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">00045</a> @property(nonatomic) CGFloat height;
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)font;
+<a name="l00047"></a>00047 - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font;
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 - (<span class="keywordtype">id</span>)initWithElement:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element;
 <a name="l00050"></a>00050 
@@ -134,17 +134,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00092"></a>00092 
 <a name="l00093"></a><a class="code" href="interface_t_t_styled_text_frame.html">00093</a> @interface <a class="code" href="interface_t_t_styled_text_frame.html">TTStyledTextFrame</a> : <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a> {
 <a name="l00094"></a><a class="code" href="interface_t_t_styled_text_frame.html#a66f39f61adb7d6fc8e10b3e25b5c32d0">00094</a>   TTStyledTextNode* _node;
-<a name="l00095"></a><a class="code" href="interface_t_t_styled_text_frame.html#ae685e0b67451e03a6c8fb36750108bb4">00095</a>   <a class="code" href="class_n_s_string.html">NSString</a>* _text;
-<a name="l00096"></a><a class="code" href="interface_t_t_styled_text_frame.html#a57cb459658d90214c0bb863850423313">00096</a>   <a class="code" href="class_u_i_font.html">UIFont</a>* _font;
+<a name="l00095"></a><a class="code" href="interface_t_t_styled_text_frame.html#ae685e0b67451e03a6c8fb36750108bb4">00095</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* _text;
+<a name="l00096"></a><a class="code" href="interface_t_t_styled_text_frame.html#a57cb459658d90214c0bb863850423313">00096</a>   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* _font;
 <a name="l00097"></a>00097 }
 <a name="l00098"></a>00098 
 <a name="l00102"></a><a class="code" href="interface_t_t_styled_text_frame.html#a3ce67624e8967f49f65f25febbb77e3f">00102</a> @property(nonatomic,readonly) TTStyledTextNode* node;
 <a name="l00103"></a>00103 
-<a name="l00107"></a><a class="code" href="interface_t_t_styled_text_frame.html#a0d7471c650b7cdccf0e83e1bde156ce7">00107</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html">NSString</a>* text;
+<a name="l00107"></a><a class="code" href="interface_t_t_styled_text_frame.html#a0d7471c650b7cdccf0e83e1bde156ce7">00107</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
 <a name="l00108"></a>00108 
-<a name="l00112"></a><a class="code" href="interface_t_t_styled_text_frame.html#a12d302d0ad05c8154e16185c006a6c17">00112</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
+<a name="l00112"></a><a class="code" href="interface_t_t_styled_text_frame.html#a12d302d0ad05c8154e16185c006a6c17">00112</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
 <a name="l00113"></a>00113 
-<a name="l00114"></a>00114 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element node:(TTStyledTextNode*)node;
+<a name="l00114"></a>00114 - (<span class="keywordtype">id</span>)initWithText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element node:(TTStyledTextNode*)node;
 <a name="l00115"></a>00115 
 <a name="l00116"></a>00116 @end
 <a name="l00117"></a>00117 

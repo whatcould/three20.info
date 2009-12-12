@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,655 +76,660 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_pattern_8h.html">Three20/TTURLPattern.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_controller_8h.html">Three20/TTTableViewController.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_popup_view_controller_8h.html">Three20/TTPopupViewController.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_search_display_controller_8h.html">Three20/TTSearchDisplayController.h</a>&quot;</span>
-<a name="l00023"></a>00023 
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="interface_t_t_navigator_window.html">00026</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a> : <a class="code" href="class_u_i_window.html">UIWindow</a>
-<a name="l00027"></a>00027 @end
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_navigator_8h.html">Three20/TTGlobalUINavigator.h</a>&quot;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_map_8h.html">Three20/TTURLMap.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_pattern_8h.html">Three20/TTURLPattern.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_popup_view_controller_8h.html">Three20/TTPopupViewController.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_search_display_controller_8h.html">Three20/TTSearchDisplayController.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_controller_8h.html">Three20/TTTableViewController.h</a>&quot;</span>
 <a name="l00028"></a>00028 
-<a name="l00029"></a>00029 @implementation <a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a>
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 - (void)motionBegan:(UIEventSubtype)motion withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
-<a name="l00032"></a>00032   <span class="keywordflow">if</span> (event.type == UIEventSubtypeMotionShake &amp;&amp; [<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> navigator].supportsShakeToReload) {
-<a name="l00033"></a>00033     [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491" title="Reloads the content in the visible view controller.">reload</a>];
-<a name="l00034"></a>00034   }
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 <span class="keyword">@end</span>
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_navigator.html">TTNavigator</a>
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_navigator.html#afb7f89ac4cf42cc6755f06ca50e6618e">delegate</a> = <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a>, <a class="code" href="interface_t_t_navigator.html#a506d27c735336b1ffe3da5e2b405fc03" title="The URL map used to translate between URLs and view controllers.">URLMap</a> = <a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a>, <a class="code" href="interface_t_t_navigator.html#af0833fba02eab7bf4c34551e9cb845f1" title="The window that contains the views view controller hierarchy.">window</a> = <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>,
-<a name="l00044"></a>00044             <a class="code" href="interface_t_t_navigator.html#a29b52674ef751da2f1f71f3ee3c8af51" title="The controller that is at the root of the view controller hierarchy.">rootViewController</a> = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>,
-<a name="l00045"></a>00045             <a class="code" href="interface_t_t_navigator.html#a0be6e4f476debbbcee49ecdad95e45fa" title="The age at which persisted view controllers are too old to be restored.">persistenceExpirationAge</a> = <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>,
-<a name="l00046"></a>00046             <a class="code" href="interface_t_t_navigator.html#aab763aee46b00979ffd6a72f345f56c9" title="How view controllers are automatically persisted on termination and restored on launch...">persistenceMode</a> = <a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a>, <a class="code" href="interface_t_t_navigator.html#a4f5765e37905f3717d8ef447003eafd0" title="Causes the current view controller to be reloaded when shaking the phone.">supportsShakeToReload</a> = <a class="code" href="interface_t_t_navigator.html#aefe4a5369fed8b6a288c7f251b29f8f6">_supportsShakeToReload</a>,
-<a name="l00047"></a>00047             <a class="code" href="interface_t_t_navigator.html#af4e60a1043b819a7cfaa329e2b25db0e" title="Allows URLs to be opened externally if they don&amp;#39;t match any patterns.">opensExternalURLs</a> = <a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a>;
-<a name="l00048"></a>00048 
-<a name="l00050"></a>00050 <span class="comment">// class public</span>
-<a name="l00051"></a>00051 
-<a name="l00052"></a><a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">00052</a> + (<a class="code" href="interface_t_t_navigator.html">TTNavigator</a>*)navigator {
-<a name="l00053"></a>00053   <span class="keyword">static</span> <a class="code" href="interface_t_t_navigator.html">TTNavigator</a>* navigator = nil;
-<a name="l00054"></a>00054   <span class="keywordflow">if</span> (!navigator) {
-<a name="l00055"></a>00055     navigator = [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> alloc] init];
-<a name="l00056"></a>00056   }
-<a name="l00057"></a>00057   <span class="keywordflow">return</span> navigator;
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00061"></a>00061 <span class="comment">// private</span>
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)frontViewControllerForController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
-<a name="l00064"></a>00064   <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="class_u_i_tab_bar_controller.html">UITabBarController</a> <span class="keyword">class</span>]]) {
-<a name="l00065"></a>00065     UITabBarController* tabBarController = (UITabBarController*)controller;
-<a name="l00066"></a>00066     <span class="keywordflow">if</span> (tabBarController.selectedViewController) {
-<a name="l00067"></a>00067       controller = tabBarController.selectedViewController;
-<a name="l00068"></a>00068     } <span class="keywordflow">else</span> {
-<a name="l00069"></a>00069       controller = [tabBarController.viewControllers objectAtIndex:0];
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="class_u_i_navigation_controller.html">UINavigationController</a> <span class="keyword">class</span>]]) {
-<a name="l00072"></a>00072     UINavigationController* navController = (UINavigationController*)controller;
-<a name="l00073"></a>00073     controller = navController.topViewController;
-<a name="l00074"></a>00074   }
-<a name="l00075"></a>00075   
-<a name="l00076"></a>00076   <span class="keywordflow">if</span> (controller.modalViewController) {
-<a name="l00077"></a>00077     <span class="keywordflow">return</span> [<span class="keyword">self</span> frontViewControllerForController:controller.modalViewController];
-<a name="l00078"></a>00078   } <span class="keywordflow">else</span> {
-<a name="l00079"></a>00079     <span class="keywordflow">return</span> controller;
-<a name="l00080"></a>00080   }
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 - (UINavigationController*)frontNavigationController {
-<a name="l00084"></a>00084   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> isKindOfClass:[UITabBarController <span class="keyword">class</span>]]) {
-<a name="l00085"></a>00085     UITabBarController* tabBarController = (UITabBarController*)<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
-<a name="l00086"></a>00086     <span class="keywordflow">if</span> (tabBarController.selectedViewController) {
-<a name="l00087"></a>00087       <span class="keywordflow">return</span> (UINavigationController*)tabBarController.selectedViewController;
-<a name="l00088"></a>00088     } <span class="keywordflow">else</span> {
-<a name="l00089"></a>00089       <span class="keywordflow">return</span> (UINavigationController*)[tabBarController.viewControllers objectAtIndex:0];
-<a name="l00090"></a>00090     }
-<a name="l00091"></a>00091   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> isKindOfClass:[UINavigationController <span class="keyword">class</span>]]) {
-<a name="l00092"></a>00092     <span class="keywordflow">return</span> (UINavigationController*)<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
-<a name="l00093"></a>00093   } <span class="keywordflow">else</span> {
-<a name="l00094"></a>00094     <span class="keywordflow">return</span> nil;
-<a name="l00095"></a>00095   }
-<a name="l00096"></a>00096 }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)frontViewController {
-<a name="l00099"></a>00099   UINavigationController* navController = <span class="keyword">self</span>.frontNavigationController;
-<a name="l00100"></a>00100   <span class="keywordflow">if</span> (navController) {
-<a name="l00101"></a>00101     <span class="keywordflow">return</span> [<span class="keyword">self</span> frontViewControllerForController:navController];
-<a name="l00102"></a>00102   } <span class="keywordflow">else</span> {
-<a name="l00103"></a>00103     <span class="keywordflow">return</span> [<span class="keyword">self</span> frontViewControllerForController:_rootViewController];
-<a name="l00104"></a>00104   }
-<a name="l00105"></a>00105 }
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107 - (void)setRootViewController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
-<a name="l00108"></a>00108   <span class="keywordflow">if</span> (controller != <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
-<a name="l00109"></a>00109     [_rootViewController release];
-<a name="l00110"></a>00110     <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> = [controller retain];
-<a name="l00111"></a>00111     [<span class="keyword">self</span>.window addSubview:_rootViewController.view];
-<a name="l00112"></a>00112   }
-<a name="l00113"></a>00113 }
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentForController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL {
-<a name="l00116"></a>00116   <span class="keywordflow">if</span> (controller == <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
-<a name="l00117"></a>00117     <span class="keywordflow">return</span> nil;
-<a name="l00118"></a>00118   } <span class="keywordflow">else</span> {
-<a name="l00119"></a>00119     <span class="comment">// If this is the first controller, and it is not a &quot;container&quot;, forcibly put</span>
-<a name="l00120"></a>00120     <span class="comment">// a navigation controller at the root of the controller hierarchy.</span>
-<a name="l00121"></a>00121     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> &amp;&amp; ![controller canContainControllers]) {
-<a name="l00122"></a>00122       [<span class="keyword">self</span> setRootViewController:[[[<a class="code" href="class_u_i_navigation_controller.html">UINavigationController</a> alloc] init] autorelease]];
-<a name="l00123"></a>00123     }
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125     <span class="keywordflow">if</span> (parentURL) {
-<a name="l00126"></a>00126       <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:parentURL parent:nil animated:NO];
-<a name="l00127"></a>00127     } <span class="keywordflow">else</span> {
-<a name="l00128"></a>00128       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* parent = <span class="keyword">self</span>.topViewController;
-<a name="l00129"></a>00129       <span class="keywordflow">if</span> (parent != controller) {
-<a name="l00130"></a>00130         <span class="keywordflow">return</span> parent;
-<a name="l00131"></a>00131       } <span class="keywordflow">else</span> {
-<a name="l00132"></a>00132         <span class="keywordflow">return</span> nil;
-<a name="l00133"></a>00133       }
-<a name="l00134"></a>00134     }
-<a name="l00135"></a>00135   }
-<a name="l00136"></a>00136 }
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138 - (void)presentPopupController:(<a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a>*)controller
-<a name="l00139"></a>00139         parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController animated:(BOOL)animated {
-<a name="l00140"></a>00140   parentController.popupViewController = controller;
-<a name="l00141"></a>00141   controller.superController = parentController;
-<a name="l00142"></a>00142   [controller <a class="code" href="interface_t_t_popup_view_controller.html#accca0079788ef01bf7fa897c55f7f4a3">showInView</a>:parentController.view <a class="code" href="interface_t_t_popup_view_controller.html#accca0079788ef01bf7fa897c55f7f4a3">animated</a>:animated];
-<a name="l00143"></a>00143 }
-<a name="l00144"></a>00144 
-<a name="l00145"></a>00145 - (void)presentModalController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller
-<a name="l00146"></a>00146         parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController animated:(BOOL)animated
-<a name="l00147"></a>00147         transition:(NSInteger)transition {
-<a name="l00148"></a>00148   controller.modalTransitionStyle = transition;
-<a name="l00149"></a>00149   <span class="keywordflow">if</span> ([controller isKindOfClass:[UINavigationController <span class="keyword">class</span>]]) {
-<a name="l00150"></a>00150     [parentController presentModalViewController:controller animated:animated];
-<a name="l00151"></a>00151   } <span class="keywordflow">else</span> {
-<a name="l00152"></a>00152     UINavigationController* navController = [[[<a class="code" href="class_u_i_navigation_controller.html">UINavigationController</a> alloc] init] autorelease];
-<a name="l00153"></a>00153     [navController pushViewController:controller animated:NO];
-<a name="l00154"></a>00154     [parentController presentModalViewController:navController animated:animated];
-<a name="l00155"></a>00155   }
-<a name="l00156"></a>00156 }
-<a name="l00157"></a>00157 
-<a name="l00158"></a>00158 - (BOOL)presentController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController
-<a name="l00159"></a>00159         mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)mode animated:(BOOL)animated transition:(NSInteger)transition {
-<a name="l00160"></a>00160   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
-<a name="l00161"></a>00161     [<span class="keyword">self</span> setRootViewController:controller];
-<a name="l00162"></a>00162   } <span class="keywordflow">else</span> {
-<a name="l00163"></a>00163     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* previousSuper = controller.superController;
-<a name="l00164"></a>00164     <span class="keywordflow">if</span> (previousSuper) {
-<a name="l00165"></a>00165       <span class="keywordflow">if</span> (previousSuper != parentController) {
-<a name="l00166"></a>00166         <span class="comment">// The controller already exists, so we just need to make it visible</span>
-<a name="l00167"></a>00167         <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>* superController = previousSuper; controller; ) {
-<a name="l00168"></a>00168           <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* nextSuper = superController.superController;
-<a name="l00169"></a>00169           [superController bringControllerToFront:controller animated:!nextSuper];
-<a name="l00170"></a>00170           controller = superController;
-<a name="l00171"></a>00171           superController = nextSuper;
-<a name="l00172"></a>00172         }
-<a name="l00173"></a>00173       }
-<a name="l00174"></a>00174       <span class="keywordflow">return</span> NO;
-<a name="l00175"></a>00175     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (parentController) {
-<a name="l00176"></a>00176       <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00177"></a>00177         TTPopupViewController* popupViewController  = (TTPopupViewController*)controller;
-<a name="l00178"></a>00178         [<span class="keyword">self</span> presentPopupController:popupViewController parent:parentController animated:animated];
-<a name="l00179"></a>00179       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (mode == <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">TTNavigationModeModal</a>) {
-<a name="l00180"></a>00180         [<span class="keyword">self</span> presentModalController:controller parent:parentController animated:animated
-<a name="l00181"></a>00181               transition:transition];
-<a name="l00182"></a>00182       } <span class="keywordflow">else</span> {
-<a name="l00183"></a>00183         [parentController addSubcontroller:controller animated:animated transition:transition];
-<a name="l00184"></a>00184       }
-<a name="l00185"></a>00185     }
-<a name="l00186"></a>00186   }
-<a name="l00187"></a>00187   <span class="keywordflow">return</span> YES;
-<a name="l00188"></a>00188 }
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190 - (BOOL)presentController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL
-<a name="l00191"></a>00191         withPattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>*)pattern animated:(BOOL)animated
-<a name="l00192"></a>00192         transition:(NSInteger)transition {
-<a name="l00193"></a>00193   <span class="keywordflow">if</span> (controller) {
-<a name="l00194"></a>00194     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* <a class="code" href="interface_t_t_navigator.html#a24089580d55187867a125a80820d295c" title="The view controller that is currently on top of the navigation stack.">topViewController</a> = <span class="keyword">self</span>.topViewController;
-<a name="l00195"></a>00195     <span class="keywordflow">if</span> (controller &amp;&amp; controller != topViewController) {
-<a name="l00196"></a>00196       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* parentController = [<span class="keyword">self</span> parentForController:controller
-<a name="l00197"></a>00197                                                  parent:parentURL ? parentURL : pattern.parentURL];
-<a name="l00198"></a>00198       <span class="keywordflow">if</span> (parentController &amp;&amp; parentController != topViewController) {
-<a name="l00199"></a>00199         [<span class="keyword">self</span> presentController:parentController parent:nil mode:TTNavigationModeNone
-<a name="l00200"></a>00200                      animated:NO transition:0];
-<a name="l00201"></a>00201       }
-<a name="l00202"></a>00202       <span class="keywordflow">return</span> [<span class="keyword">self</span> presentController:controller parent:parentController mode:pattern.navigationMode
-<a name="l00203"></a>00203                    animated:animated transition:transition];
-<a name="l00204"></a>00204     }
-<a name="l00205"></a>00205   }
-<a name="l00206"></a>00206   <span class="keywordflow">return</span> NO;
-<a name="l00207"></a>00207 }
-<a name="l00208"></a>00208 
-<a name="l00209"></a>00209 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL query:(NSDictionary*)query
-<a name="l00210"></a>00210                      state:(NSDictionary*)state animated:(BOOL)animated
-<a name="l00211"></a>00211                      transition:(UIViewAnimationTransition)transition withDelay:(BOOL)withDelay {
-<a name="l00212"></a>00212   <span class="keywordflow">if</span> (!URL) {
-<a name="l00213"></a>00213     <span class="keywordflow">return</span> nil;
-<a name="l00214"></a>00214   }
-<a name="l00215"></a>00215   
-<a name="l00216"></a>00216   NSURL* theURL = [NSURL URLWithString:URL];
-<a name="l00217"></a>00217   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> isAppURL:theURL]) {
-<a name="l00218"></a>00218     [[UIApplication sharedApplication] openURL:theURL];
-<a name="l00219"></a>00219     <span class="keywordflow">return</span> nil;
-<a name="l00220"></a>00220   }
-<a name="l00221"></a>00221   
-<a name="l00222"></a>00222   <span class="keywordflow">if</span> (!theURL.scheme) {
-<a name="l00223"></a>00223     <span class="keywordflow">if</span> (theURL.fragment) {
-<a name="l00224"></a>00224       URL = [<span class="keyword">self</span>.URL stringByAppendingString:URL];
-<a name="l00225"></a>00225     } <span class="keywordflow">else</span> {
-<a name="l00226"></a>00226       URL = [@&quot;http://&quot; stringByAppendingString:URL];
-<a name="l00227"></a>00227     }
-<a name="l00228"></a>00228     theURL = [NSURL URLWithString:URL];
-<a name="l00229"></a>00229   }
-<a name="l00230"></a>00230   
-<a name="l00231"></a>00231   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:shouldOpenURL:)]) {
-<a name="l00232"></a>00232     <span class="keywordflow">if</span> (![<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> navigator:<span class="keyword">self</span> shouldOpenURL:theURL]) {
-<a name="l00233"></a>00233       <span class="keywordflow">return</span> nil;
-<a name="l00234"></a>00234     }
-<a name="l00235"></a>00235   }
-<a name="l00236"></a>00236   
-<a name="l00237"></a>00237   <span class="keywordflow">if</span> (withDelay) {
-<a name="l00238"></a>00238     [<span class="keyword">self</span> beginDelay];
-<a name="l00239"></a>00239   }
-<a name="l00240"></a>00240 
-<a name="l00241"></a>00241   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;OPENING URL %@&quot;</span>, URL);
-<a name="l00242"></a>00242   
-<a name="l00243"></a>00243   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* pattern = nil;
-<a name="l00244"></a>00244   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = [<span class="keyword">self</span> viewControllerForURL:URL query:query pattern:&amp;pattern];
-<a name="l00245"></a>00245   <span class="keywordflow">if</span> (controller) {
-<a name="l00246"></a>00246     <span class="keywordflow">if</span> (state) {
-<a name="l00247"></a>00247       [controller restoreView:state];
-<a name="l00248"></a>00248       controller.frozenState = state;
-<a name="l00249"></a>00249 
-<a name="l00250"></a>00250       <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00251"></a>00251         TTModelViewController* modelViewController = (TTModelViewController*)controller;
-<a name="l00252"></a>00252         modelViewController.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>;
-<a name="l00253"></a>00253       }
-<a name="l00254"></a>00254     }
-<a name="l00255"></a>00255     
-<a name="l00256"></a>00256     <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:willOpenURL:inViewController:)]) {
-<a name="l00257"></a>00257       [_delegate navigator:self willOpenURL:theURL inViewController:controller];
-<a name="l00258"></a>00258     }
-<a name="l00259"></a>00259 
-<a name="l00260"></a>00260     BOOL wasNew = [<span class="keyword">self</span> presentController:controller parent:parentURL withPattern:pattern
-<a name="l00261"></a>00261                         animated:animated transition:transition ? transition : pattern.transition];
-<a name="l00262"></a>00262   
-<a name="l00263"></a>00263     <span class="keywordflow">if</span> (withDelay &amp;&amp; !wasNew) {
-<a name="l00264"></a>00264       [<span class="keyword">self</span> cancelDelay];
-<a name="l00265"></a>00265     }
-<a name="l00266"></a>00266   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a>) {
-<a name="l00267"></a>00267     <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:willOpenURL:inViewController:)]) {
-<a name="l00268"></a>00268       [_delegate navigator:self willOpenURL:theURL inViewController:nil];
-<a name="l00269"></a>00269     }
-<a name="l00270"></a>00270 
-<a name="l00271"></a>00271     [[UIApplication sharedApplication] openURL:theURL];
-<a name="l00272"></a>00272   }
-<a name="l00273"></a>00273 
-<a name="l00274"></a>00274   <span class="keywordflow">return</span> controller;
-<a name="l00275"></a>00275 }
-<a name="l00276"></a>00276 
-<a name="l00278"></a>00278 <span class="comment">// NSObject</span>
-<a name="l00279"></a>00279 
-<a name="l00280"></a>00280 - (id)init {
-<a name="l00281"></a>00281   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00282"></a>00282     <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> = nil;
-<a name="l00283"></a>00283     <a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> = [[<a class="code" href="interface_t_t_u_r_l_map.html">TTURLMap</a> alloc] init];
-<a name="l00284"></a>00284     <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = nil;
-<a name="l00285"></a>00285     <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> = nil;
-<a name="l00286"></a>00286     <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a> = nil;
-<a name="l00287"></a>00287     <a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a> = <a class="code" href="_t_t_navigator_8h.html#ab1947a5c2f29fee655e9948b34b9b72cad9bd69fdf569ada9874c119f76b16d2d">TTNavigatorPersistenceModeNone</a>;
-<a name="l00288"></a>00288     <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a> = 0;
-<a name="l00289"></a>00289     <a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> = 0;
-<a name="l00290"></a>00290     <a class="code" href="interface_t_t_navigator.html#aefe4a5369fed8b6a288c7f251b29f8f6">_supportsShakeToReload</a> = NO;
-<a name="l00291"></a>00291     <a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a> = NO;
-<a name="l00292"></a>00292     
-<a name="l00293"></a>00293     <span class="comment">// SwapMethods a new dealloc for UIViewController so it notifies us when it&apos;s going away.</span>
-<a name="l00294"></a>00294     <span class="comment">// We need to remove dying controllers from our binding cache.</span>
-<a name="l00295"></a>00295     <a class="code" href="_t_t_global_8h.html#a788ab38b2994f1807bf42da6302495c8">TTSwapMethods</a>([<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>], <span class="keyword">@selector</span>(dealloc), <span class="keyword">@selector</span>(ttdealloc));
-<a name="l00296"></a>00296 
-<a name="l00297"></a>00297     <a class="code" href="_t_t_global_8h.html#a788ab38b2994f1807bf42da6302495c8">TTSwapMethods</a>([UINavigationController <span class="keyword">class</span>], <span class="keyword">@selector</span>(popViewControllerAnimated:),
-<a name="l00298"></a>00298               <span class="keyword">@selector</span>(popViewControllerAnimated2:));
-<a name="l00299"></a>00299     
-<a name="l00300"></a>00300     [[NSNotificationCenter defaultCenter] addObserver:self
-<a name="l00301"></a>00301                                           selector:@selector(applicationWillTerminateNotification:)
-<a name="l00302"></a>00302                                           name:UIApplicationWillTerminateNotification
-<a name="l00303"></a>00303                                           object:nil];
-<a name="l00304"></a>00304   }
-<a name="l00305"></a>00305   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00306"></a>00306 }
-<a name="l00307"></a>00307 
-<a name="l00308"></a>00308 - (void)dealloc {
-<a name="l00309"></a>00309   [[NSNotificationCenter defaultCenter] removeObserver:self
-<a name="l00310"></a>00310                                         name:UIApplicationWillTerminateNotification
-<a name="l00311"></a>00311                                         object:nil];
-<a name="l00312"></a>00312   <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> = nil;
-<a name="l00313"></a>00313   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>);
-<a name="l00314"></a>00314   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>);
-<a name="l00315"></a>00315   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>);
-<a name="l00316"></a>00316   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a>);
-<a name="l00317"></a>00317   [<span class="keyword">super</span> dealloc];
-<a name="l00318"></a>00318 }
-<a name="l00319"></a>00319 
-<a name="l00321"></a>00321 <span class="comment">// NSNotifications</span>
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323 - (void)applicationWillTerminateNotification:(<span class="keywordtype">void</span>*)info {
-<a name="l00324"></a>00324   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a>) {
-<a name="l00325"></a>00325     [<span class="keyword">self</span> persistViewControllers];
-<a name="l00326"></a>00326   }
-<a name="l00327"></a>00327 }
-<a name="l00328"></a>00328 
-<a name="l00330"></a>00330 <span class="comment">// public</span>
-<a name="l00331"></a>00331 
-<a name="l00332"></a>00332 - (<a class="code" href="class_u_i_window.html">UIWindow</a>*)<a class="code" href="interface_t_t_navigator.html#af0833fba02eab7bf4c34551e9cb845f1" title="The window that contains the views view controller hierarchy.">window</a> {
-<a name="l00333"></a>00333   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>) {
-<a name="l00334"></a>00334     <a class="code" href="class_u_i_window.html">UIWindow</a>* keyWindow = [UIApplication sharedApplication].keyWindow;
-<a name="l00335"></a>00335     <span class="keywordflow">if</span> (keyWindow) {
-<a name="l00336"></a>00336       <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = [keyWindow retain];
-<a name="l00337"></a>00337     } <span class="keywordflow">else</span> {
-<a name="l00338"></a>00338       <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = [[<a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a> alloc] initWithFrame:TTScreenBounds()];
-<a name="l00339"></a>00339       [_window makeKeyAndVisible];
-<a name="l00340"></a>00340     }
-<a name="l00341"></a>00341   }
-<a name="l00342"></a>00342   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>;
-<a name="l00343"></a>00343 }
-<a name="l00344"></a>00344 
-<a name="l00345"></a>00345 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#a003aba692095816eae198cd4adbc83a8" title="The currently visible view controller.">visibleViewController</a> {
-<a name="l00346"></a>00346   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
-<a name="l00347"></a>00347   <span class="keywordflow">while</span> (controller) {
-<a name="l00348"></a>00348     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* child = controller.modalViewController;
-<a name="l00349"></a>00349     <span class="keywordflow">if</span> (!child) {
-<a name="l00350"></a>00350       UISearchDisplayController* search = controller.searchDisplayController;
-<a name="l00351"></a>00351       <span class="keywordflow">if</span> (search &amp;&amp; search.active &amp;&amp; [search isKindOfClass:[<a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a> <span class="keyword">class</span>]]) {
-<a name="l00352"></a>00352         TTSearchDisplayController* ttsearch = (TTSearchDisplayController*)search;
-<a name="l00353"></a>00353         child = ttsearch.<a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">searchResultsViewController</a>;
-<a name="l00354"></a>00354       } <span class="keywordflow">else</span> {
-<a name="l00355"></a>00355         child = controller.topSubcontroller;
-<a name="l00356"></a>00356       }
-<a name="l00357"></a>00357     }
-<a name="l00358"></a>00358     <span class="keywordflow">if</span> (child) {
-<a name="l00359"></a>00359       controller = child;
-<a name="l00360"></a>00360     } <span class="keywordflow">else</span> {
-<a name="l00361"></a>00361       <span class="keywordflow">return</span> controller;
+<a name="l00031"></a><a class="code" href="interface_t_t_navigator_window.html">00031</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a> : <a class="code" href="class_u_i_window.html" title="Additions.">UIWindow</a>
+<a name="l00032"></a>00032 @end
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 @implementation <a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a>
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="interface_t_t_navigator_window.html#a1534acf14581f3f235403491c212332f">00036</a> - (void)motionBegan:(UIEventSubtype)motion withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
+<a name="l00037"></a>00037   <span class="keywordflow">if</span> (event.type == UIEventSubtypeMotionShake &amp;&amp; [<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> navigator].supportsShakeToReload) {
+<a name="l00038"></a>00038     [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491" title="Reloads the content in the visible view controller.">reload</a>];
+<a name="l00039"></a>00039   }
+<a name="l00040"></a>00040 }
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keyword">@end</span>
+<a name="l00043"></a>00043 
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_navigator.html">TTNavigator</a>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_navigator.html#afb7f89ac4cf42cc6755f06ca50e6618e">delegate</a> = <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a>, <a class="code" href="interface_t_t_navigator.html#a506d27c735336b1ffe3da5e2b405fc03" title="The URL map used to translate between URLs and view controllers.">URLMap</a> = <a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a>, <a class="code" href="interface_t_t_navigator.html#af0833fba02eab7bf4c34551e9cb845f1" title="The window that contains the views view controller hierarchy.">window</a> = <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>,
+<a name="l00049"></a>00049             <a class="code" href="interface_t_t_navigator.html#a29b52674ef751da2f1f71f3ee3c8af51" title="The controller that is at the root of the view controller hierarchy.">rootViewController</a> = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>,
+<a name="l00050"></a>00050             <a class="code" href="interface_t_t_navigator.html#a0be6e4f476debbbcee49ecdad95e45fa" title="The age at which persisted view controllers are too old to be restored.">persistenceExpirationAge</a> = <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>,
+<a name="l00051"></a>00051             <a class="code" href="interface_t_t_navigator.html#aab763aee46b00979ffd6a72f345f56c9" title="How view controllers are automatically persisted on termination and restored on launch...">persistenceMode</a> = <a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a>, <a class="code" href="interface_t_t_navigator.html#a4f5765e37905f3717d8ef447003eafd0" title="Causes the current view controller to be reloaded when shaking the phone.">supportsShakeToReload</a> = <a class="code" href="interface_t_t_navigator.html#aefe4a5369fed8b6a288c7f251b29f8f6">_supportsShakeToReload</a>,
+<a name="l00052"></a>00052             <a class="code" href="interface_t_t_navigator.html#af4e60a1043b819a7cfaa329e2b25db0e" title="Allows URLs to be opened externally if they don&amp;#39;t match any patterns.">opensExternalURLs</a> = <a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a>;
+<a name="l00053"></a>00053 
+<a name="l00055"></a>00055 <span class="comment">// class public</span>
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">00057</a> + (<a class="code" href="interface_t_t_navigator.html">TTNavigator</a>*)navigator {
+<a name="l00058"></a>00058   <span class="keyword">static</span> <a class="code" href="interface_t_t_navigator.html">TTNavigator</a>* navigator = nil;
+<a name="l00059"></a>00059   <span class="keywordflow">if</span> (!navigator) {
+<a name="l00060"></a>00060     navigator = [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> alloc] init];
+<a name="l00061"></a>00061   }
+<a name="l00062"></a>00062   <span class="keywordflow">return</span> navigator;
+<a name="l00063"></a>00063 }
+<a name="l00064"></a>00064 
+<a name="l00066"></a>00066 <span class="comment">// private</span>
+<a name="l00067"></a>00067 
+<a name="l00068"></a><a class="code" href="interface_t_t_navigator.html#af8fbb62a28947ca111f2582a536f2d8b">00068</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)frontViewControllerForController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
+<a name="l00069"></a>00069   <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a> <span class="keyword">class</span>]]) {
+<a name="l00070"></a>00070     <a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a>* tabBarController = (<a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a>*)controller;
+<a name="l00071"></a>00071     <span class="keywordflow">if</span> (tabBarController.selectedViewController) {
+<a name="l00072"></a>00072       controller = tabBarController.selectedViewController;
+<a name="l00073"></a>00073     } <span class="keywordflow">else</span> {
+<a name="l00074"></a>00074       controller = [tabBarController.viewControllers objectAtIndex:0];
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> <span class="keyword">class</span>]]) {
+<a name="l00077"></a>00077     <a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>* navController = (<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>*)controller;
+<a name="l00078"></a>00078     controller = navController.topViewController;
+<a name="l00079"></a>00079   }
+<a name="l00080"></a>00080   
+<a name="l00081"></a>00081   <span class="keywordflow">if</span> (controller.modalViewController) {
+<a name="l00082"></a>00082     <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#af8fbb62a28947ca111f2582a536f2d8b">frontViewControllerForController</a>:controller.modalViewController];
+<a name="l00083"></a>00083   } <span class="keywordflow">else</span> {
+<a name="l00084"></a>00084     <span class="keywordflow">return</span> controller;
+<a name="l00085"></a>00085   }
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a><a class="code" href="interface_t_t_navigator.html#ad0a9ec0672f84d9abe788ef5c7e78c28">00088</a> - (<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>*)<a class="code" href="interface_t_t_navigator.html#ad0a9ec0672f84d9abe788ef5c7e78c28">frontNavigationController</a> {
+<a name="l00089"></a>00089   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> isKindOfClass:[<a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a> <span class="keyword">class</span>]]) {
+<a name="l00090"></a>00090     <a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a>* tabBarController = (<a class="code" href="class_u_i_tab_bar_controller.html" title="Additions.">UITabBarController</a>*)<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
+<a name="l00091"></a>00091     <span class="keywordflow">if</span> (tabBarController.selectedViewController) {
+<a name="l00092"></a>00092       <span class="keywordflow">return</span> (<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>*)tabBarController.selectedViewController;
+<a name="l00093"></a>00093     } <span class="keywordflow">else</span> {
+<a name="l00094"></a>00094       <span class="keywordflow">return</span> (<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>*)[tabBarController.viewControllers objectAtIndex:0];
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> isKindOfClass:[<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> <span class="keyword">class</span>]]) {
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> (<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>*)<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
+<a name="l00098"></a>00098   } <span class="keywordflow">else</span> {
+<a name="l00099"></a>00099     <span class="keywordflow">return</span> nil;
+<a name="l00100"></a>00100   }
+<a name="l00101"></a>00101 }
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="interface_t_t_navigator.html#a93f14db4719f3e8ce7827765397bf233">00103</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#a93f14db4719f3e8ce7827765397bf233">frontViewController</a> {
+<a name="l00104"></a>00104   <a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>* navController = <span class="keyword">self</span>.frontNavigationController;
+<a name="l00105"></a>00105   <span class="keywordflow">if</span> (navController) {
+<a name="l00106"></a>00106     <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#af8fbb62a28947ca111f2582a536f2d8b">frontViewControllerForController</a>:navController];
+<a name="l00107"></a>00107   } <span class="keywordflow">else</span> {
+<a name="l00108"></a>00108     <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#af8fbb62a28947ca111f2582a536f2d8b">frontViewControllerForController</a>:_rootViewController];
+<a name="l00109"></a>00109   }
+<a name="l00110"></a>00110 }
+<a name="l00111"></a>00111 
+<a name="l00112"></a><a class="code" href="interface_t_t_navigator.html#a0b7e532887c51f8b236f524517801900">00112</a> - (void)setRootViewController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller {
+<a name="l00113"></a>00113   <span class="keywordflow">if</span> (controller != <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
+<a name="l00114"></a>00114     [<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> release];
+<a name="l00115"></a>00115     <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> = [controller retain];
+<a name="l00116"></a>00116     [<span class="keyword">self</span>.window addSubview:_rootViewController.view];
+<a name="l00117"></a>00117   }
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="interface_t_t_navigator.html#a301ed2a96278defe949092ede4608a56">00120</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentForController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL {
+<a name="l00121"></a>00121   <span class="keywordflow">if</span> (controller == <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
+<a name="l00122"></a>00122     <span class="keywordflow">return</span> nil;
+<a name="l00123"></a>00123   } <span class="keywordflow">else</span> {
+<a name="l00124"></a>00124     <span class="comment">// If this is the first controller, and it is not a &quot;container&quot;, forcibly put</span>
+<a name="l00125"></a>00125     <span class="comment">// a navigation controller at the root of the controller hierarchy.</span>
+<a name="l00126"></a>00126     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> &amp;&amp; ![controller canContainControllers]) {
+<a name="l00127"></a>00127       [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0b7e532887c51f8b236f524517801900">setRootViewController</a>:[[[<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> alloc] init] autorelease]];
+<a name="l00128"></a>00128     }
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130     <span class="keywordflow">if</span> (parentURL) {
+<a name="l00131"></a>00131       <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">openURL</a>:parentURL <a class="code" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">animated</a>:NO];
+<a name="l00132"></a>00132     } <span class="keywordflow">else</span> {
+<a name="l00133"></a>00133       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* parent = <span class="keyword">self</span>.topViewController;
+<a name="l00134"></a>00134       <span class="keywordflow">if</span> (parent != controller) {
+<a name="l00135"></a>00135         <span class="keywordflow">return</span> parent;
+<a name="l00136"></a>00136       } <span class="keywordflow">else</span> {
+<a name="l00137"></a>00137         <span class="keywordflow">return</span> nil;
+<a name="l00138"></a>00138       }
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140   }
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="interface_t_t_navigator.html#ae260b9c9b76983d5a1745c9f4d1602d8">00143</a> - (void)presentPopupController:(<a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a>*)controller
+<a name="l00144"></a>00144         parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController animated:(BOOL)animated {
+<a name="l00145"></a>00145   parentController.<a class="code" href="class_u_i_view_controller.html#a28800ef0a031b8b2cbc99dab302e3bfe">popupViewController</a> = controller;
+<a name="l00146"></a>00146   controller.<a class="code" href="class_u_i_view_controller.html#a0c0e62a761010af541087209fc48e3fa">superController</a> = parentController;
+<a name="l00147"></a>00147   [controller <a class="code" href="interface_t_t_popup_view_controller.html#accca0079788ef01bf7fa897c55f7f4a3">showInView</a>:parentController.view <a class="code" href="interface_t_t_popup_view_controller.html#accca0079788ef01bf7fa897c55f7f4a3">animated</a>:animated];
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="interface_t_t_navigator.html#ae5a5d39214514a22e6c8b86c512243ab">00150</a> - (void)presentModalController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller
+<a name="l00151"></a>00151         parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController animated:(BOOL)animated
+<a name="l00152"></a>00152         transition:(NSInteger)transition {
+<a name="l00153"></a>00153   controller.modalTransitionStyle = transition;
+<a name="l00154"></a>00154   <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> <span class="keyword">class</span>]]) {
+<a name="l00155"></a>00155     [parentController presentModalViewController:controller animated:animated];
+<a name="l00156"></a>00156   } <span class="keywordflow">else</span> {
+<a name="l00157"></a>00157     <a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a>* navController = [[[<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> alloc] init] autorelease];
+<a name="l00158"></a>00158     [navController pushViewController:controller animated:NO];
+<a name="l00159"></a>00159     [parentController presentModalViewController:navController animated:animated];
+<a name="l00160"></a>00160   }
+<a name="l00161"></a>00161 }
+<a name="l00162"></a>00162 
+<a name="l00163"></a><a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">00163</a> - (BOOL)presentController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)parentController
+<a name="l00164"></a>00164         mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)mode animated:(BOOL)animated transition:(NSInteger)transition {
+<a name="l00165"></a>00165   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
+<a name="l00166"></a>00166     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0b7e532887c51f8b236f524517801900">setRootViewController</a>:controller];
+<a name="l00167"></a>00167   } <span class="keywordflow">else</span> {
+<a name="l00168"></a>00168     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* previousSuper = controller.<a class="code" href="class_u_i_view_controller.html#a0c0e62a761010af541087209fc48e3fa">superController</a>;
+<a name="l00169"></a>00169     <span class="keywordflow">if</span> (previousSuper) {
+<a name="l00170"></a>00170       <span class="keywordflow">if</span> (previousSuper != parentController) {
+<a name="l00171"></a>00171         <span class="comment">// The controller already exists, so we just need to make it visible</span>
+<a name="l00172"></a>00172         <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>* superController = previousSuper; controller; ) {
+<a name="l00173"></a>00173           <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* nextSuper = superController.<a class="code" href="class_u_i_view_controller.html#a0c0e62a761010af541087209fc48e3fa">superController</a>;
+<a name="l00174"></a>00174           [superController bringControllerToFront:controller animated:!nextSuper];
+<a name="l00175"></a>00175           controller = superController;
+<a name="l00176"></a>00176           superController = nextSuper;
+<a name="l00177"></a>00177         }
+<a name="l00178"></a>00178       }
+<a name="l00179"></a>00179       <span class="keywordflow">return</span> NO;
+<a name="l00180"></a>00180     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (parentController) {
+<a name="l00181"></a>00181       <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00182"></a>00182         TTPopupViewController* popupViewController  = (TTPopupViewController*)controller;
+<a name="l00183"></a>00183         [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#ae260b9c9b76983d5a1745c9f4d1602d8">presentPopupController</a>:popupViewController <a class="code" href="interface_t_t_navigator.html#ae260b9c9b76983d5a1745c9f4d1602d8">parent</a>:parentController <a class="code" href="interface_t_t_navigator.html#ae260b9c9b76983d5a1745c9f4d1602d8">animated</a>:animated];
+<a name="l00184"></a>00184       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (mode == <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">TTNavigationModeModal</a>) {
+<a name="l00185"></a>00185         [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#ae5a5d39214514a22e6c8b86c512243ab">presentModalController</a>:controller <a class="code" href="interface_t_t_navigator.html#ae5a5d39214514a22e6c8b86c512243ab">parent</a>:parentController <a class="code" href="interface_t_t_navigator.html#ae5a5d39214514a22e6c8b86c512243ab">animated</a>:animated
+<a name="l00186"></a>00186               <a class="code" href="interface_t_t_navigator.html#ae5a5d39214514a22e6c8b86c512243ab">transition</a>:transition];
+<a name="l00187"></a>00187       } <span class="keywordflow">else</span> {
+<a name="l00188"></a>00188         [parentController <a class="code" href="class_u_i_view_controller.html#a717f4fc1d8f3fb5328456b15b2fd70ed">addSubcontroller</a>:controller <a class="code" href="class_u_i_view_controller.html#a717f4fc1d8f3fb5328456b15b2fd70ed">animated</a>:animated <a class="code" href="class_u_i_view_controller.html#a717f4fc1d8f3fb5328456b15b2fd70ed">transition</a>:transition];
+<a name="l00189"></a>00189       }
+<a name="l00190"></a>00190     }
+<a name="l00191"></a>00191   }
+<a name="l00192"></a>00192   <span class="keywordflow">return</span> YES;
+<a name="l00193"></a>00193 }
+<a name="l00194"></a>00194 
+<a name="l00195"></a><a class="code" href="interface_t_t_navigator.html#aa974c18f0fda9e11cf21aa9edb3e4716">00195</a> - (BOOL)presentController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL
+<a name="l00196"></a>00196         withPattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>*)pattern animated:(BOOL)animated
+<a name="l00197"></a>00197         transition:(NSInteger)transition {
+<a name="l00198"></a>00198   <span class="keywordflow">if</span> (controller) {
+<a name="l00199"></a>00199     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* <a class="code" href="interface_t_t_navigator.html#a24089580d55187867a125a80820d295c" title="The view controller that is currently on top of the navigation stack.">topViewController</a> = <span class="keyword">self</span>.topViewController;
+<a name="l00200"></a>00200     <span class="keywordflow">if</span> (controller &amp;&amp; controller != topViewController) {
+<a name="l00201"></a>00201       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* parentController = [<span class="keyword">self</span> parentForController:controller
+<a name="l00202"></a>00202                                                  parent:parentURL ? parentURL : pattern.parentURL];
+<a name="l00203"></a>00203       <span class="keywordflow">if</span> (parentController &amp;&amp; parentController != topViewController) {
+<a name="l00204"></a>00204         [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">presentController</a>:parentController <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">mode</a>:TTNavigationModeNone
+<a name="l00205"></a>00205                      <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">animated</a>:NO <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">transition</a>:0];
+<a name="l00206"></a>00206       }
+<a name="l00207"></a>00207       <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">presentController</a>:controller <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">parent</a>:parentController <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">mode</a>:pattern.navigationMode
+<a name="l00208"></a>00208                    <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">animated</a>:animated <a class="code" href="interface_t_t_navigator.html#aae03c9c17b6376490b73304886bebfba">transition</a>:transition];
+<a name="l00209"></a>00209     }
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211   <span class="keywordflow">return</span> NO;
+<a name="l00212"></a>00212 }
+<a name="l00213"></a>00213 
+<a name="l00214"></a><a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">00214</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL query:(NSDictionary*)query
+<a name="l00215"></a>00215                      state:(NSDictionary*)state animated:(BOOL)animated
+<a name="l00216"></a>00216                      transition:(UIViewAnimationTransition)transition withDelay:(BOOL)withDelay {
+<a name="l00217"></a>00217   <span class="keywordflow">if</span> (!URL) {
+<a name="l00218"></a>00218     <span class="keywordflow">return</span> nil;
+<a name="l00219"></a>00219   }
+<a name="l00220"></a>00220   
+<a name="l00221"></a>00221   NSURL* theURL = [NSURL URLWithString:URL];
+<a name="l00222"></a>00222   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> isAppURL:theURL]) {
+<a name="l00223"></a>00223     [[UIApplication sharedApplication] openURL:theURL];
+<a name="l00224"></a>00224     <span class="keywordflow">return</span> nil;
+<a name="l00225"></a>00225   }
+<a name="l00226"></a>00226   
+<a name="l00227"></a>00227   <span class="keywordflow">if</span> (!theURL.scheme) {
+<a name="l00228"></a>00228     <span class="keywordflow">if</span> (theURL.fragment) {
+<a name="l00229"></a>00229       URL = [<span class="keyword">self</span>.URL stringByAppendingString:URL];
+<a name="l00230"></a>00230     } <span class="keywordflow">else</span> {
+<a name="l00231"></a>00231       URL = [@&quot;http://&quot; stringByAppendingString:URL];
+<a name="l00232"></a>00232     }
+<a name="l00233"></a>00233     theURL = [NSURL URLWithString:URL];
+<a name="l00234"></a>00234   }
+<a name="l00235"></a>00235   
+<a name="l00236"></a>00236   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:shouldOpenURL:)]) {
+<a name="l00237"></a>00237     <span class="keywordflow">if</span> (![<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> navigator:<span class="keyword">self</span> shouldOpenURL:theURL]) {
+<a name="l00238"></a>00238       <span class="keywordflow">return</span> nil;
+<a name="l00239"></a>00239     }
+<a name="l00240"></a>00240   }
+<a name="l00241"></a>00241   
+<a name="l00242"></a>00242   <span class="keywordflow">if</span> (withDelay) {
+<a name="l00243"></a>00243     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4" title="Tells the navigator to delay heavy operations.">beginDelay</a>];
+<a name="l00244"></a>00244   }
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;OPENING URL %@&quot;</span>, URL);
+<a name="l00247"></a>00247   
+<a name="l00248"></a>00248   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* pattern = nil;
+<a name="l00249"></a>00249   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">query</a>:query <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">pattern</a>:&amp;pattern];
+<a name="l00250"></a>00250   <span class="keywordflow">if</span> (controller) {
+<a name="l00251"></a>00251     <span class="keywordflow">if</span> (state) {
+<a name="l00252"></a>00252       [controller <a class="code" href="class_u_i_view_controller.html#a23a3994cec51c82ecc05173833a34e05">restoreView</a>:state];
+<a name="l00253"></a>00253       controller.<a class="code" href="class_u_i_view_controller.html#a8737f5633d403468086f381e73ea5bde">frozenState</a> = state;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255       <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00256"></a>00256         TTModelViewController* modelViewController = (TTModelViewController*)controller;
+<a name="l00257"></a>00257         modelViewController.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>;
+<a name="l00258"></a>00258       }
+<a name="l00259"></a>00259     }
+<a name="l00260"></a>00260     
+<a name="l00261"></a>00261     <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:willOpenURL:inViewController:)]) {
+<a name="l00262"></a>00262       [<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> navigator:self willOpenURL:theURL inViewController:controller];
+<a name="l00263"></a>00263     }
+<a name="l00264"></a>00264 
+<a name="l00265"></a>00265     BOOL wasNew = [<span class="keyword">self</span> presentController:controller parent:parentURL withPattern:pattern
+<a name="l00266"></a>00266                         animated:animated transition:transition ? transition : pattern.transition];
+<a name="l00267"></a>00267   
+<a name="l00268"></a>00268     <span class="keywordflow">if</span> (withDelay &amp;&amp; !wasNew) {
+<a name="l00269"></a>00269       [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b" title="Cancels the delay without notifying delayed controllers.">cancelDelay</a>];
+<a name="l00270"></a>00270     }
+<a name="l00271"></a>00271   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a>) {
+<a name="l00272"></a>00272     <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> respondsToSelector:<span class="keyword">@selector</span>(navigator:willOpenURL:inViewController:)]) {
+<a name="l00273"></a>00273       [<a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> navigator:self willOpenURL:theURL inViewController:nil];
+<a name="l00274"></a>00274     }
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276     [[UIApplication sharedApplication] openURL:theURL];
+<a name="l00277"></a>00277   }
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279   <span class="keywordflow">return</span> controller;
+<a name="l00280"></a>00280 }
+<a name="l00281"></a>00281 
+<a name="l00283"></a>00283 <span class="comment">// NSObject</span>
+<a name="l00284"></a>00284 
+<a name="l00285"></a><a class="code" href="interface_t_t_navigator.html#a308c2cb2e6feb0cfcc9548c98b90d2c4">00285</a> - (id)<a class="code" href="interface_t_t_navigator.html#a308c2cb2e6feb0cfcc9548c98b90d2c4">init</a> {
+<a name="l00286"></a>00286   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_navigator.html#a308c2cb2e6feb0cfcc9548c98b90d2c4">init</a>]) {
+<a name="l00287"></a>00287     <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> = nil;
+<a name="l00288"></a>00288     <a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> = [[<a class="code" href="interface_t_t_u_r_l_map.html">TTURLMap</a> alloc] init];
+<a name="l00289"></a>00289     <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = nil;
+<a name="l00290"></a>00290     <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a> = nil;
+<a name="l00291"></a>00291     <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a> = nil;
+<a name="l00292"></a>00292     <a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a> = <a class="code" href="_t_t_navigator_8h.html#ab1947a5c2f29fee655e9948b34b9b72cad9bd69fdf569ada9874c119f76b16d2d">TTNavigatorPersistenceModeNone</a>;
+<a name="l00293"></a>00293     <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a> = 0;
+<a name="l00294"></a>00294     <a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> = 0;
+<a name="l00295"></a>00295     <a class="code" href="interface_t_t_navigator.html#aefe4a5369fed8b6a288c7f251b29f8f6">_supportsShakeToReload</a> = NO;
+<a name="l00296"></a>00296     <a class="code" href="interface_t_t_navigator.html#a3e2939533a9a3b9a29129b6c2b0825a5">_opensExternalURLs</a> = NO;
+<a name="l00297"></a>00297     
+<a name="l00298"></a>00298     <span class="comment">// SwapMethods a new dealloc for UIViewController so it notifies us when it&apos;s going away.</span>
+<a name="l00299"></a>00299     <span class="comment">// We need to remove dying controllers from our binding cache.</span>
+<a name="l00300"></a>00300     <a class="code" href="_t_t_global_core_8h.html#a788ab38b2994f1807bf42da6302495c8" title="Swap the two method implementations on the given class.">TTSwapMethods</a>([<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>], <span class="keyword">@selector</span>(<a class="code" href="interface_t_t_navigator.html#a24d1d14221420ae481060d5e28c268a0">dealloc</a>), <span class="keyword">@selector</span>(ttdealloc));
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302     <a class="code" href="_t_t_global_core_8h.html#a788ab38b2994f1807bf42da6302495c8" title="Swap the two method implementations on the given class.">TTSwapMethods</a>([<a class="code" href="class_u_i_navigation_controller.html" title="Additions.">UINavigationController</a> <span class="keyword">class</span>], <span class="keyword">@selector</span>(popViewControllerAnimated:),
+<a name="l00303"></a>00303               <span class="keyword">@selector</span>(popViewControllerAnimated2:));
+<a name="l00304"></a>00304     
+<a name="l00305"></a>00305     [[NSNotificationCenter defaultCenter] addObserver:self
+<a name="l00306"></a>00306                                           selector:@selector(applicationWillTerminateNotification:)
+<a name="l00307"></a>00307                                           name:UIApplicationWillTerminateNotification
+<a name="l00308"></a>00308                                           object:nil];
+<a name="l00309"></a>00309   }
+<a name="l00310"></a>00310   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00311"></a>00311 }
+<a name="l00312"></a>00312 
+<a name="l00313"></a><a class="code" href="interface_t_t_navigator.html#a24d1d14221420ae481060d5e28c268a0">00313</a> - (void)<a class="code" href="interface_t_t_navigator.html#a24d1d14221420ae481060d5e28c268a0">dealloc</a> {
+<a name="l00314"></a>00314   [[NSNotificationCenter defaultCenter] removeObserver:self
+<a name="l00315"></a>00315                                         name:UIApplicationWillTerminateNotification
+<a name="l00316"></a>00316                                         object:nil];
+<a name="l00317"></a>00317   <a class="code" href="interface_t_t_navigator.html#aaf93e59f7f27e8e6d7e62df76a236161">_delegate</a> = nil;
+<a name="l00318"></a>00318   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>);
+<a name="l00319"></a>00319   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>);
+<a name="l00320"></a>00320   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>);
+<a name="l00321"></a>00321   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a>);
+<a name="l00322"></a>00322   [<span class="keyword">super</span> dealloc];
+<a name="l00323"></a>00323 }
+<a name="l00324"></a>00324 
+<a name="l00326"></a>00326 <span class="comment">// NSNotifications</span>
+<a name="l00327"></a>00327 
+<a name="l00328"></a><a class="code" href="interface_t_t_navigator.html#aed50eb037e84c18d5ccd1ff18a4bd6a3">00328</a> - (void)applicationWillTerminateNotification:(<span class="keywordtype">void</span>*)info {
+<a name="l00329"></a>00329   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a>) {
+<a name="l00330"></a>00330     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a" title="Persists all view controllers to user defaults.">persistViewControllers</a>];
+<a name="l00331"></a>00331   }
+<a name="l00332"></a>00332 }
+<a name="l00333"></a>00333 
+<a name="l00335"></a>00335 <span class="comment">// public</span>
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337 - (<a class="code" href="class_u_i_window.html" title="Additions.">UIWindow</a>*)<a class="code" href="interface_t_t_navigator.html#af0833fba02eab7bf4c34551e9cb845f1" title="The window that contains the views view controller hierarchy.">window</a> {
+<a name="l00338"></a>00338   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>) {
+<a name="l00339"></a>00339     <a class="code" href="class_u_i_window.html" title="Additions.">UIWindow</a>* keyWindow = [UIApplication sharedApplication].keyWindow;
+<a name="l00340"></a>00340     <span class="keywordflow">if</span> (keyWindow) {
+<a name="l00341"></a>00341       <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = [keyWindow retain];
+<a name="l00342"></a>00342     } <span class="keywordflow">else</span> {
+<a name="l00343"></a>00343       <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a> = [[<a class="code" href="interface_t_t_navigator_window.html">TTNavigatorWindow</a> alloc] initWithFrame:TTScreenBounds()];
+<a name="l00344"></a>00344       [_window makeKeyAndVisible];
+<a name="l00345"></a>00345     }
+<a name="l00346"></a>00346   }
+<a name="l00347"></a>00347   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_navigator.html#a8462364bae7cf1275b29edcb25e58aeb">_window</a>;
+<a name="l00348"></a>00348 }
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#a003aba692095816eae198cd4adbc83a8" title="The currently visible view controller.">visibleViewController</a> {
+<a name="l00351"></a>00351   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
+<a name="l00352"></a>00352   <span class="keywordflow">while</span> (controller) {
+<a name="l00353"></a>00353     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* child = controller.modalViewController;
+<a name="l00354"></a>00354     <span class="keywordflow">if</span> (!child) {
+<a name="l00355"></a>00355       UISearchDisplayController* search = controller.searchDisplayController;
+<a name="l00356"></a>00356       <span class="keywordflow">if</span> (search &amp;&amp; search.active &amp;&amp; [search isKindOfClass:[<a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a> <span class="keyword">class</span>]]) {
+<a name="l00357"></a>00357         TTSearchDisplayController* ttsearch = (TTSearchDisplayController*)search;
+<a name="l00358"></a>00358         child = ttsearch.<a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">searchResultsViewController</a>;
+<a name="l00359"></a>00359       } <span class="keywordflow">else</span> {
+<a name="l00360"></a>00360         child = controller.<a class="code" href="class_u_i_view_controller.html#ab1ff2335fcd6315da5392701ddab87a9">topSubcontroller</a>;
+<a name="l00361"></a>00361       }
 <a name="l00362"></a>00362     }
-<a name="l00363"></a>00363   }
-<a name="l00364"></a>00364   <span class="keywordflow">return</span> nil;
-<a name="l00365"></a>00365 }
-<a name="l00366"></a>00366 
-<a name="l00367"></a>00367 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)topViewController {
-<a name="l00368"></a>00368   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
-<a name="l00369"></a>00369   <span class="keywordflow">while</span> (controller) {
-<a name="l00370"></a>00370     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* child = controller.modalViewController;
-<a name="l00371"></a>00371     <span class="keywordflow">if</span> (!child) {
-<a name="l00372"></a>00372       child = controller.topSubcontroller;
-<a name="l00373"></a>00373     }
-<a name="l00374"></a>00374     <span class="keywordflow">if</span> (child) {
-<a name="l00375"></a>00375       <span class="keywordflow">if</span> (child == <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
-<a name="l00376"></a>00376         <span class="keywordflow">return</span> child;
-<a name="l00377"></a>00377       } <span class="keywordflow">else</span> {
-<a name="l00378"></a>00378         controller = child;
-<a name="l00379"></a>00379       }
-<a name="l00380"></a>00380     } <span class="keywordflow">else</span> {
-<a name="l00381"></a>00381       <span class="keywordflow">return</span> controller;
-<a name="l00382"></a>00382     }
-<a name="l00383"></a>00383   }
-<a name="l00384"></a>00384   <span class="keywordflow">return</span> nil;
-<a name="l00385"></a>00385 }
-<a name="l00386"></a>00386 
-<a name="l00387"></a>00387 - (<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00388"></a>00388   <span class="keywordflow">return</span> <span class="keyword">self</span>.topViewController.navigatorURL;
-<a name="l00389"></a>00389 }
-<a name="l00390"></a>00390 
-<a name="l00391"></a>00391 - (void)setURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00392"></a>00392   [<span class="keyword">self</span> openURL:URL animated:YES];
-<a name="l00393"></a>00393 }
-<a name="l00394"></a>00394 
-<a name="l00395"></a><a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7">00395</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL animated:(BOOL)animated {
-<a name="l00396"></a>00396   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:nil query:nil state:nil animated:animated
-<a name="l00397"></a>00397                transition:UIViewAnimationTransitionNone withDelay:NO];
+<a name="l00363"></a>00363     <span class="keywordflow">if</span> (child) {
+<a name="l00364"></a>00364       controller = child;
+<a name="l00365"></a>00365     } <span class="keywordflow">else</span> {
+<a name="l00366"></a>00366       <span class="keywordflow">return</span> controller;
+<a name="l00367"></a>00367     }
+<a name="l00368"></a>00368   }
+<a name="l00369"></a>00369   <span class="keywordflow">return</span> nil;
+<a name="l00370"></a>00370 }
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#a24089580d55187867a125a80820d295c" title="The view controller that is currently on top of the navigation stack.">topViewController</a> {
+<a name="l00373"></a>00373   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
+<a name="l00374"></a>00374   <span class="keywordflow">while</span> (controller) {
+<a name="l00375"></a>00375     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* child = controller.modalViewController;
+<a name="l00376"></a>00376     <span class="keywordflow">if</span> (!child) {
+<a name="l00377"></a>00377       child = controller.<a class="code" href="class_u_i_view_controller.html#ab1ff2335fcd6315da5392701ddab87a9">topSubcontroller</a>;
+<a name="l00378"></a>00378     }
+<a name="l00379"></a>00379     <span class="keywordflow">if</span> (child) {
+<a name="l00380"></a>00380       <span class="keywordflow">if</span> (child == <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>) {
+<a name="l00381"></a>00381         <span class="keywordflow">return</span> child;
+<a name="l00382"></a>00382       } <span class="keywordflow">else</span> {
+<a name="l00383"></a>00383         controller = child;
+<a name="l00384"></a>00384       }
+<a name="l00385"></a>00385     } <span class="keywordflow">else</span> {
+<a name="l00386"></a>00386       <span class="keywordflow">return</span> controller;
+<a name="l00387"></a>00387     }
+<a name="l00388"></a>00388   }
+<a name="l00389"></a>00389   <span class="keywordflow">return</span> nil;
+<a name="l00390"></a>00390 }
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00393"></a>00393   <span class="keywordflow">return</span> <span class="keyword">self</span>.topViewController.navigatorURL;
+<a name="l00394"></a>00394 }
+<a name="l00395"></a>00395 
+<a name="l00396"></a><a class="code" href="interface_t_t_navigator.html#a71923ca0aa0b3d2c3857bc727738b400">00396</a> - (void)setURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00397"></a>00397   [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">animated</a>:YES];
 <a name="l00398"></a>00398 }
 <a name="l00399"></a>00399 
-<a name="l00400"></a><a class="code" href="interface_t_t_navigator.html#a9d1302d25d444b44100d48844a2e851c">00400</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL animated:(BOOL)animated
-<a name="l00401"></a>00401                      transition:(UIViewAnimationTransition)transition {
-<a name="l00402"></a>00402   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:nil query:nil state:nil animated:animated
-<a name="l00403"></a>00403                transition:transition withDelay:NO];
-<a name="l00404"></a>00404 }
-<a name="l00405"></a>00405 
-<a name="l00406"></a><a class="code" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">00406</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL animated:(BOOL)animated {
-<a name="l00407"></a>00407   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:parentURL query:nil state:nil animated:animated
-<a name="l00408"></a>00408                transition:UIViewAnimationTransitionNone withDelay:NO];
+<a name="l00400"></a><a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7">00400</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL animated:(BOOL)animated {
+<a name="l00401"></a>00401   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00402"></a>00402                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
+<a name="l00403"></a>00403 }
+<a name="l00404"></a>00404 
+<a name="l00405"></a><a class="code" href="interface_t_t_navigator.html#a9d1302d25d444b44100d48844a2e851c">00405</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL animated:(BOOL)animated
+<a name="l00406"></a>00406                      transition:(UIViewAnimationTransition)transition {
+<a name="l00407"></a>00407   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00408"></a>00408                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:transition <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
 <a name="l00409"></a>00409 }
 <a name="l00410"></a>00410 
-<a name="l00411"></a><a class="code" href="interface_t_t_navigator.html#ad9a8a683fa4a133876626bbe32030c9c">00411</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL query:(NSDictionary*)query animated:(BOOL)animated {
-<a name="l00412"></a>00412   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:nil query:query state:nil animated:animated
-<a name="l00413"></a>00413                transition:UIViewAnimationTransitionNone withDelay:NO];
+<a name="l00411"></a><a class="code" href="interface_t_t_navigator.html#a99519ffc7effab80d46d81bd79c28775">00411</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL animated:(BOOL)animated {
+<a name="l00412"></a>00412   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:parentURL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00413"></a>00413                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
 <a name="l00414"></a>00414 }
 <a name="l00415"></a>00415 
-<a name="l00416"></a><a class="code" href="interface_t_t_navigator.html#a57c6849fe3b8d344fe1dc90ab5589715">00416</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL query:(NSDictionary*)query
-<a name="l00417"></a>00417                      animated:(BOOL)animated {
-<a name="l00418"></a>00418   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:parentURL query:query state:nil animated:animated
-<a name="l00419"></a>00419                transition:UIViewAnimationTransitionNone withDelay:NO];
-<a name="l00420"></a>00420 }
-<a name="l00421"></a>00421 
-<a name="l00422"></a><a class="code" href="interface_t_t_navigator.html#ab9aa6bac71d9e9b2cd17507c1d3a41c6">00422</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL query:(NSDictionary*)query
-<a name="l00423"></a>00423                      animated:(BOOL)animated transition:(UIViewAnimationTransition)transition {
-<a name="l00424"></a>00424   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:parentURL query:query state:nil animated:animated
-<a name="l00425"></a>00425                transition:UIViewAnimationTransitionNone withDelay:NO];
-<a name="l00426"></a>00426 }
-<a name="l00427"></a>00427 
-<a name="l00428"></a><a class="code" href="interface_t_t_navigator.html#aa79c48184e2ddf0edba064868aee1a86">00428</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL query:(NSDictionary*)query
-<a name="l00429"></a>00429                      animated:(BOOL)animated transition:(UIViewAnimationTransition)transition
-<a name="l00430"></a>00430                      withDelay:(BOOL)withDelay {
-<a name="l00431"></a>00431   <span class="keywordflow">return</span> [<span class="keyword">self</span> openURL:URL parent:parentURL query:query state:nil animated:animated
-<a name="l00432"></a>00432                transition:UIViewAnimationTransitionNone withDelay:withDelay];
-<a name="l00433"></a>00433 }
-<a name="l00434"></a>00434 
-<a name="l00435"></a><a class="code" href="interface_t_t_navigator.html#ad0f9f715e40f04a770a90600ee38b123">00435</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURLs:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL,... {
-<a name="l00436"></a>00436   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = nil;
-<a name="l00437"></a>00437   va_list ap;
-<a name="l00438"></a>00438   va_start(ap, URL);
-<a name="l00439"></a>00439   <span class="keywordflow">while</span> (URL) {
-<a name="l00440"></a>00440     controller = [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">animated</a>:NO];
-<a name="l00441"></a>00441     URL = va_arg(ap, <span class="keywordtype">id</span>);
-<a name="l00442"></a>00442   }
-<a name="l00443"></a>00443   va_end(ap); 
-<a name="l00444"></a>00444 
-<a name="l00445"></a>00445   <span class="keywordflow">return</span> controller;
-<a name="l00446"></a>00446 }
-<a name="l00447"></a>00447 
-<a name="l00448"></a><a class="code" href="interface_t_t_navigator.html#a2323b46d1546b5fb6b6456a23c95ce15">00448</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00449"></a>00449   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">pattern</a>:nil];
-<a name="l00450"></a>00450 }
-<a name="l00451"></a>00451 
-<a name="l00452"></a><a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">00452</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL query:(NSDictionary*)query {
-<a name="l00453"></a>00453   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">query</a>:query <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">pattern</a>:nil];
-<a name="l00454"></a>00454 }
-<a name="l00455"></a>00455 
-<a name="l00456"></a>00456 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL query:(NSDictionary*)query
-<a name="l00457"></a>00457                      pattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>**)pattern {
-<a name="l00458"></a>00458   NSRange fragmentRange = [URL rangeOfString:@&quot;#&quot; options:NSBackwardsSearch];
-<a name="l00459"></a>00459   <span class="keywordflow">if</span> (fragmentRange.location != NSNotFound) {
-<a name="l00460"></a>00460     <a class="code" href="class_n_s_string.html">NSString</a>* baseURL = [URL substringToIndex:fragmentRange.location];
-<a name="l00461"></a>00461     <span class="keywordflow">if</span> ([<span class="keyword">self</span>.URL isEqualToString:baseURL]) {
-<a name="l00462"></a>00462       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <span class="keyword">self</span>.visibleViewController;
-<a name="l00463"></a>00463       <span class="keywordtype">id</span> result = [_URLMap dispatchURL:URL toTarget:controller query:query];
-<a name="l00464"></a>00464       <span class="keywordflow">if</span> ([result isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00465"></a>00465         <span class="keywordflow">return</span> result;
-<a name="l00466"></a>00466       } <span class="keywordflow">else</span> {
-<a name="l00467"></a>00467         <span class="keywordflow">return</span> controller;
-<a name="l00468"></a>00468       }
-<a name="l00469"></a>00469     } <span class="keywordflow">else</span> {
-<a name="l00470"></a>00470       <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [_URLMap objectForURL:baseURL query:nil pattern:pattern];
-<a name="l00471"></a>00471       <span class="keywordflow">if</span> (<span class="keywordtype">object</span>) {
-<a name="l00472"></a>00472         <span class="keywordtype">id</span> result = [_URLMap dispatchURL:URL toTarget:object query:query];
-<a name="l00473"></a>00473         <span class="keywordflow">if</span> ([result isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00474"></a>00474           <span class="keywordflow">return</span> result;
-<a name="l00475"></a>00475         } <span class="keywordflow">else</span> {
-<a name="l00476"></a>00476           <span class="keywordflow">return</span> object;
-<a name="l00477"></a>00477         }
-<a name="l00478"></a>00478       } <span class="keywordflow">else</span> {
-<a name="l00479"></a>00479         <span class="keywordflow">return</span> nil;
-<a name="l00480"></a>00480       }
-<a name="l00481"></a>00481     }
-<a name="l00482"></a>00482   }
-<a name="l00483"></a>00483 
-<a name="l00484"></a>00484   <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [_URLMap objectForURL:URL query:query pattern:pattern];
-<a name="l00485"></a>00485   <span class="keywordflow">if</span> (<span class="keywordtype">object</span>) {
-<a name="l00486"></a>00486     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = object;
-<a name="l00487"></a>00487     controller.originalNavigatorURL = URL;
-<a name="l00488"></a>00488     
-<a name="l00489"></a>00489     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
-<a name="l00490"></a>00490       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>) {
-<a name="l00491"></a>00491         <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a> = [[<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> alloc] initWithObjects:controller,nil];
-<a name="l00492"></a>00492       } <span class="keywordflow">else</span> {
-<a name="l00493"></a>00493         [_delayedControllers addObject:controller];
-<a name="l00494"></a>00494       }
-<a name="l00495"></a>00495     }
-<a name="l00496"></a>00496     
-<a name="l00497"></a>00497     <span class="keywordflow">return</span> controller;
-<a name="l00498"></a>00498   } <span class="keywordflow">else</span> {
-<a name="l00499"></a>00499     <span class="keywordflow">return</span> nil;
-<a name="l00500"></a>00500   }
-<a name="l00501"></a>00501 }
-<a name="l00502"></a>00502 
-<a name="l00503"></a>00503 - (BOOL)<a class="code" href="interface_t_t_navigator.html#ae80108abf4a917eebaf2164748b1e9eb" title="Indicates that we asking controllers to delay heavy operations until a later time...">isDelayed</a> {
-<a name="l00504"></a>00504   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &gt; 0;
-<a name="l00505"></a>00505 }
-<a name="l00506"></a>00506 
-<a name="l00507"></a><a class="code" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4">00507</a> - (void)<a class="code" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4" title="Tells the navigator to delay heavy operations.">beginDelay</a> {
-<a name="l00508"></a>00508   ++<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>;
-<a name="l00509"></a>00509 }
-<a name="l00510"></a>00510 
-<a name="l00511"></a><a class="code" href="interface_t_t_navigator.html#a0eeca9f557184728d033db82fe11d543">00511</a> - (void)<a class="code" href="interface_t_t_navigator.html#a0eeca9f557184728d033db82fe11d543" title="Tells controllers that were created during the delay to finish what they were planning...">endDelay</a> {
-<a name="l00512"></a>00512   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &amp;&amp; !--<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
-<a name="l00513"></a>00513     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller in <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>) {
-<a name="l00514"></a>00514       [controller delayDidEnd];
-<a name="l00515"></a>00515     }
-<a name="l00516"></a>00516     
-<a name="l00517"></a>00517     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_delayedControllers);
-<a name="l00518"></a>00518   }
-<a name="l00519"></a>00519 }
-<a name="l00520"></a>00520 
-<a name="l00521"></a><a class="code" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b">00521</a> - (void)<a class="code" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b" title="Cancels the delay without notifying delayed controllers.">cancelDelay</a> {
-<a name="l00522"></a>00522   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &amp;&amp; !--<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
-<a name="l00523"></a>00523     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>);
-<a name="l00524"></a>00524   }
-<a name="l00525"></a>00525 }
-<a name="l00526"></a>00526 
-<a name="l00527"></a><a class="code" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a">00527</a> - (void)<a class="code" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a" title="Persists all view controllers to user defaults.">persistViewControllers</a> {
-<a name="l00528"></a>00528   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* path = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> array];
-<a name="l00529"></a>00529   [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:_rootViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
-<a name="l00530"></a>00530   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;DEBUG PERSIST %@&quot;</span>, path);
-<a name="l00531"></a>00531   
-<a name="l00532"></a>00532   <span class="comment">// Check if any of the paths were &quot;important&quot;, and therefore unable to expire</span>
-<a name="l00533"></a>00533   BOOL important = NO;
-<a name="l00534"></a>00534   <span class="keywordflow">for</span> (NSDictionary* state in path) {
-<a name="l00535"></a>00535     <span class="keywordflow">if</span> ([state objectForKey:<span class="stringliteral">@&quot;__important__&quot;</span>]) {
-<a name="l00536"></a>00536       important = YES;
-<a name="l00537"></a>00537       <span class="keywordflow">break</span>;
-<a name="l00538"></a>00538     }
-<a name="l00539"></a>00539   }
-<a name="l00540"></a>00540   
-<a name="l00541"></a>00541   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-<a name="l00542"></a>00542   <span class="keywordflow">if</span> (path.count) {
-<a name="l00543"></a>00543     [defaults setObject:path forKey:@&quot;TTNavigatorHistory&quot;];
-<a name="l00544"></a>00544     [defaults setObject:[<a class="code" href="class_n_s_date.html">NSDate</a> date] forKey:@&quot;TTNavigatorHistoryTime&quot;];
-<a name="l00545"></a>00545     [defaults setObject:[NSNumber numberWithInt:important] forKey:@&quot;TTNavigatorHistoryImportant&quot;];
-<a name="l00546"></a>00546   } <span class="keywordflow">else</span> {
-<a name="l00547"></a>00547     [defaults removeObjectForKey:@&quot;TTNavigatorHistory&quot;];
-<a name="l00548"></a>00548     [defaults removeObjectForKey:@&quot;TTNavigatorHistoryTime&quot;];
-<a name="l00549"></a>00549     [defaults removeObjectForKey:@&quot;TTNavigatorHistoryImportant&quot;];
-<a name="l00550"></a>00550   }
-<a name="l00551"></a>00551   [defaults synchronize];
-<a name="l00552"></a>00552 }
-<a name="l00553"></a>00553 
-<a name="l00554"></a><a class="code" href="interface_t_t_navigator.html#af31a34b7a0296bdbeb7d4f85f16dc14f">00554</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#af31a34b7a0296bdbeb7d4f85f16dc14f" title="Restores all view controllers from user defaults and returns the last one.">restoreViewControllers</a> { 
-<a name="l00555"></a>00555   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-<a name="l00556"></a>00556   <a class="code" href="class_n_s_date.html">NSDate</a>* timestamp = [defaults objectForKey:@&quot;TTNavigatorHistoryTime&quot;];
-<a name="l00557"></a>00557   <a class="code" href="class_n_s_array.html">NSArray</a>* path = [defaults objectForKey:@&quot;TTNavigatorHistory&quot;];
-<a name="l00558"></a>00558   BOOL important = [[defaults objectForKey:@&quot;TTNavigatorHistoryImportant&quot;] boolValue];
-<a name="l00559"></a>00559   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;DEBUG RESTORE %@ FROM %@&quot;</span>, path, [timestamp formatRelativeTime]);
-<a name="l00560"></a>00560   
-<a name="l00561"></a>00561   BOOL expired = <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>
-<a name="l00562"></a>00562                  &amp;&amp; -timestamp.timeIntervalSinceNow &gt; <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>;
-<a name="l00563"></a>00563   <span class="keywordflow">if</span> (expired &amp;&amp; !important) {
-<a name="l00564"></a>00564     <span class="keywordflow">return</span> nil;
-<a name="l00565"></a>00565   }
-<a name="l00566"></a>00566 
-<a name="l00567"></a>00567   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = nil;
-<a name="l00568"></a>00568   BOOL passedContainer = NO;
-<a name="l00569"></a>00569   <span class="keywordflow">for</span> (NSDictionary* state in path) {
-<a name="l00570"></a>00570     <a class="code" href="class_n_s_string.html">NSString</a>* URL = [state objectForKey:@&quot;__navigatorURL__&quot;];
-<a name="l00571"></a>00571     controller = [<span class="keyword">self</span> openURL:URL parent:nil query:nil state:state animated:NO transition:0
-<a name="l00572"></a>00572                       withDelay:NO];
-<a name="l00573"></a>00573     
-<a name="l00574"></a>00574     <span class="comment">// Stop if we reach a model view controller whose model could not be synchronously loaded.</span>
-<a name="l00575"></a>00575     <span class="comment">// That is because the controller after it may depend on the data it could not load, so</span>
-<a name="l00576"></a>00576     <span class="comment">// we&apos;d better not risk opening more controllers that may not be able to function.</span>
-<a name="l00577"></a>00577 <span class="comment">//    if ([controller isKindOfClass:[TTModelViewController class]]) {</span>
-<a name="l00578"></a>00578 <span class="comment">//      TTModelViewController* modelViewController = (TTModelViewController*)controller;</span>
-<a name="l00579"></a>00579 <span class="comment">//      if (!modelViewController.model.isLoaded) {</span>
-<a name="l00580"></a>00580 <span class="comment">//        break;</span>
-<a name="l00581"></a>00581 <span class="comment">//      }</span>
-<a name="l00582"></a>00582 <span class="comment">//    }</span>
-<a name="l00583"></a>00583 
-<a name="l00584"></a>00584     <span class="comment">// Stop after one controller if we are in &quot;persist top&quot; mode</span>
-<a name="l00585"></a>00585     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a> == <a class="code" href="_t_t_navigator_8h.html#ab1947a5c2f29fee655e9948b34b9b72ca4309bebff4f9e48c5849f7e39c67a1ae">TTNavigatorPersistenceModeTop</a> &amp;&amp; passedContainer) {
-<a name="l00586"></a>00586       <span class="keywordflow">break</span>;
-<a name="l00587"></a>00587     }
-<a name="l00588"></a>00588     
-<a name="l00589"></a>00589     passedContainer = [controller canContainControllers];
-<a name="l00590"></a>00590   }
-<a name="l00591"></a>00591 
-<a name="l00592"></a>00592   [<span class="keyword">self</span>.window makeKeyAndVisible];
-<a name="l00593"></a>00593   
-<a name="l00594"></a>00594   <span class="keywordflow">return</span> controller;
-<a name="l00595"></a>00595 }
+<a name="l00416"></a><a class="code" href="interface_t_t_navigator.html#ad9a8a683fa4a133876626bbe32030c9c">00416</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL query:(NSDictionary*)query animated:(BOOL)animated {
+<a name="l00417"></a>00417   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:query <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00418"></a>00418                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
+<a name="l00419"></a>00419 }
+<a name="l00420"></a>00420 
+<a name="l00421"></a><a class="code" href="interface_t_t_navigator.html#a57c6849fe3b8d344fe1dc90ab5589715">00421</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL query:(NSDictionary*)query
+<a name="l00422"></a>00422                      animated:(BOOL)animated {
+<a name="l00423"></a>00423   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:parentURL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:query <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00424"></a>00424                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
+<a name="l00425"></a>00425 }
+<a name="l00426"></a>00426 
+<a name="l00427"></a><a class="code" href="interface_t_t_navigator.html#ab9aa6bac71d9e9b2cd17507c1d3a41c6">00427</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL query:(NSDictionary*)query
+<a name="l00428"></a>00428                      animated:(BOOL)animated transition:(UIViewAnimationTransition)transition {
+<a name="l00429"></a>00429   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:parentURL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:query <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00430"></a>00430                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
+<a name="l00431"></a>00431 }
+<a name="l00432"></a>00432 
+<a name="l00433"></a><a class="code" href="interface_t_t_navigator.html#aa79c48184e2ddf0edba064868aee1a86">00433</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL query:(NSDictionary*)query
+<a name="l00434"></a>00434                      animated:(BOOL)animated transition:(UIViewAnimationTransition)transition
+<a name="l00435"></a>00435                      withDelay:(BOOL)withDelay {
+<a name="l00436"></a>00436   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:parentURL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:query <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:animated
+<a name="l00437"></a>00437                <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:UIViewAnimationTransitionNone <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:withDelay];
+<a name="l00438"></a>00438 }
+<a name="l00439"></a>00439 
+<a name="l00440"></a><a class="code" href="interface_t_t_navigator.html#ad0f9f715e40f04a770a90600ee38b123">00440</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)openURLs:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL,... {
+<a name="l00441"></a>00441   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = nil;
+<a name="l00442"></a>00442   va_list ap;
+<a name="l00443"></a>00443   va_start(ap, URL);
+<a name="l00444"></a>00444   <span class="keywordflow">while</span> (URL) {
+<a name="l00445"></a>00445     controller = [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">animated</a>:NO];
+<a name="l00446"></a>00446     URL = va_arg(ap, <span class="keywordtype">id</span>);
+<a name="l00447"></a>00447   }
+<a name="l00448"></a>00448   va_end(ap); 
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450   <span class="keywordflow">return</span> controller;
+<a name="l00451"></a>00451 }
+<a name="l00452"></a>00452 
+<a name="l00453"></a><a class="code" href="interface_t_t_navigator.html#a2323b46d1546b5fb6b6456a23c95ce15">00453</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00454"></a>00454   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">pattern</a>:nil];
+<a name="l00455"></a>00455 }
+<a name="l00456"></a>00456 
+<a name="l00457"></a><a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">00457</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL query:(NSDictionary*)query {
+<a name="l00458"></a>00458   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">query</a>:query <a class="code" href="interface_t_t_navigator.html#a832315b4139712e822ed680eda6afa58">pattern</a>:nil];
+<a name="l00459"></a>00459 }
+<a name="l00460"></a>00460 
+<a name="l00461"></a><a class="code" href="interface_t_t_navigator.html#a5ca83e54bb6adbd2c3b5ed2122e0950a">00461</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewControllerForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL query:(NSDictionary*)query
+<a name="l00462"></a>00462                      pattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>**)pattern {
+<a name="l00463"></a>00463   NSRange fragmentRange = [URL rangeOfString:@&quot;#&quot; options:NSBackwardsSearch];
+<a name="l00464"></a>00464   <span class="keywordflow">if</span> (fragmentRange.location != NSNotFound) {
+<a name="l00465"></a>00465     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* baseURL = [URL substringToIndex:fragmentRange.location];
+<a name="l00466"></a>00466     <span class="keywordflow">if</span> ([<span class="keyword">self</span>.URL isEqualToString:baseURL]) {
+<a name="l00467"></a>00467       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <span class="keyword">self</span>.visibleViewController;
+<a name="l00468"></a>00468       <span class="keywordtype">id</span> result = [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">dispatchURL</a>:URL <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">toTarget</a>:controller <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">query</a>:query];
+<a name="l00469"></a>00469       <span class="keywordflow">if</span> ([result isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00470"></a>00470         <span class="keywordflow">return</span> result;
+<a name="l00471"></a>00471       } <span class="keywordflow">else</span> {
+<a name="l00472"></a>00472         <span class="keywordflow">return</span> controller;
+<a name="l00473"></a>00473       }
+<a name="l00474"></a>00474     } <span class="keywordflow">else</span> {
+<a name="l00475"></a>00475       <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">objectForURL</a>:baseURL <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">query</a>:nil <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">pattern</a>:pattern];
+<a name="l00476"></a>00476       <span class="keywordflow">if</span> (<span class="keywordtype">object</span>) {
+<a name="l00477"></a>00477         <span class="keywordtype">id</span> result = [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">dispatchURL</a>:URL <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">toTarget</a>:object <a class="code" href="interface_t_t_u_r_l_map.html#a3ff79ffbf417158c5ab1ed0f62b93491">query</a>:query];
+<a name="l00478"></a>00478         <span class="keywordflow">if</span> ([result isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00479"></a>00479           <span class="keywordflow">return</span> result;
+<a name="l00480"></a>00480         } <span class="keywordflow">else</span> {
+<a name="l00481"></a>00481           <span class="keywordflow">return</span> object;
+<a name="l00482"></a>00482         }
+<a name="l00483"></a>00483       } <span class="keywordflow">else</span> {
+<a name="l00484"></a>00484         <span class="keywordflow">return</span> nil;
+<a name="l00485"></a>00485       }
+<a name="l00486"></a>00486     }
+<a name="l00487"></a>00487   }
+<a name="l00488"></a>00488 
+<a name="l00489"></a>00489   <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">objectForURL</a>:URL <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">query</a>:query <a class="code" href="interface_t_t_u_r_l_map.html#a7de16e740333f64bccbaa6d1dad94354">pattern</a>:pattern];
+<a name="l00490"></a>00490   <span class="keywordflow">if</span> (<span class="keywordtype">object</span>) {
+<a name="l00491"></a>00491     <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = object;
+<a name="l00492"></a>00492     controller.<a class="code" href="class_u_i_view_controller.html#a222a3c01feeaf5d88f88474b38de0688">originalNavigatorURL</a> = URL;
+<a name="l00493"></a>00493     
+<a name="l00494"></a>00494     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
+<a name="l00495"></a>00495       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>) {
+<a name="l00496"></a>00496         <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a> = [[<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> alloc] initWithObjects:controller,nil];
+<a name="l00497"></a>00497       } <span class="keywordflow">else</span> {
+<a name="l00498"></a>00498         [<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a> addObject:controller];
+<a name="l00499"></a>00499       }
+<a name="l00500"></a>00500     }
+<a name="l00501"></a>00501     
+<a name="l00502"></a>00502     <span class="keywordflow">return</span> controller;
+<a name="l00503"></a>00503   } <span class="keywordflow">else</span> {
+<a name="l00504"></a>00504     <span class="keywordflow">return</span> nil;
+<a name="l00505"></a>00505   }
+<a name="l00506"></a>00506 }
+<a name="l00507"></a>00507 
+<a name="l00508"></a>00508 - (BOOL)<a class="code" href="interface_t_t_navigator.html#ae80108abf4a917eebaf2164748b1e9eb" title="Indicates that we asking controllers to delay heavy operations until a later time...">isDelayed</a> {
+<a name="l00509"></a>00509   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &gt; 0;
+<a name="l00510"></a>00510 }
+<a name="l00511"></a>00511 
+<a name="l00512"></a><a class="code" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4">00512</a> - (void)<a class="code" href="interface_t_t_navigator.html#ac3a1d49d84b8e29ce41657d54bb1e6a4" title="Tells the navigator to delay heavy operations.">beginDelay</a> {
+<a name="l00513"></a>00513   ++<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>;
+<a name="l00514"></a>00514 }
+<a name="l00515"></a>00515 
+<a name="l00516"></a><a class="code" href="interface_t_t_navigator.html#a0eeca9f557184728d033db82fe11d543">00516</a> - (void)<a class="code" href="interface_t_t_navigator.html#a0eeca9f557184728d033db82fe11d543" title="Tells controllers that were created during the delay to finish what they were planning...">endDelay</a> {
+<a name="l00517"></a>00517   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &amp;&amp; !--<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
+<a name="l00518"></a>00518     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller in <a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>) {
+<a name="l00519"></a>00519       [controller <a class="code" href="class_u_i_view_controller.html#a4890f2775fc5346ebf488d6c5ceffab3">delayDidEnd</a>];
+<a name="l00520"></a>00520     }
+<a name="l00521"></a>00521     
+<a name="l00522"></a>00522     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_delayedControllers);
+<a name="l00523"></a>00523   }
+<a name="l00524"></a>00524 }
+<a name="l00525"></a>00525 
+<a name="l00526"></a><a class="code" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b">00526</a> - (void)<a class="code" href="interface_t_t_navigator.html#a786ae9442cb8a69d489948bd474ac29b" title="Cancels the delay without notifying delayed controllers.">cancelDelay</a> {
+<a name="l00527"></a>00527   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a> &amp;&amp; !--<a class="code" href="interface_t_t_navigator.html#a15c778ff73e2cb3ec219dd1ea25edac6">_delayCount</a>) {
+<a name="l00528"></a>00528     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#a36514d538cdfb8f7a77b9f8da70ead1e">_delayedControllers</a>);
+<a name="l00529"></a>00529   }
+<a name="l00530"></a>00530 }
+<a name="l00531"></a>00531 
+<a name="l00532"></a><a class="code" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a">00532</a> - (void)<a class="code" href="interface_t_t_navigator.html#a35406cf4642294e15252fdc905bad55a" title="Persists all view controllers to user defaults.">persistViewControllers</a> {
+<a name="l00533"></a>00533   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* path = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> array];
+<a name="l00534"></a>00534   [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:_rootViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
+<a name="l00535"></a>00535   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;DEBUG PERSIST %@&quot;</span>, path);
+<a name="l00536"></a>00536   
+<a name="l00537"></a>00537   <span class="comment">// Check if any of the paths were &quot;important&quot;, and therefore unable to expire</span>
+<a name="l00538"></a>00538   BOOL important = NO;
+<a name="l00539"></a>00539   <span class="keywordflow">for</span> (NSDictionary* state in path) {
+<a name="l00540"></a>00540     <span class="keywordflow">if</span> ([state objectForKey:<span class="stringliteral">@&quot;__important__&quot;</span>]) {
+<a name="l00541"></a>00541       important = YES;
+<a name="l00542"></a>00542       <span class="keywordflow">break</span>;
+<a name="l00543"></a>00543     }
+<a name="l00544"></a>00544   }
+<a name="l00545"></a>00545   
+<a name="l00546"></a>00546   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+<a name="l00547"></a>00547   <span class="keywordflow">if</span> (path.count) {
+<a name="l00548"></a>00548     [defaults setObject:path forKey:@&quot;TTNavigatorHistory&quot;];
+<a name="l00549"></a>00549     [defaults setObject:[<a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a> date] forKey:@&quot;TTNavigatorHistoryTime&quot;];
+<a name="l00550"></a>00550     [defaults setObject:[NSNumber numberWithInt:important] forKey:@&quot;TTNavigatorHistoryImportant&quot;];
+<a name="l00551"></a>00551   } <span class="keywordflow">else</span> {
+<a name="l00552"></a>00552     [defaults removeObjectForKey:@&quot;TTNavigatorHistory&quot;];
+<a name="l00553"></a>00553     [defaults removeObjectForKey:@&quot;TTNavigatorHistoryTime&quot;];
+<a name="l00554"></a>00554     [defaults removeObjectForKey:@&quot;TTNavigatorHistoryImportant&quot;];
+<a name="l00555"></a>00555   }
+<a name="l00556"></a>00556   [defaults synchronize];
+<a name="l00557"></a>00557 }
+<a name="l00558"></a>00558 
+<a name="l00559"></a><a class="code" href="interface_t_t_navigator.html#af31a34b7a0296bdbeb7d4f85f16dc14f">00559</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="interface_t_t_navigator.html#af31a34b7a0296bdbeb7d4f85f16dc14f" title="Restores all view controllers from user defaults and returns the last one.">restoreViewControllers</a> { 
+<a name="l00560"></a>00560   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+<a name="l00561"></a>00561   <a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a>* timestamp = [defaults objectForKey:@&quot;TTNavigatorHistoryTime&quot;];
+<a name="l00562"></a>00562   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* path = [defaults objectForKey:@&quot;TTNavigatorHistory&quot;];
+<a name="l00563"></a>00563   BOOL important = [[defaults objectForKey:@&quot;TTNavigatorHistoryImportant&quot;] boolValue];
+<a name="l00564"></a>00564   <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a962d25d1f5d4ebf8c47170b9e550aa28">TTDFLAG_NAVIGATOR</a>, <span class="stringliteral">@&quot;DEBUG RESTORE %@ FROM %@&quot;</span>, path, [timestamp formatRelativeTime]);
+<a name="l00565"></a>00565   
+<a name="l00566"></a>00566   BOOL expired = <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>
+<a name="l00567"></a>00567                  &amp;&amp; -timestamp.timeIntervalSinceNow &gt; <a class="code" href="interface_t_t_navigator.html#a7075e037f36b798d952dfffe93816691">_persistenceExpirationAge</a>;
+<a name="l00568"></a>00568   <span class="keywordflow">if</span> (expired &amp;&amp; !important) {
+<a name="l00569"></a>00569     <span class="keywordflow">return</span> nil;
+<a name="l00570"></a>00570   }
+<a name="l00571"></a>00571 
+<a name="l00572"></a>00572   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = nil;
+<a name="l00573"></a>00573   BOOL passedContainer = NO;
+<a name="l00574"></a>00574   <span class="keywordflow">for</span> (NSDictionary* state in path) {
+<a name="l00575"></a>00575     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL = [state objectForKey:@&quot;__navigatorURL__&quot;];
+<a name="l00576"></a>00576     controller = [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">parent</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">query</a>:nil <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">state</a>:state <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">animated</a>:NO <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">transition</a>:0
+<a name="l00577"></a>00577                       <a class="code" href="interface_t_t_navigator.html#a0fb1be7209fa555a48495712665979db">withDelay</a>:NO];
+<a name="l00578"></a>00578     
+<a name="l00579"></a>00579     <span class="comment">// Stop if we reach a model view controller whose model could not be synchronously loaded.</span>
+<a name="l00580"></a>00580     <span class="comment">// That is because the controller after it may depend on the data it could not load, so</span>
+<a name="l00581"></a>00581     <span class="comment">// we&apos;d better not risk opening more controllers that may not be able to function.</span>
+<a name="l00582"></a>00582 <span class="comment">//    if ([controller isKindOfClass:[TTModelViewController class]]) {</span>
+<a name="l00583"></a>00583 <span class="comment">//      TTModelViewController* modelViewController = (TTModelViewController*)controller;</span>
+<a name="l00584"></a>00584 <span class="comment">//      if (!modelViewController.model.isLoaded) {</span>
+<a name="l00585"></a>00585 <span class="comment">//        break;</span>
+<a name="l00586"></a>00586 <span class="comment">//      }</span>
+<a name="l00587"></a>00587 <span class="comment">//    }</span>
+<a name="l00588"></a>00588 
+<a name="l00589"></a>00589     <span class="comment">// Stop after one controller if we are in &quot;persist top&quot; mode</span>
+<a name="l00590"></a>00590     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_navigator.html#a6ff2b05b832da845f5d113e4afa5c47a">_persistenceMode</a> == <a class="code" href="_t_t_navigator_8h.html#ab1947a5c2f29fee655e9948b34b9b72ca4309bebff4f9e48c5849f7e39c67a1ae">TTNavigatorPersistenceModeTop</a> &amp;&amp; passedContainer) {
+<a name="l00591"></a>00591       <span class="keywordflow">break</span>;
+<a name="l00592"></a>00592     }
+<a name="l00593"></a>00593     
+<a name="l00594"></a>00594     passedContainer = [controller <a class="code" href="class_u_i_view_controller.html#ad6c13bbfdd4e93ad73155b8d48afed56">canContainControllers</a>];
+<a name="l00595"></a>00595   }
 <a name="l00596"></a>00596 
-<a name="l00597"></a><a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33">00597</a> - (void)persistController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller path:(<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>*)path {
-<a name="l00598"></a>00598   <a class="code" href="class_n_s_string.html">NSString</a>* URL = controller.navigatorURL;
-<a name="l00599"></a>00599   <span class="keywordflow">if</span> (URL) {
-<a name="l00600"></a>00600     <span class="comment">// Let the controller persists its own arbitrary state</span>
-<a name="l00601"></a>00601     <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* state = [<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a> dictionaryWithObject:URL  
-<a name="l00602"></a>00602                                                       forKey:@&quot;__navigatorURL__&quot;];
-<a name="l00603"></a>00603     <span class="keywordflow">if</span> ([controller persistView:state]) {
-<a name="l00604"></a>00604       [path addObject:state];
-<a name="l00605"></a>00605     }
-<a name="l00606"></a>00606   }
-<a name="l00607"></a>00607   [controller persistNavigationPath:path];
-<a name="l00608"></a>00608 
-<a name="l00609"></a>00609   <span class="keywordflow">if</span> (controller.modalViewController
-<a name="l00610"></a>00610       &amp;&amp; controller.modalViewController.parentViewController == controller) {
-<a name="l00611"></a>00611     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:controller.modalViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
-<a name="l00612"></a>00612   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (controller.popupViewController
-<a name="l00613"></a>00613              &amp;&amp; controller.popupViewController.superController == controller) {
-<a name="l00614"></a>00614     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:controller.popupViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
-<a name="l00615"></a>00615   }
-<a name="l00616"></a>00616 }
-<a name="l00617"></a>00617 
-<a name="l00618"></a><a class="code" href="interface_t_t_navigator.html#aea43bb8b7436f244098abb50780bf495">00618</a> - (void)<a class="code" href="interface_t_t_navigator.html#aea43bb8b7436f244098abb50780bf495" title="Removes all view controllers from the window and releases them.">removeAllViewControllers</a> {
-<a name="l00619"></a>00619   [<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>.view removeFromSuperview];
-<a name="l00620"></a>00620   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>);
-<a name="l00621"></a>00621   [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a431e893bba437eb5b8d9b3a6b73d1ee9" title="Removes all bound objects;.">removeAllObjects</a>];
-<a name="l00622"></a>00622 }
-<a name="l00623"></a>00623 
-<a name="l00624"></a><a class="code" href="interface_t_t_navigator.html#a1c530c7ca715aba99d83294f0d9dd644">00624</a> - (<a class="code" href="class_n_s_string.html">NSString</a>*)pathForObject:(<span class="keywordtype">id</span>)object {
-<a name="l00625"></a>00625   <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00626"></a>00626     <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* paths = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> array];
-<a name="l00627"></a>00627     <span class="keywordflow">for</span> (UIViewController* controller = <span class="keywordtype">object</span>; controller; ) {
-<a name="l00628"></a>00628       UIViewController* superController = controller.superController;
-<a name="l00629"></a>00629       <a class="code" href="class_n_s_string.html">NSString</a>* key = [superController keyForSubcontroller:controller];
-<a name="l00630"></a>00630       <span class="keywordflow">if</span> (key) {
-<a name="l00631"></a>00631         [paths addObject:key];
-<a name="l00632"></a>00632       }
-<a name="l00633"></a>00633       controller = superController;
-<a name="l00634"></a>00634     }
-<a name="l00635"></a>00635     
-<a name="l00636"></a>00636     <span class="keywordflow">return</span> [paths componentsJoinedByString:@&quot;/&quot;];
-<a name="l00637"></a>00637   } <span class="keywordflow">else</span> {
-<a name="l00638"></a>00638     <span class="keywordflow">return</span> nil;
-<a name="l00639"></a>00639   }
-<a name="l00640"></a>00640 }
-<a name="l00641"></a>00641 
-<a name="l00642"></a><a class="code" href="interface_t_t_navigator.html#a7a409d1351a2cc0b95131527e27b2104">00642</a> - (id)objectForPath:(<a class="code" href="class_n_s_string.html">NSString</a>*)path {
-<a name="l00643"></a>00643   <a class="code" href="class_n_s_array.html">NSArray</a>* keys = [path componentsSeparatedByString:@&quot;/&quot;];
-<a name="l00644"></a>00644   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
-<a name="l00645"></a>00645   <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* key in [keys reverseObjectEnumerator]) {
-<a name="l00646"></a>00646     controller = [controller subcontrollerForKey:key];
-<a name="l00647"></a>00647   }
-<a name="l00648"></a>00648   <span class="keywordflow">return</span> controller;
-<a name="l00649"></a>00649 }
-<a name="l00650"></a>00650 
-<a name="l00651"></a><a class="code" href="interface_t_t_navigator.html#a984c0dc6ea35ceb0280b42d899259284">00651</a> - (void)<a class="code" href="interface_t_t_navigator.html#a984c0dc6ea35ceb0280b42d899259284" title="Erases all data stored in user defaults.">resetDefaults</a> {
-<a name="l00652"></a>00652   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-<a name="l00653"></a>00653   [defaults removeObjectForKey:@&quot;TTNavigatorHistory&quot;];
-<a name="l00654"></a>00654   [defaults removeObjectForKey:@&quot;TTNavigatorHistoryTime&quot;];
-<a name="l00655"></a>00655   [defaults removeObjectForKey:@&quot;TTNavigatorHistoryImportant&quot;];
-<a name="l00656"></a>00656   [defaults synchronize];
-<a name="l00657"></a>00657 }
-<a name="l00658"></a>00658 
-<a name="l00659"></a><a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491">00659</a> - (void)<a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491" title="Reloads the content in the visible view controller.">reload</a> {
-<a name="l00660"></a>00660   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <span class="keyword">self</span>.visibleViewController;
-<a name="l00661"></a>00661   <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00662"></a>00662     TTModelViewController* ttcontroller = (TTModelViewController*)controller;
-<a name="l00663"></a>00663     [ttcontroller <a class="code" href="interface_t_t_model_view_controller.html#a24f2409dfa7b20b8f76c9730db192f29" title="Reloads data from the model.">reload</a>];
-<a name="l00664"></a>00664   }
-<a name="l00665"></a>00665 }
-<a name="l00666"></a>00666 
-<a name="l00667"></a>00667 <span class="keyword">@end</span>
-<a name="l00668"></a>00668 
-<a name="l00670"></a>00670 <span class="comment">// global</span>
+<a name="l00597"></a>00597   [<span class="keyword">self</span>.window makeKeyAndVisible];
+<a name="l00598"></a>00598   
+<a name="l00599"></a>00599   <span class="keywordflow">return</span> controller;
+<a name="l00600"></a>00600 }
+<a name="l00601"></a>00601 
+<a name="l00602"></a><a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33">00602</a> - (void)persistController:(<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)controller path:(<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>*)path {
+<a name="l00603"></a>00603   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL = controller.<a class="code" href="class_u_i_view_controller.html#a522be7e3a0b7d4f45511d0494f1d3361">navigatorURL</a>;
+<a name="l00604"></a>00604   <span class="keywordflow">if</span> (URL) {
+<a name="l00605"></a>00605     <span class="comment">// Let the controller persists its own arbitrary state</span>
+<a name="l00606"></a>00606     <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* state = [<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a> dictionaryWithObject:URL  
+<a name="l00607"></a>00607                                                       forKey:@&quot;__navigatorURL__&quot;];
+<a name="l00608"></a>00608     <span class="keywordflow">if</span> ([controller persistView:state]) {
+<a name="l00609"></a>00609       [path addObject:state];
+<a name="l00610"></a>00610     }
+<a name="l00611"></a>00611   }
+<a name="l00612"></a>00612   [controller <a class="code" href="class_u_i_view_controller.html#a8da873e3fadac43a17b8947ef6df5b7d">persistNavigationPath</a>:path];
+<a name="l00613"></a>00613 
+<a name="l00614"></a>00614   <span class="keywordflow">if</span> (controller.modalViewController
+<a name="l00615"></a>00615       &amp;&amp; controller.modalViewController.parentViewController == controller) {
+<a name="l00616"></a>00616     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:controller.modalViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
+<a name="l00617"></a>00617   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (controller.<a class="code" href="class_u_i_view_controller.html#a28800ef0a031b8b2cbc99dab302e3bfe">popupViewController</a>
+<a name="l00618"></a>00618              &amp;&amp; controller.<a class="code" href="class_u_i_view_controller.html#a28800ef0a031b8b2cbc99dab302e3bfe">popupViewController</a>.<a class="code" href="class_u_i_view_controller.html#a0c0e62a761010af541087209fc48e3fa">superController</a> == controller) {
+<a name="l00619"></a>00619     [<span class="keyword">self</span> <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">persistController</a>:controller.popupViewController <a class="code" href="interface_t_t_navigator.html#a32280365d6afcf628168786b46ba6f33" title="Persists a view controller&amp;#39;s state and recursively persists the next view controller...">path</a>:path];
+<a name="l00620"></a>00620   }
+<a name="l00621"></a>00621 }
+<a name="l00622"></a>00622 
+<a name="l00623"></a><a class="code" href="interface_t_t_navigator.html#aea43bb8b7436f244098abb50780bf495">00623</a> - (void)<a class="code" href="interface_t_t_navigator.html#aea43bb8b7436f244098abb50780bf495" title="Removes all view controllers from the window and releases them.">removeAllViewControllers</a> {
+<a name="l00624"></a>00624   [<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>.view removeFromSuperview];
+<a name="l00625"></a>00625   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>);
+<a name="l00626"></a>00626   [<a class="code" href="interface_t_t_navigator.html#a2094227cbe3134bac80864c2499a47e6">_URLMap</a> <a class="code" href="interface_t_t_u_r_l_map.html#a431e893bba437eb5b8d9b3a6b73d1ee9" title="Removes all bound objects;.">removeAllObjects</a>];
+<a name="l00627"></a>00627 }
+<a name="l00628"></a>00628 
+<a name="l00629"></a><a class="code" href="interface_t_t_navigator.html#a1c530c7ca715aba99d83294f0d9dd644">00629</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)pathForObject:(<span class="keywordtype">id</span>)object {
+<a name="l00630"></a>00630   <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00631"></a>00631     <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* paths = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> array];
+<a name="l00632"></a>00632     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <span class="keywordtype">object</span>; controller; ) {
+<a name="l00633"></a>00633       <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* superController = controller.<a class="code" href="class_u_i_view_controller.html#a0c0e62a761010af541087209fc48e3fa">superController</a>;
+<a name="l00634"></a>00634       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* key = [superController <a class="code" href="class_u_i_view_controller.html#a5ce5b1d5c2e7e0a12d63dab175859416">keyForSubcontroller</a>:controller];
+<a name="l00635"></a>00635       <span class="keywordflow">if</span> (key) {
+<a name="l00636"></a>00636         [paths addObject:key];
+<a name="l00637"></a>00637       }
+<a name="l00638"></a>00638       controller = superController;
+<a name="l00639"></a>00639     }
+<a name="l00640"></a>00640     
+<a name="l00641"></a>00641     <span class="keywordflow">return</span> [paths componentsJoinedByString:@&quot;/&quot;];
+<a name="l00642"></a>00642   } <span class="keywordflow">else</span> {
+<a name="l00643"></a>00643     <span class="keywordflow">return</span> nil;
+<a name="l00644"></a>00644   }
+<a name="l00645"></a>00645 }
+<a name="l00646"></a>00646 
+<a name="l00647"></a><a class="code" href="interface_t_t_navigator.html#a7a409d1351a2cc0b95131527e27b2104">00647</a> - (id)objectForPath:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)path {
+<a name="l00648"></a>00648   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* keys = [path componentsSeparatedByString:@&quot;/&quot;];
+<a name="l00649"></a>00649   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <a class="code" href="interface_t_t_navigator.html#abf806229d22f1bb64dff3c839e1359d3">_rootViewController</a>;
+<a name="l00650"></a>00650   <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* key in [keys reverseObjectEnumerator]) {
+<a name="l00651"></a>00651     controller = [controller <a class="code" href="class_u_i_view_controller.html#a104f8b1095f1ef9868874f7755db32f8">subcontrollerForKey</a>:key];
+<a name="l00652"></a>00652   }
+<a name="l00653"></a>00653   <span class="keywordflow">return</span> controller;
+<a name="l00654"></a>00654 }
+<a name="l00655"></a>00655 
+<a name="l00656"></a><a class="code" href="interface_t_t_navigator.html#a984c0dc6ea35ceb0280b42d899259284">00656</a> - (void)<a class="code" href="interface_t_t_navigator.html#a984c0dc6ea35ceb0280b42d899259284" title="Erases all data stored in user defaults.">resetDefaults</a> {
+<a name="l00657"></a>00657   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+<a name="l00658"></a>00658   [defaults removeObjectForKey:@&quot;TTNavigatorHistory&quot;];
+<a name="l00659"></a>00659   [defaults removeObjectForKey:@&quot;TTNavigatorHistoryTime&quot;];
+<a name="l00660"></a>00660   [defaults removeObjectForKey:@&quot;TTNavigatorHistoryImportant&quot;];
+<a name="l00661"></a>00661   [defaults synchronize];
+<a name="l00662"></a>00662 }
+<a name="l00663"></a>00663 
+<a name="l00664"></a><a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491">00664</a> - (void)<a class="code" href="interface_t_t_navigator.html#aada2f20a7b635a6fb5592b148483c491" title="Reloads the content in the visible view controller.">reload</a> {
+<a name="l00665"></a>00665   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = <span class="keyword">self</span>.visibleViewController;
+<a name="l00666"></a>00666   <span class="keywordflow">if</span> ([controller isKindOfClass:[<a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00667"></a>00667     <a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a>* ttcontroller = (<a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a>*)controller;
+<a name="l00668"></a>00668     [ttcontroller <a class="code" href="interface_t_t_model_view_controller.html#a24f2409dfa7b20b8f76c9730db192f29" title="Reloads data from the model.">reload</a>];
+<a name="l00669"></a>00669   }
+<a name="l00670"></a>00670 }
 <a name="l00671"></a>00671 
-<a name="l00672"></a><a class="code" href="_t_t_navigator_8m.html#a8cc8641050afe451ac637233777a4569">00672</a> <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(<a class="code" href="class_n_s_string.html">NSString</a>* URL) {
-<a name="l00673"></a>00673   <span class="keywordflow">return</span> [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">animated</a>:YES];
-<a name="l00674"></a>00674 }
+<a name="l00672"></a>00672 <span class="keyword">@end</span>
+<a name="l00673"></a>00673 
+<a name="l00675"></a>00675 <span class="comment">// global</span>
+<a name="l00676"></a>00676 
+<a name="l00677"></a><a class="code" href="_t_t_navigator_8m.html#a8cc8641050afe451ac637233777a4569">00677</a> <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL) {
+<a name="l00678"></a>00678   <span class="keywordflow">return</span> [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">openURL</a>:URL <a class="code" href="interface_t_t_navigator.html#a3b279b0fbcf5dd9919c3f1f78b356ce7" title="Loads and displays a view controller with a pattern than matches the URL.">animated</a>:YES];
+<a name="l00679"></a>00679 }
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

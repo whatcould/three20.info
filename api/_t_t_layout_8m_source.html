@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -76,113 +77,115 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_layout_8h.html">Three20/TTLayout.h</a>&quot;</span>
 <a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_layout.html">TTLayout</a>
 <a name="l00022"></a>00022 
-<a name="l00024"></a>00024 <span class="comment">// public</span>
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">00026</a> - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00027"></a>00027   <span class="keywordflow">return</span> CGSizeZero;
-<a name="l00028"></a>00028 }
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">@end</span>
+<a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_layout.html">TTLayout</a>
+<a name="l00024"></a>00024 
+<a name="l00026"></a>00026 <span class="comment">// public</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">00028</a> - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00029"></a>00029   <span class="keywordflow">return</span> CGSizeZero;
+<a name="l00030"></a>00030 }
 <a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keyword">@end</span>
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_flow_layout.html">TTFlowLayout</a>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_flow_layout.html#aaece051c45fcf4ec3205a64a517312cb">padding</a> = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, <a class="code" href="interface_t_t_flow_layout.html#a11e90f3151ef011f57678a69fcf71a6a">spacing</a> = <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
+<a name="l00036"></a>00036 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_flow_layout.html">TTFlowLayout</a>
 <a name="l00037"></a>00037 
-<a name="l00039"></a>00039 <span class="comment">// NSObject</span>
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 - (id)init {
-<a name="l00042"></a>00042   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00043"></a>00043     <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a> = 0;
-<a name="l00044"></a>00044     <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a> = 0;
-<a name="l00045"></a>00045   }
-<a name="l00046"></a>00046   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00047"></a>00047 }
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 - (void)dealloc {
-<a name="l00050"></a>00050   [<span class="keyword">super</span> dealloc];
-<a name="l00051"></a>00051 }
-<a name="l00052"></a>00052 
-<a name="l00054"></a>00054 <span class="comment">// public</span>
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00057"></a>00057   CGFloat x = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, y = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
-<a name="l00058"></a>00058   CGFloat maxX = 0, lastHeight = 0;
-<a name="l00059"></a>00059   CGFloat maxWidth = view.width - <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>*2;
-<a name="l00060"></a>00060   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* subview in subviews) {
-<a name="l00061"></a>00061     <span class="keywordflow">if</span> (x + subview.width &gt; maxWidth) {
-<a name="l00062"></a>00062       x = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
-<a name="l00063"></a>00063       y += subview.height + <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
-<a name="l00064"></a>00064     }
-<a name="l00065"></a>00065     subview.left = x;
-<a name="l00066"></a>00066     subview.top = y;
-<a name="l00067"></a>00067     x += subview.width + <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
-<a name="l00068"></a>00068     <span class="keywordflow">if</span> (x &gt; maxX) {
-<a name="l00069"></a>00069       maxX = x;
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071     lastHeight = subview.height;
-<a name="l00072"></a>00072   }
-<a name="l00073"></a>00073   
-<a name="l00074"></a>00074   <span class="keywordflow">return</span> CGSizeMake(maxX+<a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, y+lastHeight+<a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>);
-<a name="l00075"></a>00075 }
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 <span class="keyword">@end</span>
+<a name="l00038"></a>00038 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_flow_layout.html#aaece051c45fcf4ec3205a64a517312cb">padding</a> = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, <a class="code" href="interface_t_t_flow_layout.html#a11e90f3151ef011f57678a69fcf71a6a">spacing</a> = <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
+<a name="l00039"></a>00039 
+<a name="l00041"></a>00041 <span class="comment">// NSObject</span>
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_flow_layout.html#abaa962aa3472cc9cb319316f2d991caf">00043</a> - (id)<a class="code" href="interface_t_t_flow_layout.html#abaa962aa3472cc9cb319316f2d991caf">init</a> {
+<a name="l00044"></a>00044   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_flow_layout.html#abaa962aa3472cc9cb319316f2d991caf">init</a>]) {
+<a name="l00045"></a>00045     <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a> = 0;
+<a name="l00046"></a>00046     <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a> = 0;
+<a name="l00047"></a>00047   }
+<a name="l00048"></a>00048   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00049"></a>00049 }
+<a name="l00050"></a>00050 
+<a name="l00051"></a><a class="code" href="interface_t_t_flow_layout.html#a3264f1689efdb660f728c09d10b79f44">00051</a> - (void)<a class="code" href="interface_t_t_flow_layout.html#a3264f1689efdb660f728c09d10b79f44">dealloc</a> {
+<a name="l00052"></a>00052   [<span class="keyword">super</span> dealloc];
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00056"></a>00056 <span class="comment">// public</span>
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="interface_t_t_flow_layout.html#a7fc8d61072508451a781ab247d8dd51a">00058</a> - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00059"></a>00059   CGFloat x = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, y = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
+<a name="l00060"></a>00060   CGFloat maxX = 0, lastHeight = 0;
+<a name="l00061"></a>00061   CGFloat maxWidth = view.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a> - <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>*2;
+<a name="l00062"></a>00062   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* subview in subviews) {
+<a name="l00063"></a>00063     <span class="keywordflow">if</span> (x + subview.width &gt; maxWidth) {
+<a name="l00064"></a>00064       x = <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
+<a name="l00065"></a>00065       y += subview.height + <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
+<a name="l00066"></a>00066     }
+<a name="l00067"></a>00067     subview.left = x;
+<a name="l00068"></a>00068     subview.top = y;
+<a name="l00069"></a>00069     x += subview.width + <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
+<a name="l00070"></a>00070     <span class="keywordflow">if</span> (x &gt; maxX) {
+<a name="l00071"></a>00071       maxX = x;
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073     lastHeight = subview.height;
+<a name="l00074"></a>00074   }
+<a name="l00075"></a>00075   
+<a name="l00076"></a>00076   <span class="keywordflow">return</span> CGSizeMake(maxX+<a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>, y+lastHeight+<a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>);
+<a name="l00077"></a>00077 }
 <a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="keyword">@end</span>
 <a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_grid_layout.html">TTGridLayout</a>
 <a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_grid_layout.html#a63cee5773915ea20dfe9be9af489819e">columnCount</a> = <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a>, <a class="code" href="interface_t_t_grid_layout.html#a79d999fff022d1008c84f622d7220394">padding</a> = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, <a class="code" href="interface_t_t_grid_layout.html#a79d7a2dd9b45fe3957857d34bc9da6e2">spacing</a> = <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
+<a name="l00083"></a>00083 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_grid_layout.html">TTGridLayout</a>
 <a name="l00084"></a>00084 
-<a name="l00086"></a>00086 <span class="comment">// NSObject</span>
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 - (id)init {
-<a name="l00089"></a>00089   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00090"></a>00090     <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a> = 1;
-<a name="l00091"></a>00091     <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a> = 0;
-<a name="l00092"></a>00092     <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a> = 0;
-<a name="l00093"></a>00093   }
-<a name="l00094"></a>00094   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 - (void)dealloc {
-<a name="l00098"></a>00098   [<span class="keyword">super</span> dealloc];
-<a name="l00099"></a>00099 }
-<a name="l00100"></a>00100 
-<a name="l00102"></a>00102 <span class="comment">// public</span>
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00105"></a>00105   CGFloat innerWidth = (view.width - <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>*2);
-<a name="l00106"></a>00106   CGFloat width = ceil(innerWidth / <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a>);
-<a name="l00107"></a>00107   CGFloat rowHeight = 0;
-<a name="l00108"></a>00108   
-<a name="l00109"></a>00109   CGFloat x = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, y = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>;
-<a name="l00110"></a>00110   CGFloat maxX = 0, lastHeight = 0;
-<a name="l00111"></a>00111   NSInteger column = 0;
-<a name="l00112"></a>00112   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* subview in subviews) {
-<a name="l00113"></a>00113     <span class="keywordflow">if</span> (column % <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a> == 0) {
-<a name="l00114"></a>00114       x = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>;
-<a name="l00115"></a>00115       y += rowHeight + <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
-<a name="l00116"></a>00116     }
-<a name="l00117"></a>00117     CGSize size = [subview sizeThatFits:CGSizeMake(width, 0)];
-<a name="l00118"></a>00118     rowHeight = size.height;
-<a name="l00119"></a>00119     subview.frame = CGRectMake(x, y, width, size.height);
-<a name="l00120"></a>00120     x += subview.width + <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
-<a name="l00121"></a>00121     <span class="keywordflow">if</span> (x &gt; maxX) {
-<a name="l00122"></a>00122       maxX = x;
-<a name="l00123"></a>00123     }
-<a name="l00124"></a>00124     lastHeight = subview.height;
-<a name="l00125"></a>00125     ++column;
-<a name="l00126"></a>00126   }
-<a name="l00127"></a>00127   
-<a name="l00128"></a>00128   <span class="keywordflow">return</span> CGSizeMake(maxX+<a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, y+lastHeight+<a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>);
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 <span class="keyword">@end</span>
+<a name="l00085"></a>00085 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_grid_layout.html#a63cee5773915ea20dfe9be9af489819e">columnCount</a> = <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a>, <a class="code" href="interface_t_t_grid_layout.html#a79d999fff022d1008c84f622d7220394">padding</a> = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, <a class="code" href="interface_t_t_grid_layout.html#a79d7a2dd9b45fe3957857d34bc9da6e2">spacing</a> = <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
+<a name="l00086"></a>00086 
+<a name="l00088"></a>00088 <span class="comment">// NSObject</span>
+<a name="l00089"></a>00089 
+<a name="l00090"></a><a class="code" href="interface_t_t_grid_layout.html#a2cb2f0aa72dd02d850c020c26a84a492">00090</a> - (id)<a class="code" href="interface_t_t_grid_layout.html#a2cb2f0aa72dd02d850c020c26a84a492">init</a> {
+<a name="l00091"></a>00091   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_grid_layout.html#a2cb2f0aa72dd02d850c020c26a84a492">init</a>]) {
+<a name="l00092"></a>00092     <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a> = 1;
+<a name="l00093"></a>00093     <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a> = 0;
+<a name="l00094"></a>00094     <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a> = 0;
+<a name="l00095"></a>00095   }
+<a name="l00096"></a>00096   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00097"></a>00097 }
+<a name="l00098"></a>00098 
+<a name="l00099"></a><a class="code" href="interface_t_t_grid_layout.html#a09e05f69fdf8dad20b8e2283bda2b952">00099</a> - (void)<a class="code" href="interface_t_t_grid_layout.html#a09e05f69fdf8dad20b8e2283bda2b952">dealloc</a> {
+<a name="l00100"></a>00100   [<span class="keyword">super</span> dealloc];
+<a name="l00101"></a>00101 }
+<a name="l00102"></a>00102 
+<a name="l00104"></a>00104 <span class="comment">// public</span>
+<a name="l00105"></a>00105 
+<a name="l00106"></a><a class="code" href="interface_t_t_grid_layout.html#a0f0a76148bbef3db0f3c4f83765d1ab5">00106</a> - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00107"></a>00107   CGFloat innerWidth = (view.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a> - <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>*2);
+<a name="l00108"></a>00108   CGFloat width = ceil(innerWidth / <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a>);
+<a name="l00109"></a>00109   CGFloat rowHeight = 0;
+<a name="l00110"></a>00110   
+<a name="l00111"></a>00111   CGFloat x = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, y = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>;
+<a name="l00112"></a>00112   CGFloat maxX = 0, lastHeight = 0;
+<a name="l00113"></a>00113   NSInteger column = 0;
+<a name="l00114"></a>00114   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* subview in subviews) {
+<a name="l00115"></a>00115     <span class="keywordflow">if</span> (column % <a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">_columnCount</a> == 0) {
+<a name="l00116"></a>00116       x = <a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>;
+<a name="l00117"></a>00117       y += rowHeight + <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119     CGSize size = [subview sizeThatFits:CGSizeMake(width, 0)];
+<a name="l00120"></a>00120     rowHeight = size.height;
+<a name="l00121"></a>00121     subview.frame = CGRectMake(x, y, width, size.height);
+<a name="l00122"></a>00122     x += subview.width + <a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">_spacing</a>;
+<a name="l00123"></a>00123     <span class="keywordflow">if</span> (x &gt; maxX) {
+<a name="l00124"></a>00124       maxX = x;
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126     lastHeight = subview.height;
+<a name="l00127"></a>00127     ++column;
+<a name="l00128"></a>00128   }
+<a name="l00129"></a>00129   
+<a name="l00130"></a>00130   <span class="keywordflow">return</span> CGSizeMake(maxX+<a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>, y+lastHeight+<a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">_padding</a>);
+<a name="l00131"></a>00131 }
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133 
+<a name="l00133"></a>00133 <span class="keyword">@end</span>
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -74,141 +74,142 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@protocol </span>TTScrollViewDelegate;
-<a name="l00020"></a>00020 <span class="keyword">@protocol </span>TTScrollViewDataSource;
-<a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="interface_t_t_scroll_view.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
-<a name="l00023"></a><a class="code" href="interface_t_t_scroll_view.html#aab9d163c40dfb7bd9498eef1c4f642ba">00023</a>   id&lt;TTScrollViewDelegate&gt; <a class="code" href="interface_t_t_scroll_view.html#aab9d163c40dfb7bd9498eef1c4f642ba">_delegate</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_scroll_view.html#af622e904a7b923474f7b4cd262e111d1">00024</a>   id&lt;TTScrollViewDataSource&gt; <a class="code" href="interface_t_t_scroll_view.html#af622e904a7b923474f7b4cd262e111d1">_dataSource</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_scroll_view.html#a3ee339f0083933f0728450b094dbc587">00025</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a3ee339f0083933f0728450b094dbc587">_centerPageIndex</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_scroll_view.html#aef19cf7b18fb1533e2ad546ece76f6dd">00026</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#aef19cf7b18fb1533e2ad546ece76f6dd">_visiblePageIndex</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_scroll_view.html#a5d9aaf43347e117ec563c44e4bb6837f">00027</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#a5d9aaf43347e117ec563c44e4bb6837f">_scrollEnabled</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_scroll_view.html#ab4e1bc86b99d9d733891cec590290a55">00028</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ab4e1bc86b99d9d733891cec590290a55">_zoomEnabled</a>;
-<a name="l00029"></a><a class="code" href="interface_t_t_scroll_view.html#ae339d417882fcf539185594eda61fdca">00029</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ae339d417882fcf539185594eda61fdca">_rotateEnabled</a>;
-<a name="l00030"></a><a class="code" href="interface_t_t_scroll_view.html#a3d7180d255c7081e2274577cefae9b1d">00030</a>   CGFloat <a class="code" href="interface_t_t_scroll_view.html#a3d7180d255c7081e2274577cefae9b1d">_pageSpacing</a>;
-<a name="l00031"></a><a class="code" href="interface_t_t_scroll_view.html#a4b9ae505ba603234d13817647b72aa7c">00031</a>   UIInterfaceOrientation <a class="code" href="interface_t_t_scroll_view.html#a4b9ae505ba603234d13817647b72aa7c">_orientation</a>;
-<a name="l00032"></a><a class="code" href="interface_t_t_scroll_view.html#a589ebd2349efdf1065fc6237ec7b09ac">00032</a>   NSTimeInterval <a class="code" href="interface_t_t_scroll_view.html#a589ebd2349efdf1065fc6237ec7b09ac">_holdsAfterTouchingForInterval</a>;
-<a name="l00033"></a>00033   
-<a name="l00034"></a><a class="code" href="interface_t_t_scroll_view.html#acef2a70b9b4a7f70ee4f268965c36379">00034</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_scroll_view.html#acef2a70b9b4a7f70ee4f268965c36379">_pages</a>;
-<a name="l00035"></a><a class="code" href="interface_t_t_scroll_view.html#ae9c0c988aa445321acbb70e6d256d7e9">00035</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_scroll_view.html#ae9c0c988aa445321acbb70e6d256d7e9">_pageQueue</a>;
-<a name="l00036"></a><a class="code" href="interface_t_t_scroll_view.html#a393fdb3d62bfa8d32c8bf77be11daeb8">00036</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a393fdb3d62bfa8d32c8bf77be11daeb8">_maxPages</a>;
-<a name="l00037"></a><a class="code" href="interface_t_t_scroll_view.html#a6e4a50782980db4cee470b32d019b3fb">00037</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a6e4a50782980db4cee470b32d019b3fb">_pageArrayIndex</a>;
-<a name="l00038"></a><a class="code" href="interface_t_t_scroll_view.html#a66b21ea5a22960f845adadc47cfafd95">00038</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a66b21ea5a22960f845adadc47cfafd95">_tapTimer</a>;
-<a name="l00039"></a><a class="code" href="interface_t_t_scroll_view.html#a2f583344959a91d404587ded316fbb57">00039</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a2f583344959a91d404587ded316fbb57">_holdingTimer</a>;
-<a name="l00040"></a><a class="code" href="interface_t_t_scroll_view.html#a3177b6f8f258fc1763313588612cbc66">00040</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a3177b6f8f258fc1763313588612cbc66">_animationTimer</a>;
-<a name="l00041"></a><a class="code" href="interface_t_t_scroll_view.html#acd623c98a6c2c49d4da71e02eee60f0a">00041</a>   <a class="code" href="class_n_s_date.html">NSDate</a>* <a class="code" href="interface_t_t_scroll_view.html#acd623c98a6c2c49d4da71e02eee60f0a">_animationStartTime</a>;
-<a name="l00042"></a><a class="code" href="interface_t_t_scroll_view.html#a92cccfad439fbefce3a14d95dcc31129">00042</a>   NSTimeInterval <a class="code" href="interface_t_t_scroll_view.html#a92cccfad439fbefce3a14d95dcc31129">_animationDuration</a>;
-<a name="l00043"></a><a class="code" href="interface_t_t_scroll_view.html#aa9e35e98bab097586d4b4349225fefc0">00043</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#aa9e35e98bab097586d4b4349225fefc0">_animateEdges</a>;
-<a name="l00044"></a><a class="code" href="interface_t_t_scroll_view.html#ac5cd0177f6734e97b71ad7e5de62f67f">00044</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#ac5cd0177f6734e97b71ad7e5de62f67f">_pageEdges</a>;
-<a name="l00045"></a><a class="code" href="interface_t_t_scroll_view.html#a635169a68227ff9d672e5d6db0cc8919">00045</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#a635169a68227ff9d672e5d6db0cc8919">_pageStartEdges</a>;
-<a name="l00046"></a><a class="code" href="interface_t_t_scroll_view.html#a855811da5b90b6040761381814560f06">00046</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#a855811da5b90b6040761381814560f06">_touchEdges</a>;
-<a name="l00047"></a><a class="code" href="interface_t_t_scroll_view.html#aa44b3aff2e6da359445513560f7b9f30">00047</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#aa44b3aff2e6da359445513560f7b9f30">_touchStartEdges</a>;
-<a name="l00048"></a><a class="code" href="interface_t_t_scroll_view.html#ae1d6098256d9e7172b9d240e691644f3">00048</a>   NSUInteger <a class="code" href="interface_t_t_scroll_view.html#ae1d6098256d9e7172b9d240e691644f3">_touchCount</a>;
-<a name="l00049"></a><a class="code" href="interface_t_t_scroll_view.html#a8ddc2bd2e77baca2e7dd3877688a7731">00049</a>   CGFloat <a class="code" href="interface_t_t_scroll_view.html#a8ddc2bd2e77baca2e7dd3877688a7731">_overshoot</a>;
-<a name="l00050"></a><a class="code" href="interface_t_t_scroll_view.html#abba641209d66b9a8418b5f8d5922c16b">00050</a>   <a class="code" href="class_u_i_touch.html">UITouch</a>* <a class="code" href="interface_t_t_scroll_view.html#abba641209d66b9a8418b5f8d5922c16b">_touch1</a>;
-<a name="l00051"></a><a class="code" href="interface_t_t_scroll_view.html#a455712745f79c53ff551206a332fa7b9">00051</a>   <a class="code" href="class_u_i_touch.html">UITouch</a>* <a class="code" href="interface_t_t_scroll_view.html#a455712745f79c53ff551206a332fa7b9">_touch2</a>;
-<a name="l00052"></a><a class="code" href="interface_t_t_scroll_view.html#a1c82602447e318dd5c7e176898781a6d">00052</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#a1c82602447e318dd5c7e176898781a6d">_dragging</a>;
-<a name="l00053"></a><a class="code" href="interface_t_t_scroll_view.html#ae4e0aff94435b90d4037040caf32fd2d">00053</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ae4e0aff94435b90d4037040caf32fd2d">_zooming</a>;
-<a name="l00054"></a><a class="code" href="interface_t_t_scroll_view.html#ad374233b0cf146cfbd79a97dee1caa85">00054</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ad374233b0cf146cfbd79a97dee1caa85">_holding</a>;
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00060"></a><a class="code" href="interface_t_t_scroll_view.html#ad017ddbf9952ed2e1748a3959dad7671">00060</a> @property(nonatomic,assign) id&lt;TTScrollViewDelegate&gt; delegate;
-<a name="l00061"></a>00061 
-<a name="l00065"></a><a class="code" href="interface_t_t_scroll_view.html#a690a44f5d9ca9e7432f4fbf7254e79d1">00065</a> @property(nonatomic,assign) <span class="keywordtype">id</span>&lt;TTScrollViewDataSource&gt; dataSource;
-<a name="l00066"></a>00066 
-<a name="l00070"></a><a class="code" href="interface_t_t_scroll_view.html#a78d5e647a3cadb39d064eab51ba67e31">00070</a> @property(nonatomic) NSInteger centerPageIndex;
-<a name="l00071"></a>00071 
-<a name="l00075"></a><a class="code" href="interface_t_t_scroll_view.html#a843c399a929d2e84777fd739c69ad2ca">00075</a> @property(nonatomic,readonly) BOOL zoomed;
-<a name="l00076"></a>00076 
-<a name="l00080"></a><a class="code" href="interface_t_t_scroll_view.html#afb1b6490d4db2aa433a906a2879ad717">00080</a> @property(nonatomic,readonly) BOOL holding;
-<a name="l00081"></a>00081 
-<a name="l00085"></a><a class="code" href="interface_t_t_scroll_view.html#a198f1263d9d4469d064a4c68ef32ee48">00085</a> @property(nonatomic) BOOL scrollEnabled;
-<a name="l00086"></a>00086 
-<a name="l00090"></a><a class="code" href="interface_t_t_scroll_view.html#ab3888e4794b6633c4e0993cadd71057f">00090</a> @property(nonatomic) BOOL zoomEnabled;
-<a name="l00091"></a>00091 
-<a name="l00095"></a><a class="code" href="interface_t_t_scroll_view.html#a8cdc1e74e550eb1c09be05921ebff95d">00095</a> @property(nonatomic) BOOL rotateEnabled;
-<a name="l00096"></a>00096 
-<a name="l00100"></a><a class="code" href="interface_t_t_scroll_view.html#a777db57c6cbc8f27acf1a57815c39a63">00100</a> @property(nonatomic) CGFloat pageSpacing;
-<a name="l00101"></a>00101 
-<a name="l00105"></a><a class="code" href="interface_t_t_scroll_view.html#a7c461aa2f57e57e932efeb25c8334635">00105</a> @property(nonatomic) UIInterfaceOrientation orientation;
-<a name="l00106"></a>00106 
-<a name="l00110"></a><a class="code" href="interface_t_t_scroll_view.html#ab7e204fd45c41a63feaf1e3453fe382f">00110</a> @property(nonatomic) NSTimeInterval holdsAfterTouchingForInterval;
-<a name="l00111"></a>00111 
-<a name="l00115"></a><a class="code" href="interface_t_t_scroll_view.html#a1448d05cf8e9dc7af4455e4647d9624b">00115</a> @property(nonatomic,readonly) NSInteger numberOfPages;
-<a name="l00116"></a>00116 
-<a name="l00120"></a><a class="code" href="interface_t_t_scroll_view.html#a5e593ba939ce3e0a9e2bd8ee368dd6d3">00120</a> @property(nonatomic,readonly) <a class="code" href="class_u_i_view.html">UIView</a>* centerPage;
-<a name="l00121"></a>00121 
-<a name="l00125"></a><a class="code" href="interface_t_t_scroll_view.html#ac5b71472eb1caa1b3b85ee54a1813e85">00125</a> @property(nonatomic,readonly) NSDictionary* visiblePages;
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127 - (<span class="keywordtype">void</span>)setOrientation:(UIInterfaceOrientation)orientation animated:(BOOL)animated;
-<a name="l00128"></a>00128 
-<a name="l00132"></a>00132 - (<a class="code" href="class_u_i_view.html">UIView</a>*)dequeueReusablePage;
-<a name="l00133"></a>00133 
-<a name="l00137"></a>00137 - (<span class="keywordtype">void</span>)reloadData;
-<a name="l00138"></a>00138 
-<a name="l00142"></a>00142 - (<a class="code" href="class_u_i_view.html">UIView</a>*)pageAtIndex:(NSInteger)pageIndex;
-<a name="l00143"></a>00143 
-<a name="l00147"></a>00147 - (<span class="keywordtype">void</span>)zoomToFit;
-<a name="l00148"></a>00148 
-<a name="l00152"></a>00152 - (<span class="keywordtype">void</span>)zoomToDistance:(CGFloat)distance;
-<a name="l00153"></a>00153 
-<a name="l00157"></a>00157 - (<span class="keywordtype">void</span>)cancelTouches;
-<a name="l00158"></a>00158 
-<a name="l00159"></a>00159 @end
-<a name="l00160"></a>00160 
-<a name="l00162"></a>00162 
-<a name="l00163"></a><a class="code" href="protocol_t_t_scroll_view_delegate-p.html">00163</a> @protocol TTScrollViewDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
-<a name="l00164"></a>00164 
-<a name="l00168"></a>00168 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView didMoveToPageAtIndex:(NSInteger)pageIndex;
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170 @optional
-<a name="l00171"></a>00171 
-<a name="l00175"></a>00175 - (<span class="keywordtype">void</span>)scrollViewWillRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView
-<a name="l00176"></a>00176         toOrientation:(UIInterfaceOrientation)orientation;
-<a name="l00177"></a>00177 
-<a name="l00181"></a>00181 - (<span class="keywordtype">void</span>)scrollViewDidRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00182"></a>00182 
-<a name="l00186"></a>00186 - (<span class="keywordtype">void</span>)scrollViewWillBeginDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00187"></a>00187 
-<a name="l00191"></a>00191 - (<span class="keywordtype">void</span>)scrollViewDidEndDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView willDecelerate:(BOOL)willDecelerate;
-<a name="l00192"></a>00192 
-<a name="l00196"></a>00196 - (<span class="keywordtype">void</span>)scrollViewDidEndDecelerating:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00197"></a>00197 
-<a name="l00201"></a>00201 - (BOOL)scrollViewShouldZoom:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00202"></a>00202 
-<a name="l00206"></a>00206 - (<span class="keywordtype">void</span>)scrollViewDidBeginZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00207"></a>00207 
-<a name="l00211"></a>00211 - (<span class="keywordtype">void</span>)scrollViewDidEndZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00212"></a>00212 
-<a name="l00216"></a>00216 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView touchedDown:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
-<a name="l00217"></a>00217 
-<a name="l00221"></a>00221 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView touchedUpInside:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
-<a name="l00222"></a>00222 
-<a name="l00226"></a>00226 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView tapped:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
-<a name="l00227"></a>00227 
-<a name="l00231"></a>00231 - (<span class="keywordtype">void</span>)scrollViewDidBeginHolding:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00232"></a>00232 
-<a name="l00236"></a>00236 - (<span class="keywordtype">void</span>)scrollViewDidEndHolding:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00237"></a>00237 
-<a name="l00238"></a>00238 @optional
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240 - (BOOL)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView 
-<a name="l00241"></a>00241         shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation;
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243 @end
-<a name="l00244"></a>00244 
-<a name="l00246"></a>00246 
-<a name="l00247"></a><a class="code" href="protocol_t_t_scroll_view_data_source-p.html">00247</a> @protocol TTScrollViewDataSource &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
-<a name="l00248"></a>00248 
-<a name="l00252"></a>00252 - (NSInteger)numberOfPagesInScrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
-<a name="l00253"></a>00253 
-<a name="l00260"></a>00260 - (<a class="code" href="class_u_i_view.html">UIView</a>*)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView pageAtIndex:(NSInteger)pageIndex;
-<a name="l00261"></a>00261 
-<a name="l00268"></a>00268 - (CGSize)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView sizeOfPageAtIndex:(NSInteger)pageIndex;
-<a name="l00269"></a>00269 
-<a name="l00270"></a>00270 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@protocol </span>TTScrollViewDelegate;
+<a name="l00021"></a>00021 <span class="keyword">@protocol </span>TTScrollViewDataSource;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="interface_t_t_scroll_view.html">00023</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
+<a name="l00024"></a><a class="code" href="interface_t_t_scroll_view.html#aab9d163c40dfb7bd9498eef1c4f642ba">00024</a>   id&lt;TTScrollViewDelegate&gt; <a class="code" href="interface_t_t_scroll_view.html#aab9d163c40dfb7bd9498eef1c4f642ba">_delegate</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_scroll_view.html#af622e904a7b923474f7b4cd262e111d1">00025</a>   id&lt;TTScrollViewDataSource&gt; <a class="code" href="interface_t_t_scroll_view.html#af622e904a7b923474f7b4cd262e111d1">_dataSource</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_scroll_view.html#a3ee339f0083933f0728450b094dbc587">00026</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a3ee339f0083933f0728450b094dbc587">_centerPageIndex</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_scroll_view.html#aef19cf7b18fb1533e2ad546ece76f6dd">00027</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#aef19cf7b18fb1533e2ad546ece76f6dd">_visiblePageIndex</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_scroll_view.html#a5d9aaf43347e117ec563c44e4bb6837f">00028</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#a5d9aaf43347e117ec563c44e4bb6837f">_scrollEnabled</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_scroll_view.html#ab4e1bc86b99d9d733891cec590290a55">00029</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ab4e1bc86b99d9d733891cec590290a55">_zoomEnabled</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_scroll_view.html#ae339d417882fcf539185594eda61fdca">00030</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ae339d417882fcf539185594eda61fdca">_rotateEnabled</a>;
+<a name="l00031"></a><a class="code" href="interface_t_t_scroll_view.html#a3d7180d255c7081e2274577cefae9b1d">00031</a>   CGFloat <a class="code" href="interface_t_t_scroll_view.html#a3d7180d255c7081e2274577cefae9b1d">_pageSpacing</a>;
+<a name="l00032"></a><a class="code" href="interface_t_t_scroll_view.html#a4b9ae505ba603234d13817647b72aa7c">00032</a>   UIInterfaceOrientation <a class="code" href="interface_t_t_scroll_view.html#a4b9ae505ba603234d13817647b72aa7c">_orientation</a>;
+<a name="l00033"></a><a class="code" href="interface_t_t_scroll_view.html#a589ebd2349efdf1065fc6237ec7b09ac">00033</a>   NSTimeInterval <a class="code" href="interface_t_t_scroll_view.html#a589ebd2349efdf1065fc6237ec7b09ac">_holdsAfterTouchingForInterval</a>;
+<a name="l00034"></a>00034   
+<a name="l00035"></a><a class="code" href="interface_t_t_scroll_view.html#acef2a70b9b4a7f70ee4f268965c36379">00035</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_scroll_view.html#acef2a70b9b4a7f70ee4f268965c36379">_pages</a>;
+<a name="l00036"></a><a class="code" href="interface_t_t_scroll_view.html#ae9c0c988aa445321acbb70e6d256d7e9">00036</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_scroll_view.html#ae9c0c988aa445321acbb70e6d256d7e9">_pageQueue</a>;
+<a name="l00037"></a><a class="code" href="interface_t_t_scroll_view.html#a393fdb3d62bfa8d32c8bf77be11daeb8">00037</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a393fdb3d62bfa8d32c8bf77be11daeb8">_maxPages</a>;
+<a name="l00038"></a><a class="code" href="interface_t_t_scroll_view.html#a6e4a50782980db4cee470b32d019b3fb">00038</a>   NSInteger <a class="code" href="interface_t_t_scroll_view.html#a6e4a50782980db4cee470b32d019b3fb">_pageArrayIndex</a>;
+<a name="l00039"></a><a class="code" href="interface_t_t_scroll_view.html#a66b21ea5a22960f845adadc47cfafd95">00039</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a66b21ea5a22960f845adadc47cfafd95">_tapTimer</a>;
+<a name="l00040"></a><a class="code" href="interface_t_t_scroll_view.html#a2f583344959a91d404587ded316fbb57">00040</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a2f583344959a91d404587ded316fbb57">_holdingTimer</a>;
+<a name="l00041"></a><a class="code" href="interface_t_t_scroll_view.html#a3177b6f8f258fc1763313588612cbc66">00041</a>   NSTimer* <a class="code" href="interface_t_t_scroll_view.html#a3177b6f8f258fc1763313588612cbc66">_animationTimer</a>;
+<a name="l00042"></a><a class="code" href="interface_t_t_scroll_view.html#acd623c98a6c2c49d4da71e02eee60f0a">00042</a>   <a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a>* <a class="code" href="interface_t_t_scroll_view.html#acd623c98a6c2c49d4da71e02eee60f0a">_animationStartTime</a>;
+<a name="l00043"></a><a class="code" href="interface_t_t_scroll_view.html#a92cccfad439fbefce3a14d95dcc31129">00043</a>   NSTimeInterval <a class="code" href="interface_t_t_scroll_view.html#a92cccfad439fbefce3a14d95dcc31129">_animationDuration</a>;
+<a name="l00044"></a><a class="code" href="interface_t_t_scroll_view.html#aa9e35e98bab097586d4b4349225fefc0">00044</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#aa9e35e98bab097586d4b4349225fefc0">_animateEdges</a>;
+<a name="l00045"></a><a class="code" href="interface_t_t_scroll_view.html#ac5cd0177f6734e97b71ad7e5de62f67f">00045</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#ac5cd0177f6734e97b71ad7e5de62f67f">_pageEdges</a>;
+<a name="l00046"></a><a class="code" href="interface_t_t_scroll_view.html#a635169a68227ff9d672e5d6db0cc8919">00046</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#a635169a68227ff9d672e5d6db0cc8919">_pageStartEdges</a>;
+<a name="l00047"></a><a class="code" href="interface_t_t_scroll_view.html#a855811da5b90b6040761381814560f06">00047</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#a855811da5b90b6040761381814560f06">_touchEdges</a>;
+<a name="l00048"></a><a class="code" href="interface_t_t_scroll_view.html#aa44b3aff2e6da359445513560f7b9f30">00048</a>   UIEdgeInsets <a class="code" href="interface_t_t_scroll_view.html#aa44b3aff2e6da359445513560f7b9f30">_touchStartEdges</a>;
+<a name="l00049"></a><a class="code" href="interface_t_t_scroll_view.html#ae1d6098256d9e7172b9d240e691644f3">00049</a>   NSUInteger <a class="code" href="interface_t_t_scroll_view.html#ae1d6098256d9e7172b9d240e691644f3">_touchCount</a>;
+<a name="l00050"></a><a class="code" href="interface_t_t_scroll_view.html#a8ddc2bd2e77baca2e7dd3877688a7731">00050</a>   CGFloat <a class="code" href="interface_t_t_scroll_view.html#a8ddc2bd2e77baca2e7dd3877688a7731">_overshoot</a>;
+<a name="l00051"></a><a class="code" href="interface_t_t_scroll_view.html#abba641209d66b9a8418b5f8d5922c16b">00051</a>   <a class="code" href="class_u_i_touch.html">UITouch</a>* <a class="code" href="interface_t_t_scroll_view.html#abba641209d66b9a8418b5f8d5922c16b">_touch1</a>;
+<a name="l00052"></a><a class="code" href="interface_t_t_scroll_view.html#a455712745f79c53ff551206a332fa7b9">00052</a>   <a class="code" href="class_u_i_touch.html">UITouch</a>* <a class="code" href="interface_t_t_scroll_view.html#a455712745f79c53ff551206a332fa7b9">_touch2</a>;
+<a name="l00053"></a><a class="code" href="interface_t_t_scroll_view.html#a1c82602447e318dd5c7e176898781a6d">00053</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#a1c82602447e318dd5c7e176898781a6d">_dragging</a>;
+<a name="l00054"></a><a class="code" href="interface_t_t_scroll_view.html#ae4e0aff94435b90d4037040caf32fd2d">00054</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ae4e0aff94435b90d4037040caf32fd2d">_zooming</a>;
+<a name="l00055"></a><a class="code" href="interface_t_t_scroll_view.html#ad374233b0cf146cfbd79a97dee1caa85">00055</a>   BOOL <a class="code" href="interface_t_t_scroll_view.html#ad374233b0cf146cfbd79a97dee1caa85">_holding</a>;
+<a name="l00056"></a>00056 }
+<a name="l00057"></a>00057 
+<a name="l00061"></a><a class="code" href="interface_t_t_scroll_view.html#ad017ddbf9952ed2e1748a3959dad7671">00061</a> @property(nonatomic,assign) id&lt;TTScrollViewDelegate&gt; delegate;
+<a name="l00062"></a>00062 
+<a name="l00066"></a><a class="code" href="interface_t_t_scroll_view.html#a690a44f5d9ca9e7432f4fbf7254e79d1">00066</a> @property(nonatomic,assign) <span class="keywordtype">id</span>&lt;TTScrollViewDataSource&gt; dataSource;
+<a name="l00067"></a>00067 
+<a name="l00071"></a><a class="code" href="interface_t_t_scroll_view.html#a78d5e647a3cadb39d064eab51ba67e31">00071</a> @property(nonatomic) NSInteger centerPageIndex;
+<a name="l00072"></a>00072 
+<a name="l00076"></a><a class="code" href="interface_t_t_scroll_view.html#a843c399a929d2e84777fd739c69ad2ca">00076</a> @property(nonatomic,readonly) BOOL zoomed;
+<a name="l00077"></a>00077 
+<a name="l00081"></a><a class="code" href="interface_t_t_scroll_view.html#afb1b6490d4db2aa433a906a2879ad717">00081</a> @property(nonatomic,readonly) BOOL holding;
+<a name="l00082"></a>00082 
+<a name="l00086"></a><a class="code" href="interface_t_t_scroll_view.html#a198f1263d9d4469d064a4c68ef32ee48">00086</a> @property(nonatomic) BOOL scrollEnabled;
+<a name="l00087"></a>00087 
+<a name="l00091"></a><a class="code" href="interface_t_t_scroll_view.html#ab3888e4794b6633c4e0993cadd71057f">00091</a> @property(nonatomic) BOOL zoomEnabled;
+<a name="l00092"></a>00092 
+<a name="l00096"></a><a class="code" href="interface_t_t_scroll_view.html#a8cdc1e74e550eb1c09be05921ebff95d">00096</a> @property(nonatomic) BOOL rotateEnabled;
+<a name="l00097"></a>00097 
+<a name="l00101"></a><a class="code" href="interface_t_t_scroll_view.html#a777db57c6cbc8f27acf1a57815c39a63">00101</a> @property(nonatomic) CGFloat pageSpacing;
+<a name="l00102"></a>00102 
+<a name="l00106"></a><a class="code" href="interface_t_t_scroll_view.html#a7c461aa2f57e57e932efeb25c8334635">00106</a> @property(nonatomic) UIInterfaceOrientation orientation;
+<a name="l00107"></a>00107 
+<a name="l00111"></a><a class="code" href="interface_t_t_scroll_view.html#ab7e204fd45c41a63feaf1e3453fe382f">00111</a> @property(nonatomic) NSTimeInterval holdsAfterTouchingForInterval;
+<a name="l00112"></a>00112 
+<a name="l00116"></a><a class="code" href="interface_t_t_scroll_view.html#a1448d05cf8e9dc7af4455e4647d9624b">00116</a> @property(nonatomic,readonly) NSInteger numberOfPages;
+<a name="l00117"></a>00117 
+<a name="l00121"></a><a class="code" href="interface_t_t_scroll_view.html#a5e593ba939ce3e0a9e2bd8ee368dd6d3">00121</a> @property(nonatomic,readonly) <a class="code" href="class_u_i_view.html">UIView</a>* centerPage;
+<a name="l00122"></a>00122 
+<a name="l00126"></a><a class="code" href="interface_t_t_scroll_view.html#ac5b71472eb1caa1b3b85ee54a1813e85">00126</a> @property(nonatomic,readonly) NSDictionary* visiblePages;
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 - (<span class="keywordtype">void</span>)setOrientation:(UIInterfaceOrientation)orientation animated:(BOOL)animated;
+<a name="l00129"></a>00129 
+<a name="l00133"></a>00133 - (<a class="code" href="class_u_i_view.html">UIView</a>*)dequeueReusablePage;
+<a name="l00134"></a>00134 
+<a name="l00138"></a>00138 - (<span class="keywordtype">void</span>)reloadData;
+<a name="l00139"></a>00139 
+<a name="l00143"></a>00143 - (<a class="code" href="class_u_i_view.html">UIView</a>*)pageAtIndex:(NSInteger)pageIndex;
+<a name="l00144"></a>00144 
+<a name="l00148"></a>00148 - (<span class="keywordtype">void</span>)zoomToFit;
+<a name="l00149"></a>00149 
+<a name="l00153"></a>00153 - (<span class="keywordtype">void</span>)zoomToDistance:(CGFloat)distance;
+<a name="l00154"></a>00154 
+<a name="l00158"></a>00158 - (<span class="keywordtype">void</span>)cancelTouches;
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 @end
+<a name="l00161"></a>00161 
+<a name="l00163"></a>00163 
+<a name="l00164"></a><a class="code" href="protocol_t_t_scroll_view_delegate-p.html">00164</a> @protocol TTScrollViewDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
+<a name="l00165"></a>00165 
+<a name="l00169"></a>00169 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView didMoveToPageAtIndex:(NSInteger)pageIndex;
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 @optional
+<a name="l00172"></a>00172 
+<a name="l00176"></a>00176 - (<span class="keywordtype">void</span>)scrollViewWillRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView
+<a name="l00177"></a>00177         toOrientation:(UIInterfaceOrientation)orientation;
+<a name="l00178"></a>00178 
+<a name="l00182"></a>00182 - (<span class="keywordtype">void</span>)scrollViewDidRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00183"></a>00183 
+<a name="l00187"></a>00187 - (<span class="keywordtype">void</span>)scrollViewWillBeginDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00188"></a>00188 
+<a name="l00192"></a>00192 - (<span class="keywordtype">void</span>)scrollViewDidEndDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView willDecelerate:(BOOL)willDecelerate;
+<a name="l00193"></a>00193 
+<a name="l00197"></a>00197 - (<span class="keywordtype">void</span>)scrollViewDidEndDecelerating:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00198"></a>00198 
+<a name="l00202"></a>00202 - (BOOL)scrollViewShouldZoom:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00203"></a>00203 
+<a name="l00207"></a>00207 - (<span class="keywordtype">void</span>)scrollViewDidBeginZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00208"></a>00208 
+<a name="l00212"></a>00212 - (<span class="keywordtype">void</span>)scrollViewDidEndZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00213"></a>00213 
+<a name="l00217"></a>00217 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView touchedDown:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
+<a name="l00218"></a>00218 
+<a name="l00222"></a>00222 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView touchedUpInside:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
+<a name="l00223"></a>00223 
+<a name="l00227"></a>00227 - (<span class="keywordtype">void</span>)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView tapped:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch;
+<a name="l00228"></a>00228 
+<a name="l00232"></a>00232 - (<span class="keywordtype">void</span>)scrollViewDidBeginHolding:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00233"></a>00233 
+<a name="l00237"></a>00237 - (<span class="keywordtype">void</span>)scrollViewDidEndHolding:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 @optional
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 - (BOOL)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView 
+<a name="l00242"></a>00242         shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation;
+<a name="l00243"></a>00243 
+<a name="l00244"></a>00244 @end
+<a name="l00245"></a>00245 
+<a name="l00247"></a>00247 
+<a name="l00248"></a><a class="code" href="protocol_t_t_scroll_view_data_source-p.html">00248</a> @protocol TTScrollViewDataSource &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
+<a name="l00249"></a>00249 
+<a name="l00253"></a>00253 - (NSInteger)numberOfPagesInScrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView;
+<a name="l00254"></a>00254 
+<a name="l00261"></a>00261 - (<a class="code" href="class_u_i_view.html">UIView</a>*)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView pageAtIndex:(NSInteger)pageIndex;
+<a name="l00262"></a>00262 
+<a name="l00269"></a>00269 - (CGSize)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView sizeOfPageAtIndex:(NSInteger)pageIndex;
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

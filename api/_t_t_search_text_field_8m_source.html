@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,478 +76,484 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_search_text_field_8h.html">Three20/TTSearchTextField.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_8h.html">Three20/TTTableView.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_item_cell_8h.html">Three20/TTTableItemCell.h</a>&quot;</span>
-<a name="l00023"></a>00023 
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">00026</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">kShadowHeight</a> = 24;
-<a name="l00027"></a><a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">00027</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">kDesiredTableHeight</a> = 150;
-<a name="l00028"></a>00028 
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_search_text_field_internal.html">00031</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a> : <a class="code" href="class_n_s_object.html">NSObject</a> &lt;UITextFieldDelegate&gt; {
-<a name="l00032"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">00032</a>   <a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>* <a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">_textField</a>;
-<a name="l00033"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">00033</a>   id&lt;UITextFieldDelegate&gt; <a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a>;
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 
-<a name="l00036"></a><a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">00036</a> @property(nonatomic,assign) id&lt;UITextFieldDelegate&gt; delegate;
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 - (<span class="keywordtype">id</span>)initWithTextField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField;
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 @end
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_navigator_8h.html">Three20/TTGlobalUINavigator.h</a>&quot;</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_8h.html">Three20/TTTableView.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_item_cell_8h.html">Three20/TTTableItemCell.h</a>&quot;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_data_source_8h.html">Three20/TTTableViewDataSource.h</a>&quot;</span>
+<a name="l00029"></a>00029 
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">00032</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">kShadowHeight</a> = 24;
+<a name="l00033"></a><a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">00033</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">kDesiredTableHeight</a> = 150;
+<a name="l00034"></a>00034 
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="interface_t_t_search_text_field_internal.html">00037</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> &lt;UITextFieldDelegate&gt; {
+<a name="l00038"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">00038</a>   <a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>* <a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">_textField</a>;
+<a name="l00039"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">00039</a>   id&lt;UITextFieldDelegate&gt; <a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a>;
+<a name="l00040"></a>00040 }
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042 @implementation <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>
+<a name="l00042"></a><a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">00042</a> @property(nonatomic,assign) id&lt;UITextFieldDelegate&gt; delegate;
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 @synthesize delegate = _delegate;
+<a name="l00044"></a>00044 - (<span class="keywordtype">id</span>)initWithTextField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField;
 <a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a854682d3186f726414c72b544e0be961">00046</a> - (<span class="keywordtype">id</span>)initWithTextField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField {
-<a name="l00047"></a>00047   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00048"></a>00048     _textField = textField;
-<a name="l00049"></a>00049   }
-<a name="l00050"></a>00050   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00051"></a>00051 }
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 - (void)dealloc {
-<a name="l00054"></a>00054   [<span class="keyword">super</span> dealloc];
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058 <span class="comment">// UITextFieldDelegate</span>
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-<a name="l00061"></a>00061   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldBeginEditing:)]) {
-<a name="l00062"></a>00062     <span class="keywordflow">return</span> [_delegate textFieldShouldBeginEditing:textField];
-<a name="l00063"></a>00063   } <span class="keywordflow">else</span> {
-<a name="l00064"></a>00064     <span class="keywordflow">return</span> YES;
-<a name="l00065"></a>00065   }
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-<a name="l00069"></a>00069   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldDidBeginEditing:)]) {
-<a name="l00070"></a>00070     [_delegate textFieldDidBeginEditing:textField];
+<a name="l00046"></a>00046 @end
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 @implementation <a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a>
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 @synthesize delegate = _delegate;
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a854682d3186f726414c72b544e0be961">00052</a> - (<span class="keywordtype">id</span>)initWithTextField:(<a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>*)textField {
+<a name="l00053"></a>00053   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00054"></a>00054     _textField = textField;
+<a name="l00055"></a>00055   }
+<a name="l00056"></a>00056   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a6d45f46114426077187def87a4954963">00059</a> - (void)dealloc {
+<a name="l00060"></a>00060   [<span class="keyword">super</span> dealloc];
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00064"></a>00064 <span class="comment">// UITextFieldDelegate</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a73e059791b0dc4ae7f422a0d056b8eee">00066</a> - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+<a name="l00067"></a>00067   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldBeginEditing:)]) {
+<a name="l00068"></a>00068     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldShouldBeginEditing:textField];
+<a name="l00069"></a>00069   } <span class="keywordflow">else</span> {
+<a name="l00070"></a>00070     <span class="keywordflow">return</span> YES;
 <a name="l00071"></a>00071   }
 <a name="l00072"></a>00072 }
 <a name="l00073"></a>00073 
-<a name="l00074"></a>00074 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-<a name="l00075"></a>00075   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldEndEditing:)]) {
-<a name="l00076"></a>00076     <span class="keywordflow">return</span> [_delegate textFieldShouldEndEditing:textField];
-<a name="l00077"></a>00077   } <span class="keywordflow">else</span> {
-<a name="l00078"></a>00078     <span class="keywordflow">return</span> YES;
-<a name="l00079"></a>00079   }
-<a name="l00080"></a>00080 }
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 - (void)textFieldDidEndEditing:(UITextField *)textField {
-<a name="l00083"></a>00083   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldDidEndEditing:)]) {
-<a name="l00084"></a>00084     [_delegate textFieldDidEndEditing:textField];
+<a name="l00074"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a75728f89dc95a66650b19a860e549147">00074</a> - (void)textFieldDidBeginEditing:(UITextField *)textField {
+<a name="l00075"></a>00075   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldDidBeginEditing:)]) {
+<a name="l00076"></a>00076     [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldDidBeginEditing:textField];
+<a name="l00077"></a>00077   }
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a7757175c840ffcbe202e5870acb2b3d1">00080</a> - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+<a name="l00081"></a>00081   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldEndEditing:)]) {
+<a name="l00082"></a>00082     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldShouldEndEditing:textField];
+<a name="l00083"></a>00083   } <span class="keywordflow">else</span> {
+<a name="l00084"></a>00084     <span class="keywordflow">return</span> YES;
 <a name="l00085"></a>00085   }
 <a name="l00086"></a>00086 }
 <a name="l00087"></a>00087 
-<a name="l00088"></a>00088 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
-<a name="l00089"></a>00089     replacementString:(<a class="code" href="class_n_s_string.html">NSString</a> *)string {
-<a name="l00090"></a>00090   <span class="keywordflow">if</span> (![_textField shouldUpdate:!<span class="keywordtype">string</span>.length]) {
-<a name="l00091"></a>00091     <span class="keywordflow">return</span> NO;
-<a name="l00092"></a>00092   }
+<a name="l00088"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a1fffc16b3b30da11239d621b85b5daaa">00088</a> - (void)textFieldDidEndEditing:(UITextField *)textField {
+<a name="l00089"></a>00089   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldDidEndEditing:)]) {
+<a name="l00090"></a>00090     [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldDidEndEditing:textField];
+<a name="l00091"></a>00091   }
+<a name="l00092"></a>00092 }
 <a name="l00093"></a>00093 
-<a name="l00094"></a>00094   <span class="keywordtype">SEL</span> sel = <span class="keyword">@selector</span>(textField:shouldChangeCharactersInRange:replacementString:);
-<a name="l00095"></a>00095   <span class="keywordflow">if</span> ([_delegate respondsToSelector:sel]) {
-<a name="l00096"></a>00096     <span class="keywordflow">return</span> [_delegate textField:textField shouldChangeCharactersInRange:range
-<a name="l00097"></a>00097       replacementString:string];
-<a name="l00098"></a>00098   } <span class="keywordflow">else</span> {
-<a name="l00099"></a>00099     <span class="keywordflow">return</span> YES;
-<a name="l00100"></a>00100   }
-<a name="l00101"></a>00101 }
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 - (BOOL)textFieldShouldClear:(UITextField *)textField {
-<a name="l00104"></a>00104   [_textField shouldUpdate:YES];
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldClear:)]) {
-<a name="l00107"></a>00107     <span class="keywordflow">return</span> [_delegate textFieldShouldClear:textField];
-<a name="l00108"></a>00108   } <span class="keywordflow">else</span> {
-<a name="l00109"></a>00109     <span class="keywordflow">return</span> YES;
-<a name="l00110"></a>00110   }
-<a name="l00111"></a>00111 }
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-<a name="l00114"></a>00114   BOOL shouldReturn = YES;
-<a name="l00115"></a>00115   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldReturn:)]) {
-<a name="l00116"></a>00116     shouldReturn = [_delegate textFieldShouldReturn:textField];
-<a name="l00117"></a>00117   }
-<a name="l00118"></a>00118   
-<a name="l00119"></a>00119   <span class="keywordflow">if</span> (shouldReturn) {
-<a name="l00120"></a>00120     <span class="keywordflow">if</span> (!_textField.searchesAutomatically) {
-<a name="l00121"></a>00121       [_textField search];
-<a name="l00122"></a>00122     } <span class="keywordflow">else</span> {
-<a name="l00123"></a>00123       [_textField performSelector:@selector(doneAction)];
-<a name="l00124"></a>00124     }
-<a name="l00125"></a>00125   }
-<a name="l00126"></a>00126   <span class="keywordflow">return</span> shouldReturn;
-<a name="l00127"></a>00127 }
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129 <span class="keyword">@end</span>
-<a name="l00130"></a>00130 
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>
+<a name="l00094"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a0abe664c5822239b91a8b20cf4f90592">00094</a> - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range
+<a name="l00095"></a>00095     replacementString:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> *)string {
+<a name="l00096"></a>00096   <span class="keywordflow">if</span> (![_textField shouldUpdate:!<span class="keywordtype">string</span>.length]) {
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> NO;
+<a name="l00098"></a>00098   }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100   <span class="keywordtype">SEL</span> sel = <span class="keyword">@selector</span>(textField:shouldChangeCharactersInRange:replacementString:);
+<a name="l00101"></a>00101   <span class="keywordflow">if</span> ([_delegate respondsToSelector:sel]) {
+<a name="l00102"></a>00102     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textField:textField shouldChangeCharactersInRange:range
+<a name="l00103"></a>00103       replacementString:string];
+<a name="l00104"></a>00104   } <span class="keywordflow">else</span> {
+<a name="l00105"></a>00105     <span class="keywordflow">return</span> YES;
+<a name="l00106"></a>00106   }
+<a name="l00107"></a>00107 }
+<a name="l00108"></a>00108 
+<a name="l00109"></a><a class="code" href="interface_t_t_search_text_field_internal.html#a2ca9fd5cd60475e14d7a39ae83280d56">00109</a> - (BOOL)textFieldShouldClear:(UITextField *)textField {
+<a name="l00110"></a>00110   [<a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">_textField</a> <a class="code" href="interface_t_t_search_text_field.html#a8dea54f8694d6263651cecee51ba3f98">shouldUpdate</a>:YES];
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldClear:)]) {
+<a name="l00113"></a>00113     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldShouldClear:textField];
+<a name="l00114"></a>00114   } <span class="keywordflow">else</span> {
+<a name="l00115"></a>00115     <span class="keywordflow">return</span> YES;
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00119"></a><a class="code" href="interface_t_t_search_text_field_internal.html#abadd266962829fb3154efeac186a8687">00119</a> - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+<a name="l00120"></a>00120   BOOL shouldReturn = YES;
+<a name="l00121"></a>00121   <span class="keywordflow">if</span> ([_delegate respondsToSelector:<span class="keyword">@selector</span>(textFieldShouldReturn:)]) {
+<a name="l00122"></a>00122     shouldReturn = [<a class="code" href="interface_t_t_search_text_field_internal.html#a76e99687cd7d444c8bcfc5309ae1453f">_delegate</a> textFieldShouldReturn:textField];
+<a name="l00123"></a>00123   }
+<a name="l00124"></a>00124   
+<a name="l00125"></a>00125   <span class="keywordflow">if</span> (shouldReturn) {
+<a name="l00126"></a>00126     <span class="keywordflow">if</span> (!_textField.searchesAutomatically) {
+<a name="l00127"></a>00127       [<a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">_textField</a> <a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">search</a>];
+<a name="l00128"></a>00128     } <span class="keywordflow">else</span> {
+<a name="l00129"></a>00129       [<a class="code" href="interface_t_t_search_text_field_internal.html#a60ccc54274f3a9de1d65d9cc0b01945b">_textField</a> performSelector:@selector(doneAction)];
+<a name="l00130"></a>00130     }
+<a name="l00131"></a>00131   }
+<a name="l00132"></a>00132   <span class="keywordflow">return</span> shouldReturn;
+<a name="l00133"></a>00133 }
 <a name="l00134"></a>00134 
-<a name="l00135"></a>00135 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">dataSource</a> = <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>, <a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">tableView</a> = <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>, <a class="code" href="interface_t_t_search_text_field.html#a13e277fa11fb5a5cd8479afa342ad023">rowHeight</a> = <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>,
-<a name="l00136"></a>00136   <a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">searchesAutomatically</a> = <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>, <a class="code" href="interface_t_t_search_text_field.html#a48e966bc731278fb5bbd7421b6e6af7b">showsDoneButton</a> = <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>,
-<a name="l00137"></a>00137   <a class="code" href="interface_t_t_search_text_field.html#a5c4170956b6e2c4eda5e4f136c48e383">showsDarkScreen</a> = <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>;
+<a name="l00135"></a>00135 <span class="keyword">@end</span>
+<a name="l00136"></a>00136 
 <a name="l00138"></a>00138 
-<a name="l00139"></a>00139 - (id)initWithFrame:(CGRect)frame {
-<a name="l00140"></a>00140   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00141"></a>00141     <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a> = [[<a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a> alloc] initWithTextField:self];
-<a name="l00142"></a>00142     <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> = nil;
-<a name="l00143"></a>00143     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> = nil;
-<a name="l00144"></a>00144     <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> = nil;
-<a name="l00145"></a>00145     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> = nil;
-<a name="l00146"></a>00146     <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = nil;
-<a name="l00147"></a>00147     <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a> = nil;
-<a name="l00148"></a>00148     <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a> = nil;
-<a name="l00149"></a>00149     <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a> = 0;
-<a name="l00150"></a>00150     <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a> = NO;
-<a name="l00151"></a>00151     <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a> = NO;
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153     <span class="keyword">self</span>.autocorrectionType = UITextAutocorrectionTypeNo;
-<a name="l00154"></a>00154     <span class="keyword">self</span>.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-<a name="l00155"></a>00155     <span class="keyword">self</span>.clearButtonMode = UITextFieldViewModeWhileEditing;
-<a name="l00156"></a>00156     <span class="keyword">self</span>.searchesAutomatically = YES;
-<a name="l00157"></a>00157     
-<a name="l00158"></a>00158     [<span class="keyword">self</span> addTarget:self action:@selector(didBeginEditing)
-<a name="l00159"></a>00159       forControlEvents:UIControlEventEditingDidBegin];
-<a name="l00160"></a>00160     [<span class="keyword">self</span> addTarget:self action:@selector(didEndEditing)
-<a name="l00161"></a>00161       forControlEvents:UIControlEventEditingDidEnd];
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163     [<span class="keyword">super</span> setDelegate:_internal];
-<a name="l00164"></a>00164   }
-<a name="l00165"></a>00165   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00166"></a>00166 }
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 - (void)dealloc {
-<a name="l00169"></a>00169   [_dataSource.model.delegates removeObject:self];
-<a name="l00170"></a>00170   <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.delegate = nil;
-<a name="l00171"></a>00171   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>);
-<a name="l00172"></a>00172   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>);
-<a name="l00173"></a>00173   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>);
-<a name="l00174"></a>00174   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>);
-<a name="l00175"></a>00175   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>);
-<a name="l00176"></a>00176   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>);
-<a name="l00177"></a>00177   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>);
-<a name="l00178"></a>00178   [<span class="keyword">super</span> dealloc];
-<a name="l00179"></a>00179 }
-<a name="l00180"></a>00180 
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183 - (void)showDoneButton:(BOOL)show {
-<a name="l00184"></a>00184   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = [<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>].visibleViewController;
-<a name="l00185"></a>00185   <span class="keywordflow">if</span> (controller) {
-<a name="l00186"></a>00186     <span class="keywordflow">if</span> (show) {
-<a name="l00187"></a>00187       <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a> = [controller.navigationItem retain];
-<a name="l00188"></a>00188       <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a> = [controller.navigationItem.rightBarButtonItem retain];
-<a name="l00189"></a>00189       
-<a name="l00190"></a>00190       UIBarButtonItem* doneButton = [[[UIBarButtonItem alloc]
-<a name="l00191"></a>00191       initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-<a name="l00192"></a>00192       target:self action:@selector(doneAction)] autorelease];
-<a name="l00193"></a>00193       [controller.navigationItem setRightBarButtonItem:doneButton animated:YES];
-<a name="l00194"></a>00194     } <span class="keywordflow">else</span> {
-<a name="l00195"></a>00195       [_previousNavigationItem setRightBarButtonItem:_previousRightBarButtonItem animated:YES];
-<a name="l00196"></a>00196       <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>);
-<a name="l00197"></a>00197       <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>);
-<a name="l00198"></a>00198     }
-<a name="l00199"></a>00199   }
-<a name="l00200"></a>00200 }
-<a name="l00201"></a>00201 
-<a name="l00202"></a>00202 - (void)showDarkScreen:(BOOL)show {
-<a name="l00203"></a>00203   <span class="keywordflow">if</span> (show &amp;&amp; !<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>) {
-<a name="l00204"></a>00204     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-<a name="l00205"></a>00205     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.backgroundColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(screenBackgroundColor);
-<a name="l00206"></a>00206     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.frame = [<span class="keyword">self</span> rectForSearchResults:NO];
-<a name="l00207"></a>00207     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha = 0;
-<a name="l00208"></a>00208     [_screenView addTarget:self action:@selector(doneAction)
-<a name="l00209"></a>00209       forControlEvents:UIControlEventTouchUpInside];
-<a name="l00210"></a>00210   }
-<a name="l00211"></a>00211   
-<a name="l00212"></a>00212   <span class="keywordflow">if</span> (show) {
-<a name="l00213"></a>00213     [<span class="keyword">self</span>.superviewForSearchResults addSubview:_screenView];
-<a name="l00214"></a>00214   }
-<a name="l00215"></a>00215   
-<a name="l00216"></a>00216   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00217"></a>00217   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00218"></a>00218   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00219"></a>00219   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(screenAnimationDidStop)];
-<a name="l00220"></a>00220 
-<a name="l00221"></a>00221   <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha = show ? 1 : 0;
-<a name="l00222"></a>00222   
-<a name="l00223"></a>00223   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00224"></a>00224 }
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 - (<a class="code" href="class_n_s_string.html">NSString</a>*)searchText {
-<a name="l00227"></a>00227   <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a>) {
-<a name="l00228"></a>00228     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00229"></a>00229   } <span class="keywordflow">else</span> {
-<a name="l00230"></a>00230     NSCharacterSet* whitespace = [NSCharacterSet whitespaceCharacterSet];
-<a name="l00231"></a>00231     <span class="keywordflow">return</span> [<span class="keyword">self</span>.text stringByTrimmingCharactersInSet:whitespace];
-<a name="l00232"></a>00232   }
-<a name="l00233"></a>00233 }
-<a name="l00234"></a>00234 
-<a name="l00235"></a>00235 - (void)autoSearch {
-<a name="l00236"></a>00236   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a> || !<span class="keyword">self</span>.text.length) {
-<a name="l00237"></a>00237     [<span class="keyword">self</span> search];
+<a name="l00139"></a>00139 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_search_text_field.html">TTSearchTextField</a>
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">dataSource</a> = <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>, <a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">tableView</a> = <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>, <a class="code" href="interface_t_t_search_text_field.html#a13e277fa11fb5a5cd8479afa342ad023">rowHeight</a> = <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>,
+<a name="l00142"></a>00142   <a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">searchesAutomatically</a> = <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>, <a class="code" href="interface_t_t_search_text_field.html#a48e966bc731278fb5bbd7421b6e6af7b">showsDoneButton</a> = <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>,
+<a name="l00143"></a>00143   <a class="code" href="interface_t_t_search_text_field.html#a5c4170956b6e2c4eda5e4f136c48e383">showsDarkScreen</a> = <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>;
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="interface_t_t_search_text_field.html#aa4ebffd47cbedd13f69f6ed281c17486">00145</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00146"></a>00146   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00147"></a>00147     <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a> = [[<a class="code" href="interface_t_t_search_text_field_internal.html">TTSearchTextFieldInternal</a> alloc] initWithTextField:self];
+<a name="l00148"></a>00148     <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> = nil;
+<a name="l00149"></a>00149     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> = nil;
+<a name="l00150"></a>00150     <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> = nil;
+<a name="l00151"></a>00151     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> = nil;
+<a name="l00152"></a>00152     <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = nil;
+<a name="l00153"></a>00153     <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a> = nil;
+<a name="l00154"></a>00154     <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a> = nil;
+<a name="l00155"></a>00155     <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a> = 0;
+<a name="l00156"></a>00156     <a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a> = NO;
+<a name="l00157"></a>00157     <a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a> = NO;
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159     <span class="keyword">self</span>.autocorrectionType = UITextAutocorrectionTypeNo;
+<a name="l00160"></a>00160     <span class="keyword">self</span>.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+<a name="l00161"></a>00161     <span class="keyword">self</span>.clearButtonMode = UITextFieldViewModeWhileEditing;
+<a name="l00162"></a>00162     <span class="keyword">self</span>.searchesAutomatically = YES;
+<a name="l00163"></a>00163     
+<a name="l00164"></a>00164     [<span class="keyword">self</span> addTarget:self action:@selector(didBeginEditing)
+<a name="l00165"></a>00165       forControlEvents:UIControlEventEditingDidBegin];
+<a name="l00166"></a>00166     [<span class="keyword">self</span> addTarget:self action:@selector(didEndEditing)
+<a name="l00167"></a>00167       forControlEvents:UIControlEventEditingDidEnd];
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169     [<span class="keyword">super</span> setDelegate:_internal];
+<a name="l00170"></a>00170   }
+<a name="l00171"></a>00171   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00174"></a><a class="code" href="interface_t_t_search_text_field.html#ae3e76a28cb3bcae7954bc2e31353e247">00174</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#ae3e76a28cb3bcae7954bc2e31353e247">dealloc</a> {
+<a name="l00175"></a>00175   [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>.model.delegates removeObject:self];
+<a name="l00176"></a>00176   <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.delegate = nil;
+<a name="l00177"></a>00177   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>);
+<a name="l00178"></a>00178   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>);
+<a name="l00179"></a>00179   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>);
+<a name="l00180"></a>00180   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>);
+<a name="l00181"></a>00181   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>);
+<a name="l00182"></a>00182   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>);
+<a name="l00183"></a>00183   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>);
+<a name="l00184"></a>00184   [<span class="keyword">super</span> dealloc];
+<a name="l00185"></a>00185 }
+<a name="l00186"></a>00186 
+<a name="l00188"></a>00188 
+<a name="l00189"></a><a class="code" href="interface_t_t_search_text_field.html#aae754b48fa17fedd724749e4c780801e">00189</a> - (void)showDoneButton:(BOOL)show {
+<a name="l00190"></a>00190   <a class="code" href="class_u_i_view_controller.html">UIViewController</a>* controller = [<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>].visibleViewController;
+<a name="l00191"></a>00191   <span class="keywordflow">if</span> (controller) {
+<a name="l00192"></a>00192     <span class="keywordflow">if</span> (show) {
+<a name="l00193"></a>00193       <a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a> = [controller.navigationItem retain];
+<a name="l00194"></a>00194       <a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a> = [controller.navigationItem.rightBarButtonItem retain];
+<a name="l00195"></a>00195       
+<a name="l00196"></a>00196       UIBarButtonItem* doneButton = [[[UIBarButtonItem alloc]
+<a name="l00197"></a>00197       initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+<a name="l00198"></a>00198       target:self action:@selector(doneAction)] autorelease];
+<a name="l00199"></a>00199       [controller.navigationItem setRightBarButtonItem:doneButton animated:YES];
+<a name="l00200"></a>00200     } <span class="keywordflow">else</span> {
+<a name="l00201"></a>00201       [<a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a> setRightBarButtonItem:_previousRightBarButtonItem animated:YES];
+<a name="l00202"></a>00202       <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#ae81b2aedee57c6757016f182ac667502">_previousRightBarButtonItem</a>);
+<a name="l00203"></a>00203       <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_search_text_field.html#acc3b864ce2783bfb23d9bf0137c099c6">_previousNavigationItem</a>);
+<a name="l00204"></a>00204     }
+<a name="l00205"></a>00205   }
+<a name="l00206"></a>00206 }
+<a name="l00207"></a>00207 
+<a name="l00208"></a><a class="code" href="interface_t_t_search_text_field.html#a1717657a70233f3ad3f3a0b18723d1df">00208</a> - (void)showDarkScreen:(BOOL)show {
+<a name="l00209"></a>00209   <span class="keywordflow">if</span> (show &amp;&amp; !<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>) {
+<a name="l00210"></a>00210     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+<a name="l00211"></a>00211     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.backgroundColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(screenBackgroundColor);
+<a name="l00212"></a>00212     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#ac3cdea57c1a96aa87f4deaf3fde2a701">rectForSearchResults</a>:NO];
+<a name="l00213"></a>00213     <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha = 0;
+<a name="l00214"></a>00214     [<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> addTarget:self action:@selector(doneAction)
+<a name="l00215"></a>00215       forControlEvents:UIControlEventTouchUpInside];
+<a name="l00216"></a>00216   }
+<a name="l00217"></a>00217   
+<a name="l00218"></a>00218   <span class="keywordflow">if</span> (show) {
+<a name="l00219"></a>00219     [<span class="keyword">self</span>.superviewForSearchResults addSubview:_screenView];
+<a name="l00220"></a>00220   }
+<a name="l00221"></a>00221   
+<a name="l00222"></a>00222   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00223"></a>00223   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00224"></a>00224   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00225"></a>00225   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(screenAnimationDidStop)];
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227   <a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha = show ? 1 : 0;
+<a name="l00228"></a>00228   
+<a name="l00229"></a>00229   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00230"></a>00230 }
+<a name="l00231"></a>00231 
+<a name="l00232"></a><a class="code" href="interface_t_t_search_text_field.html#a9cb901fb44d5897e170d84f4b6dd0afa">00232</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="interface_t_t_search_text_field.html#a9cb901fb44d5897e170d84f4b6dd0afa">searchText</a> {
+<a name="l00233"></a>00233   <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a>) {
+<a name="l00234"></a>00234     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00235"></a>00235   } <span class="keywordflow">else</span> {
+<a name="l00236"></a>00236     NSCharacterSet* whitespace = [NSCharacterSet whitespaceCharacterSet];
+<a name="l00237"></a>00237     <span class="keywordflow">return</span> [<span class="keyword">self</span>.text stringByTrimmingCharactersInSet:whitespace];
 <a name="l00238"></a>00238   }
 <a name="l00239"></a>00239 }
 <a name="l00240"></a>00240 
-<a name="l00241"></a>00241 - (void)dispatchUpdate:(NSTimer*)timer {
-<a name="l00242"></a>00242   <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = nil;
-<a name="l00243"></a>00243   [<span class="keyword">self</span> autoSearch];
-<a name="l00244"></a>00244 }
-<a name="l00245"></a>00245 
-<a name="l00246"></a>00246 - (void)delayedUpdate {
-<a name="l00247"></a>00247   [_searchTimer invalidate];
-<a name="l00248"></a>00248   <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = [NSTimer scheduledTimerWithTimeInterval:0 target:self
-<a name="l00249"></a>00249     selector:@selector(dispatchUpdate:) userInfo:nil repeats:NO];
+<a name="l00241"></a><a class="code" href="interface_t_t_search_text_field.html#ad72a386165b30784b998db3a27657d12">00241</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#ad72a386165b30784b998db3a27657d12">autoSearch</a> {
+<a name="l00242"></a>00242   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a> || !<span class="keyword">self</span>.text.length) {
+<a name="l00243"></a>00243     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">search</a>];
+<a name="l00244"></a>00244   }
+<a name="l00245"></a>00245 }
+<a name="l00246"></a>00246 
+<a name="l00247"></a><a class="code" href="interface_t_t_search_text_field.html#a676e5bd7fe8901e44e1c9dd764aa0660">00247</a> - (void)dispatchUpdate:(NSTimer*)timer {
+<a name="l00248"></a>00248   <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = nil;
+<a name="l00249"></a>00249   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#ad72a386165b30784b998db3a27657d12">autoSearch</a>];
 <a name="l00250"></a>00250 }
 <a name="l00251"></a>00251 
-<a name="l00252"></a>00252 - (BOOL)hasSearchResults {
-<a name="l00253"></a>00253   <span class="keywordflow">return</span> (![<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(numberOfSectionsInTableView:)]
-<a name="l00254"></a>00254           || [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> numberOfSectionsInTableView:<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>])
-<a name="l00255"></a>00255       &amp;&amp; [_dataSource tableView:_tableView numberOfRowsInSection:0];
+<a name="l00252"></a><a class="code" href="interface_t_t_search_text_field.html#a1c3da6a56671619c86c4997300324a11">00252</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a1c3da6a56671619c86c4997300324a11">delayedUpdate</a> {
+<a name="l00253"></a>00253   [<a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> invalidate];
+<a name="l00254"></a>00254   <a class="code" href="interface_t_t_search_text_field.html#a73982430faf687ea3e0051692a9358e3">_searchTimer</a> = [NSTimer scheduledTimerWithTimeInterval:0 target:self
+<a name="l00255"></a>00255     selector:@selector(dispatchUpdate:) userInfo:nil repeats:NO];
 <a name="l00256"></a>00256 }
 <a name="l00257"></a>00257 
-<a name="l00258"></a>00258 - (void)reloadTable {
-<a name="l00259"></a>00259   [_dataSource tableViewDidLoadModel:self.tableView];
-<a name="l00260"></a>00260 
-<a name="l00261"></a>00261   <span class="keywordflow">if</span> ([<span class="keyword">self</span> hasSearchResults]) {
-<a name="l00262"></a>00262     [<span class="keyword">self</span> layoutIfNeeded];
-<a name="l00263"></a>00263     [<span class="keyword">self</span> showSearchResults:YES];
-<a name="l00264"></a>00264     [<span class="keyword">self</span>.tableView reloadData];
-<a name="l00265"></a>00265   } <span class="keywordflow">else</span> {
-<a name="l00266"></a>00266     [<span class="keyword">self</span> showSearchResults:NO];
-<a name="l00267"></a>00267   }
-<a name="l00268"></a>00268 }
-<a name="l00269"></a>00269 
-<a name="l00270"></a>00270 - (void)screenAnimationDidStop {
-<a name="l00271"></a>00271   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha == 0) {
-<a name="l00272"></a>00272     [_screenView removeFromSuperview];
+<a name="l00258"></a><a class="code" href="interface_t_t_search_text_field.html#a61638f58785b16df936cae110b79866b">00258</a> - (BOOL)<a class="code" href="interface_t_t_search_text_field.html#a61638f58785b16df936cae110b79866b">hasSearchResults</a> {
+<a name="l00259"></a>00259   <span class="keywordflow">return</span> (![<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(numberOfSectionsInTableView:)]
+<a name="l00260"></a>00260           || [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> numberOfSectionsInTableView:<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>])
+<a name="l00261"></a>00261       &amp;&amp; [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> tableView:_tableView numberOfRowsInSection:0];
+<a name="l00262"></a>00262 }
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">00264</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">reloadTable</a> {
+<a name="l00265"></a>00265   [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> tableViewDidLoadModel:self.tableView];
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267   <span class="keywordflow">if</span> ([<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a61638f58785b16df936cae110b79866b">hasSearchResults</a>]) {
+<a name="l00268"></a>00268     [<span class="keyword">self</span> layoutIfNeeded];
+<a name="l00269"></a>00269     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">showSearchResults</a>:YES];
+<a name="l00270"></a>00270     [<span class="keyword">self</span>.tableView reloadData];
+<a name="l00271"></a>00271   } <span class="keywordflow">else</span> {
+<a name="l00272"></a>00272     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">showSearchResults</a>:NO];
 <a name="l00273"></a>00273   }
 <a name="l00274"></a>00274 }
 <a name="l00275"></a>00275 
-<a name="l00276"></a>00276 - (void)doneAction {
-<a name="l00277"></a>00277   [<span class="keyword">self</span> resignFirstResponder];
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279   <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">dataSource</a>) {
-<a name="l00280"></a>00280     <span class="keyword">self</span>.text = <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00281"></a>00281   }
-<a name="l00282"></a>00282 }
-<a name="l00283"></a>00283 
-<a name="l00285"></a>00285 <span class="comment">// UITextField</span>
-<a name="l00286"></a>00286 
-<a name="l00287"></a>00287 - (id&lt;UITextFieldDelegate&gt;)delegate {
-<a name="l00288"></a>00288   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a>;
-<a name="l00289"></a>00289 }
-<a name="l00290"></a>00290 
-<a name="l00291"></a>00291 - (void)setDelegate:(<span class="keywordtype">id</span>&lt;UITextFieldDelegate&gt;)delegate {
-<a name="l00292"></a>00292   <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a> = delegate;
-<a name="l00293"></a>00293 }
-<a name="l00294"></a>00294 
-<a name="l00295"></a>00295 - (void)setText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text {
-<a name="l00296"></a>00296   [<span class="keyword">super</span> setText:text];
-<a name="l00297"></a>00297   [<span class="keyword">self</span> autoSearch];
-<a name="l00298"></a>00298 }
-<a name="l00299"></a>00299 
-<a name="l00301"></a>00301 <span class="comment">// UITableViewDelegate</span>
-<a name="l00302"></a>00302 
-<a name="l00303"></a>00303 - (CGFloat)<a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">tableView</a>:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-<a name="l00304"></a>00304   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>) {
-<a name="l00305"></a>00305     <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
-<a name="l00306"></a>00306   } <span class="keywordflow">else</span> {
-<a name="l00307"></a>00307     <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [_dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-<a name="l00308"></a>00308     Class cls = [_dataSource tableView:tableView cellClassForObject:object];
-<a name="l00309"></a>00309     <span class="keywordflow">return</span> [cls tableView:_tableView rowHeightForObject:object];
-<a name="l00310"></a>00310   }
-<a name="l00311"></a>00311 }
-<a name="l00312"></a>00312 
-<a name="l00313"></a>00313 - (void)tableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
-<a name="l00314"></a>00314   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a> respondsToSelector:<span class="keyword">@selector</span>(textField:didSelectObject:)]) {
-<a name="l00315"></a>00315     <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [_dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
-<a name="l00316"></a>00316     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-<a name="l00317"></a>00317     <span class="keywordflow">if</span> (cell.selectionStyle != UITableViewCellSeparatorStyleNone) {
-<a name="l00318"></a>00318       [_internal.delegate performSelector:@selector(textField:didSelectObject:) withObject:self
-<a name="l00319"></a>00319                           withObject:object];      
-<a name="l00320"></a>00320     }
-<a name="l00321"></a>00321   }
-<a name="l00322"></a>00322 }
-<a name="l00323"></a>00323 
-<a name="l00325"></a>00325 <span class="comment">// TTModelDelegate</span>
-<a name="l00326"></a>00326 
-<a name="l00327"></a>00327 - (void)modelDidStartLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
-<a name="l00328"></a>00328   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>) {
-<a name="l00329"></a>00329     [<span class="keyword">self</span> reloadTable];
-<a name="l00330"></a>00330   }
-<a name="l00331"></a>00331 }
+<a name="l00276"></a><a class="code" href="interface_t_t_search_text_field.html#aa007d5315032910e56de27d3bdc82da5">00276</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#aa007d5315032910e56de27d3bdc82da5">screenAnimationDidStop</a> {
+<a name="l00277"></a>00277   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a>.alpha == 0) {
+<a name="l00278"></a>00278     [<a class="code" href="interface_t_t_search_text_field.html#ae415a6a9cbf3827db89828207690a84f">_screenView</a> removeFromSuperview];
+<a name="l00279"></a>00279   }
+<a name="l00280"></a>00280 }
+<a name="l00281"></a>00281 
+<a name="l00282"></a><a class="code" href="interface_t_t_search_text_field.html#a3afae06710a46861ca1ba16defeda7ec">00282</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a3afae06710a46861ca1ba16defeda7ec">doneAction</a> {
+<a name="l00283"></a>00283   [<span class="keyword">self</span> resignFirstResponder];
+<a name="l00284"></a>00284 
+<a name="l00285"></a>00285   <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a6dd72c064ccd0f57806d2a46b946a0b0">dataSource</a>) {
+<a name="l00286"></a>00286     <span class="keyword">self</span>.text = <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00287"></a>00287   }
+<a name="l00288"></a>00288 }
+<a name="l00289"></a>00289 
+<a name="l00291"></a>00291 <span class="comment">// UITextField</span>
+<a name="l00292"></a>00292 
+<a name="l00293"></a><a class="code" href="interface_t_t_search_text_field.html#a6d9c6d87bb8cc7129a4d2f30c83013a3">00293</a> - (id&lt;UITextFieldDelegate&gt;)<a class="code" href="interface_t_t_search_text_field.html#a6d9c6d87bb8cc7129a4d2f30c83013a3">delegate</a> {
+<a name="l00294"></a>00294   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a>;
+<a name="l00295"></a>00295 }
+<a name="l00296"></a>00296 
+<a name="l00297"></a><a class="code" href="interface_t_t_search_text_field.html#adf465ee46c6baae3af1a203e0b8c1be5">00297</a> - (void)setDelegate:(<span class="keywordtype">id</span>&lt;UITextFieldDelegate&gt;)delegate {
+<a name="l00298"></a>00298   <a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a> = <a class="code" href="interface_t_t_search_text_field.html#a6d9c6d87bb8cc7129a4d2f30c83013a3">delegate</a>;
+<a name="l00299"></a>00299 }
+<a name="l00300"></a>00300 
+<a name="l00301"></a><a class="code" href="interface_t_t_search_text_field.html#aa9ea07f8c280b6c2c9b6164647799db7">00301</a> - (void)setText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text {
+<a name="l00302"></a>00302   [<span class="keyword">super</span> setText:text];
+<a name="l00303"></a>00303   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#ad72a386165b30784b998db3a27657d12">autoSearch</a>];
+<a name="l00304"></a>00304 }
+<a name="l00305"></a>00305 
+<a name="l00307"></a>00307 <span class="comment">// UITableViewDelegate</span>
+<a name="l00308"></a>00308 
+<a name="l00309"></a><a class="code" href="interface_t_t_search_text_field.html#a6deaa52328a67a21299f0b59e354d0ab">00309</a> - (CGFloat)<a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">tableView</a>:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+<a name="l00310"></a>00310   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>) {
+<a name="l00311"></a>00311     <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
+<a name="l00312"></a>00312   } <span class="keywordflow">else</span> {
+<a name="l00313"></a>00313     <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> tableView:tableView objectForRowAtIndexPath:indexPath];
+<a name="l00314"></a>00314     Class cls = [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> tableView:tableView cellClassForObject:object];
+<a name="l00315"></a>00315     <span class="keywordflow">return</span> [cls tableView:_tableView rowHeightForObject:object];
+<a name="l00316"></a>00316   }
+<a name="l00317"></a>00317 }
+<a name="l00318"></a>00318 
+<a name="l00319"></a><a class="code" href="interface_t_t_search_text_field.html#ac1f238a8c589780353054e1f9ac613ce">00319</a> - (void)tableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
+<a name="l00320"></a>00320   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.<a class="code" href="interface_t_t_search_text_field_internal.html#ad3268b793cc7a60f88285385b0d5327e">delegate</a> respondsToSelector:<span class="keyword">@selector</span>(textField:didSelectObject:)]) {
+<a name="l00321"></a>00321     <span class="keywordtype">id</span> <span class="keywordtype">object</span> = [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> tableView:tableView objectForRowAtIndexPath:indexPath];
+<a name="l00322"></a>00322     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+<a name="l00323"></a>00323     <span class="keywordflow">if</span> (cell.selectionStyle != UITableViewCellSeparatorStyleNone) {
+<a name="l00324"></a>00324       [<a class="code" href="interface_t_t_search_text_field.html#a4f6d782676f84ca03cfc6fdd1888effa">_internal</a>.delegate performSelector:@selector(textField:didSelectObject:) withObject:self
+<a name="l00325"></a>00325                           withObject:object];      
+<a name="l00326"></a>00326     }
+<a name="l00327"></a>00327   }
+<a name="l00328"></a>00328 }
+<a name="l00329"></a>00329 
+<a name="l00331"></a>00331 <span class="comment">// TTModelDelegate</span>
 <a name="l00332"></a>00332 
-<a name="l00333"></a>00333 - (void)modelDidFinishLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
-<a name="l00334"></a>00334   [<span class="keyword">self</span> reloadTable];
-<a name="l00335"></a>00335 }
-<a name="l00336"></a>00336 
-<a name="l00337"></a>00337 - (void)modelDidChange:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
-<a name="l00338"></a>00338   [<span class="keyword">self</span> reloadTable];
-<a name="l00339"></a>00339 }
-<a name="l00340"></a>00340 
-<a name="l00341"></a>00341 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didFailLoadWithError:(NSError*)error {
-<a name="l00342"></a>00342   [<span class="keyword">self</span> reloadTable];
-<a name="l00343"></a>00343 }
-<a name="l00344"></a>00344 
-<a name="l00346"></a>00346 <span class="comment">// UIControlEvents</span>
-<a name="l00347"></a>00347 
-<a name="l00348"></a>00348 - (void)didBeginEditing {
-<a name="l00349"></a>00349   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
-<a name="l00350"></a>00350     UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
-<a name="l00351"></a>00351     scrollView.scrollEnabled = NO;
-<a name="l00352"></a>00352     scrollView.scrollsToTop = NO;
+<a name="l00333"></a><a class="code" href="interface_t_t_search_text_field.html#a4ab138fb4462a875b894c329dfc26df4">00333</a> - (void)modelDidStartLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
+<a name="l00334"></a>00334   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a>) {
+<a name="l00335"></a>00335     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">reloadTable</a>];
+<a name="l00336"></a>00336   }
+<a name="l00337"></a>00337 }
+<a name="l00338"></a>00338 
+<a name="l00339"></a><a class="code" href="interface_t_t_search_text_field.html#acee54a6989ea8938a6b6d6eb7a09941b">00339</a> - (void)modelDidFinishLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
+<a name="l00340"></a>00340   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">reloadTable</a>];
+<a name="l00341"></a>00341 }
+<a name="l00342"></a>00342 
+<a name="l00343"></a><a class="code" href="interface_t_t_search_text_field.html#aca3b818f45391b4c5d052c49e832a362">00343</a> - (void)modelDidChange:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
+<a name="l00344"></a>00344   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">reloadTable</a>];
+<a name="l00345"></a>00345 }
+<a name="l00346"></a>00346 
+<a name="l00347"></a><a class="code" href="interface_t_t_search_text_field.html#ac257fd01cc3ba190b7e8d956752d8694">00347</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didFailLoadWithError:(NSError*)error {
+<a name="l00348"></a>00348   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a9cce8bbd9789a8939ace69e180c89f2b">reloadTable</a>];
+<a name="l00349"></a>00349 }
+<a name="l00350"></a>00350 
+<a name="l00352"></a>00352 <span class="comment">// UIControlEvents</span>
 <a name="l00353"></a>00353 
-<a name="l00354"></a>00354     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>) {
-<a name="l00355"></a>00355       [<span class="keyword">self</span> showDoneButton:YES];
-<a name="l00356"></a>00356     }
-<a name="l00357"></a>00357     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>) {
-<a name="l00358"></a>00358       [<span class="keyword">self</span> showDarkScreen:YES];
-<a name="l00359"></a>00359     }
-<a name="l00360"></a>00360     <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a> &amp;&amp; <span class="keyword">self</span>.hasSearchResults) {
-<a name="l00361"></a>00361       [<span class="keyword">self</span> showSearchResults:YES];
+<a name="l00354"></a><a class="code" href="interface_t_t_search_text_field.html#a76d9d15f8d5cb79622d7b6ba36d96c90">00354</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a76d9d15f8d5cb79622d7b6ba36d96c90">didBeginEditing</a> {
+<a name="l00355"></a>00355   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
+<a name="l00356"></a>00356     UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
+<a name="l00357"></a>00357     scrollView.scrollEnabled = NO;
+<a name="l00358"></a>00358     scrollView.scrollsToTop = NO;
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>) {
+<a name="l00361"></a>00361       [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#aae754b48fa17fedd724749e4c780801e">showDoneButton</a>:YES];
 <a name="l00362"></a>00362     }
-<a name="l00363"></a>00363   }
-<a name="l00364"></a>00364 }
-<a name="l00365"></a>00365 
-<a name="l00366"></a>00366 - (void)didEndEditing {
-<a name="l00367"></a>00367   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
-<a name="l00368"></a>00368     UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
-<a name="l00369"></a>00369     scrollView.scrollEnabled = YES;
-<a name="l00370"></a>00370     scrollView.scrollsToTop = YES;
-<a name="l00371"></a>00371     
-<a name="l00372"></a>00372     [<span class="keyword">self</span> showSearchResults:NO];
-<a name="l00373"></a>00373     
-<a name="l00374"></a>00374     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>) {
-<a name="l00375"></a>00375       [<span class="keyword">self</span> showDoneButton:NO];
-<a name="l00376"></a>00376     }
-<a name="l00377"></a>00377     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>) {
-<a name="l00378"></a>00378       [<span class="keyword">self</span> showDarkScreen:NO];
-<a name="l00379"></a>00379     }
-<a name="l00380"></a>00380   }
-<a name="l00381"></a>00381 }
-<a name="l00382"></a>00382 
-<a name="l00384"></a>00384 <span class="comment">// public</span>
-<a name="l00385"></a>00385 
-<a name="l00386"></a>00386 - (void)setDataSource:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt;)dataSource {
-<a name="l00387"></a>00387   <span class="keywordflow">if</span> (dataSource != <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
-<a name="l00388"></a>00388     [_dataSource.model.delegates removeObject:self];
-<a name="l00389"></a>00389     [_dataSource release];
-<a name="l00390"></a>00390     <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> = [dataSource retain];
-<a name="l00391"></a>00391     [_dataSource.model.delegates addObject:self];
-<a name="l00392"></a>00392   }
-<a name="l00393"></a>00393 }
-<a name="l00394"></a>00394 
-<a name="l00395"></a>00395 - (<a class="code" href="class_u_i_table_view.html">UITableView</a>*)<a class="code" href="interface_t_t_search_text_field.html#a3fe5959486fb48fa26e87dfe94f2c9fe">tableView</a> {
-<a name="l00396"></a>00396   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>) {
-<a name="l00397"></a>00397     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> = [[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-<a name="l00398"></a>00398     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.backgroundColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(searchTableBackgroundColor);
-<a name="l00399"></a>00399     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.separatorColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(searchTableSeparatorColor);
-<a name="l00400"></a>00400     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.rowHeight = <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
-<a name="l00401"></a>00401     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.dataSource = <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>;
-<a name="l00402"></a>00402     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.delegate = <span class="keyword">self</span>;
-<a name="l00403"></a>00403     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.scrollsToTop = NO;
-<a name="l00404"></a>00404   }
-<a name="l00405"></a>00405   
-<a name="l00406"></a>00406   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>;
-<a name="l00407"></a>00407 }
-<a name="l00408"></a>00408 
-<a name="l00409"></a>00409 - (void)setSearchesAutomatically:(BOOL)searchesAutomatically {
-<a name="l00410"></a>00410   <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a> = searchesAutomatically;
-<a name="l00411"></a>00411   <span class="keywordflow">if</span> (searchesAutomatically) {
-<a name="l00412"></a>00412     <span class="keyword">self</span>.returnKeyType = UIReturnKeyDone;
-<a name="l00413"></a>00413     <span class="keyword">self</span>.enablesReturnKeyAutomatically = NO;
-<a name="l00414"></a>00414   } <span class="keywordflow">else</span> {
-<a name="l00415"></a>00415     <span class="keyword">self</span>.returnKeyType = UIReturnKeySearch;
-<a name="l00416"></a>00416     <span class="keyword">self</span>.enablesReturnKeyAutomatically = YES;
-<a name="l00417"></a>00417   }
-<a name="l00418"></a>00418 }
-<a name="l00419"></a>00419 
-<a name="l00420"></a>00420 - (BOOL)<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a> {
-<a name="l00421"></a>00421   <span class="keywordflow">return</span> <span class="keyword">self</span>.text.length;
-<a name="l00422"></a>00422 }
-<a name="l00423"></a>00423 
-<a name="l00424"></a><a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">00424</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">search</a> {
-<a name="l00425"></a>00425   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
-<a name="l00426"></a>00426     <a class="code" href="class_n_s_string.html">NSString</a>* text = <span class="keyword">self</span>.searchText;
-<a name="l00427"></a>00427     [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> search:text];
-<a name="l00428"></a>00428   }
-<a name="l00429"></a>00429 }
-<a name="l00430"></a>00430 
-<a name="l00431"></a><a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">00431</a> - (void)showSearchResults:(BOOL)show {
-<a name="l00432"></a>00432   <span class="keywordflow">if</span> (show &amp;&amp; <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
-<a name="l00433"></a>00433     <span class="keyword">self</span>.tableView;
-<a name="l00434"></a>00434     
-<a name="l00435"></a>00435     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>) {
-<a name="l00436"></a>00436       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> = [[<a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> alloc] init];
-<a name="l00437"></a>00437       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.<a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="_t_t_global_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(searchTableShadow);
-<a name="l00438"></a>00438       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00439"></a>00439       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.userInteractionEnabled = NO;
-<a name="l00440"></a>00440     }
-<a name="l00441"></a>00441 
-<a name="l00442"></a>00442     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.superview) {
-<a name="l00443"></a>00443       <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#ac3cdea57c1a96aa87f4deaf3fde2a701">rectForSearchResults</a>:YES];
-<a name="l00444"></a>00444       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.frame = CGRectMake(<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.left, <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.top-1,
-<a name="l00445"></a>00445                                      <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.width, <a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">kShadowHeight</a>);
-<a name="l00446"></a>00446       
-<a name="l00447"></a>00447       <a class="code" href="class_u_i_view.html">UIView</a>* superview = <span class="keyword">self</span>.superviewForSearchResults;
-<a name="l00448"></a>00448       [superview addSubview:_tableView];
-<a name="l00449"></a>00449 
-<a name="l00450"></a>00450       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.separatorStyle != UITableViewCellSeparatorStyleNone) {
-<a name="l00451"></a>00451         [superview addSubview:_shadowView];
-<a name="l00452"></a>00452       }
-<a name="l00453"></a>00453     }
-<a name="l00454"></a>00454     
-<a name="l00455"></a>00455     [<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> deselectRowAtIndexPath:_tableView.indexPathForSelectedRow animated:NO];
-<a name="l00456"></a>00456   } <span class="keywordflow">else</span> {
-<a name="l00457"></a>00457     [<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> removeFromSuperview];
-<a name="l00458"></a>00458     [<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> removeFromSuperview];
-<a name="l00459"></a>00459   }
-<a name="l00460"></a>00460 }
-<a name="l00461"></a>00461 
-<a name="l00462"></a><a class="code" href="interface_t_t_search_text_field.html#a4cec1a7c7b70e0bc153010c6bb683367">00462</a> - (<a class="code" href="class_u_i_view.html">UIView</a>*)<a class="code" href="interface_t_t_search_text_field.html#a4cec1a7c7b70e0bc153010c6bb683367">superviewForSearchResults</a> {
-<a name="l00463"></a>00463   UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
-<a name="l00464"></a>00464   <span class="keywordflow">if</span> (scrollView) {
-<a name="l00465"></a>00465     <span class="keywordflow">return</span> scrollView;
-<a name="l00466"></a>00466   } <span class="keywordflow">else</span> {
-<a name="l00467"></a>00467     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>.superview; view; view = view.superview) {
-<a name="l00468"></a>00468       <span class="keywordflow">if</span> (view.height &gt; <a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">kDesiredTableHeight</a>) {
-<a name="l00469"></a>00469         <span class="keywordflow">return</span> view;
-<a name="l00470"></a>00470       }
-<a name="l00471"></a>00471     }
-<a name="l00472"></a>00472     
-<a name="l00473"></a>00473     <span class="keywordflow">return</span> <span class="keyword">self</span>.superview;
-<a name="l00474"></a>00474   }
-<a name="l00475"></a>00475 }
-<a name="l00476"></a>00476 
-<a name="l00477"></a><a class="code" href="interface_t_t_search_text_field.html#ac3cdea57c1a96aa87f4deaf3fde2a701">00477</a> - (CGRect)rectForSearchResults:(BOOL)withKeyboard {
-<a name="l00478"></a>00478   <a class="code" href="class_u_i_view.html">UIView</a>* superview = <span class="keyword">self</span>.superviewForSearchResults;
-<a name="l00479"></a>00479 
-<a name="l00480"></a>00480   CGFloat y = 0;
-<a name="l00481"></a>00481   <a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>;
-<a name="l00482"></a>00482   <span class="keywordflow">while</span> (view != superview) {
-<a name="l00483"></a>00483     y += view.top;
-<a name="l00484"></a>00484     view = view.superview;
-<a name="l00485"></a>00485   }  
-<a name="l00486"></a>00486   
-<a name="l00487"></a>00487   CGFloat height = <span class="keyword">self</span>.height;
-<a name="l00488"></a>00488   CGFloat keyboardHeight = withKeyboard ? <a class="code" href="_t_t_global_8h.html#ad7d363161a1a13c6bdb2a0b40bf45027" title="The height of the keyboard.">TTKeyboardHeight</a>() : 0;
-<a name="l00489"></a>00489   CGFloat tableHeight = <span class="keyword">self</span>.window.height - (<span class="keyword">self</span>.screenY + height + keyboardHeight);
-<a name="l00490"></a>00490     
-<a name="l00491"></a>00491   <span class="keywordflow">return</span> CGRectMake(0, y + <span class="keyword">self</span>.height-1, superview.frame.size.width, tableHeight+1);
-<a name="l00492"></a>00492 }
-<a name="l00493"></a>00493 
-<a name="l00494"></a><a class="code" href="interface_t_t_search_text_field.html#a8dea54f8694d6263651cecee51ba3f98">00494</a> - (BOOL)shouldUpdate:(BOOL)emptyText {
-<a name="l00495"></a>00495   [<span class="keyword">self</span> delayedUpdate];
-<a name="l00496"></a>00496   <span class="keywordflow">return</span> YES;
-<a name="l00497"></a>00497 }
-<a name="l00498"></a>00498 
-<a name="l00499"></a>00499 <span class="keyword">@end</span>
+<a name="l00363"></a>00363     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>) {
+<a name="l00364"></a>00364       [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a1717657a70233f3ad3f3a0b18723d1df">showDarkScreen</a>:YES];
+<a name="l00365"></a>00365     }
+<a name="l00366"></a>00366     <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a> &amp;&amp; <span class="keyword">self</span>.<a class="code" href="interface_t_t_search_text_field.html#a61638f58785b16df936cae110b79866b">hasSearchResults</a>) {
+<a name="l00367"></a>00367       [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">showSearchResults</a>:YES];
+<a name="l00368"></a>00368     }
+<a name="l00369"></a>00369   }
+<a name="l00370"></a>00370 }
+<a name="l00371"></a>00371 
+<a name="l00372"></a><a class="code" href="interface_t_t_search_text_field.html#aefb6a54921f3729091a0969493a9f01c">00372</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#aefb6a54921f3729091a0969493a9f01c">didEndEditing</a> {
+<a name="l00373"></a>00373   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
+<a name="l00374"></a>00374     UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
+<a name="l00375"></a>00375     scrollView.scrollEnabled = YES;
+<a name="l00376"></a>00376     scrollView.scrollsToTop = YES;
+<a name="l00377"></a>00377     
+<a name="l00378"></a>00378     [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">showSearchResults</a>:NO];
+<a name="l00379"></a>00379     
+<a name="l00380"></a>00380     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a9a8efbb45077c4b6a6346aed89a465f3">_showsDoneButton</a>) {
+<a name="l00381"></a>00381       [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#aae754b48fa17fedd724749e4c780801e">showDoneButton</a>:NO];
+<a name="l00382"></a>00382     }
+<a name="l00383"></a>00383     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a857d88355cc7f3a1e8b8713a05053aed">_showsDarkScreen</a>) {
+<a name="l00384"></a>00384       [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a1717657a70233f3ad3f3a0b18723d1df">showDarkScreen</a>:NO];
+<a name="l00385"></a>00385     }
+<a name="l00386"></a>00386   }
+<a name="l00387"></a>00387 }
+<a name="l00388"></a>00388 
+<a name="l00390"></a>00390 <span class="comment">// public</span>
+<a name="l00391"></a>00391 
+<a name="l00392"></a><a class="code" href="interface_t_t_search_text_field.html#a4851009e0e34be90b8b487365de754c8">00392</a> - (void)setDataSource:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt;)dataSource {
+<a name="l00393"></a>00393   <span class="keywordflow">if</span> (dataSource != <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
+<a name="l00394"></a>00394     [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>.model.delegates removeObject:self];
+<a name="l00395"></a>00395     [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> release];
+<a name="l00396"></a>00396     <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> = [dataSource retain];
+<a name="l00397"></a>00397     [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>.model.delegates addObject:self];
+<a name="l00398"></a>00398   }
+<a name="l00399"></a>00399 }
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401 - (<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView {
+<a name="l00402"></a>00402   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>) {
+<a name="l00403"></a>00403     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> = [[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+<a name="l00404"></a>00404     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.backgroundColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(searchTableBackgroundColor);
+<a name="l00405"></a>00405     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.separatorColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(searchTableSeparatorColor);
+<a name="l00406"></a>00406     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.rowHeight = <a class="code" href="interface_t_t_search_text_field.html#a5c98ffb365cf8de65a2576c49a5b35e7">_rowHeight</a>;
+<a name="l00407"></a>00407     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.dataSource = <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>;
+<a name="l00408"></a>00408     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.delegate = <span class="keyword">self</span>;
+<a name="l00409"></a>00409     <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.scrollsToTop = NO;
+<a name="l00410"></a>00410   }
+<a name="l00411"></a>00411   
+<a name="l00412"></a>00412   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>;
+<a name="l00413"></a>00413 }
+<a name="l00414"></a>00414 
+<a name="l00415"></a><a class="code" href="interface_t_t_search_text_field.html#aaf58c02131f49baf7c3107d3b12e719b">00415</a> - (void)setSearchesAutomatically:(BOOL)searchesAutomatically {
+<a name="l00416"></a>00416   <a class="code" href="interface_t_t_search_text_field.html#a90a99550236e2b3fbfe2d0409074a840">_searchesAutomatically</a> = <a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">searchesAutomatically</a>;
+<a name="l00417"></a>00417   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a3a0902c5a2c996b4d9b778d10d3e8e04">searchesAutomatically</a>) {
+<a name="l00418"></a>00418     <span class="keyword">self</span>.returnKeyType = UIReturnKeyDone;
+<a name="l00419"></a>00419     <span class="keyword">self</span>.enablesReturnKeyAutomatically = NO;
+<a name="l00420"></a>00420   } <span class="keywordflow">else</span> {
+<a name="l00421"></a>00421     <span class="keyword">self</span>.returnKeyType = UIReturnKeySearch;
+<a name="l00422"></a>00422     <span class="keyword">self</span>.enablesReturnKeyAutomatically = YES;
+<a name="l00423"></a>00423   }
+<a name="l00424"></a>00424 }
+<a name="l00425"></a>00425 
+<a name="l00426"></a>00426 - (BOOL)<a class="code" href="interface_t_t_search_text_field.html#a3fe400d4fc0d1ef756e089d6bc80cc8d">hasText</a> {
+<a name="l00427"></a>00427   <span class="keywordflow">return</span> <span class="keyword">self</span>.text.length;
+<a name="l00428"></a>00428 }
+<a name="l00429"></a>00429 
+<a name="l00430"></a><a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">00430</a> - (void)<a class="code" href="interface_t_t_search_text_field.html#a467b9d2bb22999d4a9445c19e655409e">search</a> {
+<a name="l00431"></a>00431   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
+<a name="l00432"></a>00432     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text = <span class="keyword">self</span>.searchText;
+<a name="l00433"></a>00433     [<a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a> search:text];
+<a name="l00434"></a>00434   }
+<a name="l00435"></a>00435 }
+<a name="l00436"></a>00436 
+<a name="l00437"></a><a class="code" href="interface_t_t_search_text_field.html#af0408dcf1fe38ad8ecbdf41944c00ac4">00437</a> - (void)showSearchResults:(BOOL)show {
+<a name="l00438"></a>00438   <span class="keywordflow">if</span> (show &amp;&amp; <a class="code" href="interface_t_t_search_text_field.html#aaa0a4974a2c70358604f5963ed3179aa">_dataSource</a>) {
+<a name="l00439"></a>00439     <span class="keyword">self</span>.tableView;
+<a name="l00440"></a>00440     
+<a name="l00441"></a>00441     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>) {
+<a name="l00442"></a>00442       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> = [[<a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> alloc] init];
+<a name="l00443"></a>00443       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.<a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="_t_t_global_style_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(searchTableShadow);
+<a name="l00444"></a>00444       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00445"></a>00445       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.userInteractionEnabled = NO;
+<a name="l00446"></a>00446     }
+<a name="l00447"></a>00447 
+<a name="l00448"></a>00448     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.superview) {
+<a name="l00449"></a>00449       <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#ac3cdea57c1a96aa87f4deaf3fde2a701">rectForSearchResults</a>:YES];
+<a name="l00450"></a>00450       <a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a>.frame = CGRectMake(<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.left, <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.top-1,
+<a name="l00451"></a>00451                                      <a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.width, <a class="code" href="_t_t_search_text_field_8m.html#a630f695b9c960e1f177e3fcf0628ddb2">kShadowHeight</a>);
+<a name="l00452"></a>00452       
+<a name="l00453"></a>00453       <a class="code" href="class_u_i_view.html">UIView</a>* superview = <span class="keyword">self</span>.superviewForSearchResults;
+<a name="l00454"></a>00454       [superview addSubview:_tableView];
+<a name="l00455"></a>00455 
+<a name="l00456"></a>00456       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a>.separatorStyle != UITableViewCellSeparatorStyleNone) {
+<a name="l00457"></a>00457         [superview addSubview:_shadowView];
+<a name="l00458"></a>00458       }
+<a name="l00459"></a>00459     }
+<a name="l00460"></a>00460     
+<a name="l00461"></a>00461     [<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> deselectRowAtIndexPath:_tableView.indexPathForSelectedRow animated:NO];
+<a name="l00462"></a>00462   } <span class="keywordflow">else</span> {
+<a name="l00463"></a>00463     [<a class="code" href="interface_t_t_search_text_field.html#a471789733ae193f62b2f29d5ab4f2a01">_tableView</a> removeFromSuperview];
+<a name="l00464"></a>00464     [<a class="code" href="interface_t_t_search_text_field.html#ad485de0c4b918a2dfbf6e1033a6f5c82">_shadowView</a> removeFromSuperview];
+<a name="l00465"></a>00465   }
+<a name="l00466"></a>00466 }
+<a name="l00467"></a>00467 
+<a name="l00468"></a><a class="code" href="interface_t_t_search_text_field.html#a4cec1a7c7b70e0bc153010c6bb683367">00468</a> - (<a class="code" href="class_u_i_view.html">UIView</a>*)<a class="code" href="interface_t_t_search_text_field.html#a4cec1a7c7b70e0bc153010c6bb683367">superviewForSearchResults</a> {
+<a name="l00469"></a>00469   UIScrollView* scrollView = (UIScrollView*)[<span class="keyword">self</span> ancestorOrSelfWithClass:[UIScrollView <span class="keyword">class</span>]];
+<a name="l00470"></a>00470   <span class="keywordflow">if</span> (scrollView) {
+<a name="l00471"></a>00471     <span class="keywordflow">return</span> scrollView;
+<a name="l00472"></a>00472   } <span class="keywordflow">else</span> {
+<a name="l00473"></a>00473     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>.superview; view; view = view.superview) {
+<a name="l00474"></a>00474       <span class="keywordflow">if</span> (view.height &gt; <a class="code" href="_t_t_search_text_field_8m.html#ad385580328d7ca485393c09c42e446d4">kDesiredTableHeight</a>) {
+<a name="l00475"></a>00475         <span class="keywordflow">return</span> view;
+<a name="l00476"></a>00476       }
+<a name="l00477"></a>00477     }
+<a name="l00478"></a>00478     
+<a name="l00479"></a>00479     <span class="keywordflow">return</span> <span class="keyword">self</span>.superview;
+<a name="l00480"></a>00480   }
+<a name="l00481"></a>00481 }
+<a name="l00482"></a>00482 
+<a name="l00483"></a><a class="code" href="interface_t_t_search_text_field.html#ac3cdea57c1a96aa87f4deaf3fde2a701">00483</a> - (CGRect)rectForSearchResults:(BOOL)withKeyboard {
+<a name="l00484"></a>00484   <a class="code" href="class_u_i_view.html">UIView</a>* superview = <span class="keyword">self</span>.superviewForSearchResults;
+<a name="l00485"></a>00485 
+<a name="l00486"></a>00486   CGFloat y = 0;
+<a name="l00487"></a>00487   <a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>;
+<a name="l00488"></a>00488   <span class="keywordflow">while</span> (view != superview) {
+<a name="l00489"></a>00489     y += view.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>;
+<a name="l00490"></a>00490     view = view.superview;
+<a name="l00491"></a>00491   }  
+<a name="l00492"></a>00492   
+<a name="l00493"></a>00493   CGFloat height = <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>;
+<a name="l00494"></a>00494   CGFloat keyboardHeight = withKeyboard ? <a class="code" href="_t_t_global_u_i_navigator_8h.html#ad7d363161a1a13c6bdb2a0b40bf45027" title="Returns the height of the keyboard.">TTKeyboardHeight</a>() : 0;
+<a name="l00495"></a>00495   CGFloat tableHeight = <span class="keyword">self</span>.window.height - (<span class="keyword">self</span>.ttScreenY + height + keyboardHeight);
+<a name="l00496"></a>00496     
+<a name="l00497"></a>00497   <span class="keywordflow">return</span> CGRectMake(0, y + <span class="keyword">self</span>.height-1, superview.frame.<a class="code" href="class_u_i_view.html#a80584a62ff2691353bffed267cb0579c">size</a>.width, tableHeight+1);
+<a name="l00498"></a>00498 }
+<a name="l00499"></a>00499 
+<a name="l00500"></a><a class="code" href="interface_t_t_search_text_field.html#a8dea54f8694d6263651cecee51ba3f98">00500</a> - (BOOL)shouldUpdate:(BOOL)emptyText {
+<a name="l00501"></a>00501   [<span class="keyword">self</span> <a class="code" href="interface_t_t_search_text_field.html#a1c3da6a56671619c86c4997300324a11">delayedUpdate</a>];
+<a name="l00502"></a>00502   <span class="keywordflow">return</span> YES;
+<a name="l00503"></a>00503 }
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

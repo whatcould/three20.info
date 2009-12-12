@@ -74,24 +74,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@protocol </span><a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>;
-<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>;
-<a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="_t_t_search_display_controller_8h.html#a85b6a9814ea21716e1008d4b1311efde">00022</a> <span class="preprocessor">#define TT_SEARCH_BAR_BACKGROUND_TAG 18942</span>
-<a name="l00023"></a>00023 <span class="preprocessor"></span>
-<a name="l00032"></a><a class="code" href="interface_t_t_search_display_controller.html">00032</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a> : UISearchDisplayController &lt;UISearchDisplayDelegate&gt; {
-<a name="l00033"></a><a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">00033</a>   id&lt;UITableViewDelegate&gt; <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a>;
-<a name="l00034"></a><a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">00034</a>   <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>* <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>;
-<a name="l00035"></a><a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">00035</a>   NSTimer* <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>;
-<a name="l00036"></a><a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">00036</a>   BOOL <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">00039</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>* searchResultsViewController;
-<a name="l00040"></a><a class="code" href="interface_t_t_search_display_controller.html#a722b3575b9b7685076b7f5829a0fc256">00040</a> @property(nonatomic) BOOL pausesBeforeSearching;
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@protocol </span><a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>;
+<a name="l00021"></a>00021 <span class="keyword">@class</span> <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>;
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="_t_t_search_display_controller_8h.html#a85b6a9814ea21716e1008d4b1311efde">00023</a> <span class="preprocessor">#define TT_SEARCH_BAR_BACKGROUND_TAG 18942</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span>
+<a name="l00033"></a><a class="code" href="interface_t_t_search_display_controller.html">00033</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_search_display_controller.html" title="Shows search results using a TTTableViewController.">TTSearchDisplayController</a> : UISearchDisplayController &lt;UISearchDisplayDelegate&gt; {
+<a name="l00034"></a><a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">00034</a>   id&lt;UITableViewDelegate&gt; <a class="code" href="interface_t_t_search_display_controller.html#a811b7f64c138209ba4b41421da3e2c6e">_searchResultsDelegate2</a>;
+<a name="l00035"></a><a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">00035</a>   <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>* <a class="code" href="interface_t_t_search_display_controller.html#afe2f108895bd368815a4595a76a63a88">_searchResultsViewController</a>;
+<a name="l00036"></a><a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">00036</a>   NSTimer* <a class="code" href="interface_t_t_search_display_controller.html#a7a0ca453d28b558f96d0a998f57e071e">_pauseTimer</a>;
+<a name="l00037"></a><a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">00037</a>   BOOL <a class="code" href="interface_t_t_search_display_controller.html#ac92470ce3e36c8820c723eb77a81236c">_pausesBeforeSearching</a>;
+<a name="l00038"></a>00038 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="interface_t_t_search_display_controller.html#a198dadeae158d4efad21534d479c1111">00040</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>* searchResultsViewController;
+<a name="l00041"></a><a class="code" href="interface_t_t_search_display_controller.html#a722b3575b9b7685076b7f5829a0fc256">00041</a> @property(nonatomic) BOOL pausesBeforeSearching;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

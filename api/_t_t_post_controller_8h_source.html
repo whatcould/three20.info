@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a><a class="code" href="interface_t_t_post_controller.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_post_controller.html">TTPostController</a> : <a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a> &lt;UITextViewDelegate&gt; {
 <a name="l00023"></a><a class="code" href="interface_t_t_post_controller.html#af88886d5acd3cb5966db7b7c02a492c0">00023</a>   id&lt;TTPostControllerDelegate&gt; <a class="code" href="interface_t_t_post_controller.html#af88886d5acd3cb5966db7b7c02a492c0">_delegate</a>;
 <a name="l00024"></a><a class="code" href="interface_t_t_post_controller.html#a05b064fd2df2f2090d94ed0ac06dc190">00024</a>   <span class="keywordtype">id</span> <a class="code" href="interface_t_t_post_controller.html#a05b064fd2df2f2090d94ed0ac06dc190">_result</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_post_controller.html#a2b54ef9017b679ff4649f608567cb189">00025</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_post_controller.html#a2b54ef9017b679ff4649f608567cb189">_defaultText</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_post_controller.html#a2b54ef9017b679ff4649f608567cb189">00025</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_post_controller.html#a2b54ef9017b679ff4649f608567cb189">_defaultText</a>;
 <a name="l00026"></a><a class="code" href="interface_t_t_post_controller.html#a7ee10f6913b24a9c92c9af2031138f53">00026</a>   CGRect <a class="code" href="interface_t_t_post_controller.html#a7ee10f6913b24a9c92c9af2031138f53">_originRect</a>;
 <a name="l00027"></a><a class="code" href="interface_t_t_post_controller.html#ae4fd36f214b4c00d3635821c7d039454">00027</a>   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_post_controller.html#ae4fd36f214b4c00d3635821c7d039454">_originView</a>;
 <a name="l00028"></a><a class="code" href="interface_t_t_post_controller.html#a9e8c31a186f63a2e5f5d4a2519bf2ee9">00028</a>   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_post_controller.html#a9e8c31a186f63a2e5f5d4a2519bf2ee9">_innerView</a>;
@@ -108,24 +108,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00057"></a>00057 
 <a name="l00061"></a>00061 - (<span class="keywordtype">void</span>)failWithError:(NSError*)error;
 <a name="l00062"></a>00062 
-<a name="l00071"></a>00071 - (BOOL)willPostText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
+<a name="l00071"></a>00071 - (BOOL)willPostText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
 <a name="l00072"></a>00072 
-<a name="l00076"></a>00076 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForActivity;
+<a name="l00076"></a>00076 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForActivity;
 <a name="l00077"></a>00077 
-<a name="l00081"></a>00081 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForError:(NSError*)error;
+<a name="l00081"></a>00081 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForError:(NSError*)error;
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083 @end
 <a name="l00084"></a>00084 
 <a name="l00086"></a>00086 
-<a name="l00087"></a><a class="code" href="protocol_t_t_post_controller_delegate-p.html">00087</a> @protocol TTPostControllerDelegate &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
+<a name="l00087"></a><a class="code" href="protocol_t_t_post_controller_delegate-p.html">00087</a> @protocol TTPostControllerDelegate &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
 <a name="l00088"></a>00088 
 <a name="l00089"></a>00089 @optional
 <a name="l00090"></a>00090 
-<a name="l00096"></a>00096 - (BOOL)postController:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController willPostText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
+<a name="l00096"></a>00096 - (BOOL)postController:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController willPostText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
 <a name="l00097"></a>00097 
 <a name="l00103"></a>00103 - (CGRect)postController:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController willAnimateTowards:(CGRect)rect;
 <a name="l00104"></a>00104 
-<a name="l00108"></a>00108 - (<span class="keywordtype">void</span>)postController:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController didPostText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text
+<a name="l00108"></a>00108 - (<span class="keywordtype">void</span>)postController:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController didPostText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text
 <a name="l00109"></a>00109         withResult:(<span class="keywordtype">id</span>)result;
 <a name="l00110"></a>00110 
 <a name="l00114"></a>00114 - (<span class="keywordtype">void</span>)postControllerDidCancel:(<a class="code" href="interface_t_t_post_controller.html">TTPostController</a>*)postController;

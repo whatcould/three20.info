@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,35 +75,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_u_i_toolbar_additions_8h.html">Three20/UIToolbarAdditions.h</a>&quot;</span>
 <a name="l00018"></a>00018 
 <a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="class_u_i_toolbar.html">00021</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_toolbar.html">UIToolbar</a> (TTCategory)
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 - (UIBarButtonItem*)itemWithTag:(NSInteger)tag {
-<a name="l00024"></a>00024   <span class="keywordflow">for</span> (UIBarButtonItem* button in <span class="keyword">self</span>.items) {
-<a name="l00025"></a>00025     <span class="keywordflow">if</span> (button.tag == tag) {
-<a name="l00026"></a>00026       <span class="keywordflow">return</span> button;
-<a name="l00027"></a>00027     }
-<a name="l00028"></a>00028   }
-<a name="l00029"></a>00029   <span class="keywordflow">return</span> nil;  
-<a name="l00030"></a>00030 }
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 - (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem*)item {
-<a name="l00033"></a>00033   NSInteger index = 0;
-<a name="l00034"></a>00034   <span class="keywordflow">for</span> (UIBarButtonItem* button in <span class="keyword">self</span>.items) {
-<a name="l00035"></a>00035     <span class="keywordflow">if</span> (button.tag == tag) {
-<a name="l00036"></a>00036       <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* newItems = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> arrayWithArray:self.items];
-<a name="l00037"></a>00037       [newItems replaceObjectAtIndex:index withObject:item];
-<a name="l00038"></a>00038       <span class="keyword">self</span>.items = newItems;
-<a name="l00039"></a>00039       <span class="keywordflow">break</span>;
-<a name="l00040"></a>00040     }
-<a name="l00041"></a>00041     ++index;
-<a name="l00042"></a>00042   }
-<a name="l00043"></a>00043   
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 <span class="keyword">@end</span>
+<a name="l00024"></a><a class="code" href="class_u_i_toolbar.html">00024</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_toolbar.html" title="Additions.">UIToolbar</a> (TTCategory)
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="class_u_i_toolbar.html#a4889f73c63ff9bbe5a9779d5c911ed43">00026</a> - (UIBarButtonItem*)itemWithTag:(NSInteger)tag {
+<a name="l00027"></a>00027   <span class="keywordflow">for</span> (UIBarButtonItem* button in <span class="keyword">self</span>.items) {
+<a name="l00028"></a>00028     <span class="keywordflow">if</span> (button.tag == tag) {
+<a name="l00029"></a>00029       <span class="keywordflow">return</span> button;
+<a name="l00030"></a>00030     }
+<a name="l00031"></a>00031   }
+<a name="l00032"></a>00032   <span class="keywordflow">return</span> nil;  
+<a name="l00033"></a>00033 }
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="class_u_i_toolbar.html#ae7f4db7b7f321bdb6d14f9fb7f5c3a4c">00035</a> - (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem*)item {
+<a name="l00036"></a>00036   NSInteger index = 0;
+<a name="l00037"></a>00037   <span class="keywordflow">for</span> (UIBarButtonItem* button in <span class="keyword">self</span>.items) {
+<a name="l00038"></a>00038     <span class="keywordflow">if</span> (button.tag == tag) {
+<a name="l00039"></a>00039       <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* newItems = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> arrayWithArray:self.items];
+<a name="l00040"></a>00040       [newItems replaceObjectAtIndex:index withObject:item];
+<a name="l00041"></a>00041       <span class="keyword">self</span>.items = newItems;
+<a name="l00042"></a>00042       <span class="keywordflow">break</span>;
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044     ++index;
+<a name="l00045"></a>00045   }
+<a name="l00046"></a>00046   
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -81,27 +81,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a><a class="code" href="interface_t_t_alert_view_controller.html">00027</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_alert_view_controller.html" title="A view controller that displays an alert view.">TTAlertViewController</a> : <a class="code" href="interface_t_t_popup_view_controller.html" title="A view controller which, when displayed modally, inserts its view over the parent...">TTPopupViewController</a> &lt;UIAlertViewDelegate&gt; {
 <a name="l00028"></a><a class="code" href="interface_t_t_alert_view_controller.html#a0ea19e9b2e00502d812b3fb45329082e">00028</a>   id&lt;TTAlertViewControllerDelegate&gt; <a class="code" href="interface_t_t_alert_view_controller.html#a0ea19e9b2e00502d812b3fb45329082e">_delegate</a>;
 <a name="l00029"></a><a class="code" href="interface_t_t_alert_view_controller.html#a5705b6766462a8d8e5e79d1a8a079fe1">00029</a>   <span class="keywordtype">id</span> <a class="code" href="interface_t_t_alert_view_controller.html#a5705b6766462a8d8e5e79d1a8a079fe1">_userInfo</a>;
-<a name="l00030"></a><a class="code" href="interface_t_t_alert_view_controller.html#afa5cf6efe1eaf18dbd08e5a58e705853">00030</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_alert_view_controller.html#afa5cf6efe1eaf18dbd08e5a58e705853">_URLs</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_alert_view_controller.html#afa5cf6efe1eaf18dbd08e5a58e705853">00030</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_alert_view_controller.html#afa5cf6efe1eaf18dbd08e5a58e705853">_URLs</a>;
 <a name="l00031"></a>00031 }
 <a name="l00032"></a>00032 
 <a name="l00033"></a><a class="code" href="interface_t_t_alert_view_controller.html#a3b6c63cf7cf6cbee5988f7eab625d6ad">00033</a> @property(nonatomic,assign) id&lt;TTAlertViewControllerDelegate&gt; delegate;
 <a name="l00034"></a><a class="code" href="interface_t_t_alert_view_controller.html#a175b3149d8583e96ea5e5905251838f7">00034</a> @property(nonatomic,readonly) UIAlertView* alertView;
 <a name="l00035"></a><a class="code" href="interface_t_t_alert_view_controller.html#ac736ebcfc1b6b0f4bac3bf8b41b021da">00035</a> @property(nonatomic,retain) <span class="keywordtype">id</span> userInfo;
 <a name="l00036"></a>00036 
-<a name="l00037"></a>00037 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title message:(<a class="code" href="class_n_s_string.html">NSString</a>*)message;
-<a name="l00038"></a>00038 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title message:(<a class="code" href="class_n_s_string.html">NSString</a>*)message delegate:(<span class="keywordtype">id</span>)delegate;
+<a name="l00037"></a>00037 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title message:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)message;
+<a name="l00038"></a>00038 - (<span class="keywordtype">id</span>)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title message:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)message delegate:(<span class="keywordtype">id</span>)delegate;
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040 - (NSInteger)addButtonWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00041"></a>00041 - (NSInteger)addCancelButtonWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
+<a name="l00040"></a>00040 - (NSInteger)addButtonWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00041"></a>00041 - (NSInteger)addCancelButtonWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
 <a name="l00042"></a>00042 
-<a name="l00043"></a>00043 - (<a class="code" href="class_n_s_string.html">NSString</a>*)buttonURLAtIndex:(NSInteger)index;
+<a name="l00043"></a>00043 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)buttonURLAtIndex:(NSInteger)index;
 <a name="l00044"></a>00044 
 <a name="l00045"></a>00045 @end
 <a name="l00046"></a>00046 
 <a name="l00047"></a><a class="code" href="protocol_t_t_alert_view_controller_delegate-p.html">00047</a> @protocol TTAlertViewControllerDelegate &lt;UIAlertViewDelegate&gt;
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 - (BOOL)alertViewController:(<a class="code" href="interface_t_t_alert_view_controller.html" title="A view controller that displays an alert view.">TTAlertViewController</a>*)controller
-<a name="l00050"></a>00050         didDismissWithButtonIndex:(NSInteger)buttonIndex URL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
+<a name="l00050"></a>00050         didDismissWithButtonIndex:(NSInteger)buttonIndex URL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
 <a name="l00051"></a>00051 
 <a name="l00052"></a>00052 @end
 </pre></div></div>

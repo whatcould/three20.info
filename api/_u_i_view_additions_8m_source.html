@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,406 +75,418 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_u_i_view_additions_8h.html">Three20/UIViewAdditions.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="comment">// Remove GSEvent and UITouchAdditions from Release builds</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span>
-<a name="l00024"></a>00024 <span class="comment">// This code for synthesizing touch events is derived from:</span>
-<a name="l00025"></a>00025 <span class="comment">// http://cocoawithlove.com/2008/10/synthesizing-touch-event-on-iphone.html</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">TTGlobalUI.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_navigator_8h.html">TTGlobalUINavigator.h</a>&quot;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="comment">// Remove GSEvent and UITouchAdditions from Release builds</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span>
 <a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="interface_g_s_event_fake.html">00027</a> <span class="keyword">@interface </span><a class="code" href="interface_g_s_event_fake.html">GSEventFake</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00028"></a>00028   <span class="keyword">@public</span>
-<a name="l00029"></a><a class="code" href="interface_g_s_event_fake.html#a63027533808514977b71265793ccb702">00029</a>   <span class="keywordtype">int</span> <a class="code" href="interface_g_s_event_fake.html#a63027533808514977b71265793ccb702">ignored1</a>[5];
-<a name="l00030"></a><a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">00030</a>   <span class="keywordtype">float</span> <a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">x</a>;
-<a name="l00031"></a><a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">00031</a>   <span class="keywordtype">float</span> <a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">y</a>;
-<a name="l00032"></a><a class="code" href="interface_g_s_event_fake.html#a40df4d36f7aa840e99059929577290f1">00032</a>   <span class="keywordtype">int</span> <a class="code" href="interface_g_s_event_fake.html#a40df4d36f7aa840e99059929577290f1">ignored2</a>[24];
-<a name="l00033"></a>00033 }
-<a name="l00034"></a>00034 <span class="keyword">@end</span>
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">@implementation </span><a class="code" href="interface_g_s_event_fake.html">GSEventFake</a>
-<a name="l00037"></a>00037 <span class="keyword">@end</span>
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_u_i_event_fake.html">00039</a> <span class="keyword">@interface </span><a class="code" href="interface_u_i_event_fake.html">UIEventFake</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00040"></a>00040   <span class="keyword">@public</span>
-<a name="l00041"></a><a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">00041</a>   CFTypeRef <a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">_event</a>;
-<a name="l00042"></a><a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">00042</a>   NSTimeInterval <a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">_timestamp</a>;
-<a name="l00043"></a><a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">00043</a>   NSMutableSet* <a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>;
-<a name="l00044"></a><a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">00044</a>   CFMutableDictionaryRef <a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">_keyedTouches</a>;
-<a name="l00045"></a>00045 }
-<a name="l00046"></a>00046 <span class="keyword">@end</span>
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 <span class="keyword">@implementation </span><a class="code" href="interface_u_i_event_fake.html">UIEventFake</a>
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 - (void)dealloc {
-<a name="l00051"></a>00051   [<span class="keyword">super</span> dealloc];
-<a name="l00052"></a>00052 }
+<a name="l00033"></a><a class="code" href="interface_g_s_event_fake.html">00033</a> <span class="keyword">@interface </span><a class="code" href="interface_g_s_event_fake.html" title="A private API class used for synthesizing touch events.">GSEventFake</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00034"></a>00034   <span class="keyword">@public</span>
+<a name="l00035"></a><a class="code" href="interface_g_s_event_fake.html#a63027533808514977b71265793ccb702">00035</a>   <span class="keywordtype">int</span> <a class="code" href="interface_g_s_event_fake.html#a63027533808514977b71265793ccb702">ignored1</a>[5];
+<a name="l00036"></a><a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">00036</a>   <span class="keywordtype">float</span> <a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">x</a>;
+<a name="l00037"></a><a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">00037</a>   <span class="keywordtype">float</span> <a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">y</a>;
+<a name="l00038"></a><a class="code" href="interface_g_s_event_fake.html#a40df4d36f7aa840e99059929577290f1">00038</a>   <span class="keywordtype">int</span> <a class="code" href="interface_g_s_event_fake.html#a40df4d36f7aa840e99059929577290f1">ignored2</a>[24];
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 <span class="keyword">@end</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keyword">@implementation </span><a class="code" href="interface_g_s_event_fake.html" title="A private API class used for synthesizing touch events.">GSEventFake</a>
+<a name="l00043"></a>00043 <span class="keyword">@end</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="interface_u_i_event_fake.html">00045</a> <span class="keyword">@interface </span><a class="code" href="interface_u_i_event_fake.html">UIEventFake</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00046"></a>00046   <span class="keyword">@public</span>
+<a name="l00047"></a><a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">00047</a>   CFTypeRef <a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">_event</a>;
+<a name="l00048"></a><a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">00048</a>   NSTimeInterval <a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">_timestamp</a>;
+<a name="l00049"></a><a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">00049</a>   NSMutableSet* <a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>;
+<a name="l00050"></a><a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">00050</a>   CFMutableDictionaryRef <a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">_keyedTouches</a>;
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 <span class="keyword">@end</span>
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="keyword">@end</span>
+<a name="l00054"></a>00054 <span class="keyword">@implementation </span><a class="code" href="interface_u_i_event_fake.html">UIEventFake</a>
 <a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="keyword">@interface </span><a class="code" href="class_u_i_touch.html">UITouch</a> (TTCategory)
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 - (id)initInView:(<a class="code" href="class_u_i_view.html">UIView</a> *)view location:(CGPoint)location;
-<a name="l00059"></a>00059 - (void)changeToPhase:(UITouchPhase)phase;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 <span class="keyword">@end</span>
-<a name="l00062"></a>00062 
-<a name="l00063"></a><a class="code" href="class_u_i_touch.html">00063</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_touch.html">UITouch</a> (TTCategory)
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 - (id)initInView:(<a class="code" href="class_u_i_view.html">UIView</a> *)view location:(CGPoint)location {
-<a name="l00066"></a>00066   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00067"></a>00067     _tapCount = 1;
-<a name="l00068"></a>00068     _locationInWindow = location;
-<a name="l00069"></a>00069     _previousLocationInWindow = location;
+<a name="l00056"></a><a class="code" href="interface_u_i_event_fake.html#ab8934bcfe8240f94d57bdf77eef5f3fb">00056</a> - (void)<a class="code" href="interface_u_i_event_fake.html#ab8934bcfe8240f94d57bdf77eef5f3fb">dealloc</a> {
+<a name="l00057"></a>00057   [<span class="keyword">super</span> dealloc];
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="keyword">@end</span>
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 <span class="keyword">@interface </span><a class="code" href="class_u_i_touch.html">UITouch</a> (TTCategory)
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 - (id)initInView:(<a class="code" href="class_u_i_view.html">UIView</a> *)view location:(CGPoint)location;
+<a name="l00065"></a>00065 - (void)changeToPhase:(UITouchPhase)phase;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="keyword">@end</span>
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="class_u_i_touch.html">00069</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_touch.html">UITouch</a> (TTCategory)
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <a class="code" href="class_u_i_view.html">UIView</a> *target = [view.window hitTest:_locationInWindow withEvent:nil];
-<a name="l00072"></a>00072     _view = [target retain];
-<a name="l00073"></a>00073     _window = [view.window retain];
-<a name="l00074"></a>00074     _phase = UITouchPhaseBegan;
-<a name="l00075"></a>00075     _touchFlags._firstTouchForView = 1;
-<a name="l00076"></a>00076     _touchFlags._isTap = 1;
-<a name="l00077"></a>00077     _timestamp = [<a class="code" href="class_n_s_date.html">NSDate</a> timeIntervalSinceReferenceDate];
-<a name="l00078"></a>00078   }
-<a name="l00079"></a>00079   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00080"></a>00080 }
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 - (void)changeToPhase:(UITouchPhase)phase {
-<a name="l00083"></a>00083   _phase = phase;
-<a name="l00084"></a>00084   _timestamp = [<a class="code" href="class_n_s_date.html">NSDate</a> timeIntervalSinceReferenceDate];
-<a name="l00085"></a>00085 }
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="keyword">@end</span>
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 
-<a name="l00090"></a><a class="code" href="class_u_i_event.html">00090</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_event.html">UIEvent</a> (TTCategory)
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 - (id)initWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch {
-<a name="l00093"></a>00093   <span class="keywordflow">if</span> (<span class="keyword">self</span> == [super init]) {
-<a name="l00094"></a>00094     <a class="code" href="interface_u_i_event_fake.html">UIEventFake</a> *selfFake = (<a class="code" href="interface_u_i_event_fake.html">UIEventFake</a>*)<span class="keyword">self</span>;
-<a name="l00095"></a>00095     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a> = [[NSMutableSet setWithObject:touch] retain];
-<a name="l00096"></a>00096     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">_timestamp</a> = [<a class="code" href="class_n_s_date.html">NSDate</a> timeIntervalSinceReferenceDate];
+<a name="l00071"></a><a class="code" href="class_u_i_touch.html#a79b9d052fe1c6ad7081c012f605a4448">00071</a> - (id)initInView:(<a class="code" href="class_u_i_view.html">UIView</a> *)view location:(CGPoint)location {
+<a name="l00072"></a>00072   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00073"></a>00073     _tapCount = 1;
+<a name="l00074"></a>00074     _locationInWindow = location;
+<a name="l00075"></a>00075     _previousLocationInWindow = location;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077     <a class="code" href="class_u_i_view.html">UIView</a> *target = [view.window hitTest:_locationInWindow withEvent:nil];
+<a name="l00078"></a>00078     _view = [target retain];
+<a name="l00079"></a>00079     _window = [view.window retain];
+<a name="l00080"></a>00080     _phase = UITouchPhaseBegan;
+<a name="l00081"></a>00081     _touchFlags._firstTouchForView = 1;
+<a name="l00082"></a>00082     _touchFlags._isTap = 1;
+<a name="l00083"></a>00083     _timestamp = [<a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a> timeIntervalSinceReferenceDate];
+<a name="l00084"></a>00084   }
+<a name="l00085"></a>00085   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a><a class="code" href="class_u_i_touch.html#ac273cca9460bab986a4fc88e1df12a49">00088</a> - (void)changeToPhase:(UITouchPhase)phase {
+<a name="l00089"></a>00089   _phase = phase;
+<a name="l00090"></a>00090   _timestamp = [<a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a> timeIntervalSinceReferenceDate];
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="keyword">@end</span>
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="class_u_i_event.html">00096</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_event.html">UIEvent</a> (TTCategory)
 <a name="l00097"></a>00097 
-<a name="l00098"></a>00098     CGPoint location = [touch locationInView:touch.window];
-<a name="l00099"></a>00099     <a class="code" href="interface_g_s_event_fake.html">GSEventFake</a>* fakeGSEvent = [[<a class="code" href="interface_g_s_event_fake.html">GSEventFake</a> alloc] init];
-<a name="l00100"></a>00100     fakeGSEvent-&gt;<a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">x</a> = location.x;
-<a name="l00101"></a>00101     fakeGSEvent-&gt;<a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">y</a> = location.y;
-<a name="l00102"></a>00102     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">_event</a> = fakeGSEvent;
+<a name="l00098"></a><a class="code" href="class_u_i_event.html#ac60b80f6c768c3cb0223883d8324a43d">00098</a> - (id)initWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch {
+<a name="l00099"></a>00099   <span class="keywordflow">if</span> (<span class="keyword">self</span> == [super init]) {
+<a name="l00100"></a>00100     <a class="code" href="interface_u_i_event_fake.html">UIEventFake</a> *selfFake = (<a class="code" href="interface_u_i_event_fake.html">UIEventFake</a>*)<span class="keyword">self</span>;
+<a name="l00101"></a>00101     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a> = [[NSMutableSet setWithObject:touch] retain];
+<a name="l00102"></a>00102     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a84190ad2983d6d37e350ae89bc395f0e">_timestamp</a> = [<a class="code" href="class_n_s_date.html" title="Additions.">NSDate</a> timeIntervalSinceReferenceDate];
 <a name="l00103"></a>00103 
-<a name="l00104"></a>00104     CFMutableDictionaryRef dict = CFDictionaryCreateMutable(kCFAllocatorDefault, 2,
-<a name="l00105"></a>00105       &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);
-<a name="l00106"></a>00106     CFDictionaryAddValue(dict, touch.view, selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>);
-<a name="l00107"></a>00107     CFDictionaryAddValue(dict, touch.window, selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>);
-<a name="l00108"></a>00108     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">_keyedTouches</a> = dict;
-<a name="l00109"></a>00109   }
-<a name="l00110"></a>00110   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00111"></a>00111 }
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 <span class="keyword">@end</span>
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115 <span class="preprocessor">#endif</span>
-<a name="l00116"></a>00116 <span class="preprocessor"></span>
-<a name="l00117"></a>00117 
-<a name="l00118"></a><a class="code" href="class_u_i_view.html">00118</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_view.html">UIView</a> (TTCategory)
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120 - (CGFloat)left {
-<a name="l00121"></a>00121   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.x;
-<a name="l00122"></a>00122 }
+<a name="l00104"></a>00104     CGPoint location = [touch locationInView:touch.window];
+<a name="l00105"></a>00105     <a class="code" href="interface_g_s_event_fake.html" title="A private API class used for synthesizing touch events.">GSEventFake</a>* fakeGSEvent = [[<a class="code" href="interface_g_s_event_fake.html" title="A private API class used for synthesizing touch events.">GSEventFake</a> alloc] init];
+<a name="l00106"></a>00106     fakeGSEvent-&gt;<a class="code" href="interface_g_s_event_fake.html#a14869dc5a232c94a6c518c77c421a436">x</a> = location.x;
+<a name="l00107"></a>00107     fakeGSEvent-&gt;<a class="code" href="interface_g_s_event_fake.html#a4a7258ba5ec7ab2e04d0cf6f7e16b60d">y</a> = location.y;
+<a name="l00108"></a>00108     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a0416b4e0abd9f8836861d68bd2893cd0">_event</a> = fakeGSEvent;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     CFMutableDictionaryRef dict = CFDictionaryCreateMutable(kCFAllocatorDefault, 2,
+<a name="l00111"></a>00111       &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);
+<a name="l00112"></a>00112     CFDictionaryAddValue(dict, touch.view, selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>);
+<a name="l00113"></a>00113     CFDictionaryAddValue(dict, touch.window, selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a9dcb4c275ad3eef1ebd5547f35473390">_touches</a>);
+<a name="l00114"></a>00114     selfFake-&gt;<a class="code" href="interface_u_i_event_fake.html#a3ae2236466fb763bef125e0ac3daa924">_keyedTouches</a> = dict;
+<a name="l00115"></a>00115   }
+<a name="l00116"></a>00116   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="keyword">@end</span>
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="preprocessor">#endif</span>
+<a name="l00122"></a>00122 <span class="preprocessor"></span>
 <a name="l00123"></a>00123 
-<a name="l00124"></a>00124 - (void)setLeft:(CGFloat)x {
-<a name="l00125"></a>00125   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00126"></a>00126   frame.origin.x = x;
-<a name="l00127"></a>00127   <span class="keyword">self</span>.frame = frame;
+<a name="l00124"></a><a class="code" href="class_u_i_view.html">00124</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_view.html">UIView</a> (TTCategory)
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">00126</a> - (CGFloat)<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a> {
+<a name="l00127"></a>00127   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.x;
 <a name="l00128"></a>00128 }
 <a name="l00129"></a>00129 
-<a name="l00130"></a>00130 - (CGFloat)top {
-<a name="l00131"></a>00131   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.y;
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 - (void)setTop:(CGFloat)y {
-<a name="l00135"></a>00135   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00136"></a>00136   frame.origin.y = y;
-<a name="l00137"></a>00137   <span class="keyword">self</span>.frame = frame;
+<a name="l00130"></a><a class="code" href="class_u_i_view.html#ab6d180d00962c0c0029f3f7b0dc2e0b8">00130</a> - (void)setLeft:(CGFloat)x {
+<a name="l00131"></a>00131   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00132"></a>00132   frame.origin.x = x;
+<a name="l00133"></a>00133   <span class="keyword">self</span>.frame = frame;
+<a name="l00134"></a>00134 }
+<a name="l00135"></a>00135 
+<a name="l00136"></a><a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">00136</a> - (CGFloat)<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> {
+<a name="l00137"></a>00137   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.y;
 <a name="l00138"></a>00138 }
 <a name="l00139"></a>00139 
-<a name="l00140"></a>00140 - (CGFloat)right {
-<a name="l00141"></a>00141   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.x + self.frame.size.width;
-<a name="l00142"></a>00142 }
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 - (void)setRight:(CGFloat)right {
-<a name="l00145"></a>00145   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00146"></a>00146   frame.origin.x = right - frame.size.width;
-<a name="l00147"></a>00147   <span class="keyword">self</span>.frame = frame;
+<a name="l00140"></a><a class="code" href="class_u_i_view.html#a6c8d5b46b7dcf454c8aea54d46a6c3a6">00140</a> - (void)setTop:(CGFloat)y {
+<a name="l00141"></a>00141   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00142"></a>00142   frame.origin.y = y;
+<a name="l00143"></a>00143   <span class="keyword">self</span>.frame = frame;
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 
+<a name="l00146"></a><a class="code" href="class_u_i_view.html#a813951208640609e32c006c632f38ee9">00146</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a813951208640609e32c006c632f38ee9">right</a> {
+<a name="l00147"></a>00147   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.x + <span class="keyword">self</span>.frame.size.width;
 <a name="l00148"></a>00148 }
 <a name="l00149"></a>00149 
-<a name="l00150"></a>00150 - (CGFloat)bottom {
-<a name="l00151"></a>00151   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.y + self.frame.size.height;
-<a name="l00152"></a>00152 }
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154 - (void)setBottom:(CGFloat)bottom {
-<a name="l00155"></a>00155   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00156"></a>00156   frame.origin.y = bottom - frame.size.height;
-<a name="l00157"></a>00157   <span class="keyword">self</span>.frame = frame;
+<a name="l00150"></a><a class="code" href="class_u_i_view.html#a202ca69f50181f02f6f38988cbc5d70c">00150</a> - (void)setRight:(CGFloat)right {
+<a name="l00151"></a>00151   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00152"></a>00152   frame.origin.x = <a class="code" href="class_u_i_view.html#a813951208640609e32c006c632f38ee9">right</a> - frame.size.width;
+<a name="l00153"></a>00153   <span class="keyword">self</span>.frame = frame;
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a><a class="code" href="class_u_i_view.html#a9cccc6b99805bf96345ba72a81f22d41">00156</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a9cccc6b99805bf96345ba72a81f22d41">bottom</a> {
+<a name="l00157"></a>00157   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin.y + <span class="keyword">self</span>.frame.size.height;
 <a name="l00158"></a>00158 }
 <a name="l00159"></a>00159 
-<a name="l00160"></a>00160 - (CGFloat)centerX {
-<a name="l00161"></a>00161   <span class="keywordflow">return</span> <span class="keyword">self</span>.center.x;
-<a name="l00162"></a>00162 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164 - (void)setCenterX:(CGFloat)centerX {
-<a name="l00165"></a>00165   <span class="keyword">self</span>.center = CGPointMake(centerX, <span class="keyword">self</span>.center.y);
-<a name="l00166"></a>00166 }
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 - (CGFloat)centerY {
-<a name="l00169"></a>00169   <span class="keywordflow">return</span> <span class="keyword">self</span>.center.y;
-<a name="l00170"></a>00170 }
-<a name="l00171"></a>00171 
-<a name="l00172"></a>00172 - (void)setCenterY:(CGFloat)centerY {
-<a name="l00173"></a>00173   <span class="keyword">self</span>.center = CGPointMake(<span class="keyword">self</span>.center.x, centerY);
-<a name="l00174"></a>00174 }
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176 - (CGFloat)width {
-<a name="l00177"></a>00177   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size.width;
-<a name="l00178"></a>00178 }
-<a name="l00179"></a>00179 
-<a name="l00180"></a>00180 - (void)setWidth:(CGFloat)width {
-<a name="l00181"></a>00181   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00182"></a>00182   frame.size.width = width;
-<a name="l00183"></a>00183   <span class="keyword">self</span>.frame = frame;
+<a name="l00160"></a><a class="code" href="class_u_i_view.html#aab26e88919405e3b7020ba81e6f5bca0">00160</a> - (void)setBottom:(CGFloat)bottom {
+<a name="l00161"></a>00161   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00162"></a>00162   frame.origin.y = <a class="code" href="class_u_i_view.html#a9cccc6b99805bf96345ba72a81f22d41">bottom</a> - frame.size.height;
+<a name="l00163"></a>00163   <span class="keyword">self</span>.frame = frame;
+<a name="l00164"></a>00164 }
+<a name="l00165"></a>00165 
+<a name="l00166"></a><a class="code" href="class_u_i_view.html#a8dc0ea3b12736c56dd232b37f031b8d9">00166</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a8dc0ea3b12736c56dd232b37f031b8d9">centerX</a> {
+<a name="l00167"></a>00167   <span class="keywordflow">return</span> <span class="keyword">self</span>.center.x;
+<a name="l00168"></a>00168 }
+<a name="l00169"></a>00169 
+<a name="l00170"></a><a class="code" href="class_u_i_view.html#aac4ec54c102dfaf5b7c8af48e6d9a993">00170</a> - (void)setCenterX:(CGFloat)centerX {
+<a name="l00171"></a>00171   <span class="keyword">self</span>.center = CGPointMake(<a class="code" href="class_u_i_view.html#a8dc0ea3b12736c56dd232b37f031b8d9">centerX</a>, <span class="keyword">self</span>.center.y);
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00174"></a><a class="code" href="class_u_i_view.html#a282fe9a9374b264c7755b548b4de1d5e">00174</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a282fe9a9374b264c7755b548b4de1d5e">centerY</a> {
+<a name="l00175"></a>00175   <span class="keywordflow">return</span> <span class="keyword">self</span>.center.y;
+<a name="l00176"></a>00176 }
+<a name="l00177"></a>00177 
+<a name="l00178"></a><a class="code" href="class_u_i_view.html#a0b825562c28d7c46ad5c438c1da223a7">00178</a> - (void)setCenterY:(CGFloat)centerY {
+<a name="l00179"></a>00179   <span class="keyword">self</span>.center = CGPointMake(<span class="keyword">self</span>.center.x, <a class="code" href="class_u_i_view.html#a282fe9a9374b264c7755b548b4de1d5e">centerY</a>);
+<a name="l00180"></a>00180 }
+<a name="l00181"></a>00181 
+<a name="l00182"></a><a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">00182</a> - (CGFloat)<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a> {
+<a name="l00183"></a>00183   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size.width;
 <a name="l00184"></a>00184 }
 <a name="l00185"></a>00185 
-<a name="l00186"></a>00186 - (CGFloat)height {
-<a name="l00187"></a>00187   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size.height;
-<a name="l00188"></a>00188 }
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190 - (void)setHeight:(CGFloat)height {
-<a name="l00191"></a>00191   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00192"></a>00192   frame.size.height = height;
-<a name="l00193"></a>00193   <span class="keyword">self</span>.frame = frame;
+<a name="l00186"></a><a class="code" href="class_u_i_view.html#ae0d6d63e968a23469b708c64f7fa12d7">00186</a> - (void)setWidth:(CGFloat)width {
+<a name="l00187"></a>00187   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00188"></a>00188   frame.size.width = <a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>;
+<a name="l00189"></a>00189   <span class="keyword">self</span>.frame = frame;
+<a name="l00190"></a>00190 }
+<a name="l00191"></a>00191 
+<a name="l00192"></a><a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">00192</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a> {
+<a name="l00193"></a>00193   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size.height;
 <a name="l00194"></a>00194 }
 <a name="l00195"></a>00195 
-<a name="l00196"></a>00196 - (CGFloat)screenX {
-<a name="l00197"></a>00197   CGFloat x = 0;
-<a name="l00198"></a>00198   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
-<a name="l00199"></a>00199     x += view.left;
-<a name="l00200"></a>00200   }
-<a name="l00201"></a>00201   <span class="keywordflow">return</span> x;
-<a name="l00202"></a>00202 }
-<a name="l00203"></a>00203 
-<a name="l00204"></a>00204 - (CGFloat)screenY {
-<a name="l00205"></a>00205   CGFloat y = 0;
-<a name="l00206"></a>00206   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
-<a name="l00207"></a>00207     y += view.top;
-<a name="l00208"></a>00208   }
-<a name="l00209"></a>00209   <span class="keywordflow">return</span> y;
-<a name="l00210"></a>00210 }
-<a name="l00211"></a>00211 
-<a name="l00212"></a>00212 - (CGFloat)screenViewX {
-<a name="l00213"></a>00213   CGFloat x = 0;
-<a name="l00214"></a>00214   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
-<a name="l00215"></a>00215       x += view.left;
-<a name="l00216"></a>00216 
-<a name="l00217"></a>00217     <span class="keywordflow">if</span> ([view isKindOfClass:[UIScrollView <span class="keyword">class</span>]]) {
-<a name="l00218"></a>00218       UIScrollView* scrollView = (UIScrollView*)view;
-<a name="l00219"></a>00219       x -= scrollView.contentOffset.x;
-<a name="l00220"></a>00220     }
-<a name="l00221"></a>00221   }
-<a name="l00222"></a>00222   
-<a name="l00223"></a>00223   <span class="keywordflow">return</span> x;
-<a name="l00224"></a>00224 }
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 - (CGFloat)screenViewY {
-<a name="l00227"></a>00227   CGFloat y = 0;
-<a name="l00228"></a>00228   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
-<a name="l00229"></a>00229     y += view.top;
-<a name="l00230"></a>00230 
-<a name="l00231"></a>00231     <span class="keywordflow">if</span> ([view isKindOfClass:[UIScrollView <span class="keyword">class</span>]]) {
-<a name="l00232"></a>00232       UIScrollView* scrollView = (UIScrollView*)view;
-<a name="l00233"></a>00233       y -= scrollView.contentOffset.y;
-<a name="l00234"></a>00234     }
-<a name="l00235"></a>00235   }
-<a name="l00236"></a>00236   <span class="keywordflow">return</span> y;
-<a name="l00237"></a>00237 }
-<a name="l00238"></a>00238 
-<a name="l00239"></a>00239 - (CGRect)screenFrame {
-<a name="l00240"></a>00240   <span class="keywordflow">return</span> CGRectMake(<span class="keyword">self</span>.screenViewX, <span class="keyword">self</span>.screenViewY, <span class="keyword">self</span>.width, <span class="keyword">self</span>.height);
-<a name="l00241"></a>00241 }
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243 - (CGPoint)origin {
-<a name="l00244"></a>00244   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin;
-<a name="l00245"></a>00245 }
-<a name="l00246"></a>00246 
-<a name="l00247"></a>00247 - (void)setOrigin:(CGPoint)origin {
-<a name="l00248"></a>00248   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00249"></a>00249   frame.origin = origin;
-<a name="l00250"></a>00250   <span class="keyword">self</span>.frame = frame;
-<a name="l00251"></a>00251 }
-<a name="l00252"></a>00252 
-<a name="l00253"></a>00253 - (CGSize)size {
-<a name="l00254"></a>00254   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size;
-<a name="l00255"></a>00255 }
-<a name="l00256"></a>00256 
-<a name="l00257"></a>00257 - (void)setSize:(CGSize)size {
-<a name="l00258"></a>00258   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00259"></a>00259   frame.size = size;
-<a name="l00260"></a>00260   <span class="keyword">self</span>.frame = frame;
-<a name="l00261"></a>00261 }
-<a name="l00262"></a>00262 
-<a name="l00263"></a>00263 - (CGPoint)offsetFromView:(<a class="code" href="class_u_i_view.html">UIView</a>*)otherView {
-<a name="l00264"></a>00264   CGFloat x = 0, y = 0;
-<a name="l00265"></a>00265   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view &amp;&amp; view != otherView; view = view.superview) {
-<a name="l00266"></a>00266     x += view.left;
-<a name="l00267"></a>00267     y += view.top;
-<a name="l00268"></a>00268   }
-<a name="l00269"></a>00269   <span class="keywordflow">return</span> CGPointMake(x, y);
-<a name="l00270"></a>00270 }
-<a name="l00271"></a>00271 
-<a name="l00272"></a>00272 - (CGFloat)orientationWidth {
-<a name="l00273"></a>00273   <span class="keywordflow">return</span> UIInterfaceOrientationIsLandscape(<a class="code" href="_t_t_global_8h.html#a2d93ca28f439cf0afc188044df5dcc4a" title="Gets the current interface orientation.">TTInterfaceOrientation</a>())
-<a name="l00274"></a>00274     ? <span class="keyword">self</span>.height : <span class="keyword">self</span>.width;
+<a name="l00196"></a><a class="code" href="class_u_i_view.html#a86aa55ae9e0ee6f4931270e11ea1c98a">00196</a> - (void)setHeight:(CGFloat)height {
+<a name="l00197"></a>00197   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00198"></a>00198   frame.size.height = <a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>;
+<a name="l00199"></a>00199   <span class="keyword">self</span>.frame = frame;
+<a name="l00200"></a>00200 }
+<a name="l00201"></a>00201 
+<a name="l00205"></a><a class="code" href="class_u_i_view.html#a685f7bede0b9c5523c769803055a06c2">00205</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a685f7bede0b9c5523c769803055a06c2" title="Return the x coordinate on the screen.">ttScreenX</a> {
+<a name="l00206"></a>00206   CGFloat x = 0;
+<a name="l00207"></a>00207   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
+<a name="l00208"></a>00208     x += view.<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a>;
+<a name="l00209"></a>00209   }
+<a name="l00210"></a>00210   <span class="keywordflow">return</span> x;
+<a name="l00211"></a>00211 }
+<a name="l00212"></a>00212 
+<a name="l00216"></a><a class="code" href="class_u_i_view.html#af36ca7e4e554beaca361829ecad90484">00216</a> - (CGFloat)<a class="code" href="class_u_i_view.html#af36ca7e4e554beaca361829ecad90484" title="Return the y coordinate on the screen.">ttScreenY</a> {
+<a name="l00217"></a>00217   CGFloat y = 0;
+<a name="l00218"></a>00218   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
+<a name="l00219"></a>00219     y += view.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>;
+<a name="l00220"></a>00220   }
+<a name="l00221"></a>00221   <span class="keywordflow">return</span> y;
+<a name="l00222"></a>00222 }
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00225"></a>00225 <span class="preprocessor"></span>
+<a name="l00233"></a><a class="code" href="class_u_i_view.html#ab7ef8981d6e6db7c69bd4bd0bffd74d2">00233</a> - (CGFloat)<a class="code" href="class_u_i_view.html#ab7ef8981d6e6db7c69bd4bd0bffd74d2" title="Return the x coordinate on the screen.">screenX</a> {
+<a name="l00234"></a>00234   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="class_u_i_view.html#a685f7bede0b9c5523c769803055a06c2" title="Return the x coordinate on the screen.">ttScreenX</a>];
+<a name="l00235"></a>00235 }
+<a name="l00236"></a>00236 
+<a name="l00244"></a><a class="code" href="class_u_i_view.html#a3c56a775cf97803602e3f2e3303d9aa0">00244</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a3c56a775cf97803602e3f2e3303d9aa0" title="Return the y coordinate on the screen.">screenY</a> {
+<a name="l00245"></a>00245   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="class_u_i_view.html#af36ca7e4e554beaca361829ecad90484" title="Return the y coordinate on the screen.">ttScreenY</a>];
+<a name="l00246"></a>00246 }
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248 <span class="preprocessor">#endif</span>
+<a name="l00249"></a>00249 <span class="preprocessor"></span>
+<a name="l00250"></a><a class="code" href="class_u_i_view.html#ac21beb3047c47abc51649f02a819d98a">00250</a> - (CGFloat)<a class="code" href="class_u_i_view.html#ac21beb3047c47abc51649f02a819d98a">screenViewX</a> {
+<a name="l00251"></a>00251   CGFloat x = 0;
+<a name="l00252"></a>00252   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
+<a name="l00253"></a>00253       x += view.<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a>;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255     <span class="keywordflow">if</span> ([view isKindOfClass:[UIScrollView <span class="keyword">class</span>]]) {
+<a name="l00256"></a>00256       UIScrollView* scrollView = (UIScrollView*)view;
+<a name="l00257"></a>00257       x -= scrollView.contentOffset.x;
+<a name="l00258"></a>00258     }
+<a name="l00259"></a>00259   }
+<a name="l00260"></a>00260   
+<a name="l00261"></a>00261   <span class="keywordflow">return</span> x;
+<a name="l00262"></a>00262 }
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="class_u_i_view.html#a3027cc9c9694c42178896ae8a56d0e80">00264</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a3027cc9c9694c42178896ae8a56d0e80">screenViewY</a> {
+<a name="l00265"></a>00265   CGFloat y = 0;
+<a name="l00266"></a>00266   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view; view = view.superview) {
+<a name="l00267"></a>00267     y += view.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>;
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269     <span class="keywordflow">if</span> ([view isKindOfClass:[UIScrollView <span class="keyword">class</span>]]) {
+<a name="l00270"></a>00270       UIScrollView* scrollView = (UIScrollView*)view;
+<a name="l00271"></a>00271       y -= scrollView.contentOffset.y;
+<a name="l00272"></a>00272     }
+<a name="l00273"></a>00273   }
+<a name="l00274"></a>00274   <span class="keywordflow">return</span> y;
 <a name="l00275"></a>00275 }
 <a name="l00276"></a>00276 
-<a name="l00277"></a>00277 - (CGFloat)orientationHeight {
-<a name="l00278"></a>00278   <span class="keywordflow">return</span> UIInterfaceOrientationIsLandscape(<a class="code" href="_t_t_global_8h.html#a2d93ca28f439cf0afc188044df5dcc4a" title="Gets the current interface orientation.">TTInterfaceOrientation</a>())
-<a name="l00279"></a>00279     ? <span class="keyword">self</span>.width : <span class="keyword">self</span>.height;
-<a name="l00280"></a>00280 }
-<a name="l00281"></a>00281 
-<a name="l00282"></a>00282 - (<a class="code" href="class_u_i_view.html">UIView</a>*)descendantOrSelfWithClass:(Class)cls {
-<a name="l00283"></a>00283   <span class="keywordflow">if</span> ([<span class="keyword">self</span> isKindOfClass:cls])
-<a name="l00284"></a>00284     <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00285"></a>00285   
-<a name="l00286"></a>00286   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* child in <span class="keyword">self</span>.subviews) {
-<a name="l00287"></a>00287     <a class="code" href="class_u_i_view.html">UIView</a>* it = [child descendantOrSelfWithClass:cls];
-<a name="l00288"></a>00288     <span class="keywordflow">if</span> (it)
-<a name="l00289"></a>00289       <span class="keywordflow">return</span> it;
-<a name="l00290"></a>00290   }
-<a name="l00291"></a>00291   
-<a name="l00292"></a>00292   <span class="keywordflow">return</span> nil;
+<a name="l00277"></a><a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">00277</a> - (CGRect)<a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a> {
+<a name="l00278"></a>00278   <span class="keywordflow">return</span> CGRectMake(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#ac21beb3047c47abc51649f02a819d98a">screenViewX</a>, <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a3027cc9c9694c42178896ae8a56d0e80">screenViewY</a>, <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>, <span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>);
+<a name="l00279"></a>00279 }
+<a name="l00280"></a>00280 
+<a name="l00281"></a><a class="code" href="class_u_i_view.html#a42b97c6ba8cc360b43290d0704330fa6">00281</a> - (CGPoint)<a class="code" href="class_u_i_view.html#a42b97c6ba8cc360b43290d0704330fa6">origin</a> {
+<a name="l00282"></a>00282   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.origin;
+<a name="l00283"></a>00283 }
+<a name="l00284"></a>00284 
+<a name="l00285"></a><a class="code" href="class_u_i_view.html#ac58be6cf24456313fe062eb3bf1493b2">00285</a> - (void)setOrigin:(CGPoint)origin {
+<a name="l00286"></a>00286   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00287"></a>00287   frame.origin = <a class="code" href="class_u_i_view.html#a42b97c6ba8cc360b43290d0704330fa6">origin</a>;
+<a name="l00288"></a>00288   <span class="keyword">self</span>.frame = frame;
+<a name="l00289"></a>00289 }
+<a name="l00290"></a>00290 
+<a name="l00291"></a><a class="code" href="class_u_i_view.html#a80584a62ff2691353bffed267cb0579c">00291</a> - (CGSize)<a class="code" href="class_u_i_view.html#a80584a62ff2691353bffed267cb0579c">size</a> {
+<a name="l00292"></a>00292   <span class="keywordflow">return</span> <span class="keyword">self</span>.frame.size;
 <a name="l00293"></a>00293 }
 <a name="l00294"></a>00294 
-<a name="l00295"></a>00295 - (<a class="code" href="class_u_i_view.html">UIView</a>*)ancestorOrSelfWithClass:(Class)cls {
-<a name="l00296"></a>00296   <span class="keywordflow">if</span> ([<span class="keyword">self</span> isKindOfClass:cls]) {
-<a name="l00297"></a>00297     <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00298"></a>00298   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.superview) {
-<a name="l00299"></a>00299     <span class="keywordflow">return</span> [<span class="keyword">self</span>.superview ancestorOrSelfWithClass:cls];
-<a name="l00300"></a>00300   } <span class="keywordflow">else</span> {
-<a name="l00301"></a>00301     <span class="keywordflow">return</span> nil;
-<a name="l00302"></a>00302   }
-<a name="l00303"></a>00303 }
-<a name="l00304"></a>00304 
-<a name="l00305"></a>00305 - (void)removeAllSubviews {
-<a name="l00306"></a>00306   <span class="keywordflow">while</span> (<span class="keyword">self</span>.subviews.count) {
-<a name="l00307"></a>00307     <a class="code" href="class_u_i_view.html">UIView</a>* child = <span class="keyword">self</span>.subviews.lastObject;
-<a name="l00308"></a>00308     [child removeFromSuperview];
-<a name="l00309"></a>00309   }
-<a name="l00310"></a>00310 }
-<a name="l00311"></a>00311 
-<a name="l00312"></a>00312 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00313"></a>00313 <span class="preprocessor"></span>- (void)simulateTapAtPoint:(CGPoint)location {
-<a name="l00314"></a>00314   <a class="code" href="class_u_i_touch.html">UITouch</a> *touch = [[[<a class="code" href="class_u_i_touch.html">UITouch</a> alloc] initInView:self location:location] autorelease];
-<a name="l00315"></a>00315 
-<a name="l00316"></a>00316   <a class="code" href="class_u_i_event.html">UIEvent</a> *eventDown = [[[<a class="code" href="class_u_i_event.html">UIEvent</a> alloc] initWithTouch:touch] autorelease];
-<a name="l00317"></a>00317   [touch.view touchesBegan:[NSSet setWithObject:touch] withEvent:eventDown];
-<a name="l00318"></a>00318 
-<a name="l00319"></a>00319   [touch changeToPhase:UITouchPhaseEnded];
-<a name="l00320"></a>00320 
-<a name="l00321"></a>00321   <a class="code" href="class_u_i_event.html">UIEvent</a> *eventUp = [[[<a class="code" href="class_u_i_event.html">UIEvent</a> alloc] initWithTouch:touch] autorelease];
-<a name="l00322"></a>00322   [touch.view touchesEnded:[NSSet setWithObject:touch] withEvent:eventUp];
-<a name="l00323"></a>00323 }
-<a name="l00324"></a>00324 <span class="preprocessor">#endif</span>
-<a name="l00325"></a>00325 <span class="preprocessor"></span>
-<a name="l00326"></a>00326 - (CGRect)frameWithKeyboardSubtracted:(CGFloat)plusHeight {
-<a name="l00327"></a>00327   CGRect frame = <span class="keyword">self</span>.frame;
-<a name="l00328"></a>00328   <span class="keywordflow">if</span> (<a class="code" href="_t_t_global_8h.html#abfe4a90d7d1d6f7aea09f64d83e2b9d4" title="Tests if the keyboard is visible.">TTIsKeyboardVisible</a>()) {
-<a name="l00329"></a>00329     CGRect screenFrame = <a class="code" href="_t_t_global_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Gets the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
-<a name="l00330"></a>00330     CGFloat keyboardTop = (screenFrame.size.height - (<a class="code" href="_t_t_global_8h.html#ad7d363161a1a13c6bdb2a0b40bf45027" title="The height of the keyboard.">TTKeyboardHeight</a>() + plusHeight));
-<a name="l00331"></a>00331     CGFloat screenBottom = <span class="keyword">self</span>.screenY + frame.size.height;
-<a name="l00332"></a>00332     CGFloat diff = screenBottom - keyboardTop;
-<a name="l00333"></a>00333     <span class="keywordflow">if</span> (diff &gt; 0) {
-<a name="l00334"></a>00334       frame.size.height -= diff;
-<a name="l00335"></a>00335     }
-<a name="l00336"></a>00336   }
-<a name="l00337"></a>00337   <span class="keywordflow">return</span> frame;
-<a name="l00338"></a>00338 }
-<a name="l00339"></a>00339 
-<a name="l00340"></a>00340 - (void)presentAsKeyboardAnimationDidStop {
-<a name="l00341"></a>00341   CGRect screenFrame = <a class="code" href="_t_t_global_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Gets the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
-<a name="l00342"></a>00342   CGRect bounds = CGRectMake(0, 0, screenFrame.size.width, <span class="keyword">self</span>.height);
-<a name="l00343"></a>00343   CGPoint centerBegin = CGPointMake(floor(screenFrame.size.width/2 - <span class="keyword">self</span>.width/2),
-<a name="l00344"></a>00344                                     screenFrame.size.height + floor(<span class="keyword">self</span>.height/2));
-<a name="l00345"></a>00345   CGPoint centerEnd = CGPointMake(floor(screenFrame.size.width/2 - <span class="keyword">self</span>.width/2),
-<a name="l00346"></a>00346                                   screenFrame.size.height - floor(<span class="keyword">self</span>.height/2));
+<a name="l00295"></a><a class="code" href="class_u_i_view.html#a9068c61b6cf1de663c74a2e9b93e177b">00295</a> - (void)setSize:(CGSize)size {
+<a name="l00296"></a>00296   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00297"></a>00297   frame.size = <a class="code" href="class_u_i_view.html#a80584a62ff2691353bffed267cb0579c">size</a>;
+<a name="l00298"></a>00298   <span class="keyword">self</span>.frame = frame;
+<a name="l00299"></a>00299 }
+<a name="l00300"></a>00300 
+<a name="l00301"></a><a class="code" href="class_u_i_view.html#aa87c338679864a21734d83bc6b36cccb">00301</a> - (CGFloat)<a class="code" href="class_u_i_view.html#aa87c338679864a21734d83bc6b36cccb">orientationWidth</a> {
+<a name="l00302"></a>00302   <span class="keywordflow">return</span> UIInterfaceOrientationIsLandscape(<a class="code" href="_t_t_global_u_i_navigator_8h.html#a2d93ca28f439cf0afc188044df5dcc4a" title="Returns the current orientation of the visible view controller.">TTInterfaceOrientation</a>())
+<a name="l00303"></a>00303     ? <span class="keyword">self</span>.height : <span class="keyword">self</span>.width;
+<a name="l00304"></a>00304 }
+<a name="l00305"></a>00305 
+<a name="l00306"></a><a class="code" href="class_u_i_view.html#a4e8317505a19f0c9b40524afe14a0a16">00306</a> - (CGFloat)<a class="code" href="class_u_i_view.html#a4e8317505a19f0c9b40524afe14a0a16">orientationHeight</a> {
+<a name="l00307"></a>00307   <span class="keywordflow">return</span> UIInterfaceOrientationIsLandscape(<a class="code" href="_t_t_global_u_i_navigator_8h.html#a2d93ca28f439cf0afc188044df5dcc4a" title="Returns the current orientation of the visible view controller.">TTInterfaceOrientation</a>())
+<a name="l00308"></a>00308     ? <span class="keyword">self</span>.width : <span class="keyword">self</span>.height;
+<a name="l00309"></a>00309 }
+<a name="l00310"></a>00310 
+<a name="l00311"></a><a class="code" href="class_u_i_view.html#a45a5d3d1460abca32d535fb1d41b670a">00311</a> - (<a class="code" href="class_u_i_view.html">UIView</a>*)descendantOrSelfWithClass:(Class)cls {
+<a name="l00312"></a>00312   <span class="keywordflow">if</span> ([<span class="keyword">self</span> isKindOfClass:cls])
+<a name="l00313"></a>00313     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00314"></a>00314   
+<a name="l00315"></a>00315   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* child in <span class="keyword">self</span>.subviews) {
+<a name="l00316"></a>00316     <a class="code" href="class_u_i_view.html">UIView</a>* it = [child descendantOrSelfWithClass:cls];
+<a name="l00317"></a>00317     <span class="keywordflow">if</span> (it)
+<a name="l00318"></a>00318       <span class="keywordflow">return</span> it;
+<a name="l00319"></a>00319   }
+<a name="l00320"></a>00320   
+<a name="l00321"></a>00321   <span class="keywordflow">return</span> nil;
+<a name="l00322"></a>00322 }
+<a name="l00323"></a>00323 
+<a name="l00324"></a><a class="code" href="class_u_i_view.html#a412c83d85bd41de49e2bb3a08fc61213">00324</a> - (<a class="code" href="class_u_i_view.html">UIView</a>*)ancestorOrSelfWithClass:(Class)cls {
+<a name="l00325"></a>00325   <span class="keywordflow">if</span> ([<span class="keyword">self</span> isKindOfClass:cls]) {
+<a name="l00326"></a>00326     <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00327"></a>00327   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.superview) {
+<a name="l00328"></a>00328     <span class="keywordflow">return</span> [<span class="keyword">self</span>.superview <a class="code" href="class_u_i_view.html#a412c83d85bd41de49e2bb3a08fc61213">ancestorOrSelfWithClass</a>:cls];
+<a name="l00329"></a>00329   } <span class="keywordflow">else</span> {
+<a name="l00330"></a>00330     <span class="keywordflow">return</span> nil;
+<a name="l00331"></a>00331   }
+<a name="l00332"></a>00332 }
+<a name="l00333"></a>00333 
+<a name="l00334"></a><a class="code" href="class_u_i_view.html#aca1631b9fb1e04ef6d086b325190d4e4">00334</a> - (void)<a class="code" href="class_u_i_view.html#aca1631b9fb1e04ef6d086b325190d4e4">removeAllSubviews</a> {
+<a name="l00335"></a>00335   <span class="keywordflow">while</span> (<span class="keyword">self</span>.subviews.count) {
+<a name="l00336"></a>00336     <a class="code" href="class_u_i_view.html">UIView</a>* child = <span class="keyword">self</span>.subviews.lastObject;
+<a name="l00337"></a>00337     [child removeFromSuperview];
+<a name="l00338"></a>00338   }
+<a name="l00339"></a>00339 }
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00342"></a><a class="code" href="class_u_i_view.html#a894b0f29b0d482b8fa5e7be05d77cfea">00342</a> <span class="preprocessor"></span>- (void)simulateTapAtPoint:(CGPoint)location {
+<a name="l00343"></a>00343   <a class="code" href="class_u_i_touch.html">UITouch</a> *touch = [[[<a class="code" href="class_u_i_touch.html">UITouch</a> alloc] initInView:self location:location] autorelease];
+<a name="l00344"></a>00344 
+<a name="l00345"></a>00345   <a class="code" href="class_u_i_event.html">UIEvent</a> *eventDown = [[[<a class="code" href="class_u_i_event.html">UIEvent</a> alloc] initWithTouch:touch] autorelease];
+<a name="l00346"></a>00346   [touch.view touchesBegan:[NSSet setWithObject:touch] withEvent:eventDown];
 <a name="l00347"></a>00347 
-<a name="l00348"></a>00348   NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-<a name="l00349"></a>00349     [NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
-<a name="l00350"></a>00350     [NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
-<a name="l00351"></a>00351     [NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
-<a name="l00352"></a>00352     nil];
-<a name="l00353"></a>00353     
-<a name="l00354"></a>00354   [[NSNotificationCenter defaultCenter] postNotificationName:@&quot;UIKeyboardWillShowNotification&quot;
-<a name="l00355"></a>00355                                         object:self userInfo:userInfo];
-<a name="l00356"></a>00356 }
-<a name="l00357"></a>00357 
-<a name="l00358"></a>00358 - (void)dismissAsKeyboardAnimationDidStop {
-<a name="l00359"></a>00359   [<span class="keyword">self</span> removeFromSuperview];
-<a name="l00360"></a>00360 }
-<a name="l00361"></a>00361 
-<a name="l00362"></a>00362 - (void)presentAsKeyboardInView:(<a class="code" href="class_u_i_view.html">UIView</a>*)containingView {
-<a name="l00363"></a>00363   <span class="keyword">self</span>.top = containingView.height;
-<a name="l00364"></a>00364   [containingView addSubview:self];
-<a name="l00365"></a>00365 
-<a name="l00366"></a>00366   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00367"></a>00367   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00368"></a>00368   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00369"></a>00369   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(presentAsKeyboardAnimationDidStop)];
-<a name="l00370"></a>00370   <span class="keyword">self</span>.top -= self.height;
-<a name="l00371"></a>00371   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00372"></a>00372 }
-<a name="l00373"></a>00373 
-<a name="l00374"></a>00374 - (void)dismissAsKeyboard:(BOOL)animated {
-<a name="l00375"></a>00375   CGRect screenFrame = <a class="code" href="_t_t_global_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Gets the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
-<a name="l00376"></a>00376   CGRect bounds = CGRectMake(0, 0, screenFrame.size.width, <span class="keyword">self</span>.height);
-<a name="l00377"></a>00377   CGPoint centerBegin = CGPointMake(floor(screenFrame.size.width/2 - <span class="keyword">self</span>.width/2),
-<a name="l00378"></a>00378                                     screenFrame.size.height - floor(<span class="keyword">self</span>.height/2));
-<a name="l00379"></a>00379   CGPoint centerEnd = CGPointMake(floor(screenFrame.size.width/2 - <span class="keyword">self</span>.width/2),
-<a name="l00380"></a>00380                                   screenFrame.size.height + floor(<span class="keyword">self</span>.height/2));
-<a name="l00381"></a>00381 
-<a name="l00382"></a>00382   NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-<a name="l00383"></a>00383     [NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
-<a name="l00384"></a>00384     [NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
-<a name="l00385"></a>00385     [NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
-<a name="l00386"></a>00386     nil];
-<a name="l00387"></a>00387     
-<a name="l00388"></a>00388   [[NSNotificationCenter defaultCenter] postNotificationName:@&quot;UIKeyboardWillHideNotification&quot;
-<a name="l00389"></a>00389                                         object:self userInfo:userInfo];
-<a name="l00390"></a>00390 
-<a name="l00391"></a>00391   <span class="keywordflow">if</span> (animated) {
-<a name="l00392"></a>00392     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00393"></a>00393     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00394"></a>00394     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00395"></a>00395     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(dismissAsKeyboardAnimationDidStop)];
-<a name="l00396"></a>00396   }
-<a name="l00397"></a>00397   
-<a name="l00398"></a>00398   <span class="keyword">self</span>.top += self.height;
+<a name="l00348"></a>00348   [touch <a class="code" href="class_u_i_touch.html#ac273cca9460bab986a4fc88e1df12a49">changeToPhase</a>:UITouchPhaseEnded];
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350   <a class="code" href="class_u_i_event.html">UIEvent</a> *eventUp = [[[<a class="code" href="class_u_i_event.html">UIEvent</a> alloc] initWithTouch:touch] autorelease];
+<a name="l00351"></a>00351   [touch.view touchesEnded:[NSSet setWithObject:touch] withEvent:eventUp];
+<a name="l00352"></a>00352 }
+<a name="l00353"></a>00353 <span class="preprocessor">#endif</span>
+<a name="l00354"></a>00354 <span class="preprocessor"></span>
+<a name="l00355"></a><a class="code" href="class_u_i_view.html#a6972dfdb11b0fdbf3ec3300ac40ea1c4">00355</a> - (CGPoint)offsetFromView:(<a class="code" href="class_u_i_view.html">UIView</a>*)otherView {
+<a name="l00356"></a>00356   CGFloat x = 0, y = 0;
+<a name="l00357"></a>00357   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view = <span class="keyword">self</span>; view &amp;&amp; view != otherView; view = view.superview) {
+<a name="l00358"></a>00358     x += view.<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a>;
+<a name="l00359"></a>00359     y += view.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>;
+<a name="l00360"></a>00360   }
+<a name="l00361"></a>00361   <span class="keywordflow">return</span> CGPointMake(x, y);
+<a name="l00362"></a>00362 }
+<a name="l00363"></a>00363 
+<a name="l00364"></a><a class="code" href="class_u_i_view.html#ae2ef2fcd49f5af05254fb8ac5bd069f4">00364</a> - (CGRect)frameWithKeyboardSubtracted:(CGFloat)plusHeight {
+<a name="l00365"></a>00365   CGRect frame = <span class="keyword">self</span>.frame;
+<a name="l00366"></a>00366   <span class="keywordflow">if</span> (<a class="code" href="_t_t_global_u_i_8h.html#abfe4a90d7d1d6f7aea09f64d83e2b9d4" title="Returns TRUE if the keyboard is visible.">TTIsKeyboardVisible</a>()) {
+<a name="l00367"></a>00367     CGRect <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a> = <a class="code" href="_t_t_global_u_i_navigator_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Returns the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
+<a name="l00368"></a>00368     CGFloat keyboardTop = (screenFrame.size.height - (<a class="code" href="_t_t_global_u_i_navigator_8h.html#ad7d363161a1a13c6bdb2a0b40bf45027" title="Returns the height of the keyboard.">TTKeyboardHeight</a>() + plusHeight));
+<a name="l00369"></a>00369     CGFloat screenBottom = <span class="keyword">self</span>.ttScreenY + frame.size.height;
+<a name="l00370"></a>00370     CGFloat diff = screenBottom - keyboardTop;
+<a name="l00371"></a>00371     <span class="keywordflow">if</span> (diff &gt; 0) {
+<a name="l00372"></a>00372       frame.size.height -= diff;
+<a name="l00373"></a>00373     }
+<a name="l00374"></a>00374   }
+<a name="l00375"></a>00375   <span class="keywordflow">return</span> frame;
+<a name="l00376"></a>00376 }
+<a name="l00377"></a>00377 
+<a name="l00378"></a><a class="code" href="class_u_i_view.html#a540c6eeea00b76b929cb0db4d8acf770">00378</a> - (void)<a class="code" href="class_u_i_view.html#a540c6eeea00b76b929cb0db4d8acf770">presentAsKeyboardAnimationDidStop</a> {
+<a name="l00379"></a>00379   CGRect <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a> = <a class="code" href="_t_t_global_u_i_navigator_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Returns the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
+<a name="l00380"></a>00380   CGRect bounds = CGRectMake(0, 0, <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width, <span class="keyword">self</span>.height);
+<a name="l00381"></a>00381   CGPoint centerBegin = CGPointMake(floor(<a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width/2 - <span class="keyword">self</span>.width/2),
+<a name="l00382"></a>00382                                     <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.height + floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2));
+<a name="l00383"></a>00383   CGPoint centerEnd = CGPointMake(floor(<a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width/2 - <span class="keyword">self</span>.width/2),
+<a name="l00384"></a>00384                                   <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.height - floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2));
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386   NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+<a name="l00387"></a>00387     [NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
+<a name="l00388"></a>00388     [NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
+<a name="l00389"></a>00389     [NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
+<a name="l00390"></a>00390     nil];
+<a name="l00391"></a>00391     
+<a name="l00392"></a>00392   [[NSNotificationCenter defaultCenter] postNotificationName:@&quot;UIKeyboardWillShowNotification&quot;
+<a name="l00393"></a>00393                                         object:self userInfo:userInfo];
+<a name="l00394"></a>00394 }
+<a name="l00395"></a>00395 
+<a name="l00396"></a><a class="code" href="class_u_i_view.html#a7f90652ecb687f7381091df2fa02d856">00396</a> - (void)<a class="code" href="class_u_i_view.html#a7f90652ecb687f7381091df2fa02d856">dismissAsKeyboardAnimationDidStop</a> {
+<a name="l00397"></a>00397   [<span class="keyword">self</span> removeFromSuperview];
+<a name="l00398"></a>00398 }
 <a name="l00399"></a>00399 
-<a name="l00400"></a>00400   <span class="keywordflow">if</span> (animated) {
-<a name="l00401"></a>00401     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00402"></a>00402   } <span class="keywordflow">else</span> {
-<a name="l00403"></a>00403     [<span class="keyword">self</span> dismissAsKeyboardAnimationDidStop];
-<a name="l00404"></a>00404   }
-<a name="l00405"></a>00405 }
-<a name="l00406"></a>00406 
-<a name="l00407"></a>00407 - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)viewController {
-<a name="l00408"></a>00408   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* next = [<span class="keyword">self</span> superview]; next; next = next.superview) {
-<a name="l00409"></a>00409     UIResponder* nextResponder = [next nextResponder];
-<a name="l00410"></a>00410     <span class="keywordflow">if</span> ([nextResponder isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00411"></a>00411       <span class="keywordflow">return</span> (UIViewController*)nextResponder;
-<a name="l00412"></a>00412     }
-<a name="l00413"></a>00413   }
-<a name="l00414"></a>00414   <span class="keywordflow">return</span> nil;
-<a name="l00415"></a>00415 }
-<a name="l00416"></a>00416 
-<a name="l00417"></a>00417 <span class="keyword">@end</span>
+<a name="l00400"></a><a class="code" href="class_u_i_view.html#adc23a9af1b1df6a750a1fd9991ab753e">00400</a> - (void)presentAsKeyboardInView:(<a class="code" href="class_u_i_view.html">UIView</a>*)containingView {
+<a name="l00401"></a>00401   <span class="keyword">self</span>.top = containingView.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>;
+<a name="l00402"></a>00402   [containingView addSubview:self];
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00405"></a>00405   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00406"></a>00406   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00407"></a>00407   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(presentAsKeyboardAnimationDidStop)];
+<a name="l00408"></a>00408   <span class="keyword">self</span>.top -= <span class="keyword">self</span>.height;
+<a name="l00409"></a>00409   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00410"></a>00410 }
+<a name="l00411"></a>00411 
+<a name="l00412"></a><a class="code" href="class_u_i_view.html#a5d1c396b39075a37cc9b55c08c8de424">00412</a> - (void)dismissAsKeyboard:(BOOL)animated {
+<a name="l00413"></a>00413   CGRect <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a> = <a class="code" href="_t_t_global_u_i_navigator_8h.html#a0ee289a088265cd7cb36950a2b123124" title="Returns the bounds of the screen with device orientation factored in.">TTScreenBounds</a>();
+<a name="l00414"></a>00414   CGRect bounds = CGRectMake(0, 0, <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width, <span class="keyword">self</span>.height);
+<a name="l00415"></a>00415   CGPoint centerBegin = CGPointMake(floor(<a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width/2 - <span class="keyword">self</span>.width/2),
+<a name="l00416"></a>00416                                     <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.height - floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2));
+<a name="l00417"></a>00417   CGPoint centerEnd = CGPointMake(floor(<a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.width/2 - <span class="keyword">self</span>.width/2),
+<a name="l00418"></a>00418                                   <a class="code" href="class_u_i_view.html#ad8a9b7bf5fc94b30d08f25d8360765cb">screenFrame</a>.size.height + floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2));
+<a name="l00419"></a>00419 
+<a name="l00420"></a>00420   NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+<a name="l00421"></a>00421     [NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
+<a name="l00422"></a>00422     [NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
+<a name="l00423"></a>00423     [NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
+<a name="l00424"></a>00424     nil];
+<a name="l00425"></a>00425     
+<a name="l00426"></a>00426   [[NSNotificationCenter defaultCenter] postNotificationName:@&quot;UIKeyboardWillHideNotification&quot;
+<a name="l00427"></a>00427                                         object:self userInfo:userInfo];
+<a name="l00428"></a>00428 
+<a name="l00429"></a>00429   <span class="keywordflow">if</span> (animated) {
+<a name="l00430"></a>00430     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00431"></a>00431     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00432"></a>00432     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00433"></a>00433     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(dismissAsKeyboardAnimationDidStop)];
+<a name="l00434"></a>00434   }
+<a name="l00435"></a>00435   
+<a name="l00436"></a>00436   <span class="keyword">self</span>.top += <span class="keyword">self</span>.height;
+<a name="l00437"></a>00437 
+<a name="l00438"></a>00438   <span class="keywordflow">if</span> (animated) {
+<a name="l00439"></a>00439     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00440"></a>00440   } <span class="keywordflow">else</span> {
+<a name="l00441"></a>00441     [<span class="keyword">self</span> <a class="code" href="class_u_i_view.html#a7f90652ecb687f7381091df2fa02d856">dismissAsKeyboardAnimationDidStop</a>];
+<a name="l00442"></a>00442   }
+<a name="l00443"></a>00443 }
+<a name="l00444"></a>00444 
+<a name="l00445"></a><a class="code" href="class_u_i_view.html#ad390e3df41e6d124383eed3abbca644a">00445</a> - (<a class="code" href="class_u_i_view_controller.html">UIViewController</a>*)<a class="code" href="class_u_i_view.html#ad390e3df41e6d124383eed3abbca644a">viewController</a> {
+<a name="l00446"></a>00446   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* next = [<span class="keyword">self</span> superview]; next; next = next.superview) {
+<a name="l00447"></a>00447     UIResponder* nextResponder = [next nextResponder];
+<a name="l00448"></a>00448     <span class="keywordflow">if</span> ([nextResponder isKindOfClass:[<a class="code" href="class_u_i_view_controller.html">UIViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00449"></a>00449       <span class="keywordflow">return</span> (UIViewController*)nextResponder;
+<a name="l00450"></a>00450     }
+<a name="l00451"></a>00451   }
+<a name="l00452"></a>00452   <span class="keywordflow">return</span> nil;
+<a name="l00453"></a>00453 }
+<a name="l00454"></a>00454 
+<a name="l00455"></a>00455 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,87 +76,89 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 
-<a name="l00021"></a>00021 <span class="comment">// global</span>
-<a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="_t_t_style_sheet_8m.html#ab90f1c4fdbf94f158703110c31dda052">00023</a> <span class="keyword">static</span> <a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>* <a class="code" href="_t_t_style_sheet_8m.html#ab90f1c4fdbf94f158703110c31dda052">gStyleSheet</a> = nil;
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00021"></a>00021 
+<a name="l00023"></a>00023 <span class="comment">// global</span>
 <a name="l00024"></a>00024 
+<a name="l00025"></a><a class="code" href="_t_t_style_sheet_8m.html#ab90f1c4fdbf94f158703110c31dda052">00025</a> <span class="keyword">static</span> <a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>* <a class="code" href="_t_t_style_sheet_8m.html#ab90f1c4fdbf94f158703110c31dda052">gStyleSheet</a> = nil;
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>
 <a name="l00028"></a>00028 
-<a name="l00030"></a>00030 <span class="comment">// class public</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a><a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">00032</a> + (<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>*)<a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a> {
-<a name="l00033"></a>00033   <span class="keywordflow">if</span> (!gStyleSheet) {
-<a name="l00034"></a>00034     gStyleSheet = [[<a class="code" href="interface_t_t_default_style_sheet.html">TTDefaultStyleSheet</a> alloc] init];
-<a name="l00035"></a>00035   }
-<a name="l00036"></a>00036   <span class="keywordflow">return</span> gStyleSheet;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_t_t_style_sheet.html#a39335a19e323c16c27e96f50e6c267be">00039</a> + (void)setGlobalStyleSheet:(<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>*)styleSheet {
-<a name="l00040"></a>00040   [gStyleSheet release];
-<a name="l00041"></a>00041   gStyleSheet = [styleSheet retain];
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00045"></a>00045 <span class="comment">// NSObject</span>
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 - (id)init {
-<a name="l00048"></a>00048   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00049"></a>00049     <a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> = nil;
-<a name="l00050"></a>00050     [[NSNotificationCenter defaultCenter] addObserver:self
-<a name="l00051"></a>00051                                           selector:@selector(didReceiveMemoryWarning:)
-<a name="l00052"></a>00052                                           name:UIApplicationDidReceiveMemoryWarningNotification  
-<a name="l00053"></a>00053                                           object:nil];  
-<a name="l00054"></a>00054   }
-<a name="l00055"></a>00055   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00056"></a>00056 }
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 - (void)dealloc {
-<a name="l00059"></a>00059   [[NSNotificationCenter defaultCenter] removeObserver:self
-<a name="l00060"></a>00060                                         name:UIApplicationDidReceiveMemoryWarningNotification  
-<a name="l00061"></a>00061                                         object:nil];  
-<a name="l00062"></a>00062   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>);
-<a name="l00063"></a>00063   [<span class="keyword">super</span> dealloc];
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 
-<a name="l00067"></a>00067 <span class="comment">// NSNotifications</span>
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 - (void)didReceiveMemoryWarning:(<span class="keywordtype">void</span>*)object {
-<a name="l00070"></a>00070   [<span class="keyword">self</span> freeMemory];
-<a name="l00071"></a>00071 }
-<a name="l00072"></a>00072 
-<a name="l00074"></a>00074 <span class="comment">// public</span>
-<a name="l00075"></a>00075 
-<a name="l00076"></a><a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">00076</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)styleWithSelector:(<a class="code" href="class_n_s_string.html">NSString</a>*)selector {
-<a name="l00077"></a>00077   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:selector <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateNormal];
-<a name="l00078"></a>00078 }
-<a name="l00079"></a>00079 
-<a name="l00080"></a><a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">00080</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)styleWithSelector:(<a class="code" href="class_n_s_string.html">NSString</a>*)selector forState:(UIControlState)state {
-<a name="l00081"></a>00081   <a class="code" href="class_n_s_string.html">NSString</a>* key = state == UIControlStateNormal
-<a name="l00082"></a>00082     ? selector
-<a name="l00083"></a>00083     : [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%@%d&quot;, selector, state];
-<a name="l00084"></a>00084   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = [<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> objectForKey:key];
-<a name="l00085"></a>00085   <span class="keywordflow">if</span> (!style) {
-<a name="l00086"></a>00086     <span class="keywordtype">SEL</span> sel = NSSelectorFromString(selector);
-<a name="l00087"></a>00087     <span class="keywordflow">if</span> ([<span class="keyword">self</span> respondsToSelector:sel]) {
-<a name="l00088"></a>00088       style = [<span class="keyword">self</span> performSelector:sel withObject:(id)state];
-<a name="l00089"></a>00089       <span class="keywordflow">if</span> (style) {
-<a name="l00090"></a>00090         <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>) {
-<a name="l00091"></a>00091           <a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> = [[<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a> alloc] init];
-<a name="l00092"></a>00092         }
-<a name="l00093"></a>00093         [<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> setObject:style forKey:key];
-<a name="l00094"></a>00094       }
-<a name="l00095"></a>00095     }
-<a name="l00096"></a>00096   }
-<a name="l00097"></a>00097   <span class="keywordflow">return</span> style;
-<a name="l00098"></a>00098 }
-<a name="l00099"></a>00099 
-<a name="l00100"></a><a class="code" href="interface_t_t_style_sheet.html#a5d679bdf2168819e073a0cce68e4c961">00100</a> - (void)<a class="code" href="interface_t_t_style_sheet.html#a5d679bdf2168819e073a0cce68e4c961">freeMemory</a> {
-<a name="l00101"></a>00101   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>);
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 <span class="keyword">@end</span>
+<a name="l00029"></a>00029 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>
+<a name="l00030"></a>00030 
+<a name="l00032"></a>00032 <span class="comment">// class public</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a><a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">00034</a> + (<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>*)<a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a> {
+<a name="l00035"></a>00035   <span class="keywordflow">if</span> (!gStyleSheet) {
+<a name="l00036"></a>00036     gStyleSheet = [[<a class="code" href="interface_t_t_default_style_sheet.html">TTDefaultStyleSheet</a> alloc] init];
+<a name="l00037"></a>00037   }
+<a name="l00038"></a>00038   <span class="keywordflow">return</span> gStyleSheet;
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="interface_t_t_style_sheet.html#a39335a19e323c16c27e96f50e6c267be">00041</a> + (void)setGlobalStyleSheet:(<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a>*)styleSheet {
+<a name="l00042"></a>00042   [gStyleSheet release];
+<a name="l00043"></a>00043   gStyleSheet = [styleSheet retain];
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00047"></a>00047 <span class="comment">// NSObject</span>
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="interface_t_t_style_sheet.html#a48e56581976ad8c48817a2326a617d8e">00049</a> - (id)<a class="code" href="interface_t_t_style_sheet.html#a48e56581976ad8c48817a2326a617d8e">init</a> {
+<a name="l00050"></a>00050   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_style_sheet.html#a48e56581976ad8c48817a2326a617d8e">init</a>]) {
+<a name="l00051"></a>00051     <a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> = nil;
+<a name="l00052"></a>00052     [[NSNotificationCenter defaultCenter] addObserver:self
+<a name="l00053"></a>00053                                           selector:@selector(didReceiveMemoryWarning:)
+<a name="l00054"></a>00054                                           name:UIApplicationDidReceiveMemoryWarningNotification  
+<a name="l00055"></a>00055                                           object:nil];  
+<a name="l00056"></a>00056   }
+<a name="l00057"></a>00057   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="interface_t_t_style_sheet.html#a99e7e83a520986046f8cc8cb2322e2f2">00060</a> - (void)<a class="code" href="interface_t_t_style_sheet.html#a99e7e83a520986046f8cc8cb2322e2f2">dealloc</a> {
+<a name="l00061"></a>00061   [[NSNotificationCenter defaultCenter] removeObserver:self
+<a name="l00062"></a>00062                                         name:UIApplicationDidReceiveMemoryWarningNotification  
+<a name="l00063"></a>00063                                         object:nil];  
+<a name="l00064"></a>00064   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>);
+<a name="l00065"></a>00065   [<span class="keyword">super</span> dealloc];
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00069"></a>00069 <span class="comment">// NSNotifications</span>
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="interface_t_t_style_sheet.html#acfeec061d0eef20205ded3a7eb2f8792">00071</a> - (void)didReceiveMemoryWarning:(<span class="keywordtype">void</span>*)object {
+<a name="l00072"></a>00072   [<span class="keyword">self</span> <a class="code" href="interface_t_t_style_sheet.html#a5d679bdf2168819e073a0cce68e4c961">freeMemory</a>];
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00076"></a>00076 <span class="comment">// public</span>
+<a name="l00077"></a>00077 
+<a name="l00078"></a><a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">00078</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)styleWithSelector:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)selector {
+<a name="l00079"></a>00079   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:selector <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateNormal];
+<a name="l00080"></a>00080 }
+<a name="l00081"></a>00081 
+<a name="l00082"></a><a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">00082</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)styleWithSelector:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)selector forState:(UIControlState)state {
+<a name="l00083"></a>00083   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* key = state == UIControlStateNormal
+<a name="l00084"></a>00084     ? selector
+<a name="l00085"></a>00085     : [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%@%d&quot;, selector, state];
+<a name="l00086"></a>00086   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = [<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> objectForKey:key];
+<a name="l00087"></a>00087   <span class="keywordflow">if</span> (!style) {
+<a name="l00088"></a>00088     <span class="keywordtype">SEL</span> sel = NSSelectorFromString(selector);
+<a name="l00089"></a>00089     <span class="keywordflow">if</span> ([<span class="keyword">self</span> respondsToSelector:sel]) {
+<a name="l00090"></a>00090       style = [<span class="keyword">self</span> performSelector:sel withObject:(id)state];
+<a name="l00091"></a>00091       <span class="keywordflow">if</span> (style) {
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>) {
+<a name="l00093"></a>00093           <a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> = [[<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a> alloc] init];
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095         [<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a> setObject:style forKey:key];
+<a name="l00096"></a>00096       }
+<a name="l00097"></a>00097     }
+<a name="l00098"></a>00098   }
+<a name="l00099"></a>00099   <span class="keywordflow">return</span> style;
+<a name="l00100"></a>00100 }
+<a name="l00101"></a>00101 
+<a name="l00102"></a><a class="code" href="interface_t_t_style_sheet.html#a5d679bdf2168819e073a0cce68e4c961">00102</a> - (void)<a class="code" href="interface_t_t_style_sheet.html#a5d679bdf2168819e073a0cce68e4c961">freeMemory</a> {
+<a name="l00103"></a>00103   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_style_sheet.html#aea250de8617f56f00d8a401480df3a90">_styles</a>);
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

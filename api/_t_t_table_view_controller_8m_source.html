@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,696 +76,700 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_controller_8h.html">Three20/TTTableViewController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_list_data_source_8h.html">Three20/TTListDataSource.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_8h.html">Three20/TTTableView.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_item_8h.html">Three20/TTTableItem.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_item_cell_8h.html">Three20/TTTableItemCell.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_activity_label_8h.html">Three20/TTActivityLabel.h</a>&quot;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_error_view_8h.html">Three20/TTErrorView.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_delegate_8h.html">Three20/TTTableViewDelegate.h</a>&quot;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_search_display_controller_8h.html">Three20/TTSearchDisplayController.h</a>&quot;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00028"></a>00028 
-<a name="l00030"></a>00030 <span class="comment">// global</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a><a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">00032</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a> = 22;
-<a name="l00033"></a>00033 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_locale_8h.html">Three20/TTGlobalCoreLocale.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_navigator_8h.html">Three20/TTGlobalUINavigator.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_style_8h.html">Three20/TTGlobalStyle.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_list_data_source_8h.html">Three20/TTListDataSource.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_8h.html">Three20/TTTableView.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_activity_label_8h.html">Three20/TTActivityLabel.h</a>&quot;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_error_view_8h.html">Three20/TTErrorView.h</a>&quot;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_delegate_8h.html">Three20/TTTableViewDelegate.h</a>&quot;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00032"></a>00032 
+<a name="l00034"></a>00034 <span class="comment">// global</span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>
+<a name="l00036"></a><a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">00036</a> <span class="keyword">static</span> <span class="keyword">const</span> CGFloat <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a> = 22;
 <a name="l00037"></a>00037 
-<a name="l00038"></a>00038 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a2c0c397163b1b4241e870d0bf997ee98" title="A view that is displayed as a banner at the bottom of the table view.">tableBannerView</a> = <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>,
-<a name="l00039"></a>00039             <a class="code" href="interface_t_t_table_view_controller.html#a35a639881b27ff56a726d13ee23ebc5a" title="A view that is displayed over the table view.">tableOverlayView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>,
-<a name="l00040"></a>00040             <a class="code" href="interface_t_t_table_view_controller.html#a833a13a3a855b2613904568668cda94c">loadingView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a>= <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a3dd69c0d7bf5ab8f4ea1e47c4d7be9f1">emptyView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>,
-<a name="l00041"></a>00041             <a class="code" href="interface_t_t_table_view_controller.html#a6e28541fced4f80d1a00758bb05bfb8b">menuView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a90e2864b19220113f2bbf93c0c79e10c" title="The data source used to populate the table view.">dataSource</a> = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>, <a class="code" href="interface_t_t_table_view_controller.html#ad1f016f908279a337da8fe69bdac9816" title="The style of the table view.">tableViewStyle</a> = <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a>,
-<a name="l00042"></a>00042             <a class="code" href="interface_t_t_table_view_controller.html#a835ee43621a28a17cce38e2914ba9d98" title="Indicates if the table should support non-fixed row heights.">variableHeightRows</a> = <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>;
-<a name="l00043"></a>00043 
-<a name="l00045"></a>00045 <span class="comment">// private</span>
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 - (void)createInterstitialModel {
-<a name="l00048"></a>00048   <span class="keyword">self</span>.dataSource = [[[<a class="code" href="interface_t_t_table_view_interstial_data_source.html" title="A datasource that is eternally loading.">TTTableViewInterstialDataSource</a> alloc] init] autorelease];
-<a name="l00049"></a>00049 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a2c0c397163b1b4241e870d0bf997ee98" title="A view that is displayed as a banner at the bottom of the table view.">tableBannerView</a> = <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>,
+<a name="l00043"></a>00043             <a class="code" href="interface_t_t_table_view_controller.html#a35a639881b27ff56a726d13ee23ebc5a" title="A view that is displayed over the table view.">tableOverlayView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>,
+<a name="l00044"></a>00044             <a class="code" href="interface_t_t_table_view_controller.html#a833a13a3a855b2613904568668cda94c">loadingView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a>= <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a3dd69c0d7bf5ab8f4ea1e47c4d7be9f1">emptyView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>,
+<a name="l00045"></a>00045             <a class="code" href="interface_t_t_table_view_controller.html#a6e28541fced4f80d1a00758bb05bfb8b">menuView</a> = <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>, <a class="code" href="interface_t_t_table_view_controller.html#a90e2864b19220113f2bbf93c0c79e10c" title="The data source used to populate the table view.">dataSource</a> = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>, <a class="code" href="interface_t_t_table_view_controller.html#ad1f016f908279a337da8fe69bdac9816" title="The style of the table view.">tableViewStyle</a> = <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a>,
+<a name="l00046"></a>00046             <a class="code" href="interface_t_t_table_view_controller.html#a835ee43621a28a17cce38e2914ba9d98" title="Indicates if the table should support non-fixed row heights.">variableHeightRows</a> = <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>;
+<a name="l00047"></a>00047 
+<a name="l00049"></a>00049 <span class="comment">// private</span>
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051 - (<a class="code" href="class_n_s_string.html">NSString</a>*)defaultTitleForLoading {
-<a name="l00052"></a>00052   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_8h.html#a3a3c40fe1b0f0e9aa6c4faa1c01069c6" title="Returns a localized string from the Three20 bundle.">TTLocalizedString</a>(<span class="stringliteral">@&quot;Loading...&quot;</span>, <span class="stringliteral">@&quot;&quot;</span>);
+<a name="l00051"></a><a class="code" href="interface_t_t_table_view_controller.html#acbd3216f168766e65b4ddbadb7d593c3">00051</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#acbd3216f168766e65b4ddbadb7d593c3">createInterstitialModel</a> {
+<a name="l00052"></a>00052   <span class="keyword">self</span>.dataSource = [[[<a class="code" href="interface_t_t_table_view_interstial_data_source.html" title="A datasource that is eternally loading.">TTTableViewInterstialDataSource</a> alloc] init] autorelease];
 <a name="l00053"></a>00053 }
 <a name="l00054"></a>00054 
-<a name="l00055"></a>00055 - (void)updateTableDelegate {
-<a name="l00056"></a>00056   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate) {
-<a name="l00057"></a>00057     [_tableDelegate release];
-<a name="l00058"></a>00058     <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a> = [[<span class="keyword">self</span> createDelegate] retain];
-<a name="l00059"></a>00059     
-<a name="l00060"></a>00060     <span class="comment">// You need to set it to nil before changing it or it won&apos;t have any effect</span>
-<a name="l00061"></a>00061     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
-<a name="l00062"></a>00062     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>;
-<a name="l00063"></a>00063   }
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 - (void)addToOverlayView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00067"></a>00067   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
-<a name="l00068"></a>00068     CGRect frame = [<span class="keyword">self</span> rectForOverlayView];
-<a name="l00069"></a>00069     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = [[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:frame];
-<a name="l00070"></a>00070     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.autoresizesSubviews = YES;
-<a name="l00071"></a>00071     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.autoresizingMask = UIViewAutoresizingFlexibleWidth
-<a name="l00072"></a>00072                                         | UIViewAutoresizingFlexibleBottomMargin;
-<a name="l00073"></a>00073     NSInteger tableIndex = [_tableView.superview.subviews indexOfObject:_tableView];
-<a name="l00074"></a>00074     <span class="keywordflow">if</span> (tableIndex != NSNotFound) {
-<a name="l00075"></a>00075       [_tableView.superview addSubview:_tableOverlayView];
-<a name="l00076"></a>00076     }
-<a name="l00077"></a>00077   }
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079   view.frame = <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.bounds;
-<a name="l00080"></a>00080   view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-<a name="l00081"></a>00081   [_tableOverlayView addSubview:view];
-<a name="l00082"></a>00082 }
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084 - (void)resetOverlayView {
-<a name="l00085"></a>00085   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> &amp;&amp; !<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.subviews.count) {
-<a name="l00086"></a>00086     [_tableOverlayView removeFromSuperview];
-<a name="l00087"></a>00087     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
-<a name="l00088"></a>00088   }
-<a name="l00089"></a>00089 }
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 - (void)layoutOverlayView {
-<a name="l00092"></a>00092   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
-<a name="l00093"></a>00093     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.frame = [<span class="keyword">self</span> rectForOverlayView];
-<a name="l00094"></a>00094   }
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 - (void)layoutBannerView {
-<a name="l00098"></a>00098   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
-<a name="l00099"></a>00099     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.frame = [<span class="keyword">self</span> rectForBannerView];
-<a name="l00100"></a>00100   }
-<a name="l00101"></a>00101 }
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 - (void)fadeOutView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00104"></a>00104   [view retain];
-<a name="l00105"></a>00105   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:view];
-<a name="l00106"></a>00106   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00107"></a>00107   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00108"></a>00108   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(fadingOutViewDidStop:finished:context:)];
-<a name="l00109"></a>00109   view.alpha = 0;
-<a name="l00110"></a>00110   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00111"></a>00111 }
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 - (void)fadingOutViewDidStop:(<a class="code" href="class_n_s_string.html">NSString</a>*)animationID finished:(NSNumber*)finished
-<a name="l00114"></a>00114         context:(<span class="keywordtype">void</span>*)context {
-<a name="l00115"></a>00115   <a class="code" href="class_u_i_view.html">UIView</a>* view = (<a class="code" href="class_u_i_view.html">UIView</a>*)context;
-<a name="l00116"></a>00116   [view removeFromSuperview];
-<a name="l00117"></a>00117   [view release];
-<a name="l00118"></a>00118 }
-<a name="l00119"></a>00119 
-<a name="l00120"></a>00120 - (void)hideMenuAnimationDidStop:(<a class="code" href="class_n_s_string.html">NSString</a>*)animationID finished:(NSNumber*)finished
-<a name="l00121"></a>00121         context:(<span class="keywordtype">void</span>*)context {
-<a name="l00122"></a>00122   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a6e28541fced4f80d1a00758bb05bfb8b">menuView</a> = (<a class="code" href="class_u_i_view.html">UIView</a>*)context;
-<a name="l00123"></a>00123   [menuView removeFromSuperview];
-<a name="l00124"></a>00124 }
-<a name="l00125"></a>00125 
-<a name="l00127"></a>00127 <span class="comment">// NSObject</span>
-<a name="l00128"></a>00128 
-<a name="l00129"></a><a class="code" href="interface_t_t_table_view_controller.html#a09b950a1320f154fc629f30c2039c3dc">00129</a> - (id)initWithStyle:(UITableViewStyle)style {
-<a name="l00130"></a>00130   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00131"></a>00131     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = nil;
-<a name="l00132"></a>00132     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> = nil;
-<a name="l00133"></a>00133     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = nil;
-<a name="l00134"></a>00134     <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> = nil;
-<a name="l00135"></a>00135     <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> = nil;
-<a name="l00136"></a>00136     <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> = nil;
-<a name="l00137"></a>00137     <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> = nil;
-<a name="l00138"></a>00138     <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a> = nil;
-<a name="l00139"></a>00139     <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> = nil;
-<a name="l00140"></a>00140     <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a> = nil;
-<a name="l00141"></a>00141     <a class="code" href="interface_t_t_table_view_controller.html#afde4345f33d69d7c700206b022b0e691">_bannerTimer</a> = nil;
-<a name="l00142"></a>00142     <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a> = NO;
-<a name="l00143"></a>00143     <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a> = style;
-<a name="l00144"></a>00144     <a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> = <span class="keyword">self</span>.interfaceOrientation;
-<a name="l00145"></a>00145   }
-<a name="l00146"></a>00146   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00147"></a>00147 }
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149 - (id)init {
-<a name="l00150"></a>00150   <span class="keywordflow">return</span> [<span class="keyword">self</span> initWithStyle:UITableViewStylePlain];
+<a name="l00055"></a><a class="code" href="interface_t_t_table_view_controller.html#a9adc9ac4633bc46c8ac5e8191573cfd1">00055</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="interface_t_t_table_view_controller.html#a9adc9ac4633bc46c8ac5e8191573cfd1">defaultTitleForLoading</a> {
+<a name="l00056"></a>00056   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_core_locale_8h.html#a3a3c40fe1b0f0e9aa6c4faa1c01069c6" title="Returns a localized string from the Three20 bundle.">TTLocalizedString</a>(<span class="stringliteral">@&quot;Loading...&quot;</span>, <span class="stringliteral">@&quot;&quot;</span>);
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="interface_t_t_table_view_controller.html#a7a604dae0428d98594c691a5b181c974">00059</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a7a604dae0428d98594c691a5b181c974">updateTableDelegate</a> {
+<a name="l00060"></a>00060   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate) {
+<a name="l00061"></a>00061     [<a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a> release];
+<a name="l00062"></a>00062     <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a> = [[<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a52626a5ea529445ca0edf79f1c3d9dbb" title="Creates an delegate for the table view.">createDelegate</a>] retain];
+<a name="l00063"></a>00063     
+<a name="l00064"></a>00064     <span class="comment">// You need to set it to nil before changing it or it won&apos;t have any effect</span>
+<a name="l00065"></a>00065     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
+<a name="l00066"></a>00066     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>;
+<a name="l00067"></a>00067   }
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">00070</a> - (void)addToOverlayView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00071"></a>00071   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
+<a name="l00072"></a>00072     CGRect frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707" title="The rectangle where the overlay view should appear.">rectForOverlayView</a>];
+<a name="l00073"></a>00073     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = [[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:frame];
+<a name="l00074"></a>00074     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.autoresizesSubviews = YES;
+<a name="l00075"></a>00075     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.autoresizingMask = UIViewAutoresizingFlexibleWidth
+<a name="l00076"></a>00076                                         | UIViewAutoresizingFlexibleBottomMargin;
+<a name="l00077"></a>00077     NSInteger tableIndex = [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.superview.subviews indexOfObject:_tableView];
+<a name="l00078"></a>00078     <span class="keywordflow">if</span> (tableIndex != NSNotFound) {
+<a name="l00079"></a>00079       [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.superview addSubview:_tableOverlayView];
+<a name="l00080"></a>00080     }
+<a name="l00081"></a>00081   }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083   view.frame = <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.bounds;
+<a name="l00084"></a>00084   view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+<a name="l00085"></a>00085   [<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> addSubview:view];
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a><a class="code" href="interface_t_t_table_view_controller.html#a0256139991177464fb43b198a4267534">00088</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a0256139991177464fb43b198a4267534">resetOverlayView</a> {
+<a name="l00089"></a>00089   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> &amp;&amp; !<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.subviews.count) {
+<a name="l00090"></a>00090     [<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> removeFromSuperview];
+<a name="l00091"></a>00091     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
+<a name="l00092"></a>00092   }
+<a name="l00093"></a>00093 }
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="interface_t_t_table_view_controller.html#ab2f39149516a415573b5e387d6f5d9a9">00095</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#ab2f39149516a415573b5e387d6f5d9a9">layoutOverlayView</a> {
+<a name="l00096"></a>00096   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
+<a name="l00097"></a>00097     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707" title="The rectangle where the overlay view should appear.">rectForOverlayView</a>];
+<a name="l00098"></a>00098   }
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="interface_t_t_table_view_controller.html#ac927553b72d563970659b3baa85a806d">00101</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#ac927553b72d563970659b3baa85a806d">layoutBannerView</a> {
+<a name="l00102"></a>00102   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
+<a name="l00103"></a>00103     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940" title="The rectangle where the banner view should appear.">rectForBannerView</a>];
+<a name="l00104"></a>00104   }
+<a name="l00105"></a>00105 }
+<a name="l00106"></a>00106 
+<a name="l00107"></a><a class="code" href="interface_t_t_table_view_controller.html#a861b515993e194ec9de257ba0ce64821">00107</a> - (void)fadeOutView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00108"></a>00108   [view retain];
+<a name="l00109"></a>00109   [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:view];
+<a name="l00110"></a>00110   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00111"></a>00111   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00112"></a>00112   [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(fadingOutViewDidStop:finished:context:)];
+<a name="l00113"></a>00113   view.alpha = 0;
+<a name="l00114"></a>00114   [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00115"></a>00115 }
+<a name="l00116"></a>00116 
+<a name="l00117"></a><a class="code" href="interface_t_t_table_view_controller.html#abdf5813efdf2268fe0c05b3970b5cb7c">00117</a> - (void)fadingOutViewDidStop:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)animationID finished:(NSNumber*)finished
+<a name="l00118"></a>00118         context:(<span class="keywordtype">void</span>*)context {
+<a name="l00119"></a>00119   <a class="code" href="class_u_i_view.html">UIView</a>* view = (<a class="code" href="class_u_i_view.html">UIView</a>*)context;
+<a name="l00120"></a>00120   [view removeFromSuperview];
+<a name="l00121"></a>00121   [view release];
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="interface_t_t_table_view_controller.html#a29ffca770546b36d2d36b9134eeee331">00124</a> - (void)hideMenuAnimationDidStop:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)animationID finished:(NSNumber*)finished
+<a name="l00125"></a>00125         context:(<span class="keywordtype">void</span>*)context {
+<a name="l00126"></a>00126   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a6e28541fced4f80d1a00758bb05bfb8b">menuView</a> = (<a class="code" href="class_u_i_view.html">UIView</a>*)context;
+<a name="l00127"></a>00127   [menuView removeFromSuperview];
+<a name="l00128"></a>00128 }
+<a name="l00129"></a>00129 
+<a name="l00131"></a>00131 <span class="comment">// NSObject</span>
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="interface_t_t_table_view_controller.html#a09b950a1320f154fc629f30c2039c3dc">00133</a> - (id)initWithStyle:(UITableViewStyle)style {
+<a name="l00134"></a>00134   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_table_view_controller.html#a93c58ce91640f22565a92f01a1cc547e">init</a>]) {
+<a name="l00135"></a>00135     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = nil;
+<a name="l00136"></a>00136     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> = nil;
+<a name="l00137"></a>00137     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = nil;
+<a name="l00138"></a>00138     <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> = nil;
+<a name="l00139"></a>00139     <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> = nil;
+<a name="l00140"></a>00140     <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> = nil;
+<a name="l00141"></a>00141     <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> = nil;
+<a name="l00142"></a>00142     <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a> = nil;
+<a name="l00143"></a>00143     <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> = nil;
+<a name="l00144"></a>00144     <a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a> = nil;
+<a name="l00145"></a>00145     <a class="code" href="interface_t_t_table_view_controller.html#afde4345f33d69d7c700206b022b0e691">_bannerTimer</a> = nil;
+<a name="l00146"></a>00146     <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a> = NO;
+<a name="l00147"></a>00147     <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a> = style;
+<a name="l00148"></a>00148     <a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> = <span class="keyword">self</span>.interfaceOrientation;
+<a name="l00149"></a>00149   }
+<a name="l00150"></a>00150   <span class="keywordflow">return</span> <span class="keyword">self</span>;
 <a name="l00151"></a>00151 }
 <a name="l00152"></a>00152 
-<a name="l00153"></a>00153 - (void)dealloc {
-<a name="l00154"></a>00154   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
-<a name="l00155"></a>00155   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00156"></a>00156   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>);
-<a name="l00157"></a>00157   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>);
-<a name="l00158"></a>00158   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>);
-<a name="l00159"></a>00159   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
-<a name="l00160"></a>00160   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
-<a name="l00161"></a>00161   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
-<a name="l00162"></a>00162   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
-<a name="l00163"></a>00163   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>);
-<a name="l00164"></a>00164   [<span class="keyword">super</span> dealloc];
-<a name="l00165"></a>00165 }
-<a name="l00166"></a>00166 
-<a name="l00168"></a>00168 <span class="comment">// UIViewController</span>
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170 - (void)loadView {
-<a name="l00171"></a>00171   [<span class="keyword">super</span> loadView];
-<a name="l00172"></a>00172   <span class="keyword">self</span>.tableView;
-<a name="l00173"></a>00173 }
-<a name="l00174"></a>00174 
-<a name="l00175"></a>00175 - (void)viewDidUnload {
-<a name="l00176"></a>00176   [<span class="keyword">super</span> viewDidUnload];
-<a name="l00177"></a>00177   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
-<a name="l00178"></a>00178   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00179"></a>00179   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>);
-<a name="l00180"></a>00180   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>);
-<a name="l00181"></a>00181   [_tableBannerView removeFromSuperview];
-<a name="l00182"></a>00182   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>);
-<a name="l00183"></a>00183   [_tableOverlayView removeFromSuperview];
-<a name="l00184"></a>00184   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
-<a name="l00185"></a>00185   [_loadingView removeFromSuperview];
-<a name="l00186"></a>00186   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
-<a name="l00187"></a>00187   [_errorView removeFromSuperview];
-<a name="l00188"></a>00188   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
-<a name="l00189"></a>00189   [_emptyView removeFromSuperview];
-<a name="l00190"></a>00190   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
-<a name="l00191"></a>00191   [_menuView removeFromSuperview];
-<a name="l00192"></a>00192   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>);
-<a name="l00193"></a>00193   [_menuCell removeFromSuperview];
-<a name="l00194"></a>00194   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>);
-<a name="l00195"></a>00195 }
-<a name="l00196"></a>00196 
-<a name="l00197"></a>00197 - (void)viewWillAppear:(BOOL)animated {
-<a name="l00198"></a>00198   [<span class="keyword">super</span> viewWillAppear:animated];
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> != <span class="keyword">self</span>.interfaceOrientation) {
-<a name="l00201"></a>00201     <a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> = <span class="keyword">self</span>.interfaceOrientation;
-<a name="l00202"></a>00202     [_tableView reloadData];
-<a name="l00203"></a>00203   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> isKindOfClass:[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> <span class="keyword">class</span>]]) {
-<a name="l00204"></a>00204     TTTableView* <a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = (TTTableView*)<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
-<a name="l00205"></a>00205     tableView.<a class="code" href="interface_t_t_table_view.html#a150e7f95bf58bba7236bd190cefd0b71">highlightedLabel</a> = nil;    
-<a name="l00206"></a>00206   }
-<a name="l00207"></a>00207 
-<a name="l00208"></a>00208   [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
-<a name="l00209"></a>00209 }  
-<a name="l00210"></a>00210 
-<a name="l00211"></a>00211 - (void)viewWillDisappear:(BOOL)animated {
-<a name="l00212"></a>00212   [<span class="keyword">super</span> viewWillDisappear:animated];
-<a name="l00213"></a>00213   [<span class="keyword">self</span> hideMenu:YES];
-<a name="l00214"></a>00214 }
-<a name="l00215"></a>00215 
-<a name="l00216"></a>00216 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-<a name="l00217"></a>00217   [<span class="keyword">super</span> setEditing:editing animated:animated];
-<a name="l00218"></a>00218   [<span class="keyword">self</span>.tableView setEditing:editing animated:animated];
-<a name="l00219"></a>00219 }
-<a name="l00220"></a>00220 
-<a name="l00222"></a>00222 <span class="comment">// UTViewController (TTCategory)</span>
-<a name="l00223"></a>00223 
-<a name="l00224"></a>00224 - (BOOL)persistView:(<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>*)state {
-<a name="l00225"></a>00225   CGFloat scrollY = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset.y;
-<a name="l00226"></a>00226   [state setObject:[NSNumber numberWithFloat:scrollY] forKey:@&quot;scrollOffsetY&quot;];
-<a name="l00227"></a>00227   <span class="keywordflow">return</span> [<span class="keyword">super</span> persistView:state];
-<a name="l00228"></a>00228 }
-<a name="l00229"></a>00229 
-<a name="l00230"></a>00230 - (void)restoreView:(NSDictionary*)state {
-<a name="l00231"></a>00231   CGFloat scrollY = [[state objectForKey:@&quot;scrollOffsetY&quot;] floatValue];
-<a name="l00232"></a>00232   <span class="keywordflow">if</span> (scrollY) {
-<a name="l00233"></a>00233     CGFloat maxY = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentSize.height - <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.height;
-<a name="l00234"></a>00234     <span class="keywordflow">if</span> (scrollY &lt;= maxY) {
-<a name="l00235"></a>00235       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset = CGPointMake(0, scrollY);
-<a name="l00236"></a>00236     } <span class="keywordflow">else</span> {
-<a name="l00237"></a>00237       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset = CGPointMake(0, maxY);
-<a name="l00238"></a>00238     }
-<a name="l00239"></a>00239   }
-<a name="l00240"></a>00240 }
-<a name="l00241"></a>00241 
-<a name="l00243"></a>00243 <span class="comment">// TTViewController</span>
-<a name="l00244"></a>00244 
-<a name="l00245"></a>00245 - (void)keyboardDidAppear:(BOOL)animated withBounds:(CGRect)bounds {
-<a name="l00246"></a>00246   [<span class="keyword">super</span> keyboardDidAppear:animated withBounds:bounds];
-<a name="l00247"></a>00247   <span class="keyword">self</span>.tableView.frame = <a class="code" href="_t_t_global_8h.html#a91c3e2d79e5739ad567616cddebd79dd" title="Returns a rectangle that is smaller or larger than the source rectangle.">TTRectContract</a>(<span class="keyword">self</span>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>.frame, 0, bounds.size.height);
-<a name="l00248"></a>00248   [<span class="keyword">self</span>.tableView scrollFirstResponderIntoView];
-<a name="l00249"></a>00249   [<span class="keyword">self</span> layoutOverlayView];
-<a name="l00250"></a>00250   [<span class="keyword">self</span> layoutBannerView];
-<a name="l00251"></a>00251 }
-<a name="l00252"></a>00252 
-<a name="l00253"></a>00253 - (void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds {
-<a name="l00254"></a>00254   [<span class="keyword">super</span> keyboardWillDisappear:animated withBounds:bounds];
-<a name="l00255"></a>00255   <span class="keyword">self</span>.tableView.frame = <a class="code" href="_t_t_global_8h.html#a91c3e2d79e5739ad567616cddebd79dd" title="Returns a rectangle that is smaller or larger than the source rectangle.">TTRectContract</a>(<span class="keyword">self</span>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>.frame, 0, -bounds.size.height);
-<a name="l00256"></a>00256 }
-<a name="l00257"></a>00257 
-<a name="l00258"></a>00258 - (void)keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds {
-<a name="l00259"></a>00259   [<span class="keyword">super</span> keyboardDidDisappear:animated withBounds:bounds];
-<a name="l00260"></a>00260   [<span class="keyword">self</span> layoutOverlayView];
-<a name="l00261"></a>00261   [<span class="keyword">self</span> layoutBannerView];
-<a name="l00262"></a>00262 }
-<a name="l00263"></a>00263 
-<a name="l00265"></a>00265 <span class="comment">// TTModelViewController</span>
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267 - (void)<a class="code" href="interface_t_t_model_view_controller.html#a96f3ef31d4df7409e44a740ced1d91f4" title="Begins a multi-stage update.">beginUpdates</a> {
-<a name="l00268"></a>00268   [<span class="keyword">super</span> beginUpdates];
-<a name="l00269"></a>00269   [_tableView beginUpdates];
-<a name="l00270"></a>00270 }
-<a name="l00271"></a>00271 
-<a name="l00272"></a>00272 - (void)<a class="code" href="interface_t_t_model_view_controller.html#a54488637f89a309a5de88123257b73bc" title="Ends a multi-stage model update and updates the view to reflect the model.">endUpdates</a> {
-<a name="l00273"></a>00273   [<span class="keyword">super</span> endUpdates];
-<a name="l00274"></a>00274   [_tableView endUpdates];
-<a name="l00275"></a>00275 }
-<a name="l00276"></a>00276 
-<a name="l00277"></a>00277 - (BOOL)<a class="code" href="interface_t_t_model_view_controller.html#a1648848389e0e716f42cbab7ba1bad94" title="Tests if it is possible to show the model.">canShowModel</a> {
-<a name="l00278"></a>00278   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(numberOfSectionsInTableView:)]) {
-<a name="l00279"></a>00279     NSInteger numberOfSections = [_dataSource numberOfSectionsInTableView:_tableView];
-<a name="l00280"></a>00280     <span class="keywordflow">if</span> (!numberOfSections) {
-<a name="l00281"></a>00281       <span class="keywordflow">return</span> NO;
-<a name="l00282"></a>00282     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (numberOfSections == 1) {
-<a name="l00283"></a>00283       NSInteger numberOfRows = [_dataSource tableView:_tableView numberOfRowsInSection:0];
-<a name="l00284"></a>00284       <span class="keywordflow">return</span> numberOfRows &gt; 0;
-<a name="l00285"></a>00285     } <span class="keywordflow">else</span> {
-<a name="l00286"></a>00286       <span class="keywordflow">return</span> YES;
-<a name="l00287"></a>00287     }
-<a name="l00288"></a>00288   } <span class="keywordflow">else</span> {
-<a name="l00289"></a>00289     NSInteger numberOfRows = [_dataSource tableView:_tableView numberOfRowsInSection:0];
-<a name="l00290"></a>00290     <span class="keywordflow">return</span> numberOfRows &gt; 0;
-<a name="l00291"></a>00291   }
-<a name="l00292"></a>00292 }
-<a name="l00293"></a>00293 
-<a name="l00294"></a>00294 - (void)didLoadModel:(BOOL)firstTime {
-<a name="l00295"></a>00295   [<span class="keyword">super</span> didLoadModel:firstTime];
-<a name="l00296"></a>00296   [_dataSource tableViewDidLoadModel:_tableView];
-<a name="l00297"></a>00297 }
-<a name="l00298"></a>00298 
-<a name="l00299"></a>00299 - (void)didShowModel:(BOOL)firstTime {
-<a name="l00300"></a>00300   [<span class="keyword">super</span> didShowModel:firstTime];
-<a name="l00301"></a>00301   <span class="keywordflow">if</span> (firstTime) {
-<a name="l00302"></a>00302     [_tableView flashScrollIndicators];
-<a name="l00303"></a>00303   }
-<a name="l00304"></a>00304 }
-<a name="l00305"></a>00305 
-<a name="l00306"></a>00306 - (void)showModel:(BOOL)show {
-<a name="l00307"></a>00307   [<span class="keyword">self</span> hideMenu:YES];
-<a name="l00308"></a>00308   <span class="keywordflow">if</span> (show) {
-<a name="l00309"></a>00309     [<span class="keyword">self</span> updateTableDelegate];
-<a name="l00310"></a>00310     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>;
-<a name="l00311"></a>00311   } <span class="keywordflow">else</span> {
-<a name="l00312"></a>00312     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00313"></a>00313   }
-<a name="l00314"></a>00314   [_tableView reloadData];
-<a name="l00315"></a>00315 }
-<a name="l00316"></a>00316 
-<a name="l00317"></a>00317 - (void)showLoading:(BOOL)show {
-<a name="l00318"></a>00318   <span class="keywordflow">if</span> (show) {
-<a name="l00319"></a>00319     <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoaded || ![<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#a1648848389e0e716f42cbab7ba1bad94" title="Tests if it is possible to show the model.">canShowModel</a>]) {
-<a name="l00320"></a>00320       <a class="code" href="class_n_s_string.html">NSString</a>* title = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>
-<a name="l00321"></a>00321                         ? [_dataSource titleForLoading:NO]
-<a name="l00322"></a>00322                         : [<span class="keyword">self</span> defaultTitleForLoading];
-<a name="l00323"></a>00323       <span class="keywordflow">if</span> (title.length) {
-<a name="l00324"></a>00324         <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>* label = [[[<a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> alloc] initWithStyle:TTActivityLabelStyleWhiteBox]
-<a name="l00325"></a>00325                                     autorelease];
-<a name="l00326"></a>00326         label.<a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">text</a> = title;
-<a name="l00327"></a>00327         label.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
-<a name="l00328"></a>00328         <span class="keyword">self</span>.loadingView = label;
-<a name="l00329"></a>00329       }
-<a name="l00330"></a>00330     }
-<a name="l00331"></a>00331   } <span class="keywordflow">else</span> {
-<a name="l00332"></a>00332     <span class="keyword">self</span>.loadingView = nil;
-<a name="l00333"></a>00333   }
-<a name="l00334"></a>00334 }
-<a name="l00335"></a>00335 
-<a name="l00336"></a>00336 - (void)showError:(BOOL)show {
-<a name="l00337"></a>00337   <span class="keywordflow">if</span> (show) {
-<a name="l00338"></a>00338     <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoaded || ![<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#a1648848389e0e716f42cbab7ba1bad94" title="Tests if it is possible to show the model.">canShowModel</a>]) {
-<a name="l00339"></a>00339       <a class="code" href="class_n_s_string.html">NSString</a>* title = [_dataSource titleForError:_modelError];
-<a name="l00340"></a>00340       <a class="code" href="class_n_s_string.html">NSString</a>* subtitle = [_dataSource subtitleForError:_modelError];
-<a name="l00341"></a>00341       <a class="code" href="class_u_i_image.html">UIImage</a>* image = [_dataSource imageForError:_modelError];
-<a name="l00342"></a>00342       <span class="keywordflow">if</span> (title.length || subtitle.length || image) {
-<a name="l00343"></a>00343         <a class="code" href="interface_t_t_error_view.html">TTErrorView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a> = [[[<a class="code" href="interface_t_t_error_view.html">TTErrorView</a> alloc] initWithTitle:title
-<a name="l00344"></a>00344                                                        subtitle:subtitle
-<a name="l00345"></a>00345                                                        image:image] autorelease];
-<a name="l00346"></a>00346         errorView.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
-<a name="l00347"></a>00347         <span class="keyword">self</span>.errorView = errorView;
-<a name="l00348"></a>00348       } <span class="keywordflow">else</span> {
-<a name="l00349"></a>00349         <span class="keyword">self</span>.errorView = nil;
-<a name="l00350"></a>00350       }
-<a name="l00351"></a>00351       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00352"></a>00352       [_tableView reloadData];
-<a name="l00353"></a>00353     }
-<a name="l00354"></a>00354   } <span class="keywordflow">else</span> {
-<a name="l00355"></a>00355     <span class="keyword">self</span>.errorView = nil;
-<a name="l00356"></a>00356   }
-<a name="l00357"></a>00357 }
-<a name="l00358"></a>00358 
-<a name="l00359"></a>00359 - (void)showEmpty:(BOOL)show {
-<a name="l00360"></a>00360   <span class="keywordflow">if</span> (show) {
-<a name="l00361"></a>00361     <a class="code" href="class_n_s_string.html">NSString</a>* title = [_dataSource titleForEmpty];
-<a name="l00362"></a>00362     <a class="code" href="class_n_s_string.html">NSString</a>* subtitle = [_dataSource subtitleForEmpty];
-<a name="l00363"></a>00363     <a class="code" href="class_u_i_image.html">UIImage</a>* image = [_dataSource imageForEmpty];
-<a name="l00364"></a>00364     <span class="keywordflow">if</span> (title.length || subtitle.length || image) {
-<a name="l00365"></a>00365       <a class="code" href="interface_t_t_error_view.html">TTErrorView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a> = [[[<a class="code" href="interface_t_t_error_view.html">TTErrorView</a> alloc] initWithTitle:title
-<a name="l00366"></a>00366                                                      subtitle:subtitle
-<a name="l00367"></a>00367                                                      image:image] autorelease];
-<a name="l00368"></a>00368       errorView.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
-<a name="l00369"></a>00369       <span class="keyword">self</span>.emptyView = errorView;
-<a name="l00370"></a>00370     } <span class="keywordflow">else</span> {
-<a name="l00371"></a>00371       <span class="keyword">self</span>.emptyView = nil;
-<a name="l00372"></a>00372     }
-<a name="l00373"></a>00373     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00374"></a>00374     [_tableView reloadData];
-<a name="l00375"></a>00375   } <span class="keywordflow">else</span> {
-<a name="l00376"></a>00376     <span class="keyword">self</span>.emptyView = nil;
-<a name="l00377"></a>00377   }
-<a name="l00378"></a>00378 }
-<a name="l00379"></a>00379 
-<a name="l00381"></a>00381 <span class="comment">// TTModelDelegate</span>
-<a name="l00382"></a>00382 
-<a name="l00383"></a>00383 - (void)<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didUpdateObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00384"></a>00384   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00385"></a>00385     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
-<a name="l00386"></a>00386       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willUpdateObject:atIndexPath:)]) {
-<a name="l00387"></a>00387         NSIndexPath* newIndexPath = [_dataSource tableView:_tableView willUpdateObject:object
-<a name="l00388"></a>00388                                                  atIndexPath:indexPath];
-<a name="l00389"></a>00389         <span class="keywordflow">if</span> (newIndexPath) {
-<a name="l00390"></a>00390           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
-<a name="l00391"></a>00391             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;UPDATING SECTION AT %@&quot;</span>, newIndexPath);
-<a name="l00392"></a>00392             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
-<a name="l00393"></a>00393             [_tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-<a name="l00394"></a>00394                         withRowAnimation:UITableViewRowAnimationTop];
-<a name="l00395"></a>00395           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
-<a name="l00396"></a>00396             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;UPDATING ROW AT %@&quot;</span>, newIndexPath);
-<a name="l00397"></a>00397             [_tableView reloadRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00153"></a><a class="code" href="interface_t_t_table_view_controller.html#a93c58ce91640f22565a92f01a1cc547e">00153</a> - (id)<a class="code" href="interface_t_t_table_view_controller.html#a93c58ce91640f22565a92f01a1cc547e">init</a> {
+<a name="l00154"></a>00154   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a09b950a1320f154fc629f30c2039c3dc" title="Initializes and returns a controller having the given style.">initWithStyle</a>:UITableViewStylePlain];
+<a name="l00155"></a>00155 }
+<a name="l00156"></a>00156 
+<a name="l00157"></a><a class="code" href="interface_t_t_table_view_controller.html#ae868ece8c28261c8955bd3bcd98e852a">00157</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#ae868ece8c28261c8955bd3bcd98e852a">dealloc</a> {
+<a name="l00158"></a>00158   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
+<a name="l00159"></a>00159   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
+<a name="l00160"></a>00160   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>);
+<a name="l00161"></a>00161   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>);
+<a name="l00162"></a>00162   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>);
+<a name="l00163"></a>00163   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
+<a name="l00164"></a>00164   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
+<a name="l00165"></a>00165   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
+<a name="l00166"></a>00166   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
+<a name="l00167"></a>00167   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>);
+<a name="l00168"></a>00168   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a3ba6d4d519268a67e268cdd309f4aa97">dealloc</a>];
+<a name="l00169"></a>00169 }
+<a name="l00170"></a>00170 
+<a name="l00172"></a>00172 <span class="comment">// UIViewController</span>
+<a name="l00173"></a>00173 
+<a name="l00174"></a><a class="code" href="interface_t_t_table_view_controller.html#a9257886c5fc09163a534871325bb6df4">00174</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a9257886c5fc09163a534871325bb6df4">loadView</a> {
+<a name="l00175"></a>00175   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#aabc5a73897b1d007f6969991a8d7f497">loadView</a>];
+<a name="l00176"></a>00176   <span class="keyword">self</span>.tableView;
+<a name="l00177"></a>00177 }
+<a name="l00178"></a>00178 
+<a name="l00179"></a><a class="code" href="interface_t_t_table_view_controller.html#a35418d09c50f8c0a4b27fbf6b34bcb11">00179</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a35418d09c50f8c0a4b27fbf6b34bcb11">viewDidUnload</a> {
+<a name="l00180"></a>00180   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a185449df8bb1c225b48a60498157b837">viewDidUnload</a>];
+<a name="l00181"></a>00181   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
+<a name="l00182"></a>00182   <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
+<a name="l00183"></a>00183   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a03e319fd0f060b7c5fc235c09374664e">_tableDelegate</a>);
+<a name="l00184"></a>00184   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>);
+<a name="l00185"></a>00185   [<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> removeFromSuperview];
+<a name="l00186"></a>00186   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>);
+<a name="l00187"></a>00187   [<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> removeFromSuperview];
+<a name="l00188"></a>00188   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>);
+<a name="l00189"></a>00189   [<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> removeFromSuperview];
+<a name="l00190"></a>00190   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
+<a name="l00191"></a>00191   [<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> removeFromSuperview];
+<a name="l00192"></a>00192   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
+<a name="l00193"></a>00193   [<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> removeFromSuperview];
+<a name="l00194"></a>00194   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
+<a name="l00195"></a>00195   [<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> removeFromSuperview];
+<a name="l00196"></a>00196   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>);
+<a name="l00197"></a>00197   [<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a> removeFromSuperview];
+<a name="l00198"></a>00198   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>);
+<a name="l00199"></a>00199 }
+<a name="l00200"></a>00200 
+<a name="l00201"></a><a class="code" href="interface_t_t_table_view_controller.html#a41602d4daca5353c3bc594ab9aab408a">00201</a> - (void)viewWillAppear:(BOOL)animated {
+<a name="l00202"></a>00202   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#af835ed51c64e202d531e78f6e632e365">viewWillAppear</a>:animated];
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> != <span class="keyword">self</span>.interfaceOrientation) {
+<a name="l00205"></a>00205     <a class="code" href="interface_t_t_table_view_controller.html#af55fc546daf1e9bf180b13466f621889">_lastInterfaceOrientation</a> = <span class="keyword">self</span>.interfaceOrientation;
+<a name="l00206"></a>00206     [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00207"></a>00207   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> isKindOfClass:[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> <span class="keyword">class</span>]]) {
+<a name="l00208"></a>00208     <a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a>* <a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> = (<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a>*)<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
+<a name="l00209"></a>00209     tableView.<a class="code" href="interface_t_t_table_view.html#a150e7f95bf58bba7236bd190cefd0b71">highlightedLabel</a> = nil;    
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212   [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> deselectRowAtIndexPath:[<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> indexPathForSelectedRow] animated:NO];
+<a name="l00213"></a>00213 }  
+<a name="l00214"></a>00214 
+<a name="l00215"></a><a class="code" href="interface_t_t_table_view_controller.html#a3df7f769aabaa83c9865809419790544">00215</a> - (void)viewWillDisappear:(BOOL)animated {
+<a name="l00216"></a>00216   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a96a47ea7934a9afff9d9a4175689ab9c">viewWillDisappear</a>:animated];
+<a name="l00217"></a>00217   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
+<a name="l00218"></a>00218 }
+<a name="l00219"></a>00219 
+<a name="l00220"></a><a class="code" href="interface_t_t_table_view_controller.html#a55c851856d8ecad1d54452a7ae56fab6">00220</a> - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+<a name="l00221"></a>00221   [<span class="keyword">super</span> setEditing:editing animated:animated];
+<a name="l00222"></a>00222   [<span class="keyword">self</span>.tableView <a class="code" href="interface_t_t_table_view_controller.html#a55c851856d8ecad1d54452a7ae56fab6">setEditing</a>:editing <a class="code" href="interface_t_t_table_view_controller.html#a55c851856d8ecad1d54452a7ae56fab6">animated</a>:animated];
+<a name="l00223"></a>00223 }
+<a name="l00224"></a>00224 
+<a name="l00226"></a>00226 <span class="comment">// UTViewController (TTCategory)</span>
+<a name="l00227"></a>00227 
+<a name="l00228"></a><a class="code" href="interface_t_t_table_view_controller.html#aea84737768f785edf342f6b1889785a9">00228</a> - (BOOL)persistView:(<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>*)state {
+<a name="l00229"></a>00229   CGFloat scrollY = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset.y;
+<a name="l00230"></a>00230   [state setObject:[NSNumber numberWithFloat:scrollY] forKey:@&quot;scrollOffsetY&quot;];
+<a name="l00231"></a>00231   <span class="keywordflow">return</span> [<span class="keyword">super</span> <a class="code" href="class_u_i_view_controller.html#af61bbe0be87963722e44f7807a3b1acd">persistView</a>:state];
+<a name="l00232"></a>00232 }
+<a name="l00233"></a>00233 
+<a name="l00234"></a><a class="code" href="interface_t_t_table_view_controller.html#a7c2fc247d75e408c9caa37570b159279">00234</a> - (void)restoreView:(NSDictionary*)state {
+<a name="l00235"></a>00235   CGFloat scrollY = [[state objectForKey:@&quot;scrollOffsetY&quot;] floatValue];
+<a name="l00236"></a>00236   <span class="keywordflow">if</span> (scrollY) {
+<a name="l00237"></a>00237     CGFloat maxY = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentSize.height - <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.height;
+<a name="l00238"></a>00238     <span class="keywordflow">if</span> (scrollY &lt;= maxY) {
+<a name="l00239"></a>00239       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset = CGPointMake(0, scrollY);
+<a name="l00240"></a>00240     } <span class="keywordflow">else</span> {
+<a name="l00241"></a>00241       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.contentOffset = CGPointMake(0, maxY);
+<a name="l00242"></a>00242     }
+<a name="l00243"></a>00243   }
+<a name="l00244"></a>00244 }
+<a name="l00245"></a>00245 
+<a name="l00247"></a>00247 <span class="comment">// TTViewController</span>
+<a name="l00248"></a>00248 
+<a name="l00249"></a><a class="code" href="interface_t_t_table_view_controller.html#a22270eaea3fb20967fd5c4d866991a15">00249</a> - (void)keyboardDidAppear:(BOOL)animated withBounds:(CGRect)bounds {
+<a name="l00250"></a>00250   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a4555c69c1ad3ffc9dbd1e3bdfaa55610" title="Sent to the controller after the keyboard has slid in.">keyboardDidAppear</a>:animated <a class="code" href="interface_t_t_view_controller.html#a4555c69c1ad3ffc9dbd1e3bdfaa55610" title="Sent to the controller after the keyboard has slid in.">withBounds</a>:bounds];
+<a name="l00251"></a>00251   <span class="keyword">self</span>.tableView.frame = <a class="code" href="_t_t_global_u_i_8h.html#a91c3e2d79e5739ad567616cddebd79dd" title="Returns a rectangle with dx and dy subtracted from the width and height, respectively...">TTRectContract</a>(<span class="keyword">self</span>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>.frame, 0, bounds.size.height);
+<a name="l00252"></a>00252   [<span class="keyword">self</span>.tableView scrollFirstResponderIntoView];
+<a name="l00253"></a>00253   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ab2f39149516a415573b5e387d6f5d9a9">layoutOverlayView</a>];
+<a name="l00254"></a>00254   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ac927553b72d563970659b3baa85a806d">layoutBannerView</a>];
+<a name="l00255"></a>00255 }
+<a name="l00256"></a>00256 
+<a name="l00257"></a><a class="code" href="interface_t_t_table_view_controller.html#af4e83ccd46a11ac3618b93f431433604">00257</a> - (void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds {
+<a name="l00258"></a>00258   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a7f7a8966c9b4144aa249cf4633c548e5" title="Sent to the controller before the keyboard slides out.">keyboardWillDisappear</a>:animated <a class="code" href="interface_t_t_view_controller.html#a7f7a8966c9b4144aa249cf4633c548e5" title="Sent to the controller before the keyboard slides out.">withBounds</a>:bounds];
+<a name="l00259"></a>00259   <span class="keyword">self</span>.tableView.frame = <a class="code" href="_t_t_global_u_i_8h.html#a91c3e2d79e5739ad567616cddebd79dd" title="Returns a rectangle with dx and dy subtracted from the width and height, respectively...">TTRectContract</a>(<span class="keyword">self</span>.<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>.frame, 0, -bounds.size.height);
+<a name="l00260"></a>00260 }
+<a name="l00261"></a>00261 
+<a name="l00262"></a><a class="code" href="interface_t_t_table_view_controller.html#aee2206fe51f34925f4d8066fc386722d">00262</a> - (void)keyboardDidDisappear:(BOOL)animated withBounds:(CGRect)bounds {
+<a name="l00263"></a>00263   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#aba4e5deb922e5cab866fcdd43b844c3f" title="Sent to the controller after the keyboard has slid out.">keyboardDidDisappear</a>:animated <a class="code" href="interface_t_t_view_controller.html#aba4e5deb922e5cab866fcdd43b844c3f" title="Sent to the controller after the keyboard has slid out.">withBounds</a>:bounds];
+<a name="l00264"></a>00264   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ab2f39149516a415573b5e387d6f5d9a9">layoutOverlayView</a>];
+<a name="l00265"></a>00265   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ac927553b72d563970659b3baa85a806d">layoutBannerView</a>];
+<a name="l00266"></a>00266 }
+<a name="l00267"></a>00267 
+<a name="l00269"></a>00269 <span class="comment">// TTModelViewController</span>
+<a name="l00270"></a>00270 
+<a name="l00271"></a><a class="code" href="interface_t_t_table_view_controller.html#ac5aa75d76e573387f9520ebb481edf86">00271</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#ac5aa75d76e573387f9520ebb481edf86" title="Begins a multi-stage update.">beginUpdates</a> {
+<a name="l00272"></a>00272   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a96f3ef31d4df7409e44a740ced1d91f4" title="Begins a multi-stage update.">beginUpdates</a>];
+<a name="l00273"></a>00273   [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> beginUpdates];
+<a name="l00274"></a>00274 }
+<a name="l00275"></a>00275 
+<a name="l00276"></a><a class="code" href="interface_t_t_table_view_controller.html#a93b2b782c5ffab0cebf27243da76676e">00276</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a93b2b782c5ffab0cebf27243da76676e" title="Ends a multi-stage model update and updates the view to reflect the model.">endUpdates</a> {
+<a name="l00277"></a>00277   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a54488637f89a309a5de88123257b73bc" title="Ends a multi-stage model update and updates the view to reflect the model.">endUpdates</a>];
+<a name="l00278"></a>00278   [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> endUpdates];
+<a name="l00279"></a>00279 }
+<a name="l00280"></a>00280 
+<a name="l00281"></a><a class="code" href="interface_t_t_table_view_controller.html#ad0b5aced10219b8c722efeead6b4321f">00281</a> - (BOOL)<a class="code" href="interface_t_t_table_view_controller.html#ad0b5aced10219b8c722efeead6b4321f" title="Tests if it is possible to show the model.">canShowModel</a> {
+<a name="l00282"></a>00282   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(numberOfSectionsInTableView:)]) {
+<a name="l00283"></a>00283     NSInteger numberOfSections = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> numberOfSectionsInTableView:_tableView];
+<a name="l00284"></a>00284     <span class="keywordflow">if</span> (!numberOfSections) {
+<a name="l00285"></a>00285       <span class="keywordflow">return</span> NO;
+<a name="l00286"></a>00286     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (numberOfSections == 1) {
+<a name="l00287"></a>00287       NSInteger numberOfRows = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableView:_tableView numberOfRowsInSection:0];
+<a name="l00288"></a>00288       <span class="keywordflow">return</span> numberOfRows &gt; 0;
+<a name="l00289"></a>00289     } <span class="keywordflow">else</span> {
+<a name="l00290"></a>00290       <span class="keywordflow">return</span> YES;
+<a name="l00291"></a>00291     }
+<a name="l00292"></a>00292   } <span class="keywordflow">else</span> {
+<a name="l00293"></a>00293     NSInteger numberOfRows = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableView:_tableView numberOfRowsInSection:0];
+<a name="l00294"></a>00294     <span class="keywordflow">return</span> numberOfRows &gt; 0;
+<a name="l00295"></a>00295   }
+<a name="l00296"></a>00296 }
+<a name="l00297"></a>00297 
+<a name="l00298"></a><a class="code" href="interface_t_t_table_view_controller.html#aca35e99278a8cf3294cd1f56db09fd3f">00298</a> - (void)didLoadModel:(BOOL)firstTime {
+<a name="l00299"></a>00299   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a358624f7a1dd93c7ae7d627d76a83505" title="Called after the model has loaded, just before it is to be displayed.">didLoadModel</a>:firstTime];
+<a name="l00300"></a>00300   [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableViewDidLoadModel:_tableView];
+<a name="l00301"></a>00301 }
+<a name="l00302"></a>00302 
+<a name="l00303"></a><a class="code" href="interface_t_t_table_view_controller.html#aadbf2cb01cfefffe37925497269d4918">00303</a> - (void)didShowModel:(BOOL)firstTime {
+<a name="l00304"></a>00304   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a23aecc1df4ed6e754be83644b8b3e7a4" title="Called just after a model has been loaded and displayed.">didShowModel</a>:firstTime];
+<a name="l00305"></a>00305   <span class="keywordflow">if</span> (firstTime) {
+<a name="l00306"></a>00306     [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> flashScrollIndicators];
+<a name="l00307"></a>00307   }
+<a name="l00308"></a>00308 }
+<a name="l00309"></a>00309 
+<a name="l00310"></a><a class="code" href="interface_t_t_table_view_controller.html#af520d9c82ae227132043d6b81bf6554a">00310</a> - (void)showModel:(BOOL)show {
+<a name="l00311"></a>00311   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
+<a name="l00312"></a>00312   <span class="keywordflow">if</span> (show) {
+<a name="l00313"></a>00313     [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a7a604dae0428d98594c691a5b181c974">updateTableDelegate</a>];
+<a name="l00314"></a>00314     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>;
+<a name="l00315"></a>00315   } <span class="keywordflow">else</span> {
+<a name="l00316"></a>00316     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
+<a name="l00317"></a>00317   }
+<a name="l00318"></a>00318   [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00319"></a>00319 }
+<a name="l00320"></a>00320 
+<a name="l00321"></a><a class="code" href="interface_t_t_table_view_controller.html#a9ba4bb9f47ff8ca566b81606b2df81af">00321</a> - (void)showLoading:(BOOL)show {
+<a name="l00322"></a>00322   <span class="keywordflow">if</span> (show) {
+<a name="l00323"></a>00323     <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoaded || ![<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ad0b5aced10219b8c722efeead6b4321f" title="Tests if it is possible to show the model.">canShowModel</a>]) {
+<a name="l00324"></a>00324       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* title = <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>
+<a name="l00325"></a>00325                         ? [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> titleForLoading:NO]
+<a name="l00326"></a>00326                         : [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a9adc9ac4633bc46c8ac5e8191573cfd1">defaultTitleForLoading</a>];
+<a name="l00327"></a>00327       <span class="keywordflow">if</span> (title.length) {
+<a name="l00328"></a>00328         <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>* label = [[[<a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> alloc] initWithStyle:TTActivityLabelStyleWhiteBox]
+<a name="l00329"></a>00329                                     autorelease];
+<a name="l00330"></a>00330         label.<a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">text</a> = title;
+<a name="l00331"></a>00331         label.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
+<a name="l00332"></a>00332         <span class="keyword">self</span>.loadingView = label;
+<a name="l00333"></a>00333       }
+<a name="l00334"></a>00334     }
+<a name="l00335"></a>00335   } <span class="keywordflow">else</span> {
+<a name="l00336"></a>00336     <span class="keyword">self</span>.loadingView = nil;
+<a name="l00337"></a>00337   }
+<a name="l00338"></a>00338 }
+<a name="l00339"></a>00339 
+<a name="l00340"></a><a class="code" href="interface_t_t_table_view_controller.html#a9790ac45fbb46318becd11a6e3acb82e">00340</a> - (void)showError:(BOOL)show {
+<a name="l00341"></a>00341   <span class="keywordflow">if</span> (show) {
+<a name="l00342"></a>00342     <span class="keywordflow">if</span> (!<span class="keyword">self</span>.<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>.isLoaded || ![<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#ad0b5aced10219b8c722efeead6b4321f" title="Tests if it is possible to show the model.">canShowModel</a>]) {
+<a name="l00343"></a>00343       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* title = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> titleForError:_modelError];
+<a name="l00344"></a>00344       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* subtitle = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> subtitleForError:_modelError];
+<a name="l00345"></a>00345       <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> imageForError:_modelError];
+<a name="l00346"></a>00346       <span class="keywordflow">if</span> (title.length || subtitle.length || image) {
+<a name="l00347"></a>00347         <a class="code" href="interface_t_t_error_view.html">TTErrorView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a> = [[[<a class="code" href="interface_t_t_error_view.html">TTErrorView</a> alloc] initWithTitle:title
+<a name="l00348"></a>00348                                                        subtitle:subtitle
+<a name="l00349"></a>00349                                                        image:image] autorelease];
+<a name="l00350"></a>00350         errorView.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
+<a name="l00351"></a>00351         <span class="keyword">self</span>.errorView = errorView;
+<a name="l00352"></a>00352       } <span class="keywordflow">else</span> {
+<a name="l00353"></a>00353         <span class="keyword">self</span>.errorView = nil;
+<a name="l00354"></a>00354       }
+<a name="l00355"></a>00355       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
+<a name="l00356"></a>00356       [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00357"></a>00357     }
+<a name="l00358"></a>00358   } <span class="keywordflow">else</span> {
+<a name="l00359"></a>00359     <span class="keyword">self</span>.errorView = nil;
+<a name="l00360"></a>00360   }
+<a name="l00361"></a>00361 }
+<a name="l00362"></a>00362 
+<a name="l00363"></a><a class="code" href="interface_t_t_table_view_controller.html#ac745735c4e65fd600a9312142245404b">00363</a> - (void)showEmpty:(BOOL)show {
+<a name="l00364"></a>00364   <span class="keywordflow">if</span> (show) {
+<a name="l00365"></a>00365     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* title = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> titleForEmpty];
+<a name="l00366"></a>00366     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* subtitle = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> subtitleForEmpty];
+<a name="l00367"></a>00367     <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> imageForEmpty];
+<a name="l00368"></a>00368     <span class="keywordflow">if</span> (title.length || subtitle.length || image) {
+<a name="l00369"></a>00369       <a class="code" href="interface_t_t_error_view.html">TTErrorView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a398de68a1a8e63725481f415445348ee">errorView</a> = [[[<a class="code" href="interface_t_t_error_view.html">TTErrorView</a> alloc] initWithTitle:title
+<a name="l00370"></a>00370                                                      subtitle:subtitle
+<a name="l00371"></a>00371                                                      image:image] autorelease];
+<a name="l00372"></a>00372       errorView.backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor;
+<a name="l00373"></a>00373       <span class="keyword">self</span>.emptyView = errorView;
+<a name="l00374"></a>00374     } <span class="keywordflow">else</span> {
+<a name="l00375"></a>00375       <span class="keyword">self</span>.emptyView = nil;
+<a name="l00376"></a>00376     }
+<a name="l00377"></a>00377     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
+<a name="l00378"></a>00378     [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00379"></a>00379   } <span class="keywordflow">else</span> {
+<a name="l00380"></a>00380     <span class="keyword">self</span>.emptyView = nil;
+<a name="l00381"></a>00381   }
+<a name="l00382"></a>00382 }
+<a name="l00383"></a>00383 
+<a name="l00385"></a>00385 <span class="comment">// TTModelDelegate</span>
+<a name="l00386"></a>00386 
+<a name="l00387"></a><a class="code" href="interface_t_t_table_view_controller.html#af1ff703ff539096f3da3d1bd2318bfcb">00387</a> - (void)<a class="code" href="interface_t_t_model_view_controller.html#a61f1378a65641be5991cfb07d7f894e5">model</a>:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didUpdateObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00388"></a>00388   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00389"></a>00389     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
+<a name="l00390"></a>00390       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willUpdateObject:atIndexPath:)]) {
+<a name="l00391"></a>00391         NSIndexPath* newIndexPath = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableView:_tableView willUpdateObject:object
+<a name="l00392"></a>00392                                                  atIndexPath:indexPath];
+<a name="l00393"></a>00393         <span class="keywordflow">if</span> (newIndexPath) {
+<a name="l00394"></a>00394           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
+<a name="l00395"></a>00395             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;UPDATING SECTION AT %@&quot;</span>, newIndexPath);
+<a name="l00396"></a>00396             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
+<a name="l00397"></a>00397             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
 <a name="l00398"></a>00398                         withRowAnimation:UITableViewRowAnimationTop];
-<a name="l00399"></a>00399           }
-<a name="l00400"></a>00400           [<span class="keyword">self</span> invalidateView];
-<a name="l00401"></a>00401         } <span class="keywordflow">else</span> {
-<a name="l00402"></a>00402           [_tableView reloadData];
-<a name="l00403"></a>00403         }
-<a name="l00404"></a>00404       }
-<a name="l00405"></a>00405     } <span class="keywordflow">else</span> {
-<a name="l00406"></a>00406       [<span class="keyword">self</span> refresh];
-<a name="l00407"></a>00407     }
-<a name="l00408"></a>00408   }
-<a name="l00409"></a>00409 }
-<a name="l00410"></a>00410 
-<a name="l00411"></a>00411 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didInsertObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00412"></a>00412   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00413"></a>00413     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
-<a name="l00414"></a>00414       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willInsertObject:atIndexPath:)]) {
-<a name="l00415"></a>00415         NSIndexPath* newIndexPath = [_dataSource tableView:_tableView willInsertObject:object
-<a name="l00416"></a>00416                                                  atIndexPath:indexPath];
-<a name="l00417"></a>00417         <span class="keywordflow">if</span> (newIndexPath) {
-<a name="l00418"></a>00418           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
-<a name="l00419"></a>00419             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;INSERTING SECTION AT %@&quot;</span>, newIndexPath);
-<a name="l00420"></a>00420             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
-<a name="l00421"></a>00421             [_tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-<a name="l00422"></a>00422                         withRowAnimation:UITableViewRowAnimationTop];
-<a name="l00423"></a>00423           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
-<a name="l00424"></a>00424             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;INSERTING ROW AT %@&quot;</span>, newIndexPath);
-<a name="l00425"></a>00425             [_tableView insertRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00399"></a>00399           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
+<a name="l00400"></a>00400             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;UPDATING ROW AT %@&quot;</span>, newIndexPath);
+<a name="l00401"></a>00401             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00402"></a>00402                         withRowAnimation:UITableViewRowAnimationTop];
+<a name="l00403"></a>00403           }
+<a name="l00404"></a>00404           [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#aa035befabec5a8713ea9026f570ac5bd" title="Indicates that the model has changed and schedules the view to be updated to reflect...">invalidateView</a>];
+<a name="l00405"></a>00405         } <span class="keywordflow">else</span> {
+<a name="l00406"></a>00406           [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00407"></a>00407         }
+<a name="l00408"></a>00408       }
+<a name="l00409"></a>00409     } <span class="keywordflow">else</span> {
+<a name="l00410"></a>00410       [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00411"></a>00411     }
+<a name="l00412"></a>00412   }
+<a name="l00413"></a>00413 }
+<a name="l00414"></a>00414 
+<a name="l00415"></a><a class="code" href="interface_t_t_table_view_controller.html#a3f631bca76cae8a89bfa8d3fdd7e4ab0">00415</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didInsertObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00416"></a>00416   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00417"></a>00417     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
+<a name="l00418"></a>00418       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willInsertObject:atIndexPath:)]) {
+<a name="l00419"></a>00419         NSIndexPath* newIndexPath = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableView:_tableView willInsertObject:object
+<a name="l00420"></a>00420                                                  atIndexPath:indexPath];
+<a name="l00421"></a>00421         <span class="keywordflow">if</span> (newIndexPath) {
+<a name="l00422"></a>00422           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
+<a name="l00423"></a>00423             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;INSERTING SECTION AT %@&quot;</span>, newIndexPath);
+<a name="l00424"></a>00424             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
+<a name="l00425"></a>00425             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
 <a name="l00426"></a>00426                         withRowAnimation:UITableViewRowAnimationTop];
-<a name="l00427"></a>00427             
-<a name="l00428"></a>00428             [_tableView scrollToRowAtIndexPath:newIndexPath
-<a name="l00429"></a>00429                         atScrollPosition:UITableViewScrollPositionNone animated:NO];
-<a name="l00430"></a>00430           }
-<a name="l00431"></a>00431           [<span class="keyword">self</span> invalidateView];
-<a name="l00432"></a>00432         } <span class="keywordflow">else</span> {
-<a name="l00433"></a>00433           [_tableView reloadData];
-<a name="l00434"></a>00434         }
-<a name="l00435"></a>00435       }
-<a name="l00436"></a>00436     } <span class="keywordflow">else</span> {
-<a name="l00437"></a>00437       [<span class="keyword">self</span> refresh];
-<a name="l00438"></a>00438     }
-<a name="l00439"></a>00439   }
-<a name="l00440"></a>00440 }
-<a name="l00441"></a>00441 
-<a name="l00442"></a>00442 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didDeleteObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00443"></a>00443   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00444"></a>00444     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
-<a name="l00445"></a>00445       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willRemoveObject:atIndexPath:)]) {
-<a name="l00446"></a>00446         NSIndexPath* newIndexPath = [_dataSource tableView:_tableView willRemoveObject:object
-<a name="l00447"></a>00447                                                  atIndexPath:indexPath];
-<a name="l00448"></a>00448         <span class="keywordflow">if</span> (newIndexPath) {
-<a name="l00449"></a>00449           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
-<a name="l00450"></a>00450             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;DELETING SECTION AT %@&quot;</span>, newIndexPath);
-<a name="l00451"></a>00451             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
-<a name="l00452"></a>00452             [_tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-<a name="l00453"></a>00453                         withRowAnimation:UITableViewRowAnimationLeft];
-<a name="l00454"></a>00454           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
-<a name="l00455"></a>00455             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;DELETING ROW AT %@&quot;</span>, newIndexPath);
-<a name="l00456"></a>00456             [_tableView deleteRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00427"></a>00427           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
+<a name="l00428"></a>00428             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;INSERTING ROW AT %@&quot;</span>, newIndexPath);
+<a name="l00429"></a>00429             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> insertRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00430"></a>00430                         withRowAnimation:UITableViewRowAnimationTop];
+<a name="l00431"></a>00431             
+<a name="l00432"></a>00432             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> scrollToRowAtIndexPath:newIndexPath
+<a name="l00433"></a>00433                         atScrollPosition:UITableViewScrollPositionNone animated:NO];
+<a name="l00434"></a>00434           }
+<a name="l00435"></a>00435           [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#aa035befabec5a8713ea9026f570ac5bd" title="Indicates that the model has changed and schedules the view to be updated to reflect...">invalidateView</a>];
+<a name="l00436"></a>00436         } <span class="keywordflow">else</span> {
+<a name="l00437"></a>00437           [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00438"></a>00438         }
+<a name="l00439"></a>00439       }
+<a name="l00440"></a>00440     } <span class="keywordflow">else</span> {
+<a name="l00441"></a>00441       [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00442"></a>00442     }
+<a name="l00443"></a>00443   }
+<a name="l00444"></a>00444 }
+<a name="l00445"></a>00445 
+<a name="l00446"></a><a class="code" href="interface_t_t_table_view_controller.html#a6a08edd8c906863a86eb460f0ca8f148">00446</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didDeleteObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00447"></a>00447   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00448"></a>00448     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_view_controller.html#a12bc306ea6492436e10d3ff7d9f5a5e5">_isViewAppearing</a> &amp;&amp; <a class="code" href="interface_t_t_model_view_controller.html#add735ec571606aa7a79dfc3d36930cd9">_flags</a>.isShowingModel) {
+<a name="l00449"></a>00449       <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> respondsToSelector:<span class="keyword">@selector</span>(<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a>:willRemoveObject:atIndexPath:)]) {
+<a name="l00450"></a>00450         NSIndexPath* newIndexPath = [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> tableView:_tableView willRemoveObject:object
+<a name="l00451"></a>00451                                                  atIndexPath:indexPath];
+<a name="l00452"></a>00452         <span class="keywordflow">if</span> (newIndexPath) {
+<a name="l00453"></a>00453           <span class="keywordflow">if</span> (newIndexPath.length == 1) {
+<a name="l00454"></a>00454             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;DELETING SECTION AT %@&quot;</span>, newIndexPath);
+<a name="l00455"></a>00455             NSInteger sectionIndex = [newIndexPath indexAtPosition:0];
+<a name="l00456"></a>00456             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
 <a name="l00457"></a>00457                         withRowAnimation:UITableViewRowAnimationLeft];
-<a name="l00458"></a>00458           }
-<a name="l00459"></a>00459           [<span class="keyword">self</span> invalidateView];
-<a name="l00460"></a>00460         } <span class="keywordflow">else</span> {
-<a name="l00461"></a>00461           [_tableView reloadData];
-<a name="l00462"></a>00462         }
-<a name="l00463"></a>00463       }
-<a name="l00464"></a>00464     } <span class="keywordflow">else</span> {
-<a name="l00465"></a>00465       [<span class="keyword">self</span> refresh];
-<a name="l00466"></a>00466     }
-<a name="l00467"></a>00467   }
-<a name="l00468"></a>00468 }
-<a name="l00469"></a>00469 
-<a name="l00471"></a>00471 <span class="comment">// public</span>
-<a name="l00472"></a>00472 
-<a name="l00473"></a>00473 - (<a class="code" href="class_u_i_table_view.html">UITableView</a>*)<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> {
-<a name="l00474"></a>00474   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
-<a name="l00475"></a>00475     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = [[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
-<a name="l00476"></a>00476     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.autoresizingMask =  UIViewAutoresizingFlexibleWidth
-<a name="l00477"></a>00477                                    | UIViewAutoresizingFlexibleHeight;
-<a name="l00478"></a>00478 
-<a name="l00479"></a>00479     <a class="code" href="class_u_i_color.html">UIColor</a>* backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a> == UITableViewStyleGrouped
-<a name="l00480"></a>00480       ? <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableGroupedBackgroundColor)
-<a name="l00481"></a>00481       : TTSTYLEVAR(tablePlainBackgroundColor);
-<a name="l00482"></a>00482     <span class="keywordflow">if</span> (backgroundColor) {
-<a name="l00483"></a>00483       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor = backgroundColor;
-<a name="l00484"></a>00484       <span class="keyword">self</span>.view.backgroundColor = backgroundColor;
-<a name="l00485"></a>00485     }
-<a name="l00486"></a>00486     [<span class="keyword">self</span>.view addSubview:_tableView];
-<a name="l00487"></a>00487   }
-<a name="l00488"></a>00488   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
-<a name="l00489"></a>00489 }
-<a name="l00490"></a>00490 
-<a name="l00491"></a>00491 - (void)setTableView:(<a class="code" href="class_u_i_table_view.html">UITableView</a>*)tableView {
-<a name="l00492"></a>00492   <span class="keywordflow">if</span> (tableView != <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
-<a name="l00493"></a>00493     [_tableView release];
-<a name="l00494"></a>00494     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = [tableView retain];
-<a name="l00495"></a>00495     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
-<a name="l00496"></a>00496       <span class="keyword">self</span>.tableBannerView = nil;
-<a name="l00497"></a>00497       <span class="keyword">self</span>.tableOverlayView = nil;
-<a name="l00498"></a>00498     }
-<a name="l00499"></a>00499   }
-<a name="l00500"></a>00500 }
-<a name="l00501"></a>00501 
-<a name="l00502"></a>00502 - (void)setTableBannerView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableBannerView {
-<a name="l00503"></a>00503   [<span class="keyword">self</span> setTableBannerView:tableBannerView animated:YES];
+<a name="l00458"></a>00458           } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newIndexPath.length == 2) {
+<a name="l00459"></a>00459             <a class="code" href="_t_t_debug_8h.html#a5b29f89eb9e0ad2ad2227ac15bf753db">TTDCONDITIONLOG</a>(<a class="code" href="_t_t_debug_flags_8h.html#a11f9e0b6ee334bb593c4c17d7d13cd2e">TTDFLAG_TABLEVIEWMODIFICATIONS</a>, <span class="stringliteral">@&quot;DELETING ROW AT %@&quot;</span>, newIndexPath);
+<a name="l00460"></a>00460             [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> deleteRowsAtIndexPaths:[<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> arrayWithObject:newIndexPath]
+<a name="l00461"></a>00461                         withRowAnimation:UITableViewRowAnimationLeft];
+<a name="l00462"></a>00462           }
+<a name="l00463"></a>00463           [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#aa035befabec5a8713ea9026f570ac5bd" title="Indicates that the model has changed and schedules the view to be updated to reflect...">invalidateView</a>];
+<a name="l00464"></a>00464         } <span class="keywordflow">else</span> {
+<a name="l00465"></a>00465           [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> reloadData];
+<a name="l00466"></a>00466         }
+<a name="l00467"></a>00467       }
+<a name="l00468"></a>00468     } <span class="keywordflow">else</span> {
+<a name="l00469"></a>00469       [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00470"></a>00470     }
+<a name="l00471"></a>00471   }
+<a name="l00472"></a>00472 }
+<a name="l00473"></a>00473 
+<a name="l00475"></a>00475 <span class="comment">// public</span>
+<a name="l00476"></a>00476 
+<a name="l00477"></a>00477 - (<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)<a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">tableView</a> {
+<a name="l00478"></a>00478   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
+<a name="l00479"></a>00479     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = [[<a class="code" href="interface_t_t_table_view.html" title="TTTableView enhances UITableView to provide support for various Three20 services...">TTTableView</a> alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
+<a name="l00480"></a>00480     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.autoresizingMask =  UIViewAutoresizingFlexibleWidth
+<a name="l00481"></a>00481                                    | UIViewAutoresizingFlexibleHeight;
+<a name="l00482"></a>00482 
+<a name="l00483"></a>00483     <a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>* backgroundColor = <a class="code" href="interface_t_t_table_view_controller.html#ae00662b33fc372e0f5688e32b1c42fab">_tableViewStyle</a> == UITableViewStyleGrouped
+<a name="l00484"></a>00484       ? <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableGroupedBackgroundColor)
+<a name="l00485"></a>00485       : TTSTYLEVAR(tablePlainBackgroundColor);
+<a name="l00486"></a>00486     <span class="keywordflow">if</span> (backgroundColor) {
+<a name="l00487"></a>00487       <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.backgroundColor = backgroundColor;
+<a name="l00488"></a>00488       <span class="keyword">self</span>.view.backgroundColor = backgroundColor;
+<a name="l00489"></a>00489     }
+<a name="l00490"></a>00490     [<span class="keyword">self</span>.view addSubview:_tableView];
+<a name="l00491"></a>00491   }
+<a name="l00492"></a>00492   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
+<a name="l00493"></a>00493 }
+<a name="l00494"></a>00494 
+<a name="l00495"></a><a class="code" href="interface_t_t_table_view_controller.html#ab4d63f8a3a6afea4347c2cbbd56c3bfd">00495</a> - (void)setTableView:(<a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>*)tableView {
+<a name="l00496"></a>00496   <span class="keywordflow">if</span> (tableView != <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
+<a name="l00497"></a>00497     [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> release];
+<a name="l00498"></a>00498     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> = [tableView retain];
+<a name="l00499"></a>00499     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>) {
+<a name="l00500"></a>00500       <span class="keyword">self</span>.tableBannerView = nil;
+<a name="l00501"></a>00501       <span class="keyword">self</span>.tableOverlayView = nil;
+<a name="l00502"></a>00502     }
+<a name="l00503"></a>00503   }
 <a name="l00504"></a>00504 }
 <a name="l00505"></a>00505 
-<a name="l00506"></a><a class="code" href="interface_t_t_table_view_controller.html#a9a7af8bd929a0ccdc82a5587b6ae2a1e">00506</a> - (void)setTableBannerView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableBannerView animated:(BOOL)animated {
-<a name="l00507"></a>00507   <a class="code" href="_t_t_global_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_table_view_controller.html#afde4345f33d69d7c700206b022b0e691">_bannerTimer</a>);
-<a name="l00508"></a>00508   <span class="keywordflow">if</span> (tableBannerView != <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
-<a name="l00509"></a>00509     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
-<a name="l00510"></a>00510       <span class="keywordflow">if</span> (animated) {
-<a name="l00511"></a>00511         [<span class="keyword">self</span> fadeOutView:_tableBannerView];
-<a name="l00512"></a>00512       } <span class="keywordflow">else</span> {
-<a name="l00513"></a>00513         [<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> removeFromSuperview];
-<a name="l00514"></a>00514       }
-<a name="l00515"></a>00515     }
-<a name="l00516"></a>00516     
-<a name="l00517"></a>00517     [<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> release];
-<a name="l00518"></a>00518     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> = [tableBannerView retain];
-<a name="l00519"></a>00519     
-<a name="l00520"></a>00520     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
-<a name="l00521"></a>00521       <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940" title="The rectangle where the banner view should appear.">rectForBannerView</a>];
-<a name="l00522"></a>00522       <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.userInteractionEnabled = NO;
-<a name="l00523"></a>00523       [<span class="keyword">self</span> addToOverlayView:_tableBannerView];
-<a name="l00524"></a>00524 
-<a name="l00525"></a>00525       <span class="keywordflow">if</span> (animated) {
-<a name="l00526"></a>00526         <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.top += <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>;
-<a name="l00527"></a>00527         [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00528"></a>00528         [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00529"></a>00529         [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationCurve:UIViewAnimationCurveEaseOut];
-<a name="l00530"></a>00530         <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.top -= <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>;
-<a name="l00531"></a>00531         [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00532"></a>00532       }
-<a name="l00533"></a>00533     }
-<a name="l00534"></a>00534   }
-<a name="l00535"></a>00535 }
-<a name="l00536"></a>00536 
-<a name="l00537"></a>00537 - (void)setTableOverlayView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableOverlayView animated:(BOOL)animated {
-<a name="l00538"></a>00538   <span class="keywordflow">if</span> (tableOverlayView != <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
-<a name="l00539"></a>00539     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
-<a name="l00540"></a>00540       <span class="keywordflow">if</span> (animated) {
-<a name="l00541"></a>00541         [<span class="keyword">self</span> fadeOutView:_tableOverlayView];
-<a name="l00542"></a>00542       } <span class="keywordflow">else</span> {
-<a name="l00543"></a>00543         [_tableOverlayView removeFromSuperview];
-<a name="l00544"></a>00544       }
-<a name="l00545"></a>00545     }
-<a name="l00546"></a>00546 
-<a name="l00547"></a>00547     [_tableOverlayView release];
-<a name="l00548"></a>00548     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = [tableOverlayView retain];
-<a name="l00549"></a>00549 
-<a name="l00550"></a>00550     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
-<a name="l00551"></a>00551       <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.frame = [<span class="keyword">self</span> rectForOverlayView];
-<a name="l00552"></a>00552       [<span class="keyword">self</span> addToOverlayView:_tableOverlayView];
-<a name="l00553"></a>00553     }
-<a name="l00554"></a>00554 
-<a name="l00555"></a>00555     <span class="comment">// XXXjoe There seem to be cases where this gets left disable - must investigate</span>
-<a name="l00556"></a>00556     <span class="comment">//_tableView.scrollEnabled = !_tableOverlayView;</span>
-<a name="l00557"></a>00557   }
-<a name="l00558"></a>00558 }
-<a name="l00559"></a>00559 
-<a name="l00560"></a>00560 - (void)setDataSource:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt;)dataSource {
-<a name="l00561"></a>00561   <span class="keywordflow">if</span> (dataSource != <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>) {
-<a name="l00562"></a>00562     [_dataSource release];
-<a name="l00563"></a>00563     <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> = [dataSource retain];
-<a name="l00564"></a>00564     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
-<a name="l00565"></a>00565 
-<a name="l00566"></a>00566     <span class="keyword">self</span>.model = dataSource.<a class="code" href="protocol_t_t_table_view_data_source-p.html#aeb1d63fdb51ebb1608817e3d43a64ab6" title="Optional method to return a model object to delegate the TTModel protocol to.">model</a>;
-<a name="l00567"></a>00567   }
-<a name="l00568"></a>00568 }
+<a name="l00506"></a><a class="code" href="interface_t_t_table_view_controller.html#a2ed4b79c6e7235ebd8357ab33d8a0f8d">00506</a> - (void)setTableBannerView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableBannerView {
+<a name="l00507"></a>00507   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a9a7af8bd929a0ccdc82a5587b6ae2a1e" title="Sets the view that is displayed at the bottom of the table view with an optional...">setTableBannerView</a>:tableBannerView <a class="code" href="interface_t_t_table_view_controller.html#a9a7af8bd929a0ccdc82a5587b6ae2a1e" title="Sets the view that is displayed at the bottom of the table view with an optional...">animated</a>:YES];
+<a name="l00508"></a>00508 }
+<a name="l00509"></a>00509 
+<a name="l00510"></a><a class="code" href="interface_t_t_table_view_controller.html#a9a7af8bd929a0ccdc82a5587b6ae2a1e">00510</a> - (void)setTableBannerView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableBannerView animated:(BOOL)animated {
+<a name="l00511"></a>00511   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(<a class="code" href="interface_t_t_table_view_controller.html#afde4345f33d69d7c700206b022b0e691">_bannerTimer</a>);
+<a name="l00512"></a>00512   <span class="keywordflow">if</span> (tableBannerView != <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
+<a name="l00513"></a>00513     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
+<a name="l00514"></a>00514       <span class="keywordflow">if</span> (animated) {
+<a name="l00515"></a>00515         [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a861b515993e194ec9de257ba0ce64821">fadeOutView</a>:_tableBannerView];
+<a name="l00516"></a>00516       } <span class="keywordflow">else</span> {
+<a name="l00517"></a>00517         [<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> removeFromSuperview];
+<a name="l00518"></a>00518       }
+<a name="l00519"></a>00519     }
+<a name="l00520"></a>00520     
+<a name="l00521"></a>00521     [<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> release];
+<a name="l00522"></a>00522     <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a> = [tableBannerView retain];
+<a name="l00523"></a>00523     
+<a name="l00524"></a>00524     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>) {
+<a name="l00525"></a>00525       <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940" title="The rectangle where the banner view should appear.">rectForBannerView</a>];
+<a name="l00526"></a>00526       <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.userInteractionEnabled = NO;
+<a name="l00527"></a>00527       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">addToOverlayView</a>:_tableBannerView];
+<a name="l00528"></a>00528 
+<a name="l00529"></a>00529       <span class="keywordflow">if</span> (animated) {
+<a name="l00530"></a>00530         <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> += <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>;
+<a name="l00531"></a>00531         [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00532"></a>00532         [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00533"></a>00533         [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationCurve:UIViewAnimationCurveEaseOut];
+<a name="l00534"></a>00534         <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>.<a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> -= <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>;
+<a name="l00535"></a>00535         [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00536"></a>00536       }
+<a name="l00537"></a>00537     }
+<a name="l00538"></a>00538   }
+<a name="l00539"></a>00539 }
+<a name="l00540"></a>00540 
+<a name="l00541"></a><a class="code" href="interface_t_t_table_view_controller.html#a4e11ad25399a59d9677a42c715eb5693">00541</a> - (void)setTableOverlayView:(<a class="code" href="class_u_i_view.html">UIView</a>*)tableOverlayView animated:(BOOL)animated {
+<a name="l00542"></a>00542   <span class="keywordflow">if</span> (tableOverlayView != <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
+<a name="l00543"></a>00543     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
+<a name="l00544"></a>00544       <span class="keywordflow">if</span> (animated) {
+<a name="l00545"></a>00545         [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a861b515993e194ec9de257ba0ce64821">fadeOutView</a>:_tableOverlayView];
+<a name="l00546"></a>00546       } <span class="keywordflow">else</span> {
+<a name="l00547"></a>00547         [<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> removeFromSuperview];
+<a name="l00548"></a>00548       }
+<a name="l00549"></a>00549     }
+<a name="l00550"></a>00550 
+<a name="l00551"></a>00551     [<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> release];
+<a name="l00552"></a>00552     <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a> = [tableOverlayView retain];
+<a name="l00553"></a>00553 
+<a name="l00554"></a>00554     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>) {
+<a name="l00555"></a>00555       <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>.frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707" title="The rectangle where the overlay view should appear.">rectForOverlayView</a>];
+<a name="l00556"></a>00556       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">addToOverlayView</a>:_tableOverlayView];
+<a name="l00557"></a>00557     }
+<a name="l00558"></a>00558 
+<a name="l00559"></a>00559     <span class="comment">// XXXjoe There seem to be cases where this gets left disable - must investigate</span>
+<a name="l00560"></a>00560     <span class="comment">//_tableView.scrollEnabled = !_tableOverlayView;</span>
+<a name="l00561"></a>00561   }
+<a name="l00562"></a>00562 }
+<a name="l00563"></a>00563 
+<a name="l00564"></a><a class="code" href="interface_t_t_table_view_controller.html#a40ebc94fe0af0258a2634b6cd82937b2">00564</a> - (void)setDataSource:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>&gt;)dataSource {
+<a name="l00565"></a>00565   <span class="keywordflow">if</span> (dataSource != <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a>) {
+<a name="l00566"></a>00566     [<a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> release];
+<a name="l00567"></a>00567     <a class="code" href="interface_t_t_table_view_controller.html#a3832653c4449d23222e68cdfa62198d0">_dataSource</a> = [dataSource retain];
+<a name="l00568"></a>00568     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.dataSource = nil;
 <a name="l00569"></a>00569 
-<a name="l00570"></a>00570 - (void)setVariableHeightRows:(BOOL)variableHeightRows {
-<a name="l00571"></a>00571   <span class="keywordflow">if</span> (variableHeightRows != <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>) {
-<a name="l00572"></a>00572     <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a> = variableHeightRows;
-<a name="l00573"></a>00573     
-<a name="l00574"></a>00574     <span class="comment">// Force the delegate to be re-created so that it supports the right kind of row measurement</span>
-<a name="l00575"></a>00575     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
-<a name="l00576"></a>00576   }
-<a name="l00577"></a>00577 }
-<a name="l00578"></a>00578 
-<a name="l00579"></a>00579 - (void)setLoadingView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00580"></a>00580   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
-<a name="l00581"></a>00581     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
-<a name="l00582"></a>00582       [_loadingView removeFromSuperview];
-<a name="l00583"></a>00583       <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
-<a name="l00584"></a>00584     }
-<a name="l00585"></a>00585     <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> = [view retain];
-<a name="l00586"></a>00586     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
-<a name="l00587"></a>00587       [<span class="keyword">self</span> addToOverlayView:_loadingView];
-<a name="l00588"></a>00588     } <span class="keywordflow">else</span> {
-<a name="l00589"></a>00589       [<span class="keyword">self</span> resetOverlayView];
-<a name="l00590"></a>00590     }
-<a name="l00591"></a>00591   }
-<a name="l00592"></a>00592 }
-<a name="l00593"></a>00593 
-<a name="l00594"></a>00594 - (void)setErrorView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00595"></a>00595   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
-<a name="l00596"></a>00596     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
-<a name="l00597"></a>00597       [_errorView removeFromSuperview];
-<a name="l00598"></a>00598       <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
-<a name="l00599"></a>00599     }
-<a name="l00600"></a>00600     <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> = [view retain];
-<a name="l00601"></a>00601     
-<a name="l00602"></a>00602     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
-<a name="l00603"></a>00603       [<span class="keyword">self</span> addToOverlayView:_errorView];
-<a name="l00604"></a>00604     } <span class="keywordflow">else</span> {
-<a name="l00605"></a>00605       [<span class="keyword">self</span> resetOverlayView];
-<a name="l00606"></a>00606     }
-<a name="l00607"></a>00607   }
-<a name="l00608"></a>00608 }
-<a name="l00609"></a>00609 
-<a name="l00610"></a>00610 - (void)setEmptyView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
-<a name="l00611"></a>00611   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
-<a name="l00612"></a>00612     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
-<a name="l00613"></a>00613       [_emptyView removeFromSuperview];
-<a name="l00614"></a>00614       <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
-<a name="l00615"></a>00615     }
-<a name="l00616"></a>00616     <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> = [view retain];
-<a name="l00617"></a>00617     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
-<a name="l00618"></a>00618       [<span class="keyword">self</span> addToOverlayView:_emptyView];
-<a name="l00619"></a>00619     } <span class="keywordflow">else</span> {
-<a name="l00620"></a>00620       [<span class="keyword">self</span> resetOverlayView];
-<a name="l00621"></a>00621     }
-<a name="l00622"></a>00622   }
-<a name="l00623"></a>00623 }
-<a name="l00624"></a>00624 
-<a name="l00625"></a><a class="code" href="interface_t_t_table_view_controller.html#a52626a5ea529445ca0edf79f1c3d9dbb">00625</a> - (id&lt;UITableViewDelegate&gt;)<a class="code" href="interface_t_t_table_view_controller.html#a52626a5ea529445ca0edf79f1c3d9dbb" title="Creates an delegate for the table view.">createDelegate</a> {
-<a name="l00626"></a>00626   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>) {
-<a name="l00627"></a>00627     <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_table_view_var_height_delegate.html">TTTableViewVarHeightDelegate</a> alloc] initWithController:self] autorelease];
-<a name="l00628"></a>00628   } <span class="keywordflow">else</span> {
-<a name="l00629"></a>00629     <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_table_view_delegate.html" title="A default table view delegate implementation.">TTTableViewDelegate</a> alloc] initWithController:self] autorelease];
-<a name="l00630"></a>00630   }
-<a name="l00631"></a>00631 }
-<a name="l00632"></a>00632 
-<a name="l00633"></a><a class="code" href="interface_t_t_table_view_controller.html#aa77fee5d10c946b7e22025d92f3d0b2c">00633</a> - (void)showMenu:(<a class="code" href="class_u_i_view.html">UIView</a>*)view forCell:(UITableViewCell*)cell animated:(BOOL)animated {
-<a name="l00634"></a>00634   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
-<a name="l00635"></a>00635 
-<a name="l00636"></a>00636   <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> = [view retain];
-<a name="l00637"></a>00637   <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a> = [cell retain];
-<a name="l00638"></a>00638   
-<a name="l00639"></a>00639   <span class="comment">// Insert the cell below all content subviews</span>
-<a name="l00640"></a>00640   [<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView insertSubview:_menuView atIndex:0];
-<a name="l00641"></a>00641 
-<a name="l00642"></a>00642   <span class="keywordflow">if</span> (animated) {
-<a name="l00643"></a>00643     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00644"></a>00644     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
-<a name="l00645"></a>00645     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationCurve:UIViewAnimationCurveEaseIn];
-<a name="l00646"></a>00646   }
-<a name="l00647"></a>00647 
-<a name="l00648"></a>00648   <span class="comment">// Move each content subview down, revealing the menu</span>
-<a name="l00649"></a>00649   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view in <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.subviews) {
-<a name="l00650"></a>00650     <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
-<a name="l00651"></a>00651       view.left -= <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.width;
-<a name="l00652"></a>00652     }
-<a name="l00653"></a>00653   }
-<a name="l00654"></a>00654   
-<a name="l00655"></a>00655   <span class="keywordflow">if</span> (animated) {
-<a name="l00656"></a>00656     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00570"></a>00570     <span class="keyword">self</span>.model = dataSource.<a class="code" href="interface_t_t_table_view_data_source.html#ac23074b3bf26915a5d71184750187725">model</a>;
+<a name="l00571"></a>00571   }
+<a name="l00572"></a>00572 }
+<a name="l00573"></a>00573 
+<a name="l00574"></a><a class="code" href="interface_t_t_table_view_controller.html#a2f430887909f97e0b612ac064955f92c">00574</a> - (void)setVariableHeightRows:(BOOL)variableHeightRows {
+<a name="l00575"></a>00575   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a835ee43621a28a17cce38e2914ba9d98" title="Indicates if the table should support non-fixed row heights.">variableHeightRows</a> != <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>) {
+<a name="l00576"></a>00576     <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a> = <a class="code" href="interface_t_t_table_view_controller.html#a835ee43621a28a17cce38e2914ba9d98" title="Indicates if the table should support non-fixed row heights.">variableHeightRows</a>;
+<a name="l00577"></a>00577     
+<a name="l00578"></a>00578     <span class="comment">// Force the delegate to be re-created so that it supports the right kind of row measurement</span>
+<a name="l00579"></a>00579     <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>.delegate = nil;
+<a name="l00580"></a>00580   }
+<a name="l00581"></a>00581 }
+<a name="l00582"></a>00582 
+<a name="l00583"></a><a class="code" href="interface_t_t_table_view_controller.html#a15d45ace654ae7ce4189b10a44f89938">00583</a> - (void)setLoadingView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00584"></a>00584   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
+<a name="l00585"></a>00585     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
+<a name="l00586"></a>00586       [<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> removeFromSuperview];
+<a name="l00587"></a>00587       <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>);
+<a name="l00588"></a>00588     }
+<a name="l00589"></a>00589     <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a> = [view retain];
+<a name="l00590"></a>00590     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>) {
+<a name="l00591"></a>00591       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">addToOverlayView</a>:_loadingView];
+<a name="l00592"></a>00592     } <span class="keywordflow">else</span> {
+<a name="l00593"></a>00593       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a0256139991177464fb43b198a4267534">resetOverlayView</a>];
+<a name="l00594"></a>00594     }
+<a name="l00595"></a>00595   }
+<a name="l00596"></a>00596 }
+<a name="l00597"></a>00597 
+<a name="l00598"></a><a class="code" href="interface_t_t_table_view_controller.html#a474503716fe7f141ef15828a8f64e327">00598</a> - (void)setErrorView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00599"></a>00599   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
+<a name="l00600"></a>00600     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
+<a name="l00601"></a>00601       [<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> removeFromSuperview];
+<a name="l00602"></a>00602       <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>);
+<a name="l00603"></a>00603     }
+<a name="l00604"></a>00604     <a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a> = [view retain];
+<a name="l00605"></a>00605     
+<a name="l00606"></a>00606     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a693e500d595a6a2d9b038cbfe268f4cf">_errorView</a>) {
+<a name="l00607"></a>00607       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">addToOverlayView</a>:_errorView];
+<a name="l00608"></a>00608     } <span class="keywordflow">else</span> {
+<a name="l00609"></a>00609       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a0256139991177464fb43b198a4267534">resetOverlayView</a>];
+<a name="l00610"></a>00610     }
+<a name="l00611"></a>00611   }
+<a name="l00612"></a>00612 }
+<a name="l00613"></a>00613 
+<a name="l00614"></a><a class="code" href="interface_t_t_table_view_controller.html#a940e666fafd0e51a3ded6931b9049668">00614</a> - (void)setEmptyView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view {
+<a name="l00615"></a>00615   <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
+<a name="l00616"></a>00616     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
+<a name="l00617"></a>00617       [<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> removeFromSuperview];
+<a name="l00618"></a>00618       <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>);
+<a name="l00619"></a>00619     }
+<a name="l00620"></a>00620     <a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a> = [view retain];
+<a name="l00621"></a>00621     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a13753ab4015c65ab7b1bae015b99c1aa">_emptyView</a>) {
+<a name="l00622"></a>00622       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a2dd95127923b8a25beaefc513a2dc18e">addToOverlayView</a>:_emptyView];
+<a name="l00623"></a>00623     } <span class="keywordflow">else</span> {
+<a name="l00624"></a>00624       [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a0256139991177464fb43b198a4267534">resetOverlayView</a>];
+<a name="l00625"></a>00625     }
+<a name="l00626"></a>00626   }
+<a name="l00627"></a>00627 }
+<a name="l00628"></a>00628 
+<a name="l00629"></a><a class="code" href="interface_t_t_table_view_controller.html#a52626a5ea529445ca0edf79f1c3d9dbb">00629</a> - (id&lt;UITableViewDelegate&gt;)<a class="code" href="interface_t_t_table_view_controller.html#a52626a5ea529445ca0edf79f1c3d9dbb" title="Creates an delegate for the table view.">createDelegate</a> {
+<a name="l00630"></a>00630   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>) {
+<a name="l00631"></a>00631     <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_table_view_var_height_delegate.html">TTTableViewVarHeightDelegate</a> alloc] initWithController:self] autorelease];
+<a name="l00632"></a>00632   } <span class="keywordflow">else</span> {
+<a name="l00633"></a>00633     <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_table_view_delegate.html" title="A default table view delegate implementation.">TTTableViewDelegate</a> alloc] initWithController:self] autorelease];
+<a name="l00634"></a>00634   }
+<a name="l00635"></a>00635 }
+<a name="l00636"></a>00636 
+<a name="l00637"></a><a class="code" href="interface_t_t_table_view_controller.html#aa77fee5d10c946b7e22025d92f3d0b2c">00637</a> - (void)showMenu:(<a class="code" href="class_u_i_view.html">UIView</a>*)view forCell:(UITableViewCell*)cell animated:(BOOL)animated {
+<a name="l00638"></a>00638   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
+<a name="l00639"></a>00639 
+<a name="l00640"></a>00640   <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> = [view retain];
+<a name="l00641"></a>00641   <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a> = [cell retain];
+<a name="l00642"></a>00642   
+<a name="l00643"></a>00643   <span class="comment">// Insert the cell below all content subviews</span>
+<a name="l00644"></a>00644   [<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView insertSubview:_menuView atIndex:0];
+<a name="l00645"></a>00645 
+<a name="l00646"></a>00646   <span class="keywordflow">if</span> (animated) {
+<a name="l00647"></a>00647     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00648"></a>00648     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
+<a name="l00649"></a>00649     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationCurve:UIViewAnimationCurveEaseIn];
+<a name="l00650"></a>00650   }
+<a name="l00651"></a>00651 
+<a name="l00652"></a>00652   <span class="comment">// Move each content subview down, revealing the menu</span>
+<a name="l00653"></a>00653   <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view in <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.subviews) {
+<a name="l00654"></a>00654     <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
+<a name="l00655"></a>00655       view.<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a> -= <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.width;
+<a name="l00656"></a>00656     }
 <a name="l00657"></a>00657   }
-<a name="l00658"></a>00658 }
-<a name="l00659"></a>00659 
-<a name="l00660"></a><a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088">00660</a> - (void)hideMenu:(BOOL)animated {
-<a name="l00661"></a>00661   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
-<a name="l00662"></a>00662     <span class="keywordflow">if</span> (animated) {
-<a name="l00663"></a>00663       [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:_menuView];
-<a name="l00664"></a>00664       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
-<a name="l00665"></a>00665       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00666"></a>00666       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(hideMenuAnimationDidStop:finished:context:)];
-<a name="l00667"></a>00667     }
-<a name="l00668"></a>00668 
-<a name="l00669"></a>00669     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view in <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.subviews) {
-<a name="l00670"></a>00670       <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
-<a name="l00671"></a>00671         view.left += <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.width;
-<a name="l00672"></a>00672       }
-<a name="l00673"></a>00673     }
-<a name="l00674"></a>00674 
-<a name="l00675"></a>00675     <span class="keywordflow">if</span> (animated) {
-<a name="l00676"></a>00676       [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00677"></a>00677     } <span class="keywordflow">else</span> {
-<a name="l00678"></a>00678       [<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> removeFromSuperview];
-<a name="l00679"></a>00679     }
-<a name="l00680"></a>00680 
-<a name="l00681"></a>00681     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>);
-<a name="l00682"></a>00682     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>);
-<a name="l00683"></a>00683   }
-<a name="l00684"></a>00684 }
-<a name="l00685"></a>00685 
-<a name="l00686"></a><a class="code" href="interface_t_t_table_view_controller.html#a7b64eaaf6e5ad2f24cb715bc6f1df77d">00686</a> - (void)didSelectObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00687"></a>00687   <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> respondsToSelector:<span class="keyword">@selector</span>(URLValue)]) {
-<a name="l00688"></a>00688     <a class="code" href="class_n_s_string.html">NSString</a>* URL = [object URLValue];
-<a name="l00689"></a>00689     <span class="keywordflow">if</span> (URL) {
-<a name="l00690"></a>00690       <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(URL);
-<a name="l00691"></a>00691     }
-<a name="l00692"></a>00692   }
-<a name="l00693"></a>00693 }
-<a name="l00694"></a>00694 
-<a name="l00695"></a><a class="code" href="interface_t_t_table_view_controller.html#a7ca969292c3d4efa4bfa25cf0a5e9eba">00695</a> - (BOOL)shouldOpenURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL {
-<a name="l00696"></a>00696   <span class="keywordflow">return</span> YES;
+<a name="l00658"></a>00658   
+<a name="l00659"></a>00659   <span class="keywordflow">if</span> (animated) {
+<a name="l00660"></a>00660     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00661"></a>00661   }
+<a name="l00662"></a>00662 }
+<a name="l00663"></a>00663 
+<a name="l00664"></a><a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088">00664</a> - (void)hideMenu:(BOOL)animated {
+<a name="l00665"></a>00665   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
+<a name="l00666"></a>00666     <span class="keywordflow">if</span> (animated) {
+<a name="l00667"></a>00667       [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:_menuView];
+<a name="l00668"></a>00668       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_FAST_TRANSITION_DURATION];
+<a name="l00669"></a>00669       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00670"></a>00670       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(hideMenuAnimationDidStop:finished:context:)];
+<a name="l00671"></a>00671     }
+<a name="l00672"></a>00672 
+<a name="l00673"></a>00673     <span class="keywordflow">for</span> (<a class="code" href="class_u_i_view.html">UIView</a>* view in <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.subviews) {
+<a name="l00674"></a>00674       <span class="keywordflow">if</span> (view != <a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>) {
+<a name="l00675"></a>00675         view.<a class="code" href="class_u_i_view.html#aa96f32ef384afa3c01f4056f24441eea">left</a> += <a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>.contentView.width;
+<a name="l00676"></a>00676       }
+<a name="l00677"></a>00677     }
+<a name="l00678"></a>00678 
+<a name="l00679"></a>00679     <span class="keywordflow">if</span> (animated) {
+<a name="l00680"></a>00680       [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00681"></a>00681     } <span class="keywordflow">else</span> {
+<a name="l00682"></a>00682       [<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a> removeFromSuperview];
+<a name="l00683"></a>00683     }
+<a name="l00684"></a>00684 
+<a name="l00685"></a>00685     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a92d0342074fb50438297a7225a0504ac">_menuView</a>);
+<a name="l00686"></a>00686     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_table_view_controller.html#a4b096c6d466a9ad88b6500398520c688">_menuCell</a>);
+<a name="l00687"></a>00687   }
+<a name="l00688"></a>00688 }
+<a name="l00689"></a>00689 
+<a name="l00690"></a><a class="code" href="interface_t_t_table_view_controller.html#a7b64eaaf6e5ad2f24cb715bc6f1df77d">00690</a> - (void)didSelectObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00691"></a>00691   <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> respondsToSelector:<span class="keyword">@selector</span>(URLValue)]) {
+<a name="l00692"></a>00692     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL = [object URLValue];
+<a name="l00693"></a>00693     <span class="keywordflow">if</span> (URL) {
+<a name="l00694"></a>00694       <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(URL);
+<a name="l00695"></a>00695     }
+<a name="l00696"></a>00696   }
 <a name="l00697"></a>00697 }
 <a name="l00698"></a>00698 
-<a name="l00699"></a><a class="code" href="interface_t_t_table_view_controller.html#a02577652921e6ccfba00e80b0390792d">00699</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a02577652921e6ccfba00e80b0390792d" title="Tells the controller that the user began dragging the table view.">didBeginDragging</a> {
-<a name="l00700"></a>00700   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
+<a name="l00699"></a><a class="code" href="interface_t_t_table_view_controller.html#a7ca969292c3d4efa4bfa25cf0a5e9eba">00699</a> - (BOOL)shouldOpenURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL {
+<a name="l00700"></a>00700   <span class="keywordflow">return</span> YES;
 <a name="l00701"></a>00701 }
 <a name="l00702"></a>00702 
-<a name="l00703"></a><a class="code" href="interface_t_t_table_view_controller.html#a8e9dabc6218ec3718924530218affa26">00703</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a8e9dabc6218ec3718924530218affa26" title="Tells the controller that the user stopped dragging the table view.">didEndDragging</a> {
-<a name="l00704"></a>00704 }
-<a name="l00705"></a>00705 
-<a name="l00706"></a><a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707">00706</a> - (CGRect)<a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707" title="The rectangle where the overlay view should appear.">rectForOverlayView</a> {
-<a name="l00707"></a>00707   <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> frameWithKeyboardSubtracted:0];
+<a name="l00703"></a><a class="code" href="interface_t_t_table_view_controller.html#a02577652921e6ccfba00e80b0390792d">00703</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a02577652921e6ccfba00e80b0390792d" title="Tells the controller that the user began dragging the table view.">didBeginDragging</a> {
+<a name="l00704"></a>00704   [<span class="keyword">self</span> <a class="code" href="interface_t_t_table_view_controller.html#a8243f7936265a1594569e7999510c088" title="Hides the currently visible table cell menu.">hideMenu</a>:YES];
+<a name="l00705"></a>00705 }
+<a name="l00706"></a>00706 
+<a name="l00707"></a><a class="code" href="interface_t_t_table_view_controller.html#a8e9dabc6218ec3718924530218affa26">00707</a> - (void)<a class="code" href="interface_t_t_table_view_controller.html#a8e9dabc6218ec3718924530218affa26" title="Tells the controller that the user stopped dragging the table view.">didEndDragging</a> {
 <a name="l00708"></a>00708 }
 <a name="l00709"></a>00709 
-<a name="l00710"></a><a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940">00710</a> - (CGRect)<a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940" title="The rectangle where the banner view should appear.">rectForBannerView</a> {
-<a name="l00711"></a>00711   CGRect tableFrame = [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> frameWithKeyboardSubtracted:0];
-<a name="l00712"></a>00712   <span class="keywordflow">return</span> CGRectMake(tableFrame.origin.x,
-<a name="l00713"></a>00713                     (tableFrame.origin.y + tableFrame.size.height) - <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>,
-<a name="l00714"></a>00714                     tableFrame.size.width, <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>);
-<a name="l00715"></a>00715 }
-<a name="l00716"></a>00716 
-<a name="l00717"></a>00717 <span class="keyword">@end</span>
+<a name="l00710"></a><a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707">00710</a> - (CGRect)<a class="code" href="interface_t_t_table_view_controller.html#a650d17b47d9fa3985f4c7ce047bac707" title="The rectangle where the overlay view should appear.">rectForOverlayView</a> {
+<a name="l00711"></a>00711   <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> frameWithKeyboardSubtracted:0];
+<a name="l00712"></a>00712 }
+<a name="l00713"></a>00713 
+<a name="l00714"></a><a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940">00714</a> - (CGRect)<a class="code" href="interface_t_t_table_view_controller.html#af969ed2d688b06c39e9fae65a0a75940" title="The rectangle where the banner view should appear.">rectForBannerView</a> {
+<a name="l00715"></a>00715   CGRect tableFrame = [<a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a> frameWithKeyboardSubtracted:0];
+<a name="l00716"></a>00716   <span class="keywordflow">return</span> CGRectMake(tableFrame.origin.x,
+<a name="l00717"></a>00717                     (tableFrame.origin.y + tableFrame.size.height) - <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>,
+<a name="l00718"></a>00718                     tableFrame.size.width, <a class="code" href="_t_t_table_view_controller_8m.html#a179b9c5b07af06f1e52c26cea0bdfa97">kBannerViewHeight</a>);
+<a name="l00719"></a>00719 }
+<a name="l00720"></a>00720 
+<a name="l00721"></a>00721 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

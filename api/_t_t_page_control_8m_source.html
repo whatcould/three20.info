@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,139 +75,143 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_page_control_8h.html">Three20/TTPageControl.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_style_8h.html">Three20/TTStyle.h</a>&quot;</span>
-<a name="l00020"></a>00020 
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_page_control.html" title="TTPageControl is a version of UIPageControl which allows you to style the dots.">TTPageControl</a>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_page_control_8h.html">Three20/TTPageControl.h</a>&quot;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_8h.html">Three20/TTStyle.h</a>&quot;</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_page_control.html#a887cd79a7f7a620067ed6997a58e378f">numberOfPages</a> = <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>, <a class="code" href="interface_t_t_page_control.html#a348e73955cd32ca368a03d6083f1b12f">currentPage</a> = <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>, <a class="code" href="interface_t_t_page_control.html#a79114d539ceba59e188f85bcc4180e38">dotStyle</a> = <a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>,
-<a name="l00026"></a>00026             <a class="code" href="interface_t_t_page_control.html#a34b27ff3d33fc8073294d4a3bf377c52">hidesForSinglePage</a> = <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a>;
-<a name="l00027"></a>00027 
-<a name="l00029"></a>00029 <span class="comment">// NSObject</span>
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)normalDotStyle {
-<a name="l00032"></a>00032   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>) {
-<a name="l00033"></a>00033     <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a> = [[[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:_dotStyle
-<a name="l00034"></a>00034                                                         <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateNormal] retain];
-<a name="l00035"></a>00035   }
-<a name="l00036"></a>00036   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)currentDotStyle {
-<a name="l00040"></a>00040   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>) {
-<a name="l00041"></a>00041     <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a> = [[[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:_dotStyle
-<a name="l00042"></a>00042                                                          <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateSelected] retain];
-<a name="l00043"></a>00043   }
-<a name="l00044"></a>00044   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>;
-<a name="l00045"></a>00045 }
-<a name="l00046"></a>00046 
-<a name="l00048"></a>00048 <span class="comment">// NSObject</span>
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 - (id)initWithFrame:(CGRect)frame {
-<a name="l00051"></a>00051   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00052"></a>00052     <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> = 0;
-<a name="l00053"></a>00053     <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a> = 0;
-<a name="l00054"></a>00054     <a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a> = nil;
-<a name="l00055"></a>00055     <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a> = nil;
-<a name="l00056"></a>00056     <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a> = nil;
-<a name="l00057"></a>00057     <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a> = NO;
-<a name="l00058"></a>00058     
-<a name="l00059"></a>00059     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00060"></a>00060     <span class="keyword">self</span>.dotStyle = <span class="stringliteral">@&quot;pageDot:&quot;</span>;
-<a name="l00061"></a>00061   }
-<a name="l00062"></a>00062   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 - (void)dealloc {
-<a name="l00066"></a>00066   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>);
-<a name="l00067"></a>00067   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>);
-<a name="l00068"></a>00068   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>);
-<a name="l00069"></a>00069   [<span class="keyword">super</span> dealloc];
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00073"></a>00073 <span class="comment">// UIView</span>
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 - (void)drawRect:(CGRect)rect {
-<a name="l00076"></a>00076   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> &gt; 1 || <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a>) {
-<a name="l00077"></a>00077     <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
-<a name="l00078"></a>00078     <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* boxStyle = [<span class="keyword">self</span>.normalDotStyle firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080     CGSize dotSize = [<span class="keyword">self</span>.normalDotStyle addToSize:CGSizeZero context:context];
-<a name="l00081"></a>00081     
-<a name="l00082"></a>00082     CGFloat dotWidth = dotSize.width + boxStyle.margin.left + boxStyle.margin.right;
-<a name="l00083"></a>00083     CGFloat totalWidth = (dotWidth * <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) - (boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right);
-<a name="l00084"></a>00084     CGRect contentRect = CGRectMake(round(<span class="keyword">self</span>.width/2 - totalWidth/2),
-<a name="l00085"></a>00085                                     round(<span class="keyword">self</span>.height/2 - dotSize.height/2),
-<a name="l00086"></a>00086                                     dotSize.width, dotSize.height);
-<a name="l00087"></a>00087       
-<a name="l00088"></a>00088     <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>; ++i) {
-<a name="l00089"></a>00089       contentRect.origin.x += boxStyle.margin.left;
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091       context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a> = contentRect;
-<a name="l00092"></a>00092       context.<a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">contentFrame</a> = contentRect;
-<a name="l00093"></a>00093       
-<a name="l00094"></a>00094       <span class="keywordflow">if</span> (i == <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>) {
-<a name="l00095"></a>00095         [<span class="keyword">self</span>.currentDotStyle draw:context];
-<a name="l00096"></a>00096       } <span class="keywordflow">else</span> {
-<a name="l00097"></a>00097         [<span class="keyword">self</span>.normalDotStyle draw:context];
-<a name="l00098"></a>00098       }
-<a name="l00099"></a>00099       contentRect.origin.x += dotSize.width + boxStyle.margin.right;
-<a name="l00100"></a>00100     }
-<a name="l00101"></a>00101   }
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 - (CGSize)sizeThatFits:(CGSize)size {
-<a name="l00105"></a>00105   <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
-<a name="l00106"></a>00106   CGSize dotSize = [<span class="keyword">self</span>.normalDotStyle addToSize:CGSizeZero context:context];
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_page_control.html" title="TTPageControl is a version of UIPageControl which allows you to style the dots.">TTPageControl</a>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_page_control.html#a887cd79a7f7a620067ed6997a58e378f">numberOfPages</a> = <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>, <a class="code" href="interface_t_t_page_control.html#a348e73955cd32ca368a03d6083f1b12f">currentPage</a> = <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>, <a class="code" href="interface_t_t_page_control.html#a79114d539ceba59e188f85bcc4180e38">dotStyle</a> = <a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>,
+<a name="l00030"></a>00030             <a class="code" href="interface_t_t_page_control.html#a34b27ff3d33fc8073294d4a3bf377c52">hidesForSinglePage</a> = <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a>;
+<a name="l00031"></a>00031 
+<a name="l00033"></a>00033 <span class="comment">// NSObject</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="interface_t_t_page_control.html#a001619e0d5fb91a1019ba5d8f6346462">00035</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)<a class="code" href="interface_t_t_page_control.html#a001619e0d5fb91a1019ba5d8f6346462">normalDotStyle</a> {
+<a name="l00036"></a>00036   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>) {
+<a name="l00037"></a>00037     <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a> = [[[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:_dotStyle
+<a name="l00038"></a>00038                                                         <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateNormal] retain];
+<a name="l00039"></a>00039   }
+<a name="l00040"></a>00040   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_page_control.html#a4cf2b7d7e3b58c1e43a484c079653841">00043</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)<a class="code" href="interface_t_t_page_control.html#a4cf2b7d7e3b58c1e43a484c079653841">currentDotStyle</a> {
+<a name="l00044"></a>00044   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>) {
+<a name="l00045"></a>00045     <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a> = [[[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">styleWithSelector</a>:_dotStyle
+<a name="l00046"></a>00046                                                          <a class="code" href="interface_t_t_style_sheet.html#a944da18158918ed45f51fb75b9c15a5f">forState</a>:UIControlStateSelected] retain];
+<a name="l00047"></a>00047   }
+<a name="l00048"></a>00048   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>;
+<a name="l00049"></a>00049 }
+<a name="l00050"></a>00050 
+<a name="l00052"></a>00052 <span class="comment">// NSObject</span>
+<a name="l00053"></a>00053 
+<a name="l00054"></a><a class="code" href="interface_t_t_page_control.html#adff19b0d36990d1a34ba6abcf7dc69ca">00054</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00055"></a>00055   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00056"></a>00056     <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> = 0;
+<a name="l00057"></a>00057     <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a> = 0;
+<a name="l00058"></a>00058     <a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a> = nil;
+<a name="l00059"></a>00059     <a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a> = nil;
+<a name="l00060"></a>00060     <a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a> = nil;
+<a name="l00061"></a>00061     <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a> = NO;
+<a name="l00062"></a>00062     
+<a name="l00063"></a>00063     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00064"></a>00064     <span class="keyword">self</span>.dotStyle = <span class="stringliteral">@&quot;pageDot:&quot;</span>;
+<a name="l00065"></a>00065   }
+<a name="l00066"></a>00066   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="interface_t_t_page_control.html#aae36e1a7f3016fb93fe49c7a58392952">00069</a> - (void)<a class="code" href="interface_t_t_page_control.html#aae36e1a7f3016fb93fe49c7a58392952">dealloc</a> {
+<a name="l00070"></a>00070   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>);
+<a name="l00071"></a>00071   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>);
+<a name="l00072"></a>00072   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>);
+<a name="l00073"></a>00073   [<span class="keyword">super</span> dealloc];
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00077"></a>00077 <span class="comment">// UIView</span>
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="interface_t_t_page_control.html#a9114d1f4d2f9ee1c18828e6e55f53aea">00079</a> - (void)drawRect:(CGRect)rect {
+<a name="l00080"></a>00080   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> &gt; 1 || <a class="code" href="interface_t_t_page_control.html#abe25ce2c30042108b73e1219b8900075">_hidesForSinglePage</a>) {
+<a name="l00081"></a>00081     <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
+<a name="l00082"></a>00082     <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* boxStyle = [<span class="keyword">self</span>.normalDotStyle firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     CGSize dotSize = [<span class="keyword">self</span>.normalDotStyle addToSize:CGSizeZero context:context];
+<a name="l00085"></a>00085     
+<a name="l00086"></a>00086     CGFloat dotWidth = dotSize.width + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00087"></a>00087     CGFloat totalWidth = (dotWidth * <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) - (boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right);
+<a name="l00088"></a>00088     CGRect contentRect = CGRectMake(round(<span class="keyword">self</span>.width/2 - totalWidth/2),
+<a name="l00089"></a>00089                                     round(<span class="keyword">self</span>.height/2 - dotSize.height/2),
+<a name="l00090"></a>00090                                     dotSize.width, dotSize.height);
+<a name="l00091"></a>00091       
+<a name="l00092"></a>00092     <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>; ++i) {
+<a name="l00093"></a>00093       contentRect.origin.x += boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095       context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a> = contentRect;
+<a name="l00096"></a>00096       context.<a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">contentFrame</a> = contentRect;
+<a name="l00097"></a>00097       
+<a name="l00098"></a>00098       <span class="keywordflow">if</span> (i == <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>) {
+<a name="l00099"></a>00099         [<span class="keyword">self</span>.currentDotStyle draw:context];
+<a name="l00100"></a>00100       } <span class="keywordflow">else</span> {
+<a name="l00101"></a>00101         [<span class="keyword">self</span>.normalDotStyle draw:context];
+<a name="l00102"></a>00102       }
+<a name="l00103"></a>00103       contentRect.origin.x += dotSize.width + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00104"></a>00104     }
+<a name="l00105"></a>00105   }
+<a name="l00106"></a>00106 }
 <a name="l00107"></a>00107 
-<a name="l00108"></a>00108   CGFloat margin = 0;
-<a name="l00109"></a>00109   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* boxStyle = [<span class="keyword">self</span>.normalDotStyle firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
-<a name="l00110"></a>00110   <span class="keywordflow">if</span> (boxStyle) {
-<a name="l00111"></a>00111     margin = boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right + boxStyle.margin.left;
-<a name="l00112"></a>00112   }
-<a name="l00113"></a>00113   
-<a name="l00114"></a>00114   <span class="keywordflow">return</span> CGSizeMake((dotSize.width * <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) + (margin * (<a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>-1)),
-<a name="l00115"></a>00115                     dotSize.height);
-<a name="l00116"></a>00116 }
-<a name="l00117"></a>00117 
-<a name="l00119"></a>00119 <span class="comment">// UIControl</span>
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121 - (void)endTrackingWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
-<a name="l00122"></a>00122   <span class="keywordflow">if</span> (<span class="keyword">self</span>.touchInside) {
-<a name="l00123"></a>00123     CGPoint point = [touch locationInView:self];
-<a name="l00124"></a>00124     <span class="keyword">self</span>.currentPage = round(point.x / <span class="keyword">self</span>.width);
-<a name="l00125"></a>00125     [<span class="keyword">self</span> sendActionsForControlEvents:UIControlEventValueChanged];
-<a name="l00126"></a>00126   }
-<a name="l00127"></a>00127 }
-<a name="l00128"></a>00128 
-<a name="l00130"></a>00130 <span class="comment">// public</span>
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 - (void)setNumberOfPages:(NSInteger)numberOfPages {
-<a name="l00133"></a>00133   <span class="keywordflow">if</span> (numberOfPages != <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) {
-<a name="l00134"></a>00134     <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> = numberOfPages;
-<a name="l00135"></a>00135     [<span class="keyword">self</span> setNeedsDisplay];
-<a name="l00136"></a>00136   }
-<a name="l00137"></a>00137 }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139 - (void)setCurrentPage:(NSInteger)currentPage {
-<a name="l00140"></a>00140   <span class="keywordflow">if</span> (currentPage != <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>) {
-<a name="l00141"></a>00141     <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a> = currentPage;
-<a name="l00142"></a>00142     [<span class="keyword">self</span> setNeedsDisplay];
-<a name="l00143"></a>00143   }
-<a name="l00144"></a>00144 }
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146 - (void)setDotStyle:(<a class="code" href="class_n_s_string.html">NSString</a>*)dotStyle {
-<a name="l00147"></a>00147   <span class="keywordflow">if</span> (![dotStyle isEqualToString:<a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>]) {
-<a name="l00148"></a>00148     [_dotStyle release];
-<a name="l00149"></a>00149     _dotStyle = [dotStyle copy];
-<a name="l00150"></a>00150     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>);
-<a name="l00151"></a>00151     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>);
-<a name="l00152"></a>00152   }
-<a name="l00153"></a>00153 }
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155 <span class="keyword">@end</span>
+<a name="l00108"></a><a class="code" href="interface_t_t_page_control.html#a08c29a41f27e58ef2adcdcca9e5e79d6">00108</a> - (CGSize)sizeThatFits:(CGSize)size {
+<a name="l00109"></a>00109   <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
+<a name="l00110"></a>00110   CGSize dotSize = [<span class="keyword">self</span>.normalDotStyle addToSize:CGSizeZero context:context];
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112   CGFloat margin = 0;
+<a name="l00113"></a>00113   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* boxStyle = [<span class="keyword">self</span>.normalDotStyle firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
+<a name="l00114"></a>00114   <span class="keywordflow">if</span> (boxStyle) {
+<a name="l00115"></a>00115     margin = boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right + boxStyle.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117   
+<a name="l00118"></a>00118   <span class="keywordflow">return</span> CGSizeMake((dotSize.width * <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) + (margin * (<a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>-1)),
+<a name="l00119"></a>00119                     dotSize.height);
+<a name="l00120"></a>00120 }
+<a name="l00121"></a>00121 
+<a name="l00123"></a>00123 <span class="comment">// UIControl</span>
+<a name="l00124"></a>00124 
+<a name="l00125"></a><a class="code" href="interface_t_t_page_control.html#a39986625293f5c75429aaf9570a83a13">00125</a> - (void)endTrackingWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
+<a name="l00126"></a>00126   <span class="keywordflow">if</span> (<span class="keyword">self</span>.touchInside) {
+<a name="l00127"></a>00127     CGPoint point = [touch locationInView:self];
+<a name="l00128"></a>00128     <span class="keyword">self</span>.currentPage = round(point.x / <span class="keyword">self</span>.width);
+<a name="l00129"></a>00129     [<span class="keyword">self</span> sendActionsForControlEvents:UIControlEventValueChanged];
+<a name="l00130"></a>00130   }
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 
+<a name="l00134"></a>00134 <span class="comment">// public</span>
+<a name="l00135"></a>00135 
+<a name="l00136"></a><a class="code" href="interface_t_t_page_control.html#a068c8e3d04e67447016e7dd54e936005">00136</a> - (void)setNumberOfPages:(NSInteger)numberOfPages {
+<a name="l00137"></a>00137   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_page_control.html#a887cd79a7f7a620067ed6997a58e378f">numberOfPages</a> != <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a>) {
+<a name="l00138"></a>00138     <a class="code" href="interface_t_t_page_control.html#ab07c7690f2946f278c9beeae0a0cd38e">_numberOfPages</a> = <a class="code" href="interface_t_t_page_control.html#a887cd79a7f7a620067ed6997a58e378f">numberOfPages</a>;
+<a name="l00139"></a>00139     [<span class="keyword">self</span> setNeedsDisplay];
+<a name="l00140"></a>00140   }
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="interface_t_t_page_control.html#a4f60e9f70587e0695b1c4111cd4ee243">00143</a> - (void)setCurrentPage:(NSInteger)currentPage {
+<a name="l00144"></a>00144   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_page_control.html#a348e73955cd32ca368a03d6083f1b12f">currentPage</a> != <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a>) {
+<a name="l00145"></a>00145     <a class="code" href="interface_t_t_page_control.html#abd32d75769005658d0c92443adc21a7f">_currentPage</a> = <a class="code" href="interface_t_t_page_control.html#a348e73955cd32ca368a03d6083f1b12f">currentPage</a>;
+<a name="l00146"></a>00146     [<span class="keyword">self</span> setNeedsDisplay];
+<a name="l00147"></a>00147   }
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="interface_t_t_page_control.html#a9c6a3177a8ea31616a5400ff762035e8">00150</a> - (void)setDotStyle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)dotStyle {
+<a name="l00151"></a>00151   <span class="keywordflow">if</span> (![dotStyle isEqualToString:<a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a>]) {
+<a name="l00152"></a>00152     [<a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a> release];
+<a name="l00153"></a>00153     <a class="code" href="interface_t_t_page_control.html#a7a0f9e526c001abf65de7cb83b6ecb46">_dotStyle</a> = [dotStyle copy];
+<a name="l00154"></a>00154     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ab8bbb32ab6bd980ebb18f13531e07eef">_normalDotStyle</a>);
+<a name="l00155"></a>00155     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_page_control.html#ad5cb30505212ad360692f3c86c47d2aa">_currentDotStyle</a>);
+<a name="l00156"></a>00156   }
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

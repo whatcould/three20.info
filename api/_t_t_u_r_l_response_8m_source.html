@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,88 +76,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_response_8h.html">Three20/TTURLResponse.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_request_8h.html">Three20/TTURLRequest.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
 <a name="l00020"></a>00020 
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_data_response.html">TTURLDataResponse</a>
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_data_response.html#a32a4f0c8e157a59467ea48a22627778b">data</a> = <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a>;
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 - (id)init {
-<a name="l00028"></a>00028   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00029"></a>00029     <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a> = nil;
-<a name="l00030"></a>00030   }
-<a name="l00031"></a>00031   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00032"></a>00032 }
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 - (void)dealloc {
-<a name="l00035"></a>00035   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a>);
-<a name="l00036"></a>00036   [<span class="keyword">super</span> dealloc];
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040 <span class="comment">// TTURLResponse</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_request_8h.html">Three20/TTURLRequest.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
+<a name="l00023"></a>00023 
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_data_response.html">TTURLDataResponse</a>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_data_response.html#a32a4f0c8e157a59467ea48a22627778b">data</a> = <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a>;
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="interface_t_t_u_r_l_data_response.html#a460f5495b3589d3b6bd27a6296bfdbd9">00030</a> - (id)<a class="code" href="interface_t_t_u_r_l_data_response.html#a460f5495b3589d3b6bd27a6296bfdbd9">init</a> {
+<a name="l00031"></a>00031   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_u_r_l_data_response.html#a460f5495b3589d3b6bd27a6296bfdbd9">init</a>]) {
+<a name="l00032"></a>00032     <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a> = nil;
+<a name="l00033"></a>00033   }
+<a name="l00034"></a>00034   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00035"></a>00035 }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="interface_t_t_u_r_l_data_response.html#aaee51ca9be1d80ebd8d87c2bd89c04ba">00037</a> - (void)<a class="code" href="interface_t_t_u_r_l_data_response.html#aaee51ca9be1d80ebd8d87c2bd89c04ba">dealloc</a> {
+<a name="l00038"></a>00038   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a>);
+<a name="l00039"></a>00039   [<span class="keyword">super</span> dealloc];
+<a name="l00040"></a>00040 }
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042 - (NSError*)request:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request processResponse:(NSHTTPURLResponse*)response
-<a name="l00043"></a>00043             data:(<span class="keywordtype">id</span>)data {
-<a name="l00044"></a>00044   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_data_response.html#a32a4f0c8e157a59467ea48a22627778b">data</a> isKindOfClass:[<a class="code" href="class_n_s_data.html">NSData</a> <span class="keyword">class</span>]]) {
-<a name="l00045"></a>00045     <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a> = [data retain];
-<a name="l00046"></a>00046   }
-<a name="l00047"></a>00047   <span class="keywordflow">return</span> nil;
-<a name="l00048"></a>00048 }
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 <span class="keyword">@end</span>
-<a name="l00051"></a>00051 
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_image_response.html">TTURLImageResponse</a>
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_image_response.html#a8d643a35f164ec644132f44c63294de6">image</a> = <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a>;
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 - (id)init {
-<a name="l00059"></a>00059   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00060"></a>00060     <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = nil;
-<a name="l00061"></a>00061   }
-<a name="l00062"></a>00062   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 - (void)dealloc {
-<a name="l00066"></a>00066   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a>);
-<a name="l00067"></a>00067   [<span class="keyword">super</span> dealloc];
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00071"></a>00071 <span class="comment">// TTURLResponse</span>
+<a name="l00043"></a>00043 <span class="comment">// TTURLResponse</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="interface_t_t_u_r_l_data_response.html#a944d4de6cbf6a12fdf092cd75209ed40">00045</a> - (NSError*)request:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request processResponse:(NSHTTPURLResponse*)response
+<a name="l00046"></a>00046             data:(<span class="keywordtype">id</span>)data {
+<a name="l00047"></a>00047   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_data_response.html#a32a4f0c8e157a59467ea48a22627778b">data</a> isKindOfClass:[<a class="code" href="class_n_s_data.html" title="Additions.">NSData</a> <span class="keyword">class</span>]]) {
+<a name="l00048"></a>00048     <a class="code" href="interface_t_t_u_r_l_data_response.html#a1641527b45c019584161390d151eb86f">_data</a> = [<a class="code" href="interface_t_t_u_r_l_data_response.html#a32a4f0c8e157a59467ea48a22627778b">data</a> retain];
+<a name="l00049"></a>00049   }
+<a name="l00050"></a>00050   <span class="keywordflow">return</span> nil;
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 <span class="keyword">@end</span>
+<a name="l00054"></a>00054 
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_image_response.html">TTURLImageResponse</a>
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_image_response.html#a8d643a35f164ec644132f44c63294de6">image</a> = <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a>;
+<a name="l00060"></a>00060 
+<a name="l00061"></a><a class="code" href="interface_t_t_u_r_l_image_response.html#a34d103bbae87586fbdb38850f0693c25">00061</a> - (id)<a class="code" href="interface_t_t_u_r_l_image_response.html#a34d103bbae87586fbdb38850f0693c25">init</a> {
+<a name="l00062"></a>00062   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_u_r_l_image_response.html#a34d103bbae87586fbdb38850f0693c25">init</a>]) {
+<a name="l00063"></a>00063     <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = nil;
+<a name="l00064"></a>00064   }
+<a name="l00065"></a>00065   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00066"></a>00066 }
+<a name="l00067"></a>00067 
+<a name="l00068"></a><a class="code" href="interface_t_t_u_r_l_image_response.html#a7d8b88067d47c2ad285d2f85020a78db">00068</a> - (void)<a class="code" href="interface_t_t_u_r_l_image_response.html#a7d8b88067d47c2ad285d2f85020a78db">dealloc</a> {
+<a name="l00069"></a>00069   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a>);
+<a name="l00070"></a>00070   [<span class="keyword">super</span> dealloc];
+<a name="l00071"></a>00071 }
 <a name="l00072"></a>00072 
-<a name="l00073"></a>00073 - (NSError*)request:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request processResponse:(NSHTTPURLResponse*)response
-<a name="l00074"></a>00074             data:(<span class="keywordtype">id</span>)data {
-<a name="l00075"></a>00075   <span class="keywordflow">if</span> ([data isKindOfClass:[<a class="code" href="class_u_i_image.html">UIImage</a> <span class="keyword">class</span>]]) {
-<a name="l00076"></a>00076     <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = [data retain];
-<a name="l00077"></a>00077   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([data isKindOfClass:[<a class="code" href="class_n_s_data.html">NSData</a> <span class="keyword">class</span>]]) {
-<a name="l00078"></a>00078     UIImage* <a class="code" href="interface_t_t_u_r_l_image_response.html#a8d643a35f164ec644132f44c63294de6">image</a> = [[<a class="code" href="interface_t_t_u_r_l_cache.html">TTURLCache</a> <a class="code" href="interface_t_t_u_r_l_cache.html#ad6f6da8abb412bd604be1395b34346d7" title="Gets the shared cache singleton used across the application.">sharedCache</a>] <a class="code" href="interface_t_t_u_r_l_cache.html#aeb5760c833fc84782e5494192fdcaaaa">imageForURL</a>:request.URL <a class="code" href="interface_t_t_u_r_l_cache.html#aeb5760c833fc84782e5494192fdcaaaa">fromDisk</a>:NO];
-<a name="l00079"></a>00079     <span class="keywordflow">if</span> (!image) {
-<a name="l00080"></a>00080       image = [<a class="code" href="class_u_i_image.html">UIImage</a> imageWithData:data];
-<a name="l00081"></a>00081     }
-<a name="l00082"></a>00082     <span class="keywordflow">if</span> (image) {
-<a name="l00083"></a>00083       <span class="keywordflow">if</span> (!request.<a class="code" href="interface_t_t_u_r_l_request.html#a4276b8e633d614eab0fd649775d75e7a">respondedFromCache</a>) {
-<a name="l00084"></a>00084 <span class="comment">// XXXjoe Working on option to scale down really large images to a smaller size to save memory      </span>
-<a name="l00085"></a>00085 <span class="comment">//        if (image.size.width * image.size.height &gt; (300*300)) {</span>
-<a name="l00086"></a>00086 <span class="comment">//          image = [image transformWidth:300 height:(image.size.height/image.size.width)*300.0</span>
-<a name="l00087"></a>00087 <span class="comment">//                         rotate:NO];</span>
-<a name="l00088"></a>00088 <span class="comment">//          NSData* data = UIImagePNGRepresentation(image);</span>
-<a name="l00089"></a>00089 <span class="comment">//          [[TTURLCache sharedCache] storeData:data forURL:request.URL];</span>
-<a name="l00090"></a>00090 <span class="comment">//        }</span>
-<a name="l00091"></a>00091         [[<a class="code" href="interface_t_t_u_r_l_cache.html">TTURLCache</a> <a class="code" href="interface_t_t_u_r_l_cache.html#ad6f6da8abb412bd604be1395b34346d7" title="Gets the shared cache singleton used across the application.">sharedCache</a>] <a class="code" href="interface_t_t_u_r_l_cache.html#aca5d856ab7094ce6d72cee55e9339380" title="Stores an image in the memory cache.">storeImage</a>:image <a class="code" href="interface_t_t_u_r_l_cache.html#aca5d856ab7094ce6d72cee55e9339380" title="Stores an image in the memory cache.">forURL</a>:request.URL];
-<a name="l00092"></a>00092       }
-<a name="l00093"></a>00093       <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = [image retain];
-<a name="l00094"></a>00094     } <span class="keywordflow">else</span> {
-<a name="l00095"></a>00095       <span class="keywordflow">return</span> [NSError errorWithDomain:TT_ERROR_DOMAIN code:TT_EC_INVALID_IMAGE
-<a name="l00096"></a>00096                       userInfo:nil];
-<a name="l00097"></a>00097     }
-<a name="l00098"></a>00098   }
-<a name="l00099"></a>00099   <span class="keywordflow">return</span> nil;
-<a name="l00100"></a>00100 }
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 <span class="keyword">@end</span>
-<a name="l00103"></a>00103 
+<a name="l00074"></a>00074 <span class="comment">// TTURLResponse</span>
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="interface_t_t_u_r_l_image_response.html#a0fb235cc44212dffd8b2c36347555211">00076</a> - (NSError*)request:(<a class="code" href="interface_t_t_u_r_l_request.html">TTURLRequest</a>*)request processResponse:(NSHTTPURLResponse*)response
+<a name="l00077"></a>00077             data:(<span class="keywordtype">id</span>)data {
+<a name="l00078"></a>00078   <span class="keywordflow">if</span> ([data isKindOfClass:[<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a> <span class="keyword">class</span>]]) {
+<a name="l00079"></a>00079     <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = [data retain];
+<a name="l00080"></a>00080   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([data isKindOfClass:[<a class="code" href="class_n_s_data.html" title="Additions.">NSData</a> <span class="keyword">class</span>]]) {
+<a name="l00081"></a>00081     <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* <a class="code" href="interface_t_t_u_r_l_image_response.html#a8d643a35f164ec644132f44c63294de6">image</a> = [[<a class="code" href="interface_t_t_u_r_l_cache.html">TTURLCache</a> <a class="code" href="interface_t_t_u_r_l_cache.html#ad6f6da8abb412bd604be1395b34346d7" title="Gets the shared cache singleton used across the application.">sharedCache</a>] <a class="code" href="interface_t_t_u_r_l_cache.html#aeb5760c833fc84782e5494192fdcaaaa">imageForURL</a>:request.URL <a class="code" href="interface_t_t_u_r_l_cache.html#aeb5760c833fc84782e5494192fdcaaaa">fromDisk</a>:NO];
+<a name="l00082"></a>00082     <span class="keywordflow">if</span> (!image) {
+<a name="l00083"></a>00083       image = [<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a> imageWithData:data];
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085     <span class="keywordflow">if</span> (image) {
+<a name="l00086"></a>00086       <span class="keywordflow">if</span> (!request.<a class="code" href="interface_t_t_u_r_l_request.html#a4276b8e633d614eab0fd649775d75e7a">respondedFromCache</a>) {
+<a name="l00087"></a>00087 <span class="comment">// XXXjoe Working on option to scale down really large images to a smaller size to save memory      </span>
+<a name="l00088"></a>00088 <span class="comment">//        if (image.size.width * image.size.height &gt; (300*300)) {</span>
+<a name="l00089"></a>00089 <span class="comment">//          image = [image transformWidth:300 height:(image.size.height/image.size.width)*300.0</span>
+<a name="l00090"></a>00090 <span class="comment">//                         rotate:NO];</span>
+<a name="l00091"></a>00091 <span class="comment">//          NSData* data = UIImagePNGRepresentation(image);</span>
+<a name="l00092"></a>00092 <span class="comment">//          [[TTURLCache sharedCache] storeData:data forURL:request.URL];</span>
+<a name="l00093"></a>00093 <span class="comment">//        }</span>
+<a name="l00094"></a>00094         [[<a class="code" href="interface_t_t_u_r_l_cache.html">TTURLCache</a> <a class="code" href="interface_t_t_u_r_l_cache.html#ad6f6da8abb412bd604be1395b34346d7" title="Gets the shared cache singleton used across the application.">sharedCache</a>] <a class="code" href="interface_t_t_u_r_l_cache.html#aca5d856ab7094ce6d72cee55e9339380" title="Stores an image in the memory cache.">storeImage</a>:image <a class="code" href="interface_t_t_u_r_l_cache.html#aca5d856ab7094ce6d72cee55e9339380" title="Stores an image in the memory cache.">forURL</a>:request.URL];
+<a name="l00095"></a>00095       }
+<a name="l00096"></a>00096       <a class="code" href="interface_t_t_u_r_l_image_response.html#af7e1bb3e72cc82b4b56422e11f7945ca">_image</a> = [image retain];
+<a name="l00097"></a>00097     } <span class="keywordflow">else</span> {
+<a name="l00098"></a>00098       <span class="keywordflow">return</span> [NSError errorWithDomain:TT_ERROR_DOMAIN code:TT_EC_INVALID_IMAGE
+<a name="l00099"></a>00099                       userInfo:nil];
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101   }
+<a name="l00102"></a>00102   <span class="keywordflow">return</span> nil;
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="keyword">@end</span>
+<a name="l00106"></a>00106 
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

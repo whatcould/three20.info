@@ -74,43 +74,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">00019</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
-<a name="l00020"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382abb62fcc4404f45da806b9fcb70e2f255">00020</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382abb62fcc4404f45da806b9fcb70e2f255">TTActivityLabelStyleWhite</a>,
-<a name="l00021"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382adfc06fe5c7a543ff19e8606578a75c5f">00021</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382adfc06fe5c7a543ff19e8606578a75c5f">TTActivityLabelStyleGray</a>,
-<a name="l00022"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a8abb1cef9eef9f4557900f7e7f929e35">00022</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a8abb1cef9eef9f4557900f7e7f929e35">TTActivityLabelStyleBlackBox</a>,
-<a name="l00023"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a0e980b466ba3e6c9ed34bae9c45a6cf7">00023</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a0e980b466ba3e6c9ed34bae9c45a6cf7">TTActivityLabelStyleBlackBezel</a>,
-<a name="l00024"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5920d7d4f330c35875daa76da897938a">00024</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5920d7d4f330c35875daa76da897938a">TTActivityLabelStyleBlackBanner</a>,
-<a name="l00025"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a354b0b8bd215a25fb0e976c3acc56057">00025</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a354b0b8bd215a25fb0e976c3acc56057">TTActivityLabelStyleWhiteBezel</a>,
-<a name="l00026"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5fc5dde5ea4de7ad679d4f211a683747">00026</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5fc5dde5ea4de7ad679d4f211a683747">TTActivityLabelStyleWhiteBox</a>
-<a name="l00027"></a>00027 } <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>;
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">@class</span> <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>, <a class="code" href="interface_t_t_button.html">TTButton</a>;
-<a name="l00030"></a>00030 
-<a name="l00031"></a><a class="code" href="interface_t_t_activity_label.html">00031</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
-<a name="l00032"></a><a class="code" href="interface_t_t_activity_label.html#a221966d99b2135208130e15e41a45c3e">00032</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a> <a class="code" href="interface_t_t_activity_label.html#a221966d99b2135208130e15e41a45c3e">_style</a>;
-<a name="l00033"></a><a class="code" href="interface_t_t_activity_label.html#aa5085d54fc6212ca36b7279a760b887c">00033</a>   <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>* <a class="code" href="interface_t_t_activity_label.html#aa5085d54fc6212ca36b7279a760b887c">_bezelView</a>;
-<a name="l00034"></a><a class="code" href="interface_t_t_activity_label.html#a4d2feb7fb305f756e8cade1494f0bb6b">00034</a>   UIProgressView* <a class="code" href="interface_t_t_activity_label.html#a4d2feb7fb305f756e8cade1494f0bb6b">_progressView</a>;
-<a name="l00035"></a><a class="code" href="interface_t_t_activity_label.html#a3cd98d3ad140aab511eda52fd001dcdb">00035</a>   UIActivityIndicatorView* <a class="code" href="interface_t_t_activity_label.html#a3cd98d3ad140aab511eda52fd001dcdb">_activityIndicator</a>;
-<a name="l00036"></a><a class="code" href="interface_t_t_activity_label.html#a2d43d2e1152d4173d7ca6ccd4fd905a6">00036</a>   UILabel* <a class="code" href="interface_t_t_activity_label.html#a2d43d2e1152d4173d7ca6ccd4fd905a6">_label</a>;
-<a name="l00037"></a><a class="code" href="interface_t_t_activity_label.html#aa40bc8640fb0542acb90b0a6552c7db1">00037</a>   <span class="keywordtype">float</span> <a class="code" href="interface_t_t_activity_label.html#aa40bc8640fb0542acb90b0a6552c7db1">_progress</a>;
-<a name="l00038"></a><a class="code" href="interface_t_t_activity_label.html#a97c60a3646913fdb2a2f75bb02e56943">00038</a>   BOOL <a class="code" href="interface_t_t_activity_label.html#a97c60a3646913fdb2a2f75bb02e56943">_smoothesProgress</a>;
-<a name="l00039"></a><a class="code" href="interface_t_t_activity_label.html#a380e0c448250c0dfdb5a6174c9e37106">00039</a>   NSTimer* <a class="code" href="interface_t_t_activity_label.html#a380e0c448250c0dfdb5a6174c9e37106">_smoothTimer</a>;
-<a name="l00040"></a>00040 }
-<a name="l00041"></a>00041 
-<a name="l00042"></a><a class="code" href="interface_t_t_activity_label.html#a322631041ac1cd44f9eef39c9027454a">00042</a> @property(nonatomic,readonly) <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a> style;
-<a name="l00043"></a><a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">00043</a> @property(nonatomic,assign) <a class="code" href="class_n_s_string.html">NSString</a>* text;
-<a name="l00044"></a><a class="code" href="interface_t_t_activity_label.html#a25ca2d4ba2de3e356626f4e695da8aa4">00044</a> @property(nonatomic,assign) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
-<a name="l00045"></a><a class="code" href="interface_t_t_activity_label.html#a3dc7525dba9195380cc2cf61d9caf69a">00045</a> @property(nonatomic) <span class="keywordtype">float</span> progress;
-<a name="l00046"></a><a class="code" href="interface_t_t_activity_label.html#a0bf4babad37eba997b9a7097c53db9a2">00046</a> @property(nonatomic) BOOL isAnimating;
-<a name="l00047"></a><a class="code" href="interface_t_t_activity_label.html#a968f483016aba15f3916a56bae966764">00047</a> @property(nonatomic) BOOL smoothesProgress;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 - (<span class="keywordtype">id</span>)initWithFrame:(CGRect)frame style:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style;
-<a name="l00050"></a>00050 - (<span class="keywordtype">id</span>)initWithFrame:(CGRect)frame style:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style text:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
-<a name="l00051"></a>00051 - (<span class="keywordtype">id</span>)initWithStyle:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style;
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">00020</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00021"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382abb62fcc4404f45da806b9fcb70e2f255">00021</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382abb62fcc4404f45da806b9fcb70e2f255">TTActivityLabelStyleWhite</a>,
+<a name="l00022"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382adfc06fe5c7a543ff19e8606578a75c5f">00022</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382adfc06fe5c7a543ff19e8606578a75c5f">TTActivityLabelStyleGray</a>,
+<a name="l00023"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a8abb1cef9eef9f4557900f7e7f929e35">00023</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a8abb1cef9eef9f4557900f7e7f929e35">TTActivityLabelStyleBlackBox</a>,
+<a name="l00024"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a0e980b466ba3e6c9ed34bae9c45a6cf7">00024</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a0e980b466ba3e6c9ed34bae9c45a6cf7">TTActivityLabelStyleBlackBezel</a>,
+<a name="l00025"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5920d7d4f330c35875daa76da897938a">00025</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5920d7d4f330c35875daa76da897938a">TTActivityLabelStyleBlackBanner</a>,
+<a name="l00026"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a354b0b8bd215a25fb0e976c3acc56057">00026</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a354b0b8bd215a25fb0e976c3acc56057">TTActivityLabelStyleWhiteBezel</a>,
+<a name="l00027"></a><a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5fc5dde5ea4de7ad679d4f211a683747">00027</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382a5fc5dde5ea4de7ad679d4f211a683747">TTActivityLabelStyleWhiteBox</a>
+<a name="l00028"></a>00028 } <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>;
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">@class</span> <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>, <a class="code" href="interface_t_t_button.html">TTButton</a>;
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="interface_t_t_activity_label.html">00032</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> : <a class="code" href="class_u_i_view.html">UIView</a> {
+<a name="l00033"></a><a class="code" href="interface_t_t_activity_label.html#a221966d99b2135208130e15e41a45c3e">00033</a>   <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a> <a class="code" href="interface_t_t_activity_label.html#a221966d99b2135208130e15e41a45c3e">_style</a>;
+<a name="l00034"></a><a class="code" href="interface_t_t_activity_label.html#aa5085d54fc6212ca36b7279a760b887c">00034</a>   <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>* <a class="code" href="interface_t_t_activity_label.html#aa5085d54fc6212ca36b7279a760b887c">_bezelView</a>;
+<a name="l00035"></a><a class="code" href="interface_t_t_activity_label.html#a4d2feb7fb305f756e8cade1494f0bb6b">00035</a>   UIProgressView* <a class="code" href="interface_t_t_activity_label.html#a4d2feb7fb305f756e8cade1494f0bb6b">_progressView</a>;
+<a name="l00036"></a><a class="code" href="interface_t_t_activity_label.html#a3cd98d3ad140aab511eda52fd001dcdb">00036</a>   UIActivityIndicatorView* <a class="code" href="interface_t_t_activity_label.html#a3cd98d3ad140aab511eda52fd001dcdb">_activityIndicator</a>;
+<a name="l00037"></a><a class="code" href="interface_t_t_activity_label.html#a2d43d2e1152d4173d7ca6ccd4fd905a6">00037</a>   UILabel* <a class="code" href="interface_t_t_activity_label.html#a2d43d2e1152d4173d7ca6ccd4fd905a6">_label</a>;
+<a name="l00038"></a><a class="code" href="interface_t_t_activity_label.html#aa40bc8640fb0542acb90b0a6552c7db1">00038</a>   <span class="keywordtype">float</span> <a class="code" href="interface_t_t_activity_label.html#aa40bc8640fb0542acb90b0a6552c7db1">_progress</a>;
+<a name="l00039"></a><a class="code" href="interface_t_t_activity_label.html#a97c60a3646913fdb2a2f75bb02e56943">00039</a>   BOOL <a class="code" href="interface_t_t_activity_label.html#a97c60a3646913fdb2a2f75bb02e56943">_smoothesProgress</a>;
+<a name="l00040"></a><a class="code" href="interface_t_t_activity_label.html#a380e0c448250c0dfdb5a6174c9e37106">00040</a>   NSTimer* <a class="code" href="interface_t_t_activity_label.html#a380e0c448250c0dfdb5a6174c9e37106">_smoothTimer</a>;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_activity_label.html#a322631041ac1cd44f9eef39c9027454a">00043</a> @property(nonatomic,readonly) <a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a> style;
+<a name="l00044"></a><a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">00044</a> @property(nonatomic,assign) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text;
+<a name="l00045"></a><a class="code" href="interface_t_t_activity_label.html#a25ca2d4ba2de3e356626f4e695da8aa4">00045</a> @property(nonatomic,assign) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
+<a name="l00046"></a><a class="code" href="interface_t_t_activity_label.html#a3dc7525dba9195380cc2cf61d9caf69a">00046</a> @property(nonatomic) <span class="keywordtype">float</span> progress;
+<a name="l00047"></a><a class="code" href="interface_t_t_activity_label.html#a0bf4babad37eba997b9a7097c53db9a2">00047</a> @property(nonatomic) BOOL isAnimating;
+<a name="l00048"></a><a class="code" href="interface_t_t_activity_label.html#a968f483016aba15f3916a56bae966764">00048</a> @property(nonatomic) BOOL smoothesProgress;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 - (<span class="keywordtype">id</span>)initWithFrame:(CGRect)frame style:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style;
+<a name="l00051"></a>00051 - (<span class="keywordtype">id</span>)initWithFrame:(CGRect)frame style:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style text:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
+<a name="l00052"></a>00052 - (<span class="keywordtype">id</span>)initWithStyle:(<a class="code" href="_t_t_activity_label_8h.html#a11ffb3fb7543cb09ff2137ebfaaac382">TTActivityLabelStyle</a>)style;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

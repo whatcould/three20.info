@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,94 +75,94 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_n_s_array_additions_8h.html">NSArrayAdditions.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="class_n_s_array.html">00019</a> <span class="keyword">@implementation </span><a class="code" href="class_n_s_array.html">NSArray</a> (TTCategory)
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021 - (void)perform:(<span class="keywordtype">SEL</span>)selector {
-<a name="l00022"></a>00022   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
-<a name="l00023"></a>00023   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
-<a name="l00024"></a>00024     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
-<a name="l00025"></a>00025       [delegate performSelector:selector];
-<a name="l00026"></a>00026     }
-<a name="l00027"></a>00027   }
-<a name="l00028"></a>00028 }
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 {
-<a name="l00031"></a>00031   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
-<a name="l00032"></a>00032   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
-<a name="l00033"></a>00033     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
-<a name="l00034"></a>00034       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
-<a name="l00035"></a>00035       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-<a name="l00036"></a>00036       [invo setTarget:delegate];
-<a name="l00037"></a>00037       [invo setSelector:selector];
-<a name="l00038"></a>00038       [invo setArgument:&amp;p1 atIndex:2];
-<a name="l00039"></a>00039       [invo invoke];
-<a name="l00040"></a>00040     }
-<a name="l00041"></a>00041   }
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 withObject:(<span class="keywordtype">id</span>)p2 {
-<a name="l00045"></a>00045   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
-<a name="l00046"></a>00046   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
-<a name="l00047"></a>00047     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
-<a name="l00048"></a>00048       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
-<a name="l00049"></a>00049       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-<a name="l00050"></a>00050       [invo setTarget:delegate];
-<a name="l00051"></a>00051       [invo setSelector:selector];
-<a name="l00052"></a>00052       [invo setArgument:&amp;p1 atIndex:2];
-<a name="l00053"></a>00053       [invo setArgument:&amp;p2 atIndex:3];
-<a name="l00054"></a>00054       [invo invoke];
-<a name="l00055"></a>00055     }
-<a name="l00056"></a>00056   }
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 withObject:(<span class="keywordtype">id</span>)p2
-<a name="l00060"></a>00060     withObject:(<span class="keywordtype">id</span>)p3 {
-<a name="l00061"></a>00061   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
-<a name="l00062"></a>00062   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
-<a name="l00063"></a>00063     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
-<a name="l00064"></a>00064       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
-<a name="l00065"></a>00065       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
-<a name="l00066"></a>00066       [invo setTarget:delegate];
-<a name="l00067"></a>00067       [invo setSelector:selector];
-<a name="l00068"></a>00068       [invo setArgument:&amp;p1 atIndex:2];
-<a name="l00069"></a>00069       [invo setArgument:&amp;p2 atIndex:3];
-<a name="l00070"></a>00070       [invo setArgument:&amp;p3 atIndex:4];
-<a name="l00071"></a>00071       [invo invoke];
-<a name="l00072"></a>00072     }
-<a name="l00073"></a>00073   }
-<a name="l00074"></a>00074 }
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 - (id)objectWithValue:(<span class="keywordtype">id</span>)value forKey:(<span class="keywordtype">id</span>)key {
-<a name="l00077"></a>00077   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> <span class="keywordtype">object</span> in <span class="keyword">self</span>) {
-<a name="l00078"></a>00078     <span class="keywordtype">id</span> propertyValue = [object valueForKey:key];
-<a name="l00079"></a>00079     <span class="keywordflow">if</span> ([propertyValue isEqual:value]) {
-<a name="l00080"></a>00080       <span class="keywordflow">return</span> object;
-<a name="l00081"></a>00081     }
-<a name="l00082"></a>00082   }
-<a name="l00083"></a>00083   <span class="keywordflow">return</span> nil;
-<a name="l00084"></a>00084 }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 - (id)objectWithClass:(Class)cls {
-<a name="l00087"></a>00087   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> <span class="keywordtype">object</span> in <span class="keyword">self</span>) {
-<a name="l00088"></a>00088     <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> isKindOfClass:cls]) {
-<a name="l00089"></a>00089       <span class="keywordflow">return</span> object;
-<a name="l00090"></a>00090     }
-<a name="l00091"></a>00091   }
-<a name="l00092"></a>00092   <span class="keywordflow">return</span> nil;
-<a name="l00093"></a>00093 }
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095 - (BOOL)containsObject:(<span class="keywordtype">id</span>)object withSelector:(<span class="keywordtype">SEL</span>)selector {
-<a name="l00096"></a>00096   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> item in <span class="keyword">self</span>) {
-<a name="l00097"></a>00097     <span class="keywordflow">if</span> ([[item performSelector:selector withObject:<span class="keywordtype">object</span>] boolValue]) {
-<a name="l00098"></a>00098       <span class="keywordflow">return</span> YES;
-<a name="l00099"></a>00099     }
-<a name="l00100"></a>00100   }
-<a name="l00101"></a>00101   <span class="keywordflow">return</span> NO;
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 <span class="keyword">@end</span>
+<a name="l00022"></a><a class="code" href="class_n_s_array.html">00022</a> <span class="keyword">@implementation </span><a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> (TTCategory)
+<a name="l00023"></a>00023 
+<a name="l00027"></a><a class="code" href="class_n_s_array.html#a53a001cf9cb922379801ad42eee42dcb">00027</a> - (void)perform:(<span class="keywordtype">SEL</span>)selector {
+<a name="l00028"></a>00028   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
+<a name="l00029"></a>00029   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
+<a name="l00030"></a>00030     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
+<a name="l00031"></a>00031       [delegate performSelector:selector];
+<a name="l00032"></a>00032     }
+<a name="l00033"></a>00033   }
+<a name="l00034"></a>00034 }
+<a name="l00035"></a>00035 
+<a name="l00039"></a><a class="code" href="class_n_s_array.html#a72ba4e622ff1cd38900c44af6bba51df">00039</a> - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 {
+<a name="l00040"></a>00040   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
+<a name="l00041"></a>00041   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
+<a name="l00042"></a>00042     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
+<a name="l00043"></a>00043       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
+<a name="l00044"></a>00044       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+<a name="l00045"></a>00045       [invo setTarget:delegate];
+<a name="l00046"></a>00046       [invo setSelector:selector];
+<a name="l00047"></a>00047       [invo setArgument:&amp;p1 atIndex:2];
+<a name="l00048"></a>00048       [invo invoke];
+<a name="l00049"></a>00049     }
+<a name="l00050"></a>00050   }
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00056"></a><a class="code" href="class_n_s_array.html#a67c75249a540334fd61684ec1c574017">00056</a> - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 withObject:(<span class="keywordtype">id</span>)p2 {
+<a name="l00057"></a>00057   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
+<a name="l00058"></a>00058   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
+<a name="l00059"></a>00059     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
+<a name="l00060"></a>00060       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
+<a name="l00061"></a>00061       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+<a name="l00062"></a>00062       [invo setTarget:delegate];
+<a name="l00063"></a>00063       [invo setSelector:selector];
+<a name="l00064"></a>00064       [invo setArgument:&amp;p1 atIndex:2];
+<a name="l00065"></a>00065       [invo setArgument:&amp;p2 atIndex:3];
+<a name="l00066"></a>00066       [invo invoke];
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068   }
+<a name="l00069"></a>00069 }
+<a name="l00070"></a>00070 
+<a name="l00074"></a><a class="code" href="class_n_s_array.html#a440a201d129ed1bd9aa61154af56da35">00074</a> - (void)perform:(<span class="keywordtype">SEL</span>)selector withObject:(<span class="keywordtype">id</span>)p1 withObject:(<span class="keywordtype">id</span>)p2
+<a name="l00075"></a>00075     withObject:(<span class="keywordtype">id</span>)p3 {
+<a name="l00076"></a>00076   NSEnumerator* e = [[[<span class="keyword">self</span> copy] autorelease] objectEnumerator];
+<a name="l00077"></a>00077   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> delegate; delegate = [e nextObject]; ) {
+<a name="l00078"></a>00078     <span class="keywordflow">if</span> ([delegate respondsToSelector:selector]) {
+<a name="l00079"></a>00079       NSMethodSignature *sig = [delegate methodSignatureForSelector:selector];
+<a name="l00080"></a>00080       NSInvocation* invo = [NSInvocation invocationWithMethodSignature:sig];
+<a name="l00081"></a>00081       [invo setTarget:delegate];
+<a name="l00082"></a>00082       [invo setSelector:selector];
+<a name="l00083"></a>00083       [invo setArgument:&amp;p1 atIndex:2];
+<a name="l00084"></a>00084       [invo setArgument:&amp;p2 atIndex:3];
+<a name="l00085"></a>00085       [invo setArgument:&amp;p3 atIndex:4];
+<a name="l00086"></a>00086       [invo invoke];
+<a name="l00087"></a>00087     }
+<a name="l00088"></a>00088   }
+<a name="l00089"></a>00089 }
+<a name="l00090"></a>00090 
+<a name="l00096"></a><a class="code" href="class_n_s_array.html#a8e02cb95df551a061311ac381b281fea">00096</a> - (id)objectWithValue:(<span class="keywordtype">id</span>)value forKey:(<span class="keywordtype">id</span>)key {
+<a name="l00097"></a>00097   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> <span class="keywordtype">object</span> in <span class="keyword">self</span>) {
+<a name="l00098"></a>00098     <span class="keywordtype">id</span> propertyValue = [object valueForKey:key];
+<a name="l00099"></a>00099     <span class="keywordflow">if</span> ([propertyValue isEqual:value]) {
+<a name="l00100"></a>00100       <span class="keywordflow">return</span> object;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102   }
+<a name="l00103"></a>00103   <span class="keywordflow">return</span> nil;
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00111"></a><a class="code" href="class_n_s_array.html#a3937102411f9af20be79b49e6b82e684">00111</a> - (id)objectWithClass:(Class)cls {
+<a name="l00112"></a>00112   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> <span class="keywordtype">object</span> in <span class="keyword">self</span>) {
+<a name="l00113"></a>00113     <span class="keywordflow">if</span> ([<span class="keywordtype">object</span> isKindOfClass:cls]) {
+<a name="l00114"></a>00114       <span class="keywordflow">return</span> object;
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117   <span class="keywordflow">return</span> nil;
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00125"></a><a class="code" href="class_n_s_array.html#afff745c6e8a2e658190c0c665d915bbe">00125</a> - (BOOL)containsObject:(<span class="keywordtype">id</span>)object withSelector:(<span class="keywordtype">SEL</span>)selector {
+<a name="l00126"></a>00126   <span class="keywordflow">for</span> (<span class="keywordtype">id</span> item in <span class="keyword">self</span>) {
+<a name="l00127"></a>00127     <span class="keywordflow">if</span> ([[item performSelector:selector withObject:<span class="keywordtype">object</span>] boolValue]) {
+<a name="l00128"></a>00128       <span class="keywordflow">return</span> YES;
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130   }
+<a name="l00131"></a>00131   <span class="keywordflow">return</span> NO;
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,79 +76,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_8h.html">Three20/TTStyle.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_layout_8h.html">Three20/TTLayout.h</a>&quot;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
 <a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_layout_8h.html">Three20/TTLayout.h</a>&quot;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>, <a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">layout</a> = <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>;
+<a name="l00025"></a>00025 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a>
 <a name="l00026"></a>00026 
-<a name="l00028"></a>00028 <span class="comment">// NSObject</span>
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 - (id)initWithFrame:(CGRect)frame {
-<a name="l00031"></a>00031   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00032"></a>00032     <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> = nil;
-<a name="l00033"></a>00033     <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a> = nil;
-<a name="l00034"></a>00034     <span class="keyword">self</span>.contentMode = UIViewContentModeRedraw;
-<a name="l00035"></a>00035   }
-<a name="l00036"></a>00036   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 - (void)dealloc {
-<a name="l00040"></a>00040   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>);
-<a name="l00041"></a>00041   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>);
-<a name="l00042"></a>00042   [<span class="keyword">super</span> dealloc];
-<a name="l00043"></a>00043 }
-<a name="l00044"></a>00044 
-<a name="l00046"></a>00046 <span class="comment">// UIView</span>
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048 - (void)drawRect:(CGRect)rect {
-<a name="l00049"></a>00049   <a class="code" href="interface_t_t_style.html">TTStyle</a>* <a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <span class="keyword">self</span>.style;
-<a name="l00050"></a>00050   <span class="keywordflow">if</span> (style) {
-<a name="l00051"></a>00051     <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
-<a name="l00052"></a>00052     context.<a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">delegate</a> = <span class="keyword">self</span>;
-<a name="l00053"></a>00053     context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a> = <span class="keyword">self</span>.bounds;
-<a name="l00054"></a>00054     context.<a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">contentFrame</a> = context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a>;
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056     [style <a class="code" href="interface_t_t_style.html#ad86cf830e4be9a236ab3ce8dfce216c1">draw</a>:context];
-<a name="l00057"></a>00057     <span class="keywordflow">if</span> (!context.<a class="code" href="interface_t_t_style_context.html#a42d37995106c6217b8fc1b0c8431b134">didDrawContent</a>) {
-<a name="l00058"></a>00058       [<span class="keyword">self</span> drawContent:self.bounds];
-<a name="l00059"></a>00059     }
-<a name="l00060"></a>00060   } <span class="keywordflow">else</span> {
-<a name="l00061"></a>00061     [<span class="keyword">self</span> drawContent:self.bounds];
-<a name="l00062"></a>00062   }
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 - (void)layoutSubviews {
-<a name="l00066"></a>00066   <a class="code" href="interface_t_t_layout.html">TTLayout</a>* <a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">layout</a> = <span class="keyword">self</span>.layout;
-<a name="l00067"></a>00067   <span class="keywordflow">if</span> (layout) {
-<a name="l00068"></a>00068     [layout <a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">layoutSubviews</a>:self.subviews <a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">forView</a>:self];
-<a name="l00069"></a>00069   }
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 - (CGSize)sizeThatFits:(CGSize)size {
-<a name="l00073"></a>00073   <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
-<a name="l00074"></a>00074   context.<a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">delegate</a> = <span class="keyword">self</span>;
-<a name="l00075"></a>00075   context.<a class="code" href="interface_t_t_style_context.html#a3d99ea4e476661883a932275b9d02701">font</a> = nil;
-<a name="l00076"></a>00076   <span class="keywordflow">return</span> [_style addToSize:CGSizeZero context:context];
-<a name="l00077"></a>00077 }
-<a name="l00078"></a>00078 
-<a name="l00080"></a>00080 <span class="comment">// public</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 - (void)setStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style {
-<a name="l00083"></a>00083   <span class="keywordflow">if</span> (style != <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>) {
-<a name="l00084"></a>00084     [_style release];
-<a name="l00085"></a>00085     <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> = [style retain];
-<a name="l00086"></a>00086     
-<a name="l00087"></a>00087     [<span class="keyword">self</span> setNeedsDisplay];
-<a name="l00088"></a>00088   }  
-<a name="l00089"></a>00089 }
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="interface_t_t_view.html#ad88f3307be7d49bf55b419941a1eabbd">00091</a> - (void)drawContent:(CGRect)rect {
-<a name="l00092"></a>00092 }
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="keyword">@end</span>
+<a name="l00027"></a>00027 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>, <a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">layout</a> = <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>;
+<a name="l00028"></a>00028 
+<a name="l00030"></a>00030 <span class="comment">// NSObject</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="interface_t_t_view.html#a965bdc92114b73c81a9619a8f37e0139">00032</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00033"></a>00033   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00034"></a>00034     <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> = nil;
+<a name="l00035"></a>00035     <a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a> = nil;
+<a name="l00036"></a>00036     <span class="keyword">self</span>.contentMode = UIViewContentModeRedraw;
+<a name="l00037"></a>00037   }
+<a name="l00038"></a>00038   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="interface_t_t_view.html#a73c9ae17cae20fa5da6fa5fc7f6085f9">00041</a> - (void)<a class="code" href="interface_t_t_view.html#a73c9ae17cae20fa5da6fa5fc7f6085f9">dealloc</a> {
+<a name="l00042"></a>00042   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>);
+<a name="l00043"></a>00043   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_view.html#aea5bd0ee9481a7012f50ea91cd7501bf">_layout</a>);
+<a name="l00044"></a>00044   [<span class="keyword">super</span> dealloc];
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00048"></a>00048 <span class="comment">// UIView</span>
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="interface_t_t_view.html#adbfcfa7f181f2b833e61339670bf0635">00050</a> - (void)drawRect:(CGRect)rect {
+<a name="l00051"></a>00051   <a class="code" href="interface_t_t_style.html">TTStyle</a>* <a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <span class="keyword">self</span>.style;
+<a name="l00052"></a>00052   <span class="keywordflow">if</span> (style) {
+<a name="l00053"></a>00053     <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
+<a name="l00054"></a>00054     context.<a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">delegate</a> = <span class="keyword">self</span>;
+<a name="l00055"></a>00055     context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a> = <span class="keyword">self</span>.bounds;
+<a name="l00056"></a>00056     context.<a class="code" href="interface_t_t_style_context.html#a4b13c3f3864e597ac7a453cbe90486f9">contentFrame</a> = context.<a class="code" href="interface_t_t_style_context.html#a00d85195514fb54040973f394f102343">frame</a>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058     [style <a class="code" href="interface_t_t_style.html#ad86cf830e4be9a236ab3ce8dfce216c1">draw</a>:context];
+<a name="l00059"></a>00059     <span class="keywordflow">if</span> (!context.<a class="code" href="interface_t_t_style_context.html#a42d37995106c6217b8fc1b0c8431b134">didDrawContent</a>) {
+<a name="l00060"></a>00060       [<span class="keyword">self</span> <a class="code" href="interface_t_t_view.html#ad88f3307be7d49bf55b419941a1eabbd">drawContent</a>:self.bounds];
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062   } <span class="keywordflow">else</span> {
+<a name="l00063"></a>00063     [<span class="keyword">self</span> <a class="code" href="interface_t_t_view.html#ad88f3307be7d49bf55b419941a1eabbd">drawContent</a>:self.bounds];
+<a name="l00064"></a>00064   }
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a><a class="code" href="interface_t_t_view.html#af29d021344250c83f21a5427acf5155d">00067</a> - (void)<a class="code" href="interface_t_t_view.html#af29d021344250c83f21a5427acf5155d">layoutSubviews</a> {
+<a name="l00068"></a>00068   <a class="code" href="interface_t_t_layout.html">TTLayout</a>* <a class="code" href="interface_t_t_view.html#aae1379b4316b8434d095325bfac7b70a">layout</a> = <span class="keyword">self</span>.layout;
+<a name="l00069"></a>00069   <span class="keywordflow">if</span> (layout) {
+<a name="l00070"></a>00070     [layout <a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">layoutSubviews</a>:self.subviews <a class="code" href="interface_t_t_layout.html#a62b0546ea4cf3df0befbd4bdcb10aeee">forView</a>:self];
+<a name="l00071"></a>00071   }
+<a name="l00072"></a>00072 }
+<a name="l00073"></a>00073 
+<a name="l00074"></a><a class="code" href="interface_t_t_view.html#afb992dc0490f4ab1a076a1cb4efe9549">00074</a> - (CGSize)sizeThatFits:(CGSize)size {
+<a name="l00075"></a>00075   <a class="code" href="interface_t_t_style_context.html">TTStyleContext</a>* context = [[[<a class="code" href="interface_t_t_style_context.html">TTStyleContext</a> alloc] init] autorelease];
+<a name="l00076"></a>00076   context.<a class="code" href="interface_t_t_style_context.html#af86462593ab5c3c3a416717a5c7fdcdc">delegate</a> = <span class="keyword">self</span>;
+<a name="l00077"></a>00077   context.<a class="code" href="interface_t_t_style_context.html#a3d99ea4e476661883a932275b9d02701">font</a> = nil;
+<a name="l00078"></a>00078   <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> <a class="code" href="interface_t_t_style.html#aff87a7a63493d97de1bed39214d5cd48">addToSize</a>:CGSizeZero <a class="code" href="interface_t_t_style.html#aff87a7a63493d97de1bed39214d5cd48">context</a>:context];
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00082"></a>00082 <span class="comment">// public</span>
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="interface_t_t_view.html#ad82a6ed3edfe757f61c4cb689af1a63c">00084</a> - (void)setStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style {
+<a name="l00085"></a>00085   <span class="keywordflow">if</span> (style != <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a>) {
+<a name="l00086"></a>00086     [<a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> release];
+<a name="l00087"></a>00087     <a class="code" href="interface_t_t_view.html#a97853b2c7509081da5ac2fc9cf89976f">_style</a> = [style retain];
+<a name="l00088"></a>00088     
+<a name="l00089"></a>00089     [<span class="keyword">self</span> setNeedsDisplay];
+<a name="l00090"></a>00090   }  
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a><a class="code" href="interface_t_t_view.html#ad88f3307be7d49bf55b419941a1eabbd">00093</a> - (void)drawContent:(CGRect)rect {
+<a name="l00094"></a>00094 }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

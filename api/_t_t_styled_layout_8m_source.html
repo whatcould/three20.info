@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,728 +76,731 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_styled_layout_8h.html">Three20/TTStyledLayout.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_styled_node_8h.html">Three20/TTStyledNode.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_styled_frame_8h.html">Three20/TTStyledFrame.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00021"></a>00021 
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a>
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a> = <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> = <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#a4cf61199254c6bac36aac660fbd1109e">rootFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>, <a class="code" href="interface_t_t_styled_layout.html#ae8d592fe34d9c66a29fd33d80e4e3b62">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>,
-<a name="l00027"></a>00027             <a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a> = <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>;
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_styled_node_8h.html">Three20/TTStyledNode.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_styled_frame_8h.html">Three20/TTStyledFrame.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a>
 <a name="l00028"></a>00028 
-<a name="l00030"></a>00030 <span class="comment">// private</span>
+<a name="l00029"></a>00029 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a> = <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> = <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#a4cf61199254c6bac36aac660fbd1109e">rootFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>, <a class="code" href="interface_t_t_styled_layout.html#ae8d592fe34d9c66a29fd33d80e4e3b62">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>,
+<a name="l00030"></a>00030             <a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a> = <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>;
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)boldVersionOfFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font {
-<a name="l00033"></a>00033   <span class="comment">// XXXjoe Clearly this doesn&apos;t work if your font is not the system font</span>
-<a name="l00034"></a>00034   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_font.html">UIFont</a> boldSystemFontOfSize:font.pointSize];
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)italicVersionOfFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font {
-<a name="l00038"></a>00038   <span class="comment">// XXXjoe Clearly this doesn&apos;t work if your font is not the system font</span>
-<a name="l00039"></a>00039   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_font.html">UIFont</a> italicSystemFontOfSize:font.pointSize];
-<a name="l00040"></a>00040 }
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)findLastNode:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node {
-<a name="l00043"></a>00043   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* lastNode = nil;
-<a name="l00044"></a>00044   <span class="keywordflow">while</span> (node) {
-<a name="l00045"></a>00045     <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> <span class="keyword">class</span>]]) {
-<a name="l00046"></a>00046       TTStyledElement* element = (TTStyledElement*)node;
-<a name="l00047"></a>00047       lastNode = [<span class="keyword">self</span> findLastNode:element.firstChild];
-<a name="l00048"></a>00048     } <span class="keywordflow">else</span> {
-<a name="l00049"></a>00049       lastNode = node;
-<a name="l00050"></a>00050     }
-<a name="l00051"></a>00051     node = node.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a>;
-<a name="l00052"></a>00052   }
-<a name="l00053"></a>00053   <span class="keywordflow">return</span> lastNode;
-<a name="l00054"></a>00054 }
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)boldFont {
-<a name="l00057"></a>00057   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>) {
-<a name="l00058"></a>00058     <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a> = [[<span class="keyword">self</span> boldVersionOfFont:self.font] retain];
-<a name="l00059"></a>00059   }
-<a name="l00060"></a>00060   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>;
-<a name="l00061"></a>00061 }
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)italicFont {
-<a name="l00064"></a>00064   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>) {
-<a name="l00065"></a>00065     <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a> = [[<span class="keyword">self</span> italicVersionOfFont:self.font] retain];
-<a name="l00066"></a>00066   }
-<a name="l00067"></a>00067   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>;
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)linkStyle {
-<a name="l00071"></a>00071   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>) {
-<a name="l00072"></a>00072     <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a> = [TTSTYLE(linkText:) retain];
-<a name="l00073"></a>00073   }
-<a name="l00074"></a>00074   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>;
-<a name="l00075"></a>00075 }
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)lastNode {
-<a name="l00078"></a>00078   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>) {
-<a name="l00079"></a>00079     <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a> = [<span class="keyword">self</span> findLastNode:_rootNode];
-<a name="l00080"></a>00080   }
-<a name="l00081"></a>00081   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>;
-<a name="l00082"></a>00082 }
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084 - (void)offsetFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame by:(CGFloat)y {
-<a name="l00085"></a>00085    frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += y;
+<a name="l00033"></a>00033 <span class="comment">// private</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="interface_t_t_styled_layout.html#a3420c6e08f75086c589ea17718226c69">00035</a> - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)boldVersionOfFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font {
+<a name="l00036"></a>00036   <span class="comment">// XXXjoe Clearly this doesn&apos;t work if your font is not the system font</span>
+<a name="l00037"></a>00037   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a> boldSystemFontOfSize:font.pointSize];
+<a name="l00038"></a>00038 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="interface_t_t_styled_layout.html#a1a1abc0259ebe5e58b2dfc3fd845e765">00040</a> - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)italicVersionOfFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font {
+<a name="l00041"></a>00041   <span class="comment">// XXXjoe Clearly this doesn&apos;t work if your font is not the system font</span>
+<a name="l00042"></a>00042   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a> italicSystemFontOfSize:font.pointSize];
+<a name="l00043"></a>00043 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="interface_t_t_styled_layout.html#a52855e4c801013d977531e290b831ad1">00045</a> - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)findLastNode:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node {
+<a name="l00046"></a>00046   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_layout.html#af55d3a6996308580afcc4fbf41b662fa">lastNode</a> = nil;
+<a name="l00047"></a>00047   <span class="keywordflow">while</span> (node) {
+<a name="l00048"></a>00048     <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> <span class="keyword">class</span>]]) {
+<a name="l00049"></a>00049       TTStyledElement* element = (TTStyledElement*)node;
+<a name="l00050"></a>00050       lastNode = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a52855e4c801013d977531e290b831ad1">findLastNode</a>:element.firstChild];
+<a name="l00051"></a>00051     } <span class="keywordflow">else</span> {
+<a name="l00052"></a>00052       lastNode = node;
+<a name="l00053"></a>00053     }
+<a name="l00054"></a>00054     node = node.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a>;
+<a name="l00055"></a>00055   }
+<a name="l00056"></a>00056   <span class="keywordflow">return</span> lastNode;
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="interface_t_t_styled_layout.html#ad3059481fd3384f500989ec714339bdf">00059</a> - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)<a class="code" href="interface_t_t_styled_layout.html#ad3059481fd3384f500989ec714339bdf">boldFont</a> {
+<a name="l00060"></a>00060   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>) {
+<a name="l00061"></a>00061     <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a> = [[<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a3420c6e08f75086c589ea17718226c69">boldVersionOfFont</a>:self.font] retain];
+<a name="l00062"></a>00062   }
+<a name="l00063"></a>00063   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>;
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="interface_t_t_styled_layout.html#af513890f238ad327bc9dfca9e12c3346">00066</a> - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)<a class="code" href="interface_t_t_styled_layout.html#af513890f238ad327bc9dfca9e12c3346">italicFont</a> {
+<a name="l00067"></a>00067   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>) {
+<a name="l00068"></a>00068     <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a> = [[<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a1a1abc0259ebe5e58b2dfc3fd845e765">italicVersionOfFont</a>:self.font] retain];
+<a name="l00069"></a>00069   }
+<a name="l00070"></a>00070   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>;
+<a name="l00071"></a>00071 }
+<a name="l00072"></a>00072 
+<a name="l00073"></a><a class="code" href="interface_t_t_styled_layout.html#a2555820c9a274072662591f9cf463358">00073</a> - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)<a class="code" href="interface_t_t_styled_layout.html#a2555820c9a274072662591f9cf463358">linkStyle</a> {
+<a name="l00074"></a>00074   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>) {
+<a name="l00075"></a>00075     <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a> = [TTSTYLE(linkText:) retain];
+<a name="l00076"></a>00076   }
+<a name="l00077"></a>00077   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>;
+<a name="l00078"></a>00078 }
+<a name="l00079"></a>00079 
+<a name="l00080"></a><a class="code" href="interface_t_t_styled_layout.html#af55d3a6996308580afcc4fbf41b662fa">00080</a> - (<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)lastNode {
+<a name="l00081"></a>00081   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>) {
+<a name="l00082"></a>00082     <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a52855e4c801013d977531e290b831ad1">findLastNode</a>:_rootNode];
+<a name="l00083"></a>00083   }
+<a name="l00084"></a>00084   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>;
+<a name="l00085"></a>00085 }
 <a name="l00086"></a>00086 
-<a name="l00087"></a>00087   <span class="keywordflow">if</span> ([frame isKindOfClass:[<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a> <span class="keyword">class</span>]]) {
-<a name="l00088"></a>00088     TTStyledInlineFrame* inlineFrame = (TTStyledInlineFrame*)frame;
-<a name="l00089"></a>00089     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* child = inlineFrame.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a>;
-<a name="l00090"></a>00090     <span class="keywordflow">while</span> (child) {
-<a name="l00091"></a>00091       [<span class="keyword">self</span> offsetFrame:child by:y];
-<a name="l00092"></a>00092       child = child.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>;
-<a name="l00093"></a>00093     }
-<a name="l00094"></a>00094   }
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 - (void)expandLineWidth:(CGFloat)width {
-<a name="l00098"></a>00098   <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> += width;
-<a name="l00099"></a>00099   TTStyledInlineFrame* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
-<a name="l00100"></a>00100   <span class="keywordflow">while</span> (inlineFrame) {
-<a name="l00101"></a>00101     inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += width;
-<a name="l00102"></a>00102     inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00103"></a>00103   }
-<a name="l00104"></a>00104 }
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106 - (void)inflateLineHeight:(CGFloat)height {
-<a name="l00107"></a>00107   <span class="keywordflow">if</span> (height &gt; <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>) {
-<a name="l00108"></a>00108     <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = height;
-<a name="l00109"></a>00109   }
-<a name="l00110"></a>00110   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
-<a name="l00111"></a>00111     TTStyledInlineFrame* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
-<a name="l00112"></a>00112     <span class="keywordflow">while</span> (inlineFrame) {
-<a name="l00113"></a>00113       <span class="keywordflow">if</span> (height &gt; inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a>) {
-<a name="l00114"></a>00114         inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = height;
-<a name="l00115"></a>00115       }
-<a name="l00116"></a>00116       inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00117"></a>00117     }
-<a name="l00118"></a>00118   }
-<a name="l00119"></a>00119 }
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121 - (void)addFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame {
-<a name="l00122"></a>00122   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>) {
-<a name="l00123"></a>00123     <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a> = [frame retain];
-<a name="l00124"></a>00124   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>) {
-<a name="l00125"></a>00125     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a>) {
-<a name="l00126"></a>00126       <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a> = frame;
-<a name="l00127"></a>00127     } <span class="keywordflow">else</span> {
-<a name="l00128"></a>00128       <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a> = frame;
-<a name="l00129"></a>00129     }
-<a name="l00130"></a>00130   } <span class="keywordflow">else</span> {
-<a name="l00131"></a>00131     <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a> = frame;
-<a name="l00132"></a>00132   }
-<a name="l00133"></a>00133   <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = frame;
-<a name="l00134"></a>00134 }
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136 - (void)pushFrame:(<a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a>*)frame {
-<a name="l00137"></a>00137   [<span class="keyword">self</span> addFrame:frame];
-<a name="l00138"></a>00138   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a1e337e6229dabcbd547f231d01d3af82">parentFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>;
-<a name="l00139"></a>00139   <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = frame;
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 - (void)popFrame {
-<a name="l00143"></a>00143   <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>;
-<a name="l00144"></a>00144   <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a1e337e6229dabcbd547f231d01d3af82">parentFrame</a>;
-<a name="l00145"></a>00145 }
-<a name="l00146"></a>00146 
-<a name="l00147"></a>00147 - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addContentFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width {
-<a name="l00148"></a>00148   [<span class="keyword">self</span> addFrame:frame];
-<a name="l00149"></a>00149   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>) {
-<a name="l00150"></a>00150     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = frame;
-<a name="l00151"></a>00151   }
-<a name="l00152"></a>00152   <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += width;
-<a name="l00153"></a>00153   <span class="keywordflow">return</span> frame;
-<a name="l00154"></a>00154 }
-<a name="l00155"></a>00155 
-<a name="l00156"></a>00156 - (void)addContentFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width height:(CGFloat)height {
-<a name="l00157"></a>00157   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, width, height);
-<a name="l00158"></a>00158   [<span class="keyword">self</span> addContentFrame:frame width:width];
-<a name="l00159"></a>00159 }
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161 - (void)addAbsoluteFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width height:(CGFloat)height {
-<a name="l00162"></a>00162   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, width, height);
-<a name="l00163"></a>00163   [<span class="keyword">self</span> addFrame:frame];
-<a name="l00164"></a>00164 }
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166 - (TTStyledInlineFrame*)addInlineFrame:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
-<a name="l00167"></a>00167                         width:(CGFloat)width height:(CGFloat)height {
-<a name="l00168"></a>00168   TTStyledInlineFrame* frame = [[[<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a> alloc] initWithElement:element] autorelease];
-<a name="l00169"></a>00169   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a> = style;
-<a name="l00170"></a>00170   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, width, height);
-<a name="l00171"></a>00171   [<span class="keyword">self</span> pushFrame:frame];
-<a name="l00172"></a>00172   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>) {
-<a name="l00173"></a>00173     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = frame;
-<a name="l00174"></a>00174   }
-<a name="l00175"></a>00175   <span class="keywordflow">return</span> frame;
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a>00178 - (TTStyledInlineFrame*)cloneInlineFrame:(TTStyledInlineFrame*)frame {
-<a name="l00179"></a>00179   TTStyledInlineFrame* parent = frame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00180"></a>00180   <span class="keywordflow">if</span> (parent) {
-<a name="l00181"></a>00181     [<span class="keyword">self</span> cloneInlineFrame:parent];
-<a name="l00182"></a>00182   }
-<a name="l00183"></a>00183 
-<a name="l00184"></a>00184   TTStyledInlineFrame* clone = [<span class="keyword">self</span> addInlineFrame:frame.style element:frame.element
-<a name="l00185"></a>00185                                      width:0 height:0];
-<a name="l00186"></a>00186   clone.<a class="code" href="interface_t_t_styled_inline_frame.html#a743833d2502453baa7ee758810699ff0">inlinePreviousFrame</a> = frame;
-<a name="l00187"></a>00187   frame.<a class="code" href="interface_t_t_styled_inline_frame.html#a28c0e28d75cfb60b0b47bdf98d942d18">inlineNextFrame</a> = clone;
-<a name="l00188"></a>00188   <span class="keywordflow">return</span> clone;
-<a name="l00189"></a>00189 }
-<a name="l00190"></a>00190 
-<a name="l00191"></a>00191 - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addBlockFrame:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
-<a name="l00192"></a>00192                   width:(CGFloat)width height:(CGFloat)height {
-<a name="l00193"></a>00193   <a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a> alloc] initWithElement:element] autorelease];
-<a name="l00194"></a>00194   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a> = style;
-<a name="l00195"></a>00195   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, width, height);
-<a name="l00196"></a>00196   [<span class="keyword">self</span> pushFrame:frame];
-<a name="l00197"></a>00197   <span class="keywordflow">return</span> frame;
-<a name="l00198"></a>00198 }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200 - (void)checkFloats {
-<a name="l00201"></a>00201   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> &amp;&amp; <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
-<a name="l00202"></a>00202     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> -= <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>;
-<a name="l00203"></a>00203     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> += <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>+<a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a>;
-<a name="l00204"></a>00204     <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> = 0;
-<a name="l00205"></a>00205     <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> = 0;
-<a name="l00206"></a>00206     <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = 0;
-<a name="l00207"></a>00207   }
-<a name="l00208"></a>00208 }
-<a name="l00209"></a>00209 
-<a name="l00210"></a>00210 - (void)breakLine {
-<a name="l00211"></a>00211   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
-<a name="l00212"></a>00212     TTStyledInlineFrame* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
-<a name="l00213"></a>00213     <span class="keywordflow">while</span> (inlineFrame) {
-<a name="l00214"></a>00214       <span class="keywordflow">if</span> (inlineFrame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a>) {
-<a name="l00215"></a>00215         <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = [inlineFrame.style firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
-<a name="l00216"></a>00216         <span class="keywordflow">if</span> (padding) {
-<a name="l00217"></a>00217           TTStyledInlineFrame* inlineFrame2 = inlineFrame;
-<a name="l00218"></a>00218           <span class="keywordflow">while</span> (inlineFrame2) {
-<a name="l00219"></a>00219             inlineFrame2.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> -= padding.padding.top;
-<a name="l00220"></a>00220             inlineFrame2.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> += padding.padding.top+padding.padding.bottom;
-<a name="l00221"></a>00221             inlineFrame2 = inlineFrame2.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00222"></a>00222           }
-<a name="l00223"></a>00223         }
-<a name="l00224"></a>00224       }
-<a name="l00225"></a>00225       inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00226"></a>00226     }
-<a name="l00227"></a>00227   }
-<a name="l00228"></a>00228 
-<a name="l00229"></a>00229   <span class="comment">// Vertically align all frames on the current line</span>
-<a name="l00230"></a>00230   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>) {
-<a name="l00231"></a>00231     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* frame = <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>;
-<a name="l00232"></a>00232     <span class="keywordflow">while</span> (frame) {
-<a name="l00233"></a>00233       <span class="comment">// Align to the text baseline</span>
-<a name="l00234"></a>00234       <span class="comment">// XXXjoe Support top, bottom, and center alignment also</span>
-<a name="l00235"></a>00235       <span class="keywordflow">if</span> (frame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> &lt; <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>) {
-<a name="l00236"></a>00236         <a class="code" href="class_u_i_font.html">UIFont</a>* font = frame.<a class="code" href="interface_t_t_styled_frame.html#a93c91ef15228fa6ae4b7693f5e093979">font</a> ? frame.<a class="code" href="interface_t_t_styled_frame.html#a93c91ef15228fa6ae4b7693f5e093979">font</a> : <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
-<a name="l00237"></a>00237         [<span class="keyword">self</span> offsetFrame:frame by:(_lineHeight - (frame.height - font.descender))];
-<a name="l00238"></a>00238       }
-<a name="l00239"></a>00239       frame = frame.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>;
-<a name="l00240"></a>00240     }
-<a name="l00241"></a>00241   }
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243   <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>;
-<a name="l00244"></a>00244   [<span class="keyword">self</span> checkFloats];
+<a name="l00087"></a><a class="code" href="interface_t_t_styled_layout.html#ada8e8deed4c2b00ec12d250d5552b8dd">00087</a> - (void)offsetFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame by:(CGFloat)y {
+<a name="l00088"></a>00088    frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += y;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090   <span class="keywordflow">if</span> ([frame isKindOfClass:[<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a> <span class="keyword">class</span>]]) {
+<a name="l00091"></a>00091     <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame = (<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>*)frame;
+<a name="l00092"></a>00092     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* child = inlineFrame.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a>;
+<a name="l00093"></a>00093     <span class="keywordflow">while</span> (child) {
+<a name="l00094"></a>00094       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ada8e8deed4c2b00ec12d250d5552b8dd">offsetFrame</a>:child <a class="code" href="interface_t_t_styled_layout.html#ada8e8deed4c2b00ec12d250d5552b8dd">by</a>:y];
+<a name="l00095"></a>00095       child = child.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>;
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097   }
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="interface_t_t_styled_layout.html#ac0e18793a12e58b15f0cbe801c6b6ea5">00100</a> - (void)expandLineWidth:(CGFloat)width {
+<a name="l00101"></a>00101   <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> += <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>;
+<a name="l00102"></a>00102   <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
+<a name="l00103"></a>00103   <span class="keywordflow">while</span> (inlineFrame) {
+<a name="l00104"></a>00104     inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>;
+<a name="l00105"></a>00105     inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00106"></a>00106   }
+<a name="l00107"></a>00107 }
+<a name="l00108"></a>00108 
+<a name="l00109"></a><a class="code" href="interface_t_t_styled_layout.html#a1d558a4369266b3bdb6adb1c5adc0e24">00109</a> - (void)inflateLineHeight:(CGFloat)height {
+<a name="l00110"></a>00110   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> &gt; <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>) {
+<a name="l00111"></a>00111     <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>;
+<a name="l00112"></a>00112   }
+<a name="l00113"></a>00113   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
+<a name="l00114"></a>00114     <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
+<a name="l00115"></a>00115     <span class="keywordflow">while</span> (inlineFrame) {
+<a name="l00116"></a>00116       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> &gt; inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a>) {
+<a name="l00117"></a>00117         inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>;
+<a name="l00118"></a>00118       }
+<a name="l00119"></a>00119       inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121   }
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a><a class="code" href="interface_t_t_styled_layout.html#a07e996dd2ef6fe61903c46f35255cc2b">00124</a> - (void)addFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame {
+<a name="l00125"></a>00125   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>) {
+<a name="l00126"></a>00126     <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a> = [frame retain];
+<a name="l00127"></a>00127   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>) {
+<a name="l00128"></a>00128     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a>) {
+<a name="l00129"></a>00129       <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a013c0edf11ce595381234d303018aac8">firstChildFrame</a> = frame;
+<a name="l00130"></a>00130     } <span class="keywordflow">else</span> {
+<a name="l00131"></a>00131       <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a> = frame;
+<a name="l00132"></a>00132     }
+<a name="l00133"></a>00133   } <span class="keywordflow">else</span> {
+<a name="l00134"></a>00134     <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a> = frame;
+<a name="l00135"></a>00135   }
+<a name="l00136"></a>00136   <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = frame;
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a><a class="code" href="interface_t_t_styled_layout.html#a23b75ca4dc30a8a10cce9ca6a3993346">00139</a> - (void)pushFrame:(<a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a>*)frame {
+<a name="l00140"></a>00140   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a07e996dd2ef6fe61903c46f35255cc2b">addFrame</a>:frame];
+<a name="l00141"></a>00141   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a1e337e6229dabcbd547f231d01d3af82">parentFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>;
+<a name="l00142"></a>00142   <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = frame;
+<a name="l00143"></a>00143 }
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="interface_t_t_styled_layout.html#a079d406dcb002f2e9c5b4b9b852e2e9c">00145</a> - (void)<a class="code" href="interface_t_t_styled_layout.html#a079d406dcb002f2e9c5b4b9b852e2e9c">popFrame</a> {
+<a name="l00146"></a>00146   <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>;
+<a name="l00147"></a>00147   <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a>.<a class="code" href="interface_t_t_styled_box_frame.html#a1e337e6229dabcbd547f231d01d3af82">parentFrame</a>;
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a><a class="code" href="interface_t_t_styled_layout.html#af16c5c6af829a27bd1170736a62bc533">00150</a> - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addContentFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width {
+<a name="l00151"></a>00151   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a07e996dd2ef6fe61903c46f35255cc2b">addFrame</a>:frame];
+<a name="l00152"></a>00152   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>) {
+<a name="l00153"></a>00153     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = frame;
+<a name="l00154"></a>00154   }
+<a name="l00155"></a>00155   <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>;
+<a name="l00156"></a>00156   <span class="keywordflow">return</span> frame;
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00159"></a><a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">00159</a> - (void)addContentFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width height:(CGFloat)height {
+<a name="l00160"></a>00160   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>);
+<a name="l00161"></a>00161   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#af16c5c6af829a27bd1170736a62bc533">addContentFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#af16c5c6af829a27bd1170736a62bc533">width</a>:width];
+<a name="l00162"></a>00162 }
+<a name="l00163"></a>00163 
+<a name="l00164"></a><a class="code" href="interface_t_t_styled_layout.html#aa6f8aa15ad9dae87e793db34d513e4db">00164</a> - (void)addAbsoluteFrame:(<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)frame width:(CGFloat)width height:(CGFloat)height {
+<a name="l00165"></a>00165   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>);
+<a name="l00166"></a>00166   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a07e996dd2ef6fe61903c46f35255cc2b">addFrame</a>:frame];
+<a name="l00167"></a>00167 }
+<a name="l00168"></a>00168 
+<a name="l00169"></a><a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">00169</a> - (<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>*)addInlineFrame:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
+<a name="l00170"></a>00170                         width:(CGFloat)width height:(CGFloat)height {
+<a name="l00171"></a>00171   <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a> alloc] initWithElement:element] autorelease];
+<a name="l00172"></a>00172   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a> = style;
+<a name="l00173"></a>00173   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>);
+<a name="l00174"></a>00174   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a23b75ca4dc30a8a10cce9ca6a3993346">pushFrame</a>:frame];
+<a name="l00175"></a>00175   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>) {
+<a name="l00176"></a>00176     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = frame;
+<a name="l00177"></a>00177   }
+<a name="l00178"></a>00178   <span class="keywordflow">return</span> frame;
+<a name="l00179"></a>00179 }
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="interface_t_t_styled_layout.html#aaa8e64cded271c8df5bc382d3c4393b2">00181</a> - (<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>*)cloneInlineFrame:(<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>*)frame {
+<a name="l00182"></a>00182   <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* parent = frame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00183"></a>00183   <span class="keywordflow">if</span> (parent) {
+<a name="l00184"></a>00184     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#aaa8e64cded271c8df5bc382d3c4393b2">cloneInlineFrame</a>:parent];
+<a name="l00185"></a>00185   }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187   <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* clone = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">addInlineFrame</a>:frame.style <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">element</a>:frame.element
+<a name="l00188"></a>00188                                      <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">width</a>:0 <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">height</a>:0];
+<a name="l00189"></a>00189   clone.<a class="code" href="interface_t_t_styled_inline_frame.html#a743833d2502453baa7ee758810699ff0">inlinePreviousFrame</a> = frame;
+<a name="l00190"></a>00190   frame.<a class="code" href="interface_t_t_styled_inline_frame.html#a28c0e28d75cfb60b0b47bdf98d942d18">inlineNextFrame</a> = clone;
+<a name="l00191"></a>00191   <span class="keywordflow">return</span> clone;
+<a name="l00192"></a>00192 }
+<a name="l00193"></a>00193 
+<a name="l00194"></a><a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">00194</a> - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addBlockFrame:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
+<a name="l00195"></a>00195                   width:(CGFloat)width height:(CGFloat)height {
+<a name="l00196"></a>00196   <a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_box_frame.html">TTStyledBoxFrame</a> alloc] initWithElement:element] autorelease];
+<a name="l00197"></a>00197   frame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a> = style;
+<a name="l00198"></a>00198   frame.<a class="code" href="interface_t_t_styled_frame.html#ab0bd9f22c306b1983ffe3889a3057971" title="The bounds of the content that is displayed by this frame.">bounds</a> = CGRectMake(<a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a>, <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>, <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>, <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>);
+<a name="l00199"></a>00199   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a23b75ca4dc30a8a10cce9ca6a3993346">pushFrame</a>:frame];
+<a name="l00200"></a>00200   <span class="keywordflow">return</span> frame;
+<a name="l00201"></a>00201 }
+<a name="l00202"></a>00202 
+<a name="l00203"></a><a class="code" href="interface_t_t_styled_layout.html#a388550d099d9b2d677d677d89fe6757e">00203</a> - (void)<a class="code" href="interface_t_t_styled_layout.html#a388550d099d9b2d677d677d89fe6757e">checkFloats</a> {
+<a name="l00204"></a>00204   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> &amp;&amp; <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
+<a name="l00205"></a>00205     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> -= <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>;
+<a name="l00206"></a>00206     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> += <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>+<a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a>;
+<a name="l00207"></a>00207     _floatRightWidth = 0;
+<a name="l00208"></a>00208     <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> = 0;
+<a name="l00209"></a>00209     <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = 0;
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211 }
+<a name="l00212"></a>00212 
+<a name="l00213"></a><a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">00213</a> - (void)<a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a> {
+<a name="l00214"></a>00214   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
+<a name="l00215"></a>00215     <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
+<a name="l00216"></a>00216     <span class="keywordflow">while</span> (inlineFrame) {
+<a name="l00217"></a>00217       <span class="keywordflow">if</span> (inlineFrame.<a class="code" href="interface_t_t_styled_box_frame.html#a5d525ddd5702d1cc8aeeef17a01c51eb" title="The style used to render the frame;.">style</a>) {
+<a name="l00218"></a>00218         <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = [inlineFrame.style firstStyleOfClass:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]];
+<a name="l00219"></a>00219         <span class="keywordflow">if</span> (padding) {
+<a name="l00220"></a>00220           <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame2 = inlineFrame;
+<a name="l00221"></a>00221           <span class="keywordflow">while</span> (inlineFrame2) {
+<a name="l00222"></a>00222             inlineFrame2.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> -= padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top;
+<a name="l00223"></a>00223             inlineFrame2.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top+padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.bottom;
+<a name="l00224"></a>00224             inlineFrame2 = inlineFrame2.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00225"></a>00225           }
+<a name="l00226"></a>00226         }
+<a name="l00227"></a>00227       }
+<a name="l00228"></a>00228       inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00229"></a>00229     }
+<a name="l00230"></a>00230   }
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232   <span class="comment">// Vertically align all frames on the current line</span>
+<a name="l00233"></a>00233   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>) {
+<a name="l00234"></a>00234     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* frame = <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a>;
+<a name="l00235"></a>00235     <span class="keywordflow">while</span> (frame) {
+<a name="l00236"></a>00236       <span class="comment">// Align to the text baseline</span>
+<a name="l00237"></a>00237       <span class="comment">// XXXjoe Support top, bottom, and center alignment also</span>
+<a name="l00238"></a>00238       <span class="keywordflow">if</span> (frame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> &lt; <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>) {
+<a name="l00239"></a>00239         <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font = frame.<a class="code" href="interface_t_t_styled_frame.html#a93c91ef15228fa6ae4b7693f5e093979">font</a> ? frame.<a class="code" href="interface_t_t_styled_frame.html#a93c91ef15228fa6ae4b7693f5e093979">font</a> : <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
+<a name="l00240"></a>00240         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ada8e8deed4c2b00ec12d250d5552b8dd">offsetFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#ada8e8deed4c2b00ec12d250d5552b8dd">by</a>:(_lineHeight - (frame.height - font.descender))];
+<a name="l00241"></a>00241       }
+<a name="l00242"></a>00242       frame = frame.<a class="code" href="interface_t_t_styled_frame.html#ac766ee3e369aade645baa3f93cec4867" title="The next in the linked list of frames.">nextFrame</a>;
+<a name="l00243"></a>00243     }
+<a name="l00244"></a>00244   }
 <a name="l00245"></a>00245 
-<a name="l00246"></a>00246   <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> = 0;
-<a name="l00247"></a>00247   <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = 0;
-<a name="l00248"></a>00248   <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a>;
-<a name="l00249"></a>00249   <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = nil;
-<a name="l00250"></a>00250 
-<a name="l00251"></a>00251   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
-<a name="l00252"></a>00252     <span class="keywordflow">while</span> ([<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> isKindOfClass:[TTStyledInlineFrame <span class="keyword">class</span>]]) {
-<a name="l00253"></a>00253       [<span class="keyword">self</span> popFrame];
-<a name="l00254"></a>00254     }
-<a name="l00255"></a>00255     <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = [<span class="keyword">self</span> cloneInlineFrame:_inlineFrame];
-<a name="l00256"></a>00256   }
-<a name="l00257"></a>00257 }
-<a name="l00258"></a>00258 
-<a name="l00259"></a>00259 - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addFrameForText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
-<a name="l00260"></a>00260                   node:(<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a>*)node width:(CGFloat)width height:(CGFloat)height {
-<a name="l00261"></a>00261   <a class="code" href="interface_t_t_styled_text_frame.html">TTStyledTextFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_text_frame.html">TTStyledTextFrame</a> alloc] initWithText:text element:element
-<a name="l00262"></a>00262                                                          node:node] autorelease];
-<a name="l00263"></a>00263   frame.<a class="code" href="interface_t_t_styled_text_frame.html#a12d302d0ad05c8154e16185c006a6c17" title="The font that is used to measure and display the text of this frame.">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
-<a name="l00264"></a>00264   [<span class="keyword">self</span> addContentFrame:frame width:width height:height];
-<a name="l00265"></a>00265   <span class="keywordflow">return</span> frame;
-<a name="l00266"></a>00266 }
-<a name="l00267"></a>00267 
-<a name="l00268"></a>00268 - (void)layoutElement:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)elt {
-<a name="l00269"></a>00269   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = nil;
-<a name="l00270"></a>00270   <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">className</a>) {
-<a name="l00271"></a>00271     <a class="code" href="interface_t_t_style.html">TTStyle</a>* eltStyle = [[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">styleWithSelector</a>:elt.className];
-<a name="l00272"></a>00272     <span class="keywordflow">if</span> (eltStyle) {
-<a name="l00273"></a>00273       style = eltStyle;
-<a name="l00274"></a>00274     }
-<a name="l00275"></a>00275   }
-<a name="l00276"></a>00276   <span class="keywordflow">if</span> (!style &amp;&amp; [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_link_node.html">TTStyledLinkNode</a> <span class="keyword">class</span>]]) {
-<a name="l00277"></a>00277     style = <span class="keyword">self</span>.linkStyle;
+<a name="l00246"></a>00246   <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a>;
+<a name="l00247"></a>00247   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a388550d099d9b2d677d677d89fe6757e">checkFloats</a>];
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249   <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> = 0;
+<a name="l00250"></a>00250   <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = 0;
+<a name="l00251"></a>00251   <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a>;
+<a name="l00252"></a>00252   <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = nil;
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
+<a name="l00255"></a>00255     <span class="keywordflow">while</span> ([<a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> isKindOfClass:[<a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a> <span class="keyword">class</span>]]) {
+<a name="l00256"></a>00256       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a079d406dcb002f2e9c5b4b9b852e2e9c">popFrame</a>];
+<a name="l00257"></a>00257     }
+<a name="l00258"></a>00258     <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#aaa8e64cded271c8df5bc382d3c4393b2">cloneInlineFrame</a>:_inlineFrame];
+<a name="l00259"></a>00259   }
+<a name="l00260"></a>00260 }
+<a name="l00261"></a>00261 
+<a name="l00262"></a><a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">00262</a> - (<a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>*)addFrameForText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text element:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element
+<a name="l00263"></a>00263                   node:(<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a>*)node width:(CGFloat)width height:(CGFloat)height {
+<a name="l00264"></a>00264   <a class="code" href="interface_t_t_styled_text_frame.html">TTStyledTextFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_text_frame.html">TTStyledTextFrame</a> alloc] initWithText:text element:element
+<a name="l00265"></a>00265                                                          node:node] autorelease];
+<a name="l00266"></a>00266   frame.<a class="code" href="interface_t_t_styled_text_frame.html#a12d302d0ad05c8154e16185c006a6c17" title="The font that is used to measure and display the text of this frame.">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
+<a name="l00267"></a>00267   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">addContentFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">width</a>:width <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">height</a>:height];
+<a name="l00268"></a>00268   <span class="keywordflow">return</span> frame;
+<a name="l00269"></a>00269 }
+<a name="l00270"></a>00270 
+<a name="l00271"></a><a class="code" href="interface_t_t_styled_layout.html#ae711912c5e8a3123c79ba3dca6c1b386">00271</a> - (void)layoutElement:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)elt {
+<a name="l00272"></a>00272   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = nil;
+<a name="l00273"></a>00273   <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">className</a>) {
+<a name="l00274"></a>00274     <a class="code" href="interface_t_t_style.html">TTStyle</a>* eltStyle = [[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">styleWithSelector</a>:elt.className];
+<a name="l00275"></a>00275     <span class="keywordflow">if</span> (eltStyle) {
+<a name="l00276"></a>00276       style = eltStyle;
+<a name="l00277"></a>00277     }
 <a name="l00278"></a>00278   }
-<a name="l00279"></a>00279 
-<a name="l00280"></a>00280   <span class="comment">// Figure out which font to use for the node</span>
-<a name="l00281"></a>00281   <a class="code" href="class_u_i_font.html">UIFont</a>* font = nil;
-<a name="l00282"></a>00282   <a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>* textStyle = nil;
-<a name="l00283"></a>00283   <span class="keywordflow">if</span> (style) {
-<a name="l00284"></a>00284     textStyle = [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a> class]];
-<a name="l00285"></a>00285     <span class="keywordflow">if</span> (textStyle) {
-<a name="l00286"></a>00286       font = textStyle.<a class="code" href="interface_t_t_text_style.html#a3c2eb90a657d43764a0dee94c44e96f2">font</a>;
-<a name="l00287"></a>00287     }        
-<a name="l00288"></a>00288   }
-<a name="l00289"></a>00289   <span class="keywordflow">if</span> (!font) {
-<a name="l00290"></a>00290     <span class="keywordflow">if</span> ([elt isKindOfClass:[TTStyledLinkNode <span class="keyword">class</span>]]
-<a name="l00291"></a>00291         || [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_bold_node.html">TTStyledBoldNode</a> <span class="keyword">class</span>]]) {
-<a name="l00292"></a>00292       font = <span class="keyword">self</span>.boldFont;
-<a name="l00293"></a>00293     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([elt isKindOfClass:[<a class="code" href="interface_t_t_styled_italic_node.html">TTStyledItalicNode</a> <span class="keyword">class</span>]]) {
-<a name="l00294"></a>00294       font = <span class="keyword">self</span>.italicFont;
-<a name="l00295"></a>00295     } <span class="keywordflow">else</span> {
-<a name="l00296"></a>00296       font = <span class="keyword">self</span>.font;
-<a name="l00297"></a>00297     }
-<a name="l00298"></a>00298   }
-<a name="l00299"></a>00299 
-<a name="l00300"></a>00300   <a class="code" href="class_u_i_font.html">UIFont</a>* lastFont = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
-<a name="l00301"></a>00301   <span class="keyword">self</span>.font = font;
+<a name="l00279"></a>00279   <span class="keywordflow">if</span> (!style &amp;&amp; [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_link_node.html">TTStyledLinkNode</a> <span class="keyword">class</span>]]) {
+<a name="l00280"></a>00280     style = <span class="keyword">self</span>.linkStyle;
+<a name="l00281"></a>00281   }
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283   <span class="comment">// Figure out which font to use for the node</span>
+<a name="l00284"></a>00284   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font = nil;
+<a name="l00285"></a>00285   <a class="code" href="interface_t_t_text_style.html">TTTextStyle</a>* textStyle = nil;
+<a name="l00286"></a>00286   <span class="keywordflow">if</span> (style) {
+<a name="l00287"></a>00287     textStyle = [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_text_style.html">TTTextStyle</a> class]];
+<a name="l00288"></a>00288     <span class="keywordflow">if</span> (textStyle) {
+<a name="l00289"></a>00289       font = textStyle.<a class="code" href="interface_t_t_text_style.html#a3c2eb90a657d43764a0dee94c44e96f2">font</a>;
+<a name="l00290"></a>00290     }        
+<a name="l00291"></a>00291   }
+<a name="l00292"></a>00292   <span class="keywordflow">if</span> (!font) {
+<a name="l00293"></a>00293     <span class="keywordflow">if</span> ([elt isKindOfClass:[<a class="code" href="interface_t_t_styled_link_node.html">TTStyledLinkNode</a> <span class="keyword">class</span>]]
+<a name="l00294"></a>00294         || [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_bold_node.html">TTStyledBoldNode</a> <span class="keyword">class</span>]]) {
+<a name="l00295"></a>00295       font = <span class="keyword">self</span>.boldFont;
+<a name="l00296"></a>00296     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([elt isKindOfClass:[<a class="code" href="interface_t_t_styled_italic_node.html">TTStyledItalicNode</a> <span class="keyword">class</span>]]) {
+<a name="l00297"></a>00297       font = <span class="keyword">self</span>.italicFont;
+<a name="l00298"></a>00298     } <span class="keywordflow">else</span> {
+<a name="l00299"></a>00299       font = <span class="keyword">self</span>.font;
+<a name="l00300"></a>00300     }
+<a name="l00301"></a>00301   }
 <a name="l00302"></a>00302 
-<a name="l00303"></a>00303   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = style ? [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]] : nil;
-<a name="l00304"></a>00304   
-<a name="l00305"></a>00305   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) {
-<a name="l00306"></a>00306     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* blockFrame = [<span class="keyword">self</span> addBlockFrame:style element:elt width:_width height:_height];
-<a name="l00307"></a>00307 
-<a name="l00308"></a>00308     CGFloat contentWidth = padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + padding.margin.right;
-<a name="l00309"></a>00309     CGFloat contentHeight = padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top + padding.margin.bottom;
+<a name="l00303"></a>00303   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* lastFont = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
+<a name="l00304"></a>00304   <span class="keyword">self</span>.font = font;
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = style ? [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]] : nil;
+<a name="l00307"></a>00307   
+<a name="l00308"></a>00308   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) {
+<a name="l00309"></a>00309     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* blockFrame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">addBlockFrame</a>:style <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">element</a>:elt <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">width</a>:_width <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">height</a>:_height];
 <a name="l00310"></a>00310 
-<a name="l00311"></a>00311     <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>) {
-<a name="l00312"></a>00312       <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* child = elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>;
-<a name="l00313"></a>00313       <a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a>* layout = [[[<a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a> alloc] initWithX:_minX
-<a name="l00314"></a>00314                                                         width:0 height:_height] autorelease];
-<a name="l00315"></a>00315       layout.<a class="code" href="interface_t_t_styled_layout.html#ae8d592fe34d9c66a29fd33d80e4e3b62">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
-<a name="l00316"></a>00316       layout.<a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a> = <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>;
-<a name="l00317"></a>00317       [layout <a class="code" href="interface_t_t_styled_layout.html#acf8f3217bc9b8ca2a60e6c7bf9505c7b">layout</a>:child];
-<a name="l00318"></a>00318       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> &amp;&amp; layout.<a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a>) {
-<a name="l00319"></a>00319         <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = [layout.invalidImages retain];
-<a name="l00320"></a>00320       }
-<a name="l00321"></a>00321       
-<a name="l00322"></a>00322       <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* frame = [<span class="keyword">self</span> addContentFrame:layout.rootFrame width:layout.width];
-<a name="l00323"></a>00323       
-<a name="l00324"></a>00324       CGFloat frameHeight = layout.<a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> - <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
-<a name="l00325"></a>00325       contentWidth += layout.width;
-<a name="l00326"></a>00326       contentHeight += frameHeight;
-<a name="l00327"></a>00327       
-<a name="l00328"></a>00328       <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a5e4435ff910c98129ad83b74e71c1799">TTPositionFloatLeft</a>) {
-<a name="l00329"></a>00329         frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>;
-<a name="l00330"></a>00330         <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> += contentWidth;
-<a name="l00331"></a>00331         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
-<a name="l00332"></a>00332           <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
-<a name="l00333"></a>00333         }
-<a name="l00334"></a>00334         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += contentWidth;
-<a name="l00335"></a>00335         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
-<a name="l00336"></a>00336       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a9adc914fb866df7487b5e17bdabdad46">TTPositionFloatRight</a>) {
-<a name="l00337"></a>00337         frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> - (<a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> + contentWidth);
-<a name="l00338"></a>00338         <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> += contentWidth;
-<a name="l00339"></a>00339         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
-<a name="l00340"></a>00340           <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
-<a name="l00341"></a>00341         }
-<a name="l00342"></a>00342         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> -= contentWidth;
-<a name="l00343"></a>00343         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
-<a name="l00344"></a>00344       }
-<a name="l00345"></a>00345       
-<a name="l00346"></a>00346       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> = layout.<a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a> + padding.padding.left + padding.padding.right;
-<a name="l00347"></a>00347       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = frameHeight + padding.padding.top + padding.padding.bottom;
-<a name="l00348"></a>00348     }
-<a name="l00349"></a>00349   } <span class="keywordflow">else</span> {
-<a name="l00350"></a>00350     CGFloat minX = <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a>, width = <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>, floatLeftWidth = <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>,
-<a name="l00351"></a>00351             floatRightWidth = <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a>, floatHeight = <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>;
-<a name="l00352"></a>00352     BOOL isBlock = [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a> class]];
-<a name="l00353"></a>00353     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* blockFrame = nil;
-<a name="l00354"></a>00354     
-<a name="l00355"></a>00355     <span class="keywordflow">if</span> (isBlock) {
-<a name="l00356"></a>00356       <span class="keywordflow">if</span> (padding) {
-<a name="l00357"></a>00357         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.margin.left;
-<a name="l00358"></a>00358         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += padding.margin.left;
-<a name="l00359"></a>00359         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= padding.margin.left + padding.margin.right;
-<a name="l00360"></a>00360         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.margin.top;
-<a name="l00361"></a>00361       }
-<a name="l00362"></a>00362 
-<a name="l00363"></a>00363       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>) {
-<a name="l00364"></a>00364         <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> &amp;&amp; [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_line_break_node.html">TTStyledLineBreakNode</a> <span class="keyword">class</span>]]) {
-<a name="l00365"></a>00365           <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = [_font lineHeight];
-<a name="l00366"></a>00366         }
-<a name="l00367"></a>00367         [<span class="keyword">self</span> breakLine];
-<a name="l00368"></a>00368       }
-<a name="l00369"></a>00369       <span class="keywordflow">if</span> (style) {
-<a name="l00370"></a>00370         blockFrame = [<span class="keyword">self</span> addBlockFrame:style element:elt width:_width height:_height];
+<a name="l00311"></a>00311     CGFloat contentWidth = padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00312"></a>00312     CGFloat contentHeight = padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.bottom;
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314     <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>) {
+<a name="l00315"></a>00315       <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* child = elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>;
+<a name="l00316"></a>00316       <a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a>* layout = [[[<a class="code" href="interface_t_t_styled_layout.html">TTStyledLayout</a> alloc] initWithX:_minX
+<a name="l00317"></a>00317                                                         width:0 height:_height] autorelease];
+<a name="l00318"></a>00318       layout.<a class="code" href="interface_t_t_styled_layout.html#ae8d592fe34d9c66a29fd33d80e4e3b62">font</a> = <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
+<a name="l00319"></a>00319       layout.<a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a> = <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>;
+<a name="l00320"></a>00320       [layout <a class="code" href="interface_t_t_styled_layout.html#acf8f3217bc9b8ca2a60e6c7bf9505c7b">layout</a>:child];
+<a name="l00321"></a>00321       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> &amp;&amp; layout.<a class="code" href="interface_t_t_styled_layout.html#a3d6dabfcd7af218b7022567410449bf4">invalidImages</a>) {
+<a name="l00322"></a>00322         <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = [layout.invalidImages retain];
+<a name="l00323"></a>00323       }
+<a name="l00324"></a>00324       
+<a name="l00325"></a>00325       <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* frame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#af16c5c6af829a27bd1170736a62bc533">addContentFrame</a>:layout.rootFrame <a class="code" href="interface_t_t_styled_layout.html#af16c5c6af829a27bd1170736a62bc533">width</a>:layout.width];
+<a name="l00326"></a>00326       
+<a name="l00327"></a>00327       CGFloat frameHeight = layout.<a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a> - <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
+<a name="l00328"></a>00328       contentWidth += layout.<a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>;
+<a name="l00329"></a>00329       contentHeight += frameHeight;
+<a name="l00330"></a>00330       
+<a name="l00331"></a>00331       <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a5e4435ff910c98129ad83b74e71c1799">TTPositionFloatLeft</a>) {
+<a name="l00332"></a>00332         frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>;
+<a name="l00333"></a>00333         <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> += contentWidth;
+<a name="l00334"></a>00334         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
+<a name="l00335"></a>00335           <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
+<a name="l00336"></a>00336         }
+<a name="l00337"></a>00337         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += contentWidth;
+<a name="l00338"></a>00338         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
+<a name="l00339"></a>00339       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a9adc914fb866df7487b5e17bdabdad46">TTPositionFloatRight</a>) {
+<a name="l00340"></a>00340         frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> - (<a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> + contentWidth);
+<a name="l00341"></a>00341         <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> += contentWidth;
+<a name="l00342"></a>00342         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
+<a name="l00343"></a>00343           <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
+<a name="l00344"></a>00344         }
+<a name="l00345"></a>00345         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> -= contentWidth;
+<a name="l00346"></a>00346         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
+<a name="l00347"></a>00347       }
+<a name="l00348"></a>00348       
+<a name="l00349"></a>00349       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> = layout.<a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a> + padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.left + padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.right;
+<a name="l00350"></a>00350       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = frameHeight + padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top + padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.bottom;
+<a name="l00351"></a>00351     }
+<a name="l00352"></a>00352   } <span class="keywordflow">else</span> {
+<a name="l00353"></a>00353     CGFloat minX = <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a>, <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a> = <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>, floatLeftWidth = <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>,
+<a name="l00354"></a>00354             floatRightWidth = <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a>, floatHeight = <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>;
+<a name="l00355"></a>00355     BOOL isBlock = [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_block.html">TTStyledBlock</a> class]];
+<a name="l00356"></a>00356     <a class="code" href="interface_t_t_styled_frame.html">TTStyledFrame</a>* blockFrame = nil;
+<a name="l00357"></a>00357     
+<a name="l00358"></a>00358     <span class="keywordflow">if</span> (isBlock) {
+<a name="l00359"></a>00359       <span class="keywordflow">if</span> (padding) {
+<a name="l00360"></a>00360         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00361"></a>00361         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00362"></a>00362         <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00363"></a>00363         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top;
+<a name="l00364"></a>00364       }
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a>) {
+<a name="l00367"></a>00367         <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> &amp;&amp; [elt isKindOfClass:[<a class="code" href="interface_t_t_styled_line_break_node.html">TTStyledLineBreakNode</a> <span class="keyword">class</span>]]) {
+<a name="l00368"></a>00368           <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> <a class="code" href="class_u_i_font.html#a22c7be5abe4095808bf1593a918b98a8" title="Gets the height of a line of text with this font.">ttLineHeight</a>];
+<a name="l00369"></a>00369         }
+<a name="l00370"></a>00370         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
 <a name="l00371"></a>00371       }
-<a name="l00372"></a>00372     } <span class="keywordflow">else</span> {
-<a name="l00373"></a>00373       <span class="keywordflow">if</span> (padding) {
-<a name="l00374"></a>00374         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.margin.left;
-<a name="l00375"></a>00375       }
-<a name="l00376"></a>00376       <span class="keywordflow">if</span> (style) {
-<a name="l00377"></a>00377         <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = [<span class="keyword">self</span> addInlineFrame:style element:elt width:0 height:0];
+<a name="l00372"></a>00372       <span class="keywordflow">if</span> (style) {
+<a name="l00373"></a>00373         blockFrame = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">addBlockFrame</a>:style <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">element</a>:elt <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">width</a>:_width <a class="code" href="interface_t_t_styled_layout.html#a21fd675e671b9ccf723008aa95bcca53">height</a>:_height];
+<a name="l00374"></a>00374       }
+<a name="l00375"></a>00375     } <span class="keywordflow">else</span> {
+<a name="l00376"></a>00376       <span class="keywordflow">if</span> (padding) {
+<a name="l00377"></a>00377         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
 <a name="l00378"></a>00378       }
-<a name="l00379"></a>00379     }  
-<a name="l00380"></a>00380 
-<a name="l00381"></a>00381     <span class="keywordflow">if</span> (padding) {
-<a name="l00382"></a>00382       <span class="keywordflow">if</span> (isBlock) {
-<a name="l00383"></a>00383         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += padding.padding.left;
-<a name="l00384"></a>00384       }
-<a name="l00385"></a>00385       <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= padding.padding.left+padding.padding.right;
-<a name="l00386"></a>00386       <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.padding.left;
-<a name="l00387"></a>00387       [<span class="keyword">self</span> expandLineWidth:padding.padding.left];
-<a name="l00388"></a>00388 
-<a name="l00389"></a>00389       <span class="keywordflow">if</span> (isBlock) {
-<a name="l00390"></a>00390         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.padding.top;
-<a name="l00391"></a>00391       }
-<a name="l00392"></a>00392     }
-<a name="l00393"></a>00393   
-<a name="l00394"></a>00394     <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>) {
-<a name="l00395"></a>00395       [<span class="keyword">self</span> layout:elt.firstChild container:elt];
-<a name="l00396"></a>00396     }
-<a name="l00397"></a>00397 
-<a name="l00398"></a>00398     <span class="keywordflow">if</span> (isBlock) {
-<a name="l00399"></a>00399       <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = minX, <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> = width, <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> = floatLeftWidth,
-<a name="l00400"></a>00400       <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> = floatRightWidth, <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = floatHeight;
-<a name="l00401"></a>00401       [<span class="keyword">self</span> breakLine];
-<a name="l00402"></a>00402 
-<a name="l00403"></a>00403       <span class="keywordflow">if</span> (padding) {
-<a name="l00404"></a>00404         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.padding.bottom;
-<a name="l00405"></a>00405       }
-<a name="l00406"></a>00406 
-<a name="l00407"></a>00407       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> - blockFrame.height;
-<a name="l00408"></a>00408       
-<a name="l00409"></a>00409       <span class="keywordflow">if</span> (padding) {
-<a name="l00410"></a>00410         <span class="keywordflow">if</span> (blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> &lt; padding.<a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">minSize</a>.height) {
-<a name="l00411"></a>00411           <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.minSize.height - blockFrame.height;
-<a name="l00412"></a>00412           blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = padding.<a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">minSize</a>.height;
-<a name="l00413"></a>00413         }
-<a name="l00414"></a>00414 
-<a name="l00415"></a>00415         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.margin.bottom;
-<a name="l00416"></a>00416       }
-<a name="l00417"></a>00417     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!isBlock &amp;&amp; style) {
-<a name="l00418"></a>00418       <span class="keywordflow">if</span> (padding) {
-<a name="l00419"></a>00419         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.padding.right + padding.margin.right;
-<a name="l00420"></a>00420         <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> += padding.padding.right + padding.margin.right;
-<a name="l00421"></a>00421 
-<a name="l00422"></a>00422         TTStyledInlineFrame* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
-<a name="l00423"></a>00423         <span class="keywordflow">while</span> (inlineFrame) {
-<a name="l00424"></a>00424           <span class="keywordflow">if</span> (inlineFrame != <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
-<a name="l00425"></a>00425             inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += padding.margin.right;
-<a name="l00426"></a>00426           }
-<a name="l00427"></a>00427           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += padding.padding.right;
-<a name="l00428"></a>00428           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> -= padding.padding.top;
-<a name="l00429"></a>00429           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> += padding.padding.top+padding.padding.bottom;
-<a name="l00430"></a>00430           inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00431"></a>00431         }
-<a name="l00432"></a>00432       }
-<a name="l00433"></a>00433       <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
-<a name="l00434"></a>00434     }
-<a name="l00435"></a>00435   }
-<a name="l00436"></a>00436   
-<a name="l00437"></a>00437   <span class="keyword">self</span>.<a class="code" href="interface_t_t_styled_frame.html#a93c91ef15228fa6ae4b7693f5e093979">font</a> = lastFont;
-<a name="l00438"></a>00438 
-<a name="l00439"></a>00439   <span class="keywordflow">if</span> (style) {
-<a name="l00440"></a>00440     [<span class="keyword">self</span> popFrame];
-<a name="l00441"></a>00441   }
-<a name="l00442"></a>00442 }
-<a name="l00443"></a>00443 
-<a name="l00444"></a>00444 - (void)layoutImage:(<a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a>*)imageNode container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
-<a name="l00445"></a>00445   <a class="code" href="class_u_i_image.html">UIImage</a>* image = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ad2894c06e5dc82f2c09d380b1ae0b03e">image</a>;
-<a name="l00446"></a>00446   <span class="keywordflow">if</span> (!image &amp;&amp; imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a187e1e04c4cb7352def1475dc45512f5">URL</a>) {
-<a name="l00447"></a>00447     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>) {
-<a name="l00448"></a>00448       <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = <a class="code" href="_t_t_global_8h.html#a9ab9e2c8fcb4d6149953d89606c4dc5c" title="Creates a mutable array which does not retain references to the objects it contains...">TTCreateNonRetainingArray</a>();
-<a name="l00449"></a>00449     }
-<a name="l00450"></a>00450     [_invalidImages addObject:imageNode];
-<a name="l00451"></a>00451   }
-<a name="l00452"></a>00452 
-<a name="l00453"></a>00453   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = imageNode.<a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">className</a>
-<a name="l00454"></a>00454     ? [[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">styleWithSelector</a>:imageNode.className] : nil;
-<a name="l00455"></a>00455   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = style ? [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]] : nil;
-<a name="l00456"></a>00456 
-<a name="l00457"></a>00457   CGFloat imageWidth = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">width</a> ? imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">width</a> : image.size.width;
-<a name="l00458"></a>00458   CGFloat imageHeight = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">height</a> ? imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">height</a> : image.size.height;
-<a name="l00459"></a>00459   CGFloat contentWidth = imageWidth;
-<a name="l00460"></a>00460   CGFloat contentHeight = imageHeight;
-<a name="l00461"></a>00461   
-<a name="l00462"></a>00462   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> != <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
-<a name="l00463"></a>00463     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.margin.left;
-<a name="l00464"></a>00464     contentWidth += padding.margin.left + padding.margin.right;
-<a name="l00465"></a>00465     contentHeight += padding.margin.top + padding.margin.bottom;
-<a name="l00466"></a>00466   }
-<a name="l00467"></a>00467 
-<a name="l00468"></a>00468   <span class="keywordflow">if</span> ((!padding || !padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) &amp;&amp; (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + contentWidth &gt; _width)) {
-<a name="l00469"></a>00469     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
-<a name="l00470"></a>00470       <span class="comment">// The image will be placed on the next line, so create a new frame for</span>
-<a name="l00471"></a>00471       <span class="comment">// the current line and mark it with a line break</span>
-<a name="l00472"></a>00472       [<span class="keyword">self</span> breakLine];
-<a name="l00473"></a>00473     } <span class="keywordflow">else</span> {
-<a name="l00474"></a>00474       _width = contentWidth;
-<a name="l00475"></a>00475     }
-<a name="l00476"></a>00476   }
-<a name="l00477"></a>00477 
-<a name="l00478"></a>00478   <a class="code" href="interface_t_t_styled_image_frame.html">TTStyledImageFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_image_frame.html">TTStyledImageFrame</a> alloc] initWithElement:element
-<a name="l00479"></a>00479                                                            node:imageNode] autorelease];
-<a name="l00480"></a>00480   frame.<a class="code" href="interface_t_t_styled_image_frame.html#a4419840410dcc3f63169692800591469" title="The style used to render the frame;.">style</a> = style;
-<a name="l00481"></a>00481   
-<a name="l00482"></a>00482   <span class="keywordflow">if</span> (!padding || !padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) {
-<a name="l00483"></a>00483     [<span class="keyword">self</span> addContentFrame:frame width:imageWidth height:imageHeight];
-<a name="l00484"></a>00484     [<span class="keyword">self</span> expandLineWidth:contentWidth];
-<a name="l00485"></a>00485     [<span class="keyword">self</span> inflateLineHeight:contentHeight];
-<a name="l00486"></a>00486   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
-<a name="l00487"></a>00487     [<span class="keyword">self</span> addAbsoluteFrame:frame width:imageWidth height:imageHeight];
-<a name="l00488"></a>00488     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += padding.margin.left;
-<a name="l00489"></a>00489     frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += padding.margin.top;
-<a name="l00490"></a>00490   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a5e4435ff910c98129ad83b74e71c1799">TTPositionFloatLeft</a>) {
-<a name="l00491"></a>00491     [<span class="keyword">self</span> addContentFrame:frame width:imageWidth height:imageHeight];
-<a name="l00492"></a>00492 
-<a name="l00493"></a>00493     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += _floatLeftWidth;
-<a name="l00494"></a>00494     _floatLeftWidth += contentWidth;
-<a name="l00495"></a>00495     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; _floatHeight) {
-<a name="l00496"></a>00496       _floatHeight = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
-<a name="l00497"></a>00497     }
-<a name="l00498"></a>00498     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += contentWidth;
-<a name="l00499"></a>00499     _width -= contentWidth;
-<a name="l00500"></a>00500   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a9adc914fb866df7487b5e17bdabdad46">TTPositionFloatRight</a>) {
-<a name="l00501"></a>00501     [<span class="keyword">self</span> addContentFrame:frame width:imageWidth height:imageHeight];
-<a name="l00502"></a>00502 
-<a name="l00503"></a>00503     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += _width - (_floatRightWidth + contentWidth);
-<a name="l00504"></a>00504     _floatRightWidth += contentWidth;
-<a name="l00505"></a>00505     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; _floatHeight) {
-<a name="l00506"></a>00506       _floatHeight = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
-<a name="l00507"></a>00507     }
-<a name="l00508"></a>00508     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> -= contentWidth;
-<a name="l00509"></a>00509     _width -= contentWidth;
-<a name="l00510"></a>00510   }
-<a name="l00511"></a>00511 
-<a name="l00512"></a>00512   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> != <a class="code" href="_t_t_global_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
-<a name="l00513"></a>00513     frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += padding.margin.top;
-<a name="l00514"></a>00514     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.margin.right;
-<a name="l00515"></a>00515   }
-<a name="l00516"></a>00516 }
-<a name="l00517"></a>00517 
-<a name="l00518"></a>00518 - (void)layoutText:(<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a>*)textNode container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
-<a name="l00519"></a>00519   <a class="code" href="class_n_s_string.html">NSString</a>* text = textNode.<a class="code" href="interface_t_t_styled_text_node.html#acbfb38d71857974d20b15b64d8aeba6a">text</a>;
-<a name="l00520"></a>00520   NSUInteger length = text.length;
-<a name="l00521"></a>00521           
-<a name="l00522"></a>00522   <span class="keywordflow">if</span> (!textNode.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a> &amp;&amp; textNode == <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a>) {
-<a name="l00523"></a>00523     <span class="comment">// This is the only node, so measure it all at once and move on</span>
-<a name="l00524"></a>00524     CGSize textSize = [text sizeWithFont:_font
-<a name="l00525"></a>00525                             constrainedToSize:CGSizeMake(_width, CGFLOAT_MAX)
-<a name="l00526"></a>00526                             lineBreakMode:UILineBreakModeWordWrap];
-<a name="l00527"></a>00527     [<span class="keyword">self</span> addFrameForText:text element:element node:textNode width:textSize.width
-<a name="l00528"></a>00528          height:textSize.height];
-<a name="l00529"></a>00529     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += textSize.height;
-<a name="l00530"></a>00530     <span class="keywordflow">return</span>;
-<a name="l00531"></a>00531   }
-<a name="l00532"></a>00532 
-<a name="l00533"></a>00533   NSCharacterSet* whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-<a name="l00534"></a>00534 
-<a name="l00535"></a>00535   NSInteger index = 0;
-<a name="l00536"></a>00536   NSInteger lineStartIndex = 0;
-<a name="l00537"></a>00537   CGFloat frameWidth = 0;
-<a name="l00538"></a>00538         
-<a name="l00539"></a>00539   <span class="keywordflow">while</span> (index &lt; length) {
-<a name="l00540"></a>00540     <span class="comment">// Search for the next whitespace character</span>
-<a name="l00541"></a>00541     NSRange searchRange = NSMakeRange(index, length - index);
-<a name="l00542"></a>00542     NSRange spaceRange = [text rangeOfCharacterFromSet:whitespace options:0 range:searchRange];
-<a name="l00543"></a>00543 
-<a name="l00544"></a>00544     <span class="comment">// Get the word prior to the whitespace</span>
-<a name="l00545"></a>00545     NSRange wordRange = spaceRange.location != NSNotFound
-<a name="l00546"></a>00546       ? NSMakeRange(searchRange.location, (spaceRange.location+1) - searchRange.location)
-<a name="l00547"></a>00547       : NSMakeRange(searchRange.location, length - searchRange.location);
-<a name="l00548"></a>00548     <a class="code" href="class_n_s_string.html">NSString</a>* word = [text substringWithRange:wordRange];
-<a name="l00549"></a>00549 
-<a name="l00550"></a>00550     <span class="comment">// If there is no width to constrain to, then just use an infinite width,</span>
-<a name="l00551"></a>00551     <span class="comment">// which will prevent any word wrapping</span>
-<a name="l00552"></a>00552     CGFloat availWidth = _width ? _width : CGFLOAT_MAX;
-<a name="l00553"></a>00553 
-<a name="l00554"></a>00554     <span class="comment">// Measure the word and check to see if it fits on the current line</span>
-<a name="l00555"></a>00555     CGSize wordSize = [word sizeWithFont:_font];
-<a name="l00556"></a>00556     <span class="keywordflow">if</span> (wordSize.width &gt; _width) {
-<a name="l00557"></a>00557       <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; word.length; ++i) {
-<a name="l00558"></a>00558         <a class="code" href="class_n_s_string.html">NSString</a>* c = [word substringWithRange:NSMakeRange(i, 1)];
-<a name="l00559"></a>00559         CGSize letterSize = [c sizeWithFont:_font];
-<a name="l00560"></a>00560 
-<a name="l00561"></a>00561         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + letterSize.width &gt; _width) {
-<a name="l00562"></a>00562           NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
-<a name="l00563"></a>00563           <span class="keywordflow">if</span> (lineRange.length) {
-<a name="l00564"></a>00564             <a class="code" href="class_n_s_string.html">NSString</a>* line = [text substringWithRange:lineRange];
-<a name="l00565"></a>00565             [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
-<a name="l00566"></a>00566                   height:<a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> ? <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> : [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> lineHeight]];
-<a name="l00567"></a>00567           }
-<a name="l00568"></a>00568 
-<a name="l00569"></a>00569           <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
-<a name="l00570"></a>00570             [<span class="keyword">self</span> breakLine];
-<a name="l00571"></a>00571           }
-<a name="l00572"></a>00572 
-<a name="l00573"></a>00573           lineStartIndex = lineRange.location + lineRange.length;
-<a name="l00574"></a>00574           frameWidth = 0;
-<a name="l00575"></a>00575         }
-<a name="l00576"></a>00576         
-<a name="l00577"></a>00577         frameWidth += letterSize.width;
-<a name="l00578"></a>00578         [<span class="keyword">self</span> expandLineWidth:letterSize.width];
-<a name="l00579"></a>00579         [<span class="keyword">self</span> inflateLineHeight:wordSize.height];
-<a name="l00580"></a>00580         ++index;
-<a name="l00581"></a>00581       }
-<a name="l00582"></a>00582 
-<a name="l00583"></a>00583       NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
-<a name="l00584"></a>00584       <span class="keywordflow">if</span> (lineRange.length) {
-<a name="l00585"></a>00585         <a class="code" href="class_n_s_string.html">NSString</a>* line = [text substringWithRange:lineRange];
-<a name="l00586"></a>00586         [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
-<a name="l00587"></a>00587               height:_lineHeight ? _lineHeight : [_font lineHeight]];
-<a name="l00588"></a>00588 
-<a name="l00589"></a>00589         lineStartIndex = lineRange.location + lineRange.length;
-<a name="l00590"></a>00590         frameWidth = 0;
-<a name="l00591"></a>00591       }
-<a name="l00592"></a>00592     } <span class="keywordflow">else</span> {
-<a name="l00593"></a>00593       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + wordSize.width &gt; _width) {
-<a name="l00594"></a>00594         <span class="comment">// The word will be placed on the next line, so create a new frame for</span>
-<a name="l00595"></a>00595         <span class="comment">// the current line and mark it with a line break</span>
-<a name="l00596"></a>00596         NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
-<a name="l00597"></a>00597         <span class="keywordflow">if</span> (lineRange.length) {
-<a name="l00598"></a>00598           <a class="code" href="class_n_s_string.html">NSString</a>* line = [text substringWithRange:lineRange];
-<a name="l00599"></a>00599           [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
-<a name="l00600"></a>00600                 height:_lineHeight ? _lineHeight : [_font lineHeight]];
-<a name="l00601"></a>00601         }
-<a name="l00602"></a>00602         
-<a name="l00603"></a>00603         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
-<a name="l00604"></a>00604           [<span class="keyword">self</span> breakLine];
-<a name="l00605"></a>00605         }
-<a name="l00606"></a>00606         lineStartIndex = lineRange.location + lineRange.length;
-<a name="l00607"></a>00607         frameWidth = 0;
-<a name="l00608"></a>00608       }
-<a name="l00609"></a>00609 
-<a name="l00610"></a>00610       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> &amp;&amp; textNode == <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>) {
-<a name="l00611"></a>00611         <span class="comment">// We are at the start of a new line, and this is the last node, so we don&apos;t need to</span>
-<a name="l00612"></a>00612         <span class="comment">// keep measuring every word.  We can just measure all remaining text and create a new</span>
-<a name="l00613"></a>00613         <span class="comment">// frame for all of it.</span>
-<a name="l00614"></a>00614         <a class="code" href="class_n_s_string.html">NSString</a>* lines = [text substringWithRange:searchRange];
-<a name="l00615"></a>00615         CGSize linesSize = [lines sizeWithFont:_font
-<a name="l00616"></a>00616                                   constrainedToSize:CGSizeMake(availWidth, CGFLOAT_MAX)
-<a name="l00617"></a>00617                                   lineBreakMode:UILineBreakModeWordWrap];
-<a name="l00618"></a>00618 
-<a name="l00619"></a>00619         [<span class="keyword">self</span> addFrameForText:lines element:element node:textNode width:linesSize.width
-<a name="l00620"></a>00620              height:linesSize.height];
-<a name="l00621"></a>00621         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += linesSize.height;
-<a name="l00622"></a>00622         <span class="keywordflow">break</span>;
-<a name="l00623"></a>00623       }
-<a name="l00624"></a>00624 
-<a name="l00625"></a>00625       frameWidth += wordSize.width;
-<a name="l00626"></a>00626       [<span class="keyword">self</span> expandLineWidth:wordSize.width];
-<a name="l00627"></a>00627       [<span class="keyword">self</span> inflateLineHeight:wordSize.height];
-<a name="l00628"></a>00628 
-<a name="l00629"></a>00629       index = wordRange.location + wordRange.length;
-<a name="l00630"></a>00630       <span class="keywordflow">if</span> (index &gt;= length) {
-<a name="l00631"></a>00631         <span class="comment">// The current word was at the very end of the string</span>
-<a name="l00632"></a>00632         NSRange lineRange = NSMakeRange(lineStartIndex, (wordRange.location + wordRange.length)
-<a name="l00633"></a>00633                                                         - lineStartIndex);
-<a name="l00634"></a>00634         <a class="code" href="class_n_s_string.html">NSString</a>* line = !<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> ? word : [text substringWithRange:lineRange];
-<a name="l00635"></a>00635         [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
-<a name="l00636"></a>00636               height:[_font lineHeight]];
-<a name="l00637"></a>00637         frameWidth = 0;
-<a name="l00638"></a>00638       }
-<a name="l00639"></a>00639     }
-<a name="l00640"></a>00640   }
-<a name="l00641"></a>00641 }
-<a name="l00642"></a>00642 
-<a name="l00644"></a>00644 <span class="comment">// NSObject</span>
+<a name="l00379"></a>00379       <span class="keywordflow">if</span> (style) {
+<a name="l00380"></a>00380         <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">addInlineFrame</a>:style <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">element</a>:elt <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">width</a>:0 <a class="code" href="interface_t_t_styled_layout.html#aa6525901f1f28b70ed9fa16cfd4df5ef">height</a>:0];
+<a name="l00381"></a>00381       }
+<a name="l00382"></a>00382     }  
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384     <span class="keywordflow">if</span> (padding) {
+<a name="l00385"></a>00385       <span class="keywordflow">if</span> (isBlock) {
+<a name="l00386"></a>00386         <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.left;
+<a name="l00387"></a>00387       }
+<a name="l00388"></a>00388       <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.left+padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.right;
+<a name="l00389"></a>00389       <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.left;
+<a name="l00390"></a>00390       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ac0e18793a12e58b15f0cbe801c6b6ea5">expandLineWidth</a>:padding.padding.left];
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392       <span class="keywordflow">if</span> (isBlock) {
+<a name="l00393"></a>00393         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top;
+<a name="l00394"></a>00394       }
+<a name="l00395"></a>00395     }
+<a name="l00396"></a>00396   
+<a name="l00397"></a>00397     <span class="keywordflow">if</span> (elt.<a class="code" href="interface_t_t_styled_element.html#ad9cdfca8ce95a918e0422746b3468d21">firstChild</a>) {
+<a name="l00398"></a>00398       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">layout</a>:elt.firstChild <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">container</a>:elt];
+<a name="l00399"></a>00399     }
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401     <span class="keywordflow">if</span> (isBlock) {
+<a name="l00402"></a>00402       <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = minX, <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> = width, <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> = floatLeftWidth,
+<a name="l00403"></a>00403       <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> = floatRightWidth, <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = floatHeight;
+<a name="l00404"></a>00404       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
+<a name="l00405"></a>00405 
+<a name="l00406"></a>00406       <span class="keywordflow">if</span> (padding) {
+<a name="l00407"></a>00407         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.bottom;
+<a name="l00408"></a>00408       }
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410       blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> - blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a>;
+<a name="l00411"></a>00411       
+<a name="l00412"></a>00412       <span class="keywordflow">if</span> (padding) {
+<a name="l00413"></a>00413         <span class="keywordflow">if</span> (blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> &lt; padding.<a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">minSize</a>.height) {
+<a name="l00414"></a>00414           <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.<a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">minSize</a>.height - blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a>;
+<a name="l00415"></a>00415           blockFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> = padding.<a class="code" href="interface_t_t_box_style.html#a8e5475c9a065ab72adb2ca9438424ff1">minSize</a>.height;
+<a name="l00416"></a>00416         }
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.bottom;
+<a name="l00419"></a>00419       }
+<a name="l00420"></a>00420     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!isBlock &amp;&amp; style) {
+<a name="l00421"></a>00421       <span class="keywordflow">if</span> (padding) {
+<a name="l00422"></a>00422         <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.right + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00423"></a>00423         <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.right + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00424"></a>00424 
+<a name="l00425"></a>00425         <a class="code" href="interface_t_t_styled_inline_frame.html">TTStyledInlineFrame</a>* inlineFrame = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>;
+<a name="l00426"></a>00426         <span class="keywordflow">while</span> (inlineFrame) {
+<a name="l00427"></a>00427           <span class="keywordflow">if</span> (inlineFrame != <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>) {
+<a name="l00428"></a>00428             inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00429"></a>00429           }
+<a name="l00430"></a>00430           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#ac52f801db1357e38f7cfc785264e55ea">width</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.right;
+<a name="l00431"></a>00431           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> -= padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top;
+<a name="l00432"></a>00432           inlineFrame.<a class="code" href="interface_t_t_styled_frame.html#a01628cb8596f1b94b801484be6bb321c">height</a> += padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.top+padding.<a class="code" href="interface_t_t_box_style.html#af5a3e9b2cb0b22fc0dbf9438c11d09cb">padding</a>.bottom;
+<a name="l00433"></a>00433           inlineFrame = inlineFrame.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00434"></a>00434         }
+<a name="l00435"></a>00435       }
+<a name="l00436"></a>00436       <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a>.<a class="code" href="interface_t_t_styled_inline_frame.html#acad22b1f59d71c7f6a19a25557dffefd">inlineParentFrame</a>;
+<a name="l00437"></a>00437     }
+<a name="l00438"></a>00438   }
+<a name="l00439"></a>00439   
+<a name="l00440"></a>00440   <span class="keyword">self</span>.<a class="code" href="interface_t_t_styled_box_frame.html#a165df6af06efa494d9c660d643e5db34">font</a> = lastFont;
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442   <span class="keywordflow">if</span> (style) {
+<a name="l00443"></a>00443     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a079d406dcb002f2e9c5b4b9b852e2e9c">popFrame</a>];
+<a name="l00444"></a>00444   }
+<a name="l00445"></a>00445 }
+<a name="l00446"></a>00446 
+<a name="l00447"></a><a class="code" href="interface_t_t_styled_layout.html#af514f7d6652a2e2af590ed13670ef7be">00447</a> - (void)layoutImage:(<a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a>*)imageNode container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
+<a name="l00448"></a>00448   <a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>* image = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ad2894c06e5dc82f2c09d380b1ae0b03e">image</a>;
+<a name="l00449"></a>00449   <span class="keywordflow">if</span> (!image &amp;&amp; imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a187e1e04c4cb7352def1475dc45512f5">URL</a>) {
+<a name="l00450"></a>00450     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>) {
+<a name="l00451"></a>00451       <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = <a class="code" href="_t_t_global_core_8h.html#a9ab9e2c8fcb4d6149953d89606c4dc5c" title="Creates a mutable array which does not retain references to the objects it contains...">TTCreateNonRetainingArray</a>();
+<a name="l00452"></a>00452     }
+<a name="l00453"></a>00453     [<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> addObject:imageNode];
+<a name="l00454"></a>00454   }
+<a name="l00455"></a>00455 
+<a name="l00456"></a>00456   <a class="code" href="interface_t_t_style.html">TTStyle</a>* style = imageNode.<a class="code" href="interface_t_t_styled_element.html#ae88d766d7c9746ea8643c59bd7c5c396">className</a>
+<a name="l00457"></a>00457     ? [[<a class="code" href="interface_t_t_style_sheet.html">TTStyleSheet</a> <a class="code" href="interface_t_t_style_sheet.html#aa2c7922d423e9863646ee104289f0e15">globalStyleSheet</a>] <a class="code" href="interface_t_t_style_sheet.html#a4c91256af880ce80796ba67f366896ea">styleWithSelector</a>:imageNode.className] : nil;
+<a name="l00458"></a>00458   <a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a>* padding = style ? [style <a class="code" href="interface_t_t_style.html#add84af70ed0d751fc6979b1712f2d9f4">firstStyleOfClass</a>:[<a class="code" href="interface_t_t_box_style.html">TTBoxStyle</a> class]] : nil;
+<a name="l00459"></a>00459 
+<a name="l00460"></a>00460   CGFloat imageWidth = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">width</a> ? imageNode.<a class="code" href="interface_t_t_styled_image_node.html#a917efdb16ac505f7eea1b81919bc5425">width</a> : image.size.width;
+<a name="l00461"></a>00461   CGFloat imageHeight = imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">height</a> ? imageNode.<a class="code" href="interface_t_t_styled_image_node.html#ae0c50fdf834db7bd8b4e09326ee0998e">height</a> : image.size.height;
+<a name="l00462"></a>00462   CGFloat contentWidth = imageWidth;
+<a name="l00463"></a>00463   CGFloat contentHeight = imageHeight;
+<a name="l00464"></a>00464   
+<a name="l00465"></a>00465   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> != <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
+<a name="l00466"></a>00466     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00467"></a>00467     contentWidth += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00468"></a>00468     contentHeight += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top + padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.bottom;
+<a name="l00469"></a>00469   }
+<a name="l00470"></a>00470 
+<a name="l00471"></a>00471   <span class="keywordflow">if</span> ((!padding || !padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) &amp;&amp; (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + contentWidth &gt; <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>)) {
+<a name="l00472"></a>00472     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
+<a name="l00473"></a>00473       <span class="comment">// The image will be placed on the next line, so create a new frame for</span>
+<a name="l00474"></a>00474       <span class="comment">// the current line and mark it with a line break</span>
+<a name="l00475"></a>00475       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
+<a name="l00476"></a>00476     } <span class="keywordflow">else</span> {
+<a name="l00477"></a>00477       <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> = contentWidth;
+<a name="l00478"></a>00478     }
+<a name="l00479"></a>00479   }
+<a name="l00480"></a>00480 
+<a name="l00481"></a>00481   <a class="code" href="interface_t_t_styled_image_frame.html">TTStyledImageFrame</a>* frame = [[[<a class="code" href="interface_t_t_styled_image_frame.html">TTStyledImageFrame</a> alloc] initWithElement:element
+<a name="l00482"></a>00482                                                            node:imageNode] autorelease];
+<a name="l00483"></a>00483   frame.<a class="code" href="interface_t_t_styled_image_frame.html#a4419840410dcc3f63169692800591469" title="The style used to render the frame;.">style</a> = style;
+<a name="l00484"></a>00484   
+<a name="l00485"></a>00485   <span class="keywordflow">if</span> (!padding || !padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a>) {
+<a name="l00486"></a>00486     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">addContentFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">width</a>:imageWidth <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">height</a>:imageHeight];
+<a name="l00487"></a>00487     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ac0e18793a12e58b15f0cbe801c6b6ea5">expandLineWidth</a>:contentWidth];
+<a name="l00488"></a>00488     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a1d558a4369266b3bdb6adb1c5adc0e24">inflateLineHeight</a>:contentHeight];
+<a name="l00489"></a>00489   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
+<a name="l00490"></a>00490     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#aa6f8aa15ad9dae87e793db34d513e4db">addAbsoluteFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#aa6f8aa15ad9dae87e793db34d513e4db">width</a>:imageWidth <a class="code" href="interface_t_t_styled_layout.html#aa6f8aa15ad9dae87e793db34d513e4db">height</a>:imageHeight];
+<a name="l00491"></a>00491     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.left;
+<a name="l00492"></a>00492     frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top;
+<a name="l00493"></a>00493   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a5e4435ff910c98129ad83b74e71c1799">TTPositionFloatLeft</a>) {
+<a name="l00494"></a>00494     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">addContentFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">width</a>:imageWidth <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">height</a>:imageHeight];
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a>;
+<a name="l00497"></a>00497     <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> += contentWidth;
+<a name="l00498"></a>00498     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
+<a name="l00499"></a>00499       <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
+<a name="l00500"></a>00500     }
+<a name="l00501"></a>00501     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> += contentWidth;
+<a name="l00502"></a>00502     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
+<a name="l00503"></a>00503   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> == <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710a9adc914fb866df7487b5e17bdabdad46">TTPositionFloatRight</a>) {
+<a name="l00504"></a>00504     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">addContentFrame</a>:frame <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">width</a>:imageWidth <a class="code" href="interface_t_t_styled_layout.html#abd266a0910c1233f2fed73f582e071fe">height</a>:imageHeight];
+<a name="l00505"></a>00505 
+<a name="l00506"></a>00506     frame.<a class="code" href="interface_t_t_styled_frame.html#a2e4e82fffc643c459e0527325dcb6cda">x</a> += <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> - (<a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> + contentWidth);
+<a name="l00507"></a>00507     <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> += contentWidth;
+<a name="l00508"></a>00508     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>+contentHeight &gt; <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a>) {
+<a name="l00509"></a>00509       <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = contentHeight+<a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a>;
+<a name="l00510"></a>00510     }
+<a name="l00511"></a>00511     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> -= contentWidth;
+<a name="l00512"></a>00512     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> -= contentWidth;
+<a name="l00513"></a>00513   }
+<a name="l00514"></a>00514 
+<a name="l00515"></a>00515   <span class="keywordflow">if</span> (padding &amp;&amp; padding.<a class="code" href="interface_t_t_box_style.html#af34d37d473ee063758eab5e6eb32653a">position</a> != <a class="code" href="_t_t_global_style_8h.html#a04eb0e8c539cf3f8ba46684c6f6bf710ac246d99c0f95c7addb2fc99890420cd1">TTPositionAbsolute</a>) {
+<a name="l00516"></a>00516     frame.<a class="code" href="interface_t_t_styled_frame.html#a6dfa6d3f5a80762f9b0dda76a61ba9ac">y</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.top;
+<a name="l00517"></a>00517     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> += padding.<a class="code" href="interface_t_t_box_style.html#a942c3fb153a0e6577ba5367d6493e324">margin</a>.right;
+<a name="l00518"></a>00518   }
+<a name="l00519"></a>00519 }
+<a name="l00520"></a>00520 
+<a name="l00521"></a><a class="code" href="interface_t_t_styled_layout.html#af1531750d84a9a4296a3821512abdd86">00521</a> - (void)layoutText:(<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a>*)textNode container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
+<a name="l00522"></a>00522   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text = textNode.<a class="code" href="interface_t_t_styled_text_node.html#acbfb38d71857974d20b15b64d8aeba6a">text</a>;
+<a name="l00523"></a>00523   NSUInteger length = text.length;
+<a name="l00524"></a>00524           
+<a name="l00525"></a>00525   <span class="keywordflow">if</span> (!textNode.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a> &amp;&amp; textNode == <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a>) {
+<a name="l00526"></a>00526     <span class="comment">// This is the only node, so measure it all at once and move on</span>
+<a name="l00527"></a>00527     CGSize textSize = [text sizeWithFont:_font
+<a name="l00528"></a>00528                             constrainedToSize:CGSizeMake(_width, CGFLOAT_MAX)
+<a name="l00529"></a>00529                             lineBreakMode:UILineBreakModeWordWrap];
+<a name="l00530"></a>00530     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">addFrameForText</a>:text <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">element</a>:element <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">node</a>:textNode <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">width</a>:textSize.width
+<a name="l00531"></a>00531          <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">height</a>:textSize.height];
+<a name="l00532"></a>00532     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += textSize.height;
+<a name="l00533"></a>00533     <span class="keywordflow">return</span>;
+<a name="l00534"></a>00534   }
+<a name="l00535"></a>00535 
+<a name="l00536"></a>00536   NSCharacterSet* whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+<a name="l00537"></a>00537 
+<a name="l00538"></a>00538   NSInteger index = 0;
+<a name="l00539"></a>00539   NSInteger lineStartIndex = 0;
+<a name="l00540"></a>00540   CGFloat frameWidth = 0;
+<a name="l00541"></a>00541         
+<a name="l00542"></a>00542   <span class="keywordflow">while</span> (index &lt; length) {
+<a name="l00543"></a>00543     <span class="comment">// Search for the next whitespace character</span>
+<a name="l00544"></a>00544     NSRange searchRange = NSMakeRange(index, length - index);
+<a name="l00545"></a>00545     NSRange spaceRange = [text rangeOfCharacterFromSet:whitespace options:0 range:searchRange];
+<a name="l00546"></a>00546 
+<a name="l00547"></a>00547     <span class="comment">// Get the word prior to the whitespace</span>
+<a name="l00548"></a>00548     NSRange wordRange = spaceRange.location != NSNotFound
+<a name="l00549"></a>00549       ? NSMakeRange(searchRange.location, (spaceRange.location+1) - searchRange.location)
+<a name="l00550"></a>00550       : NSMakeRange(searchRange.location, length - searchRange.location);
+<a name="l00551"></a>00551     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* word = [text substringWithRange:wordRange];
+<a name="l00552"></a>00552 
+<a name="l00553"></a>00553     <span class="comment">// If there is no width to constrain to, then just use an infinite width,</span>
+<a name="l00554"></a>00554     <span class="comment">// which will prevent any word wrapping</span>
+<a name="l00555"></a>00555     CGFloat availWidth = <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> ? <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> : CGFLOAT_MAX;
+<a name="l00556"></a>00556 
+<a name="l00557"></a>00557     <span class="comment">// Measure the word and check to see if it fits on the current line</span>
+<a name="l00558"></a>00558     CGSize wordSize = [word sizeWithFont:_font];
+<a name="l00559"></a>00559     <span class="keywordflow">if</span> (wordSize.width &gt; <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>) {
+<a name="l00560"></a>00560       <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; word.length; ++i) {
+<a name="l00561"></a>00561         <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* c = [word substringWithRange:NSMakeRange(i, 1)];
+<a name="l00562"></a>00562         CGSize letterSize = [c sizeWithFont:_font];
+<a name="l00563"></a>00563 
+<a name="l00564"></a>00564         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + letterSize.width &gt; <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>) {
+<a name="l00565"></a>00565           NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
+<a name="l00566"></a>00566           <span class="keywordflow">if</span> (lineRange.length) {
+<a name="l00567"></a>00567             <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* line = [text substringWithRange:lineRange];
+<a name="l00568"></a>00568             [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
+<a name="l00569"></a>00569                   height:_lineHeight ? _lineHeight : [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> <a class="code" href="class_u_i_font.html#a22c7be5abe4095808bf1593a918b98a8" title="Gets the height of a line of text with this font.">ttLineHeight</a>]];
+<a name="l00570"></a>00570           }
+<a name="l00571"></a>00571 
+<a name="l00572"></a>00572           <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
+<a name="l00573"></a>00573             [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
+<a name="l00574"></a>00574           }
+<a name="l00575"></a>00575 
+<a name="l00576"></a>00576           lineStartIndex = lineRange.location + lineRange.length;
+<a name="l00577"></a>00577           frameWidth = 0;
+<a name="l00578"></a>00578         }
+<a name="l00579"></a>00579         
+<a name="l00580"></a>00580         frameWidth += letterSize.width;
+<a name="l00581"></a>00581         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ac0e18793a12e58b15f0cbe801c6b6ea5">expandLineWidth</a>:letterSize.width];
+<a name="l00582"></a>00582         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a1d558a4369266b3bdb6adb1c5adc0e24">inflateLineHeight</a>:wordSize.height];
+<a name="l00583"></a>00583         ++index;
+<a name="l00584"></a>00584       }
+<a name="l00585"></a>00585 
+<a name="l00586"></a>00586       NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
+<a name="l00587"></a>00587       <span class="keywordflow">if</span> (lineRange.length) {
+<a name="l00588"></a>00588         <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* line = [text substringWithRange:lineRange];
+<a name="l00589"></a>00589         [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
+<a name="l00590"></a>00590               height:_lineHeight ? _lineHeight : [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> <a class="code" href="class_u_i_font.html#a22c7be5abe4095808bf1593a918b98a8" title="Gets the height of a line of text with this font.">ttLineHeight</a>]];
+<a name="l00591"></a>00591 
+<a name="l00592"></a>00592         lineStartIndex = lineRange.location + lineRange.length;
+<a name="l00593"></a>00593         frameWidth = 0;
+<a name="l00594"></a>00594       }
+<a name="l00595"></a>00595     } <span class="keywordflow">else</span> {
+<a name="l00596"></a>00596       <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> + wordSize.width &gt; <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a>) {
+<a name="l00597"></a>00597         <span class="comment">// The word will be placed on the next line, so create a new frame for</span>
+<a name="l00598"></a>00598         <span class="comment">// the current line and mark it with a line break</span>
+<a name="l00599"></a>00599         NSRange lineRange = NSMakeRange(lineStartIndex, index - lineStartIndex);
+<a name="l00600"></a>00600         <span class="keywordflow">if</span> (lineRange.length) {
+<a name="l00601"></a>00601           <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* line = [text substringWithRange:lineRange];
+<a name="l00602"></a>00602           [<span class="keyword">self</span> addFrameForText:line element:element node:textNode width:frameWidth
+<a name="l00603"></a>00603                 height:_lineHeight ? _lineHeight : [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> <a class="code" href="class_u_i_font.html#a22c7be5abe4095808bf1593a918b98a8" title="Gets the height of a line of text with this font.">ttLineHeight</a>]];
+<a name="l00604"></a>00604         }
+<a name="l00605"></a>00605         
+<a name="l00606"></a>00606         <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
+<a name="l00607"></a>00607           [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
+<a name="l00608"></a>00608         }
+<a name="l00609"></a>00609         lineStartIndex = lineRange.location + lineRange.length;
+<a name="l00610"></a>00610         frameWidth = 0;
+<a name="l00611"></a>00611       }
+<a name="l00612"></a>00612 
+<a name="l00613"></a>00613       <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> &amp;&amp; textNode == <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a>) {
+<a name="l00614"></a>00614         <span class="comment">// We are at the start of a new line, and this is the last node, so we don&apos;t need to</span>
+<a name="l00615"></a>00615         <span class="comment">// keep measuring every word.  We can just measure all remaining text and create a new</span>
+<a name="l00616"></a>00616         <span class="comment">// frame for all of it.</span>
+<a name="l00617"></a>00617         <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* lines = [text substringWithRange:searchRange];
+<a name="l00618"></a>00618         CGSize linesSize = [lines sizeWithFont:_font
+<a name="l00619"></a>00619                                   constrainedToSize:CGSizeMake(availWidth, CGFLOAT_MAX)
+<a name="l00620"></a>00620                                   lineBreakMode:UILineBreakModeWordWrap];
+<a name="l00621"></a>00621 
+<a name="l00622"></a>00622         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">addFrameForText</a>:lines <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">element</a>:element <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">node</a>:textNode <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">width</a>:linesSize.width
+<a name="l00623"></a>00623              <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">height</a>:linesSize.height];
+<a name="l00624"></a>00624         <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> += linesSize.height;
+<a name="l00625"></a>00625         <span class="keywordflow">break</span>;
+<a name="l00626"></a>00626       }
+<a name="l00627"></a>00627 
+<a name="l00628"></a>00628       frameWidth += wordSize.width;
+<a name="l00629"></a>00629       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ac0e18793a12e58b15f0cbe801c6b6ea5">expandLineWidth</a>:wordSize.width];
+<a name="l00630"></a>00630       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a1d558a4369266b3bdb6adb1c5adc0e24">inflateLineHeight</a>:wordSize.height];
+<a name="l00631"></a>00631 
+<a name="l00632"></a>00632       index = wordRange.location + wordRange.length;
+<a name="l00633"></a>00633       <span class="keywordflow">if</span> (index &gt;= length) {
+<a name="l00634"></a>00634         <span class="comment">// The current word was at the very end of the string</span>
+<a name="l00635"></a>00635         NSRange lineRange = NSMakeRange(lineStartIndex, (wordRange.location + wordRange.length)
+<a name="l00636"></a>00636                                                         - lineStartIndex);
+<a name="l00637"></a>00637         <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* line = !<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> ? word : [text substringWithRange:lineRange];
+<a name="l00638"></a>00638         [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">addFrameForText</a>:line <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">element</a>:element <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">node</a>:textNode <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">width</a>:frameWidth
+<a name="l00639"></a>00639               <a class="code" href="interface_t_t_styled_layout.html#a91551b7174f85cef75c6550f1fec640f">height</a>:[<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> <a class="code" href="class_u_i_font.html#a22c7be5abe4095808bf1593a918b98a8" title="Gets the height of a line of text with this font.">ttLineHeight</a>]];
+<a name="l00640"></a>00640         frameWidth = 0;
+<a name="l00641"></a>00641       }
+<a name="l00642"></a>00642     }
+<a name="l00643"></a>00643   }
+<a name="l00644"></a>00644 }
 <a name="l00645"></a>00645 
-<a name="l00646"></a><a class="code" href="interface_t_t_styled_layout.html#a45943cca529c4a42484dd97e7168f1a1">00646</a> - (id)initWithRootNode:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)rootNode {
-<a name="l00647"></a>00647   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00648"></a>00648     <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a> = rootNode;
-<a name="l00649"></a>00649   }
-<a name="l00650"></a>00650   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00651"></a>00651 }
-<a name="l00652"></a>00652 
-<a name="l00653"></a><a class="code" href="interface_t_t_styled_layout.html#a4421899c867247eb06222bbdbfce6f9c">00653</a> - (id)initWithX:(CGFloat)x width:(CGFloat)width height:(CGFloat)height {
-<a name="l00654"></a>00654   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00655"></a>00655     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = x;
-<a name="l00656"></a>00656     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = x;
-<a name="l00657"></a>00657     _width = width;
-<a name="l00658"></a>00658     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> = height;
-<a name="l00659"></a>00659   }
-<a name="l00660"></a>00660   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00661"></a>00661 }
-<a name="l00662"></a>00662 
-<a name="l00663"></a>00663 - (id)init {
-<a name="l00664"></a>00664   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00665"></a>00665     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = 0;
-<a name="l00666"></a>00666     _width = 0;
-<a name="l00667"></a>00667     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> = 0;
-<a name="l00668"></a>00668     <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> = 0;
-<a name="l00669"></a>00669     <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = 0;
-<a name="l00670"></a>00670     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = 0;
-<a name="l00671"></a>00671     _floatLeftWidth = 0;
-<a name="l00672"></a>00672     _floatRightWidth = 0;
-<a name="l00673"></a>00673     _floatHeight = 0;
-<a name="l00674"></a>00674     <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a> = nil;
-<a name="l00675"></a>00675     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = nil;
-<a name="l00676"></a>00676     <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = nil;
-<a name="l00677"></a>00677     <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = nil;
-<a name="l00678"></a>00678     <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = nil;
-<a name="l00679"></a>00679     <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> = nil;
-<a name="l00680"></a>00680     <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a> = nil;
-<a name="l00681"></a>00681     <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a> = nil;
-<a name="l00682"></a>00682     <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a> = nil;
-<a name="l00683"></a>00683     <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a> = nil;
-<a name="l00684"></a>00684     <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a> = nil;
-<a name="l00685"></a>00685     <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = nil;
-<a name="l00686"></a>00686   }
-<a name="l00687"></a>00687   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00688"></a>00688 }
-<a name="l00689"></a>00689 
-<a name="l00690"></a>00690 - (void)dealloc {
-<a name="l00691"></a>00691   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>);
-<a name="l00692"></a>00692   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>);
-<a name="l00693"></a>00693   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>);
-<a name="l00694"></a>00694   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>);
-<a name="l00695"></a>00695   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>);
-<a name="l00696"></a>00696   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>);
-<a name="l00697"></a>00697   [<span class="keyword">super</span> dealloc];
-<a name="l00698"></a>00698 }
-<a name="l00699"></a>00699 
-<a name="l00701"></a>00701 <span class="comment">// public</span>
+<a name="l00647"></a>00647 <span class="comment">// NSObject</span>
+<a name="l00648"></a>00648 
+<a name="l00649"></a><a class="code" href="interface_t_t_styled_layout.html#a45943cca529c4a42484dd97e7168f1a1">00649</a> - (id)initWithRootNode:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)rootNode {
+<a name="l00650"></a>00650   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a16e503111f902d3e854e217afcb626a0">init</a>]) {
+<a name="l00651"></a>00651     <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a> = rootNode;
+<a name="l00652"></a>00652   }
+<a name="l00653"></a>00653   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00654"></a>00654 }
+<a name="l00655"></a>00655 
+<a name="l00656"></a><a class="code" href="interface_t_t_styled_layout.html#a4421899c867247eb06222bbdbfce6f9c">00656</a> - (id)initWithX:(CGFloat)x width:(CGFloat)width height:(CGFloat)height {
+<a name="l00657"></a>00657   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a16e503111f902d3e854e217afcb626a0">init</a>]) {
+<a name="l00658"></a>00658     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = x;
+<a name="l00659"></a>00659     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = x;
+<a name="l00660"></a>00660     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> = <a class="code" href="interface_t_t_styled_layout.html#ad31757bcba5e22caca2c7e53c6229ec9">width</a>;
+<a name="l00661"></a>00661     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> = <a class="code" href="interface_t_t_styled_layout.html#ab5978dca4664add567b5ca38f8ad9979">height</a>;
+<a name="l00662"></a>00662   }
+<a name="l00663"></a>00663   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00664"></a>00664 }
+<a name="l00665"></a>00665 
+<a name="l00666"></a><a class="code" href="interface_t_t_styled_layout.html#a16e503111f902d3e854e217afcb626a0">00666</a> - (id)<a class="code" href="interface_t_t_styled_layout.html#a16e503111f902d3e854e217afcb626a0">init</a> {
+<a name="l00667"></a>00667   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_styled_layout.html#a16e503111f902d3e854e217afcb626a0">init</a>]) {
+<a name="l00668"></a>00668     <a class="code" href="interface_t_t_styled_layout.html#ad2bc01bec1cb6b8c3ac0e9c9453440fa">_x</a> = 0;
+<a name="l00669"></a>00669     <a class="code" href="interface_t_t_styled_layout.html#a798bf5b4ceff4a6b716cb41012e864a2">_width</a> = 0;
+<a name="l00670"></a>00670     <a class="code" href="interface_t_t_styled_layout.html#a6e842a671f461430d693b3796df58bcb">_height</a> = 0;
+<a name="l00671"></a>00671     <a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a> = 0;
+<a name="l00672"></a>00672     <a class="code" href="interface_t_t_styled_layout.html#a06a5041dfc9f27563afa95c6dcf1ab86">_lineHeight</a> = 0;
+<a name="l00673"></a>00673     <a class="code" href="interface_t_t_styled_layout.html#aa980ec29ef608a05fd9f343ff7b647fc">_minX</a> = 0;
+<a name="l00674"></a>00674     <a class="code" href="interface_t_t_styled_layout.html#ab0820bf95f6e0e221ecb7b87cc5249dc">_floatLeftWidth</a> = 0;
+<a name="l00675"></a>00675     <a class="code" href="interface_t_t_styled_layout.html#aee3f4b8b241a2f49e11ebaeafe57422f">_floatRightWidth</a> = 0;
+<a name="l00676"></a>00676     <a class="code" href="interface_t_t_styled_layout.html#a9340b98554c261d157fe046000a9e188">_floatHeight</a> = 0;
+<a name="l00677"></a>00677     <a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a> = nil;
+<a name="l00678"></a>00678     <a class="code" href="interface_t_t_styled_layout.html#af2fb09ee2ed690792e650f73838f225f">_lineFirstFrame</a> = nil;
+<a name="l00679"></a>00679     <a class="code" href="interface_t_t_styled_layout.html#ab6a081d929ef76beab6b3bae3395a71d">_inlineFrame</a> = nil;
+<a name="l00680"></a>00680     <a class="code" href="interface_t_t_styled_layout.html#abc5a131db2c7ee754faa3d7e894a0898">_topFrame</a> = nil;
+<a name="l00681"></a>00681     <a class="code" href="interface_t_t_styled_layout.html#ade2e1880fed3641f49caea6f1b6226b3">_lastFrame</a> = nil;
+<a name="l00682"></a>00682     <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> = nil;
+<a name="l00683"></a>00683     <a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a> = nil;
+<a name="l00684"></a>00684     <a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a> = nil;
+<a name="l00685"></a>00685     <a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a> = nil;
+<a name="l00686"></a>00686     <a class="code" href="interface_t_t_styled_layout.html#aab4bdcd94a1cae00333111b858742b9b">_rootNode</a> = nil;
+<a name="l00687"></a>00687     <a class="code" href="interface_t_t_styled_layout.html#a6febfd7c8b5bc52867055d630fe7997c">_lastNode</a> = nil;
+<a name="l00688"></a>00688     <a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a> = nil;
+<a name="l00689"></a>00689   }
+<a name="l00690"></a>00690   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00691"></a>00691 }
+<a name="l00692"></a>00692 
+<a name="l00693"></a><a class="code" href="interface_t_t_styled_layout.html#aa7a2054e4df1684ba30f2d173ddfdefe">00693</a> - (void)<a class="code" href="interface_t_t_styled_layout.html#aa7a2054e4df1684ba30f2d173ddfdefe">dealloc</a> {
+<a name="l00694"></a>00694   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a73391c82925ad5d4c28e6d4a6ef30270">_rootFrame</a>);
+<a name="l00695"></a>00695   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>);
+<a name="l00696"></a>00696   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>);
+<a name="l00697"></a>00697   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>);
+<a name="l00698"></a>00698   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a638b346235f5e008e236fe90f3e366e2">_linkStyle</a>);
+<a name="l00699"></a>00699   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a4b79853fe5ef6477194865c2d3e97073">_invalidImages</a>);
+<a name="l00700"></a>00700   [<span class="keyword">super</span> dealloc];
+<a name="l00701"></a>00701 }
 <a name="l00702"></a>00702 
-<a name="l00703"></a>00703 - (<a class="code" href="class_u_i_font.html">UIFont</a>*)font {
-<a name="l00704"></a>00704   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>) {
-<a name="l00705"></a>00705     <span class="keyword">self</span>.font = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(font);
-<a name="l00706"></a>00706   }
-<a name="l00707"></a>00707   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
-<a name="l00708"></a>00708 }
-<a name="l00709"></a>00709 
-<a name="l00710"></a>00710 - (void)setFont:(<a class="code" href="class_u_i_font.html">UIFont</a>*)font {
-<a name="l00711"></a>00711   <span class="keywordflow">if</span> (font != <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>) {
-<a name="l00712"></a>00712     [_font release];
-<a name="l00713"></a>00713     <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> = [font retain];
-<a name="l00714"></a>00714     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>);
-<a name="l00715"></a>00715     <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>);
-<a name="l00716"></a>00716   }
-<a name="l00717"></a>00717 }
-<a name="l00718"></a>00718 
-<a name="l00719"></a><a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">00719</a> - (void)layout:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
-<a name="l00720"></a>00720   <span class="keywordflow">while</span> (node) {
-<a name="l00721"></a>00721     <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a> <span class="keyword">class</span>]]) {
-<a name="l00722"></a>00722       TTStyledImageNode* imageNode = (TTStyledImageNode*)node;
-<a name="l00723"></a>00723       [<span class="keyword">self</span> layoutImage:imageNode container:element];
-<a name="l00724"></a>00724     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> <span class="keyword">class</span>]]) {
-<a name="l00725"></a>00725       TTStyledElement* elt = (TTStyledElement*)node;
-<a name="l00726"></a>00726       [<span class="keyword">self</span> layoutElement:elt];
-<a name="l00727"></a>00727     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a> <span class="keyword">class</span>]]) {
-<a name="l00728"></a>00728       TTStyledTextNode* textNode = (TTStyledTextNode*)node;
-<a name="l00729"></a>00729       [<span class="keyword">self</span> layoutText:textNode container:element];
-<a name="l00730"></a>00730     }
-<a name="l00731"></a>00731     
-<a name="l00732"></a>00732     node = node.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a>;
-<a name="l00733"></a>00733   }
-<a name="l00734"></a>00734 }
-<a name="l00735"></a>00735 
-<a name="l00736"></a><a class="code" href="interface_t_t_styled_layout.html#acf8f3217bc9b8ca2a60e6c7bf9505c7b">00736</a> - (void)layout:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node {
-<a name="l00737"></a>00737   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">layout</a>:node <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">container</a>:nil];
-<a name="l00738"></a>00738   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
-<a name="l00739"></a>00739     [<span class="keyword">self</span> breakLine];
-<a name="l00740"></a>00740   }
-<a name="l00741"></a>00741 }
-<a name="l00742"></a>00742 
-<a name="l00743"></a>00743 <span class="keyword">@end</span>
+<a name="l00704"></a>00704 <span class="comment">// public</span>
+<a name="l00705"></a>00705 
+<a name="l00706"></a>00706 - (<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font {
+<a name="l00707"></a>00707   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>) {
+<a name="l00708"></a>00708     <span class="keyword">self</span>.font = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(font);
+<a name="l00709"></a>00709   }
+<a name="l00710"></a>00710   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>;
+<a name="l00711"></a>00711 }
+<a name="l00712"></a>00712 
+<a name="l00713"></a><a class="code" href="interface_t_t_styled_layout.html#adb3e758cdd0e07672890a6a087afa176">00713</a> - (void)setFont:(<a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>*)font {
+<a name="l00714"></a>00714   <span class="keywordflow">if</span> (font != <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a>) {
+<a name="l00715"></a>00715     [<a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> release];
+<a name="l00716"></a>00716     <a class="code" href="interface_t_t_styled_layout.html#a51655e6be5b955b74fd30cc27d5ed567">_font</a> = [font retain];
+<a name="l00717"></a>00717     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#a0962d42dc35c922a9abd6dd3b099cbc3">_boldFont</a>);
+<a name="l00718"></a>00718     <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_styled_layout.html#af0d9fb93007979ee4311f18b5d51bba7">_italicFont</a>);
+<a name="l00719"></a>00719   }
+<a name="l00720"></a>00720 }
+<a name="l00721"></a>00721 
+<a name="l00722"></a><a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">00722</a> - (void)layout:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node container:(<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>*)element {
+<a name="l00723"></a>00723   <span class="keywordflow">while</span> (node) {
+<a name="l00724"></a>00724     <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_image_node.html">TTStyledImageNode</a> <span class="keyword">class</span>]]) {
+<a name="l00725"></a>00725       TTStyledImageNode* imageNode = (TTStyledImageNode*)node;
+<a name="l00726"></a>00726       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#af514f7d6652a2e2af590ed13670ef7be">layoutImage</a>:imageNode <a class="code" href="interface_t_t_styled_layout.html#af514f7d6652a2e2af590ed13670ef7be">container</a>:element];
+<a name="l00727"></a>00727     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a> <span class="keyword">class</span>]]) {
+<a name="l00728"></a>00728       TTStyledElement* elt = (TTStyledElement*)node;
+<a name="l00729"></a>00729       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#ae711912c5e8a3123c79ba3dca6c1b386">layoutElement</a>:elt];
+<a name="l00730"></a>00730     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ([node isKindOfClass:[<a class="code" href="interface_t_t_styled_text_node.html">TTStyledTextNode</a> <span class="keyword">class</span>]]) {
+<a name="l00731"></a>00731       TTStyledTextNode* textNode = (TTStyledTextNode*)node;
+<a name="l00732"></a>00732       [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#af1531750d84a9a4296a3821512abdd86">layoutText</a>:textNode <a class="code" href="interface_t_t_styled_layout.html#af1531750d84a9a4296a3821512abdd86">container</a>:element];
+<a name="l00733"></a>00733     }
+<a name="l00734"></a>00734     
+<a name="l00735"></a>00735     node = node.<a class="code" href="interface_t_t_styled_node.html#aff626f3d41072c2bb2c12db0359030da">nextSibling</a>;
+<a name="l00736"></a>00736   }
+<a name="l00737"></a>00737 }
+<a name="l00738"></a>00738 
+<a name="l00739"></a><a class="code" href="interface_t_t_styled_layout.html#acf8f3217bc9b8ca2a60e6c7bf9505c7b">00739</a> - (void)layout:(<a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>*)node {
+<a name="l00740"></a>00740   [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">layout</a>:node <a class="code" href="interface_t_t_styled_layout.html#a0838680261db129f66fe9c899d1473b9">container</a>:nil];
+<a name="l00741"></a>00741   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_styled_layout.html#a4fea7d10ab94e43239a368c517c7fc66">_lineWidth</a>) {
+<a name="l00742"></a>00742     [<span class="keyword">self</span> <a class="code" href="interface_t_t_styled_layout.html#a7a8372def879f1a0ce25b735034e51b6">breakLine</a>];
+<a name="l00743"></a>00743   }
+<a name="l00744"></a>00744 }
+<a name="l00745"></a>00745 
+<a name="l00746"></a>00746 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

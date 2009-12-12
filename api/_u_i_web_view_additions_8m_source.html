@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,43 +75,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_u_i_web_view_additions_8h.html">Three20/UIWebViewAdditions.h</a>&quot;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="class_u_i_web_view.html">00019</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_web_view.html">UIWebView</a> (TTCategory)
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_u_i_view_additions_8h.html">Three20/UIViewAdditions.h</a>&quot;</span>
 <a name="l00020"></a>00020 
-<a name="l00021"></a>00021 - (CGRect)frameOfElement:(<a class="code" href="class_n_s_string.html">NSString</a>*)query {
-<a name="l00022"></a>00022   <a class="code" href="class_n_s_string.html">NSString</a>* result = [<span class="keyword">self</span> stringByEvaluatingJavaScriptFromString:[<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;\
-<a name="l00023"></a>00023     var target = %@; \
-<a name="l00024"></a>00024     var x = 0, y = 0; \
-<a name="l00025"></a>00025     for (var n = target; n &amp;&amp; n.nodeType == 1; n = n.offsetParent) {  \
-<a name="l00026"></a>00026       x += n.offsetLeft; \
-<a name="l00027"></a>00027       y += n.offsetTop; \
-<a name="l00028"></a>00028     } \
-<a name="l00029"></a>00029     x + &apos;,&apos; + y + &apos;,&apos; + target.offsetWidth + &apos;,&apos; + target.offsetHeight; \
-<a name="l00030"></a>00030 &quot;, query]];
-<a name="l00031"></a>00031   
-<a name="l00032"></a>00032   <a class="code" href="class_n_s_array.html">NSArray</a>* points = [result componentsSeparatedByString:@&quot;,&quot;];
-<a name="l00033"></a>00033   CGFloat x = [[points objectAtIndex:0] floatValue];
-<a name="l00034"></a>00034   CGFloat y = [[points objectAtIndex:1] floatValue];
-<a name="l00035"></a>00035   CGFloat width = [[points objectAtIndex:2] floatValue];
-<a name="l00036"></a>00036   CGFloat height = [[points objectAtIndex:3] floatValue];
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038   <span class="keywordflow">return</span> CGRectMake(x, y, width, height);
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <span class="preprocessor">#ifdef DEBUG</span>
-<a name="l00042"></a>00042 <span class="preprocessor"></span>- (void)simulateTapElement:(<a class="code" href="class_n_s_string.html">NSString</a>*)query {
-<a name="l00043"></a>00043   CGRect frame = [<span class="keyword">self</span>.window convertRect:self.frame fromView:self.superview];
-<a name="l00044"></a>00044   CGRect pluginFrame = [<span class="keyword">self</span> frameOfElement:query];
-<a name="l00045"></a>00045   CGPoint tapPoint = CGPointMake(
-<a name="l00046"></a>00046     frame.origin.x + pluginFrame.origin.x + pluginFrame.size.width/3,
-<a name="l00047"></a>00047     frame.origin.y + pluginFrame.origin.y + pluginFrame.size.height/3
-<a name="l00048"></a>00048   );
-<a name="l00049"></a>00049   [<span class="keyword">self</span> simulateTapAtPoint:tapPoint];
-<a name="l00050"></a>00050 }
-<a name="l00051"></a>00051 <span class="preprocessor">#endif</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span>
-<a name="l00053"></a>00053 <span class="keyword">@end</span>
+<a name="l00024"></a><a class="code" href="class_u_i_web_view.html">00024</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_web_view.html" title="Additions.">UIWebView</a> (TTCategory)
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="class_u_i_web_view.html#af09f4d247c733c05bbcb6c3bb65e7e57">00026</a> - (CGRect)frameOfElement:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)query {
+<a name="l00027"></a>00027   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* result = [<span class="keyword">self</span> stringByEvaluatingJavaScriptFromString:[<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;\
+<a name="l00028"></a>00028     var target = %@; \
+<a name="l00029"></a>00029     var x = 0, y = 0; \
+<a name="l00030"></a>00030     for (var n = target; n &amp;&amp; n.nodeType == 1; n = n.offsetParent) {  \
+<a name="l00031"></a>00031       x += n.offsetLeft; \
+<a name="l00032"></a>00032       y += n.offsetTop; \
+<a name="l00033"></a>00033     } \
+<a name="l00034"></a>00034     x + &apos;,&apos; + y + &apos;,&apos; + target.offsetWidth + &apos;,&apos; + target.offsetHeight; \
+<a name="l00035"></a>00035 &quot;, query]];
+<a name="l00036"></a>00036   
+<a name="l00037"></a>00037   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* points = [result componentsSeparatedByString:@&quot;,&quot;];
+<a name="l00038"></a>00038   CGFloat x = [[points objectAtIndex:0] floatValue];
+<a name="l00039"></a>00039   CGFloat y = [[points objectAtIndex:1] floatValue];
+<a name="l00040"></a>00040   CGFloat width = [[points objectAtIndex:2] floatValue];
+<a name="l00041"></a>00041   CGFloat height = [[points objectAtIndex:3] floatValue];
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043   <span class="keywordflow">return</span> CGRectMake(x, y, width, height);
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="preprocessor">#ifdef DEBUG</span>
+<a name="l00047"></a><a class="code" href="class_u_i_web_view.html#acbb5150ba5dd6f99e1c0bfaf8ebf9a3e">00047</a> <span class="preprocessor"></span>- (void)simulateTapElement:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)query {
+<a name="l00048"></a>00048   CGRect frame = [<span class="keyword">self</span>.window convertRect:self.frame fromView:self.superview];
+<a name="l00049"></a>00049   CGRect pluginFrame = [<span class="keyword">self</span> <a class="code" href="class_u_i_web_view.html#af09f4d247c733c05bbcb6c3bb65e7e57">frameOfElement</a>:query];
+<a name="l00050"></a>00050   CGPoint tapPoint = CGPointMake(
+<a name="l00051"></a>00051     frame.origin.x + pluginFrame.origin.x + pluginFrame.size.width/3,
+<a name="l00052"></a>00052     frame.origin.y + pluginFrame.origin.y + pluginFrame.size.height/3
+<a name="l00053"></a>00053   );
+<a name="l00054"></a>00054   [<span class="keyword">self</span> simulateTapAtPoint:tapPoint];
+<a name="l00055"></a>00055 }
+<a name="l00056"></a>00056 <span class="preprocessor">#endif</span>
+<a name="l00057"></a>00057 <span class="preprocessor"></span>
+<a name="l00058"></a>00058 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

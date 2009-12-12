@@ -74,96 +74,97 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>;
-<a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">00021</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
-<a name="l00022"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8fad3dd12ca7bb7a6a1561e96c4f50a2990">00022</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8fad3dd12ca7bb7a6a1561e96c4f50a2990">TTNavigationModeNone</a>,
-<a name="l00023"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf6b514f33089fba276f38b2013a81640">00023</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf6b514f33089fba276f38b2013a81640">TTNavigationModeCreate</a>,            <span class="comment">// a new view controller is created each time</span>
-<a name="l00024"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faa9d6d7a00c1e1fd3ec379f6eeddec146">00024</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faa9d6d7a00c1e1fd3ec379f6eeddec146">TTNavigationModeShare</a>,             <span class="comment">// a new view controller is created, cached and re-used</span>
-<a name="l00025"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">00025</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">TTNavigationModeModal</a>,             <span class="comment">// a new view controller is created and presented modally</span>
-<a name="l00026"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf9b8b876d7e6bcff7b9c9c1a8ea9ded1">00026</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf9b8b876d7e6bcff7b9c9c1a8ea9ded1">TTNavigationModeExternal</a>,          <span class="comment">// an external app will be opened</span>
-<a name="l00027"></a>00027 } <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>;
-<a name="l00028"></a>00028 
-<a name="l00029"></a><a class="code" href="interface_t_t_u_r_l_map.html">00029</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_map.html">TTURLMap</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00030"></a><a class="code" href="interface_t_t_u_r_l_map.html#a5333b7bee4f197991c7bd4ef38d7587d">00030</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a5333b7bee4f197991c7bd4ef38d7587d">_objectMappings</a>;
-<a name="l00031"></a><a class="code" href="interface_t_t_u_r_l_map.html#ab28daecbc0219664eb908afaee4650ac">00031</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_map.html#ab28daecbc0219664eb908afaee4650ac">_objectPatterns</a>;
-<a name="l00032"></a><a class="code" href="interface_t_t_u_r_l_map.html#a14e729b56c763563b0fba0a0608b1dbb">00032</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a14e729b56c763563b0fba0a0608b1dbb">_fragmentPatterns</a>;
-<a name="l00033"></a><a class="code" href="interface_t_t_u_r_l_map.html#a146e5d2d50107dcd0d0ab9f233f38275">00033</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a146e5d2d50107dcd0d0ab9f233f38275">_stringPatterns</a>;
-<a name="l00034"></a><a class="code" href="interface_t_t_u_r_l_map.html#a7f69a28e850b1fedeb6c6c411e7d8028">00034</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a7f69a28e850b1fedeb6c6c411e7d8028">_schemes</a>;
-<a name="l00035"></a><a class="code" href="interface_t_t_u_r_l_map.html#a9bcb041d3890b906b58bb15f3768d772">00035</a>   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a9bcb041d3890b906b58bb15f3768d772">_defaultObjectPattern</a>;
-<a name="l00036"></a><a class="code" href="interface_t_t_u_r_l_map.html#af170991ccbdf0e6873eb4c5b47da9a72">00036</a>   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* <a class="code" href="interface_t_t_u_r_l_map.html#af170991ccbdf0e6873eb4c5b47da9a72">_hashPattern</a>;
-<a name="l00037"></a><a class="code" href="interface_t_t_u_r_l_map.html#acc60d326b4fbe5e0994bf843af005d8d">00037</a>   BOOL <a class="code" href="interface_t_t_u_r_l_map.html#acc60d326b4fbe5e0994bf843af005d8d">_invalidPatterns</a>;
-<a name="l00038"></a>00038 }
-<a name="l00039"></a>00039 
-<a name="l00043"></a>00043 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toObject:(<span class="keywordtype">id</span>)object;
-<a name="l00044"></a>00044 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toObject:(<span class="keywordtype">id</span>)object selector:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00045"></a>00045 
-<a name="l00057"></a>00057 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target;
-<a name="l00058"></a>00058 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00059"></a>00059 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target transition:(NSInteger)transition;
-<a name="l00060"></a>00060 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL
-<a name="l00061"></a>00061         toViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector transition:(NSInteger)transition;
-<a name="l00062"></a>00062 
-<a name="l00069"></a>00069 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toSharedViewController:(<span class="keywordtype">id</span>)target;
-<a name="l00070"></a>00070 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toSharedViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00071"></a>00071 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL
-<a name="l00072"></a>00072         toSharedViewController:(<span class="keywordtype">id</span>)target;
-<a name="l00073"></a>00073 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL
-<a name="l00074"></a>00074         toSharedViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00075"></a>00075 
-<a name="l00079"></a>00079 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target;
-<a name="l00080"></a>00080 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
-<a name="l00081"></a>00081 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target transition:(NSInteger)transition;
-<a name="l00082"></a>00082 - (void)from:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html">NSString</a>*)parentURL
-<a name="l00083"></a>00083         toModalViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector transition:(NSInteger)transition;
-<a name="l00084"></a>00084 
-<a name="l00088"></a>00088 - (void)from:(Class)cls toURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00089"></a>00089 
-<a name="l00093"></a>00093 - (void)from:(Class)cls name:(<a class="code" href="class_n_s_string.html">NSString</a>*)name toURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00094"></a>00094 
-<a name="l00105"></a>00105 - (void)setObject:(<span class="keywordtype">id</span>)object forURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00106"></a>00106 
-<a name="l00110"></a>00110 - (void)removeURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00111"></a>00111 
-<a name="l00115"></a>00115 - (void)removeObject:(<span class="keywordtype">id</span>)object;
-<a name="l00116"></a>00116 
-<a name="l00120"></a>00120 - (void)removeObjectForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00121"></a>00121 
-<a name="l00125"></a>00125 - (void)removeAllObjects;
-<a name="l00126"></a>00126 
-<a name="l00133"></a>00133 - (id)objectForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00134"></a>00134 - (id)objectForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL query:(NSDictionary*)query;
-<a name="l00135"></a>00135 - (id)objectForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL query:(NSDictionary*)query
-<a name="l00136"></a>00136       pattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>**)pattern;
-<a name="l00137"></a>00137 
-<a name="l00141"></a>00141 - (id)dispatchURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL toTarget:(<span class="keywordtype">id</span>)target query:(NSDictionary*)query;
-<a name="l00142"></a>00142 
-<a name="l00146"></a>00146 - (<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationModeForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00147"></a>00147 
-<a name="l00151"></a>00151 - (NSInteger)transitionForURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
-<a name="l00152"></a>00152 
-<a name="l00156"></a>00156 - (BOOL)isSchemeSupported:(<a class="code" href="class_n_s_string.html">NSString</a>*)scheme;
-<a name="l00157"></a>00157 
-<a name="l00161"></a>00161 - (BOOL)isAppURL:(NSURL*)URL;
-<a name="l00162"></a>00162 
-<a name="l00166"></a>00166 - (<a class="code" href="class_n_s_string.html">NSString</a>*)URLForObject:(<span class="keywordtype">id</span>)object;
-<a name="l00167"></a>00167 - (<a class="code" href="class_n_s_string.html">NSString</a>*)URLForObject:(<span class="keywordtype">id</span>)object withName:(<a class="code" href="class_n_s_string.html">NSString</a>*)name;
-<a name="l00168"></a>00168 
-<a name="l00169"></a>00169 <span class="keyword">@end</span>
-<a name="l00170"></a>00170 
-<a name="l00172"></a>00172 
-<a name="l00173"></a><a class="code" href="protocol_t_t_u_r_l_object-p.html">00173</a> <span class="keyword">@protocol </span>TTURLObject &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
-<a name="l00174"></a>00174 
-<a name="l00175"></a>00175 <span class="keyword">@optional</span>
-<a name="l00176"></a>00176 
-<a name="l00180"></a><a class="code" href="protocol_t_t_u_r_l_object-p.html#a618b16ff58bc21afb3d6fc427a96a2ab">00180</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html">NSString</a>* URLValue;
-<a name="l00181"></a>00181 
-<a name="l00185"></a>00185 - (<a class="code" href="class_n_s_string.html">NSString</a>*)URLValueWithName:(<a class="code" href="class_n_s_string.html">NSString</a>*)name;
-<a name="l00186"></a>00186 
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">00022</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00023"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8fad3dd12ca7bb7a6a1561e96c4f50a2990">00023</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8fad3dd12ca7bb7a6a1561e96c4f50a2990">TTNavigationModeNone</a>,
+<a name="l00024"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf6b514f33089fba276f38b2013a81640">00024</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf6b514f33089fba276f38b2013a81640">TTNavigationModeCreate</a>,            <span class="comment">// a new view controller is created each time</span>
+<a name="l00025"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faa9d6d7a00c1e1fd3ec379f6eeddec146">00025</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faa9d6d7a00c1e1fd3ec379f6eeddec146">TTNavigationModeShare</a>,             <span class="comment">// a new view controller is created, cached and re-used</span>
+<a name="l00026"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">00026</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8facbd1238f10c703640e8e1e9269bfa098">TTNavigationModeModal</a>,             <span class="comment">// a new view controller is created and presented modally</span>
+<a name="l00027"></a><a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf9b8b876d7e6bcff7b9c9c1a8ea9ded1">00027</a>   <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8faf9b8b876d7e6bcff7b9c9c1a8ea9ded1">TTNavigationModeExternal</a>,          <span class="comment">// an external app will be opened</span>
+<a name="l00028"></a>00028 } <a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>;
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="interface_t_t_u_r_l_map.html">00030</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_map.html">TTURLMap</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00031"></a><a class="code" href="interface_t_t_u_r_l_map.html#a5333b7bee4f197991c7bd4ef38d7587d">00031</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a5333b7bee4f197991c7bd4ef38d7587d">_objectMappings</a>;
+<a name="l00032"></a><a class="code" href="interface_t_t_u_r_l_map.html#ab28daecbc0219664eb908afaee4650ac">00032</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_map.html#ab28daecbc0219664eb908afaee4650ac">_objectPatterns</a>;
+<a name="l00033"></a><a class="code" href="interface_t_t_u_r_l_map.html#a14e729b56c763563b0fba0a0608b1dbb">00033</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a14e729b56c763563b0fba0a0608b1dbb">_fragmentPatterns</a>;
+<a name="l00034"></a><a class="code" href="interface_t_t_u_r_l_map.html#a146e5d2d50107dcd0d0ab9f233f38275">00034</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a146e5d2d50107dcd0d0ab9f233f38275">_stringPatterns</a>;
+<a name="l00035"></a><a class="code" href="interface_t_t_u_r_l_map.html#a7f69a28e850b1fedeb6c6c411e7d8028">00035</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a7f69a28e850b1fedeb6c6c411e7d8028">_schemes</a>;
+<a name="l00036"></a><a class="code" href="interface_t_t_u_r_l_map.html#a9bcb041d3890b906b58bb15f3768d772">00036</a>   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* <a class="code" href="interface_t_t_u_r_l_map.html#a9bcb041d3890b906b58bb15f3768d772">_defaultObjectPattern</a>;
+<a name="l00037"></a><a class="code" href="interface_t_t_u_r_l_map.html#af170991ccbdf0e6873eb4c5b47da9a72">00037</a>   <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>* <a class="code" href="interface_t_t_u_r_l_map.html#af170991ccbdf0e6873eb4c5b47da9a72">_hashPattern</a>;
+<a name="l00038"></a><a class="code" href="interface_t_t_u_r_l_map.html#acc60d326b4fbe5e0994bf843af005d8d">00038</a>   BOOL <a class="code" href="interface_t_t_u_r_l_map.html#acc60d326b4fbe5e0994bf843af005d8d">_invalidPatterns</a>;
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00044"></a>00044 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toObject:(<span class="keywordtype">id</span>)object;
+<a name="l00045"></a>00045 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toObject:(<span class="keywordtype">id</span>)object selector:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00046"></a>00046 
+<a name="l00058"></a>00058 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target;
+<a name="l00059"></a>00059 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00060"></a>00060 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toViewController:(<span class="keywordtype">id</span>)target transition:(NSInteger)transition;
+<a name="l00061"></a>00061 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL
+<a name="l00062"></a>00062         toViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector transition:(NSInteger)transition;
+<a name="l00063"></a>00063 
+<a name="l00070"></a>00070 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toSharedViewController:(<span class="keywordtype">id</span>)target;
+<a name="l00071"></a>00071 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toSharedViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00072"></a>00072 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL
+<a name="l00073"></a>00073         toSharedViewController:(<span class="keywordtype">id</span>)target;
+<a name="l00074"></a>00074 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL
+<a name="l00075"></a>00075         toSharedViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00076"></a>00076 
+<a name="l00080"></a>00080 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target;
+<a name="l00081"></a>00081 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00082"></a>00082 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toModalViewController:(<span class="keywordtype">id</span>)target transition:(NSInteger)transition;
+<a name="l00083"></a>00083 - (void)from:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL parent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)parentURL
+<a name="l00084"></a>00084         toModalViewController:(<span class="keywordtype">id</span>)target selector:(<span class="keywordtype">SEL</span>)selector transition:(NSInteger)transition;
+<a name="l00085"></a>00085 
+<a name="l00089"></a>00089 - (void)from:(Class)cls toURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00090"></a>00090 
+<a name="l00094"></a>00094 - (void)from:(Class)cls name:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name toURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00095"></a>00095 
+<a name="l00106"></a>00106 - (void)setObject:(<span class="keywordtype">id</span>)object forURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00107"></a>00107 
+<a name="l00111"></a>00111 - (void)removeURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00112"></a>00112 
+<a name="l00116"></a>00116 - (void)removeObject:(<span class="keywordtype">id</span>)object;
+<a name="l00117"></a>00117 
+<a name="l00121"></a>00121 - (void)removeObjectForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00122"></a>00122 
+<a name="l00126"></a>00126 - (void)removeAllObjects;
+<a name="l00127"></a>00127 
+<a name="l00134"></a>00134 - (id)objectForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00135"></a>00135 - (id)objectForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL query:(NSDictionary*)query;
+<a name="l00136"></a>00136 - (id)objectForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL query:(NSDictionary*)query
+<a name="l00137"></a>00137       pattern:(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>**)pattern;
+<a name="l00138"></a>00138 
+<a name="l00142"></a>00142 - (id)dispatchURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL toTarget:(<span class="keywordtype">id</span>)target query:(NSDictionary*)query;
+<a name="l00143"></a>00143 
+<a name="l00147"></a>00147 - (<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationModeForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00148"></a>00148 
+<a name="l00152"></a>00152 - (NSInteger)transitionForURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
+<a name="l00153"></a>00153 
+<a name="l00157"></a>00157 - (BOOL)isSchemeSupported:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)scheme;
+<a name="l00158"></a>00158 
+<a name="l00162"></a>00162 - (BOOL)isAppURL:(NSURL*)URL;
+<a name="l00163"></a>00163 
+<a name="l00167"></a>00167 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URLForObject:(<span class="keywordtype">id</span>)object;
+<a name="l00168"></a>00168 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URLForObject:(<span class="keywordtype">id</span>)object withName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name;
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 <span class="keyword">@end</span>
+<a name="l00171"></a>00171 
+<a name="l00173"></a>00173 
+<a name="l00174"></a><a class="code" href="protocol_t_t_u_r_l_object-p.html">00174</a> <span class="keyword">@protocol </span>TTURLObject &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 <span class="keyword">@optional</span>
+<a name="l00177"></a>00177 
+<a name="l00181"></a><a class="code" href="protocol_t_t_u_r_l_object-p.html#a618b16ff58bc21afb3d6fc427a96a2ab">00181</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URLValue;
+<a name="l00182"></a>00182 
+<a name="l00186"></a>00186 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URLValueWithName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name;
 <a name="l00187"></a>00187 
-<a name="l00188"></a>00188 @end
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

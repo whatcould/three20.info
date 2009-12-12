@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,126 +76,131 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_error_view_8h.html">Three20/TTErrorView.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 
-<a name="l00021"></a>00021 <span class="comment">// global</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_style_8h.html">Three20/TTGlobalStyle.h</a>&quot;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">00023</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> = 30;
-<a name="l00024"></a><a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">00024</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a> = 20;
-<a name="l00025"></a><a class="code" href="_t_t_error_view_8m.html#ae2da90eede501fe19fc6aa8e85e6513c">00025</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#ae2da90eede501fe19fc6aa8e85e6513c">kHPadding</a> = 10;
-<a name="l00026"></a>00026 
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_error_view.html">TTErrorView</a>
-<a name="l00030"></a>00030 
-<a name="l00032"></a>00032 <span class="comment">// NSObject</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00026"></a>00026 <span class="comment">// global</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">00028</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> = 30;
+<a name="l00029"></a><a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">00029</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a> = 20;
+<a name="l00030"></a><a class="code" href="_t_t_error_view_8m.html#ae2da90eede501fe19fc6aa8e85e6513c">00030</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_error_view_8m.html#ae2da90eede501fe19fc6aa8e85e6513c">kHPadding</a> = 10;
+<a name="l00031"></a>00031 
 <a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="interface_t_t_error_view.html#a9d8ae69edcebb95894c25879fe968355">00034</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title subtitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)subtitle image:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image {
-<a name="l00035"></a>00035   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00036"></a>00036     <span class="keyword">self</span>.title = title;
-<a name="l00037"></a>00037     <span class="keyword">self</span>.subtitle = subtitle;
-<a name="l00038"></a>00038     <span class="keyword">self</span>.image = image;
-<a name="l00039"></a>00039   }
-<a name="l00040"></a>00040   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00041"></a>00041 }
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 - (id)initWithFrame:(CGRect)frame {
-<a name="l00044"></a>00044   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00045"></a>00045     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a> = [[UIImageView alloc] init];
-<a name="l00046"></a>00046     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.contentMode = UIViewContentModeCenter;
-<a name="l00047"></a>00047     [<span class="keyword">self</span> addSubview:_imageView];
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a> = [[UILabel alloc] init];
-<a name="l00050"></a>00050     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00051"></a>00051     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.textColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableErrorTextColor);
-<a name="l00052"></a>00052     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.font = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(errorTitleFont);
-<a name="l00053"></a>00053     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.textAlignment = UITextAlignmentCenter;
-<a name="l00054"></a>00054     [<span class="keyword">self</span> addSubview:_titleView];
-<a name="l00055"></a>00055     
-<a name="l00056"></a>00056     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a> = [[UILabel alloc] init];
-<a name="l00057"></a>00057     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00058"></a>00058     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.textColor = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableErrorTextColor);
-<a name="l00059"></a>00059     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.font = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(errorSubtitleFont);
-<a name="l00060"></a>00060     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.textAlignment = UITextAlignmentCenter;
-<a name="l00061"></a>00061     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.numberOfLines = 0;
-<a name="l00062"></a>00062     [<span class="keyword">self</span> addSubview:_subtitleView];
-<a name="l00063"></a>00063   }
-<a name="l00064"></a>00064   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 - (void)dealloc {
-<a name="l00068"></a>00068   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>);
-<a name="l00069"></a>00069   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>);
-<a name="l00070"></a>00070   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>);
-<a name="l00071"></a>00071   [<span class="keyword">super</span> dealloc];
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00075"></a>00075 <span class="comment">// UIView</span>
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 - (void)layoutSubviews {
-<a name="l00078"></a>00078   <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.size = [_subtitleView sizeThatFits:CGSizeMake(self.width - kHPadding*2, 0)];
-<a name="l00079"></a>00079   [_titleView sizeToFit];
-<a name="l00080"></a>00080   [_imageView sizeToFit];
+<a name="l00034"></a>00034 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_error_view.html">TTErrorView</a>
+<a name="l00035"></a>00035 
+<a name="l00037"></a>00037 <span class="comment">// NSObject</span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="interface_t_t_error_view.html#a9d8ae69edcebb95894c25879fe968355">00039</a> - (id)initWithTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title subtitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)subtitle image:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image {
+<a name="l00040"></a>00040   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
+<a name="l00041"></a>00041     <span class="keyword">self</span>.title = title;
+<a name="l00042"></a>00042     <span class="keyword">self</span>.subtitle = subtitle;
+<a name="l00043"></a>00043     <span class="keyword">self</span>.image = image;
+<a name="l00044"></a>00044   }
+<a name="l00045"></a>00045   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00046"></a>00046 }
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="interface_t_t_error_view.html#afaccc525237a561641dc4f5271230058">00048</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00049"></a>00049   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00050"></a>00050     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a> = [[UIImageView alloc] init];
+<a name="l00051"></a>00051     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.contentMode = UIViewContentModeCenter;
+<a name="l00052"></a>00052     [<span class="keyword">self</span> addSubview:_imageView];
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a> = [[UILabel alloc] init];
+<a name="l00055"></a>00055     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00056"></a>00056     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.textColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableErrorTextColor);
+<a name="l00057"></a>00057     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.font = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(errorTitleFont);
+<a name="l00058"></a>00058     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.textAlignment = UITextAlignmentCenter;
+<a name="l00059"></a>00059     [<span class="keyword">self</span> addSubview:_titleView];
+<a name="l00060"></a>00060     
+<a name="l00061"></a>00061     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a> = [[UILabel alloc] init];
+<a name="l00062"></a>00062     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00063"></a>00063     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.textColor = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(tableErrorTextColor);
+<a name="l00064"></a>00064     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.font = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(errorSubtitleFont);
+<a name="l00065"></a>00065     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.textAlignment = UITextAlignmentCenter;
+<a name="l00066"></a>00066     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.numberOfLines = 0;
+<a name="l00067"></a>00067     [<span class="keyword">self</span> addSubview:_subtitleView];
+<a name="l00068"></a>00068   }
+<a name="l00069"></a>00069   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00070"></a>00070 }
+<a name="l00071"></a>00071 
+<a name="l00072"></a><a class="code" href="interface_t_t_error_view.html#a6204d1b946462e9e580de2d369d91487">00072</a> - (void)<a class="code" href="interface_t_t_error_view.html#a6204d1b946462e9e580de2d369d91487">dealloc</a> {
+<a name="l00073"></a>00073   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>);
+<a name="l00074"></a>00074   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>);
+<a name="l00075"></a>00075   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>);
+<a name="l00076"></a>00076   [<span class="keyword">super</span> dealloc];
+<a name="l00077"></a>00077 }
+<a name="l00078"></a>00078 
+<a name="l00080"></a>00080 <span class="comment">// UIView</span>
 <a name="l00081"></a>00081 
-<a name="l00082"></a>00082   CGFloat maxHeight = <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height + <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.height + <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.height
-<a name="l00083"></a>00083                       + <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> + <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a>;
-<a name="l00084"></a>00084   BOOL canShowImage = <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image &amp;&amp; <span class="keyword">self</span>.height &gt; maxHeight;
-<a name="l00085"></a>00085   
-<a name="l00086"></a>00086   CGFloat totalHeight = 0;
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088   <span class="keywordflow">if</span> (canShowImage) {
-<a name="l00089"></a>00089     totalHeight += <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height;
-<a name="l00090"></a>00090   }
-<a name="l00091"></a>00091   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text.length) {
-<a name="l00092"></a>00092     totalHeight += (totalHeight ? <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> : 0) + _titleView.height;
-<a name="l00093"></a>00093   }
-<a name="l00094"></a>00094   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text.length) {
-<a name="l00095"></a>00095     totalHeight += (totalHeight ? <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a> : 0) + _subtitleView.height;
-<a name="l00096"></a>00096   }
-<a name="l00097"></a>00097   
-<a name="l00098"></a>00098   CGFloat top = floor(<span class="keyword">self</span>.height/2 - totalHeight/2);
-<a name="l00099"></a>00099   
-<a name="l00100"></a>00100   <span class="keywordflow">if</span> (canShowImage) {
-<a name="l00101"></a>00101     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.width/2 - <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.width/2), top);
-<a name="l00102"></a>00102     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.hidden = NO;
-<a name="l00103"></a>00103     top += <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height + <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a>;
-<a name="l00104"></a>00104   } <span class="keywordflow">else</span> {
-<a name="l00105"></a>00105     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.hidden = YES;
-<a name="l00106"></a>00106   }
-<a name="l00107"></a>00107   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text.length) {
-<a name="l00108"></a>00108     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.width/2 - <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.width/2), top);
-<a name="l00109"></a>00109     top += <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.height + <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a>;
-<a name="l00110"></a>00110   }
-<a name="l00111"></a>00111   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text.length) {
-<a name="l00112"></a>00112     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.width/2 - <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.width/2), top);
-<a name="l00113"></a>00113   }
-<a name="l00114"></a>00114 }
-<a name="l00115"></a>00115 
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118 - (<a class="code" href="class_n_s_string.html">NSString</a>*)title {
-<a name="l00119"></a>00119   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text;
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122 - (void)setTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title {
-<a name="l00123"></a>00123   <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text = title;
-<a name="l00124"></a>00124 }
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 - (<a class="code" href="class_n_s_string.html">NSString</a>*)subtitle {
-<a name="l00127"></a>00127   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text;
-<a name="l00128"></a>00128 }
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130 - (void)setSubtitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)subtitle {
-<a name="l00131"></a>00131   <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text = subtitle;
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 - (<a class="code" href="class_u_i_image.html">UIImage</a>*)image {
-<a name="l00135"></a>00135   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image;
-<a name="l00136"></a>00136 }
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138 - (void)setImage:(<a class="code" href="class_u_i_image.html">UIImage</a>*)image {
-<a name="l00139"></a>00139   <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image = image;
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 <span class="keyword">@end</span>
+<a name="l00082"></a><a class="code" href="interface_t_t_error_view.html#af1f42a2eb781e8ba050cb6c8541f543b">00082</a> - (void)<a class="code" href="interface_t_t_error_view.html#af1f42a2eb781e8ba050cb6c8541f543b">layoutSubviews</a> {
+<a name="l00083"></a>00083   <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.size = [<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a> sizeThatFits:CGSizeMake(self.width - kHPadding*2, 0)];
+<a name="l00084"></a>00084   [<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a> sizeToFit];
+<a name="l00085"></a>00085   [<a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a> sizeToFit];
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087   CGFloat maxHeight = <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height + <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.height + <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.height
+<a name="l00088"></a>00088                       + <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> + <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a>;
+<a name="l00089"></a>00089   BOOL canShowImage = <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image &amp;&amp; <span class="keyword">self</span>.height &gt; maxHeight;
+<a name="l00090"></a>00090   
+<a name="l00091"></a>00091   CGFloat totalHeight = 0;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093   <span class="keywordflow">if</span> (canShowImage) {
+<a name="l00094"></a>00094     totalHeight += <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height;
+<a name="l00095"></a>00095   }
+<a name="l00096"></a>00096   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text.length) {
+<a name="l00097"></a>00097     totalHeight += (totalHeight ? <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a> : 0) + <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.height;
+<a name="l00098"></a>00098   }
+<a name="l00099"></a>00099   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text.length) {
+<a name="l00100"></a>00100     totalHeight += (totalHeight ? <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a> : 0) + <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.height;
+<a name="l00101"></a>00101   }
+<a name="l00102"></a>00102   
+<a name="l00103"></a>00103   CGFloat <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> = floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2 - totalHeight/2);
+<a name="l00104"></a>00104   
+<a name="l00105"></a>00105   <span class="keywordflow">if</span> (canShowImage) {
+<a name="l00106"></a>00106     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>/2 - <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.width/2), <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>);
+<a name="l00107"></a>00107     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.hidden = NO;
+<a name="l00108"></a>00108     <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> += <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.height + <a class="code" href="_t_t_error_view_8m.html#a22fe0b5e6c031f32e08e5fa75defd367">kVPadding1</a>;
+<a name="l00109"></a>00109   } <span class="keywordflow">else</span> {
+<a name="l00110"></a>00110     <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.hidden = YES;
+<a name="l00111"></a>00111   }
+<a name="l00112"></a>00112   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text.length) {
+<a name="l00113"></a>00113     <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>/2 - <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.width/2), <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>);
+<a name="l00114"></a>00114     <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a> += <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.height + <a class="code" href="_t_t_error_view_8m.html#a937fe8b8db4d0f98c47112929bfdbf1a">kVPadding2</a>;
+<a name="l00115"></a>00115   }
+<a name="l00116"></a>00116   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text.length) {
+<a name="l00117"></a>00117     <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.origin = CGPointMake(floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>/2 - <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.width/2), <a class="code" href="class_u_i_view.html#aa0c92686e90b9878a10dfa74a7bda545">top</a>);
+<a name="l00118"></a>00118   }
+<a name="l00119"></a>00119 }
+<a name="l00120"></a>00120 
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title {
+<a name="l00124"></a>00124   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text;
+<a name="l00125"></a>00125 }
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="interface_t_t_error_view.html#acf2a7418c1b567239f80bb99c00f4633">00127</a> - (void)setTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title {
+<a name="l00128"></a>00128   <a class="code" href="interface_t_t_error_view.html#a2bfc6c35afb5bea3df5d27dcfc0d8af4">_titleView</a>.text = title;
+<a name="l00129"></a>00129 }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)subtitle {
+<a name="l00132"></a>00132   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text;
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00135"></a><a class="code" href="interface_t_t_error_view.html#ae613162ee8ab3a1a2c32fe9bec0fafae">00135</a> - (void)setSubtitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)subtitle {
+<a name="l00136"></a>00136   <a class="code" href="interface_t_t_error_view.html#ae85505a6e345a8edcddd52c4b6347fc8">_subtitleView</a>.text = subtitle;
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 - (<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image {
+<a name="l00140"></a>00140   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image;
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+<a name="l00143"></a><a class="code" href="interface_t_t_error_view.html#aa2fd6af107123d9c18137b61b9ffdd97">00143</a> - (void)setImage:(<a class="code" href="class_u_i_image.html" title="Additions.">UIImage</a>*)image {
+<a name="l00144"></a>00144   <a class="code" href="interface_t_t_error_view.html#a407f7d23eb2aa970dcee8a07198972a1">_imageView</a>.image = image;
+<a name="l00145"></a>00145 }
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

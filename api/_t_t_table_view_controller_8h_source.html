@@ -75,12 +75,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_model_view_controller_8h.html">Three20/TTModelViewController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_table_view_data_source_8h.html">Three20/TTTableViewDataSource.h</a>&quot;</span>
-<a name="l00019"></a>00019 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="keyword">@protocol </span><a class="code" href="interface_t_t_table_view_data_source.html">TTTableViewDataSource</a>;
 <a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>;
 <a name="l00021"></a>00021 
 <a name="l00022"></a><a class="code" href="interface_t_t_table_view_controller.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_table_view_controller.html">TTTableViewController</a> : <a class="code" href="interface_t_t_model_view_controller.html" title="A view controller that manages a model in addition to a view.">TTModelViewController</a> {
-<a name="l00023"></a><a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">00023</a>   <a class="code" href="class_u_i_table_view.html">UITableView</a>* <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
+<a name="l00023"></a><a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">00023</a>   <a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>* <a class="code" href="interface_t_t_table_view_controller.html#addd334e360d2909a54440054e643cdb8">_tableView</a>;
 <a name="l00024"></a><a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">00024</a>   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_table_view_controller.html#ac5313235b13e491fa7202c0922e8a0e0">_tableBannerView</a>;
 <a name="l00025"></a><a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">00025</a>   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a5d42a707a3c933a450b2af5a8100d425">_tableOverlayView</a>;
 <a name="l00026"></a><a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">00026</a>   <a class="code" href="class_u_i_view.html">UIView</a>* <a class="code" href="interface_t_t_table_view_controller.html#a6732039a6d36ab9b92231d5191cb4d64">_loadingView</a>;
@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a><a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">00036</a>   BOOL <a class="code" href="interface_t_t_table_view_controller.html#a71d39b25b2ef46e07743d4529085c50a">_variableHeightRows</a>;
 <a name="l00037"></a>00037 }
 <a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">00039</a> @property(nonatomic,retain) <a class="code" href="class_u_i_table_view.html">UITableView</a>* tableView;
+<a name="l00039"></a><a class="code" href="interface_t_t_table_view_controller.html#abfd22eeb7e01539eabf44bdba2ebb645">00039</a> @property(nonatomic,retain) <a class="code" href="class_u_i_table_view.html" title="Additions.">UITableView</a>* tableView;
 <a name="l00040"></a>00040 
 <a name="l00044"></a><a class="code" href="interface_t_t_table_view_controller.html#a2c0c397163b1b4241e870d0bf997ee98">00044</a> @property(nonatomic,retain) <a class="code" href="class_u_i_view.html">UIView</a>* tableBannerView;
 <a name="l00045"></a>00045 
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00101"></a>00101 
 <a name="l00108"></a>00108 - (<span class="keywordtype">void</span>)didSelectObject:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span> atIndexPath:(NSIndexPath*)indexPath;
 <a name="l00109"></a>00109 
-<a name="l00113"></a>00113 - (BOOL)shouldOpenURL:(<a class="code" href="class_n_s_string.html">NSString</a>*)URL;
+<a name="l00113"></a>00113 - (BOOL)shouldOpenURL:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)URL;
 <a name="l00114"></a>00114 
 <a name="l00118"></a>00118 - (<span class="keywordtype">void</span>)didBeginDragging;
 <a name="l00119"></a>00119 

@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,823 +76,826 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_pattern_8h.html">Three20/TTURLPattern.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;objc/runtime.h&gt;</span>
-<a name="l00019"></a>00019 
-<a name="l00021"></a>00021 <span class="comment">// global</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#import &lt;objc/runtime.h&gt;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#a08254651ec435da75a7635a3c41d9246">00023</a> <span class="keyword">static</span> <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="_t_t_u_r_l_pattern_8m.html#a08254651ec435da75a7635a3c41d9246">kUniversalURLPattern</a> = <span class="stringliteral">@&quot;*&quot;</span>;
-<a name="l00024"></a>00024 
-<a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">00027</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
-<a name="l00028"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">00028</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>,
-<a name="l00029"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">00029</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">TTURLArgumentTypePointer</a>,
-<a name="l00030"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">00030</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>,
-<a name="l00031"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">00031</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>,
-<a name="l00032"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">00032</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>,
-<a name="l00033"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">00033</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>,
-<a name="l00034"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">00034</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>,
-<a name="l00035"></a>00035 } <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>;
-<a name="l00036"></a>00036 
-<a name="l00037"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">00037</a> <span class="keyword">static</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(<span class="keywordtype">char</span> argType) {
-<a name="l00038"></a>00038   <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;c&apos;</span>
-<a name="l00039"></a>00039       || argType == <span class="charliteral">&apos;i&apos;</span>
-<a name="l00040"></a>00040       || argType == <span class="charliteral">&apos;s&apos;</span>
-<a name="l00041"></a>00041       || argType == <span class="charliteral">&apos;l&apos;</span>
-<a name="l00042"></a>00042       || argType == <span class="charliteral">&apos;C&apos;</span>
-<a name="l00043"></a>00043       || argType == <span class="charliteral">&apos;I&apos;</span>
-<a name="l00044"></a>00044       || argType == <span class="charliteral">&apos;S&apos;</span>
-<a name="l00045"></a>00045       || argType == <span class="charliteral">&apos;L&apos;</span>) {
-<a name="l00046"></a>00046     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>;
-<a name="l00047"></a>00047   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;q&apos;</span> || argType == <span class="charliteral">&apos;Q&apos;</span>) {
-<a name="l00048"></a>00048     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>;
-<a name="l00049"></a>00049   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;f&apos;</span>) {
-<a name="l00050"></a>00050     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>;
-<a name="l00051"></a>00051   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;d&apos;</span>) {
-<a name="l00052"></a>00052     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>;
-<a name="l00053"></a>00053   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;B&apos;</span>) {
-<a name="l00054"></a>00054     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>;
-<a name="l00055"></a>00055   } <span class="keywordflow">else</span> {
-<a name="l00056"></a>00056     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">TTURLArgumentTypePointer</a>;
-<a name="l00057"></a>00057   }
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">00060</a> <span class="keyword">static</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>(Class cls, <a class="code" href="class_n_s_string.html">NSString</a>* propertyName) {
-<a name="l00061"></a>00061   objc_property_t prop = class_getProperty(cls, propertyName.UTF8String);
-<a name="l00062"></a>00062   <span class="keywordflow">if</span> (prop) {
-<a name="l00063"></a>00063     <span class="keyword">const</span> <span class="keywordtype">char</span>* type = property_getAttributes(prop);
-<a name="l00064"></a>00064     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(type[1]);
-<a name="l00065"></a>00065   } <span class="keywordflow">else</span> {
-<a name="l00066"></a>00066     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>;
-<a name="l00067"></a>00067   }
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00071"></a>00071 
-<a name="l00072"></a><a class="code" href="interface_t_t_u_r_l_selector.html">00072</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00073"></a><a class="code" href="interface_t_t_u_r_l_selector.html#aecaa2e716da611dcbb8a2c288be8ef0e">00073</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_selector.html#aecaa2e716da611dcbb8a2c288be8ef0e">_name</a>;
-<a name="l00074"></a><a class="code" href="interface_t_t_u_r_l_selector.html#adf430c2d0c848dec6043906ecf81d4e6">00074</a>   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_selector.html#adf430c2d0c848dec6043906ecf81d4e6">_selector</a>;
-<a name="l00075"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">00075</a>   <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* <a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">_next</a>;
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a9b67526df4f58969b261bc57489c6bd9">00078</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html">NSString</a>* name;
-<a name="l00079"></a><a class="code" href="interface_t_t_u_r_l_selector.html#acb09c4bec715a49c2127621c2d91a3bf">00079</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* next;
+<a name="l00024"></a>00024 <span class="comment">// global</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#a08254651ec435da75a7635a3c41d9246">00026</a> <span class="keyword">static</span> <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="_t_t_u_r_l_pattern_8m.html#a08254651ec435da75a7635a3c41d9246">kUniversalURLPattern</a> = <span class="stringliteral">@&quot;*&quot;</span>;
+<a name="l00027"></a>00027 
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">00030</a> <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00031"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">00031</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>,
+<a name="l00032"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">00032</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">TTURLArgumentTypePointer</a>,
+<a name="l00033"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">00033</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>,
+<a name="l00034"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">00034</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>,
+<a name="l00035"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">00035</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>,
+<a name="l00036"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">00036</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>,
+<a name="l00037"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">00037</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>,
+<a name="l00038"></a>00038 } <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">00040</a> <span class="keyword">static</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(<span class="keywordtype">char</span> argType) {
+<a name="l00041"></a>00041   <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;c&apos;</span>
+<a name="l00042"></a>00042       || argType == <span class="charliteral">&apos;i&apos;</span>
+<a name="l00043"></a>00043       || argType == <span class="charliteral">&apos;s&apos;</span>
+<a name="l00044"></a>00044       || argType == <span class="charliteral">&apos;l&apos;</span>
+<a name="l00045"></a>00045       || argType == <span class="charliteral">&apos;C&apos;</span>
+<a name="l00046"></a>00046       || argType == <span class="charliteral">&apos;I&apos;</span>
+<a name="l00047"></a>00047       || argType == <span class="charliteral">&apos;S&apos;</span>
+<a name="l00048"></a>00048       || argType == <span class="charliteral">&apos;L&apos;</span>) {
+<a name="l00049"></a>00049     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>;
+<a name="l00050"></a>00050   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;q&apos;</span> || argType == <span class="charliteral">&apos;Q&apos;</span>) {
+<a name="l00051"></a>00051     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>;
+<a name="l00052"></a>00052   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;f&apos;</span>) {
+<a name="l00053"></a>00053     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>;
+<a name="l00054"></a>00054   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;d&apos;</span>) {
+<a name="l00055"></a>00055     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>;
+<a name="l00056"></a>00056   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argType == <span class="charliteral">&apos;B&apos;</span>) {
+<a name="l00057"></a>00057     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>;
+<a name="l00058"></a>00058   } <span class="keywordflow">else</span> {
+<a name="l00059"></a>00059     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a51535b1eeb39e7b1302618867de2216b">TTURLArgumentTypePointer</a>;
+<a name="l00060"></a>00060   }
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">00063</a> <span class="keyword">static</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>(Class cls, <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* propertyName) {
+<a name="l00064"></a>00064   objc_property_t prop = class_getProperty(cls, propertyName.UTF8String);
+<a name="l00065"></a>00065   <span class="keywordflow">if</span> (prop) {
+<a name="l00066"></a>00066     <span class="keyword">const</span> <span class="keywordtype">char</span>* type = property_getAttributes(prop);
+<a name="l00067"></a>00067     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(type[1]);
+<a name="l00068"></a>00068   } <span class="keywordflow">else</span> {
+<a name="l00069"></a>00069     <span class="keywordflow">return</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>;
+<a name="l00070"></a>00070   }
+<a name="l00071"></a>00071 }
+<a name="l00072"></a>00072 
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="interface_t_t_u_r_l_selector.html">00075</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00076"></a><a class="code" href="interface_t_t_u_r_l_selector.html#aecaa2e716da611dcbb8a2c288be8ef0e">00076</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_selector.html#aecaa2e716da611dcbb8a2c288be8ef0e">_name</a>;
+<a name="l00077"></a><a class="code" href="interface_t_t_u_r_l_selector.html#adf430c2d0c848dec6043906ecf81d4e6">00077</a>   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_selector.html#adf430c2d0c848dec6043906ecf81d4e6">_selector</a>;
+<a name="l00078"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">00078</a>   <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* <a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">_next</a>;
+<a name="l00079"></a>00079 }
 <a name="l00080"></a>00080 
-<a name="l00081"></a>00081 - (<span class="keywordtype">id</span>)initWithName:(<a class="code" href="class_n_s_string.html">NSString</a>*)name;
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 - (<a class="code" href="class_n_s_string.html">NSString</a>*)perform:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span> returnType:(<a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>)returnType;
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 @end
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 @implementation <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 @synthesize name = _name, next = _next;
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="interface_t_t_u_r_l_selector.html#ac26c2e46978161e787373d617c44d0fa">00091</a> - (<span class="keywordtype">id</span>)initWithName:(<a class="code" href="class_n_s_string.html">NSString</a>*)name {
-<a name="l00092"></a>00092   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00093"></a>00093     _name = [name copy];
-<a name="l00094"></a>00094     _selector = NSSelectorFromString(_name);
-<a name="l00095"></a>00095     _next = nil;
-<a name="l00096"></a>00096   }
-<a name="l00097"></a>00097   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00098"></a>00098 }
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 - (void)dealloc {
-<a name="l00101"></a>00101   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
-<a name="l00102"></a>00102   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_next);
-<a name="l00103"></a>00103   [<span class="keyword">super</span> dealloc];
-<a name="l00104"></a>00104 }
-<a name="l00105"></a>00105 
-<a name="l00106"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">00106</a> - (<a class="code" href="class_n_s_string.html">NSString</a>*)perform:(<span class="keywordtype">id</span>)object returnType:(<a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>)returnType {
-<a name="l00107"></a>00107   <span class="keywordflow">if</span> (_next) {
-<a name="l00108"></a>00108     <span class="keywordtype">id</span> value = [object performSelector:_selector];
-<a name="l00109"></a>00109     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">_next</a> <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">perform</a>:value <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">returnType</a>:returnType];
-<a name="l00110"></a>00110   } <span class="keywordflow">else</span> {
-<a name="l00111"></a>00111     NSMethodSignature *sig = [object methodSignatureForSelector:_selector];
-<a name="l00112"></a>00112     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
-<a name="l00113"></a>00113     [invocation setTarget:object];
-<a name="l00114"></a>00114     [invocation setSelector:_selector];
-<a name="l00115"></a>00115     [invocation invoke];
-<a name="l00116"></a>00116     
-<a name="l00117"></a>00117     <span class="keywordflow">if</span> (!returnType) {
-<a name="l00118"></a>00118       returnType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>([<span class="keywordtype">object</span> <span class="keyword">class</span>], _name);
-<a name="l00119"></a>00119     }
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121     <span class="keywordflow">switch</span> (returnType) {
-<a name="l00122"></a>00122       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>: {
-<a name="l00123"></a>00123         <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00124"></a>00124       }
-<a name="l00125"></a>00125       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>: {
-<a name="l00126"></a>00126         <span class="keywordtype">int</span> val;
-<a name="l00127"></a>00127         [invocation getReturnValue:&amp;val];
-<a name="l00128"></a>00128         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%d&quot;, val];
-<a name="l00129"></a>00129       }
-<a name="l00130"></a>00130       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>: {
-<a name="l00131"></a>00131         <span class="keywordtype">long</span> <span class="keywordtype">long</span> val;
-<a name="l00132"></a>00132         [invocation getReturnValue:&amp;val];
-<a name="l00133"></a>00133         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%lld&quot;, val];
-<a name="l00134"></a>00134       }
-<a name="l00135"></a>00135       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>: {
-<a name="l00136"></a>00136         <span class="keywordtype">float</span> val;
-<a name="l00137"></a>00137         [invocation getReturnValue:&amp;val];
-<a name="l00138"></a>00138         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%f&quot;, val];
-<a name="l00139"></a>00139       }
-<a name="l00140"></a>00140       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>: {
-<a name="l00141"></a>00141         <span class="keywordtype">double</span> val;
-<a name="l00142"></a>00142         [invocation getReturnValue:&amp;val];
-<a name="l00143"></a>00143         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%f&quot;, val];
-<a name="l00144"></a>00144       }
-<a name="l00145"></a>00145       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>: {
-<a name="l00146"></a>00146         BOOL val;
-<a name="l00147"></a>00147         [invocation getReturnValue:&amp;val];
-<a name="l00148"></a>00148         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%d&quot;, val];
-<a name="l00149"></a>00149       }
-<a name="l00150"></a>00150       <span class="keywordflow">default</span>: {
-<a name="l00151"></a>00151         <span class="keywordtype">id</span> val;
-<a name="l00152"></a>00152         [invocation getReturnValue:&amp;val];
-<a name="l00153"></a>00153         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%@&quot;, val];
-<a name="l00154"></a>00154       }
-<a name="l00155"></a>00155     }
-<a name="l00156"></a>00156     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00157"></a>00157   }
-<a name="l00158"></a>00158 }
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160 <span class="keyword">@end</span>
-<a name="l00161"></a>00161 
-<a name="l00163"></a>00163 
-<a name="l00164"></a><a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">00164</a> <span class="keyword">@protocol </span>TTURLPatternText &lt;<a class="code" href="class_n_s_object.html">NSObject</a>&gt;
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166 - (BOOL)match:(<a class="code" href="class_n_s_string.html">NSString</a>*)text;
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 - (<a class="code" href="class_n_s_string.html">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object;
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170 <span class="keyword">@end</span>
-<a name="l00171"></a>00171 
-<a name="l00173"></a>00173 
-<a name="l00174"></a><a class="code" href="interface_t_t_u_r_l_literal.html">00174</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a> : <a class="code" href="class_n_s_object.html">NSObject</a> &lt;<a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">TTURLPatternText</a>&gt; {
-<a name="l00175"></a><a class="code" href="interface_t_t_u_r_l_literal.html#ac3fe43bb155f0742f000e587db634f01">00175</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_literal.html#ac3fe43bb155f0742f000e587db634f01">_name</a>;
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a><a class="code" href="interface_t_t_u_r_l_literal.html#ab9cb3185d5123de04b98cff1c0082ac3">00178</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* name;
-<a name="l00179"></a>00179 
-<a name="l00180"></a>00180 @end
-<a name="l00181"></a>00181 
-<a name="l00182"></a>00182 @implementation <a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a>
-<a name="l00183"></a>00183 
-<a name="l00184"></a>00184 @synthesize name = _name;
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186 - (<span class="keywordtype">id</span>)init {
-<a name="l00187"></a>00187   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00188"></a>00188     _name = nil;
-<a name="l00189"></a>00189   }
-<a name="l00190"></a>00190   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00191"></a>00191 }
-<a name="l00192"></a>00192 
-<a name="l00193"></a>00193 - (void)dealloc {
-<a name="l00194"></a>00194   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
-<a name="l00195"></a>00195   [<span class="keyword">super</span> dealloc];
-<a name="l00196"></a>00196 }
-<a name="l00197"></a>00197 
-<a name="l00198"></a>00198 - (BOOL)match:(<a class="code" href="class_n_s_string.html">NSString</a>*)text {
-<a name="l00199"></a>00199   <span class="keywordflow">return</span> [text isEqualToString:_name];
-<a name="l00200"></a>00200 }
-<a name="l00201"></a>00201 
-<a name="l00202"></a>00202 - (<a class="code" href="class_n_s_string.html">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object {
-<a name="l00203"></a>00203   <span class="keywordflow">return</span> _name;
-<a name="l00204"></a>00204 }
-<a name="l00205"></a>00205 
-<a name="l00206"></a>00206 <span class="keyword">@end</span>
-<a name="l00207"></a>00207 
-<a name="l00209"></a>00209 
-<a name="l00210"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html">00210</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> : <a class="code" href="class_n_s_object.html">NSObject</a> &lt;<a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">TTURLPatternText</a>&gt; {
-<a name="l00211"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">00211</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">_name</a>;
-<a name="l00212"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a932be8ef6c282f7ce142d678bcf99338">00212</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_wildcard.html#a932be8ef6c282f7ce142d678bcf99338">_argIndex</a>;
-<a name="l00213"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#accc4e09498e3e3764301f434141da498">00213</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="interface_t_t_u_r_l_wildcard.html#accc4e09498e3e3764301f434141da498">_argType</a>;
-<a name="l00214"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a5ad9ff1f82ff4336208fa6e9f0258fd8">00214</a>   <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* <a class="code" href="interface_t_t_u_r_l_wildcard.html#a5ad9ff1f82ff4336208fa6e9f0258fd8">_selector</a>;
-<a name="l00215"></a>00215 }
-<a name="l00216"></a>00216 
-<a name="l00217"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">00217</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* name;
-<a name="l00218"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">00218</a> @property(nonatomic) NSInteger argIndex;
-<a name="l00219"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">00219</a> @property(nonatomic) <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> argType;
-<a name="l00220"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#ac9147708ca0f680017f2458b29b3bdc5">00220</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* selector;
-<a name="l00221"></a>00221 
-<a name="l00222"></a>00222 - (<span class="keywordtype">void</span>)deduceSelectorForClass:(Class)cls;
-<a name="l00223"></a>00223 
-<a name="l00224"></a>00224 @end
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 @implementation <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>
-<a name="l00227"></a>00227 
-<a name="l00228"></a>00228 @synthesize name = _name, argIndex = _argIndex, argType = _argType, selector = _selector;
-<a name="l00229"></a>00229 
-<a name="l00230"></a>00230 - (<span class="keywordtype">id</span>)init {
-<a name="l00231"></a>00231   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00232"></a>00232     _name = nil;
-<a name="l00233"></a>00233     _argIndex = NSNotFound;
-<a name="l00234"></a>00234     _argType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>;
-<a name="l00235"></a>00235     _selector = nil;
-<a name="l00236"></a>00236   }
-<a name="l00237"></a>00237   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00238"></a>00238 }
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240 - (void)dealloc {
-<a name="l00241"></a>00241   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
-<a name="l00242"></a>00242   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_selector);
-<a name="l00243"></a>00243   [<span class="keyword">super</span> dealloc];
-<a name="l00244"></a>00244 }
-<a name="l00245"></a>00245 
-<a name="l00246"></a>00246 - (BOOL)match:(<a class="code" href="class_n_s_string.html">NSString</a>*)text {
-<a name="l00247"></a>00247   <span class="keywordflow">return</span> YES;
-<a name="l00248"></a>00248 }
-<a name="l00249"></a>00249 
-<a name="l00250"></a>00250 - (<a class="code" href="class_n_s_string.html">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object {
-<a name="l00251"></a>00251   <span class="keywordflow">if</span> (_selector) {
-<a name="l00252"></a>00252     <span class="keywordflow">return</span> [_selector perform:object returnType:_argType];
-<a name="l00253"></a>00253   } <span class="keywordflow">else</span> {
-<a name="l00254"></a>00254     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00255"></a>00255   }
-<a name="l00256"></a>00256 }
-<a name="l00257"></a>00257 
-<a name="l00258"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">00258</a> - (void)deduceSelectorForClass:(Class)cls {
-<a name="l00259"></a>00259   <a class="code" href="class_n_s_array.html">NSArray</a>* names = [<a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">_name</a> componentsSeparatedByString:@&quot;.&quot;];
-<a name="l00260"></a>00260   <span class="keywordflow">if</span> (names.count &gt; 1) {
-<a name="l00261"></a>00261     <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* selector = nil;
-<a name="l00262"></a>00262     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* name in names) {
-<a name="l00263"></a>00263       <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* newSelector = [[[<a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> alloc] initWithName:name] autorelease];
-<a name="l00264"></a>00264       <span class="keywordflow">if</span> (selector) {
-<a name="l00265"></a>00265         selector.<a class="code" href="interface_t_t_u_r_l_selector.html#acb09c4bec715a49c2127621c2d91a3bf">next</a> = newSelector;
-<a name="l00266"></a>00266       } <span class="keywordflow">else</span> {
-<a name="l00267"></a>00267         <span class="keyword">self</span>.selector = newSelector;
-<a name="l00268"></a>00268       }
-<a name="l00269"></a>00269       selector = newSelector;
-<a name="l00270"></a>00270     }
-<a name="l00271"></a>00271   } <span class="keywordflow">else</span> {
-<a name="l00272"></a>00272     <span class="keyword">self</span>.argType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>(cls, _name);
-<a name="l00273"></a>00273     <span class="keyword">self</span>.selector = [[[<a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> alloc] initWithName:_name] autorelease];
-<a name="l00274"></a>00274   }
-<a name="l00275"></a>00275 }
-<a name="l00276"></a>00276 
-<a name="l00277"></a>00277 <span class="keyword">@end</span>
-<a name="l00278"></a>00278 
-<a name="l00280"></a>00280 
-<a name="l00281"></a>00281 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a>
-<a name="l00282"></a>00282 
-<a name="l00283"></a>00283 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#a3b4347f0497c00ec39e07d21ef3c2075">scheme</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>;
-<a name="l00284"></a>00284 
-<a name="l00286"></a>00286 <span class="comment">// private</span>
+<a name="l00081"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a9b67526df4f58969b261bc57489c6bd9">00081</a> @property(nonatomic,readonly) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name;
+<a name="l00082"></a><a class="code" href="interface_t_t_u_r_l_selector.html#acb09c4bec715a49c2127621c2d91a3bf">00082</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* next;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 - (<span class="keywordtype">id</span>)initWithName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name;
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)perform:(<span class="keywordtype">id</span>)<span class="keywordtype">object</span> returnType:(<a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>)returnType;
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 @end
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 @implementation <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 @synthesize name = _name, next = _next;
+<a name="l00093"></a>00093 
+<a name="l00094"></a><a class="code" href="interface_t_t_u_r_l_selector.html#ac26c2e46978161e787373d617c44d0fa">00094</a> - (<span class="keywordtype">id</span>)initWithName:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name {
+<a name="l00095"></a>00095   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00096"></a>00096     _name = [name copy];
+<a name="l00097"></a>00097     _selector = NSSelectorFromString(_name);
+<a name="l00098"></a>00098     _next = nil;
+<a name="l00099"></a>00099   }
+<a name="l00100"></a>00100   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00101"></a>00101 }
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a5242cdc8bb8ee6c1d71c52ce4b2dc5a8">00103</a> - (void)dealloc {
+<a name="l00104"></a>00104   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
+<a name="l00105"></a>00105   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_next);
+<a name="l00106"></a>00106   [<span class="keyword">super</span> dealloc];
+<a name="l00107"></a>00107 }
+<a name="l00108"></a>00108 
+<a name="l00109"></a><a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">00109</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)perform:(<span class="keywordtype">id</span>)object returnType:(<a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a>)returnType {
+<a name="l00110"></a>00110   <span class="keywordflow">if</span> (_next) {
+<a name="l00111"></a>00111     <span class="keywordtype">id</span> value = [object performSelector:_selector];
+<a name="l00112"></a>00112     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_u_r_l_selector.html#a2ed54c81b2aee3bf5188410e5daeb0a4">_next</a> <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">perform</a>:value <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">returnType</a>:returnType];
+<a name="l00113"></a>00113   } <span class="keywordflow">else</span> {
+<a name="l00114"></a>00114     NSMethodSignature *sig = [object methodSignatureForSelector:_selector];
+<a name="l00115"></a>00115     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
+<a name="l00116"></a>00116     [invocation setTarget:object];
+<a name="l00117"></a>00117     [invocation setSelector:_selector];
+<a name="l00118"></a>00118     [invocation invoke];
+<a name="l00119"></a>00119     
+<a name="l00120"></a>00120     <span class="keywordflow">if</span> (!returnType) {
+<a name="l00121"></a>00121       returnType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>([<span class="keywordtype">object</span> <span class="keyword">class</span>], _name);
+<a name="l00122"></a>00122     }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124     <span class="keywordflow">switch</span> (returnType) {
+<a name="l00125"></a>00125       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>: {
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00127"></a>00127       }
+<a name="l00128"></a>00128       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>: {
+<a name="l00129"></a>00129         <span class="keywordtype">int</span> val;
+<a name="l00130"></a>00130         [invocation getReturnValue:&amp;val];
+<a name="l00131"></a>00131         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%d&quot;, val];
+<a name="l00132"></a>00132       }
+<a name="l00133"></a>00133       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>: {
+<a name="l00134"></a>00134         <span class="keywordtype">long</span> <span class="keywordtype">long</span> val;
+<a name="l00135"></a>00135         [invocation getReturnValue:&amp;val];
+<a name="l00136"></a>00136         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%lld&quot;, val];
+<a name="l00137"></a>00137       }
+<a name="l00138"></a>00138       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>: {
+<a name="l00139"></a>00139         <span class="keywordtype">float</span> val;
+<a name="l00140"></a>00140         [invocation getReturnValue:&amp;val];
+<a name="l00141"></a>00141         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%f&quot;, val];
+<a name="l00142"></a>00142       }
+<a name="l00143"></a>00143       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>: {
+<a name="l00144"></a>00144         <span class="keywordtype">double</span> val;
+<a name="l00145"></a>00145         [invocation getReturnValue:&amp;val];
+<a name="l00146"></a>00146         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%f&quot;, val];
+<a name="l00147"></a>00147       }
+<a name="l00148"></a>00148       <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>: {
+<a name="l00149"></a>00149         BOOL val;
+<a name="l00150"></a>00150         [invocation getReturnValue:&amp;val];
+<a name="l00151"></a>00151         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%d&quot;, val];
+<a name="l00152"></a>00152       }
+<a name="l00153"></a>00153       <span class="keywordflow">default</span>: {
+<a name="l00154"></a>00154         <span class="keywordtype">id</span> val;
+<a name="l00155"></a>00155         [invocation getReturnValue:&amp;val];
+<a name="l00156"></a>00156         <span class="keywordflow">return</span> [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%@&quot;, val];
+<a name="l00157"></a>00157       }
+<a name="l00158"></a>00158     }
+<a name="l00159"></a>00159     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00160"></a>00160   }
+<a name="l00161"></a>00161 }
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163 <span class="keyword">@end</span>
+<a name="l00164"></a>00164 
+<a name="l00166"></a>00166 
+<a name="l00167"></a><a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">00167</a> <span class="keyword">@protocol </span>TTURLPatternText &lt;<a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>&gt;
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 - (BOOL)match:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text;
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object;
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 <span class="keyword">@end</span>
+<a name="l00174"></a>00174 
+<a name="l00176"></a>00176 
+<a name="l00177"></a><a class="code" href="interface_t_t_u_r_l_literal.html">00177</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> &lt;<a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">TTURLPatternText</a>&gt; {
+<a name="l00178"></a><a class="code" href="interface_t_t_u_r_l_literal.html#ac3fe43bb155f0742f000e587db634f01">00178</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_literal.html#ac3fe43bb155f0742f000e587db634f01">_name</a>;
+<a name="l00179"></a>00179 }
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="interface_t_t_u_r_l_literal.html#ab9cb3185d5123de04b98cff1c0082ac3">00181</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name;
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 @end
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185 @implementation <a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a>
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 @synthesize name = _name;
+<a name="l00188"></a>00188 
+<a name="l00189"></a><a class="code" href="interface_t_t_u_r_l_literal.html#ace2b2ff899304bd280edd1acf6ff4ce0">00189</a> - (<span class="keywordtype">id</span>)init {
+<a name="l00190"></a>00190   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00191"></a>00191     _name = nil;
+<a name="l00192"></a>00192   }
+<a name="l00193"></a>00193   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00194"></a>00194 }
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="interface_t_t_u_r_l_literal.html#a7e9a62d88eb4ae772089602a82b13816">00196</a> - (void)dealloc {
+<a name="l00197"></a>00197   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
+<a name="l00198"></a>00198   [<span class="keyword">super</span> dealloc];
+<a name="l00199"></a>00199 }
+<a name="l00200"></a>00200 
+<a name="l00201"></a><a class="code" href="interface_t_t_u_r_l_literal.html#a1545313d8a6f75b9c6a423080bd0a648">00201</a> - (BOOL)match:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text {
+<a name="l00202"></a>00202   <span class="keywordflow">return</span> [text isEqualToString:_name];
+<a name="l00203"></a>00203 }
+<a name="l00204"></a>00204 
+<a name="l00205"></a><a class="code" href="interface_t_t_u_r_l_literal.html#a3b05a79307f72aa2c5d49228b6503695">00205</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object {
+<a name="l00206"></a>00206   <span class="keywordflow">return</span> _name;
+<a name="l00207"></a>00207 }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209 <span class="keyword">@end</span>
+<a name="l00210"></a>00210 
+<a name="l00212"></a>00212 
+<a name="l00213"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html">00213</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> &lt;<a class="code" href="protocol_t_t_u_r_l_pattern_text-p.html">TTURLPatternText</a>&gt; {
+<a name="l00214"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">00214</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">_name</a>;
+<a name="l00215"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a932be8ef6c282f7ce142d678bcf99338">00215</a>   NSInteger <a class="code" href="interface_t_t_u_r_l_wildcard.html#a932be8ef6c282f7ce142d678bcf99338">_argIndex</a>;
+<a name="l00216"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#accc4e09498e3e3764301f434141da498">00216</a>   <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> <a class="code" href="interface_t_t_u_r_l_wildcard.html#accc4e09498e3e3764301f434141da498">_argType</a>;
+<a name="l00217"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a5ad9ff1f82ff4336208fa6e9f0258fd8">00217</a>   <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* <a class="code" href="interface_t_t_u_r_l_wildcard.html#a5ad9ff1f82ff4336208fa6e9f0258fd8">_selector</a>;
+<a name="l00218"></a>00218 }
+<a name="l00219"></a>00219 
+<a name="l00220"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">00220</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name;
+<a name="l00221"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">00221</a> @property(nonatomic) NSInteger argIndex;
+<a name="l00222"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">00222</a> @property(nonatomic) <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70">TTURLArgumentType</a> argType;
+<a name="l00223"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#ac9147708ca0f680017f2458b29b3bdc5">00223</a> @property(nonatomic,retain) <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* selector;
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 - (<span class="keywordtype">void</span>)deduceSelectorForClass:(Class)cls;
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 @end
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 @implementation <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 @synthesize name = _name, argIndex = _argIndex, argType = _argType, selector = _selector;
+<a name="l00232"></a>00232 
+<a name="l00233"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#aee5bd2e123c690f9fc61e8fe48ec0574">00233</a> - (<span class="keywordtype">id</span>)init {
+<a name="l00234"></a>00234   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
+<a name="l00235"></a>00235     _name = nil;
+<a name="l00236"></a>00236     _argIndex = NSNotFound;
+<a name="l00237"></a>00237     _argType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>;
+<a name="l00238"></a>00238     _selector = nil;
+<a name="l00239"></a>00239   }
+<a name="l00240"></a>00240   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00241"></a>00241 }
+<a name="l00242"></a>00242 
+<a name="l00243"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a687821bb795dfcc16131abb08c6b191d">00243</a> - (void)dealloc {
+<a name="l00244"></a>00244   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_name);
+<a name="l00245"></a>00245   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_selector);
+<a name="l00246"></a>00246   [<span class="keyword">super</span> dealloc];
+<a name="l00247"></a>00247 }
+<a name="l00248"></a>00248 
+<a name="l00249"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#adc54c211ad00203a0d8e2d6f81e2c01e">00249</a> - (BOOL)match:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text {
+<a name="l00250"></a>00250   <span class="keywordflow">return</span> YES;
+<a name="l00251"></a>00251 }
+<a name="l00252"></a>00252 
+<a name="l00253"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a1fb7806c28ef894cb1ea5ca3c0e05071">00253</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)convertPropertyOfObject:(<span class="keywordtype">id</span>)object {
+<a name="l00254"></a>00254   <span class="keywordflow">if</span> (_selector) {
+<a name="l00255"></a>00255     <span class="keywordflow">return</span> [<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5ad9ff1f82ff4336208fa6e9f0258fd8">_selector</a> <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">perform</a>:object <a class="code" href="interface_t_t_u_r_l_selector.html#a50d5aaa0ad1ba16eafaa32f7836f1866">returnType</a>:_argType];
+<a name="l00256"></a>00256   } <span class="keywordflow">else</span> {
+<a name="l00257"></a>00257     <span class="keywordflow">return</span> <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00258"></a>00258   }
+<a name="l00259"></a>00259 }
+<a name="l00260"></a>00260 
+<a name="l00261"></a><a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">00261</a> - (void)deduceSelectorForClass:(Class)cls {
+<a name="l00262"></a>00262   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* names = [<a class="code" href="interface_t_t_u_r_l_wildcard.html#a19824f786d2f2998d14ef284ef34ea0a">_name</a> componentsSeparatedByString:@&quot;.&quot;];
+<a name="l00263"></a>00263   <span class="keywordflow">if</span> (names.count &gt; 1) {
+<a name="l00264"></a>00264     <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* selector = nil;
+<a name="l00265"></a>00265     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name in names) {
+<a name="l00266"></a>00266       <a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a>* newSelector = [[[<a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> alloc] initWithName:name] autorelease];
+<a name="l00267"></a>00267       <span class="keywordflow">if</span> (selector) {
+<a name="l00268"></a>00268         selector.<a class="code" href="interface_t_t_u_r_l_selector.html#acb09c4bec715a49c2127621c2d91a3bf">next</a> = newSelector;
+<a name="l00269"></a>00269       } <span class="keywordflow">else</span> {
+<a name="l00270"></a>00270         <span class="keyword">self</span>.selector = newSelector;
+<a name="l00271"></a>00271       }
+<a name="l00272"></a>00272       selector = newSelector;
+<a name="l00273"></a>00273     }
+<a name="l00274"></a>00274   } <span class="keywordflow">else</span> {
+<a name="l00275"></a>00275     <span class="keyword">self</span>.argType = <a class="code" href="_t_t_u_r_l_pattern_8m.html#ac39856d8d016feb77732dfb3711d30a8">TTURLArgumentTypeForProperty</a>(cls, _name);
+<a name="l00276"></a>00276     <span class="keyword">self</span>.selector = [[[<a class="code" href="interface_t_t_u_r_l_selector.html">TTURLSelector</a> alloc] initWithName:_name] autorelease];
+<a name="l00277"></a>00277   }
+<a name="l00278"></a>00278 }
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280 <span class="keyword">@end</span>
+<a name="l00281"></a>00281 
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a>
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#a3b4347f0497c00ec39e07d21ef3c2075">scheme</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>;
 <a name="l00287"></a>00287 
-<a name="l00288"></a>00288 - (id&lt;TTURLPatternText&gt;)parseText:(<a class="code" href="class_n_s_string.html">NSString</a>*)text {
-<a name="l00289"></a>00289   NSInteger len = text.length;
-<a name="l00290"></a>00290   <span class="keywordflow">if</span> (len &gt;= 2
-<a name="l00291"></a>00291       &amp;&amp; [text characterAtIndex:0] == <span class="charliteral">&apos;(&apos;</span>
-<a name="l00292"></a>00292       &amp;&amp; [text characterAtIndex:len-1] == <span class="charliteral">&apos;)&apos;</span>) {
-<a name="l00293"></a>00293     NSInteger endRange = len &gt; 3 &amp;&amp; [text characterAtIndex:len-2] == <span class="charliteral">&apos;:&apos;</span>
-<a name="l00294"></a>00294       ? len - 3
-<a name="l00295"></a>00295       : len - 2;
-<a name="l00296"></a>00296     <a class="code" href="class_n_s_string.html">NSString</a>* name = len &gt; 2 ? [text substringWithRange:NSMakeRange(1, endRange)] : nil;
-<a name="l00297"></a>00297     <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>* wildcard = [[[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> alloc] init] autorelease];
-<a name="l00298"></a>00298     wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a> = name;
-<a name="l00299"></a>00299     ++<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>;
-<a name="l00300"></a>00300     <span class="keywordflow">return</span> wildcard;
-<a name="l00301"></a>00301   } <span class="keywordflow">else</span> {
-<a name="l00302"></a>00302     <a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a>* literal = [[[<a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a> alloc] init] autorelease];
-<a name="l00303"></a>00303     literal.<a class="code" href="interface_t_t_u_r_l_literal.html#ab9cb3185d5123de04b98cff1c0082ac3">name</a> = text;
-<a name="l00304"></a>00304     <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> += 2;
-<a name="l00305"></a>00305     <span class="keywordflow">return</span> literal;
-<a name="l00306"></a>00306   }
-<a name="l00307"></a>00307 }
-<a name="l00308"></a>00308 
-<a name="l00309"></a>00309 - (void)parsePathComponent:(<a class="code" href="class_n_s_string.html">NSString</a>*)value {
-<a name="l00310"></a>00310   id&lt;TTURLPatternText&gt; component = [<span class="keyword">self</span> parseText:value];
-<a name="l00311"></a>00311   [_path addObject:component];
-<a name="l00312"></a>00312 }
-<a name="l00313"></a>00313 
-<a name="l00314"></a>00314 - (void)parseParameter:(<a class="code" href="class_n_s_string.html">NSString</a>*)name value:(<a class="code" href="class_n_s_string.html">NSString</a>*)value {
-<a name="l00315"></a>00315   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>) {
-<a name="l00316"></a>00316     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> = [[<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a> alloc] init];
-<a name="l00317"></a>00317   }
-<a name="l00318"></a>00318   
-<a name="l00319"></a>00319   id&lt;TTURLPatternText&gt; component = [<span class="keyword">self</span> parseText:value];
-<a name="l00320"></a>00320   [_query setObject:component forKey:name];
-<a name="l00321"></a>00321 }
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323 - (void)setSelectorWithNames:(<a class="code" href="class_n_s_array.html">NSArray</a>*)names {
-<a name="l00324"></a>00324   <a class="code" href="class_n_s_string.html">NSString</a>* selectorName = [[names componentsJoinedByString:@&quot;:&quot;] stringByAppendingString:@&quot;:&quot;];
-<a name="l00325"></a>00325   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a> = NSSelectorFromString(selectorName);
-<a name="l00326"></a>00326   [<span class="keyword">self</span> setSelectorIfPossible:selector];
-<a name="l00327"></a>00327 }
-<a name="l00328"></a>00328 
-<a name="l00330"></a>00330 <span class="comment">// NSObject</span>
+<a name="l00289"></a>00289 <span class="comment">// private</span>
+<a name="l00290"></a>00290 
+<a name="l00291"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#adddaa93a5eedad9d565ca93652a350e9">00291</a> - (id&lt;TTURLPatternText&gt;)parseText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text {
+<a name="l00292"></a>00292   NSInteger len = text.length;
+<a name="l00293"></a>00293   <span class="keywordflow">if</span> (len &gt;= 2
+<a name="l00294"></a>00294       &amp;&amp; [text characterAtIndex:0] == <span class="charliteral">&apos;(&apos;</span>
+<a name="l00295"></a>00295       &amp;&amp; [text characterAtIndex:len-1] == <span class="charliteral">&apos;)&apos;</span>) {
+<a name="l00296"></a>00296     NSInteger endRange = len &gt; 3 &amp;&amp; [text characterAtIndex:len-2] == <span class="charliteral">&apos;:&apos;</span>
+<a name="l00297"></a>00297       ? len - 3
+<a name="l00298"></a>00298       : len - 2;
+<a name="l00299"></a>00299     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name = len &gt; 2 ? [text substringWithRange:NSMakeRange(1, endRange)] : nil;
+<a name="l00300"></a>00300     <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>* wildcard = [[[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> alloc] init] autorelease];
+<a name="l00301"></a>00301     wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a> = name;
+<a name="l00302"></a>00302     ++<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a>;
+<a name="l00303"></a>00303     <span class="keywordflow">return</span> wildcard;
+<a name="l00304"></a>00304   } <span class="keywordflow">else</span> {
+<a name="l00305"></a>00305     <a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a>* literal = [[[<a class="code" href="interface_t_t_u_r_l_literal.html">TTURLLiteral</a> alloc] init] autorelease];
+<a name="l00306"></a>00306     literal.<a class="code" href="interface_t_t_u_r_l_literal.html#ab9cb3185d5123de04b98cff1c0082ac3">name</a> = text;
+<a name="l00307"></a>00307     <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> += 2;
+<a name="l00308"></a>00308     <span class="keywordflow">return</span> literal;
+<a name="l00309"></a>00309   }
+<a name="l00310"></a>00310 }
+<a name="l00311"></a>00311 
+<a name="l00312"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#aa9a52f1ccf8ccdabfa6db144815bbf56">00312</a> - (void)parsePathComponent:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)value {
+<a name="l00313"></a>00313   id&lt;TTURLPatternText&gt; component = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#adddaa93a5eedad9d565ca93652a350e9">parseText</a>:value];
+<a name="l00314"></a>00314   [<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> addObject:component];
+<a name="l00315"></a>00315 }
+<a name="l00316"></a>00316 
+<a name="l00317"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#aad12b588b4d6d800c25bd0f2e9d2ff4b">00317</a> - (void)parseParameter:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)name value:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)value {
+<a name="l00318"></a>00318   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>) {
+<a name="l00319"></a>00319     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> = [[<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a> alloc] init];
+<a name="l00320"></a>00320   }
+<a name="l00321"></a>00321   
+<a name="l00322"></a>00322   id&lt;TTURLPatternText&gt; component = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#adddaa93a5eedad9d565ca93652a350e9">parseText</a>:value];
+<a name="l00323"></a>00323   [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> setObject:component forKey:name];
+<a name="l00324"></a>00324 }
+<a name="l00325"></a>00325 
+<a name="l00326"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a11fcdf8d06aaf8cd8e471e147ddf480d">00326</a> - (void)setSelectorWithNames:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)names {
+<a name="l00327"></a>00327   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* selectorName = [[names componentsJoinedByString:@&quot;:&quot;] stringByAppendingString:@&quot;:&quot;];
+<a name="l00328"></a>00328   <span class="keywordtype">SEL</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a> = NSSelectorFromString(selectorName);
+<a name="l00329"></a>00329   [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">setSelectorIfPossible</a>:selector];
+<a name="l00330"></a>00330 }
 <a name="l00331"></a>00331 
-<a name="l00332"></a>00332 - (id)init {
-<a name="l00333"></a>00333   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00334"></a>00334     <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a> = nil;
-<a name="l00335"></a>00335     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> = nil;
-<a name="l00336"></a>00336     <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> = [[<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> alloc] init];
-<a name="l00337"></a>00337     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> = nil;
-<a name="l00338"></a>00338     <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> = nil;
-<a name="l00339"></a>00339     <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> = 0;
-<a name="l00340"></a>00340     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a> = nil;
-<a name="l00341"></a>00341   }
-<a name="l00342"></a>00342   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00343"></a>00343 }
-<a name="l00344"></a>00344 
-<a name="l00345"></a>00345 - (void)dealloc {
-<a name="l00346"></a>00346   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>);
-<a name="l00347"></a>00347   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>);
-<a name="l00348"></a>00348   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>);
-<a name="l00349"></a>00349   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>);
-<a name="l00350"></a>00350   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>);
-<a name="l00351"></a>00351   [<span class="keyword">super</span> dealloc];
-<a name="l00352"></a>00352 }
-<a name="l00353"></a>00353 
-<a name="l00355"></a>00355 <span class="comment">// public</span>
+<a name="l00333"></a>00333 <span class="comment">// NSObject</span>
+<a name="l00334"></a>00334 
+<a name="l00335"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a6813f64acf2ff01884c6be5e93713433">00335</a> - (id)<a class="code" href="interface_t_t_u_r_l_pattern.html#a6813f64acf2ff01884c6be5e93713433">init</a> {
+<a name="l00336"></a>00336   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_u_r_l_pattern.html#a6813f64acf2ff01884c6be5e93713433">init</a>]) {
+<a name="l00337"></a>00337     <a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a> = nil;
+<a name="l00338"></a>00338     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> = nil;
+<a name="l00339"></a>00339     <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> = [[<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> alloc] init];
+<a name="l00340"></a>00340     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> = nil;
+<a name="l00341"></a>00341     <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> = nil;
+<a name="l00342"></a>00342     <a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> = 0;
+<a name="l00343"></a>00343     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a> = nil;
+<a name="l00344"></a>00344   }
+<a name="l00345"></a>00345   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00346"></a>00346 }
+<a name="l00347"></a>00347 
+<a name="l00348"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a1d9c5aa97ba4ccf29da2f47479d4fb76">00348</a> - (void)<a class="code" href="interface_t_t_u_r_l_pattern.html#a1d9c5aa97ba4ccf29da2f47479d4fb76">dealloc</a> {
+<a name="l00349"></a>00349   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a>);
+<a name="l00350"></a>00350   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a>);
+<a name="l00351"></a>00351   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>);
+<a name="l00352"></a>00352   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a>);
+<a name="l00353"></a>00353   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>);
+<a name="l00354"></a>00354   [<span class="keyword">super</span> dealloc];
+<a name="l00355"></a>00355 }
 <a name="l00356"></a>00356 
-<a name="l00357"></a>00357 - (Class)<a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a> {
-<a name="l00358"></a>00358   <span class="keywordflow">return</span> nil;
-<a name="l00359"></a>00359 }
-<a name="l00360"></a>00360 
-<a name="l00361"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">00361</a> - (void)setSelectorIfPossible:(<span class="keywordtype">SEL</span>)selector {
-<a name="l00362"></a>00362   Class cls = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a>];
-<a name="l00363"></a>00363   <span class="keywordflow">if</span> (!cls || class_respondsToSelector(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>) || class_getClassMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>)) {
-<a name="l00364"></a>00364     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>;
-<a name="l00365"></a>00365   }
-<a name="l00366"></a>00366 }
-<a name="l00367"></a>00367 
-<a name="l00368"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">00368</a> - (void)<a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a> {
-<a name="l00369"></a>00369   NSURL* <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a> = [NSURL URLWithString:_URL];
-<a name="l00370"></a>00370   <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.scheme copy];
-<a name="l00371"></a>00371   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host) {
-<a name="l00372"></a>00372     [<span class="keyword">self</span> parsePathComponent:URL.host];
-<a name="l00373"></a>00373     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path) {
-<a name="l00374"></a>00374       <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* name in <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path.pathComponents) {
-<a name="l00375"></a>00375         <span class="keywordflow">if</span> (![name isEqualToString:<span class="stringliteral">@&quot;/&quot;</span>]) {
-<a name="l00376"></a>00376           [<span class="keyword">self</span> parsePathComponent:name];
-<a name="l00377"></a>00377         }
-<a name="l00378"></a>00378       }
-<a name="l00379"></a>00379     }
-<a name="l00380"></a>00380   }
-<a name="l00381"></a>00381   
-<a name="l00382"></a>00382   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.query) {
-<a name="l00383"></a>00383     NSDictionary* query = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.query queryDictionaryUsingEncoding:NSUTF8StringEncoding];
-<a name="l00384"></a>00384     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* name in [query keyEnumerator]) {
-<a name="l00385"></a>00385       <a class="code" href="class_n_s_string.html">NSString</a>* value = [query objectForKey:name];
-<a name="l00386"></a>00386       [<span class="keyword">self</span> parseParameter:name value:value];
-<a name="l00387"></a>00387     }
-<a name="l00388"></a>00388   }
-<a name="l00389"></a>00389 
-<a name="l00390"></a>00390   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment) {
-<a name="l00391"></a>00391     <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> = [[<span class="keyword">self</span> parseText:URL.fragment] retain];
-<a name="l00392"></a>00392   }
-<a name="l00393"></a>00393 }
-<a name="l00394"></a>00394 
-<a name="l00395"></a>00395 <span class="keyword">@end</span>
-<a name="l00396"></a>00396 
+<a name="l00358"></a>00358 <span class="comment">// public</span>
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360 - (Class)<a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a> {
+<a name="l00361"></a>00361   <span class="keywordflow">return</span> nil;
+<a name="l00362"></a>00362 }
+<a name="l00363"></a>00363 
+<a name="l00364"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">00364</a> - (void)setSelectorIfPossible:(<span class="keywordtype">SEL</span>)selector {
+<a name="l00365"></a>00365   Class cls = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a>];
+<a name="l00366"></a>00366   <span class="keywordflow">if</span> (!cls || class_respondsToSelector(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>) || class_getClassMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>)) {
+<a name="l00367"></a>00367     <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a> = <a class="code" href="interface_t_t_u_r_l_pattern.html#acc45aed4a4120330e38d6a3bb72f47fc">selector</a>;
+<a name="l00368"></a>00368   }
+<a name="l00369"></a>00369 }
+<a name="l00370"></a>00370 
+<a name="l00371"></a><a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">00371</a> - (void)<a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a> {
+<a name="l00372"></a>00372   NSURL* <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a> = [NSURL URLWithString:_URL];
+<a name="l00373"></a>00373   <a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.scheme copy];
+<a name="l00374"></a>00374   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host) {
+<a name="l00375"></a>00375     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa9a52f1ccf8ccdabfa6db144815bbf56">parsePathComponent</a>:URL.host];
+<a name="l00376"></a>00376     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path) {
+<a name="l00377"></a>00377       <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name in <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path.pathComponents) {
+<a name="l00378"></a>00378         <span class="keywordflow">if</span> (![name isEqualToString:<span class="stringliteral">@&quot;/&quot;</span>]) {
+<a name="l00379"></a>00379           [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa9a52f1ccf8ccdabfa6db144815bbf56">parsePathComponent</a>:name];
+<a name="l00380"></a>00380         }
+<a name="l00381"></a>00381       }
+<a name="l00382"></a>00382     }
+<a name="l00383"></a>00383   }
+<a name="l00384"></a>00384   
+<a name="l00385"></a>00385   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.query) {
+<a name="l00386"></a>00386     NSDictionary* query = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.query <a class="code" href="class_n_s_string.html#ad4af040c1d46bab88333d5e414a0e6f4">queryDictionaryUsingEncoding</a>:NSUTF8StringEncoding];
+<a name="l00387"></a>00387     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name in [query keyEnumerator]) {
+<a name="l00388"></a>00388       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* value = [query objectForKey:name];
+<a name="l00389"></a>00389       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aad12b588b4d6d800c25bd0f2e9d2ff4b">parseParameter</a>:name <a class="code" href="interface_t_t_u_r_l_pattern.html#aad12b588b4d6d800c25bd0f2e9d2ff4b">value</a>:value];
+<a name="l00390"></a>00390     }
+<a name="l00391"></a>00391   }
+<a name="l00392"></a>00392 
+<a name="l00393"></a>00393   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment) {
+<a name="l00394"></a>00394     <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> = [[<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#adddaa93a5eedad9d565ca93652a350e9">parseText</a>:URL.fragment] retain];
+<a name="l00395"></a>00395   }
+<a name="l00396"></a>00396 }
 <a name="l00397"></a>00397 
+<a name="l00398"></a>00398 <span class="keyword">@end</span>
 <a name="l00399"></a>00399 
-<a name="l00400"></a>00400 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>
-<a name="l00401"></a>00401 
-<a name="l00402"></a>00402 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aada428f0bb6085f91d4a665010f3dfaf">targetClass</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9139d66398032de018d9c0558bd106c3">targetObject</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a>,
-<a name="l00403"></a>00403             <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">navigationMode</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a20b40919725627afffa0dc6c12f0e3c3">parentURL</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a>,
-<a name="l00404"></a>00404             <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac4eecf14fe2bb1df6e288a1cf52c774c">transition</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">_transition</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#adb25c3ea3a3b081da573d45d25aba463">argumentCount</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>;
-<a name="l00405"></a>00405 
-<a name="l00407"></a>00407 <span class="comment">// private</span>
+<a name="l00400"></a>00400 
+<a name="l00402"></a>00402 
+<a name="l00403"></a>00403 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html">TTURLNavigatorPattern</a>
+<a name="l00404"></a>00404 
+<a name="l00405"></a>00405 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aada428f0bb6085f91d4a665010f3dfaf">targetClass</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9139d66398032de018d9c0558bd106c3">targetObject</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a>,
+<a name="l00406"></a>00406             <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">navigationMode</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a20b40919725627afffa0dc6c12f0e3c3">parentURL</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a>,
+<a name="l00407"></a>00407             <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac4eecf14fe2bb1df6e288a1cf52c774c">transition</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">_transition</a>, <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#adb25c3ea3a3b081da573d45d25aba463">argumentCount</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>;
 <a name="l00408"></a>00408 
-<a name="l00409"></a>00409 - (BOOL)instantiatesClass {
-<a name="l00410"></a>00410   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> &amp;&amp; <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a>;
-<a name="l00411"></a>00411 }
-<a name="l00412"></a>00412 
-<a name="l00413"></a>00413 - (BOOL)callsInstanceMethod {
-<a name="l00414"></a>00414   <span class="keywordflow">return</span> (<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> &amp;&amp; [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> <span class="keyword">class</span>] != <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a>) || <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a>;
-<a name="l00415"></a>00415 }
-<a name="l00416"></a>00416 
-<a name="l00417"></a>00417 - (NSComparisonResult)compareSpecificity:(<a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a>*)pattern2 {
-<a name="l00418"></a>00418   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> &gt; pattern2.<a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a>) {
-<a name="l00419"></a>00419     <span class="keywordflow">return</span> NSOrderedAscending;
-<a name="l00420"></a>00420   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> &lt; pattern2.<a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a>) {
-<a name="l00421"></a>00421     <span class="keywordflow">return</span> NSOrderedDescending;
-<a name="l00422"></a>00422   } <span class="keywordflow">else</span> {
-<a name="l00423"></a>00423     <span class="keywordflow">return</span> NSOrderedSame;
-<a name="l00424"></a>00424   }
-<a name="l00425"></a>00425 }
-<a name="l00426"></a>00426 
-<a name="l00427"></a>00427 - (void)deduceSelector {
-<a name="l00428"></a>00428   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* parts = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> array];
-<a name="l00429"></a>00429   
-<a name="l00430"></a>00430   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
-<a name="l00431"></a>00431     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
-<a name="l00432"></a>00432       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00433"></a>00433       <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
-<a name="l00434"></a>00434         [parts addObject:wildcard.name];
-<a name="l00435"></a>00435       }
-<a name="l00436"></a>00436     }
-<a name="l00437"></a>00437   }
-<a name="l00438"></a>00438 
-<a name="l00439"></a>00439   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
-<a name="l00440"></a>00440     <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00441"></a>00441       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00442"></a>00442       <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
-<a name="l00443"></a>00443         [parts addObject:wildcard.name];
-<a name="l00444"></a>00444       }
-<a name="l00445"></a>00445     }
-<a name="l00446"></a>00446   }
-<a name="l00447"></a>00447   
-<a name="l00448"></a>00448   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00449"></a>00449     TTURLWildcard* wildcard = (TTURLWildcard*)<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>;
-<a name="l00450"></a>00450     <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
-<a name="l00451"></a>00451       [parts addObject:wildcard.name];
-<a name="l00452"></a>00452     }
-<a name="l00453"></a>00453   }
-<a name="l00454"></a>00454 
-<a name="l00455"></a>00455   <span class="keywordflow">if</span> (parts.count) {
-<a name="l00456"></a>00456     [<span class="keyword">self</span> setSelectorWithNames:parts];
-<a name="l00457"></a>00457     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
-<a name="l00458"></a>00458       [parts addObject:@&quot;query&quot;];
-<a name="l00459"></a>00459       [<span class="keyword">self</span> setSelectorWithNames:parts];
-<a name="l00460"></a>00460     }
-<a name="l00461"></a>00461   } <span class="keywordflow">else</span> {
-<a name="l00462"></a>00462     [<span class="keyword">self</span> setSelectorIfPossible:@selector(initWithNavigatorURL:query:)];
-<a name="l00463"></a>00463   }
-<a name="l00464"></a>00464 }
-<a name="l00465"></a>00465 
-<a name="l00466"></a>00466 - (void)analyzeArgument:(<span class="keywordtype">id</span>&lt;TTURLPatternText&gt;)pattern method:(Method)method
-<a name="l00467"></a>00467         argNames:(<a class="code" href="class_n_s_array.html">NSArray</a>*)argNames {
-<a name="l00468"></a>00468   <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00469"></a>00469     TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00470"></a>00470     wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a> = [argNames indexOfObject:wildcard.name];
-<a name="l00471"></a>00471     <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a> == NSNotFound) {
-<a name="l00472"></a>00472       <a class="code" href="_t_t_global_8h.html#a3a66420c0309bdb784cdab7b9a938982">TTWARN</a>(<span class="stringliteral">@&quot;Argument %@ not found in @selector(%s)&quot;</span>, wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>, sel_getName(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>));
-<a name="l00473"></a>00473     } <span class="keywordflow">else</span> {
-<a name="l00474"></a>00474       <span class="keywordtype">char</span> argType[256];
-<a name="l00475"></a>00475       method_getArgumentType(method, wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a>+2, argType, 256);
-<a name="l00476"></a>00476       wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">argType</a> = <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(argType[0]);
-<a name="l00477"></a>00477     }
-<a name="l00478"></a>00478   }
-<a name="l00479"></a>00479 }
-<a name="l00480"></a>00480 
-<a name="l00481"></a>00481 - (void)analyzeMethod {
-<a name="l00482"></a>00482   Class cls = [<span class="keyword">self</span> classForInvocation];
-<a name="l00483"></a>00483   Method method = [<span class="keyword">self</span> callsInstanceMethod]
-<a name="l00484"></a>00484     ? class_getInstanceMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>)
-<a name="l00485"></a>00485     : class_getClassMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>);
-<a name="l00486"></a>00486   <span class="keywordflow">if</span> (method) {
-<a name="l00487"></a>00487     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a> = method_getNumberOfArguments(method)-2;
-<a name="l00488"></a>00488 
-<a name="l00489"></a>00489     <span class="comment">// Look up the index and type of each argument in the method</span>
-<a name="l00490"></a>00490     <span class="keyword">const</span> <span class="keywordtype">char</span>* selName = sel_getName(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>);
-<a name="l00491"></a>00491     <a class="code" href="class_n_s_string.html">NSString</a>* selectorName = [[<a class="code" href="class_n_s_string.html">NSString</a> alloc] initWithBytesNoCopy:(char*)selName
-<a name="l00492"></a>00492                                              length:strlen(selName)
-<a name="l00493"></a>00493                                              encoding:NSASCIIStringEncoding freeWhenDone:NO];
-<a name="l00494"></a>00494 
-<a name="l00495"></a>00495     <a class="code" href="class_n_s_array.html">NSArray</a>* argNames = [selectorName componentsSeparatedByString:@&quot;:&quot;];
-<a name="l00496"></a>00496 
-<a name="l00497"></a>00497     <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in _path) {
-<a name="l00498"></a>00498       [<span class="keyword">self</span> analyzeArgument:pattern method:method argNames:argNames];
-<a name="l00499"></a>00499     }
-<a name="l00500"></a>00500 
-<a name="l00501"></a>00501     <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
-<a name="l00502"></a>00502       [<span class="keyword">self</span> analyzeArgument:pattern method:method argNames:argNames];
-<a name="l00503"></a>00503     }
-<a name="l00504"></a>00504     
-<a name="l00505"></a>00505     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) {
-<a name="l00506"></a>00506       [<span class="keyword">self</span> analyzeArgument:_fragment method:method argNames:argNames];
-<a name="l00507"></a>00507     }
-<a name="l00508"></a>00508     
-<a name="l00509"></a>00509     [selectorName release];
-<a name="l00510"></a>00510   }
-<a name="l00511"></a>00511 }
-<a name="l00512"></a>00512 
-<a name="l00513"></a>00513 - (void)analyzeProperties {
-<a name="l00514"></a>00514   Class cls = [<span class="keyword">self</span> classForInvocation];
-<a name="l00515"></a>00515   
-<a name="l00516"></a>00516   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in _path) {
-<a name="l00517"></a>00517     <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00518"></a>00518       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00519"></a>00519       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:cls];
-<a name="l00520"></a>00520     }
-<a name="l00521"></a>00521   }
-<a name="l00522"></a>00522 
-<a name="l00523"></a>00523   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
-<a name="l00524"></a>00524     <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00525"></a>00525       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00526"></a>00526       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:cls];
-<a name="l00527"></a>00527     }
-<a name="l00528"></a>00528   }
-<a name="l00529"></a>00529 }
-<a name="l00530"></a>00530 
-<a name="l00531"></a>00531 - (BOOL)setArgument:(<a class="code" href="class_n_s_string.html">NSString</a>*)text pattern:(<span class="keywordtype">id</span>&lt;TTURLPatternText&gt;)patternText
-<a name="l00532"></a>00532         forInvocation:(NSInvocation*)invocation {
-<a name="l00533"></a>00533   <span class="keywordflow">if</span> ([patternText isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00534"></a>00534     TTURLWildcard* wildcard = (TTURLWildcard*)patternText;
-<a name="l00535"></a>00535     NSInteger index = wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a>;
-<a name="l00536"></a>00536     <span class="keywordflow">if</span> (index != NSNotFound &amp;&amp; index &lt; <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>) {
-<a name="l00537"></a>00537       <span class="keywordflow">switch</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">argType</a>) {
-<a name="l00538"></a>00538         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>: {
-<a name="l00539"></a>00539           <span class="keywordflow">break</span>;
-<a name="l00540"></a>00540         }
-<a name="l00541"></a>00541         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>: {
-<a name="l00542"></a>00542           <span class="keywordtype">int</span> val = [text intValue];
-<a name="l00543"></a>00543           [invocation setArgument:&amp;val atIndex:index+2];
-<a name="l00544"></a>00544           <span class="keywordflow">break</span>;
-<a name="l00545"></a>00545         }
-<a name="l00546"></a>00546         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>: {
-<a name="l00547"></a>00547           <span class="keywordtype">long</span> <span class="keywordtype">long</span> val = [text longLongValue];
-<a name="l00548"></a>00548           [invocation setArgument:&amp;val atIndex:index+2];
-<a name="l00549"></a>00549           <span class="keywordflow">break</span>;
-<a name="l00550"></a>00550         }
-<a name="l00551"></a>00551         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>: {
-<a name="l00552"></a>00552           <span class="keywordtype">float</span> val = [text floatValue];
-<a name="l00553"></a>00553           [invocation setArgument:&amp;val atIndex:index+2];
-<a name="l00554"></a>00554           <span class="keywordflow">break</span>;
-<a name="l00555"></a>00555         }
-<a name="l00556"></a>00556         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>: {
-<a name="l00557"></a>00557           <span class="keywordtype">double</span> val = [text doubleValue];
-<a name="l00558"></a>00558           [invocation setArgument:&amp;val atIndex:index+2];
-<a name="l00559"></a>00559           <span class="keywordflow">break</span>;
-<a name="l00560"></a>00560         }
-<a name="l00561"></a>00561         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>: {
-<a name="l00562"></a>00562           BOOL val = [text boolValue];
-<a name="l00563"></a>00563           [invocation setArgument:&amp;val atIndex:index+2];
-<a name="l00564"></a>00564           <span class="keywordflow">break</span>;
-<a name="l00565"></a>00565         }
-<a name="l00566"></a>00566         <span class="keywordflow">default</span>: {
-<a name="l00567"></a>00567           [invocation setArgument:&amp;text atIndex:index+2];
-<a name="l00568"></a>00568           <span class="keywordflow">break</span>;
-<a name="l00569"></a>00569         }
-<a name="l00570"></a>00570       }
-<a name="l00571"></a>00571       <span class="keywordflow">return</span> YES;
-<a name="l00572"></a>00572     }
-<a name="l00573"></a>00573   }
-<a name="l00574"></a>00574   <span class="keywordflow">return</span> NO;
-<a name="l00575"></a>00575 }
-<a name="l00576"></a>00576 
-<a name="l00577"></a>00577 - (void)setArgumentsFromURL:(NSURL*)URL forInvocation:(NSInvocation*)invocation
-<a name="l00578"></a>00578         query:(NSDictionary*)query {
-<a name="l00579"></a>00579   NSInteger remainingArgs = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>;
-<a name="l00580"></a>00580   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* unmatchedArgs = query ? [[query mutableCopy] autorelease] : nil;
-<a name="l00581"></a>00581   
-<a name="l00582"></a>00582   <a class="code" href="class_n_s_array.html">NSArray</a>* pathComponents = URL.path.pathComponents;
-<a name="l00583"></a>00583   <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; _path.count; ++i) {
-<a name="l00584"></a>00584     id&lt;TTURLPatternText&gt; patternText = [_path objectAtIndex:i];
-<a name="l00585"></a>00585     <a class="code" href="class_n_s_string.html">NSString</a>* text = i == 0 ? URL.host : [pathComponents objectAtIndex:i];
-<a name="l00586"></a>00586     <span class="keywordflow">if</span> ([<span class="keyword">self</span> setArgument:text pattern:patternText forInvocation:invocation]) {
-<a name="l00587"></a>00587       --remainingArgs;
-<a name="l00588"></a>00588     }
-<a name="l00589"></a>00589   }
-<a name="l00590"></a>00590   
-<a name="l00591"></a>00591   NSDictionary* URLQuery = [URL.query queryDictionaryUsingEncoding:NSUTF8StringEncoding];
-<a name="l00592"></a>00592   <span class="keywordflow">if</span> (URLQuery.count) {
-<a name="l00593"></a>00593     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* name in [URLQuery keyEnumerator]) {
-<a name="l00594"></a>00594       id&lt;TTURLPatternText&gt; patternText = [_query objectForKey:name];
-<a name="l00595"></a>00595       <a class="code" href="class_n_s_string.html">NSString</a>* text = [URLQuery objectForKey:name];
-<a name="l00596"></a>00596       <span class="keywordflow">if</span> (patternText) {
-<a name="l00597"></a>00597         <span class="keywordflow">if</span> ([<span class="keyword">self</span> setArgument:text pattern:patternText forInvocation:invocation]) {
-<a name="l00598"></a>00598           --remainingArgs;
-<a name="l00599"></a>00599         }
-<a name="l00600"></a>00600       } <span class="keywordflow">else</span> {
-<a name="l00601"></a>00601         <span class="keywordflow">if</span> (!unmatchedArgs) {
-<a name="l00602"></a>00602           unmatchedArgs = [<a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a> dictionary];
-<a name="l00603"></a>00603         }
-<a name="l00604"></a>00604         [unmatchedArgs setObject:text forKey:name];
-<a name="l00605"></a>00605       }
-<a name="l00606"></a>00606     }
-<a name="l00607"></a>00607   }
-<a name="l00608"></a>00608 
-<a name="l00609"></a>00609   <span class="keywordflow">if</span> (remainingArgs &amp;&amp; unmatchedArgs.count) {
-<a name="l00610"></a>00610     <span class="comment">// If there are unmatched arguments, and the method signature has extra arguments,</span>
-<a name="l00611"></a>00611     <span class="comment">// then pass the dictionary of unmatched arguments as the last argument</span>
-<a name="l00612"></a>00612     [invocation setArgument:&amp;unmatchedArgs atIndex:_argumentCount+1];
-<a name="l00613"></a>00613   }
-<a name="l00614"></a>00614   
-<a name="l00615"></a>00615   <span class="keywordflow">if</span> (URL.fragment &amp;&amp; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) {
-<a name="l00616"></a>00616     [<span class="keyword">self</span> setArgument:URL.fragment pattern:_fragment forInvocation:invocation];
-<a name="l00617"></a>00617   }  
-<a name="l00618"></a>00618 }
-<a name="l00619"></a>00619 
-<a name="l00621"></a>00621 <span class="comment">// NSObject</span>
+<a name="l00410"></a>00410 <span class="comment">// private</span>
+<a name="l00411"></a>00411 
+<a name="l00412"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7023367f63a186e554471f10b51dca64">00412</a> - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7023367f63a186e554471f10b51dca64">instantiatesClass</a> {
+<a name="l00413"></a>00413   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> &amp;&amp; <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a>;
+<a name="l00414"></a>00414 }
+<a name="l00415"></a>00415 
+<a name="l00416"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9f0b9a3ebe1d374445ff365f29660055">00416</a> - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9f0b9a3ebe1d374445ff365f29660055">callsInstanceMethod</a> {
+<a name="l00417"></a>00417   <span class="keywordflow">return</span> (<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> &amp;&amp; [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> <span class="keyword">class</span>] != <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a>) || <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a>;
+<a name="l00418"></a>00418 }
+<a name="l00419"></a>00419 
+<a name="l00420"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a5576489bb569d120603636e3a1589db9">00420</a> - (NSComparisonResult)compareSpecificity:(<a class="code" href="interface_t_t_u_r_l_pattern.html">TTURLPattern</a>*)pattern2 {
+<a name="l00421"></a>00421   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> &gt; pattern2.<a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a>) {
+<a name="l00422"></a>00422     <span class="keywordflow">return</span> NSOrderedAscending;
+<a name="l00423"></a>00423   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a5e3378053e22887c521858250c125601">_specificity</a> &lt; pattern2.<a class="code" href="interface_t_t_u_r_l_pattern.html#ac8faebb59d29e2ea512213edae01e054">specificity</a>) {
+<a name="l00424"></a>00424     <span class="keywordflow">return</span> NSOrderedDescending;
+<a name="l00425"></a>00425   } <span class="keywordflow">else</span> {
+<a name="l00426"></a>00426     <span class="keywordflow">return</span> NSOrderedSame;
+<a name="l00427"></a>00427   }
+<a name="l00428"></a>00428 }
+<a name="l00429"></a>00429 
+<a name="l00430"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac3466a6263a1de5fd4bd17ecbcb81c71">00430</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac3466a6263a1de5fd4bd17ecbcb81c71">deduceSelector</a> {
+<a name="l00431"></a>00431   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* parts = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> array];
+<a name="l00432"></a>00432   
+<a name="l00433"></a>00433   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
+<a name="l00434"></a>00434     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00435"></a>00435       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00436"></a>00436       <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
+<a name="l00437"></a>00437         [parts addObject:wildcard.name];
+<a name="l00438"></a>00438       }
+<a name="l00439"></a>00439     }
+<a name="l00440"></a>00440   }
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
+<a name="l00443"></a>00443     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00444"></a>00444       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00445"></a>00445       <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
+<a name="l00446"></a>00446         [parts addObject:wildcard.name];
+<a name="l00447"></a>00447       }
+<a name="l00448"></a>00448     }
+<a name="l00449"></a>00449   }
+<a name="l00450"></a>00450   
+<a name="l00451"></a>00451   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00452"></a>00452     <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>* wildcard = (<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>*)<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>;
+<a name="l00453"></a>00453     <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>) {
+<a name="l00454"></a>00454       [parts addObject:wildcard.name];
+<a name="l00455"></a>00455     }
+<a name="l00456"></a>00456   }
+<a name="l00457"></a>00457 
+<a name="l00458"></a>00458   <span class="keywordflow">if</span> (parts.count) {
+<a name="l00459"></a>00459     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a11fcdf8d06aaf8cd8e471e147ddf480d">setSelectorWithNames</a>:parts];
+<a name="l00460"></a>00460     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
+<a name="l00461"></a>00461       [parts addObject:@&quot;query&quot;];
+<a name="l00462"></a>00462       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a11fcdf8d06aaf8cd8e471e147ddf480d">setSelectorWithNames</a>:parts];
+<a name="l00463"></a>00463     }
+<a name="l00464"></a>00464   } <span class="keywordflow">else</span> {
+<a name="l00465"></a>00465     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">setSelectorIfPossible</a>:@selector(<a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">initWithNavigatorURL</a>:<a class="code" href="interface_t_t_u_r_l_pattern.html#a8c809505f7238bb4e794e015a290319b">query</a>:)];
+<a name="l00466"></a>00466   }
+<a name="l00467"></a>00467 }
+<a name="l00468"></a>00468 
+<a name="l00469"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">00469</a> - (void)analyzeArgument:(<span class="keywordtype">id</span>&lt;TTURLPatternText&gt;)pattern method:(Method)method
+<a name="l00470"></a>00470         argNames:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)argNames {
+<a name="l00471"></a>00471   <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00472"></a>00472     <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>* wildcard = (<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>*)pattern;
+<a name="l00473"></a>00473     wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a> = [argNames indexOfObject:wildcard.name];
+<a name="l00474"></a>00474     <span class="keywordflow">if</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a> == NSNotFound) {
+<a name="l00475"></a>00475       <a class="code" href="_t_t_debug_8h.html#a96a090844c7e8b6ce6f1611c3ff2d133">TTDINFO</a>(<span class="stringliteral">@&quot;Argument %@ not found in @selector(%s)&quot;</span>, wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a6938a4559a8d8ba9f921788c138f5c8c">name</a>, sel_getName(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>));
+<a name="l00476"></a>00476     } <span class="keywordflow">else</span> {
+<a name="l00477"></a>00477       <span class="keywordtype">char</span> argType[256];
+<a name="l00478"></a>00478       method_getArgumentType(method, wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a>+2, argType, 256);
+<a name="l00479"></a>00479       wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">argType</a> = <a class="code" href="_t_t_u_r_l_pattern_8m.html#a31dd41ac4c57db1994d591a0ec43370a">TTConvertArgumentType</a>(argType[0]);
+<a name="l00480"></a>00480     }
+<a name="l00481"></a>00481   }
+<a name="l00482"></a>00482 }
+<a name="l00483"></a>00483 
+<a name="l00484"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#af2f6493719cd3a904759c808a2fb703a">00484</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#af2f6493719cd3a904759c808a2fb703a">analyzeMethod</a> {
+<a name="l00485"></a>00485   Class cls = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a48cdfbd103531a45cade6748495b9dff">classForInvocation</a>];
+<a name="l00486"></a>00486   Method method = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a9f0b9a3ebe1d374445ff365f29660055">callsInstanceMethod</a>]
+<a name="l00487"></a>00487     ? class_getInstanceMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>)
+<a name="l00488"></a>00488     : class_getClassMethod(cls, <a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>);
+<a name="l00489"></a>00489   <span class="keywordflow">if</span> (method) {
+<a name="l00490"></a>00490     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a> = method_getNumberOfArguments(method)-2;
+<a name="l00491"></a>00491 
+<a name="l00492"></a>00492     <span class="comment">// Look up the index and type of each argument in the method</span>
+<a name="l00493"></a>00493     <span class="keyword">const</span> <span class="keywordtype">char</span>* selName = sel_getName(<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>);
+<a name="l00494"></a>00494     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* selectorName = [[<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> alloc] initWithBytesNoCopy:(char*)selName
+<a name="l00495"></a>00495                                              length:strlen(selName)
+<a name="l00496"></a>00496                                              encoding:NSASCIIStringEncoding freeWhenDone:NO];
+<a name="l00497"></a>00497 
+<a name="l00498"></a>00498     <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* argNames = [selectorName componentsSeparatedByString:@&quot;:&quot;];
+<a name="l00499"></a>00499 
+<a name="l00500"></a>00500     <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
+<a name="l00501"></a>00501       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">analyzeArgument</a>:pattern <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">method</a>:method <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">argNames</a>:argNames];
+<a name="l00502"></a>00502     }
+<a name="l00503"></a>00503 
+<a name="l00504"></a>00504     <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
+<a name="l00505"></a>00505       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">analyzeArgument</a>:pattern <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">method</a>:method <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">argNames</a>:argNames];
+<a name="l00506"></a>00506     }
+<a name="l00507"></a>00507     
+<a name="l00508"></a>00508     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) {
+<a name="l00509"></a>00509       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">analyzeArgument</a>:_fragment <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">method</a>:method <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7133cd653cab7705107b2481d56d9d40">argNames</a>:argNames];
+<a name="l00510"></a>00510     }
+<a name="l00511"></a>00511     
+<a name="l00512"></a>00512     [selectorName release];
+<a name="l00513"></a>00513   }
+<a name="l00514"></a>00514 }
+<a name="l00515"></a>00515 
+<a name="l00516"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a216072c54d40f6618428659aa35ba8d0">00516</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a216072c54d40f6618428659aa35ba8d0">analyzeProperties</a> {
+<a name="l00517"></a>00517   Class cls = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a48cdfbd103531a45cade6748495b9dff">classForInvocation</a>];
+<a name="l00518"></a>00518   
+<a name="l00519"></a>00519   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
+<a name="l00520"></a>00520     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00521"></a>00521       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00522"></a>00522       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:cls];
+<a name="l00523"></a>00523     }
+<a name="l00524"></a>00524   }
+<a name="l00525"></a>00525 
+<a name="l00526"></a>00526   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
+<a name="l00527"></a>00527     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00528"></a>00528       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00529"></a>00529       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:cls];
+<a name="l00530"></a>00530     }
+<a name="l00531"></a>00531   }
+<a name="l00532"></a>00532 }
+<a name="l00533"></a>00533 
+<a name="l00534"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a3fd93ae94d20a0edc22e92e740064918">00534</a> - (BOOL)setArgument:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)text pattern:(<span class="keywordtype">id</span>&lt;TTURLPatternText&gt;)patternText
+<a name="l00535"></a>00535         forInvocation:(NSInvocation*)invocation {
+<a name="l00536"></a>00536   <span class="keywordflow">if</span> ([patternText isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00537"></a>00537     <a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>* wildcard = (<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a>*)patternText;
+<a name="l00538"></a>00538     NSInteger index = wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#a5fbde2e36b1f6217ef9dd80cdd65f10c">argIndex</a>;
+<a name="l00539"></a>00539     <span class="keywordflow">if</span> (index != NSNotFound &amp;&amp; index &lt; <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>) {
+<a name="l00540"></a>00540       <span class="keywordflow">switch</span> (wildcard.<a class="code" href="interface_t_t_u_r_l_wildcard.html#ad8be7575cf9f0e21a8d2fe97ace54868">argType</a>) {
+<a name="l00541"></a>00541         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a2cadcf15fc765e4dcca9c834d53b9daa">TTURLArgumentTypeNone</a>: {
+<a name="l00542"></a>00542           <span class="keywordflow">break</span>;
+<a name="l00543"></a>00543         }
+<a name="l00544"></a>00544         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad844b232e1ce9479ef2419d23e75ddaf">TTURLArgumentTypeInteger</a>: {
+<a name="l00545"></a>00545           <span class="keywordtype">int</span> val = [text intValue];
+<a name="l00546"></a>00546           [invocation setArgument:&amp;val atIndex:index+2];
+<a name="l00547"></a>00547           <span class="keywordflow">break</span>;
+<a name="l00548"></a>00548         }
+<a name="l00549"></a>00549         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70abdb45ef6563da67f0386ae40c39f95d3">TTURLArgumentTypeLongLong</a>: {
+<a name="l00550"></a>00550           <span class="keywordtype">long</span> <span class="keywordtype">long</span> val = [text longLongValue];
+<a name="l00551"></a>00551           [invocation setArgument:&amp;val atIndex:index+2];
+<a name="l00552"></a>00552           <span class="keywordflow">break</span>;
+<a name="l00553"></a>00553         }
+<a name="l00554"></a>00554         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a9ce1cf04564f115ab355da2b7a75c7e4">TTURLArgumentTypeFloat</a>: {
+<a name="l00555"></a>00555           <span class="keywordtype">float</span> val = [text floatValue];
+<a name="l00556"></a>00556           [invocation setArgument:&amp;val atIndex:index+2];
+<a name="l00557"></a>00557           <span class="keywordflow">break</span>;
+<a name="l00558"></a>00558         }
+<a name="l00559"></a>00559         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70a35438f38fc511548e357792c87e98d1f">TTURLArgumentTypeDouble</a>: {
+<a name="l00560"></a>00560           <span class="keywordtype">double</span> val = [text doubleValue];
+<a name="l00561"></a>00561           [invocation setArgument:&amp;val atIndex:index+2];
+<a name="l00562"></a>00562           <span class="keywordflow">break</span>;
+<a name="l00563"></a>00563         }
+<a name="l00564"></a>00564         <span class="keywordflow">case</span> <a class="code" href="_t_t_u_r_l_pattern_8m.html#ae2163b012c98d0255b2405106cebdf70ad1b558f7222170ef2277a9ff8946dcba">TTURLArgumentTypeBool</a>: {
+<a name="l00565"></a>00565           BOOL val = [text boolValue];
+<a name="l00566"></a>00566           [invocation setArgument:&amp;val atIndex:index+2];
+<a name="l00567"></a>00567           <span class="keywordflow">break</span>;
+<a name="l00568"></a>00568         }
+<a name="l00569"></a>00569         <span class="keywordflow">default</span>: {
+<a name="l00570"></a>00570           [invocation setArgument:&amp;text atIndex:index+2];
+<a name="l00571"></a>00571           <span class="keywordflow">break</span>;
+<a name="l00572"></a>00572         }
+<a name="l00573"></a>00573       }
+<a name="l00574"></a>00574       <span class="keywordflow">return</span> YES;
+<a name="l00575"></a>00575     }
+<a name="l00576"></a>00576   }
+<a name="l00577"></a>00577   <span class="keywordflow">return</span> NO;
+<a name="l00578"></a>00578 }
+<a name="l00579"></a>00579 
+<a name="l00580"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4851a7d0a97708b98e06fd447a24c352">00580</a> - (void)setArgumentsFromURL:(NSURL*)URL forInvocation:(NSInvocation*)invocation
+<a name="l00581"></a>00581         query:(NSDictionary*)query {
+<a name="l00582"></a>00582   NSInteger remainingArgs = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a>;
+<a name="l00583"></a>00583   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* unmatchedArgs = query ? [[query mutableCopy] autorelease] : nil;
+<a name="l00584"></a>00584   
+<a name="l00585"></a>00585   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* pathComponents = <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path.pathComponents;
+<a name="l00586"></a>00586   <span class="keywordflow">for</span> (NSInteger i = 0; i &lt; <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>.count; ++i) {
+<a name="l00587"></a>00587     id&lt;TTURLPatternText&gt; patternText = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> objectAtIndex:i];
+<a name="l00588"></a>00588     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text = i == 0 ? <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host : [pathComponents objectAtIndex:i];
+<a name="l00589"></a>00589     <span class="keywordflow">if</span> ([<span class="keyword">self</span> setArgument:text pattern:patternText forInvocation:invocation]) {
+<a name="l00590"></a>00590       --remainingArgs;
+<a name="l00591"></a>00591     }
+<a name="l00592"></a>00592   }
+<a name="l00593"></a>00593   
+<a name="l00594"></a>00594   NSDictionary* URLQuery = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.query <a class="code" href="class_n_s_string.html#ad4af040c1d46bab88333d5e414a0e6f4">queryDictionaryUsingEncoding</a>:NSUTF8StringEncoding];
+<a name="l00595"></a>00595   <span class="keywordflow">if</span> (URLQuery.count) {
+<a name="l00596"></a>00596     <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name in [URLQuery keyEnumerator]) {
+<a name="l00597"></a>00597       id&lt;TTURLPatternText&gt; patternText = [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectForKey:name];
+<a name="l00598"></a>00598       <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* text = [URLQuery objectForKey:name];
+<a name="l00599"></a>00599       <span class="keywordflow">if</span> (patternText) {
+<a name="l00600"></a>00600         <span class="keywordflow">if</span> ([<span class="keyword">self</span> setArgument:text pattern:patternText forInvocation:invocation]) {
+<a name="l00601"></a>00601           --remainingArgs;
+<a name="l00602"></a>00602         }
+<a name="l00603"></a>00603       } <span class="keywordflow">else</span> {
+<a name="l00604"></a>00604         <span class="keywordflow">if</span> (!unmatchedArgs) {
+<a name="l00605"></a>00605           unmatchedArgs = [<a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a> dictionary];
+<a name="l00606"></a>00606         }
+<a name="l00607"></a>00607         [unmatchedArgs setObject:text forKey:name];
+<a name="l00608"></a>00608       }
+<a name="l00609"></a>00609     }
+<a name="l00610"></a>00610   }
+<a name="l00611"></a>00611 
+<a name="l00612"></a>00612   <span class="keywordflow">if</span> (remainingArgs &amp;&amp; unmatchedArgs.count) {
+<a name="l00613"></a>00613     <span class="comment">// If there are unmatched arguments, and the method signature has extra arguments,</span>
+<a name="l00614"></a>00614     <span class="comment">// then pass the dictionary of unmatched arguments as the last argument</span>
+<a name="l00615"></a>00615     [invocation setArgument:&amp;unmatchedArgs atIndex:_argumentCount+1];
+<a name="l00616"></a>00616   }
+<a name="l00617"></a>00617   
+<a name="l00618"></a>00618   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment &amp;&amp; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) {
+<a name="l00619"></a>00619     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a3fd93ae94d20a0edc22e92e740064918">setArgument</a>:URL.fragment <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a3fd93ae94d20a0edc22e92e740064918">pattern</a>:_fragment <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a3fd93ae94d20a0edc22e92e740064918">forInvocation</a>:invocation];
+<a name="l00620"></a>00620   }  
+<a name="l00621"></a>00621 }
 <a name="l00622"></a>00622 
-<a name="l00623"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac31a898c442564d0fbf88ffbdd31f2c6">00623</a> - (id)initWithTarget:(<span class="keywordtype">id</span>)target {
-<a name="l00624"></a>00624   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">initWithTarget</a>:target <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">mode</a>:TTNavigationModeNone];
-<a name="l00625"></a>00625 }
-<a name="l00626"></a>00626 
-<a name="l00627"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">00627</a> - (id)initWithTarget:(<span class="keywordtype">id</span>)target mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationMode {
-<a name="l00628"></a>00628   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00629"></a>00629     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> = nil;
-<a name="l00630"></a>00630     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> = nil;
-<a name="l00631"></a>00631     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a> = navigationMode;
-<a name="l00632"></a>00632     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a> = nil;
-<a name="l00633"></a>00633     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">_transition</a> = 0;
-<a name="l00634"></a>00634     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a> = 0;
-<a name="l00635"></a>00635 
-<a name="l00636"></a>00636     <span class="keywordflow">if</span> ([target <span class="keyword">class</span>] == target &amp;&amp; navigationMode) {
-<a name="l00637"></a>00637       <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> = target;
-<a name="l00638"></a>00638     } <span class="keywordflow">else</span> {
-<a name="l00639"></a>00639       <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> = target;
-<a name="l00640"></a>00640     }
-<a name="l00641"></a>00641   }
-<a name="l00642"></a>00642   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00643"></a>00643 }
-<a name="l00644"></a>00644 
-<a name="l00645"></a>00645 - (id)init {
-<a name="l00646"></a>00646   <span class="keywordflow">return</span> [<span class="keyword">self</span> initWithTarget:nil];
-<a name="l00647"></a>00647 }
-<a name="l00648"></a>00648 
-<a name="l00649"></a>00649 - (void)dealloc {
-<a name="l00650"></a>00650   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a>);
-<a name="l00651"></a>00651   [<span class="keyword">super</span> dealloc];
-<a name="l00652"></a>00652 }
-<a name="l00653"></a>00653 
-<a name="l00655"></a>00655 <span class="comment">// TTURLPattern</span>
+<a name="l00624"></a>00624 <span class="comment">// NSObject</span>
+<a name="l00625"></a>00625 
+<a name="l00626"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac31a898c442564d0fbf88ffbdd31f2c6">00626</a> - (id)initWithTarget:(<span class="keywordtype">id</span>)target {
+<a name="l00627"></a>00627   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">initWithTarget</a>:target <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">mode</a>:TTNavigationModeNone];
+<a name="l00628"></a>00628 }
+<a name="l00629"></a>00629 
+<a name="l00630"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac87a2e99d4c818a42dc15203a98e5df8">00630</a> - (id)initWithTarget:(<span class="keywordtype">id</span>)target mode:(<a class="code" href="_t_t_u_r_l_map_8h.html#ac4b2da7ab3c2de97d4a1170db8023f8f">TTNavigationMode</a>)navigationMode {
+<a name="l00631"></a>00631   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a00edc635bfaf91cb006794e5290c6175">init</a>]) {
+<a name="l00632"></a>00632     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> = nil;
+<a name="l00633"></a>00633     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> = nil;
+<a name="l00634"></a>00634     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1ddc374646c8b7b30003ee6ef1383f8e">_navigationMode</a> = <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">navigationMode</a>;
+<a name="l00635"></a>00635     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a> = nil;
+<a name="l00636"></a>00636     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a62cac9f7491807424b20d065fbeb3344">_transition</a> = 0;
+<a name="l00637"></a>00637     <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a1147ecef22627bca888d889f3f2868d5">_argumentCount</a> = 0;
+<a name="l00638"></a>00638 
+<a name="l00639"></a>00639     <span class="keywordflow">if</span> ([target <span class="keyword">class</span>] == target &amp;&amp; <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ace4ae6562536d27fda4be0b1abab9315">navigationMode</a>) {
+<a name="l00640"></a>00640       <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> = target;
+<a name="l00641"></a>00641     } <span class="keywordflow">else</span> {
+<a name="l00642"></a>00642       <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> = target;
+<a name="l00643"></a>00643     }
+<a name="l00644"></a>00644   }
+<a name="l00645"></a>00645   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00646"></a>00646 }
+<a name="l00647"></a>00647 
+<a name="l00648"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a00edc635bfaf91cb006794e5290c6175">00648</a> - (id)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a00edc635bfaf91cb006794e5290c6175">init</a> {
+<a name="l00649"></a>00649   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac31a898c442564d0fbf88ffbdd31f2c6">initWithTarget</a>:nil];
+<a name="l00650"></a>00650 }
+<a name="l00651"></a>00651 
+<a name="l00652"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8c4f78a33d4827a527fae863584bb52e">00652</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8c4f78a33d4827a527fae863584bb52e">dealloc</a> {
+<a name="l00653"></a>00653   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a262aaa69cddea1c153051f8e6defa454">_parentURL</a>);
+<a name="l00654"></a>00654   [<span class="keyword">super</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a1d9c5aa97ba4ccf29da2f47479d4fb76">dealloc</a>];
+<a name="l00655"></a>00655 }
 <a name="l00656"></a>00656 
-<a name="l00657"></a>00657 - (Class)<a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a> {
-<a name="l00658"></a>00658   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> ? <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> : [_targetObject class];
-<a name="l00659"></a>00659 }
-<a name="l00660"></a>00660 
-<a name="l00662"></a>00662 <span class="comment">// public</span>
+<a name="l00658"></a>00658 <span class="comment">// TTURLPattern</span>
+<a name="l00659"></a>00659 
+<a name="l00660"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a48cdfbd103531a45cade6748495b9dff">00660</a> - (Class)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a48cdfbd103531a45cade6748495b9dff">classForInvocation</a> {
+<a name="l00661"></a>00661   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> ? <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> : [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> class];
+<a name="l00662"></a>00662 }
 <a name="l00663"></a>00663 
-<a name="l00664"></a>00664 - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">isUniversal</a> {
-<a name="l00665"></a>00665   <span class="keywordflow">return</span> [_URL isEqualToString:kUniversalURLPattern];
-<a name="l00666"></a>00666 }
-<a name="l00667"></a>00667 
-<a name="l00668"></a>00668 - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4871005c57fb08b85a15f4ff1547247d">isFragment</a> {
-<a name="l00669"></a>00669   <span class="keywordflow">return</span> [_URL rangeOfString:@&quot;#&quot; options:NSBackwardsSearch].location != NSNotFound;
-<a name="l00670"></a>00670 }
-<a name="l00671"></a>00671 
-<a name="l00672"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7a9677217f846057a97933ad6348b314">00672</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7a9677217f846057a97933ad6348b314">compile</a> {
-<a name="l00673"></a>00673   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a> isEqualToString:kUniversalURLPattern]) {
-<a name="l00674"></a>00674     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
-<a name="l00675"></a>00675       [<span class="keyword">self</span> deduceSelector];
-<a name="l00676"></a>00676     }
-<a name="l00677"></a>00677   } <span class="keywordflow">else</span> {
-<a name="l00678"></a>00678     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a>];
-<a name="l00679"></a>00679     
-<a name="l00680"></a>00680     <span class="comment">// XXXjoe Don&apos;t do this if the pattern is a URL generator</span>
-<a name="l00681"></a>00681     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
-<a name="l00682"></a>00682       [<span class="keyword">self</span> deduceSelector];
-<a name="l00683"></a>00683     }
-<a name="l00684"></a>00684     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
-<a name="l00685"></a>00685       [<span class="keyword">self</span> analyzeMethod];
+<a name="l00665"></a>00665 <span class="comment">// public</span>
+<a name="l00666"></a>00666 
+<a name="l00667"></a>00667 - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">isUniversal</a> {
+<a name="l00668"></a>00668   <span class="keywordflow">return</span> [_URL isEqualToString:kUniversalURLPattern];
+<a name="l00669"></a>00669 }
+<a name="l00670"></a>00670 
+<a name="l00671"></a>00671 - (BOOL)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4871005c57fb08b85a15f4ff1547247d">isFragment</a> {
+<a name="l00672"></a>00672   <span class="keywordflow">return</span> [_URL rangeOfString:@&quot;#&quot; options:NSBackwardsSearch].location != NSNotFound;
+<a name="l00673"></a>00673 }
+<a name="l00674"></a>00674 
+<a name="l00675"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7a9677217f846057a97933ad6348b314">00675</a> - (void)<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7a9677217f846057a97933ad6348b314">compile</a> {
+<a name="l00676"></a>00676   <span class="keywordflow">if</span> ([<a class="code" href="interface_t_t_u_r_l_pattern.html#a2debd916354fcc41f4514c1c878a5064">_URL</a> isEqualToString:kUniversalURLPattern]) {
+<a name="l00677"></a>00677     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
+<a name="l00678"></a>00678       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac3466a6263a1de5fd4bd17ecbcb81c71">deduceSelector</a>];
+<a name="l00679"></a>00679     }
+<a name="l00680"></a>00680   } <span class="keywordflow">else</span> {
+<a name="l00681"></a>00681     [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a>];
+<a name="l00682"></a>00682     
+<a name="l00683"></a>00683     <span class="comment">// XXXjoe Don&apos;t do this if the pattern is a URL generator</span>
+<a name="l00684"></a>00684     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
+<a name="l00685"></a>00685       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac3466a6263a1de5fd4bd17ecbcb81c71">deduceSelector</a>];
 <a name="l00686"></a>00686     }
-<a name="l00687"></a>00687   }
-<a name="l00688"></a>00688 }
-<a name="l00689"></a>00689 
-<a name="l00690"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a420b4f6c04c89df37f08b8699a089c87">00690</a> - (BOOL)matchURL:(NSURL*)URL {
-<a name="l00691"></a>00691   <span class="keywordflow">if</span> (!URL.scheme || !URL.host || ![<a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> isEqualToString:URL.scheme]) {
-<a name="l00692"></a>00692     <span class="keywordflow">return</span> NO;
-<a name="l00693"></a>00693   }
-<a name="l00694"></a>00694 
-<a name="l00695"></a>00695   <a class="code" href="class_n_s_array.html">NSArray</a>* pathComponents = URL.path.pathComponents;
-<a name="l00696"></a>00696   NSInteger componentCount = URL.path.length ? pathComponents.count : (URL.host ? 1 : 0);
-<a name="l00697"></a>00697   <span class="keywordflow">if</span> (componentCount != _path.count) {
-<a name="l00698"></a>00698     <span class="keywordflow">return</span> NO;
-<a name="l00699"></a>00699   }
-<a name="l00700"></a>00700 
-<a name="l00701"></a>00701   <span class="keywordflow">if</span> (_path.count &amp;&amp; URL.host) {
-<a name="l00702"></a>00702     id&lt;TTURLPatternText&gt;hostPattern = [_path objectAtIndex:0];
-<a name="l00703"></a>00703     <span class="keywordflow">if</span> (![hostPattern match:URL.host]) {
-<a name="l00704"></a>00704       <span class="keywordflow">return</span> NO;
-<a name="l00705"></a>00705     }
-<a name="l00706"></a>00706   }
-<a name="l00707"></a>00707   
-<a name="l00708"></a>00708   <span class="keywordflow">for</span> (NSInteger i = 1; i &lt; _path.count; ++i) {
-<a name="l00709"></a>00709     id&lt;TTURLPatternText&gt;pathPattern = [_path objectAtIndex:i];
-<a name="l00710"></a>00710     <a class="code" href="class_n_s_string.html">NSString</a>* pathText = [pathComponents objectAtIndex:i];
-<a name="l00711"></a>00711     <span class="keywordflow">if</span> (![pathPattern match:pathText]) {
-<a name="l00712"></a>00712       <span class="keywordflow">return</span> NO;
-<a name="l00713"></a>00713     }
-<a name="l00714"></a>00714   }
-<a name="l00715"></a>00715   
-<a name="l00716"></a>00716   <span class="keywordflow">if</span> ((URL.fragment &amp;&amp; !<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) || (<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> &amp;&amp; !URL.fragment)) {
-<a name="l00717"></a>00717     <span class="keywordflow">return</span> NO;
-<a name="l00718"></a>00718   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (URL.fragment &amp;&amp; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> &amp;&amp; ![<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> match:URL.fragment]) {
-<a name="l00719"></a>00719     <span class="keywordflow">return</span> NO;
-<a name="l00720"></a>00720   }
-<a name="l00721"></a>00721   
-<a name="l00722"></a>00722   <span class="keywordflow">return</span> YES;
-<a name="l00723"></a>00723 }
-<a name="l00724"></a>00724 
-<a name="l00725"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">00725</a> - (id)invoke:(<span class="keywordtype">id</span>)target withURL:(NSURL*)URL query:(NSDictionary*)query {
-<a name="l00726"></a>00726   <span class="keywordtype">id</span> returnValue = nil;
-<a name="l00727"></a>00727   
-<a name="l00728"></a>00728   NSMethodSignature *sig = [target methodSignatureForSelector:self.selector];
-<a name="l00729"></a>00729   <span class="keywordflow">if</span> (sig) {
-<a name="l00730"></a>00730     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
-<a name="l00731"></a>00731     [invocation setTarget:target];
-<a name="l00732"></a>00732     [invocation setSelector:self.selector];
-<a name="l00733"></a>00733     <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">isUniversal</a>) {
-<a name="l00734"></a>00734       [invocation setArgument:&amp;URL atIndex:2];
-<a name="l00735"></a>00735       <span class="keywordflow">if</span> (query) {
-<a name="l00736"></a>00736         [invocation setArgument:&amp;query atIndex:3];
-<a name="l00737"></a>00737       }
-<a name="l00738"></a>00738     } <span class="keywordflow">else</span> {
-<a name="l00739"></a>00739       [<span class="keyword">self</span> setArgumentsFromURL:URL forInvocation:invocation query:query];
-<a name="l00740"></a>00740     }
-<a name="l00741"></a>00741     [invocation invoke];
-<a name="l00742"></a>00742     
-<a name="l00743"></a>00743     <span class="keywordflow">if</span> (sig.methodReturnLength) {
-<a name="l00744"></a>00744       [invocation getReturnValue:&amp;returnValue];
-<a name="l00745"></a>00745     }
-<a name="l00746"></a>00746   }
-<a name="l00747"></a>00747   
-<a name="l00748"></a>00748   <span class="keywordflow">return</span> returnValue;
-<a name="l00749"></a>00749 }
-<a name="l00750"></a>00750 
-<a name="l00751"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ae0acef58334385dfb02ae56c67acdcf0">00751</a> - (id)createObjectFromURL:(NSURL*)URL query:(NSDictionary*)query {
-<a name="l00752"></a>00752   <span class="keywordtype">id</span> target = nil;
-<a name="l00753"></a>00753   <span class="keywordflow">if</span> (<span class="keyword">self</span>.instantiatesClass) {
-<a name="l00754"></a>00754     target = [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> alloc];
-<a name="l00755"></a>00755   } <span class="keywordflow">else</span> {
-<a name="l00756"></a>00756     target = [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> retain];
-<a name="l00757"></a>00757   }
-<a name="l00758"></a>00758 
-<a name="l00759"></a>00759   <span class="keywordtype">id</span> returnValue = nil;
-<a name="l00760"></a>00760   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
-<a name="l00761"></a>00761     returnValue = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">invoke</a>:target <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">withURL</a>:URL <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">query</a>:query];
-<a name="l00762"></a>00762   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.instantiatesClass) {
-<a name="l00763"></a>00763     returnValue = [target init];
-<a name="l00764"></a>00764   }
-<a name="l00765"></a>00765 
-<a name="l00766"></a>00766   [target autorelease];
-<a name="l00767"></a>00767   <span class="keywordflow">return</span> returnValue;
-<a name="l00768"></a>00768 }
-<a name="l00769"></a>00769 
-<a name="l00770"></a>00770 <span class="keyword">@end</span>
-<a name="l00771"></a>00771 
-<a name="l00773"></a>00773 
-<a name="l00774"></a>00774 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_generator_pattern.html">TTURLGeneratorPattern</a>
-<a name="l00775"></a>00775 
-<a name="l00776"></a>00776 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a415653be50fc943c2d901bed4c598aeb">targetClass</a> = <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a>;
-<a name="l00777"></a>00777 
-<a name="l00779"></a>00779 <span class="comment">// NSObject</span>
+<a name="l00687"></a>00687     <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
+<a name="l00688"></a>00688       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#af2f6493719cd3a904759c808a2fb703a">analyzeMethod</a>];
+<a name="l00689"></a>00689     }
+<a name="l00690"></a>00690   }
+<a name="l00691"></a>00691 }
+<a name="l00692"></a>00692 
+<a name="l00693"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a420b4f6c04c89df37f08b8699a089c87">00693</a> - (BOOL)matchURL:(NSURL*)URL {
+<a name="l00694"></a>00694   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.scheme || !<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host || ![<a class="code" href="interface_t_t_u_r_l_pattern.html#ab88c4e37d5185935a25ce1040c9a6867">_scheme</a> isEqualToString:<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.scheme]) {
+<a name="l00695"></a>00695     <span class="keywordflow">return</span> NO;
+<a name="l00696"></a>00696   }
+<a name="l00697"></a>00697 
+<a name="l00698"></a>00698   <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* pathComponents = <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path.pathComponents;
+<a name="l00699"></a>00699   NSInteger componentCount = <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.path.length ? pathComponents.count : (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host ? 1 : 0);
+<a name="l00700"></a>00700   <span class="keywordflow">if</span> (componentCount != <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>.count) {
+<a name="l00701"></a>00701     <span class="keywordflow">return</span> NO;
+<a name="l00702"></a>00702   }
+<a name="l00703"></a>00703 
+<a name="l00704"></a>00704   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>.count &amp;&amp; <a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host) {
+<a name="l00705"></a>00705     id&lt;TTURLPatternText&gt;hostPattern = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> objectAtIndex:0];
+<a name="l00706"></a>00706     <span class="keywordflow">if</span> (![hostPattern match:<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.host]) {
+<a name="l00707"></a>00707       <span class="keywordflow">return</span> NO;
+<a name="l00708"></a>00708     }
+<a name="l00709"></a>00709   }
+<a name="l00710"></a>00710   
+<a name="l00711"></a>00711   <span class="keywordflow">for</span> (NSInteger i = 1; i &lt; <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>.count; ++i) {
+<a name="l00712"></a>00712     id&lt;TTURLPatternText&gt;pathPattern = [<a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a> objectAtIndex:i];
+<a name="l00713"></a>00713     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* pathText = [pathComponents objectAtIndex:i];
+<a name="l00714"></a>00714     <span class="keywordflow">if</span> (![pathPattern match:pathText]) {
+<a name="l00715"></a>00715       <span class="keywordflow">return</span> NO;
+<a name="l00716"></a>00716     }
+<a name="l00717"></a>00717   }
+<a name="l00718"></a>00718   
+<a name="l00719"></a>00719   <span class="keywordflow">if</span> ((<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment &amp;&amp; !<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a>) || (<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> &amp;&amp; !<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment)) {
+<a name="l00720"></a>00720     <span class="keywordflow">return</span> NO;
+<a name="l00721"></a>00721   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment &amp;&amp; <a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> &amp;&amp; ![<a class="code" href="interface_t_t_u_r_l_pattern.html#a75cd0e15dbeee75842056f1fb0766e0e">_fragment</a> match:<a class="code" href="interface_t_t_u_r_l_pattern.html#a2ac75d06c2cc6bec15d4064e51fbf0e4">URL</a>.fragment]) {
+<a name="l00722"></a>00722     <span class="keywordflow">return</span> NO;
+<a name="l00723"></a>00723   }
+<a name="l00724"></a>00724   
+<a name="l00725"></a>00725   <span class="keywordflow">return</span> YES;
+<a name="l00726"></a>00726 }
+<a name="l00727"></a>00727 
+<a name="l00728"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">00728</a> - (id)invoke:(<span class="keywordtype">id</span>)target withURL:(NSURL*)URL query:(NSDictionary*)query {
+<a name="l00729"></a>00729   <span class="keywordtype">id</span> returnValue = nil;
+<a name="l00730"></a>00730   
+<a name="l00731"></a>00731   NSMethodSignature *sig = [target methodSignatureForSelector:self.selector];
+<a name="l00732"></a>00732   <span class="keywordflow">if</span> (sig) {
+<a name="l00733"></a>00733     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
+<a name="l00734"></a>00734     [invocation setTarget:target];
+<a name="l00735"></a>00735     [invocation setSelector:self.selector];
+<a name="l00736"></a>00736     <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a8356a43e5f3db88a55699232cade4764">isUniversal</a>) {
+<a name="l00737"></a>00737       [invocation setArgument:&amp;URL atIndex:2];
+<a name="l00738"></a>00738       <span class="keywordflow">if</span> (query) {
+<a name="l00739"></a>00739         [invocation setArgument:&amp;query atIndex:3];
+<a name="l00740"></a>00740       }
+<a name="l00741"></a>00741     } <span class="keywordflow">else</span> {
+<a name="l00742"></a>00742       [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4851a7d0a97708b98e06fd447a24c352">setArgumentsFromURL</a>:URL <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4851a7d0a97708b98e06fd447a24c352">forInvocation</a>:invocation <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a4851a7d0a97708b98e06fd447a24c352">query</a>:query];
+<a name="l00743"></a>00743     }
+<a name="l00744"></a>00744     [invocation invoke];
+<a name="l00745"></a>00745     
+<a name="l00746"></a>00746     <span class="keywordflow">if</span> (sig.methodReturnLength) {
+<a name="l00747"></a>00747       [invocation getReturnValue:&amp;returnValue];
+<a name="l00748"></a>00748     }
+<a name="l00749"></a>00749   }
+<a name="l00750"></a>00750   
+<a name="l00751"></a>00751   <span class="keywordflow">return</span> returnValue;
+<a name="l00752"></a>00752 }
+<a name="l00753"></a>00753 
+<a name="l00754"></a><a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ae0acef58334385dfb02ae56c67acdcf0">00754</a> - (id)createObjectFromURL:(NSURL*)URL query:(NSDictionary*)query {
+<a name="l00755"></a>00755   <span class="keywordtype">id</span> target = nil;
+<a name="l00756"></a>00756   <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7023367f63a186e554471f10b51dca64">instantiatesClass</a>) {
+<a name="l00757"></a>00757     target = [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#acf9ca4847941d234c4fb91942085745b">_targetClass</a> alloc];
+<a name="l00758"></a>00758   } <span class="keywordflow">else</span> {
+<a name="l00759"></a>00759     target = [<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#ac82e3e3f39048500434870da37b02b3d">_targetObject</a> retain];
+<a name="l00760"></a>00760   }
+<a name="l00761"></a>00761 
+<a name="l00762"></a>00762   <span class="keywordtype">id</span> returnValue = nil;
+<a name="l00763"></a>00763   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_u_r_l_pattern.html#ab61e39a652e580722083bc34033ef162">_selector</a>) {
+<a name="l00764"></a>00764     returnValue = [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">invoke</a>:target <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">withURL</a>:URL <a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#aead5a028d1e0b800c891856d71d86161">query</a>:query];
+<a name="l00765"></a>00765   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="interface_t_t_u_r_l_navigator_pattern.html#a7023367f63a186e554471f10b51dca64">instantiatesClass</a>) {
+<a name="l00766"></a>00766     returnValue = [target init];
+<a name="l00767"></a>00767   }
+<a name="l00768"></a>00768 
+<a name="l00769"></a>00769   [target autorelease];
+<a name="l00770"></a>00770   <span class="keywordflow">return</span> returnValue;
+<a name="l00771"></a>00771 }
+<a name="l00772"></a>00772 
+<a name="l00773"></a>00773 <span class="keyword">@end</span>
+<a name="l00774"></a>00774 
+<a name="l00776"></a>00776 
+<a name="l00777"></a>00777 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_u_r_l_generator_pattern.html">TTURLGeneratorPattern</a>
+<a name="l00778"></a>00778 
+<a name="l00779"></a>00779 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a415653be50fc943c2d901bed4c598aeb">targetClass</a> = <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a>;
 <a name="l00780"></a>00780 
-<a name="l00781"></a>00781 - (id)initWithTargetClass:(<span class="keywordtype">id</span>)targetClass {
-<a name="l00782"></a>00782   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00783"></a>00783     <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a> = targetClass;
-<a name="l00784"></a>00784   }
-<a name="l00785"></a>00785   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00786"></a>00786 }
-<a name="l00787"></a>00787 
-<a name="l00788"></a>00788 - (id)init {
-<a name="l00789"></a>00789   <span class="keywordflow">return</span> [<span class="keyword">self</span> initWithTargetClass:nil];
-<a name="l00790"></a>00790 }
-<a name="l00791"></a>00791 
-<a name="l00792"></a>00792 - (void)dealloc {
-<a name="l00793"></a>00793   [<span class="keyword">super</span> dealloc];
-<a name="l00794"></a>00794 }
-<a name="l00795"></a>00795 
-<a name="l00797"></a>00797 <span class="comment">// TTURLPattern</span>
+<a name="l00782"></a>00782 <span class="comment">// NSObject</span>
+<a name="l00783"></a>00783 
+<a name="l00784"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a776c549cf86ab7ca2d9a94a0d16c643b">00784</a> - (id)initWithTargetClass:(<span class="keywordtype">id</span>)targetClass {
+<a name="l00785"></a>00785   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a0b49e1feff83cc7f659b1fec139c07bf">init</a>]) {
+<a name="l00786"></a>00786     <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a> = <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a415653be50fc943c2d901bed4c598aeb">targetClass</a>;
+<a name="l00787"></a>00787   }
+<a name="l00788"></a>00788   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00789"></a>00789 }
+<a name="l00790"></a>00790 
+<a name="l00791"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a0b49e1feff83cc7f659b1fec139c07bf">00791</a> - (id)<a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a0b49e1feff83cc7f659b1fec139c07bf">init</a> {
+<a name="l00792"></a>00792   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a327dc371ad19f3ced3c88a37346631b8">initWithTargetClass</a>:nil];
+<a name="l00793"></a>00793 }
+<a name="l00794"></a>00794 
+<a name="l00795"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#afca762fd627c78fa1f40ac9aa15e6810">00795</a> - (void)<a class="code" href="interface_t_t_u_r_l_generator_pattern.html#afca762fd627c78fa1f40ac9aa15e6810">dealloc</a> {
+<a name="l00796"></a>00796   [<span class="keyword">super</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#a1d9c5aa97ba4ccf29da2f47479d4fb76">dealloc</a>];
+<a name="l00797"></a>00797 }
 <a name="l00798"></a>00798 
-<a name="l00799"></a>00799 - (Class)<a class="code" href="interface_t_t_u_r_l_pattern.html#a52737296350c66c67bdd136623d35fd1">classForInvocation</a> {
-<a name="l00800"></a>00800   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a>;
-<a name="l00801"></a>00801 }
-<a name="l00802"></a>00802 
-<a name="l00804"></a>00804 <span class="comment">// public</span>
+<a name="l00800"></a>00800 <span class="comment">// TTURLPattern</span>
+<a name="l00801"></a>00801 
+<a name="l00802"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa23d3e80eca388ebb783ece09d21fcda">00802</a> - (Class)<a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa23d3e80eca388ebb783ece09d21fcda">classForInvocation</a> {
+<a name="l00803"></a>00803   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aa9dbf914c9b5a3dcc3f6e013dae458a2">_targetClass</a>;
+<a name="l00804"></a>00804 }
 <a name="l00805"></a>00805 
-<a name="l00806"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a2d75eb26a824a736fef5ea07902db6a4">00806</a> - (void)<a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a2d75eb26a824a736fef5ea07902db6a4">compile</a> {
-<a name="l00807"></a>00807   [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a>];
+<a name="l00807"></a>00807 <span class="comment">// public</span>
 <a name="l00808"></a>00808 
-<a name="l00809"></a>00809   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in _path) {
-<a name="l00810"></a>00810     <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00811"></a>00811       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00812"></a>00812       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:_targetClass];
-<a name="l00813"></a>00813     }
-<a name="l00814"></a>00814   }
-<a name="l00815"></a>00815 
-<a name="l00816"></a>00816   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
-<a name="l00817"></a>00817     <span class="keywordflow">if</span> ([pattern isKindOfClass:[TTURLWildcard <span class="keyword">class</span>]]) {
-<a name="l00818"></a>00818       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
-<a name="l00819"></a>00819       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:_targetClass];
-<a name="l00820"></a>00820     }
-<a name="l00821"></a>00821   }
-<a name="l00822"></a>00822 }
-<a name="l00823"></a>00823 
-<a name="l00824"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aaf0bc4ce0fa5b578312e32cb00669e71">00824</a> - (<a class="code" href="class_n_s_string.html">NSString</a>*)generateURLFromObject:(<span class="keywordtype">id</span>)object {
-<a name="l00825"></a>00825   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* paths = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> array];
-<a name="l00826"></a>00826   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* queries = nil;
-<a name="l00827"></a>00827   [paths addObject:[<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%@:/&quot;, _scheme]];
-<a name="l00828"></a>00828 
-<a name="l00829"></a>00829   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; patternText in _path) {
-<a name="l00830"></a>00830     <a class="code" href="class_n_s_string.html">NSString</a>* value = [patternText convertPropertyOfObject:object];
-<a name="l00831"></a>00831     [paths addObject:value];
-<a name="l00832"></a>00832   }
-<a name="l00833"></a>00833 
-<a name="l00834"></a>00834   <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html">NSString</a>* name in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> keyEnumerator]) {
-<a name="l00835"></a>00835     id&lt;TTURLPatternText&gt; patternText = [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectForKey:name];
-<a name="l00836"></a>00836     <a class="code" href="class_n_s_string.html">NSString</a>* value = [patternText convertPropertyOfObject:object];
-<a name="l00837"></a>00837     <a class="code" href="class_n_s_string.html">NSString</a>* pair = [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:@&quot;%@=%@&quot;, name, value];
-<a name="l00838"></a>00838     <span class="keywordflow">if</span> (!queries) {
-<a name="l00839"></a>00839       queries = [<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> array];
-<a name="l00840"></a>00840     }
-<a name="l00841"></a>00841     [queries addObject:pair];
-<a name="l00842"></a>00842   }
-<a name="l00843"></a>00843   
-<a name="l00844"></a>00844   <a class="code" href="class_n_s_string.html">NSString</a>* path = [paths componentsJoinedByString:@&quot;/&quot;];
-<a name="l00845"></a>00845   <span class="keywordflow">if</span> (queries) {
-<a name="l00846"></a>00846     <a class="code" href="class_n_s_string.html">NSString</a>* query = [queries componentsJoinedByString:@&quot;&amp;&quot;];
-<a name="l00847"></a>00847     <span class="keywordflow">return</span> [path stringByAppendingFormat:@&quot;?%@&quot;, query];
-<a name="l00848"></a>00848   } <span class="keywordflow">else</span> {
-<a name="l00849"></a>00849     <span class="keywordflow">return</span> path;
-<a name="l00850"></a>00850   }
-<a name="l00851"></a>00851 }
-<a name="l00852"></a>00852 
-<a name="l00853"></a>00853 <span class="keyword">@end</span>
+<a name="l00809"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a2d75eb26a824a736fef5ea07902db6a4">00809</a> - (void)<a class="code" href="interface_t_t_u_r_l_generator_pattern.html#a2d75eb26a824a736fef5ea07902db6a4">compile</a> {
+<a name="l00810"></a>00810   [<span class="keyword">self</span> <a class="code" href="interface_t_t_u_r_l_pattern.html#aa7f1639e3e9602cc6dea68b16539b492">compileURL</a>];
+<a name="l00811"></a>00811 
+<a name="l00812"></a>00812   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
+<a name="l00813"></a>00813     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00814"></a>00814       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00815"></a>00815       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:_targetClass];
+<a name="l00816"></a>00816     }
+<a name="l00817"></a>00817   }
+<a name="l00818"></a>00818 
+<a name="l00819"></a>00819   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; pattern in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectEnumerator]) {
+<a name="l00820"></a>00820     <span class="keywordflow">if</span> ([pattern isKindOfClass:[<a class="code" href="interface_t_t_u_r_l_wildcard.html">TTURLWildcard</a> <span class="keyword">class</span>]]) {
+<a name="l00821"></a>00821       TTURLWildcard* wildcard = (TTURLWildcard*)pattern;
+<a name="l00822"></a>00822       [wildcard <a class="code" href="interface_t_t_u_r_l_wildcard.html#a9473c66a4aafcfab0ef0dd1cd0a48b05">deduceSelectorForClass</a>:_targetClass];
+<a name="l00823"></a>00823     }
+<a name="l00824"></a>00824   }
+<a name="l00825"></a>00825 }
+<a name="l00826"></a>00826 
+<a name="l00827"></a><a class="code" href="interface_t_t_u_r_l_generator_pattern.html#aaf0bc4ce0fa5b578312e32cb00669e71">00827</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)generateURLFromObject:(<span class="keywordtype">id</span>)object {
+<a name="l00828"></a>00828   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* paths = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> array];
+<a name="l00829"></a>00829   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* queries = nil;
+<a name="l00830"></a>00830   [paths addObject:[<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%@:/&quot;, _scheme]];
+<a name="l00831"></a>00831 
+<a name="l00832"></a>00832   <span class="keywordflow">for</span> (id&lt;TTURLPatternText&gt; patternText in <a class="code" href="interface_t_t_u_r_l_pattern.html#a96e77b0b462c7e0ebb4fb9bcbbd4a2bf">_path</a>) {
+<a name="l00833"></a>00833     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* value = [patternText convertPropertyOfObject:object];
+<a name="l00834"></a>00834     [paths addObject:value];
+<a name="l00835"></a>00835   }
+<a name="l00836"></a>00836 
+<a name="l00837"></a>00837   <span class="keywordflow">for</span> (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* name in [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> keyEnumerator]) {
+<a name="l00838"></a>00838     id&lt;TTURLPatternText&gt; patternText = [<a class="code" href="interface_t_t_u_r_l_pattern.html#ab2316c7e669924aa12500adbe91ebf5d">_query</a> objectForKey:name];
+<a name="l00839"></a>00839     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* value = [patternText convertPropertyOfObject:object];
+<a name="l00840"></a>00840     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* pair = [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:@&quot;%@=%@&quot;, name, value];
+<a name="l00841"></a>00841     <span class="keywordflow">if</span> (!queries) {
+<a name="l00842"></a>00842       queries = [<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> array];
+<a name="l00843"></a>00843     }
+<a name="l00844"></a>00844     [queries addObject:pair];
+<a name="l00845"></a>00845   }
+<a name="l00846"></a>00846   
+<a name="l00847"></a>00847   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* path = [paths componentsJoinedByString:@&quot;/&quot;];
+<a name="l00848"></a>00848   <span class="keywordflow">if</span> (queries) {
+<a name="l00849"></a>00849     <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* query = [queries componentsJoinedByString:@&quot;&amp;&quot;];
+<a name="l00850"></a>00850     <span class="keywordflow">return</span> [path stringByAppendingFormat:@&quot;?%@&quot;, query];
+<a name="l00851"></a>00851   } <span class="keywordflow">else</span> {
+<a name="l00852"></a>00852     <span class="keywordflow">return</span> path;
+<a name="l00853"></a>00853   }
+<a name="l00854"></a>00854 }
+<a name="l00855"></a>00855 
+<a name="l00856"></a>00856 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

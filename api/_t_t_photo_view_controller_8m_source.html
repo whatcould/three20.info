@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,706 +76,710 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_photo_view_controller_8h.html">Three20/TTPhotoViewController.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_request_8h.html">Three20/TTURLRequest.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_photo_view_8h.html">Three20/TTPhotoView.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_activity_label_8h.html">Three20/TTActivityLabel.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00023"></a>00023 
-<a name="l00025"></a>00025 <span class="comment">// global</span>
-<a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ada2a359a1c0b83e3b54892d984ba1b77">00027</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ada2a359a1c0b83e3b54892d984ba1b77">kPhotoLoadLongDelay</a> = 0.5;
-<a name="l00028"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ac57910c5ee8ee1299e004e6a666f0d26">00028</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ac57910c5ee8ee1299e004e6a666f0d26">kPhotoLoadShortDelay</a> = 0.25;
-<a name="l00029"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ae92f8bab7b308cd74fabf1bb66cca15c">00029</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ae92f8bab7b308cd74fabf1bb66cca15c">kSlideshowInterval</a> = 2;
-<a name="l00030"></a><a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">00030</a> <span class="keyword">static</span> <span class="keyword">const</span> NSInteger <a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">kActivityLabelTag</a> = 96;
-<a name="l00031"></a>00031 
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_photo_view_controller.html">TTPhotoViewController</a>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_locale_8h.html">Three20/TTGlobalCoreLocale.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_u_r_l_cache_8h.html">Three20/TTURLCache.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_photo_view_8h.html">Three20/TTPhotoView.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_activity_label_8h.html">Three20/TTActivityLabel.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00027"></a>00027 
+<a name="l00029"></a>00029 <span class="comment">// global</span>
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ada2a359a1c0b83e3b54892d984ba1b77">00031</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ada2a359a1c0b83e3b54892d984ba1b77">kPhotoLoadLongDelay</a> = 0.5;
+<a name="l00032"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ac57910c5ee8ee1299e004e6a666f0d26">00032</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ac57910c5ee8ee1299e004e6a666f0d26">kPhotoLoadShortDelay</a> = 0.25;
+<a name="l00033"></a><a class="code" href="_t_t_photo_view_controller_8m.html#ae92f8bab7b308cd74fabf1bb66cca15c">00033</a> <span class="keyword">static</span> <span class="keyword">const</span> NSTimeInterval <a class="code" href="_t_t_photo_view_controller_8m.html#ae92f8bab7b308cd74fabf1bb66cca15c">kSlideshowInterval</a> = 2;
+<a name="l00034"></a><a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">00034</a> <span class="keyword">static</span> <span class="keyword">const</span> NSInteger <a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">kActivityLabelTag</a> = 96;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">@synthesize</span> photoSource = _photoSource, <a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449" title="The photo that is currently visible and centered.">centerPhoto</a> = _centerPhoto,
-<a name="l00037"></a>00037   <a class="code" href="interface_t_t_photo_view_controller.html#a8a4e41837254638e66304de521e7de5a" title="The index of the currently visible photo.">centerPhotoIndex</a> = _centerPhotoIndex, <a class="code" href="interface_t_t_photo_view_controller.html#a982625320715d2e51c0f75bae607aeff" title="The default image to show before a photo has been loaded.">defaultImage</a> = _defaultImage, <a class="code" href="interface_t_t_photo_view_controller.html#a2e04d249898456d712dd25ac1a2b42a1" title="The style to use for the caption label.">captionStyle</a> = _captionStyle;
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040 <span class="comment">// private</span>
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)centerPhotoView {
-<a name="l00043"></a>00043   <span class="keywordflow">return</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)_scrollView.centerPage;
-<a name="l00044"></a>00044 }
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_photo_view_controller.html">TTPhotoViewController</a>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="keyword">@synthesize</span> photoSource = _photoSource, <a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449" title="The photo that is currently visible and centered.">centerPhoto</a> = _centerPhoto,
+<a name="l00041"></a>00041   <a class="code" href="interface_t_t_photo_view_controller.html#a8a4e41837254638e66304de521e7de5a" title="The index of the currently visible photo.">centerPhotoIndex</a> = _centerPhotoIndex, <a class="code" href="interface_t_t_photo_view_controller.html#a982625320715d2e51c0f75bae607aeff" title="The default image to show before a photo has been loaded.">defaultImage</a> = _defaultImage, <a class="code" href="interface_t_t_photo_view_controller.html#a2e04d249898456d712dd25ac1a2b42a1" title="The style to use for the caption label.">captionStyle</a> = _captionStyle;
+<a name="l00042"></a>00042 
+<a name="l00044"></a>00044 <span class="comment">// private</span>
 <a name="l00045"></a>00045 
-<a name="l00046"></a>00046 - (void)loadImageDelayed {
-<a name="l00047"></a>00047   _loadTimer = nil;
-<a name="l00048"></a>00048   [<span class="keyword">self</span>.centerPhotoView loadImage];
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 - (void)startImageLoadTimer:(NSTimeInterval)delay {
-<a name="l00052"></a>00052   [_loadTimer invalidate];
-<a name="l00053"></a>00053   _loadTimer = [NSTimer scheduledTimerWithTimeInterval:delay target:self
-<a name="l00054"></a>00054     selector:@selector(loadImageDelayed) userInfo:nil repeats:NO];
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 - (void)cancelImageLoadTimer {
-<a name="l00058"></a>00058   [_loadTimer invalidate];
-<a name="l00059"></a>00059   _loadTimer = nil;
-<a name="l00060"></a>00060 }
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 - (void)loadImages {
-<a name="l00063"></a>00063   <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* centerPhotoView = <span class="keyword">self</span>.centerPhotoView;
-<a name="l00064"></a>00064   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in _scrollView.visiblePages.objectEnumerator) {
-<a name="l00065"></a>00065     <span class="keywordflow">if</span> (photoView == centerPhotoView) {
-<a name="l00066"></a>00066       [photoView loadPreview:NO];
-<a name="l00067"></a>00067     } <span class="keywordflow">else</span> {
-<a name="l00068"></a>00068       [photoView loadPreview:YES];
-<a name="l00069"></a>00069     }
-<a name="l00070"></a>00070   }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072   <span class="keywordflow">if</span> (_delayLoad) {
-<a name="l00073"></a>00073     _delayLoad = NO;
-<a name="l00074"></a>00074     [<span class="keyword">self</span> startImageLoadTimer:kPhotoLoadLongDelay];
-<a name="l00075"></a>00075   } <span class="keywordflow">else</span> {
-<a name="l00076"></a>00076     [centerPhotoView <a class="code" href="interface_t_t_photo_view.html#a8da3fbba67a410f152f5fe563b7a886e">loadImage</a>];
-<a name="l00077"></a>00077   }
-<a name="l00078"></a>00078 }
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080 - (void)updateChrome {
-<a name="l00081"></a>00081   <span class="keywordflow">if</span> (_photoSource.numberOfPhotos &lt; 2) {
-<a name="l00082"></a>00082     <span class="keyword">self</span>.title = _photoSource.title;
-<a name="l00083"></a>00083   } <span class="keywordflow">else</span> {
-<a name="l00084"></a>00084     <span class="keyword">self</span>.title = [<a class="code" href="class_n_s_string.html">NSString</a> stringWithFormat:
-<a name="l00085"></a>00085       TTLocalizedString(@&quot;%d of %d&quot;, @&quot;Current page in photo browser (1 of 10)&quot;),
-<a name="l00086"></a>00086       _centerPhotoIndex+1, _photoSource.numberOfPhotos];
-<a name="l00087"></a>00087   }
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089   <span class="keywordflow">if</span> (![<span class="keyword">self</span>.previousViewController isKindOfClass:[<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a> <span class="keyword">class</span>]]) {
-<a name="l00090"></a>00090     <span class="keywordflow">if</span> (_photoSource.numberOfPhotos &gt; 1) {
-<a name="l00091"></a>00091       <span class="keyword">self</span>.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-<a name="l00092"></a>00092         initWithTitle:TTLocalizedString(@&quot;See All&quot;, @&quot;See all photo thumbnails&quot;)
-<a name="l00093"></a>00093         style:UIBarButtonItemStyleBordered target:self action:@selector(showThumbnails)];
-<a name="l00094"></a>00094     } <span class="keywordflow">else</span> {
-<a name="l00095"></a>00095       <span class="keyword">self</span>.navigationItem.rightBarButtonItem = nil;
-<a name="l00096"></a>00096     }
-<a name="l00097"></a>00097   } <span class="keywordflow">else</span> {
-<a name="l00098"></a>00098     <span class="keyword">self</span>.navigationItem.rightBarButtonItem = nil;
-<a name="l00099"></a>00099   }
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101   UIBarButtonItem* playButton = [_toolbar itemWithTag:1];
-<a name="l00102"></a>00102   playButton.enabled = _photoSource.numberOfPhotos &gt; 1;
-<a name="l00103"></a>00103   _previousButton.enabled = _centerPhotoIndex &gt; 0;
-<a name="l00104"></a>00104   _nextButton.enabled = _centerPhotoIndex &gt;= 0 &amp;&amp; _centerPhotoIndex &lt; _photoSource.numberOfPhotos-1;
-<a name="l00105"></a>00105 }
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107 - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
-<a name="l00108"></a>00108   <span class="keywordflow">if</span> (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-<a name="l00109"></a>00109     _toolbar.height = <a class="code" href="_t_t_global_8h.html#a8355d1817418cac3fca5f6c18b8b5317">TT_TOOLBAR_HEIGHT</a>;
-<a name="l00110"></a>00110   } <span class="keywordflow">else</span> {
-<a name="l00111"></a>00111     _toolbar.height = <a class="code" href="_t_t_global_8h.html#a3f899b31af214ff29c1b701981002611">TT_LANDSCAPE_TOOLBAR_HEIGHT</a>+1;
-<a name="l00112"></a>00112   }
-<a name="l00113"></a>00113   _toolbar.top = <span class="keyword">self</span>.view.height - _toolbar.height;
-<a name="l00114"></a>00114 }
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 - (void)updatePhotoView {
-<a name="l00117"></a>00117   _scrollView.centerPageIndex = _centerPhotoIndex;
-<a name="l00118"></a>00118   [<span class="keyword">self</span> loadImages];
-<a name="l00119"></a>00119   [<span class="keyword">self</span> updateChrome];
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122 - (void)moveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
-<a name="l00123"></a>00123   id&lt;TTPhoto&gt; previousPhoto = [_centerPhoto autorelease];
-<a name="l00124"></a>00124   _centerPhoto = [photo retain];
-<a name="l00125"></a>00125   [<span class="keyword">self</span> didMoveToPhoto:_centerPhoto fromPhoto:previousPhoto];
-<a name="l00126"></a>00126 }
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128 - (void)moveToPhotoAtIndex:(NSInteger)photoIndex withDelay:(BOOL)withDelay {
-<a name="l00129"></a>00129   _centerPhotoIndex = photoIndex == <a class="code" href="_t_t_photo_source_8h.html#a5250865005475a3b8bdb939006e8abfe">TT_NULL_PHOTO_INDEX</a> ? 0 : photoIndex;
-<a name="l00130"></a>00130   [<span class="keyword">self</span> moveToPhoto:[_photoSource photoAtIndex:_centerPhotoIndex]];
-<a name="l00131"></a>00131   _delayLoad = withDelay;
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 - (void)showPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo inView:(<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)photoView {
-<a name="l00135"></a>00135   photoView.<a class="code" href="interface_t_t_photo_view.html#ac557444572725bb842972e20e164d740">photo</a> = photo;
-<a name="l00136"></a>00136   <span class="keywordflow">if</span> (!photoView.<a class="code" href="interface_t_t_photo_view.html#ac557444572725bb842972e20e164d740">photo</a> &amp;&amp; _statusText) {
-<a name="l00137"></a>00137     [photoView <a class="code" href="interface_t_t_photo_view.html#a4b7b24fa6f5ae07a6c7a00727e013572">showStatus</a>:_statusText];
-<a name="l00138"></a>00138   }
-<a name="l00139"></a>00139 }
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141 - (void)updateVisiblePhotoViews {
-<a name="l00142"></a>00142   [<span class="keyword">self</span> moveToPhoto:[_photoSource photoAtIndex:_centerPhotoIndex]];
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144   NSDictionary* photoViews = _scrollView.visiblePages;
-<a name="l00145"></a>00145   <span class="keywordflow">for</span> (NSNumber* key in photoViews.keyEnumerator) {
-<a name="l00146"></a>00146     <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView = [photoViews objectForKey:key];
-<a name="l00147"></a>00147     [photoView <a class="code" href="interface_t_t_photo_view.html#af1133eef881ee75aff1d9c015d45b881">showProgress</a>:-1];
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149     id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:key.intValue];
-<a name="l00150"></a>00150     [<span class="keyword">self</span> showPhoto:photo inView:photoView];
-<a name="l00151"></a>00151   }
-<a name="l00152"></a>00152 }
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154 - (void)resetVisiblePhotoViews {
-<a name="l00155"></a>00155   NSDictionary* photoViews = _scrollView.visiblePages;
-<a name="l00156"></a>00156   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in photoViews.objectEnumerator) {
-<a name="l00157"></a>00157     <span class="keywordflow">if</span> (!photoView.<a class="code" href="interface_t_t_image_view.html#a665f800cac80e9b94521e68adf7f06e8">isLoading</a>) {
-<a name="l00158"></a>00158       [photoView <a class="code" href="interface_t_t_photo_view.html#af1133eef881ee75aff1d9c015d45b881">showProgress</a>:-1];
-<a name="l00159"></a>00159     }
-<a name="l00160"></a>00160   }
-<a name="l00161"></a>00161 }
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163 - (BOOL)isShowingChrome {
-<a name="l00164"></a>00164   UINavigationBar* bar = <span class="keyword">self</span>.navigationController.navigationBar;
-<a name="l00165"></a>00165   <span class="keywordflow">return</span> bar ? bar.alpha != 0 : 1;
-<a name="l00166"></a>00166 }
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)statusView {
-<a name="l00169"></a>00169   <span class="keywordflow">if</span> (!_photoStatusView) {
-<a name="l00170"></a>00170     _photoStatusView = [[<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a> alloc] initWithFrame:_scrollView.frame];
-<a name="l00171"></a>00171     _photoStatusView.<a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">defaultImage</a> = _defaultImage;
-<a name="l00172"></a>00172     _photoStatusView.photo = nil;
-<a name="l00173"></a>00173     [_innerView addSubview:_photoStatusView];
-<a name="l00174"></a>00174   }
-<a name="l00175"></a>00175   
-<a name="l00176"></a>00176   <span class="keywordflow">return</span> _photoStatusView;
-<a name="l00177"></a>00177 }
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179 - (void)showProgress:(CGFloat)progress {
-<a name="l00180"></a>00180   <span class="keywordflow">if</span> ((<span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a3fad106e9b72dad803a0e3c3a36b071c" title="The view has appeared at least once.">hasViewAppeared</a> || <span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a0f9eb32fa175f7eb735cdb44a9fe5a61" title="The view is currently visible.">isViewAppearing</a>) &amp;&amp; progress &gt;= 0 &amp;&amp; !<span class="keyword">self</span>.centerPhotoView) {
-<a name="l00181"></a>00181     [<span class="keyword">self</span>.statusView showProgress:progress];
-<a name="l00182"></a>00182     <span class="keyword">self</span>.statusView.hidden = NO;
-<a name="l00183"></a>00183   } <span class="keywordflow">else</span> {
-<a name="l00184"></a>00184     _photoStatusView.hidden = YES;
-<a name="l00185"></a>00185   }
-<a name="l00186"></a>00186 }
-<a name="l00187"></a>00187 
-<a name="l00188"></a>00188 - (void)showStatus:(<a class="code" href="class_n_s_string.html">NSString</a>*)status {
-<a name="l00189"></a>00189   [_statusText release];
-<a name="l00190"></a>00190   _statusText = [status retain];
+<a name="l00046"></a><a class="code" href="interface_t_t_photo_view_controller.html#af50ab1522eaed673bbef458467ed5fbf">00046</a> - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#af50ab1522eaed673bbef458467ed5fbf">centerPhotoView</a> {
+<a name="l00047"></a>00047   <span class="keywordflow">return</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)_scrollView.centerPage;
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="interface_t_t_photo_view_controller.html#a8260c7ff67d6686ab952f2547d745d94">00050</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a8260c7ff67d6686ab952f2547d745d94">loadImageDelayed</a> {
+<a name="l00051"></a>00051   _loadTimer = nil;
+<a name="l00052"></a>00052   [<span class="keyword">self</span>.centerPhotoView loadImage];
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="interface_t_t_photo_view_controller.html#a92b8a11a3ec3b12d5ffbdbfe903f3fe2">00055</a> - (void)startImageLoadTimer:(NSTimeInterval)delay {
+<a name="l00056"></a>00056   [_loadTimer invalidate];
+<a name="l00057"></a>00057   _loadTimer = [NSTimer scheduledTimerWithTimeInterval:delay target:self
+<a name="l00058"></a>00058     selector:@selector(loadImageDelayed) userInfo:nil repeats:NO];
+<a name="l00059"></a>00059 }
+<a name="l00060"></a>00060 
+<a name="l00061"></a><a class="code" href="interface_t_t_photo_view_controller.html#ad3015698cb285992bcd6cd9ceb62b609">00061</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#ad3015698cb285992bcd6cd9ceb62b609">cancelImageLoadTimer</a> {
+<a name="l00062"></a>00062   [_loadTimer invalidate];
+<a name="l00063"></a>00063   _loadTimer = nil;
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="interface_t_t_photo_view_controller.html#a980e106037c3ac0e5c39b0b2369f96ba">00066</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a980e106037c3ac0e5c39b0b2369f96ba">loadImages</a> {
+<a name="l00067"></a>00067   <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* <a class="code" href="interface_t_t_photo_view_controller.html#af50ab1522eaed673bbef458467ed5fbf">centerPhotoView</a> = <span class="keyword">self</span>.centerPhotoView;
+<a name="l00068"></a>00068   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in _scrollView.visiblePages.objectEnumerator) {
+<a name="l00069"></a>00069     <span class="keywordflow">if</span> (photoView == centerPhotoView) {
+<a name="l00070"></a>00070       [photoView loadPreview:NO];
+<a name="l00071"></a>00071     } <span class="keywordflow">else</span> {
+<a name="l00072"></a>00072       [photoView loadPreview:YES];
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074   }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076   <span class="keywordflow">if</span> (_delayLoad) {
+<a name="l00077"></a>00077     _delayLoad = NO;
+<a name="l00078"></a>00078     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a92b8a11a3ec3b12d5ffbdbfe903f3fe2">startImageLoadTimer</a>:kPhotoLoadLongDelay];
+<a name="l00079"></a>00079   } <span class="keywordflow">else</span> {
+<a name="l00080"></a>00080     [centerPhotoView <a class="code" href="interface_t_t_photo_view.html#a8da3fbba67a410f152f5fe563b7a886e">loadImage</a>];
+<a name="l00081"></a>00081   }
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="interface_t_t_photo_view_controller.html#afe53cb26b294a6a286e12ca62c118975">00084</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#afe53cb26b294a6a286e12ca62c118975">updateChrome</a> {
+<a name="l00085"></a>00085   <span class="keywordflow">if</span> (_photoSource.numberOfPhotos &lt; 2) {
+<a name="l00086"></a>00086     <span class="keyword">self</span>.title = _photoSource.title;
+<a name="l00087"></a>00087   } <span class="keywordflow">else</span> {
+<a name="l00088"></a>00088     <span class="keyword">self</span>.title = [<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> stringWithFormat:
+<a name="l00089"></a>00089       TTLocalizedString(@&quot;%d of %d&quot;, @&quot;Current page in photo browser (1 of 10)&quot;),
+<a name="l00090"></a>00090       _centerPhotoIndex+1, _photoSource.numberOfPhotos];
+<a name="l00091"></a>00091   }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093   <span class="keywordflow">if</span> (![<span class="keyword">self</span>.<a class="code" href="class_u_i_view_controller.html#a8cbccb7086b10a037dcb8dc860e8b3c9" title="The view controller that comes before this one in a navigation controller&amp;#39;s history...">ttPreviousViewController</a> isKindOfClass:[<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a> <span class="keyword">class</span>]]) {
+<a name="l00094"></a>00094     <span class="keywordflow">if</span> (_photoSource.numberOfPhotos &gt; 1) {
+<a name="l00095"></a>00095       <span class="keyword">self</span>.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+<a name="l00096"></a>00096         initWithTitle:TTLocalizedString(@&quot;See All&quot;, @&quot;See all photo thumbnails&quot;)
+<a name="l00097"></a>00097         style:UIBarButtonItemStyleBordered target:self action:@selector(showThumbnails)];
+<a name="l00098"></a>00098     } <span class="keywordflow">else</span> {
+<a name="l00099"></a>00099       <span class="keyword">self</span>.navigationItem.rightBarButtonItem = nil;
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101   } <span class="keywordflow">else</span> {
+<a name="l00102"></a>00102     <span class="keyword">self</span>.navigationItem.rightBarButtonItem = nil;
+<a name="l00103"></a>00103   }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105   UIBarButtonItem* playButton = [_toolbar itemWithTag:1];
+<a name="l00106"></a>00106   playButton.enabled = _photoSource.numberOfPhotos &gt; 1;
+<a name="l00107"></a>00107   _previousButton.enabled = _centerPhotoIndex &gt; 0;
+<a name="l00108"></a>00108   _nextButton.enabled = _centerPhotoIndex &gt;= 0 &amp;&amp; _centerPhotoIndex &lt; _photoSource.numberOfPhotos-1;
+<a name="l00109"></a>00109 }
+<a name="l00110"></a>00110 
+<a name="l00111"></a><a class="code" href="interface_t_t_photo_view_controller.html#afde7b7322e0a4502f9440be077673838">00111</a> - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
+<a name="l00112"></a>00112   <span class="keywordflow">if</span> (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+<a name="l00113"></a>00113     _toolbar.height = <a class="code" href="_t_t_global_u_i_8h.html#a8355d1817418cac3fca5f6c18b8b5317">TT_TOOLBAR_HEIGHT</a>;
+<a name="l00114"></a>00114   } <span class="keywordflow">else</span> {
+<a name="l00115"></a>00115     _toolbar.height = <a class="code" href="_t_t_global_u_i_8h.html#a3f899b31af214ff29c1b701981002611">TT_LANDSCAPE_TOOLBAR_HEIGHT</a>+1;
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117   _toolbar.top = <span class="keyword">self</span>.view.height - _toolbar.height;
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="interface_t_t_photo_view_controller.html#ac70af56553f5795d710f37bc84819cc0">00120</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#ac70af56553f5795d710f37bc84819cc0">updatePhotoView</a> {
+<a name="l00121"></a>00121   _scrollView.centerPageIndex = _centerPhotoIndex;
+<a name="l00122"></a>00122   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a980e106037c3ac0e5c39b0b2369f96ba">loadImages</a>];
+<a name="l00123"></a>00123   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#afe53cb26b294a6a286e12ca62c118975">updateChrome</a>];
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="interface_t_t_photo_view_controller.html#a07d589bc2215495aab37ecc4c69a785e">00126</a> - (void)moveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
+<a name="l00127"></a>00127   id&lt;TTPhoto&gt; previousPhoto = [_centerPhoto autorelease];
+<a name="l00128"></a>00128   _centerPhoto = [photo retain];
+<a name="l00129"></a>00129   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9064c23303da44dd0f431bc7ab423e31" title="Sent to the controller after it moves from one photo to another.">didMoveToPhoto</a>:_centerPhoto <a class="code" href="interface_t_t_photo_view_controller.html#a9064c23303da44dd0f431bc7ab423e31" title="Sent to the controller after it moves from one photo to another.">fromPhoto</a>:previousPhoto];
+<a name="l00130"></a>00130 }
+<a name="l00131"></a>00131 
+<a name="l00132"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">00132</a> - (void)moveToPhotoAtIndex:(NSInteger)photoIndex withDelay:(BOOL)withDelay {
+<a name="l00133"></a>00133   _centerPhotoIndex = photoIndex == <a class="code" href="_t_t_photo_source_8h.html#a5250865005475a3b8bdb939006e8abfe">TT_NULL_PHOTO_INDEX</a> ? 0 : photoIndex;
+<a name="l00134"></a>00134   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a07d589bc2215495aab37ecc4c69a785e">moveToPhoto</a>:[_photoSource photoAtIndex:_centerPhotoIndex]];
+<a name="l00135"></a>00135   _delayLoad = withDelay;
+<a name="l00136"></a>00136 }
+<a name="l00137"></a>00137 
+<a name="l00138"></a><a class="code" href="interface_t_t_photo_view_controller.html#a28879ea7b13a9384cc0ccccc7fc8635f">00138</a> - (void)showPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo inView:(<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)photoView {
+<a name="l00139"></a>00139   photoView.<a class="code" href="interface_t_t_photo_view.html#ac557444572725bb842972e20e164d740">photo</a> = photo;
+<a name="l00140"></a>00140   <span class="keywordflow">if</span> (!photoView.<a class="code" href="interface_t_t_photo_view.html#ac557444572725bb842972e20e164d740">photo</a> &amp;&amp; _statusText) {
+<a name="l00141"></a>00141     [photoView <a class="code" href="interface_t_t_photo_view.html#a4b7b24fa6f5ae07a6c7a00727e013572">showStatus</a>:_statusText];
+<a name="l00142"></a>00142   }
+<a name="l00143"></a>00143 }
+<a name="l00144"></a>00144 
+<a name="l00145"></a><a class="code" href="interface_t_t_photo_view_controller.html#a7df5a2bcee35b3b207439f1c72e1e1f9">00145</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a7df5a2bcee35b3b207439f1c72e1e1f9">updateVisiblePhotoViews</a> {
+<a name="l00146"></a>00146   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a07d589bc2215495aab37ecc4c69a785e">moveToPhoto</a>:[_photoSource photoAtIndex:_centerPhotoIndex]];
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148   NSDictionary* photoViews = _scrollView.visiblePages;
+<a name="l00149"></a>00149   <span class="keywordflow">for</span> (NSNumber* key in photoViews.keyEnumerator) {
+<a name="l00150"></a>00150     <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView = [photoViews objectForKey:key];
+<a name="l00151"></a>00151     [photoView <a class="code" href="interface_t_t_photo_view.html#af1133eef881ee75aff1d9c015d45b881">showProgress</a>:-1];
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153     id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:key.intValue];
+<a name="l00154"></a>00154     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a28879ea7b13a9384cc0ccccc7fc8635f">showPhoto</a>:photo <a class="code" href="interface_t_t_photo_view_controller.html#a28879ea7b13a9384cc0ccccc7fc8635f">inView</a>:photoView];
+<a name="l00155"></a>00155   }
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a><a class="code" href="interface_t_t_photo_view_controller.html#a8d968a6aefc1650d36fb081040ee8ea5">00158</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a8d968a6aefc1650d36fb081040ee8ea5">resetVisiblePhotoViews</a> {
+<a name="l00159"></a>00159   NSDictionary* photoViews = _scrollView.visiblePages;
+<a name="l00160"></a>00160   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in photoViews.objectEnumerator) {
+<a name="l00161"></a>00161     <span class="keywordflow">if</span> (!photoView.<a class="code" href="interface_t_t_image_view.html#a665f800cac80e9b94521e68adf7f06e8">isLoading</a>) {
+<a name="l00162"></a>00162       [photoView <a class="code" href="interface_t_t_photo_view.html#af1133eef881ee75aff1d9c015d45b881">showProgress</a>:-1];
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164   }
+<a name="l00165"></a>00165 }
+<a name="l00166"></a>00166 
+<a name="l00167"></a><a class="code" href="interface_t_t_photo_view_controller.html#a19f58e8ba91e4b30335a5dc1472e3944">00167</a> - (BOOL)<a class="code" href="interface_t_t_photo_view_controller.html#a19f58e8ba91e4b30335a5dc1472e3944">isShowingChrome</a> {
+<a name="l00168"></a>00168   UINavigationBar* bar = <span class="keyword">self</span>.navigationController.navigationBar;
+<a name="l00169"></a>00169   <span class="keywordflow">return</span> bar ? bar.alpha != 0 : 1;
+<a name="l00170"></a>00170 }
+<a name="l00171"></a>00171 
+<a name="l00172"></a><a class="code" href="interface_t_t_photo_view_controller.html#aeeebbcafa35f19c860dd11c641cb5085">00172</a> - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#aeeebbcafa35f19c860dd11c641cb5085">statusView</a> {
+<a name="l00173"></a>00173   <span class="keywordflow">if</span> (!_photoStatusView) {
+<a name="l00174"></a>00174     _photoStatusView = [[<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a> alloc] initWithFrame:_scrollView.frame];
+<a name="l00175"></a>00175     _photoStatusView.<a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">defaultImage</a> = _defaultImage;
+<a name="l00176"></a>00176     _photoStatusView.photo = nil;
+<a name="l00177"></a>00177     [_innerView addSubview:_photoStatusView];
+<a name="l00178"></a>00178   }
+<a name="l00179"></a>00179   
+<a name="l00180"></a>00180   <span class="keywordflow">return</span> _photoStatusView;
+<a name="l00181"></a>00181 }
+<a name="l00182"></a>00182 
+<a name="l00183"></a><a class="code" href="interface_t_t_photo_view_controller.html#a203163225904eadaea96bc6558e417c3">00183</a> - (void)showProgress:(CGFloat)progress {
+<a name="l00184"></a>00184   <span class="keywordflow">if</span> ((<span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a3fad106e9b72dad803a0e3c3a36b071c" title="The view has appeared at least once.">hasViewAppeared</a> || <span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a0f9eb32fa175f7eb735cdb44a9fe5a61" title="The view is currently visible.">isViewAppearing</a>) &amp;&amp; progress &gt;= 0 &amp;&amp; !<span class="keyword">self</span>.centerPhotoView) {
+<a name="l00185"></a>00185     [<span class="keyword">self</span>.statusView <a class="code" href="interface_t_t_photo_view_controller.html#a203163225904eadaea96bc6558e417c3">showProgress</a>:progress];
+<a name="l00186"></a>00186     <span class="keyword">self</span>.statusView.hidden = NO;
+<a name="l00187"></a>00187   } <span class="keywordflow">else</span> {
+<a name="l00188"></a>00188     _photoStatusView.hidden = YES;
+<a name="l00189"></a>00189   }
+<a name="l00190"></a>00190 }
 <a name="l00191"></a>00191 
-<a name="l00192"></a>00192   <span class="keywordflow">if</span> ((<span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a3fad106e9b72dad803a0e3c3a36b071c" title="The view has appeared at least once.">hasViewAppeared</a> || <span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a0f9eb32fa175f7eb735cdb44a9fe5a61" title="The view is currently visible.">isViewAppearing</a>) &amp;&amp; status &amp;&amp; !<span class="keyword">self</span>.centerPhotoView) {
-<a name="l00193"></a>00193     [<span class="keyword">self</span>.statusView showStatus:status];
-<a name="l00194"></a>00194     <span class="keyword">self</span>.statusView.hidden = NO;
-<a name="l00195"></a>00195   } <span class="keywordflow">else</span> {
-<a name="l00196"></a>00196     _photoStatusView.hidden = YES;
-<a name="l00197"></a>00197   }
-<a name="l00198"></a>00198 }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200 - (void)showCaptions:(BOOL)show {
-<a name="l00201"></a>00201   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in _scrollView.visiblePages.objectEnumerator) {
-<a name="l00202"></a>00202     photoView.<a class="code" href="interface_t_t_photo_view.html#a6a731e6e91de5899e45dd97ef760d7e9">hidesCaption</a> = !show;
-<a name="l00203"></a>00203   }
-<a name="l00204"></a>00204 }
-<a name="l00205"></a>00205 
-<a name="l00206"></a>00206 - (<a class="code" href="class_n_s_string.html">NSString</a>*)URLForThumbnails {
-<a name="l00207"></a>00207   <span class="keywordflow">if</span> ([<span class="keyword">self</span>.photoSource respondsToSelector:<span class="keyword">@selector</span>(URLValueWithName:)]) {
-<a name="l00208"></a>00208     <span class="keywordflow">return</span> [<span class="keyword">self</span>.photoSource performSelector:@selector(URLValueWithName:)
-<a name="l00209"></a>00209                              withObject:@&quot;TTThumbsViewController&quot;];
-<a name="l00210"></a>00210   } <span class="keywordflow">else</span> {
-<a name="l00211"></a>00211     <span class="keywordflow">return</span> nil;
-<a name="l00212"></a>00212   }
-<a name="l00213"></a>00213 }
-<a name="l00214"></a>00214 
-<a name="l00215"></a>00215 - (void)showThumbnails {
-<a name="l00216"></a>00216   <a class="code" href="class_n_s_string.html">NSString</a>* URL = [<span class="keyword">self</span> URLForThumbnails];
-<a name="l00217"></a>00217   <span class="keywordflow">if</span> (!_thumbsController) {
-<a name="l00218"></a>00218     <span class="keywordflow">if</span> (URL) {
-<a name="l00219"></a>00219       <span class="comment">// The photo source has a URL mapping in TTURLMap, so we use that to show the thumbs</span>
-<a name="l00220"></a>00220       NSDictionary* query = [NSDictionary dictionaryWithObject:self forKey:@&quot;delegate&quot;];
-<a name="l00221"></a>00221       _thumbsController = [[[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">query</a>:query] retain];
-<a name="l00222"></a>00222       [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>].URLMap setObject:_thumbsController forURL:URL];
-<a name="l00223"></a>00223     } <span class="keywordflow">else</span> {
-<a name="l00224"></a>00224       <span class="comment">// The photo source had no URL mapping in TTURLMap, so we let the subclass show the thumbs</span>
-<a name="l00225"></a>00225       _thumbsController = [[<span class="keyword">self</span> createThumbsViewController] retain];
-<a name="l00226"></a>00226       _thumbsController.photoSource = _photoSource;
-<a name="l00227"></a>00227     }
-<a name="l00228"></a>00228   }
-<a name="l00229"></a>00229     
-<a name="l00230"></a>00230   <span class="keywordflow">if</span> (URL) {
-<a name="l00231"></a>00231     <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(URL);
-<a name="l00232"></a>00232   } <span class="keywordflow">else</span> {
-<a name="l00233"></a>00233     [<span class="keyword">self</span>.navigationController pushViewController:_thumbsController
-<a name="l00234"></a>00234                                animatedWithTransition:UIViewAnimationTransitionCurlDown];
-<a name="l00235"></a>00235   }
-<a name="l00236"></a>00236 }
-<a name="l00237"></a>00237 
-<a name="l00238"></a>00238 - (void)slideshowTimer {
-<a name="l00239"></a>00239   <span class="keywordflow">if</span> (_centerPhotoIndex == _photoSource.numberOfPhotos-1) {
-<a name="l00240"></a>00240     _scrollView.centerPageIndex = 0;
-<a name="l00241"></a>00241   } <span class="keywordflow">else</span> {
-<a name="l00242"></a>00242     _scrollView.centerPageIndex = _centerPhotoIndex+1;
-<a name="l00243"></a>00243   }
-<a name="l00244"></a>00244 }
-<a name="l00245"></a>00245 
-<a name="l00246"></a>00246 - (void)playAction {
-<a name="l00247"></a>00247   <span class="keywordflow">if</span> (!_slideshowTimer) {
-<a name="l00248"></a>00248     UIBarButtonItem* pauseButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00249"></a>00249       UIBarButtonSystemItemPause target:self action:@selector(pauseAction)] autorelease];
-<a name="l00250"></a>00250     pauseButton.tag = 1;
-<a name="l00251"></a>00251     
-<a name="l00252"></a>00252     [_toolbar replaceItemWithTag:1 withItem:pauseButton];
-<a name="l00253"></a>00253 
-<a name="l00254"></a>00254     _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:kSlideshowInterval
-<a name="l00255"></a>00255       target:self selector:@selector(slideshowTimer) userInfo:nil repeats:YES];
-<a name="l00256"></a>00256   }
-<a name="l00257"></a>00257 }
-<a name="l00258"></a>00258 
-<a name="l00259"></a>00259 - (void)pauseAction {
-<a name="l00260"></a>00260   <span class="keywordflow">if</span> (_slideshowTimer) {
-<a name="l00261"></a>00261     UIBarButtonItem* playButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00262"></a>00262       UIBarButtonSystemItemPlay target:self action:@selector(playAction)] autorelease];
-<a name="l00263"></a>00263     playButton.tag = 1;
-<a name="l00264"></a>00264     
-<a name="l00265"></a>00265     [_toolbar replaceItemWithTag:1 withItem:playButton];
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267     [_slideshowTimer invalidate];
-<a name="l00268"></a>00268     _slideshowTimer = nil;
-<a name="l00269"></a>00269   }
-<a name="l00270"></a>00270 }
-<a name="l00271"></a>00271 
-<a name="l00272"></a>00272 - (void)nextAction {
-<a name="l00273"></a>00273   [<span class="keyword">self</span> pauseAction];
-<a name="l00274"></a>00274   <span class="keywordflow">if</span> (_centerPhotoIndex &lt; _photoSource.numberOfPhotos-1) {
-<a name="l00275"></a>00275     _scrollView.centerPageIndex = _centerPhotoIndex+1;
-<a name="l00276"></a>00276   }
-<a name="l00277"></a>00277 }
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279 - (void)previousAction {
-<a name="l00280"></a>00280   [<span class="keyword">self</span> pauseAction];
-<a name="l00281"></a>00281   <span class="keywordflow">if</span> (_centerPhotoIndex &gt; 0) {
-<a name="l00282"></a>00282     _scrollView.centerPageIndex = _centerPhotoIndex-1;
-<a name="l00283"></a>00283   }
-<a name="l00284"></a>00284 }
-<a name="l00285"></a>00285 
-<a name="l00286"></a>00286 - (void)showBarsAnimationDidStop {
-<a name="l00287"></a>00287   <span class="keyword">self</span>.navigationController.navigationBarHidden = NO;
+<a name="l00192"></a><a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">00192</a> - (void)showStatus:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)status {
+<a name="l00193"></a>00193   [_statusText release];
+<a name="l00194"></a>00194   _statusText = [status retain];
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196   <span class="keywordflow">if</span> ((<span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a3fad106e9b72dad803a0e3c3a36b071c" title="The view has appeared at least once.">hasViewAppeared</a> || <span class="keyword">self</span>.<a class="code" href="interface_t_t_view_controller.html#a0f9eb32fa175f7eb735cdb44a9fe5a61" title="The view is currently visible.">isViewAppearing</a>) &amp;&amp; status &amp;&amp; !<span class="keyword">self</span>.centerPhotoView) {
+<a name="l00197"></a>00197     [<span class="keyword">self</span>.statusView <a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">showStatus</a>:status];
+<a name="l00198"></a>00198     <span class="keyword">self</span>.statusView.hidden = NO;
+<a name="l00199"></a>00199   } <span class="keywordflow">else</span> {
+<a name="l00200"></a>00200     _photoStatusView.hidden = YES;
+<a name="l00201"></a>00201   }
+<a name="l00202"></a>00202 }
+<a name="l00203"></a>00203 
+<a name="l00204"></a><a class="code" href="interface_t_t_photo_view_controller.html#a02b9fc430caeb5445a531b96ae6ab9bb">00204</a> - (void)showCaptions:(BOOL)show {
+<a name="l00205"></a>00205   <span class="keywordflow">for</span> (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView in _scrollView.visiblePages.objectEnumerator) {
+<a name="l00206"></a>00206     photoView.<a class="code" href="interface_t_t_photo_view.html#a6a731e6e91de5899e45dd97ef760d7e9">hidesCaption</a> = !show;
+<a name="l00207"></a>00207   }
+<a name="l00208"></a>00208 }
+<a name="l00209"></a>00209 
+<a name="l00210"></a><a class="code" href="interface_t_t_photo_view_controller.html#a3b2168d3bd94e034678530d25531db6d">00210</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#a3b2168d3bd94e034678530d25531db6d">URLForThumbnails</a> {
+<a name="l00211"></a>00211   <span class="keywordflow">if</span> ([<span class="keyword">self</span>.photoSource respondsToSelector:<span class="keyword">@selector</span>(URLValueWithName:)]) {
+<a name="l00212"></a>00212     <span class="keywordflow">return</span> [<span class="keyword">self</span>.photoSource performSelector:@selector(URLValueWithName:)
+<a name="l00213"></a>00213                              withObject:@&quot;TTThumbsViewController&quot;];
+<a name="l00214"></a>00214   } <span class="keywordflow">else</span> {
+<a name="l00215"></a>00215     <span class="keywordflow">return</span> nil;
+<a name="l00216"></a>00216   }
+<a name="l00217"></a>00217 }
+<a name="l00218"></a>00218 
+<a name="l00219"></a><a class="code" href="interface_t_t_photo_view_controller.html#a5380a3bed3387a9b7523c8edebc17004">00219</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a5380a3bed3387a9b7523c8edebc17004">showThumbnails</a> {
+<a name="l00220"></a>00220   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* URL = [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a3b2168d3bd94e034678530d25531db6d">URLForThumbnails</a>];
+<a name="l00221"></a>00221   <span class="keywordflow">if</span> (!_thumbsController) {
+<a name="l00222"></a>00222     <span class="keywordflow">if</span> (URL) {
+<a name="l00223"></a>00223       <span class="comment">// The photo source has a URL mapping in TTURLMap, so we use that to show the thumbs</span>
+<a name="l00224"></a>00224       NSDictionary* query = [NSDictionary dictionaryWithObject:self forKey:@&quot;delegate&quot;];
+<a name="l00225"></a>00225       _thumbsController = [[[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>] <a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">viewControllerForURL</a>:URL <a class="code" href="interface_t_t_navigator.html#adc100dec6e5f238fde778114d699fff5">query</a>:query] retain];
+<a name="l00226"></a>00226       [[<a class="code" href="interface_t_t_navigator.html">TTNavigator</a> <a class="code" href="interface_t_t_navigator.html#a4574658b6b7d34dd5561baaea610ef11">navigator</a>].URLMap setObject:_thumbsController forURL:URL];
+<a name="l00227"></a>00227     } <span class="keywordflow">else</span> {
+<a name="l00228"></a>00228       <span class="comment">// The photo source had no URL mapping in TTURLMap, so we let the subclass show the thumbs</span>
+<a name="l00229"></a>00229       _thumbsController = [[<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a31e0f57e5133442a296d12d7eb6da125" title="Creates the thumbnail controller used by the &amp;quot;See All&amp;quot; button.">createThumbsViewController</a>] retain];
+<a name="l00230"></a>00230       _thumbsController.photoSource = _photoSource;
+<a name="l00231"></a>00231     }
+<a name="l00232"></a>00232   }
+<a name="l00233"></a>00233     
+<a name="l00234"></a>00234   <span class="keywordflow">if</span> (URL) {
+<a name="l00235"></a>00235     <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(URL);
+<a name="l00236"></a>00236   } <span class="keywordflow">else</span> {
+<a name="l00237"></a>00237     [<span class="keyword">self</span>.navigationController pushViewController:_thumbsController
+<a name="l00238"></a>00238                                animatedWithTransition:UIViewAnimationTransitionCurlDown];
+<a name="l00239"></a>00239   }
+<a name="l00240"></a>00240 }
+<a name="l00241"></a>00241 
+<a name="l00242"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9934ca162dcaf576046a2448a58bbda5">00242</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a9934ca162dcaf576046a2448a58bbda5">slideshowTimer</a> {
+<a name="l00243"></a>00243   <span class="keywordflow">if</span> (_centerPhotoIndex == _photoSource.numberOfPhotos-1) {
+<a name="l00244"></a>00244     _scrollView.centerPageIndex = 0;
+<a name="l00245"></a>00245   } <span class="keywordflow">else</span> {
+<a name="l00246"></a>00246     _scrollView.centerPageIndex = _centerPhotoIndex+1;
+<a name="l00247"></a>00247   }
+<a name="l00248"></a>00248 }
+<a name="l00249"></a>00249 
+<a name="l00250"></a><a class="code" href="interface_t_t_photo_view_controller.html#aadb9488b954de809529a9f75a56df4fe">00250</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#aadb9488b954de809529a9f75a56df4fe">playAction</a> {
+<a name="l00251"></a>00251   <span class="keywordflow">if</span> (!_slideshowTimer) {
+<a name="l00252"></a>00252     UIBarButtonItem* pauseButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00253"></a>00253       UIBarButtonSystemItemPause target:self action:@selector(pauseAction)] autorelease];
+<a name="l00254"></a>00254     pauseButton.tag = 1;
+<a name="l00255"></a>00255     
+<a name="l00256"></a>00256     [_toolbar replaceItemWithTag:1 withItem:pauseButton];
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258     _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:kSlideshowInterval
+<a name="l00259"></a>00259       target:self selector:@selector(slideshowTimer) userInfo:nil repeats:YES];
+<a name="l00260"></a>00260   }
+<a name="l00261"></a>00261 }
+<a name="l00262"></a>00262 
+<a name="l00263"></a><a class="code" href="interface_t_t_photo_view_controller.html#a32aa6f7df7a1ef784921f74222bc2a9f">00263</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a32aa6f7df7a1ef784921f74222bc2a9f">pauseAction</a> {
+<a name="l00264"></a>00264   <span class="keywordflow">if</span> (_slideshowTimer) {
+<a name="l00265"></a>00265     UIBarButtonItem* playButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00266"></a>00266       UIBarButtonSystemItemPlay target:self action:@selector(playAction)] autorelease];
+<a name="l00267"></a>00267     playButton.tag = 1;
+<a name="l00268"></a>00268     
+<a name="l00269"></a>00269     [_toolbar replaceItemWithTag:1 withItem:playButton];
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271     [_slideshowTimer invalidate];
+<a name="l00272"></a>00272     _slideshowTimer = nil;
+<a name="l00273"></a>00273   }
+<a name="l00274"></a>00274 }
+<a name="l00275"></a>00275 
+<a name="l00276"></a><a class="code" href="interface_t_t_photo_view_controller.html#a5094b778799ac39821c781c88952c0ca">00276</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a5094b778799ac39821c781c88952c0ca">nextAction</a> {
+<a name="l00277"></a>00277   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a32aa6f7df7a1ef784921f74222bc2a9f">pauseAction</a>];
+<a name="l00278"></a>00278   <span class="keywordflow">if</span> (_centerPhotoIndex &lt; _photoSource.numberOfPhotos-1) {
+<a name="l00279"></a>00279     _scrollView.centerPageIndex = _centerPhotoIndex+1;
+<a name="l00280"></a>00280   }
+<a name="l00281"></a>00281 }
+<a name="l00282"></a>00282 
+<a name="l00283"></a><a class="code" href="interface_t_t_photo_view_controller.html#aaa2af77094b5b5123d8160871f6e3388">00283</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#aaa2af77094b5b5123d8160871f6e3388">previousAction</a> {
+<a name="l00284"></a>00284   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a32aa6f7df7a1ef784921f74222bc2a9f">pauseAction</a>];
+<a name="l00285"></a>00285   <span class="keywordflow">if</span> (_centerPhotoIndex &gt; 0) {
+<a name="l00286"></a>00286     _scrollView.centerPageIndex = _centerPhotoIndex-1;
+<a name="l00287"></a>00287   }
 <a name="l00288"></a>00288 }
 <a name="l00289"></a>00289 
-<a name="l00290"></a>00290 - (void)hideBarsAnimationDidStop {
-<a name="l00291"></a>00291   <span class="keyword">self</span>.navigationController.navigationBarHidden = YES;
+<a name="l00290"></a><a class="code" href="interface_t_t_photo_view_controller.html#a12872da50c645b43baab6b13302fb037">00290</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a12872da50c645b43baab6b13302fb037">showBarsAnimationDidStop</a> {
+<a name="l00291"></a>00291   <span class="keyword">self</span>.navigationController.navigationBarHidden = NO;
 <a name="l00292"></a>00292 }
 <a name="l00293"></a>00293 
-<a name="l00295"></a>00295 <span class="comment">// NSObject</span>
-<a name="l00296"></a>00296 
-<a name="l00297"></a><a class="code" href="interface_t_t_photo_view_controller.html#a97616a28a08c878e9c06229797fb968d">00297</a> - (id)initWithPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
-<a name="l00298"></a>00298   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00299"></a>00299     <span class="keyword">self</span>.centerPhoto = photo;
-<a name="l00300"></a>00300   }
-<a name="l00301"></a>00301   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00302"></a>00302 }
-<a name="l00303"></a>00303 
-<a name="l00304"></a><a class="code" href="interface_t_t_photo_view_controller.html#a716ae9108db64fefa0c0c670f5828b49">00304</a> - (id)initWithPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource {
-<a name="l00305"></a>00305   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> init]) {
-<a name="l00306"></a>00306     <span class="keyword">self</span>.photoSource = photoSource;
-<a name="l00307"></a>00307   }
-<a name="l00308"></a>00308   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00309"></a>00309 }
-<a name="l00310"></a>00310 
-<a name="l00311"></a>00311 - (id)init {
-<a name="l00312"></a>00312   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super init]) {
-<a name="l00313"></a>00313     _photoSource = nil;
-<a name="l00314"></a>00314     _centerPhoto = nil;
-<a name="l00315"></a>00315     _centerPhotoIndex = 0;
-<a name="l00316"></a>00316     _scrollView = nil;
-<a name="l00317"></a>00317     _photoStatusView = nil;
-<a name="l00318"></a>00318     _toolbar = nil;
-<a name="l00319"></a>00319     _defaultImage = nil;
-<a name="l00320"></a>00320     _captionStyle = nil;
-<a name="l00321"></a>00321     _nextButton = nil;
-<a name="l00322"></a>00322     _previousButton = nil;
-<a name="l00323"></a>00323     _statusText = nil;
-<a name="l00324"></a>00324     _thumbsController = nil;
-<a name="l00325"></a>00325     _slideshowTimer = nil;
-<a name="l00326"></a>00326     _loadTimer = nil;
-<a name="l00327"></a>00327     _delayLoad = NO;
-<a name="l00328"></a>00328     
-<a name="l00329"></a>00329     <span class="keyword">self</span>.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:
-<a name="l00330"></a>00330       TTLocalizedString(@&quot;Photo&quot;, @&quot;Title for back button that returns to photo browser&quot;)
-<a name="l00331"></a>00331       style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
-<a name="l00332"></a>00332 
-<a name="l00333"></a>00333     <span class="keyword">self</span>.statusBarStyle = UIStatusBarStyleBlackTranslucent;
-<a name="l00334"></a>00334     <span class="keyword">self</span>.navigationBarStyle = UIBarStyleBlackTranslucent;
-<a name="l00335"></a>00335     <span class="keyword">self</span>.navigationBarTintColor = nil;
-<a name="l00336"></a>00336     <span class="keyword">self</span>.wantsFullScreenLayout = YES;
-<a name="l00337"></a>00337     <span class="keyword">self</span>.hidesBottomBarWhenPushed = YES;
-<a name="l00338"></a>00338 
-<a name="l00339"></a>00339     <span class="keyword">self</span>.defaultImage = <a class="code" href="_t_t_global_8h.html#a44512ca99bc93bba5a8e7840d1278e4a">TTIMAGE</a>(<span class="stringliteral">@&quot;bundle://Three20.bundle/images/photoDefault.png&quot;</span>);
-<a name="l00340"></a>00340   }
-<a name="l00341"></a>00341   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00342"></a>00342 }
-<a name="l00343"></a>00343 
-<a name="l00344"></a>00344 - (void)dealloc {
-<a name="l00345"></a>00345   _thumbsController.delegate = nil;
-<a name="l00346"></a>00346   <a class="code" href="_t_t_global_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(_slideshowTimer);
-<a name="l00347"></a>00347   <a class="code" href="_t_t_global_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(_loadTimer);
-<a name="l00348"></a>00348   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_thumbsController);
-<a name="l00349"></a>00349   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_centerPhoto);
-<a name="l00350"></a>00350   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_photoSource);
-<a name="l00351"></a>00351   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_statusText);
-<a name="l00352"></a>00352   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_captionStyle);
-<a name="l00353"></a>00353   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_defaultImage);
-<a name="l00354"></a>00354   [<span class="keyword">super</span> dealloc];
-<a name="l00355"></a>00355 }
-<a name="l00356"></a>00356 
-<a name="l00358"></a>00358 <span class="comment">// UIViewController</span>
-<a name="l00359"></a>00359 
-<a name="l00360"></a>00360 - (void)loadView {
-<a name="l00361"></a>00361   CGRect screenFrame = [UIScreen mainScreen].bounds;
-<a name="l00362"></a>00362   <span class="keyword">self</span>.view = [[[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:screenFrame] autorelease];
-<a name="l00363"></a>00363     
-<a name="l00364"></a>00364   CGRect innerFrame = CGRectMake(0, 0,
-<a name="l00365"></a>00365                                  screenFrame.size.width, screenFrame.size.height);
-<a name="l00366"></a>00366   _innerView = [[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:innerFrame];
-<a name="l00367"></a>00367   _innerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-<a name="l00368"></a>00368   [<span class="keyword">self</span>.view addSubview:_innerView];
-<a name="l00369"></a>00369   
-<a name="l00370"></a>00370   _scrollView = [[<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> alloc] initWithFrame:screenFrame];
-<a name="l00371"></a>00371   _scrollView.delegate = <span class="keyword">self</span>;
-<a name="l00372"></a>00372   _scrollView.dataSource = <span class="keyword">self</span>;
-<a name="l00373"></a>00373   _scrollView.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> blackColor];
-<a name="l00374"></a>00374   _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-<a name="l00375"></a>00375   [_innerView addSubview:_scrollView];
-<a name="l00376"></a>00376   
-<a name="l00377"></a>00377   _nextButton = [[UIBarButtonItem alloc] initWithImage:
-<a name="l00378"></a>00378     TTIMAGE(@&quot;bundle://Three20.bundle/images/nextIcon.png&quot;)
-<a name="l00379"></a>00379      style:UIBarButtonItemStylePlain target:self action:@selector(nextAction)];
-<a name="l00380"></a>00380   _previousButton = [[UIBarButtonItem alloc] initWithImage:
-<a name="l00381"></a>00381     TTIMAGE(@&quot;bundle://Three20.bundle/images/previousIcon.png&quot;)
-<a name="l00382"></a>00382      style:UIBarButtonItemStylePlain target:self action:@selector(previousAction)];
-<a name="l00383"></a>00383 
-<a name="l00384"></a>00384   UIBarButtonItem* playButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00385"></a>00385     UIBarButtonSystemItemPlay target:self action:@selector(playAction)] autorelease];
-<a name="l00386"></a>00386   playButton.tag = 1;
+<a name="l00294"></a><a class="code" href="interface_t_t_photo_view_controller.html#aa8a8d7c2af26f9ba7491991919d4d352">00294</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#aa8a8d7c2af26f9ba7491991919d4d352">hideBarsAnimationDidStop</a> {
+<a name="l00295"></a>00295   <span class="keyword">self</span>.navigationController.navigationBarHidden = YES;
+<a name="l00296"></a>00296 }
+<a name="l00297"></a>00297 
+<a name="l00299"></a>00299 <span class="comment">// NSObject</span>
+<a name="l00300"></a>00300 
+<a name="l00301"></a><a class="code" href="interface_t_t_photo_view_controller.html#a97616a28a08c878e9c06229797fb968d">00301</a> - (id)initWithPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
+<a name="l00302"></a>00302   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a0b472b8f04be1b5b0b57d4b9fdcd394e">init</a>]) {
+<a name="l00303"></a>00303     <span class="keyword">self</span>.centerPhoto = photo;
+<a name="l00304"></a>00304   }
+<a name="l00305"></a>00305   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00306"></a>00306 }
+<a name="l00307"></a>00307 
+<a name="l00308"></a><a class="code" href="interface_t_t_photo_view_controller.html#a716ae9108db64fefa0c0c670f5828b49">00308</a> - (id)initWithPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource {
+<a name="l00309"></a>00309   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a0b472b8f04be1b5b0b57d4b9fdcd394e">init</a>]) {
+<a name="l00310"></a>00310     <span class="keyword">self</span>.photoSource = photoSource;
+<a name="l00311"></a>00311   }
+<a name="l00312"></a>00312   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00313"></a>00313 }
+<a name="l00314"></a>00314 
+<a name="l00315"></a><a class="code" href="interface_t_t_photo_view_controller.html#a0b472b8f04be1b5b0b57d4b9fdcd394e">00315</a> - (id)<a class="code" href="interface_t_t_photo_view_controller.html#a0b472b8f04be1b5b0b57d4b9fdcd394e">init</a> {
+<a name="l00316"></a>00316   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super <a class="code" href="interface_t_t_photo_view_controller.html#a0b472b8f04be1b5b0b57d4b9fdcd394e">init</a>]) {
+<a name="l00317"></a>00317     _photoSource = nil;
+<a name="l00318"></a>00318     _centerPhoto = nil;
+<a name="l00319"></a>00319     _centerPhotoIndex = 0;
+<a name="l00320"></a>00320     _scrollView = nil;
+<a name="l00321"></a>00321     _photoStatusView = nil;
+<a name="l00322"></a>00322     _toolbar = nil;
+<a name="l00323"></a>00323     _defaultImage = nil;
+<a name="l00324"></a>00324     _captionStyle = nil;
+<a name="l00325"></a>00325     _nextButton = nil;
+<a name="l00326"></a>00326     _previousButton = nil;
+<a name="l00327"></a>00327     _statusText = nil;
+<a name="l00328"></a>00328     _thumbsController = nil;
+<a name="l00329"></a>00329     _slideshowTimer = nil;
+<a name="l00330"></a>00330     _loadTimer = nil;
+<a name="l00331"></a>00331     _delayLoad = NO;
+<a name="l00332"></a>00332     
+<a name="l00333"></a>00333     <span class="keyword">self</span>.navigationItem.backBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:
+<a name="l00334"></a>00334       TTLocalizedString(@&quot;Photo&quot;, @&quot;Title for back button that returns to photo browser&quot;)
+<a name="l00335"></a>00335       style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337     <span class="keyword">self</span>.statusBarStyle = UIStatusBarStyleBlackTranslucent;
+<a name="l00338"></a>00338     <span class="keyword">self</span>.navigationBarStyle = UIBarStyleBlackTranslucent;
+<a name="l00339"></a>00339     <span class="keyword">self</span>.navigationBarTintColor = nil;
+<a name="l00340"></a>00340     <span class="keyword">self</span>.wantsFullScreenLayout = YES;
+<a name="l00341"></a>00341     <span class="keyword">self</span>.hidesBottomBarWhenPushed = YES;
+<a name="l00342"></a>00342 
+<a name="l00343"></a>00343     <span class="keyword">self</span>.defaultImage = <a class="code" href="_t_t_global_u_i_8h.html#a44512ca99bc93bba5a8e7840d1278e4a">TTIMAGE</a>(<span class="stringliteral">@&quot;bundle://Three20.bundle/images/photoDefault.png&quot;</span>);
+<a name="l00344"></a>00344   }
+<a name="l00345"></a>00345   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00346"></a>00346 }
+<a name="l00347"></a>00347 
+<a name="l00348"></a><a class="code" href="interface_t_t_photo_view_controller.html#a6ac341adef4e174efd8fd1b45a988385">00348</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a6ac341adef4e174efd8fd1b45a988385">dealloc</a> {
+<a name="l00349"></a>00349   _thumbsController.delegate = nil;
+<a name="l00350"></a>00350   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(_slideshowTimer);
+<a name="l00351"></a>00351   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#af230d615aadca6cd5b53e54335153be7">TT_INVALIDATE_TIMER</a>(_loadTimer);
+<a name="l00352"></a>00352   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_thumbsController);
+<a name="l00353"></a>00353   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_centerPhoto);
+<a name="l00354"></a>00354   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_photoSource);
+<a name="l00355"></a>00355   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_statusText);
+<a name="l00356"></a>00356   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_captionStyle);
+<a name="l00357"></a>00357   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_defaultImage);
+<a name="l00358"></a>00358   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a3ba6d4d519268a67e268cdd309f4aa97">dealloc</a>];
+<a name="l00359"></a>00359 }
+<a name="l00360"></a>00360 
+<a name="l00362"></a>00362 <span class="comment">// UIViewController</span>
+<a name="l00363"></a>00363 
+<a name="l00364"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae11447439f0f3e42f832cb06ff91dcd8">00364</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#ae11447439f0f3e42f832cb06ff91dcd8">loadView</a> {
+<a name="l00365"></a>00365   CGRect screenFrame = [UIScreen mainScreen].bounds;
+<a name="l00366"></a>00366   <span class="keyword">self</span>.view = [[[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:screenFrame] autorelease];
+<a name="l00367"></a>00367     
+<a name="l00368"></a>00368   CGRect innerFrame = CGRectMake(0, 0,
+<a name="l00369"></a>00369                                  screenFrame.size.width, screenFrame.size.height);
+<a name="l00370"></a>00370   _innerView = [[<a class="code" href="class_u_i_view.html">UIView</a> alloc] initWithFrame:innerFrame];
+<a name="l00371"></a>00371   _innerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+<a name="l00372"></a>00372   [<span class="keyword">self</span>.view addSubview:_innerView];
+<a name="l00373"></a>00373   
+<a name="l00374"></a>00374   _scrollView = [[<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> alloc] initWithFrame:screenFrame];
+<a name="l00375"></a>00375   _scrollView.delegate = <span class="keyword">self</span>;
+<a name="l00376"></a>00376   _scrollView.dataSource = <span class="keyword">self</span>;
+<a name="l00377"></a>00377   _scrollView.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> blackColor];
+<a name="l00378"></a>00378   _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+<a name="l00379"></a>00379   [_innerView addSubview:_scrollView];
+<a name="l00380"></a>00380   
+<a name="l00381"></a>00381   _nextButton = [[UIBarButtonItem alloc] initWithImage:
+<a name="l00382"></a>00382     TTIMAGE(@&quot;bundle://Three20.bundle/images/nextIcon.png&quot;)
+<a name="l00383"></a>00383      style:UIBarButtonItemStylePlain target:self action:@selector(nextAction)];
+<a name="l00384"></a>00384   _previousButton = [[UIBarButtonItem alloc] initWithImage:
+<a name="l00385"></a>00385     TTIMAGE(@&quot;bundle://Three20.bundle/images/previousIcon.png&quot;)
+<a name="l00386"></a>00386      style:UIBarButtonItemStylePlain target:self action:@selector(previousAction)];
 <a name="l00387"></a>00387 
-<a name="l00388"></a>00388   UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
-<a name="l00389"></a>00389    UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
-<a name="l00390"></a>00390 
-<a name="l00391"></a>00391   _toolbar = [[<a class="code" href="class_u_i_toolbar.html">UIToolbar</a> alloc] initWithFrame:
-<a name="l00392"></a>00392     CGRectMake(0, screenFrame.size.height - TT_ROW_HEIGHT,
-<a name="l00393"></a>00393                screenFrame.size.width, TT_ROW_HEIGHT)];
-<a name="l00394"></a>00394   _toolbar.barStyle = <span class="keyword">self</span>.navigationBarStyle;
-<a name="l00395"></a>00395   _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
-<a name="l00396"></a>00396   _toolbar.items = [<a class="code" href="class_n_s_array.html">NSArray</a> arrayWithObjects:
-<a name="l00397"></a>00397                    space, _previousButton, space, _nextButton, space, nil];
-<a name="l00398"></a>00398   [_innerView addSubview:_toolbar];    
-<a name="l00399"></a>00399 }
-<a name="l00400"></a>00400 
-<a name="l00401"></a>00401 - (void)viewDidUnload {
-<a name="l00402"></a>00402   [<span class="keyword">super</span> viewDidUnload];
-<a name="l00403"></a>00403   _scrollView.delegate = nil;
-<a name="l00404"></a>00404   _scrollView.dataSource = nil;
-<a name="l00405"></a>00405   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_innerView);
-<a name="l00406"></a>00406   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_scrollView);
-<a name="l00407"></a>00407   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_photoStatusView);
-<a name="l00408"></a>00408   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_nextButton);
-<a name="l00409"></a>00409   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_previousButton);
-<a name="l00410"></a>00410   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_toolbar);
-<a name="l00411"></a>00411 }
-<a name="l00412"></a>00412 
-<a name="l00413"></a>00413 - (void)viewWillAppear:(BOOL)animated {
-<a name="l00414"></a>00414   [<span class="keyword">super</span> viewWillAppear:animated];
-<a name="l00415"></a>00415   [<span class="keyword">self</span> updateToolbarWithOrientation:self.interfaceOrientation];
-<a name="l00416"></a>00416 }
-<a name="l00417"></a>00417 
-<a name="l00418"></a>00418 - (void)viewWillDisappear:(BOOL)animated {
-<a name="l00419"></a>00419   [<span class="keyword">super</span> viewWillDisappear:animated];
-<a name="l00420"></a>00420 
-<a name="l00421"></a>00421   [_scrollView cancelTouches];
-<a name="l00422"></a>00422   [<span class="keyword">self</span> pauseAction];
-<a name="l00423"></a>00423   <span class="keywordflow">if</span> (<span class="keyword">self</span>.nextViewController) {
-<a name="l00424"></a>00424     [<span class="keyword">self</span> showBars:YES animated:NO];
-<a name="l00425"></a>00425   }
-<a name="l00426"></a>00426 }
-<a name="l00427"></a>00427 
-<a name="l00428"></a>00428 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-<a name="l00429"></a>00429   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_8h.html#ae63595c9089d8e2c8b3fdc4f764056bc" title="Checks if the orientation is portrait, landscape left, or landscape right.">TTIsSupportedOrientation</a>(interfaceOrientation);
+<a name="l00388"></a>00388   UIBarButtonItem* playButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00389"></a>00389     UIBarButtonSystemItemPlay target:self action:@selector(playAction)] autorelease];
+<a name="l00390"></a>00390   playButton.tag = 1;
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392   UIBarItem* space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
+<a name="l00393"></a>00393    UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+<a name="l00394"></a>00394 
+<a name="l00395"></a>00395   _toolbar = [[<a class="code" href="class_u_i_toolbar.html" title="Additions.">UIToolbar</a> alloc] initWithFrame:
+<a name="l00396"></a>00396     CGRectMake(0, screenFrame.size.height - TT_ROW_HEIGHT,
+<a name="l00397"></a>00397                screenFrame.size.width, TT_ROW_HEIGHT)];
+<a name="l00398"></a>00398   _toolbar.barStyle = <span class="keyword">self</span>.navigationBarStyle;
+<a name="l00399"></a>00399   _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+<a name="l00400"></a>00400   _toolbar.items = [<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a> arrayWithObjects:
+<a name="l00401"></a>00401                    space, _previousButton, space, _nextButton, space, nil];
+<a name="l00402"></a>00402   [_innerView addSubview:_toolbar];    
+<a name="l00403"></a>00403 }
+<a name="l00404"></a>00404 
+<a name="l00405"></a><a class="code" href="interface_t_t_photo_view_controller.html#a6b3d0e8153de2a53c961007ba16eb378">00405</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a6b3d0e8153de2a53c961007ba16eb378">viewDidUnload</a> {
+<a name="l00406"></a>00406   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a185449df8bb1c225b48a60498157b837">viewDidUnload</a>];
+<a name="l00407"></a>00407   _scrollView.delegate = nil;
+<a name="l00408"></a>00408   _scrollView.dataSource = nil;
+<a name="l00409"></a>00409   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_innerView);
+<a name="l00410"></a>00410   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_scrollView);
+<a name="l00411"></a>00411   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_photoStatusView);
+<a name="l00412"></a>00412   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_nextButton);
+<a name="l00413"></a>00413   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_previousButton);
+<a name="l00414"></a>00414   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(_toolbar);
+<a name="l00415"></a>00415 }
+<a name="l00416"></a>00416 
+<a name="l00417"></a><a class="code" href="interface_t_t_photo_view_controller.html#a250d8341c1205dbb24ccea3a1bcfbbb6">00417</a> - (void)viewWillAppear:(BOOL)animated {
+<a name="l00418"></a>00418   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#af835ed51c64e202d531e78f6e632e365">viewWillAppear</a>:animated];
+<a name="l00419"></a>00419   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#afde7b7322e0a4502f9440be077673838">updateToolbarWithOrientation</a>:self.interfaceOrientation];
+<a name="l00420"></a>00420 }
+<a name="l00421"></a>00421 
+<a name="l00422"></a><a class="code" href="interface_t_t_photo_view_controller.html#a0489a51fead47b9b326d18e1a6eda5f5">00422</a> - (void)viewWillDisappear:(BOOL)animated {
+<a name="l00423"></a>00423   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a96a47ea7934a9afff9d9a4175689ab9c">viewWillDisappear</a>:animated];
+<a name="l00424"></a>00424 
+<a name="l00425"></a>00425   [_scrollView cancelTouches];
+<a name="l00426"></a>00426   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a32aa6f7df7a1ef784921f74222bc2a9f">pauseAction</a>];
+<a name="l00427"></a>00427   <span class="keywordflow">if</span> (<span class="keyword">self</span>.<a class="code" href="class_u_i_view_controller.html#a5545bed19cfb33d28bc1848fde2598f0">nextViewController</a>) {
+<a name="l00428"></a>00428     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">showBars</a>:YES <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">animated</a>:NO];
+<a name="l00429"></a>00429   }
 <a name="l00430"></a>00430 }
 <a name="l00431"></a>00431 
-<a name="l00432"></a>00432 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-<a name="l00433"></a>00433         duration:(NSTimeInterval)duration {
-<a name="l00434"></a>00434   [<span class="keyword">super</span> willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-<a name="l00435"></a>00435   [<span class="keyword">self</span> updateToolbarWithOrientation:toInterfaceOrientation];
-<a name="l00436"></a>00436 }
-<a name="l00437"></a>00437 
-<a name="l00438"></a>00438 - (<a class="code" href="class_u_i_view.html">UIView</a> *)rotatingFooterView {
-<a name="l00439"></a>00439   <span class="keywordflow">return</span> _toolbar;
+<a name="l00432"></a><a class="code" href="interface_t_t_photo_view_controller.html#a664b2edcefda87efa821c3294ceb5120">00432</a> - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+<a name="l00433"></a>00433   <span class="keywordflow">return</span> <a class="code" href="_t_t_global_u_i_8h.html#ae63595c9089d8e2c8b3fdc4f764056bc" title="Checks if the orientation is portrait, landscape left, or landscape right.">TTIsSupportedOrientation</a>(interfaceOrientation);
+<a name="l00434"></a>00434 }
+<a name="l00435"></a>00435 
+<a name="l00436"></a><a class="code" href="interface_t_t_photo_view_controller.html#a0e8f55a65f0aa198b2528fdf3332beb0">00436</a> - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+<a name="l00437"></a>00437         duration:(NSTimeInterval)duration {
+<a name="l00438"></a>00438   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view_controller.html#a58d16ea917fd188cbb8413fc14f562ae">willAnimateRotationToInterfaceOrientation</a>:toInterfaceOrientation <a class="code" href="interface_t_t_view_controller.html#a58d16ea917fd188cbb8413fc14f562ae">duration</a>:duration];
+<a name="l00439"></a>00439   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#afde7b7322e0a4502f9440be077673838">updateToolbarWithOrientation</a>:toInterfaceOrientation];
 <a name="l00440"></a>00440 }
 <a name="l00441"></a>00441 
-<a name="l00443"></a>00443 <span class="comment">// UIViewController (TTCategory)</span>
-<a name="l00444"></a>00444 
-<a name="l00445"></a>00445 - (void)showBars:(BOOL)show animated:(BOOL)animated {
-<a name="l00446"></a>00446   [<span class="keyword">super</span> showBars:show animated:animated];
-<a name="l00447"></a>00447 
-<a name="l00448"></a>00448   CGFloat alpha = show ? 1 : 0;
-<a name="l00449"></a>00449   <span class="keywordflow">if</span> (alpha == _toolbar.alpha)
-<a name="l00450"></a>00450     <span class="keywordflow">return</span>;
-<a name="l00451"></a>00451   
-<a name="l00452"></a>00452   <span class="keywordflow">if</span> (animated) {
-<a name="l00453"></a>00453     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
-<a name="l00454"></a>00454     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
-<a name="l00455"></a>00455     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
-<a name="l00456"></a>00456     <span class="keywordflow">if</span> (show) {
-<a name="l00457"></a>00457       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(showBarsAnimationDidStop)];
-<a name="l00458"></a>00458     } <span class="keywordflow">else</span> {
-<a name="l00459"></a>00459       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(hideBarsAnimationDidStop)];
-<a name="l00460"></a>00460     }
-<a name="l00461"></a>00461   } <span class="keywordflow">else</span> {
-<a name="l00462"></a>00462     <span class="keywordflow">if</span> (show) {
-<a name="l00463"></a>00463       [<span class="keyword">self</span> showBarsAnimationDidStop];
-<a name="l00464"></a>00464     } <span class="keywordflow">else</span> {
-<a name="l00465"></a>00465       [<span class="keyword">self</span> hideBarsAnimationDidStop];
-<a name="l00466"></a>00466     }
-<a name="l00467"></a>00467   }
-<a name="l00468"></a>00468 
-<a name="l00469"></a>00469   [<span class="keyword">self</span> showCaptions:show];
-<a name="l00470"></a>00470   
-<a name="l00471"></a>00471   _toolbar.alpha = alpha;
-<a name="l00472"></a>00472   
-<a name="l00473"></a>00473   <span class="keywordflow">if</span> (animated) {
-<a name="l00474"></a>00474     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
-<a name="l00475"></a>00475   }
-<a name="l00476"></a>00476 }
-<a name="l00477"></a>00477 
-<a name="l00479"></a>00479 <span class="comment">// TTModelViewController</span>
-<a name="l00480"></a>00480 
-<a name="l00481"></a>00481 - (BOOL)<a class="code" href="interface_t_t_model_view_controller.html#a11f547cd237948cb6592bdc2bd093ff6" title="Indicates that data should be loaded from the model.">shouldLoad</a> {
-<a name="l00482"></a>00482   <span class="keywordflow">return</span> NO;
-<a name="l00483"></a>00483 }
+<a name="l00442"></a><a class="code" href="interface_t_t_photo_view_controller.html#a67472c1a57303ec61bc7c659ad2f1584">00442</a> - (<a class="code" href="class_u_i_view.html">UIView</a> *)<a class="code" href="interface_t_t_photo_view_controller.html#a67472c1a57303ec61bc7c659ad2f1584">rotatingFooterView</a> {
+<a name="l00443"></a>00443   <span class="keywordflow">return</span> _toolbar;
+<a name="l00444"></a>00444 }
+<a name="l00445"></a>00445 
+<a name="l00447"></a>00447 <span class="comment">// UIViewController (TTCategory)</span>
+<a name="l00448"></a>00448 
+<a name="l00449"></a><a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">00449</a> - (void)showBars:(BOOL)show animated:(BOOL)animated {
+<a name="l00450"></a>00450   [<span class="keyword">super</span> <a class="code" href="class_u_i_view_controller.html#a74a4ac9e38c4c136e0a3e006d534ef32">showBars</a>:show <a class="code" href="class_u_i_view_controller.html#a74a4ac9e38c4c136e0a3e006d534ef32">animated</a>:animated];
+<a name="l00451"></a>00451 
+<a name="l00452"></a>00452   CGFloat alpha = show ? 1 : 0;
+<a name="l00453"></a>00453   <span class="keywordflow">if</span> (alpha == _toolbar.alpha)
+<a name="l00454"></a>00454     <span class="keywordflow">return</span>;
+<a name="l00455"></a>00455   
+<a name="l00456"></a>00456   <span class="keywordflow">if</span> (animated) {
+<a name="l00457"></a>00457     [<a class="code" href="class_u_i_view.html">UIView</a> beginAnimations:nil context:nil];
+<a name="l00458"></a>00458     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDuration:TT_TRANSITION_DURATION];
+<a name="l00459"></a>00459     [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDelegate:self];
+<a name="l00460"></a>00460     <span class="keywordflow">if</span> (show) {
+<a name="l00461"></a>00461       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(showBarsAnimationDidStop)];
+<a name="l00462"></a>00462     } <span class="keywordflow">else</span> {
+<a name="l00463"></a>00463       [<a class="code" href="class_u_i_view.html">UIView</a> setAnimationDidStopSelector:@selector(hideBarsAnimationDidStop)];
+<a name="l00464"></a>00464     }
+<a name="l00465"></a>00465   } <span class="keywordflow">else</span> {
+<a name="l00466"></a>00466     <span class="keywordflow">if</span> (show) {
+<a name="l00467"></a>00467       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a12872da50c645b43baab6b13302fb037">showBarsAnimationDidStop</a>];
+<a name="l00468"></a>00468     } <span class="keywordflow">else</span> {
+<a name="l00469"></a>00469       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#aa8a8d7c2af26f9ba7491991919d4d352">hideBarsAnimationDidStop</a>];
+<a name="l00470"></a>00470     }
+<a name="l00471"></a>00471   }
+<a name="l00472"></a>00472 
+<a name="l00473"></a>00473   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a02b9fc430caeb5445a531b96ae6ab9bb">showCaptions</a>:show];
+<a name="l00474"></a>00474   
+<a name="l00475"></a>00475   _toolbar.alpha = alpha;
+<a name="l00476"></a>00476   
+<a name="l00477"></a>00477   <span class="keywordflow">if</span> (animated) {
+<a name="l00478"></a>00478     [<a class="code" href="class_u_i_view.html">UIView</a> commitAnimations];
+<a name="l00479"></a>00479   }
+<a name="l00480"></a>00480 }
+<a name="l00481"></a>00481 
+<a name="l00483"></a>00483 <span class="comment">// TTModelViewController</span>
 <a name="l00484"></a>00484 
-<a name="l00485"></a>00485 - (BOOL)<a class="code" href="interface_t_t_model_view_controller.html#a991de3bff712c0261cb54ec6a2056e63" title="Indicates that more data should be loaded from the model.">shouldLoadMore</a> {
-<a name="l00486"></a>00486   <span class="keywordflow">return</span> !_centerPhoto;
+<a name="l00485"></a><a class="code" href="interface_t_t_photo_view_controller.html#a51cb83b412cc213737304bb9df6d7899">00485</a> - (BOOL)<a class="code" href="interface_t_t_photo_view_controller.html#a51cb83b412cc213737304bb9df6d7899" title="Indicates that data should be loaded from the model.">shouldLoad</a> {
+<a name="l00486"></a>00486   <span class="keywordflow">return</span> NO;
 <a name="l00487"></a>00487 }
 <a name="l00488"></a>00488 
-<a name="l00489"></a>00489 - (BOOL)<a class="code" href="interface_t_t_model_view_controller.html#a1648848389e0e716f42cbab7ba1bad94" title="Tests if it is possible to show the model.">canShowModel</a> {
-<a name="l00490"></a>00490   <span class="keywordflow">return</span> _photoSource.numberOfPhotos &gt; 0;
+<a name="l00489"></a><a class="code" href="interface_t_t_photo_view_controller.html#a725ef36736b3a9ee1f6880bc2e4308a9">00489</a> - (BOOL)<a class="code" href="interface_t_t_photo_view_controller.html#a725ef36736b3a9ee1f6880bc2e4308a9" title="Indicates that more data should be loaded from the model.">shouldLoadMore</a> {
+<a name="l00490"></a>00490   <span class="keywordflow">return</span> !_centerPhoto;
 <a name="l00491"></a>00491 }
 <a name="l00492"></a>00492 
-<a name="l00493"></a>00493 - (void)<a class="code" href="interface_t_t_model_view_controller.html#adc98dbd9f50022bef4c3b27a05744fc7" title="Called when the model is refreshed.">didRefreshModel</a> {
-<a name="l00494"></a>00494   [<span class="keyword">super</span> didRefreshModel];
-<a name="l00495"></a>00495   [<span class="keyword">self</span> updatePhotoView];
-<a name="l00496"></a>00496 }
-<a name="l00497"></a>00497 
-<a name="l00498"></a>00498 - (void)didLoadModel:(BOOL)firstTime {
-<a name="l00499"></a>00499   [<span class="keyword">super</span> didLoadModel:firstTime];
-<a name="l00500"></a>00500   <span class="keywordflow">if</span> (firstTime) {
-<a name="l00501"></a>00501     [<span class="keyword">self</span> updatePhotoView];
-<a name="l00502"></a>00502   }
-<a name="l00503"></a>00503 }
-<a name="l00504"></a>00504 
-<a name="l00505"></a>00505 - (void)showLoading:(BOOL)show {
-<a name="l00506"></a>00506   [<span class="keyword">self</span> showProgress:show ? 0 : -1];
+<a name="l00493"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae1b039e3eef82d1dba2f2a33765a8b8a">00493</a> - (BOOL)<a class="code" href="interface_t_t_photo_view_controller.html#ae1b039e3eef82d1dba2f2a33765a8b8a" title="Tests if it is possible to show the model.">canShowModel</a> {
+<a name="l00494"></a>00494   <span class="keywordflow">return</span> _photoSource.numberOfPhotos &gt; 0;
+<a name="l00495"></a>00495 }
+<a name="l00496"></a>00496 
+<a name="l00497"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae893a7e5480580114a428c4248baffa8">00497</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#ae893a7e5480580114a428c4248baffa8" title="Called when the model is refreshed.">didRefreshModel</a> {
+<a name="l00498"></a>00498   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#adc98dbd9f50022bef4c3b27a05744fc7" title="Called when the model is refreshed.">didRefreshModel</a>];
+<a name="l00499"></a>00499   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#ac70af56553f5795d710f37bc84819cc0">updatePhotoView</a>];
+<a name="l00500"></a>00500 }
+<a name="l00501"></a>00501 
+<a name="l00502"></a><a class="code" href="interface_t_t_photo_view_controller.html#a8c0e31be8464662c90f0258ef068c3b7">00502</a> - (void)didLoadModel:(BOOL)firstTime {
+<a name="l00503"></a>00503   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a358624f7a1dd93c7ae7d627d76a83505" title="Called after the model has loaded, just before it is to be displayed.">didLoadModel</a>:firstTime];
+<a name="l00504"></a>00504   <span class="keywordflow">if</span> (firstTime) {
+<a name="l00505"></a>00505     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#ac70af56553f5795d710f37bc84819cc0">updatePhotoView</a>];
+<a name="l00506"></a>00506   }
 <a name="l00507"></a>00507 }
 <a name="l00508"></a>00508 
-<a name="l00509"></a>00509 - (void)showEmpty:(BOOL)show {
-<a name="l00510"></a>00510   <span class="keywordflow">if</span> (show) {
-<a name="l00511"></a>00511     [_scrollView reloadData];
-<a name="l00512"></a>00512     [<span class="keyword">self</span> showStatus:TTLocalizedString(@&quot;This photo set contains no photos.&quot;, @&quot;&quot;)];
-<a name="l00513"></a>00513   } <span class="keywordflow">else</span> {
-<a name="l00514"></a>00514     [<span class="keyword">self</span> showStatus:nil];
-<a name="l00515"></a>00515   }
-<a name="l00516"></a>00516 }
-<a name="l00517"></a>00517 
-<a name="l00518"></a>00518 - (void)showError:(BOOL)show {
-<a name="l00519"></a>00519   <span class="keywordflow">if</span> (show) {
-<a name="l00520"></a>00520     [<span class="keyword">self</span> showStatus:TTDescriptionForError(_modelError)];
-<a name="l00521"></a>00521   } <span class="keywordflow">else</span> {
-<a name="l00522"></a>00522     [<span class="keyword">self</span> showStatus:nil];
-<a name="l00523"></a>00523   }
-<a name="l00524"></a>00524 }
-<a name="l00525"></a>00525 
-<a name="l00526"></a>00526 - (void)moveToNextValidPhoto {
-<a name="l00527"></a>00527   <span class="keywordflow">if</span> (_centerPhotoIndex &gt;= _photoSource.numberOfPhotos) {
-<a name="l00528"></a>00528     <span class="comment">// We were positioned at an index that is past the end, so move to the last photo</span>
-<a name="l00529"></a>00529     [<span class="keyword">self</span> moveToPhotoAtIndex:_photoSource.numberOfPhotos - 1 withDelay:NO];
-<a name="l00530"></a>00530   } <span class="keywordflow">else</span> {
-<a name="l00531"></a>00531     [<span class="keyword">self</span> moveToPhotoAtIndex:_centerPhotoIndex withDelay:NO];
-<a name="l00532"></a>00532   }
-<a name="l00533"></a>00533 }
-<a name="l00534"></a>00534 
-<a name="l00536"></a>00536 <span class="comment">// TTModelDelegate</span>
-<a name="l00537"></a>00537 
-<a name="l00538"></a>00538 - (void)modelDidFinishLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
-<a name="l00539"></a>00539   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00540"></a>00540     <span class="keywordflow">if</span> (_centerPhotoIndex &gt;= _photoSource.numberOfPhotos) {
-<a name="l00541"></a>00541       [<span class="keyword">self</span> moveToNextValidPhoto];
-<a name="l00542"></a>00542       [_scrollView reloadData];
-<a name="l00543"></a>00543       [<span class="keyword">self</span> resetVisiblePhotoViews];
-<a name="l00544"></a>00544     } <span class="keywordflow">else</span> {
-<a name="l00545"></a>00545       [<span class="keyword">self</span> updateVisiblePhotoViews];
-<a name="l00546"></a>00546     }
-<a name="l00547"></a>00547   }
-<a name="l00548"></a>00548   [<span class="keyword">super</span> modelDidFinishLoad:model];
-<a name="l00549"></a>00549 }
-<a name="l00550"></a>00550 
-<a name="l00551"></a>00551 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didFailLoadWithError:(NSError*)error {
-<a name="l00552"></a>00552   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00553"></a>00553     [<span class="keyword">self</span> resetVisiblePhotoViews];
-<a name="l00554"></a>00554   }
-<a name="l00555"></a>00555   [<span class="keyword">super</span> model:model didFailLoadWithError:error];
-<a name="l00556"></a>00556 }
-<a name="l00557"></a>00557 
-<a name="l00558"></a>00558 - (void)modelDidCancelLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
-<a name="l00559"></a>00559   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
-<a name="l00560"></a>00560     [<span class="keyword">self</span> resetVisiblePhotoViews];
-<a name="l00561"></a>00561   }
-<a name="l00562"></a>00562   [<span class="keyword">super</span> modelDidCancelLoad:model];
-<a name="l00563"></a>00563 }
-<a name="l00564"></a>00564 
-<a name="l00565"></a>00565 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didUpdateObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00566"></a>00566 }
-<a name="l00567"></a>00567 
-<a name="l00568"></a>00568 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didInsertObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00569"></a>00569 }
-<a name="l00570"></a>00570 
-<a name="l00571"></a>00571 - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didDeleteObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
-<a name="l00572"></a>00572   <span class="keywordflow">if</span> (<span class="keywordtype">object</span> == <span class="keyword">self</span>.<a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449" title="The photo that is currently visible and centered.">centerPhoto</a>) {
-<a name="l00573"></a>00573     [<span class="keyword">self</span> showActivity:nil];
-<a name="l00574"></a>00574     [<span class="keyword">self</span> moveToNextValidPhoto];
-<a name="l00575"></a>00575     [_scrollView reloadData];
-<a name="l00576"></a>00576     [<span class="keyword">self</span> refresh];
-<a name="l00577"></a>00577   }
-<a name="l00578"></a>00578 }
-<a name="l00579"></a>00579 
-<a name="l00581"></a>00581 <span class="comment">// TTScrollViewDelegate</span>
-<a name="l00582"></a>00582 
-<a name="l00583"></a>00583 - (void)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView didMoveToPageAtIndex:(NSInteger)pageIndex {
-<a name="l00584"></a>00584   <span class="keywordflow">if</span> (pageIndex != _centerPhotoIndex) {
-<a name="l00585"></a>00585     [<span class="keyword">self</span> moveToPhotoAtIndex:pageIndex withDelay:YES];
-<a name="l00586"></a>00586     [<span class="keyword">self</span> refresh];
-<a name="l00587"></a>00587   }
-<a name="l00588"></a>00588 }
-<a name="l00589"></a>00589 
-<a name="l00590"></a>00590 - (void)scrollViewWillBeginDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> *)scrollView {
-<a name="l00591"></a>00591   [<span class="keyword">self</span> cancelImageLoadTimer];
-<a name="l00592"></a>00592   [<span class="keyword">self</span> showCaptions:NO];
-<a name="l00593"></a>00593   [<span class="keyword">self</span> showBars:NO animated:YES];
-<a name="l00594"></a>00594 }
-<a name="l00595"></a>00595 
-<a name="l00596"></a>00596 - (void)scrollViewDidEndDecelerating:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00597"></a>00597   [<span class="keyword">self</span> startImageLoadTimer:kPhotoLoadShortDelay];
+<a name="l00509"></a><a class="code" href="interface_t_t_photo_view_controller.html#aca81f55b88643e1488a478f158ed8662">00509</a> - (void)showLoading:(BOOL)show {
+<a name="l00510"></a>00510   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a203163225904eadaea96bc6558e417c3">showProgress</a>:show ? 0 : -1];
+<a name="l00511"></a>00511 }
+<a name="l00512"></a>00512 
+<a name="l00513"></a><a class="code" href="interface_t_t_photo_view_controller.html#a1050db2105df3da4262b4db32fb6b967">00513</a> - (void)showEmpty:(BOOL)show {
+<a name="l00514"></a>00514   <span class="keywordflow">if</span> (show) {
+<a name="l00515"></a>00515     [_scrollView reloadData];
+<a name="l00516"></a>00516     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">showStatus</a>:TTLocalizedString(@&quot;This photo set contains no photos.&quot;, @&quot;&quot;)];
+<a name="l00517"></a>00517   } <span class="keywordflow">else</span> {
+<a name="l00518"></a>00518     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">showStatus</a>:nil];
+<a name="l00519"></a>00519   }
+<a name="l00520"></a>00520 }
+<a name="l00521"></a>00521 
+<a name="l00522"></a><a class="code" href="interface_t_t_photo_view_controller.html#a526c664f1c4c1d66666946d5e8458ec7">00522</a> - (void)showError:(BOOL)show {
+<a name="l00523"></a>00523   <span class="keywordflow">if</span> (show) {
+<a name="l00524"></a>00524     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">showStatus</a>:TTDescriptionForError(_modelError)];
+<a name="l00525"></a>00525   } <span class="keywordflow">else</span> {
+<a name="l00526"></a>00526     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a1183b314465cadc963fff64020c60539">showStatus</a>:nil];
+<a name="l00527"></a>00527   }
+<a name="l00528"></a>00528 }
+<a name="l00529"></a>00529 
+<a name="l00530"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9193f434723dd038c760b1a85ef6ddc2">00530</a> - (void)<a class="code" href="interface_t_t_photo_view_controller.html#a9193f434723dd038c760b1a85ef6ddc2">moveToNextValidPhoto</a> {
+<a name="l00531"></a>00531   <span class="keywordflow">if</span> (_centerPhotoIndex &gt;= _photoSource.numberOfPhotos) {
+<a name="l00532"></a>00532     <span class="comment">// We were positioned at an index that is past the end, so move to the last photo</span>
+<a name="l00533"></a>00533     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:_photoSource.numberOfPhotos - 1 <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:NO];
+<a name="l00534"></a>00534   } <span class="keywordflow">else</span> {
+<a name="l00535"></a>00535     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:_centerPhotoIndex <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:NO];
+<a name="l00536"></a>00536   }
+<a name="l00537"></a>00537 }
+<a name="l00538"></a>00538 
+<a name="l00540"></a>00540 <span class="comment">// TTModelDelegate</span>
+<a name="l00541"></a>00541 
+<a name="l00542"></a><a class="code" href="interface_t_t_photo_view_controller.html#abfc5b2f9f54917ff923d61071bf8a9c1">00542</a> - (void)modelDidFinishLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
+<a name="l00543"></a>00543   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00544"></a>00544     <span class="keywordflow">if</span> (_centerPhotoIndex &gt;= _photoSource.numberOfPhotos) {
+<a name="l00545"></a>00545       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9193f434723dd038c760b1a85ef6ddc2">moveToNextValidPhoto</a>];
+<a name="l00546"></a>00546       [_scrollView reloadData];
+<a name="l00547"></a>00547       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a8d968a6aefc1650d36fb081040ee8ea5">resetVisiblePhotoViews</a>];
+<a name="l00548"></a>00548     } <span class="keywordflow">else</span> {
+<a name="l00549"></a>00549       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a7df5a2bcee35b3b207439f1c72e1e1f9">updateVisiblePhotoViews</a>];
+<a name="l00550"></a>00550     }
+<a name="l00551"></a>00551   }
+<a name="l00552"></a>00552   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a78f157399e1d9bcf99d2531369c80a46">modelDidFinishLoad</a>:model];
+<a name="l00553"></a>00553 }
+<a name="l00554"></a>00554 
+<a name="l00555"></a><a class="code" href="interface_t_t_photo_view_controller.html#ab1d4dd40836a530ddf452746397bfe92">00555</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didFailLoadWithError:(NSError*)error {
+<a name="l00556"></a>00556   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00557"></a>00557     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a8d968a6aefc1650d36fb081040ee8ea5">resetVisiblePhotoViews</a>];
+<a name="l00558"></a>00558   }
+<a name="l00559"></a>00559   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#a6fe4066d434bf52ecb0c90963a5dc9b4">model</a>:model <a class="code" href="interface_t_t_model_view_controller.html#a6fe4066d434bf52ecb0c90963a5dc9b4">didFailLoadWithError</a>:error];
+<a name="l00560"></a>00560 }
+<a name="l00561"></a>00561 
+<a name="l00562"></a><a class="code" href="interface_t_t_photo_view_controller.html#acb761ff61a117e0b923cd6a0869478ff">00562</a> - (void)modelDidCancelLoad:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model {
+<a name="l00563"></a>00563   <span class="keywordflow">if</span> (model == <a class="code" href="interface_t_t_model_view_controller.html#ac1d409c9cfc0a5411003dfe628338cce">_model</a>) {
+<a name="l00564"></a>00564     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a8d968a6aefc1650d36fb081040ee8ea5">resetVisiblePhotoViews</a>];
+<a name="l00565"></a>00565   }
+<a name="l00566"></a>00566   [<span class="keyword">super</span> <a class="code" href="interface_t_t_model_view_controller.html#af25bfc6761fc0488b1c57c26020bc87f">modelDidCancelLoad</a>:model];
+<a name="l00567"></a>00567 }
+<a name="l00568"></a>00568 
+<a name="l00569"></a><a class="code" href="interface_t_t_photo_view_controller.html#af97a4914e4393da6c5652797ba7d42d7">00569</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didUpdateObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00570"></a>00570 }
+<a name="l00571"></a>00571 
+<a name="l00572"></a><a class="code" href="interface_t_t_photo_view_controller.html#a2cf76a12e5e2928e777698733e4da2c5">00572</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didInsertObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00573"></a>00573 }
+<a name="l00574"></a>00574 
+<a name="l00575"></a><a class="code" href="interface_t_t_photo_view_controller.html#a1fa835f9a78a673e2ba1228fcbf5c0cd">00575</a> - (void)model:(<span class="keywordtype">id</span>&lt;<a class="code" href="interface_t_t_model.html" title="A default implementation of TTModel does nothing other than appear to be loaded.">TTModel</a>&gt;)model didDeleteObject:(<span class="keywordtype">id</span>)object atIndexPath:(NSIndexPath*)indexPath {
+<a name="l00576"></a>00576   <span class="keywordflow">if</span> (<span class="keywordtype">object</span> == <span class="keyword">self</span>.<a class="code" href="interface_t_t_photo_view_controller.html#ae4080daae3eb4cbb4c87162d178c3449" title="The photo that is currently visible and centered.">centerPhoto</a>) {
+<a name="l00577"></a>00577     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#af75afb56d9ebb61b57828d65971ff3a3" title="Shows or hides an activity label on top of the photo.">showActivity</a>:nil];
+<a name="l00578"></a>00578     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9193f434723dd038c760b1a85ef6ddc2">moveToNextValidPhoto</a>];
+<a name="l00579"></a>00579     [_scrollView reloadData];
+<a name="l00580"></a>00580     [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00581"></a>00581   }
+<a name="l00582"></a>00582 }
+<a name="l00583"></a>00583 
+<a name="l00585"></a>00585 <span class="comment">// TTScrollViewDelegate</span>
+<a name="l00586"></a>00586 
+<a name="l00587"></a><a class="code" href="interface_t_t_photo_view_controller.html#a27f2397b90b628cfb52709ae12f3c56e">00587</a> - (void)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView didMoveToPageAtIndex:(NSInteger)pageIndex {
+<a name="l00588"></a>00588   <span class="keywordflow">if</span> (pageIndex != _centerPhotoIndex) {
+<a name="l00589"></a>00589     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:pageIndex <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:YES];
+<a name="l00590"></a>00590     [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00591"></a>00591   }
+<a name="l00592"></a>00592 }
+<a name="l00593"></a>00593 
+<a name="l00594"></a><a class="code" href="interface_t_t_photo_view_controller.html#ad8197a6281531a84fad70d206cfb4b66">00594</a> - (void)scrollViewWillBeginDragging:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a> *)scrollView {
+<a name="l00595"></a>00595   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#ad3015698cb285992bcd6cd9ceb62b609">cancelImageLoadTimer</a>];
+<a name="l00596"></a>00596   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a02b9fc430caeb5445a531b96ae6ab9bb">showCaptions</a>:NO];
+<a name="l00597"></a>00597   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">showBars</a>:NO <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">animated</a>:YES];
 <a name="l00598"></a>00598 }
 <a name="l00599"></a>00599 
-<a name="l00600"></a>00600 - (void)scrollViewWillRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView
-<a name="l00601"></a>00601         toOrientation:(UIInterfaceOrientation)orientation {
-<a name="l00602"></a>00602   <span class="keyword">self</span>.centerPhotoView.hidesExtras = YES;
-<a name="l00603"></a>00603 }
-<a name="l00604"></a>00604 
-<a name="l00605"></a>00605 - (void)scrollViewDidRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00606"></a>00606   <span class="keyword">self</span>.centerPhotoView.hidesExtras = NO;
+<a name="l00600"></a><a class="code" href="interface_t_t_photo_view_controller.html#a3f174f79a28efae0142334092e16b3f5">00600</a> - (void)scrollViewDidEndDecelerating:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00601"></a>00601   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a92b8a11a3ec3b12d5ffbdbfe903f3fe2">startImageLoadTimer</a>:kPhotoLoadShortDelay];
+<a name="l00602"></a>00602 }
+<a name="l00603"></a>00603 
+<a name="l00604"></a><a class="code" href="interface_t_t_photo_view_controller.html#aa2bb23dfb6399159f8c9b3ae87000123">00604</a> - (void)scrollViewWillRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView
+<a name="l00605"></a>00605         toOrientation:(UIInterfaceOrientation)orientation {
+<a name="l00606"></a>00606   <span class="keyword">self</span>.centerPhotoView.hidesExtras = YES;
 <a name="l00607"></a>00607 }
 <a name="l00608"></a>00608 
-<a name="l00609"></a>00609 - (BOOL)scrollViewShouldZoom:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00610"></a>00610   <span class="keywordflow">return</span> <span class="keyword">self</span>.centerPhotoView.image != <span class="keyword">self</span>.centerPhotoView.defaultImage;
+<a name="l00609"></a><a class="code" href="interface_t_t_photo_view_controller.html#a849f7008c011018db7c5de5d3bfc68ca">00609</a> - (void)scrollViewDidRotate:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00610"></a>00610   <span class="keyword">self</span>.centerPhotoView.hidesExtras = NO;
 <a name="l00611"></a>00611 }
 <a name="l00612"></a>00612 
-<a name="l00613"></a>00613 - (void)scrollViewDidBeginZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00614"></a>00614   <span class="keyword">self</span>.centerPhotoView.hidesExtras = YES;
+<a name="l00613"></a><a class="code" href="interface_t_t_photo_view_controller.html#a1c80e80c21c1cb03fcdc68cd299edf23">00613</a> - (BOOL)scrollViewShouldZoom:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00614"></a>00614   <span class="keywordflow">return</span> <span class="keyword">self</span>.centerPhotoView.image != <span class="keyword">self</span>.centerPhotoView.defaultImage;
 <a name="l00615"></a>00615 }
 <a name="l00616"></a>00616 
-<a name="l00617"></a>00617 - (void)scrollViewDidEndZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00618"></a>00618   <span class="keyword">self</span>.centerPhotoView.hidesExtras = NO;
+<a name="l00617"></a><a class="code" href="interface_t_t_photo_view_controller.html#abfc10a1551fb24004625bb3c4c804e6a">00617</a> - (void)scrollViewDidBeginZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00618"></a>00618   <span class="keyword">self</span>.centerPhotoView.hidesExtras = YES;
 <a name="l00619"></a>00619 }
 <a name="l00620"></a>00620 
-<a name="l00621"></a>00621 - (void)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView tapped:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch {
-<a name="l00622"></a>00622   <span class="keywordflow">if</span> ([<span class="keyword">self</span> isShowingChrome]) {
-<a name="l00623"></a>00623     [<span class="keyword">self</span> showBars:NO animated:YES];
-<a name="l00624"></a>00624   } <span class="keywordflow">else</span> {
-<a name="l00625"></a>00625     [<span class="keyword">self</span> showBars:YES animated:NO];
-<a name="l00626"></a>00626   }
-<a name="l00627"></a>00627 }
-<a name="l00628"></a>00628 
-<a name="l00630"></a>00630 <span class="comment">// TTScrollViewDataSource</span>
-<a name="l00631"></a>00631 
-<a name="l00632"></a>00632 - (NSInteger)numberOfPagesInScrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
-<a name="l00633"></a>00633   <span class="keywordflow">return</span> _photoSource.numberOfPhotos;
-<a name="l00634"></a>00634 }
+<a name="l00621"></a><a class="code" href="interface_t_t_photo_view_controller.html#a875eeaefd0daef72dfac4558cc26ac53">00621</a> - (void)scrollViewDidEndZooming:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00622"></a>00622   <span class="keyword">self</span>.centerPhotoView.hidesExtras = NO;
+<a name="l00623"></a>00623 }
+<a name="l00624"></a>00624 
+<a name="l00625"></a><a class="code" href="interface_t_t_photo_view_controller.html#ae9c7f1960d81ef5d71b280dae31741ed">00625</a> - (void)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView tapped:(<a class="code" href="class_u_i_touch.html">UITouch</a>*)touch {
+<a name="l00626"></a>00626   <span class="keywordflow">if</span> ([<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a19f58e8ba91e4b30335a5dc1472e3944">isShowingChrome</a>]) {
+<a name="l00627"></a>00627     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">showBars</a>:NO <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">animated</a>:YES];
+<a name="l00628"></a>00628   } <span class="keywordflow">else</span> {
+<a name="l00629"></a>00629     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">showBars</a>:YES <a class="code" href="interface_t_t_photo_view_controller.html#a6f9e9599294bf45ff49fccf5a6a4dd35">animated</a>:NO];
+<a name="l00630"></a>00630   }
+<a name="l00631"></a>00631 }
+<a name="l00632"></a>00632 
+<a name="l00634"></a>00634 <span class="comment">// TTScrollViewDataSource</span>
 <a name="l00635"></a>00635 
-<a name="l00636"></a>00636 - (<a class="code" href="class_u_i_view.html">UIView</a>*)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView pageAtIndex:(NSInteger)pageIndex {
-<a name="l00637"></a>00637   <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView = (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)[_scrollView dequeueReusablePage];
-<a name="l00638"></a>00638   <span class="keywordflow">if</span> (!photoView) {
-<a name="l00639"></a>00639     photoView = [<span class="keyword">self</span> createPhotoView];
-<a name="l00640"></a>00640     photoView.<a class="code" href="interface_t_t_photo_view.html#a920b62b4e69a807de36428f02dac6bc7">captionStyle</a> = _captionStyle;
-<a name="l00641"></a>00641     photoView.<a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">defaultImage</a> = _defaultImage;
-<a name="l00642"></a>00642     photoView.<a class="code" href="interface_t_t_photo_view.html#a6a731e6e91de5899e45dd97ef760d7e9">hidesCaption</a> = _toolbar.alpha == 0;
-<a name="l00643"></a>00643   }
-<a name="l00644"></a>00644 
-<a name="l00645"></a>00645   id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:pageIndex];
-<a name="l00646"></a>00646   [<span class="keyword">self</span> showPhoto:photo inView:photoView];
-<a name="l00647"></a>00647   
-<a name="l00648"></a>00648   <span class="keywordflow">return</span> photoView;
-<a name="l00649"></a>00649 }
-<a name="l00650"></a>00650 
-<a name="l00651"></a>00651 - (CGSize)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView sizeOfPageAtIndex:(NSInteger)pageIndex {
-<a name="l00652"></a>00652   id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:pageIndex];
-<a name="l00653"></a>00653   <span class="keywordflow">return</span> photo ? photo.size : CGSizeZero;
-<a name="l00654"></a>00654 }
-<a name="l00655"></a>00655 
-<a name="l00657"></a>00657 <span class="comment">// TTThumbsViewControllerDelegate</span>
-<a name="l00658"></a>00658 
-<a name="l00659"></a>00659 - (void)thumbsViewController:(<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)controller didSelectPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
-<a name="l00660"></a>00660   <span class="keyword">self</span>.centerPhoto = photo;
-<a name="l00661"></a>00661   [<span class="keyword">self</span>.navigationController
-<a name="l00662"></a>00662     popViewControllerAnimatedWithTransition:UIViewAnimationTransitionCurlUp];
-<a name="l00663"></a>00663 }
-<a name="l00664"></a>00664 
-<a name="l00665"></a>00665 - (BOOL)thumbsViewController:(<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)controller
-<a name="l00666"></a>00666         shouldNavigateToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
-<a name="l00667"></a>00667   <span class="keywordflow">return</span> NO;
-<a name="l00668"></a>00668 }
-<a name="l00669"></a>00669 
-<a name="l00671"></a>00671 <span class="comment">// public</span>
-<a name="l00672"></a>00672 
-<a name="l00673"></a>00673 - (void)setPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource {
-<a name="l00674"></a>00674   <span class="keywordflow">if</span> (_photoSource != photoSource) {
-<a name="l00675"></a>00675     [_photoSource release];
-<a name="l00676"></a>00676     _photoSource = [photoSource retain];
-<a name="l00677"></a>00677     
-<a name="l00678"></a>00678     [<span class="keyword">self</span> moveToPhotoAtIndex:0 withDelay:NO];
-<a name="l00679"></a>00679     <span class="keyword">self</span>.model = _photoSource;
-<a name="l00680"></a>00680   }
-<a name="l00681"></a>00681 }
-<a name="l00682"></a>00682 
-<a name="l00683"></a>00683 - (void)setCenterPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
-<a name="l00684"></a>00684   <span class="keywordflow">if</span> (_centerPhoto != photo) {
-<a name="l00685"></a>00685     <span class="keywordflow">if</span> (photo.photoSource != _photoSource) {
-<a name="l00686"></a>00686       [_photoSource release];
-<a name="l00687"></a>00687       _photoSource = [photo.photoSource retain];
-<a name="l00688"></a>00688 
-<a name="l00689"></a>00689       [<span class="keyword">self</span> moveToPhotoAtIndex:photo.index withDelay:NO];
-<a name="l00690"></a>00690       <span class="keyword">self</span>.model = _photoSource;
-<a name="l00691"></a>00691     } <span class="keywordflow">else</span> {
-<a name="l00692"></a>00692       [<span class="keyword">self</span> moveToPhotoAtIndex:photo.index withDelay:NO];
-<a name="l00693"></a>00693       [<span class="keyword">self</span> refresh];
-<a name="l00694"></a>00694     }
-<a name="l00695"></a>00695   }
-<a name="l00696"></a>00696 }
-<a name="l00697"></a>00697 
-<a name="l00698"></a><a class="code" href="interface_t_t_photo_view_controller.html#a424ae934956c1e1d35666a17e55a9f72">00698</a> - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#a424ae934956c1e1d35666a17e55a9f72" title="Creates a photo view for a new page.">createPhotoView</a> {
-<a name="l00699"></a>00699   <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a> alloc] init] autorelease];
+<a name="l00636"></a><a class="code" href="interface_t_t_photo_view_controller.html#a341c66f6afaf45784dbcb2ef3555a59f">00636</a> - (NSInteger)numberOfPagesInScrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView {
+<a name="l00637"></a>00637   <span class="keywordflow">return</span> _photoSource.numberOfPhotos;
+<a name="l00638"></a>00638 }
+<a name="l00639"></a>00639 
+<a name="l00640"></a><a class="code" href="interface_t_t_photo_view_controller.html#a85c14413fb95cfec003c77b5482a0c2f">00640</a> - (<a class="code" href="class_u_i_view.html">UIView</a>*)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView pageAtIndex:(NSInteger)pageIndex {
+<a name="l00641"></a>00641   <a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>* photoView = (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)[_scrollView dequeueReusablePage];
+<a name="l00642"></a>00642   <span class="keywordflow">if</span> (!photoView) {
+<a name="l00643"></a>00643     photoView = [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a424ae934956c1e1d35666a17e55a9f72" title="Creates a photo view for a new page.">createPhotoView</a>];
+<a name="l00644"></a>00644     photoView.<a class="code" href="interface_t_t_photo_view.html#a920b62b4e69a807de36428f02dac6bc7">captionStyle</a> = _captionStyle;
+<a name="l00645"></a>00645     photoView.<a class="code" href="interface_t_t_image_view.html#ac0806da2d2e376974fe0af0242e8635a">defaultImage</a> = _defaultImage;
+<a name="l00646"></a>00646     photoView.<a class="code" href="interface_t_t_photo_view.html#a6a731e6e91de5899e45dd97ef760d7e9">hidesCaption</a> = _toolbar.alpha == 0;
+<a name="l00647"></a>00647   }
+<a name="l00648"></a>00648 
+<a name="l00649"></a>00649   id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:pageIndex];
+<a name="l00650"></a>00650   [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a28879ea7b13a9384cc0ccccc7fc8635f">showPhoto</a>:photo <a class="code" href="interface_t_t_photo_view_controller.html#a28879ea7b13a9384cc0ccccc7fc8635f">inView</a>:photoView];
+<a name="l00651"></a>00651   
+<a name="l00652"></a>00652   <span class="keywordflow">return</span> photoView;
+<a name="l00653"></a>00653 }
+<a name="l00654"></a>00654 
+<a name="l00655"></a><a class="code" href="interface_t_t_photo_view_controller.html#a23f40417203a7ffe533931e5bf1a44ee">00655</a> - (CGSize)scrollView:(<a class="code" href="interface_t_t_scroll_view.html">TTScrollView</a>*)scrollView sizeOfPageAtIndex:(NSInteger)pageIndex {
+<a name="l00656"></a>00656   id&lt;TTPhoto&gt; photo = [_photoSource photoAtIndex:pageIndex];
+<a name="l00657"></a>00657   <span class="keywordflow">return</span> photo ? photo.<a class="code" href="class_u_i_view.html#a80584a62ff2691353bffed267cb0579c">size</a> : CGSizeZero;
+<a name="l00658"></a>00658 }
+<a name="l00659"></a>00659 
+<a name="l00661"></a>00661 <span class="comment">// TTThumbsViewControllerDelegate</span>
+<a name="l00662"></a>00662 
+<a name="l00663"></a><a class="code" href="interface_t_t_photo_view_controller.html#ab9ef3756104c622e5ab6f20929c685b7">00663</a> - (void)thumbsViewController:(<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)controller didSelectPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
+<a name="l00664"></a>00664   <span class="keyword">self</span>.centerPhoto = photo;
+<a name="l00665"></a>00665   [<span class="keyword">self</span>.navigationController
+<a name="l00666"></a>00666     popViewControllerAnimatedWithTransition:UIViewAnimationTransitionCurlUp];
+<a name="l00667"></a>00667 }
+<a name="l00668"></a>00668 
+<a name="l00669"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9ad4e473ebf10a6abffaaa896db8f0fd">00669</a> - (BOOL)thumbsViewController:(<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)controller
+<a name="l00670"></a>00670         shouldNavigateToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
+<a name="l00671"></a>00671   <span class="keywordflow">return</span> NO;
+<a name="l00672"></a>00672 }
+<a name="l00673"></a>00673 
+<a name="l00675"></a>00675 <span class="comment">// public</span>
+<a name="l00676"></a>00676 
+<a name="l00677"></a><a class="code" href="interface_t_t_photo_view_controller.html#a05ce07296e577d2b38a3c79a8785c03d">00677</a> - (void)setPhotoSource:(<span class="keywordtype">id</span>&lt;TTPhotoSource&gt;)photoSource {
+<a name="l00678"></a>00678   <span class="keywordflow">if</span> (_photoSource != photoSource) {
+<a name="l00679"></a>00679     [_photoSource release];
+<a name="l00680"></a>00680     _photoSource = [photoSource retain];
+<a name="l00681"></a>00681     
+<a name="l00682"></a>00682     [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:0 <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:NO];
+<a name="l00683"></a>00683     <span class="keyword">self</span>.model = _photoSource;
+<a name="l00684"></a>00684   }
+<a name="l00685"></a>00685 }
+<a name="l00686"></a>00686 
+<a name="l00687"></a><a class="code" href="interface_t_t_photo_view_controller.html#a1204e7033c158a9a1f7056d5612c5c4e">00687</a> - (void)setCenterPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo {
+<a name="l00688"></a>00688   <span class="keywordflow">if</span> (_centerPhoto != photo) {
+<a name="l00689"></a>00689     <span class="keywordflow">if</span> (photo.photoSource != _photoSource) {
+<a name="l00690"></a>00690       [_photoSource release];
+<a name="l00691"></a>00691       _photoSource = [photo.photoSource retain];
+<a name="l00692"></a>00692 
+<a name="l00693"></a>00693       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:photo.index <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:NO];
+<a name="l00694"></a>00694       <span class="keyword">self</span>.model = _photoSource;
+<a name="l00695"></a>00695     } <span class="keywordflow">else</span> {
+<a name="l00696"></a>00696       [<span class="keyword">self</span> <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">moveToPhotoAtIndex</a>:photo.index <a class="code" href="interface_t_t_photo_view_controller.html#a9cb030910396fa2aa62678331d392a5f">withDelay</a>:NO];
+<a name="l00697"></a>00697       [<span class="keyword">self</span> <a class="code" href="interface_t_t_model_view_controller.html#abaf624c169c5663efdd5ccf9ac6575f3" title="Refreshes the model state and loads new data if necessary.">refresh</a>];
+<a name="l00698"></a>00698     }
+<a name="l00699"></a>00699   }
 <a name="l00700"></a>00700 }
 <a name="l00701"></a>00701 
-<a name="l00702"></a><a class="code" href="interface_t_t_photo_view_controller.html#a31e0f57e5133442a296d12d7eb6da125">00702</a> - (<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#a31e0f57e5133442a296d12d7eb6da125" title="Creates the thumbnail controller used by the &amp;quot;See All&amp;quot; button.">createThumbsViewController</a> {
-<a name="l00703"></a>00703   <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a> alloc] initWithDelegate:self] autorelease];
+<a name="l00702"></a><a class="code" href="interface_t_t_photo_view_controller.html#a424ae934956c1e1d35666a17e55a9f72">00702</a> - (<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#a424ae934956c1e1d35666a17e55a9f72" title="Creates a photo view for a new page.">createPhotoView</a> {
+<a name="l00703"></a>00703   <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_photo_view.html">TTPhotoView</a> alloc] init] autorelease];
 <a name="l00704"></a>00704 }
 <a name="l00705"></a>00705 
-<a name="l00706"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9064c23303da44dd0f431bc7ab423e31">00706</a> - (void)didMoveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo fromPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)fromPhoto {
-<a name="l00707"></a>00707 }
-<a name="l00708"></a>00708 
-<a name="l00709"></a><a class="code" href="interface_t_t_photo_view_controller.html#af75afb56d9ebb61b57828d65971ff3a3">00709</a> - (void)showActivity:(<a class="code" href="class_n_s_string.html">NSString</a>*)title {
-<a name="l00710"></a>00710   <span class="keywordflow">if</span> (title) {
-<a name="l00711"></a>00711     <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>* label = [[[<a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> alloc]
-<a name="l00712"></a>00712                              initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
-<a name="l00713"></a>00713     label.tag = <a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">kActivityLabelTag</a>;
-<a name="l00714"></a>00714     label.<a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">text</a> = title;
-<a name="l00715"></a>00715     label.frame = _scrollView.frame;
-<a name="l00716"></a>00716     [_innerView addSubview:label];
-<a name="l00717"></a>00717 
-<a name="l00718"></a>00718     _scrollView.scrollEnabled = NO;
-<a name="l00719"></a>00719   } <span class="keywordflow">else</span> {
-<a name="l00720"></a>00720     <a class="code" href="class_u_i_view.html">UIView</a>* label = [_innerView viewWithTag:kActivityLabelTag];
-<a name="l00721"></a>00721     <span class="keywordflow">if</span> (label) {
-<a name="l00722"></a>00722       [label removeFromSuperview];
-<a name="l00723"></a>00723     }
-<a name="l00724"></a>00724 
-<a name="l00725"></a>00725     _scrollView.scrollEnabled = YES;
-<a name="l00726"></a>00726   }
-<a name="l00727"></a>00727 }
+<a name="l00706"></a><a class="code" href="interface_t_t_photo_view_controller.html#a31e0f57e5133442a296d12d7eb6da125">00706</a> - (<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a>*)<a class="code" href="interface_t_t_photo_view_controller.html#a31e0f57e5133442a296d12d7eb6da125" title="Creates the thumbnail controller used by the &amp;quot;See All&amp;quot; button.">createThumbsViewController</a> {
+<a name="l00707"></a>00707   <span class="keywordflow">return</span> [[[<a class="code" href="interface_t_t_thumbs_view_controller.html">TTThumbsViewController</a> alloc] initWithDelegate:self] autorelease];
+<a name="l00708"></a>00708 }
+<a name="l00709"></a>00709 
+<a name="l00710"></a><a class="code" href="interface_t_t_photo_view_controller.html#a9064c23303da44dd0f431bc7ab423e31">00710</a> - (void)didMoveToPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)photo fromPhoto:(<span class="keywordtype">id</span>&lt;TTPhoto&gt;)fromPhoto {
+<a name="l00711"></a>00711 }
+<a name="l00712"></a>00712 
+<a name="l00713"></a><a class="code" href="interface_t_t_photo_view_controller.html#af75afb56d9ebb61b57828d65971ff3a3">00713</a> - (void)showActivity:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title {
+<a name="l00714"></a>00714   <span class="keywordflow">if</span> (title) {
+<a name="l00715"></a>00715     <a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a>* label = [[[<a class="code" href="interface_t_t_activity_label.html">TTActivityLabel</a> alloc]
+<a name="l00716"></a>00716                              initWithStyle:TTActivityLabelStyleBlackBezel] autorelease];
+<a name="l00717"></a>00717     label.tag = <a class="code" href="_t_t_photo_view_controller_8m.html#a2d7fd8f202c13af8ed6904976204c3fd">kActivityLabelTag</a>;
+<a name="l00718"></a>00718     label.<a class="code" href="interface_t_t_activity_label.html#a8ae872a4669b61b712eee8e111f6983f">text</a> = title;
+<a name="l00719"></a>00719     label.frame = _scrollView.frame;
+<a name="l00720"></a>00720     [_innerView addSubview:label];
+<a name="l00721"></a>00721 
+<a name="l00722"></a>00722     _scrollView.scrollEnabled = NO;
+<a name="l00723"></a>00723   } <span class="keywordflow">else</span> {
+<a name="l00724"></a>00724     <a class="code" href="class_u_i_view.html">UIView</a>* label = [_innerView viewWithTag:kActivityLabelTag];
+<a name="l00725"></a>00725     <span class="keywordflow">if</span> (label) {
+<a name="l00726"></a>00726       [label removeFromSuperview];
+<a name="l00727"></a>00727     }
 <a name="l00728"></a>00728 
-<a name="l00729"></a>00729 <span class="keyword">@end</span>
+<a name="l00729"></a>00729     _scrollView.scrollEnabled = YES;
+<a name="l00730"></a>00730   }
+<a name="l00731"></a>00731 }
+<a name="l00732"></a>00732 
+<a name="l00733"></a>00733 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

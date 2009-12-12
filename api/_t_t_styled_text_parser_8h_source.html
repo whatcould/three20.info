@@ -74,29 +74,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">@class</span> <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>, <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>;
-<a name="l00020"></a>00020 
-<a name="l00021"></a><a class="code" href="interface_t_t_styled_text_parser.html">00021</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_text_parser.html">TTStyledTextParser</a> : <a class="code" href="class_n_s_object.html">NSObject</a> {
-<a name="l00022"></a><a class="code" href="interface_t_t_styled_text_parser.html#a387dcfbe4c586f613d5667445d9acd88">00022</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a387dcfbe4c586f613d5667445d9acd88">_rootNode</a>;
-<a name="l00023"></a><a class="code" href="interface_t_t_styled_text_parser.html#a0481e501391f0958c73c9092021c0d3b">00023</a>   TTStyledElement* <a class="code" href="interface_t_t_styled_text_parser.html#a0481e501391f0958c73c9092021c0d3b">_topElement</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_styled_text_parser.html#a06f4c0cda167770095c3018173230a45">00024</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a06f4c0cda167770095c3018173230a45">_lastNode</a>;
-<a name="l00025"></a><a class="code" href="interface_t_t_styled_text_parser.html#a95b906ae0dce1a55beeeb37ef1ac0929">00025</a>   NSError* <a class="code" href="interface_t_t_styled_text_parser.html#a95b906ae0dce1a55beeeb37ef1ac0929">_parserError</a>;
-<a name="l00026"></a><a class="code" href="interface_t_t_styled_text_parser.html#a449e49923a0d3c0929c86231f75d61ea">00026</a>   NSMutableString* <a class="code" href="interface_t_t_styled_text_parser.html#a449e49923a0d3c0929c86231f75d61ea">_chars</a>;
-<a name="l00027"></a><a class="code" href="interface_t_t_styled_text_parser.html#a6bc655b1abf20b408adba0912b29e77a">00027</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a6bc655b1abf20b408adba0912b29e77a">_stack</a>;
-<a name="l00028"></a><a class="code" href="interface_t_t_styled_text_parser.html#a6399820ec40cf38f356ec53b6c43f7df">00028</a>   BOOL <a class="code" href="interface_t_t_styled_text_parser.html#a6399820ec40cf38f356ec53b6c43f7df">_parseLineBreaks</a>;
-<a name="l00029"></a><a class="code" href="interface_t_t_styled_text_parser.html#aa5210caf060f07ba685be66a92b9d9b0">00029</a>   BOOL <a class="code" href="interface_t_t_styled_text_parser.html#aa5210caf060f07ba685be66a92b9d9b0">_parseURLs</a>;
-<a name="l00030"></a>00030 }
-<a name="l00031"></a>00031 
-<a name="l00032"></a><a class="code" href="interface_t_t_styled_text_parser.html#a88b8a8b1b1171c20046eb7fa5c9773e4">00032</a> @property(nonatomic, retain) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* rootNode;
-<a name="l00033"></a><a class="code" href="interface_t_t_styled_text_parser.html#a25dcbc7e5aa41a4fd20be9e8fc26e1e2">00033</a> @property(nonatomic) BOOL parseLineBreaks;
-<a name="l00034"></a><a class="code" href="interface_t_t_styled_text_parser.html#ae5f3a8ae805af77493acaa203fa9c5fb">00034</a> @property(nonatomic) BOOL parseURLs;
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 - (<span class="keywordtype">void</span>)parseXHTML:(<a class="code" href="class_n_s_string.html">NSString</a>*)html;
-<a name="l00037"></a>00037 - (<span class="keywordtype">void</span>)parseText:(<a class="code" href="class_n_s_string.html">NSString</a>*)<span class="keywordtype">string</span>;
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">@class</span> <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>, <a class="code" href="interface_t_t_styled_element.html">TTStyledElement</a>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a><a class="code" href="interface_t_t_styled_text_parser.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_styled_text_parser.html">TTStyledTextParser</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a> {
+<a name="l00023"></a><a class="code" href="interface_t_t_styled_text_parser.html#a387dcfbe4c586f613d5667445d9acd88">00023</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a387dcfbe4c586f613d5667445d9acd88">_rootNode</a>;
+<a name="l00024"></a><a class="code" href="interface_t_t_styled_text_parser.html#a0481e501391f0958c73c9092021c0d3b">00024</a>   TTStyledElement* <a class="code" href="interface_t_t_styled_text_parser.html#a0481e501391f0958c73c9092021c0d3b">_topElement</a>;
+<a name="l00025"></a><a class="code" href="interface_t_t_styled_text_parser.html#a06f4c0cda167770095c3018173230a45">00025</a>   <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a06f4c0cda167770095c3018173230a45">_lastNode</a>;
+<a name="l00026"></a><a class="code" href="interface_t_t_styled_text_parser.html#a95b906ae0dce1a55beeeb37ef1ac0929">00026</a>   NSError* <a class="code" href="interface_t_t_styled_text_parser.html#a95b906ae0dce1a55beeeb37ef1ac0929">_parserError</a>;
+<a name="l00027"></a><a class="code" href="interface_t_t_styled_text_parser.html#a449e49923a0d3c0929c86231f75d61ea">00027</a>   NSMutableString* <a class="code" href="interface_t_t_styled_text_parser.html#a449e49923a0d3c0929c86231f75d61ea">_chars</a>;
+<a name="l00028"></a><a class="code" href="interface_t_t_styled_text_parser.html#a6bc655b1abf20b408adba0912b29e77a">00028</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_styled_text_parser.html#a6bc655b1abf20b408adba0912b29e77a">_stack</a>;
+<a name="l00029"></a><a class="code" href="interface_t_t_styled_text_parser.html#a6399820ec40cf38f356ec53b6c43f7df">00029</a>   BOOL <a class="code" href="interface_t_t_styled_text_parser.html#a6399820ec40cf38f356ec53b6c43f7df">_parseLineBreaks</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_styled_text_parser.html#aa5210caf060f07ba685be66a92b9d9b0">00030</a>   BOOL <a class="code" href="interface_t_t_styled_text_parser.html#aa5210caf060f07ba685be66a92b9d9b0">_parseURLs</a>;
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="interface_t_t_styled_text_parser.html#a88b8a8b1b1171c20046eb7fa5c9773e4">00033</a> @property(nonatomic, retain) <a class="code" href="interface_t_t_styled_node.html">TTStyledNode</a>* rootNode;
+<a name="l00034"></a><a class="code" href="interface_t_t_styled_text_parser.html#a25dcbc7e5aa41a4fd20be9e8fc26e1e2">00034</a> @property(nonatomic) BOOL parseLineBreaks;
+<a name="l00035"></a><a class="code" href="interface_t_t_styled_text_parser.html#ae5f3a8ae805af77493acaa203fa9c5fb">00035</a> @property(nonatomic) BOOL parseURLs;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 - (<span class="keywordtype">void</span>)parseXHTML:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)html;
+<a name="l00038"></a>00038 - (<span class="keywordtype">void</span>)parseText:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)<span class="keywordtype">string</span>;
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

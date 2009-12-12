@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_u_i_color_additions_8h.html">Three20/UIColorAdditions.h</a>&quot;</span>
 <a name="l00018"></a>00018 
 <a name="l00020"></a>00020 <span class="comment">// Color algorithms from http://www.cs.rit.edu/~ncs/color/t_convert.html</span>
 <a name="l00021"></a>00021 
@@ -85,10 +86,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00026"></a>00026   <span class="keywordtype">float</span> min, max, delta;
 <a name="l00027"></a>00027   min = <a class="code" href="_u_i_color_additions_8m.html#a4887ceeae88266064841cbbc11ef8b53">MIN3</a>(r, g, b);
 <a name="l00028"></a>00028   max = <a class="code" href="_u_i_color_additions_8m.html#a37c6d7fcb9c177c308ef38e1d51d35e3">MAX3</a>(r, g, b);
-<a name="l00029"></a>00029   *v = max;       <span class="comment">// v</span>
+<a name="l00029"></a>00029   *v = max;        <span class="comment">// v</span>
 <a name="l00030"></a>00030   delta = max - min;
 <a name="l00031"></a>00031   <span class="keywordflow">if</span>( max != 0 )
-<a name="l00032"></a>00032     *s = delta / max;   <span class="comment">// s</span>
+<a name="l00032"></a>00032     *s = delta / max;    <span class="comment">// s</span>
 <a name="l00033"></a>00033   <span class="keywordflow">else</span> {
 <a name="l00034"></a>00034     <span class="comment">// r = g = b = 0    // s = 0, v is undefined</span>
 <a name="l00035"></a>00035     *s = 0;
@@ -96,12 +97,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037     <span class="keywordflow">return</span>;
 <a name="l00038"></a>00038   }
 <a name="l00039"></a>00039   <span class="keywordflow">if</span>( r == max )
-<a name="l00040"></a>00040     *h = ( g - b ) / delta;   <span class="comment">// between yellow &amp; magenta</span>
+<a name="l00040"></a>00040     *h = ( g - b ) / delta;    <span class="comment">// between yellow &amp; magenta</span>
 <a name="l00041"></a>00041   <span class="keywordflow">else</span> <span class="keywordflow">if</span>( g == max )
-<a name="l00042"></a>00042     *h = 2 + ( b - r ) / delta; <span class="comment">// between cyan &amp; yellow</span>
+<a name="l00042"></a>00042     *h = 2 + ( b - r ) / delta;  <span class="comment">// between cyan &amp; yellow</span>
 <a name="l00043"></a>00043   <span class="keywordflow">else</span>
-<a name="l00044"></a>00044     *h = 4 + ( r - g ) / delta; <span class="comment">// between magenta &amp; cyan</span>
-<a name="l00045"></a>00045   *h *= 60;       <span class="comment">// degrees</span>
+<a name="l00044"></a>00044     *h = 4 + ( r - g ) / delta;  <span class="comment">// between magenta &amp; cyan</span>
+<a name="l00045"></a>00045   *h *= 60;        <span class="comment">// degrees</span>
 <a name="l00046"></a>00046   <span class="keywordflow">if</span>( *h &lt; 0 )
 <a name="l00047"></a>00047     *h += 360;
 <a name="l00048"></a>00048 }
@@ -156,91 +157,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00097"></a>00097 }
 <a name="l00098"></a>00098 
 <a name="l00100"></a>00100 
-<a name="l00101"></a><a class="code" href="class_u_i_color.html">00101</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_color.html">UIColor</a> (TTCategory)
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 + (<a class="code" href="class_u_i_color.html">UIColor</a>*)colorWithHue:(CGFloat)h saturation:(CGFloat)s value:(CGFloat)v alpha:(CGFloat)a {
-<a name="l00104"></a>00104   CGFloat r, g, b;
-<a name="l00105"></a>00105   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
-<a name="l00106"></a>00106   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
-<a name="l00107"></a>00107 }
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109 - (<a class="code" href="class_u_i_color.html">UIColor</a>*)multiplyHue:(CGFloat)hd saturation:(CGFloat)sd value:(CGFloat)vd {
-<a name="l00110"></a>00110   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00111"></a>00111   CGFloat r = rgba[0];
-<a name="l00112"></a>00112   CGFloat g = rgba[1];
-<a name="l00113"></a>00113   CGFloat b = rgba[2];
-<a name="l00114"></a>00114   CGFloat a = rgba[3];
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116   CGFloat h, s, v;
-<a name="l00117"></a>00117   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(r, g, b, &amp;h, &amp;s, &amp;v);
+<a name="l00104"></a><a class="code" href="class_u_i_color.html">00104</a> <span class="keyword">@implementation </span><a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> (TTCategory)
+<a name="l00105"></a>00105 
+<a name="l00106"></a><a class="code" href="class_u_i_color.html#a8cef9ecf4ec7fcc469152dad9a0a8641">00106</a> + (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)colorWithHue:(CGFloat)h saturation:(CGFloat)s value:(CGFloat)v alpha:(CGFloat)a {
+<a name="l00107"></a>00107   CGFloat r, g, b;
+<a name="l00108"></a>00108   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
+<a name="l00109"></a>00109   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
+<a name="l00110"></a>00110 }
+<a name="l00111"></a>00111 
+<a name="l00112"></a><a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">00112</a> - (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)multiplyHue:(CGFloat)hd saturation:(CGFloat)sd value:(CGFloat)vd {
+<a name="l00113"></a>00113   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00114"></a>00114   CGFloat r = rgba[0];
+<a name="l00115"></a>00115   CGFloat g = rgba[1];
+<a name="l00116"></a>00116   CGFloat b = rgba[2];
+<a name="l00117"></a>00117   CGFloat a = rgba[3];
 <a name="l00118"></a>00118 
-<a name="l00119"></a>00119   h *= hd;
-<a name="l00120"></a>00120   v *= vd;
-<a name="l00121"></a>00121   s *= sd;
-<a name="l00122"></a>00122   
-<a name="l00123"></a>00123   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
-<a name="l00124"></a>00124   
-<a name="l00125"></a>00125   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
-<a name="l00126"></a>00126 }
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128 - (<a class="code" href="class_u_i_color.html">UIColor</a>*)copyWithAlpha:(CGFloat)newAlpha {
-<a name="l00129"></a>00129   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00130"></a>00130   CGFloat r = rgba[0];
-<a name="l00131"></a>00131   CGFloat g = rgba[1];
-<a name="l00132"></a>00132   CGFloat b = rgba[2];
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134   <span class="keywordflow">return</span> [[<a class="code" href="class_u_i_color.html">UIColor</a> colorWithRed:r green:g blue:b alpha:newAlpha] retain];
-<a name="l00135"></a>00135 }
+<a name="l00119"></a>00119   CGFloat h, s, v;
+<a name="l00120"></a>00120   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(r, g, b, &amp;h, &amp;s, &amp;v);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122   h *= hd;
+<a name="l00123"></a>00123   v *= vd;
+<a name="l00124"></a>00124   s *= sd;
+<a name="l00125"></a>00125   
+<a name="l00126"></a>00126   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
+<a name="l00127"></a>00127   
+<a name="l00128"></a>00128   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
+<a name="l00129"></a>00129 }
+<a name="l00130"></a>00130 
+<a name="l00131"></a><a class="code" href="class_u_i_color.html#add145778f9877aa74d4a7cf64f4e71ea">00131</a> - (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)copyWithAlpha:(CGFloat)newAlpha {
+<a name="l00132"></a>00132   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00133"></a>00133   CGFloat r = rgba[0];
+<a name="l00134"></a>00134   CGFloat g = rgba[1];
+<a name="l00135"></a>00135   CGFloat b = rgba[2];
 <a name="l00136"></a>00136 
-<a name="l00137"></a>00137 - (<a class="code" href="class_u_i_color.html">UIColor</a>*)addHue:(CGFloat)hd saturation:(CGFloat)sd value:(CGFloat)vd {
-<a name="l00138"></a>00138   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00139"></a>00139   CGFloat r = rgba[0];
-<a name="l00140"></a>00140   CGFloat g = rgba[1];
-<a name="l00141"></a>00141   CGFloat b = rgba[2];
-<a name="l00142"></a>00142   CGFloat a = rgba[3];
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144   CGFloat h, s, v;
-<a name="l00145"></a>00145   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(r, g, b, &amp;h, &amp;s, &amp;v);
+<a name="l00137"></a>00137   <span class="keywordflow">return</span> [[<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> colorWithRed:r green:g blue:b alpha:newAlpha] retain];
+<a name="l00138"></a>00138 }
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="class_u_i_color.html#a17ede87e1ea7a199fcafb2771884ab01">00140</a> - (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)addHue:(CGFloat)hd saturation:(CGFloat)sd value:(CGFloat)vd {
+<a name="l00141"></a>00141   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00142"></a>00142   CGFloat r = rgba[0];
+<a name="l00143"></a>00143   CGFloat g = rgba[1];
+<a name="l00144"></a>00144   CGFloat b = rgba[2];
+<a name="l00145"></a>00145   CGFloat a = rgba[3];
 <a name="l00146"></a>00146 
-<a name="l00147"></a>00147   h += hd;
-<a name="l00148"></a>00148   v += vd;
-<a name="l00149"></a>00149   s += sd;
-<a name="l00150"></a>00150   
-<a name="l00151"></a>00151   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
-<a name="l00152"></a>00152   
-<a name="l00153"></a>00153   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
-<a name="l00154"></a>00154 }
-<a name="l00155"></a>00155 
-<a name="l00156"></a>00156 - (<a class="code" href="class_u_i_color.html">UIColor</a>*)highlight {
-<a name="l00157"></a>00157   <span class="keywordflow">return</span> [<span class="keyword">self</span> multiplyHue:1 saturation:0.4 value:1.2];
-<a name="l00158"></a>00158 }
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160 - (<a class="code" href="class_u_i_color.html">UIColor</a>*)shadow {
-<a name="l00161"></a>00161   <span class="keywordflow">return</span> [<span class="keyword">self</span> multiplyHue:1 saturation:0.6 value:0.6];
-<a name="l00162"></a>00162 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164 - (CGFloat)hue {
-<a name="l00165"></a>00165   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00166"></a>00166   CGFloat h, s, v;
-<a name="l00167"></a>00167   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
-<a name="l00168"></a>00168   <span class="keywordflow">return</span> h;
-<a name="l00169"></a>00169 }
-<a name="l00170"></a>00170 
-<a name="l00171"></a>00171 - (CGFloat)saturation {
-<a name="l00172"></a>00172   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00173"></a>00173   CGFloat h, s, v;
-<a name="l00174"></a>00174   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
-<a name="l00175"></a>00175   <span class="keywordflow">return</span> s;
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a>00178 - (CGFloat)value {
-<a name="l00179"></a>00179   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
-<a name="l00180"></a>00180   CGFloat h, s, v;
-<a name="l00181"></a>00181   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
-<a name="l00182"></a>00182   <span class="keywordflow">return</span> v;
-<a name="l00183"></a>00183 }
-<a name="l00184"></a>00184 
-<a name="l00185"></a>00185 <span class="keyword">@end</span>
+<a name="l00147"></a>00147   CGFloat h, s, v;
+<a name="l00148"></a>00148   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(r, g, b, &amp;h, &amp;s, &amp;v);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150   h += hd;
+<a name="l00151"></a>00151   v += vd;
+<a name="l00152"></a>00152   s += sd;
+<a name="l00153"></a>00153   
+<a name="l00154"></a>00154   <a class="code" href="_u_i_color_additions_8m.html#a72acea4e7933697d088d0e1ddd186e51">HSVtoRGB</a>(&amp;r, &amp;g, &amp;b, h, s, v);
+<a name="l00155"></a>00155   
+<a name="l00156"></a>00156   <span class="keywordflow">return</span> [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> colorWithRed:r green:g blue:b alpha:a];
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00159"></a><a class="code" href="class_u_i_color.html#a37fd04e62562d864c05b108f63543f51">00159</a> - (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)<a class="code" href="class_u_i_color.html#a37fd04e62562d864c05b108f63543f51">highlight</a> {
+<a name="l00160"></a>00160   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">multiplyHue</a>:1 <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">saturation</a>:0.4 <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">value</a>:1.2];
+<a name="l00161"></a>00161 }
+<a name="l00162"></a>00162 
+<a name="l00163"></a><a class="code" href="class_u_i_color.html#a9acfaed073d695e4059fc12be691d492">00163</a> - (<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a>*)<a class="code" href="class_u_i_color.html#a9acfaed073d695e4059fc12be691d492">shadow</a> {
+<a name="l00164"></a>00164   <span class="keywordflow">return</span> [<span class="keyword">self</span> <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">multiplyHue</a>:1 <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">saturation</a>:0.6 <a class="code" href="class_u_i_color.html#ac6ea0dde813310def7763920ef08cabd">value</a>:0.6];
+<a name="l00165"></a>00165 }
+<a name="l00166"></a>00166 
+<a name="l00167"></a><a class="code" href="class_u_i_color.html#af68df2d38c5a98d3f1681df165bf5994">00167</a> - (CGFloat)<a class="code" href="class_u_i_color.html#af68df2d38c5a98d3f1681df165bf5994">hue</a> {
+<a name="l00168"></a>00168   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00169"></a>00169   CGFloat h, s, v;
+<a name="l00170"></a>00170   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
+<a name="l00171"></a>00171   <span class="keywordflow">return</span> h;
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00174"></a><a class="code" href="class_u_i_color.html#a20c533f29587de7e5e6a002eec5d1c2e">00174</a> - (CGFloat)<a class="code" href="class_u_i_color.html#a20c533f29587de7e5e6a002eec5d1c2e">saturation</a> {
+<a name="l00175"></a>00175   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00176"></a>00176   CGFloat h, s, v;
+<a name="l00177"></a>00177   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
+<a name="l00178"></a>00178   <span class="keywordflow">return</span> s;
+<a name="l00179"></a>00179 }
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="class_u_i_color.html#ace47b32220dea293523a22430636528a">00181</a> - (CGFloat)<a class="code" href="class_u_i_color.html#ace47b32220dea293523a22430636528a">value</a> {
+<a name="l00182"></a>00182   <span class="keyword">const</span> CGFloat* rgba = CGColorGetComponents(<span class="keyword">self</span>.CGColor);
+<a name="l00183"></a>00183   CGFloat h, s, v;
+<a name="l00184"></a>00184   <a class="code" href="_u_i_color_additions_8m.html#aa034511d56c5266d8c97482addfdd523">RGBtoHSV</a>(rgba[0], rgba[1], rgba[2], &amp;h, &amp;s, &amp;v);
+<a name="l00185"></a>00185   <span class="keywordflow">return</span> v;
+<a name="l00186"></a>00186 }
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

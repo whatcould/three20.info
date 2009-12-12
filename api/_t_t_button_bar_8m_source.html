@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,79 +76,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_button_bar_8h.html">Three20/TTButtonBar.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_button_8h.html">Three20/TTButton.h</a>&quot;</span>
-<a name="l00019"></a>00019 
-<a name="l00021"></a>00021 <span class="comment">// global</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_u_i_8h.html">Three20/TTGlobalUI.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_button_8h.html">Three20/TTButton.h</a>&quot;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a><a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">00023</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a> = 10;
-<a name="l00024"></a><a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">00024</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a> = 30;
-<a name="l00025"></a><a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">00025</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a> = 120;
-<a name="l00026"></a>00026 
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_button_bar.html" title="A box containing buttons with a consistent style.">TTButtonBar</a>
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_button_bar.html#aa98b6cc43a01fcc3b3d22dc257586ae3">buttons</a> = <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>, <a class="code" href="interface_t_t_button_bar.html#aba71c63de1b3523a7469ff7d450c036f">buttonStyle</a> = <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>;
-<a name="l00032"></a>00032 
-<a name="l00034"></a>00034 <span class="comment">// NSObject</span>
+<a name="l00024"></a>00024 <span class="comment">// global</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">00026</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a> = 10;
+<a name="l00027"></a><a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">00027</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a> = 30;
+<a name="l00028"></a><a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">00028</a> <span class="keyword">static</span> CGFloat <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a> = 120;
+<a name="l00029"></a>00029 
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_button_bar.html" title="A box containing buttons with a consistent style.">TTButtonBar</a>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_button_bar.html#aa98b6cc43a01fcc3b3d22dc257586ae3">buttons</a> = <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>, <a class="code" href="interface_t_t_button_bar.html#aba71c63de1b3523a7469ff7d450c036f">buttonStyle</a> = <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 - (id)initWithFrame:(CGRect)frame {
-<a name="l00037"></a>00037   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00038"></a>00038     <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a> = [[<a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a> alloc] init];
-<a name="l00039"></a>00039     <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a> = nil;
-<a name="l00040"></a>00040     
-<a name="l00041"></a>00041     <span class="keyword">self</span>.buttonStyle = <span class="stringliteral">@&quot;toolbarButton:&quot;</span>;
-<a name="l00042"></a>00042   }
-<a name="l00043"></a>00043   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 - (void)dealloc {
-<a name="l00047"></a>00047   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>);
-<a name="l00048"></a>00048   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>);
-<a name="l00049"></a>00049   [<span class="keyword">super</span> dealloc];
-<a name="l00050"></a>00050 }
-<a name="l00051"></a>00051 
-<a name="l00053"></a>00053 <span class="comment">// UIResponder</span>
+<a name="l00037"></a>00037 <span class="comment">// NSObject</span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a><a class="code" href="interface_t_t_button_bar.html#ad71a5310d77d76696e4e51c69755c0d9">00039</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00040"></a>00040   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00041"></a>00041     <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a> = [[<a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a> alloc] init];
+<a name="l00042"></a>00042     <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a> = nil;
+<a name="l00043"></a>00043     
+<a name="l00044"></a>00044     <span class="keyword">self</span>.buttonStyle = <span class="stringliteral">@&quot;toolbarButton:&quot;</span>;
+<a name="l00045"></a>00045   }
+<a name="l00046"></a>00046   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a><a class="code" href="interface_t_t_button_bar.html#a81752d267e2b1df7f0955ff337c5134f">00049</a> - (void)<a class="code" href="interface_t_t_button_bar.html#a81752d267e2b1df7f0955ff337c5134f">dealloc</a> {
+<a name="l00050"></a>00050   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>);
+<a name="l00051"></a>00051   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>);
+<a name="l00052"></a>00052   [<span class="keyword">super</span> <a class="code" href="interface_t_t_view.html#a73c9ae17cae20fa5da6fa5fc7f6085f9">dealloc</a>];
+<a name="l00053"></a>00053 }
 <a name="l00054"></a>00054 
-<a name="l00055"></a>00055 - (void)touchesBegan:(NSSet*)touches withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a>*)event {
-<a name="l00056"></a>00056   <span class="comment">// XXXjoe Hackish? This prevents weird things from happening when the user touches the</span>
-<a name="l00057"></a>00057   <span class="comment">// background of the button bar while it is used as the menu in a table view.</span>
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00061"></a>00061 <span class="comment">// UIView</span>
+<a name="l00056"></a>00056 <span class="comment">// UIResponder</span>
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="interface_t_t_button_bar.html#a04b7cf7ae9a79043e78a84ccde757572">00058</a> - (void)touchesBegan:(NSSet*)touches withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a>*)event {
+<a name="l00059"></a>00059   <span class="comment">// XXXjoe Hackish? This prevents weird things from happening when the user touches the</span>
+<a name="l00060"></a>00060   <span class="comment">// background of the button bar while it is used as the menu in a table view.</span>
+<a name="l00061"></a>00061 }
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063 - (void)layoutSubviews {
-<a name="l00064"></a>00064   CGFloat buttonWidth = floor((<span class="keyword">self</span>.width-<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>) / <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>.count)-<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>;
-<a name="l00065"></a>00065   <span class="keywordflow">if</span> (buttonWidth &gt; <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a>) {
-<a name="l00066"></a>00066     buttonWidth = <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a>;
-<a name="l00067"></a>00067   }
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069   CGFloat x = <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a> + floor(self.width/2 - ((buttonWidth+<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>)*<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>.count)/2);
-<a name="l00070"></a>00070   CGFloat y = floor(<span class="keyword">self</span>.height/2 - <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a>/2);
-<a name="l00071"></a>00071   
-<a name="l00072"></a>00072   <span class="keywordflow">for</span> (UIButton* button in <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>) {
-<a name="l00073"></a>00073     button.frame = CGRectMake(x, y, buttonWidth, <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a>);
-<a name="l00074"></a>00074     x += button.width + <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>;
-<a name="l00075"></a>00075   }
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00079"></a>00079 <span class="comment">// public</span>
+<a name="l00064"></a>00064 <span class="comment">// UIView</span>
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="interface_t_t_button_bar.html#a7b1f8a50ea3a9c4cab0f6ec5298ab825">00066</a> - (void)<a class="code" href="interface_t_t_button_bar.html#a7b1f8a50ea3a9c4cab0f6ec5298ab825">layoutSubviews</a> {
+<a name="l00067"></a>00067   CGFloat buttonWidth = floor((<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>-<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>) / <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>.count)-<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>;
+<a name="l00068"></a>00068   <span class="keywordflow">if</span> (buttonWidth &gt; <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a>) {
+<a name="l00069"></a>00069     buttonWidth = <a class="code" href="_t_t_button_bar_8m.html#a55e7a90488d8dec7550e3b666a4c59b8">kButtonMaxWidth</a>;
+<a name="l00070"></a>00070   }
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072   CGFloat x = <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a> + floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#acd5bf0bda0e4304a48bcfdbfd76d21b0">width</a>/2 - ((buttonWidth+<a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>)*<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>.count)/2);
+<a name="l00073"></a>00073   CGFloat y = floor(<span class="keyword">self</span>.<a class="code" href="class_u_i_view.html#a328f9d54080820f9a18b039a2042d53f">height</a>/2 - <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a>/2);
+<a name="l00074"></a>00074   
+<a name="l00075"></a>00075   <span class="keywordflow">for</span> (UIButton* button in <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>) {
+<a name="l00076"></a>00076     button.frame = CGRectMake(x, y, buttonWidth, <a class="code" href="_t_t_button_bar_8m.html#a0b90ade87d18f1da1f6176c178ff88b2">kButtonHeight</a>);
+<a name="l00077"></a>00077     x += button.width + <a class="code" href="_t_t_button_bar_8m.html#a6a618ad3eb9ed1b1412d5d600879474a">kPadding</a>;
+<a name="l00078"></a>00078   }
+<a name="l00079"></a>00079 }
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="interface_t_t_button_bar.html#a1e7458a3cf8d37883c0016c9326fe74e">00081</a> - (void)addButton:(<a class="code" href="class_n_s_string.html">NSString</a>*)title target:(<span class="keywordtype">id</span>)target action:(<span class="keywordtype">SEL</span>)selector {
-<a name="l00082"></a>00082   <a class="code" href="interface_t_t_button.html">TTButton</a>* button = [<a class="code" href="interface_t_t_button.html">TTButton</a> <a class="code" href="interface_t_t_button.html#abea22b806d132cf3b9388e48b6ac4e0a">buttonWithStyle</a>:_buttonStyle];
-<a name="l00083"></a>00083   [button <a class="code" href="interface_t_t_button.html#a765a97304e71d21e3298ee47416fce62">setTitle</a>:title <a class="code" href="interface_t_t_button.html#a765a97304e71d21e3298ee47416fce62">forState</a>:UIControlStateNormal];
-<a name="l00084"></a>00084   [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-<a name="l00085"></a>00085   [<span class="keyword">self</span> addSubview:button];
-<a name="l00086"></a>00086   [<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a> addObject:button];
-<a name="l00087"></a>00087 }
-<a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="interface_t_t_button_bar.html#a680751c61f5862f1dd4deab8f7ddaff2">00089</a> - (void)<a class="code" href="interface_t_t_button_bar.html#a680751c61f5862f1dd4deab8f7ddaff2">removeButtons</a> {
-<a name="l00090"></a>00090   <span class="keywordflow">for</span> (UIButton* button in <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>) {
-<a name="l00091"></a>00091     [button removeFromSuperview];
-<a name="l00092"></a>00092   }
-<a name="l00093"></a>00093   [_buttons removeAllObjects];
-<a name="l00094"></a>00094 }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="keyword">@end</span>
+<a name="l00082"></a>00082 <span class="comment">// public</span>
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="interface_t_t_button_bar.html#a1e7458a3cf8d37883c0016c9326fe74e">00084</a> - (void)addButton:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title target:(<span class="keywordtype">id</span>)target action:(<span class="keywordtype">SEL</span>)selector {
+<a name="l00085"></a>00085   <a class="code" href="interface_t_t_button.html">TTButton</a>* button = [<a class="code" href="interface_t_t_button.html">TTButton</a> <a class="code" href="interface_t_t_button.html#abea22b806d132cf3b9388e48b6ac4e0a">buttonWithStyle</a>:_buttonStyle];
+<a name="l00086"></a>00086   [button <a class="code" href="interface_t_t_button.html#a765a97304e71d21e3298ee47416fce62">setTitle</a>:title <a class="code" href="interface_t_t_button.html#a765a97304e71d21e3298ee47416fce62">forState</a>:UIControlStateNormal];
+<a name="l00087"></a>00087   [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+<a name="l00088"></a>00088   [<span class="keyword">self</span> addSubview:button];
+<a name="l00089"></a>00089   [<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a> addObject:button];
+<a name="l00090"></a>00090 }
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="interface_t_t_button_bar.html#a680751c61f5862f1dd4deab8f7ddaff2">00092</a> - (void)<a class="code" href="interface_t_t_button_bar.html#a680751c61f5862f1dd4deab8f7ddaff2">removeButtons</a> {
+<a name="l00093"></a>00093   <span class="keywordflow">for</span> (UIButton* button in <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>) {
+<a name="l00094"></a>00094     [button removeFromSuperview];
+<a name="l00095"></a>00095   }
+<a name="l00096"></a>00096   [<a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a> removeAllObjects];
+<a name="l00097"></a>00097 }
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

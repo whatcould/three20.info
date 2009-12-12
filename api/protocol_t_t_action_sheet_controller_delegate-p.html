@@ -62,16 +62,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>&lt;TTActionSheetControllerDelegate&gt; Protocol Reference</h1><!-- doxytag: class="TTActionSheetControllerDelegate-p" -->
+<p>Inherits the UIActionSheetDelegate protocol and adds <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> support.  
+<a href="#_details">More...</a></p>
+
 <p><code>#import &lt;<a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>&gt;</code></p>
 
 <p><a href="protocol_t_t_action_sheet_controller_delegate-p-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">(BOOL)&nbsp;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_t_t_action_sheet_controller_delegate-p.html#a70c0b181e70ed9134ceb471e80421e32">actionSheetController:didDismissWithButtonIndex:URL:</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sent to the delegate after an action sheet is dismissed from the screen.  <a href="#a70c0b181e70ed9134ceb471e80421e32"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-
-<p>Definition at line <a class="el" href="_t_t_action_sheet_controller_8h_source.html#l00048">48</a> of file <a class="el" href="_t_t_action_sheet_controller_8h_source.html">TTActionSheetController.h</a>.</p>
+<p>Inherits the UIActionSheetDelegate protocol and adds <a class="el" href="interface_t_t_navigator.html" title="A URL-based navigation system with built-in persistence.">TTNavigator</a> support. </p>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a70c0b181e70ed9134ceb471e80421e32"></a><!-- doxytag: member="TTActionSheetControllerDelegate&#45;p::actionSheetController:didDismissWithButtonIndex:URL:" ref="a70c0b181e70ed9134ceb471e80421e32" args="(TTActionSheetController *controller,[didDismissWithButtonIndex] NSInteger buttonIndex,[URL] NSString *URL)" -->
 <div class="memitem">
@@ -98,11 +101,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td></td>
           <td></td>
-          <td></td><td></td><td></td>
+          <td></td><td></td><td><code> [optional]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Sent to the delegate after an action sheet is dismissed from the screen. </p>
+<p>This method is invoked after the animation ends and the view is hidden.</p>
+<p>If this method is not implemented, the default action is to open the given URL. If this method is implemented and returns NO, then the caller will not navigate to the given URL.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>controller</em>&nbsp;</td><td>The controller that was dismissed. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>buttonIndex</em>&nbsp;</td><td>The index of the button that was clicked. The button indices start at 0. If this is the cancel button index, the action sheet is canceling. If -1, the cancel button index is not set. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>URL</em>&nbsp;</td><td>The URL of the selected button.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>YES to open the given URL with TTOpenURL. </dd></dl>
 
 </div>
 </div>

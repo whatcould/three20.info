@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -74,81 +75,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_link_8h.html">Three20/TTLink.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_shape_8h.html">Three20/TTShape.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00022"></a>00022 
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_link.html">TTLink</a>
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_link.html#a411a2104db6c430c46a6cbe687f5ac42" title="The URL that will be loaded when the control is touched.">URL</a> = <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>;
-<a name="l00028"></a>00028 
-<a name="l00030"></a>00030 <span class="comment">// private</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_link_8h.html">Three20/TTLink.h</a>&quot;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_navigator_8h.html">Three20/TTNavigator.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_shape_8h.html">Three20/TTShape.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_sheet_8h.html">Three20/TTStyleSheet.h</a>&quot;</span>
+<a name="l00025"></a>00025 
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_link.html">TTLink</a>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_link.html#a411a2104db6c430c46a6cbe687f5ac42" title="The URL that will be loaded when the control is touched.">URL</a> = <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>;
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032 - (void)linkTouched {
-<a name="l00033"></a>00033   <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>);
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 
-<a name="l00037"></a>00037 <span class="comment">// NSObject</span>
+<a name="l00033"></a>00033 <span class="comment">// private</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a><a class="code" href="interface_t_t_link.html#a2525e37e190b6fa1886853c6b0df3199">00035</a> - (void)<a class="code" href="interface_t_t_link.html#a2525e37e190b6fa1886853c6b0df3199">linkTouched</a> {
+<a name="l00036"></a>00036   <a class="code" href="_t_t_navigator_8h.html#a8cc8641050afe451ac637233777a4569" title="Shortcut for calling [[TTNavigator navigator] openURL:].">TTOpenURL</a>(<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>);
+<a name="l00037"></a>00037 }
 <a name="l00038"></a>00038 
-<a name="l00039"></a>00039 - (id)initWithFrame:(CGRect)frame {
-<a name="l00040"></a>00040   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00041"></a>00041     <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a> = nil;
-<a name="l00042"></a>00042     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a> = nil;
-<a name="l00043"></a>00043     
-<a name="l00044"></a>00044     <span class="keyword">self</span>.userInteractionEnabled = NO;
-<a name="l00045"></a>00045     [<span class="keyword">self</span> addTarget:self action:@selector(linkTouched)
-<a name="l00046"></a>00046           forControlEvents:UIControlEventTouchUpInside];
-<a name="l00047"></a>00047   }
-<a name="l00048"></a>00048   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 - (void)dealloc {
-<a name="l00052"></a>00052   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>);
-<a name="l00053"></a>00053   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>);
-<a name="l00054"></a>00054   [<span class="keyword">super</span> dealloc];
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00058"></a>00058 <span class="comment">// UIControl</span>
+<a name="l00040"></a>00040 <span class="comment">// NSObject</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="interface_t_t_link.html#a325813967c49bc2ec73b0ef64ba8c0e2">00042</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00043"></a>00043   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00044"></a>00044     <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a> = nil;
+<a name="l00045"></a>00045     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a> = nil;
+<a name="l00046"></a>00046     
+<a name="l00047"></a>00047     <span class="keyword">self</span>.userInteractionEnabled = NO;
+<a name="l00048"></a>00048     [<span class="keyword">self</span> addTarget:self action:@selector(linkTouched)
+<a name="l00049"></a>00049           forControlEvents:UIControlEventTouchUpInside];
+<a name="l00050"></a>00050   }
+<a name="l00051"></a>00051   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00052"></a>00052 }
+<a name="l00053"></a>00053 
+<a name="l00054"></a><a class="code" href="interface_t_t_link.html#a78c6183bdbbbd3297cafc9d847a67dad">00054</a> - (void)<a class="code" href="interface_t_t_link.html#a78c6183bdbbbd3297cafc9d847a67dad">dealloc</a> {
+<a name="l00055"></a>00055   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>);
+<a name="l00056"></a>00056   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>);
+<a name="l00057"></a>00057   [<span class="keyword">super</span> dealloc];
+<a name="l00058"></a>00058 }
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (void)setHighlighted:(BOOL)highlighted {
-<a name="l00061"></a>00061   [<span class="keyword">super</span> setHighlighted:highlighted];
-<a name="l00062"></a>00062   <span class="keywordflow">if</span> (highlighted) {
-<a name="l00063"></a>00063     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>) {
-<a name="l00064"></a>00064       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a> = [[<a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> alloc] initWithFrame:self.bounds];
-<a name="l00065"></a>00065       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.<a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="_t_t_global_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(linkHighlighted);
-<a name="l00066"></a>00066       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00067"></a>00067       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.userInteractionEnabled = NO;
-<a name="l00068"></a>00068       [<span class="keyword">self</span> addSubview:_screenView];
-<a name="l00069"></a>00069     }
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.frame = <span class="keyword">self</span>.bounds;
-<a name="l00072"></a>00072     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.hidden = NO;
-<a name="l00073"></a>00073   } <span class="keywordflow">else</span> {
-<a name="l00074"></a>00074     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.hidden = YES;
-<a name="l00075"></a>00075   }
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078 - (BOOL)continueTrackingWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
-<a name="l00079"></a>00079   <span class="keywordflow">if</span> ([<span class="keyword">self</span> pointInside:[touch locationInView:<span class="keyword">self</span>] withEvent:event]) {
-<a name="l00080"></a>00080     <span class="keywordflow">return</span> YES;
-<a name="l00081"></a>00081   } <span class="keywordflow">else</span> {
-<a name="l00082"></a>00082     <span class="keyword">self</span>.highlighted = NO;
-<a name="l00083"></a>00083     <span class="keywordflow">return</span> NO;
-<a name="l00084"></a>00084   }
-<a name="l00085"></a>00085 }
-<a name="l00086"></a>00086 
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 - (void)setURL:(<span class="keywordtype">id</span>)URL {
-<a name="l00090"></a>00090   [_URL release];
-<a name="l00091"></a>00091   <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a> = [URL retain];
-<a name="l00092"></a>00092   
-<a name="l00093"></a>00093   <span class="keyword">self</span>.userInteractionEnabled = !!<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>;
-<a name="l00094"></a>00094 }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="keyword">@end</span>
+<a name="l00061"></a>00061 <span class="comment">// UIControl</span>
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="interface_t_t_link.html#a92e966c84ad02839d00a3989d92720e0">00063</a> - (void)setHighlighted:(BOOL)highlighted {
+<a name="l00064"></a>00064   [<span class="keyword">super</span> setHighlighted:highlighted];
+<a name="l00065"></a>00065   <span class="keywordflow">if</span> (highlighted) {
+<a name="l00066"></a>00066     <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>) {
+<a name="l00067"></a>00067       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a> = [[<a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> alloc] initWithFrame:self.bounds];
+<a name="l00068"></a>00068       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.<a class="code" href="interface_t_t_view.html#a832ab8c5e49539942c6d40c66fc80c78">style</a> = <a class="code" href="_t_t_global_style_8h.html#a781439ee732394fef574bf7310212026">TTSTYLE</a>(linkHighlighted);
+<a name="l00069"></a>00069       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00070"></a>00070       <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.userInteractionEnabled = NO;
+<a name="l00071"></a>00071       [<span class="keyword">self</span> addSubview:_screenView];
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.frame = <span class="keyword">self</span>.bounds;
+<a name="l00075"></a>00075     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.hidden = NO;
+<a name="l00076"></a>00076   } <span class="keywordflow">else</span> {
+<a name="l00077"></a>00077     <a class="code" href="interface_t_t_link.html#a4d879760dfbe128ac4b95306e6e9d319">_screenView</a>.hidden = YES;
+<a name="l00078"></a>00078   }
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="interface_t_t_link.html#afb16f7b6d1faea1ffe97ac974711eadc">00081</a> - (BOOL)continueTrackingWithTouch:(<a class="code" href="class_u_i_touch.html">UITouch</a> *)touch withEvent:(<a class="code" href="class_u_i_event.html">UIEvent</a> *)event {
+<a name="l00082"></a>00082   <span class="keywordflow">if</span> ([<span class="keyword">self</span> pointInside:[touch locationInView:<span class="keyword">self</span>] withEvent:event]) {
+<a name="l00083"></a>00083     <span class="keywordflow">return</span> YES;
+<a name="l00084"></a>00084   } <span class="keywordflow">else</span> {
+<a name="l00085"></a>00085     <span class="keyword">self</span>.highlighted = NO;
+<a name="l00086"></a>00086     <span class="keywordflow">return</span> NO;
+<a name="l00087"></a>00087   }
+<a name="l00088"></a>00088 }
+<a name="l00089"></a>00089 
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="interface_t_t_link.html#a9674e75579de16c16744b1ef79f887c0">00092</a> - (void)setURL:(<span class="keywordtype">id</span>)URL {
+<a name="l00093"></a>00093   [<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a> release];
+<a name="l00094"></a>00094   <a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a> = [<a class="code" href="interface_t_t_link.html#a411a2104db6c430c46a6cbe687f5ac42" title="The URL that will be loaded when the control is touched.">URL</a> retain];
+<a name="l00095"></a>00095   
+<a name="l00096"></a>00096   <span class="keyword">self</span>.userInteractionEnabled = !!<a class="code" href="interface_t_t_link.html#a892f4cafb72dfd6d94e3c5c6e14f10ba">_URL</a>;
+<a name="l00097"></a>00097 }
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

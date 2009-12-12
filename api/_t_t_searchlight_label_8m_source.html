@@ -35,6 +35,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -75,165 +76,169 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_searchlight_label_8h.html">Three20/TTSearchlightLabel.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_searchlight_label.html">TTSearchlightLabel</a>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_core_8h.html">Three20/TTGlobalCore.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_style_8h.html">Three20/TTGlobalStyle.h</a>&quot;</span>
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> = <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>, <a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a> = <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>, <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>, <a class="code" href="interface_t_t_searchlight_label.html#a0dac183dff87f7855471d162f1dd2759">spotlightColor</a> = <a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>,
-<a name="l00023"></a>00023   <a class="code" href="interface_t_t_searchlight_label.html#a5cc4e1cc6d90d40d37e4024da434bc8d">textAlignment</a> = <a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a>;
-<a name="l00024"></a>00024 
-<a name="l00026"></a>00026 <span class="comment">// private</span>
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028 - (void)newMask {
-<a name="l00029"></a>00029   CGRect rect = <span class="keyword">self</span>.frame;
-<a name="l00030"></a>00030   CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-<a name="l00031"></a>00031   <span class="keywordtype">int</span> bitmapBytesPerRow = (rect.size.width * 4);
-<a name="l00032"></a>00032   <span class="keywordtype">int</span> bitmapByteCount = (bitmapBytesPerRow * rect.size.height);
-<a name="l00033"></a>00033   <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a> = malloc(bitmapByteCount);
-<a name="l00034"></a>00034   <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a> = CGBitmapContextCreate(<a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>, rect.size.width, rect.size.height,
-<a name="l00035"></a>00035                           8, bitmapBytesPerRow, space, kCGImageAlphaPremultipliedLast);
-<a name="l00036"></a>00036   CGColorSpaceRelease(space);
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 - (void)releaseMask {
-<a name="l00040"></a>00040   CGContextRelease(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>);
-<a name="l00041"></a>00041   free(<a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>);
-<a name="l00042"></a>00042   <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a> = nil;
-<a name="l00043"></a>00043   <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a> = nil;
-<a name="l00044"></a>00044 }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046 - (CGImageRef)newSpotlightMask:(CGRect)rect origin:(CGPoint)origin radius:(CGFloat)radius {
-<a name="l00047"></a>00047   CGContextClearRect(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>, rect);
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049   CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-<a name="l00050"></a>00050   CGFloat components[] = {1, 1, 1, 1, 0, 0, 0, 0};
-<a name="l00051"></a>00051   CGFloat locations[] = {0, 1};
-<a name="l00052"></a>00052   CGGradientRef gradient = CGGradientCreateWithColorComponents(space, components, locations, 2);
-<a name="l00053"></a>00053   CGContextDrawRadialGradient(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>, gradient, origin, 0, origin, radius, 0);
-<a name="l00054"></a>00054   CGGradientRelease(gradient);
-<a name="l00055"></a>00055   CGColorSpaceRelease(space);
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057   <span class="keywordflow">return</span> CGBitmapContextCreateImage(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>);
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 - (void)updateSpotlight {
-<a name="l00061"></a>00061   <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> += 1.3/32;
-<a name="l00062"></a>00062   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> &gt; 2) {
-<a name="l00063"></a>00063     <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> = -0.5;
-<a name="l00064"></a>00064   }
-<a name="l00065"></a>00065   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> &lt;= 1.5) {
-<a name="l00066"></a>00066     [<span class="keyword">self</span> setNeedsDisplay];
-<a name="l00067"></a>00067   }
-<a name="l00068"></a>00068 }
-<a name="l00069"></a>00069 
-<a name="l00071"></a>00071 <span class="comment">// NSObject</span>
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 - (id)initWithFrame:(CGRect)frame {
-<a name="l00074"></a>00074   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
-<a name="l00075"></a>00075     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = nil;
-<a name="l00076"></a>00076     
-<a name="l00077"></a>00077     <span class="keyword">self</span>.text = <span class="stringliteral">@&quot;&quot;</span>;
-<a name="l00078"></a>00078     <span class="keyword">self</span>.font = <a class="code" href="_t_t_global_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(<a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a>);
-<a name="l00079"></a>00079     <span class="keyword">self</span>.textColor = [<a class="code" href="class_u_i_color.html">UIColor</a> colorWithWhite:0.25 alpha:1];
-<a name="l00080"></a>00080     <span class="keyword">self</span>.spotlightColor = [<a class="code" href="class_u_i_color.html">UIColor</a> whiteColor];
-<a name="l00081"></a>00081     <span class="keyword">self</span>.textAlignment = UITextAlignmentLeft;
-<a name="l00082"></a>00082     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html">UIColor</a> clearColor];
-<a name="l00083"></a>00083     <span class="keyword">self</span>.contentMode = UIViewContentModeCenter;
-<a name="l00084"></a>00084   }
-<a name="l00085"></a>00085   <span class="keywordflow">return</span> <span class="keyword">self</span>;
-<a name="l00086"></a>00086 }
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 - (void)dealloc {
-<a name="l00089"></a>00089   [<span class="keyword">self</span> stopAnimating];
-<a name="l00090"></a>00090   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>);
-<a name="l00091"></a>00091   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>);
-<a name="l00092"></a>00092   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>);
-<a name="l00093"></a>00093   <a class="code" href="_t_t_global_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>);
-<a name="l00094"></a>00094   [<span class="keyword">super</span> dealloc];
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00098"></a>00098 <span class="comment">// UIView</span>
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 - (void)drawRect:(CGRect)rect {
-<a name="l00101"></a>00101   CGContextRef context = UIGraphicsGetCurrentContext();
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103   CGSize textSize = [<span class="keyword">self</span> sizeThatFits:CGSizeZero];
-<a name="l00104"></a>00104   
-<a name="l00105"></a>00105   CGFloat x = 0;
-<a name="l00106"></a>00106   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a> == UITextAlignmentRight) {
-<a name="l00107"></a>00107     x = <span class="keyword">self</span>.frame.size.width - textSize.width;
-<a name="l00108"></a>00108   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a> == UITextAlignmentCenter) {
-<a name="l00109"></a>00109     x = ceil(<span class="keyword">self</span>.frame.size.width/2 - textSize.width/2);
-<a name="l00110"></a>00110   }
-<a name="l00111"></a>00111   
-<a name="l00112"></a>00112   CGFloat y = 0;
-<a name="l00113"></a>00113   <span class="keywordflow">if</span> (<span class="keyword">self</span>.contentMode == UIViewContentModeCenter) {
-<a name="l00114"></a>00114     y = ceil(rect.size.height/2 + <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.capHeight/2);
-<a name="l00115"></a>00115   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.contentMode == UIViewContentModeBottom) {
-<a name="l00116"></a>00116     y = rect.size.height + <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.descender;
-<a name="l00117"></a>00117   } <span class="keywordflow">else</span> {
-<a name="l00118"></a>00118     y = <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.capHeight;
-<a name="l00119"></a>00119   }
-<a name="l00120"></a>00120   
-<a name="l00121"></a>00121   CGContextSelectFont(context, [<a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.fontName UTF8String], <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.pointSize, kCGEncodingMacRoman);
-<a name="l00122"></a>00122   CGContextSetTextDrawingMode(context, kCGTextFill);
-<a name="l00123"></a>00123   CGContextSetTextMatrix(context, CGAffineTransformScale(CGAffineTransformIdentity, 1, -1));
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125   CGContextSetFillColorWithColor(context, <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>.CGColor);
-<a name="l00126"></a>00126   CGContextShowTextAtPoint(context, x, y, [<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> UTF8String], <span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a>.length);
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
-<a name="l00129"></a>00129     CGPoint spotOrigin = CGPointMake(x + (textSize.width * <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a>),
-<a name="l00130"></a>00130       y - ceil(<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a>.capHeight/2));
-<a name="l00131"></a>00131     CGFloat spotRadius = <span class="keyword">self</span>.font.capHeight*2;
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133     CGImageRef mask = [<span class="keyword">self</span> newSpotlightMask:rect origin:spotOrigin radius:spotRadius];
-<a name="l00134"></a>00134     CGContextClipToMask(context, rect, mask);
-<a name="l00135"></a>00135     CGImageRelease(mask);
-<a name="l00136"></a>00136     
-<a name="l00137"></a>00137     [_spotlightColor setFill];
-<a name="l00138"></a>00138     CGContextShowTextAtPoint(context, x, y, [<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> UTF8String], <span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a>.length);
-<a name="l00139"></a>00139   }
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 - (CGSize)sizeThatFits:(CGSize)size {
-<a name="l00143"></a>00143   <span class="keywordflow">return</span> [<span class="keyword">self</span>.text sizeWithFont:self.font constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+<a name="l00022"></a>00022 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_default_style_sheet_8h.html">Three20/TTDefaultStyleSheet.h</a>&quot;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">@implementation </span><a class="code" href="interface_t_t_searchlight_label.html">TTSearchlightLabel</a>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="keyword">@synthesize</span> <a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> = <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>, <a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a> = <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>, <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>, <a class="code" href="interface_t_t_searchlight_label.html#a0dac183dff87f7855471d162f1dd2759">spotlightColor</a> = <a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>,
+<a name="l00027"></a>00027   <a class="code" href="interface_t_t_searchlight_label.html#a5cc4e1cc6d90d40d37e4024da434bc8d">textAlignment</a> = <a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a>;
+<a name="l00028"></a>00028 
+<a name="l00030"></a>00030 <span class="comment">// private</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="interface_t_t_searchlight_label.html#aa9f5e72ee04f41438bb83b7b3812ae68">00032</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#aa9f5e72ee04f41438bb83b7b3812ae68">newMask</a> {
+<a name="l00033"></a>00033   CGRect rect = <span class="keyword">self</span>.frame;
+<a name="l00034"></a>00034   CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+<a name="l00035"></a>00035   <span class="keywordtype">int</span> bitmapBytesPerRow = (rect.size.width * 4);
+<a name="l00036"></a>00036   <span class="keywordtype">int</span> bitmapByteCount = (bitmapBytesPerRow * rect.size.height);
+<a name="l00037"></a>00037   <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a> = malloc(bitmapByteCount);
+<a name="l00038"></a>00038   <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a> = CGBitmapContextCreate(<a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>, rect.size.width, rect.size.height,
+<a name="l00039"></a>00039                           8, bitmapBytesPerRow, space, kCGImageAlphaPremultipliedLast);
+<a name="l00040"></a>00040   CGColorSpaceRelease(space);
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="interface_t_t_searchlight_label.html#a0ad54c14e47da2b84716f4aa7cb73083">00043</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#a0ad54c14e47da2b84716f4aa7cb73083">releaseMask</a> {
+<a name="l00044"></a>00044   CGContextRelease(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>);
+<a name="l00045"></a>00045   free(<a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a>);
+<a name="l00046"></a>00046   <a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a> = nil;
+<a name="l00047"></a>00047   <a class="code" href="interface_t_t_searchlight_label.html#aa4f36534612013b296b92cc5f42474d8">_maskData</a> = nil;
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="interface_t_t_searchlight_label.html#a05a9653a4de541845807fead36b9f298">00050</a> - (CGImageRef)newSpotlightMask:(CGRect)rect origin:(CGPoint)origin radius:(CGFloat)radius {
+<a name="l00051"></a>00051   CGContextClearRect(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>, rect);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053   CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+<a name="l00054"></a>00054   CGFloat components[] = {1, 1, 1, 1, 0, 0, 0, 0};
+<a name="l00055"></a>00055   CGFloat locations[] = {0, 1};
+<a name="l00056"></a>00056   CGGradientRef gradient = CGGradientCreateWithColorComponents(space, components, locations, 2);
+<a name="l00057"></a>00057   CGContextDrawRadialGradient(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>, gradient, <a class="code" href="class_u_i_view.html#a42b97c6ba8cc360b43290d0704330fa6">origin</a>, 0, <a class="code" href="class_u_i_view.html#a42b97c6ba8cc360b43290d0704330fa6">origin</a>, radius, 0);
+<a name="l00058"></a>00058   CGGradientRelease(gradient);
+<a name="l00059"></a>00059   CGColorSpaceRelease(space);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061   <span class="keywordflow">return</span> CGBitmapContextCreateImage(<a class="code" href="interface_t_t_searchlight_label.html#a5c9ba2775a5f9d98c685b9c2ea9c9380">_maskContext</a>);
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="interface_t_t_searchlight_label.html#a969a75728b1e95aecd02c86d9b38f8f3">00064</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#a969a75728b1e95aecd02c86d9b38f8f3">updateSpotlight</a> {
+<a name="l00065"></a>00065   <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> += 1.3/32;
+<a name="l00066"></a>00066   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> &gt; 2) {
+<a name="l00067"></a>00067     <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> = -0.5;
+<a name="l00068"></a>00068   }
+<a name="l00069"></a>00069   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> &lt;= 1.5) {
+<a name="l00070"></a>00070     [<span class="keyword">self</span> setNeedsDisplay];
+<a name="l00071"></a>00071   }
+<a name="l00072"></a>00072 }
+<a name="l00073"></a>00073 
+<a name="l00075"></a>00075 <span class="comment">// NSObject</span>
+<a name="l00076"></a>00076 
+<a name="l00077"></a><a class="code" href="interface_t_t_searchlight_label.html#af8aa4c7418e4ab5b9b815e93a3132867">00077</a> - (id)initWithFrame:(CGRect)frame {
+<a name="l00078"></a>00078   <span class="keywordflow">if</span> (<span class="keyword">self</span> = [super initWithFrame:frame]) {
+<a name="l00079"></a>00079     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = nil;
+<a name="l00080"></a>00080     
+<a name="l00081"></a>00081     <span class="keyword">self</span>.text = <span class="stringliteral">@&quot;&quot;</span>;
+<a name="l00082"></a>00082     <span class="keyword">self</span>.font = <a class="code" href="_t_t_global_style_8h.html#a898553a3d10993e8ca7d12f2b23cfb77">TTSTYLEVAR</a>(<a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a>);
+<a name="l00083"></a>00083     <span class="keyword">self</span>.textColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> colorWithWhite:0.25 alpha:1];
+<a name="l00084"></a>00084     <span class="keyword">self</span>.spotlightColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> whiteColor];
+<a name="l00085"></a>00085     <span class="keyword">self</span>.textAlignment = UITextAlignmentLeft;
+<a name="l00086"></a>00086     <span class="keyword">self</span>.backgroundColor = [<a class="code" href="class_u_i_color.html" title="Additions.">UIColor</a> clearColor];
+<a name="l00087"></a>00087     <span class="keyword">self</span>.contentMode = UIViewContentModeCenter;
+<a name="l00088"></a>00088   }
+<a name="l00089"></a>00089   <span class="keywordflow">return</span> <span class="keyword">self</span>;
+<a name="l00090"></a>00090 }
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="interface_t_t_searchlight_label.html#aa5d13eb66412d7835109ee9fe711f675">00092</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#aa5d13eb66412d7835109ee9fe711f675">dealloc</a> {
+<a name="l00093"></a>00093   [<span class="keyword">self</span> <a class="code" href="interface_t_t_searchlight_label.html#a64303e85fdf718dfbfb3bc7954bda445">stopAnimating</a>];
+<a name="l00094"></a>00094   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>);
+<a name="l00095"></a>00095   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>);
+<a name="l00096"></a>00096   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>);
+<a name="l00097"></a>00097   <a class="code" href="_t_t_core_preprocessor_macros_8h.html#a472fda8f0a560323cf9850cbe6656b66">TT_RELEASE_SAFELY</a>(<a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a>);
+<a name="l00098"></a>00098   [<span class="keyword">super</span> dealloc];
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00102"></a>00102 <span class="comment">// UIView</span>
+<a name="l00103"></a>00103 
+<a name="l00104"></a><a class="code" href="interface_t_t_searchlight_label.html#a42e9c76d53499b66fa820ae03bafef37">00104</a> - (void)drawRect:(CGRect)rect {
+<a name="l00105"></a>00105   CGContextRef context = UIGraphicsGetCurrentContext();
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107   CGSize textSize = [<span class="keyword">self</span> <a class="code" href="interface_t_t_searchlight_label.html#ae9f43f532be0cd343ad3958cb6c453f4">sizeThatFits</a>:CGSizeZero];
+<a name="l00108"></a>00108   
+<a name="l00109"></a>00109   CGFloat x = 0;
+<a name="l00110"></a>00110   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a> == UITextAlignmentRight) {
+<a name="l00111"></a>00111     x = <span class="keyword">self</span>.frame.size.width - textSize.width;
+<a name="l00112"></a>00112   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#ad024c9c495588284acffca75a4725a53">_textAlignment</a> == UITextAlignmentCenter) {
+<a name="l00113"></a>00113     x = ceil(<span class="keyword">self</span>.frame.size.width/2 - textSize.width/2);
+<a name="l00114"></a>00114   }
+<a name="l00115"></a>00115   
+<a name="l00116"></a>00116   CGFloat y = 0;
+<a name="l00117"></a>00117   <span class="keywordflow">if</span> (<span class="keyword">self</span>.contentMode == UIViewContentModeCenter) {
+<a name="l00118"></a>00118     y = ceil(rect.size.height/2 + <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.capHeight/2);
+<a name="l00119"></a>00119   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">self</span>.contentMode == UIViewContentModeBottom) {
+<a name="l00120"></a>00120     y = rect.size.height + <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.descender;
+<a name="l00121"></a>00121   } <span class="keywordflow">else</span> {
+<a name="l00122"></a>00122     y = <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.capHeight;
+<a name="l00123"></a>00123   }
+<a name="l00124"></a>00124   
+<a name="l00125"></a>00125   CGContextSelectFont(context, [<a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.fontName UTF8String], <a class="code" href="interface_t_t_searchlight_label.html#a1e04b1b9b7c1cc451c2c11db2f462993">_font</a>.pointSize, kCGEncodingMacRoman);
+<a name="l00126"></a>00126   CGContextSetTextDrawingMode(context, kCGTextFill);
+<a name="l00127"></a>00127   CGContextSetTextMatrix(context, CGAffineTransformScale(CGAffineTransformIdentity, 1, -1));
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129   CGContextSetFillColorWithColor(context, <a class="code" href="interface_t_t_searchlight_label.html#a3f74fdb7d66fd82144699fded364def3">textColor</a>.CGColor);
+<a name="l00130"></a>00130   CGContextShowTextAtPoint(context, x, y, [<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> UTF8String], <span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a>.length);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
+<a name="l00133"></a>00133     CGPoint spotOrigin = CGPointMake(x + (textSize.width * <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a>),
+<a name="l00134"></a>00134       y - ceil(<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#af7884b224b015a397c315f62fe388f8d">font</a>.capHeight/2));
+<a name="l00135"></a>00135     CGFloat spotRadius = <span class="keyword">self</span>.font.capHeight*2;
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137     CGImageRef mask = [<span class="keyword">self</span> <a class="code" href="interface_t_t_searchlight_label.html#a05a9653a4de541845807fead36b9f298">newSpotlightMask</a>:rect <a class="code" href="interface_t_t_searchlight_label.html#a05a9653a4de541845807fead36b9f298">origin</a>:spotOrigin <a class="code" href="interface_t_t_searchlight_label.html#a05a9653a4de541845807fead36b9f298">radius</a>:spotRadius];
+<a name="l00138"></a>00138     CGContextClipToMask(context, rect, mask);
+<a name="l00139"></a>00139     CGImageRelease(mask);
+<a name="l00140"></a>00140     
+<a name="l00141"></a>00141     [<a class="code" href="interface_t_t_searchlight_label.html#a82fce079d5505030af0e58a76014005b">_spotlightColor</a> setFill];
+<a name="l00142"></a>00142     CGContextShowTextAtPoint(context, x, y, [<span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a> UTF8String], <span class="keyword">self</span>.<a class="code" href="interface_t_t_searchlight_label.html#a8f3a5ea168cb4a50d588f0f66ae6fc48">text</a>.length);
+<a name="l00143"></a>00143   }
 <a name="l00144"></a>00144 }
 <a name="l00145"></a>00145 
-<a name="l00147"></a>00147 <span class="comment">// UIAccessibility</span>
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149 - (BOOL)isAccessibilityElement {
-<a name="l00150"></a>00150   <span class="keywordflow">return</span> YES;
-<a name="l00151"></a>00151 }
+<a name="l00146"></a><a class="code" href="interface_t_t_searchlight_label.html#ae9f43f532be0cd343ad3958cb6c453f4">00146</a> - (CGSize)sizeThatFits:(CGSize)size {
+<a name="l00147"></a>00147   <span class="keywordflow">return</span> [<span class="keyword">self</span>.text sizeWithFont:self.font constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00151"></a>00151 <span class="comment">// UIAccessibility</span>
 <a name="l00152"></a>00152 
-<a name="l00153"></a>00153 - (<a class="code" href="class_n_s_string.html">NSString</a> *)accessibilityLabel {
-<a name="l00154"></a>00154   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>;
+<a name="l00153"></a><a class="code" href="interface_t_t_searchlight_label.html#a6f12ca1f7785889e6356619cce97c751">00153</a> - (BOOL)<a class="code" href="interface_t_t_searchlight_label.html#a6f12ca1f7785889e6356619cce97c751">isAccessibilityElement</a> {
+<a name="l00154"></a>00154   <span class="keywordflow">return</span> YES;
 <a name="l00155"></a>00155 }
 <a name="l00156"></a>00156 
-<a name="l00157"></a>00157 - (UIAccessibilityTraits)accessibilityTraits {
-<a name="l00158"></a>00158   <span class="keywordflow">return</span> [<span class="keyword">super</span> accessibilityTraits] | UIAccessibilityTraitStaticText;
+<a name="l00157"></a><a class="code" href="interface_t_t_searchlight_label.html#a59edd02ceb33990c198b6f278584289b">00157</a> - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a> *)<a class="code" href="interface_t_t_searchlight_label.html#a59edd02ceb33990c198b6f278584289b">accessibilityLabel</a> {
+<a name="l00158"></a>00158   <span class="keywordflow">return</span> <a class="code" href="interface_t_t_searchlight_label.html#a50a2c2def5fda998d729e8aeb6a01d16">_text</a>;
 <a name="l00159"></a>00159 }
 <a name="l00160"></a>00160 
-<a name="l00162"></a>00162 <span class="comment">// public</span>
-<a name="l00163"></a><a class="code" href="interface_t_t_searchlight_label.html#aafe9e67bfa63ab29e67b1f071310d7ac">00163</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#aafe9e67bfa63ab29e67b1f071310d7ac">startAnimating</a> {
-<a name="l00164"></a>00164   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
-<a name="l00165"></a>00165     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = [NSTimer scheduledTimerWithTimeInterval:1.0/32 target:self
-<a name="l00166"></a>00166       selector:@selector(updateSpotlight) userInfo:nil repeats:YES];
-<a name="l00167"></a>00167     <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> = -0.5;
-<a name="l00168"></a>00168     [<span class="keyword">self</span> newMask];
-<a name="l00169"></a>00169   }
-<a name="l00170"></a>00170 }
-<a name="l00171"></a>00171 
-<a name="l00172"></a><a class="code" href="interface_t_t_searchlight_label.html#a64303e85fdf718dfbfb3bc7954bda445">00172</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#a64303e85fdf718dfbfb3bc7954bda445">stopAnimating</a> {
-<a name="l00173"></a>00173   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
-<a name="l00174"></a>00174     [<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> invalidate];
-<a name="l00175"></a>00175     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = nil;
-<a name="l00176"></a>00176     [<span class="keyword">self</span> releaseMask];
-<a name="l00177"></a>00177   }
-<a name="l00178"></a>00178   [<span class="keyword">self</span> setNeedsDisplay]; 
-<a name="l00179"></a>00179 }
-<a name="l00180"></a>00180 
-<a name="l00181"></a>00181 <span class="keyword">@end</span>
+<a name="l00161"></a><a class="code" href="interface_t_t_searchlight_label.html#a71c5d86dbda67248159d884543ca4547">00161</a> - (UIAccessibilityTraits)<a class="code" href="interface_t_t_searchlight_label.html#a71c5d86dbda67248159d884543ca4547">accessibilityTraits</a> {
+<a name="l00162"></a>00162   <span class="keywordflow">return</span> [<span class="keyword">super</span> accessibilityTraits] | UIAccessibilityTraitStaticText;
+<a name="l00163"></a>00163 }
+<a name="l00164"></a>00164 
+<a name="l00166"></a>00166 <span class="comment">// public</span>
+<a name="l00167"></a><a class="code" href="interface_t_t_searchlight_label.html#aafe9e67bfa63ab29e67b1f071310d7ac">00167</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#aafe9e67bfa63ab29e67b1f071310d7ac">startAnimating</a> {
+<a name="l00168"></a>00168   <span class="keywordflow">if</span> (!<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
+<a name="l00169"></a>00169     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = [NSTimer scheduledTimerWithTimeInterval:1.0/32 target:self
+<a name="l00170"></a>00170       selector:@selector(updateSpotlight) userInfo:nil repeats:YES];
+<a name="l00171"></a>00171     <a class="code" href="interface_t_t_searchlight_label.html#aa959638593cc3e1208fc78982e54201d">_spotlightPoint</a> = -0.5;
+<a name="l00172"></a>00172     [<span class="keyword">self</span> <a class="code" href="interface_t_t_searchlight_label.html#aa9f5e72ee04f41438bb83b7b3812ae68">newMask</a>];
+<a name="l00173"></a>00173   }
+<a name="l00174"></a>00174 }
+<a name="l00175"></a>00175 
+<a name="l00176"></a><a class="code" href="interface_t_t_searchlight_label.html#a64303e85fdf718dfbfb3bc7954bda445">00176</a> - (void)<a class="code" href="interface_t_t_searchlight_label.html#a64303e85fdf718dfbfb3bc7954bda445">stopAnimating</a> {
+<a name="l00177"></a>00177   <span class="keywordflow">if</span> (<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a>) {
+<a name="l00178"></a>00178     [<a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> invalidate];
+<a name="l00179"></a>00179     <a class="code" href="interface_t_t_searchlight_label.html#a06501cb746fe0f489f3020af6335be77">_timer</a> = nil;
+<a name="l00180"></a>00180     [<span class="keyword">self</span> <a class="code" href="interface_t_t_searchlight_label.html#a0ad54c14e47da2b84716f4aa7cb73083">releaseMask</a>];
+<a name="l00181"></a>00181   }
+<a name="l00182"></a>00182   [<span class="keyword">self</span> setNeedsDisplay]; 
+<a name="l00183"></a>00183 }
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185 <span class="keyword">@end</span>
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

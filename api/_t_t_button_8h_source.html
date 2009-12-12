@@ -77,27 +77,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_style_8h.html">Three20/TTStyle.h</a>&quot;</span>
 <a name="l00018"></a>00018 
 <a name="l00019"></a><a class="code" href="interface_t_t_button.html">00019</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_button.html">TTButton</a> : UIControl &lt;<a class="code" href="protocol_t_t_style_delegate-p.html">TTStyleDelegate</a>&gt; {
-<a name="l00020"></a><a class="code" href="interface_t_t_button.html#a5ec03f2492358eb92f7e2135225361a7">00020</a>   <a class="code" href="class_n_s_mutable_dictionary.html">NSMutableDictionary</a>* <a class="code" href="interface_t_t_button.html#a5ec03f2492358eb92f7e2135225361a7">_content</a>;
-<a name="l00021"></a><a class="code" href="interface_t_t_button.html#a36c32d288a92ad23d46c732882feff15">00021</a>   <a class="code" href="class_u_i_font.html">UIFont</a>* <a class="code" href="interface_t_t_button.html#a36c32d288a92ad23d46c732882feff15">_font</a>;
+<a name="l00020"></a><a class="code" href="interface_t_t_button.html#a5ec03f2492358eb92f7e2135225361a7">00020</a>   <a class="code" href="class_n_s_mutable_dictionary.html" title="Additions.">NSMutableDictionary</a>* <a class="code" href="interface_t_t_button.html#a5ec03f2492358eb92f7e2135225361a7">_content</a>;
+<a name="l00021"></a><a class="code" href="interface_t_t_button.html#a36c32d288a92ad23d46c732882feff15">00021</a>   <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* <a class="code" href="interface_t_t_button.html#a36c32d288a92ad23d46c732882feff15">_font</a>;
 <a name="l00022"></a><a class="code" href="interface_t_t_button.html#a654ab4afc99809c77c1125c71eba7f07">00022</a>   BOOL <a class="code" href="interface_t_t_button.html#a654ab4afc99809c77c1125c71eba7f07">_isVertical</a>;
 <a name="l00023"></a>00023 }
 <a name="l00024"></a>00024 
-<a name="l00025"></a><a class="code" href="interface_t_t_button.html#ab7ebfd30adeb7766b08402d346d61003">00025</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html">UIFont</a>* font;
+<a name="l00025"></a><a class="code" href="interface_t_t_button.html#ab7ebfd30adeb7766b08402d346d61003">00025</a> @property(nonatomic,retain) <a class="code" href="class_u_i_font.html" title="Additions.">UIFont</a>* font;
 <a name="l00026"></a><a class="code" href="interface_t_t_button.html#a2d5c8aaa4652326e06eb1ea9d85a8621">00026</a> @property(nonatomic) BOOL isVertical;
 <a name="l00027"></a>00027 
-<a name="l00028"></a>00028 + (<a class="code" href="interface_t_t_button.html">TTButton</a>*)buttonWithStyle:(<a class="code" href="class_n_s_string.html">NSString</a>*)selector;
-<a name="l00029"></a>00029 + (<a class="code" href="interface_t_t_button.html">TTButton</a>*)buttonWithStyle:(<a class="code" href="class_n_s_string.html">NSString</a>*)selector title:(<a class="code" href="class_n_s_string.html">NSString</a>*)title;
+<a name="l00028"></a>00028 + (<a class="code" href="interface_t_t_button.html">TTButton</a>*)buttonWithStyle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)selector;
+<a name="l00029"></a>00029 + (<a class="code" href="interface_t_t_button.html">TTButton</a>*)buttonWithStyle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)selector title:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title;
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 - (<a class="code" href="class_n_s_string.html">NSString</a>*)titleForState:(UIControlState)state;
-<a name="l00032"></a>00032 - (<span class="keywordtype">void</span>)setTitle:(<a class="code" href="class_n_s_string.html">NSString</a>*)title forState:(UIControlState)state;
+<a name="l00031"></a>00031 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)titleForState:(UIControlState)state;
+<a name="l00032"></a>00032 - (<span class="keywordtype">void</span>)setTitle:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title forState:(UIControlState)state;
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 - (<a class="code" href="class_n_s_string.html">NSString</a>*)imageForState:(UIControlState)state;
-<a name="l00035"></a>00035 - (<span class="keywordtype">void</span>)setImage:(<a class="code" href="class_n_s_string.html">NSString</a>*)title forState:(UIControlState)state;
+<a name="l00034"></a>00034 - (<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)imageForState:(UIControlState)state;
+<a name="l00035"></a>00035 - (<span class="keywordtype">void</span>)setImage:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title forState:(UIControlState)state;
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 - (<a class="code" href="interface_t_t_style.html">TTStyle</a>*)styleForState:(UIControlState)state;
 <a name="l00038"></a>00038 - (<span class="keywordtype">void</span>)setStyle:(<a class="code" href="interface_t_t_style.html">TTStyle</a>*)style forState:(UIControlState)state;
 <a name="l00039"></a>00039 
-<a name="l00046"></a>00046 - (<span class="keywordtype">void</span>)setStylesWithSelector:(<a class="code" href="class_n_s_string.html">NSString</a>*)selector;
+<a name="l00046"></a>00046 - (<span class="keywordtype">void</span>)setStylesWithSelector:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)selector;
 <a name="l00047"></a>00047 
 <a name="l00048"></a>00048 - (<span class="keywordtype">void</span>)suspendLoadingImages:(BOOL)suspended;
 <a name="l00049"></a>00049 

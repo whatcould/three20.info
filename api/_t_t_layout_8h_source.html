@@ -74,37 +74,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment">// limitations under the License.</span>
 <a name="l00015"></a>00015 <span class="comment">//</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_global_8h.html">Three20/TTGlobal.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a><a class="code" href="interface_t_t_layout.html">00019</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_layout.html">TTLayout</a> : <a class="code" href="class_n_s_object.html">NSObject</a>
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021 - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view;
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="keyword">@end</span>
-<a name="l00024"></a>00024 
-<a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="interface_t_t_flow_layout.html">00027</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_flow_layout.html">TTFlowLayout</a> : <a class="code" href="interface_t_t_layout.html">TTLayout</a> {
-<a name="l00028"></a><a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">00028</a>   CGFloat <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
-<a name="l00029"></a><a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">00029</a>   CGFloat <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
-<a name="l00030"></a>00030 }
-<a name="l00031"></a>00031 
-<a name="l00032"></a><a class="code" href="interface_t_t_flow_layout.html#aaece051c45fcf4ec3205a64a517312cb">00032</a> @property(nonatomic) CGFloat padding;
-<a name="l00033"></a><a class="code" href="interface_t_t_flow_layout.html#a11e90f3151ef011f57678a69fcf71a6a">00033</a> @property(nonatomic) CGFloat spacing;
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 @end
-<a name="l00036"></a>00036 
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="interface_t_t_grid_layout.html">00039</a> @interface <a class="code" href="interface_t_t_grid_layout.html">TTGridLayout</a> : <a class="code" href="interface_t_t_layout.html">TTLayout</a> {
-<a name="l00040"></a><a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">00040</a>   NSInteger _columnCount;
-<a name="l00041"></a><a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">00041</a>   CGFloat _padding;
-<a name="l00042"></a><a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">00042</a>   CGFloat _spacing;
-<a name="l00043"></a>00043 }
-<a name="l00044"></a>00044 
-<a name="l00045"></a><a class="code" href="interface_t_t_grid_layout.html#a63cee5773915ea20dfe9be9af489819e">00045</a> @property(nonatomic) NSInteger columnCount;
-<a name="l00046"></a><a class="code" href="interface_t_t_grid_layout.html#a79d999fff022d1008c84f622d7220394">00046</a> @property(nonatomic) CGFloat padding;
-<a name="l00047"></a><a class="code" href="interface_t_t_grid_layout.html#a79d7a2dd9b45fe3957857d34bc9da6e2">00047</a> @property(nonatomic) CGFloat spacing;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 @end
+<a name="l00017"></a>00017 <span class="preprocessor">#import &lt;Foundation/Foundation.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#import &lt;UIKit/UIKit.h&gt;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="interface_t_t_layout.html">00020</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_layout.html">TTLayout</a> : <a class="code" href="class_n_s_object.html" title="Additions.">NSObject</a>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 - (CGSize)layoutSubviews:(<a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>*)subviews forView:(<a class="code" href="class_u_i_view.html">UIView</a>*)view;
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">@end</span>
+<a name="l00025"></a>00025 
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="interface_t_t_flow_layout.html">00028</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_flow_layout.html">TTFlowLayout</a> : <a class="code" href="interface_t_t_layout.html">TTLayout</a> {
+<a name="l00029"></a><a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">00029</a>   CGFloat <a class="code" href="interface_t_t_flow_layout.html#a6373b2efde1804dc30eeefbaa73f47e8">_padding</a>;
+<a name="l00030"></a><a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">00030</a>   CGFloat <a class="code" href="interface_t_t_flow_layout.html#acc92269b6d8ffc382d7e1081f5d0c2ef">_spacing</a>;
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="interface_t_t_flow_layout.html#aaece051c45fcf4ec3205a64a517312cb">00033</a> @property(nonatomic) CGFloat padding;
+<a name="l00034"></a><a class="code" href="interface_t_t_flow_layout.html#a11e90f3151ef011f57678a69fcf71a6a">00034</a> @property(nonatomic) CGFloat spacing;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 @end
+<a name="l00037"></a>00037 
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="interface_t_t_grid_layout.html">00040</a> @interface <a class="code" href="interface_t_t_grid_layout.html">TTGridLayout</a> : <a class="code" href="interface_t_t_layout.html">TTLayout</a> {
+<a name="l00041"></a><a class="code" href="interface_t_t_grid_layout.html#a9e1a02714b89a38367f4fce2dba6b0ed">00041</a>   NSInteger _columnCount;
+<a name="l00042"></a><a class="code" href="interface_t_t_grid_layout.html#a2461c9e00aa0de3feca33c700125ac74">00042</a>   CGFloat _padding;
+<a name="l00043"></a><a class="code" href="interface_t_t_grid_layout.html#a08236fd2af674bb5b6485d5e4e0a4d8e">00043</a>   CGFloat _spacing;
+<a name="l00044"></a>00044 }
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="interface_t_t_grid_layout.html#a63cee5773915ea20dfe9be9af489819e">00046</a> @property(nonatomic) NSInteger columnCount;
+<a name="l00047"></a><a class="code" href="interface_t_t_grid_layout.html#a79d999fff022d1008c84f622d7220394">00047</a> @property(nonatomic) CGFloat padding;
+<a name="l00048"></a><a class="code" href="interface_t_t_grid_layout.html#a79d7a2dd9b45fe3957857d34bc9da6e2">00048</a> @property(nonatomic) CGFloat spacing;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 @end
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"

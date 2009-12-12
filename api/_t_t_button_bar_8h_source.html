@@ -77,14 +77,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 <span class="preprocessor">#import &quot;<a class="code" href="_t_t_view_8h.html">Three20/TTView.h</a>&quot;</span>
 <a name="l00018"></a>00018 
 <a name="l00022"></a><a class="code" href="interface_t_t_button_bar.html">00022</a> <span class="keyword">@interface </span><a class="code" href="interface_t_t_button_bar.html" title="A box containing buttons with a consistent style.">TTButtonBar</a> : <a class="code" href="interface_t_t_view.html" title="A decorational view that can styled using a TTStyle object.">TTView</a> {
-<a name="l00023"></a><a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">00023</a>   <a class="code" href="class_n_s_mutable_array.html">NSMutableArray</a>* <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>;
-<a name="l00024"></a><a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">00024</a>   <a class="code" href="class_n_s_string.html">NSString</a>* <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>;
+<a name="l00023"></a><a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">00023</a>   <a class="code" href="class_n_s_mutable_array.html" title="Additions.">NSMutableArray</a>* <a class="code" href="interface_t_t_button_bar.html#a5034afd5e7ad2b77afc215d987897124">_buttons</a>;
+<a name="l00024"></a><a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">00024</a>   <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* <a class="code" href="interface_t_t_button_bar.html#a6e0a567750752dfdec056f0b8da6f6d2">_buttonStyle</a>;
 <a name="l00025"></a>00025 }
 <a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="interface_t_t_button_bar.html#aa98b6cc43a01fcc3b3d22dc257586ae3">00027</a> @property(nonatomic, retain) <a class="code" href="class_n_s_array.html">NSArray</a>* buttons;
-<a name="l00028"></a><a class="code" href="interface_t_t_button_bar.html#aba71c63de1b3523a7469ff7d450c036f">00028</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html">NSString</a>* buttonStyle;
+<a name="l00027"></a><a class="code" href="interface_t_t_button_bar.html#aa98b6cc43a01fcc3b3d22dc257586ae3">00027</a> @property(nonatomic, retain) <a class="code" href="class_n_s_array.html" title="Additions.">NSArray</a>* buttons;
+<a name="l00028"></a><a class="code" href="interface_t_t_button_bar.html#aba71c63de1b3523a7469ff7d450c036f">00028</a> @property(nonatomic,copy) <a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>* buttonStyle;
 <a name="l00029"></a>00029 
-<a name="l00030"></a>00030 - (<span class="keywordtype">void</span>)addButton:(<a class="code" href="class_n_s_string.html">NSString</a>*)title target:(<span class="keywordtype">id</span>)target action:(<span class="keywordtype">SEL</span>)selector;
+<a name="l00030"></a>00030 - (<span class="keywordtype">void</span>)addButton:(<a class="code" href="class_n_s_string.html" title="Additions.">NSString</a>*)title target:(<span class="keywordtype">id</span>)target action:(<span class="keywordtype">SEL</span>)selector;
 <a name="l00031"></a>00031 - (<span class="keywordtype">void</span>)removeButtons;
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033 @end
