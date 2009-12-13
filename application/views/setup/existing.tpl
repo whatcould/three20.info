@@ -36,8 +36,11 @@ Xcode's "dependent project" facilities. Here's how:
   "Frameworks" group in your project (or equivalent) and select Add > Existing Frameworks. 
   Then locate QuartzCore.framework and add it to the project.
 * Finally, we need to tell your project where to find the Three20 headers.  Open your
-  "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click
-  it.  Add the relative path from your project's directory to the "three20/src" directory.
+  "Project Settings" and go to the "Build" tab. Be sure to select the appropriate active configuration 
+  (eg, Release vs. Debug -- eventually you'll need to change both). Look for "Header Search Paths" and 
+  double-click it.  Add the relative path from your project's directory to the "three20/src" directory. 
+  If your project and the three20 source are in the same parent, you would enter
+  "../three20/src".
 * While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and
   add "-ObjC" and "-all_load" to the list of flags.
 * You're ready to go.  Just `#import "Three20/Three20.h"` anywhere you want to use Three20 classes
